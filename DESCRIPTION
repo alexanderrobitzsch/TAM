@@ -1,0 +1,31 @@
+Package: TAM
+Type: Package
+Title: Test Analysis Modules
+Version: 2.3-16
+Date: 2017-06-24 16:05:11
+Author:
+    Alexander Robitzsch [aut, cre], Thomas Kiefer [aut], Margaret Wu [aut]
+Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
+Description: 
+    Includes marginal maximum likelihood estimation of uni- and 
+    multidimensional item response models (Rasch, 2PL, 3PL, 
+    Generalized Partial Credit, Multi Facets,
+    Nominal Item Response, Structured Latent Class Analysis,
+    Mixture Distribution IRT Models, Located Latent Class Models)
+    and joint maximum likelihood estimation for models
+    from the Rasch family. 
+    Latent regression models and plausible value imputation are 
+    also supported.
+Depends: 
+    R (>= 2.15.1), CDM (>= 5.7-3)
+Imports: 
+    coda, GPArotation, graphics, grDevices, lavaan, lattice,
+    MASS, methods, mvtnorm, plyr, psych, Rcpp, sfsmisc, 
+    stats, utils, WrightMap
+Suggests: 
+    miceadds, sirt 
+LinkingTo: 
+    Rcpp, RcppArmadillo
+License: GPL (>= 2)
+URL: http://www.edmeasurementsurveys.com/TAM/Tutorials/, 
+     https://github.com/alexanderrobitzsch/CDM

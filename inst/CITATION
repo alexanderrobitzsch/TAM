@@ -1,0 +1,26 @@
+
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
+vers <- paste("R package version", meta$Version)
+
+citHeader("To cite the 'TAM' package in publications use:")
+
+
+citEntry(entry="Manual",
+         title = "TAM: Test Analysis Modules",
+         author = c(
+                   person(given = "Alexander",
+                          family = "Robitzsch"),
+                   person(given = "Thomas",
+                          family = "Kiefer"),
+		person(given = c("Margaret"),
+                          family = "Wu") ) ,
+         year = year,
+         note = vers,
+	 url = "https://CRAN.R-project.org/package=TAM" ,
+         textVersion =
+         paste0("Robitzsch, A., Kiefer, T., & Wu, M. (",
+               year,
+               "). TAM: Test analysis modules. ",
+               vers, ". https://CRAN.R-project.org/package=TAM")
+	)
+

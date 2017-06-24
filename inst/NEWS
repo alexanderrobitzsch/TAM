@@ -1,0 +1,1193 @@
+********************************************************
+****       CHANGES IN TAM PACKAGE VERSIONS          ****
+********************************************************
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Test Analysis Modules (TAM)
+A. Robitzsch, T. Kiefer, & M. Wu
+
+                  ___           ___     
+      ___        /  /\         /__/\    
+     /  /\      /  /::\       |  |::\   
+    /  /:/     /  /:/\:\      |  |:|:\  
+   /  /:/     /  /:/~/::\   __|__|:|\:\ 
+  /  /::\    /__/:/ /:/\:\ /__/::::| \:\
+ /__/:/\:\   \  \:\/:/__\/ \  \:\~~\__\/
+ \__\/  \:\   \  \::/       \  \:\      
+      \  \:\   \  \:\        \  \:\     
+       \__\/    \  \:\        \  \:\    
+                 \__\/         \__\/    
+
+
+mailto:
+-------
+Alexander Robitzsch
+robitzsch@ipn.uni-kiel.de
+
+For reporting a bug, please always provide a reproducible R script 
+and (if necessary) a corresponding dataset.
+
+URL:
+----
+
+For TAM tutorials see
+http://www.edmeasurementsurveys.com/TAM/Tutorials/
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+-------------------------------------------------------------
+VERSIONS TAM 2.3  |  2017-06-24  |  Last: TAM 2.3-16
+-------------------------------------------------------------
+
+FEATURES:
+* included S3 method 'IRT.frequencies' for computing univariate
+  and bivariate observed and expected frequencies (thanks to a
+  suggestion by Rudolf Debelak)
+ 
+BUG FIXES:
+* fixed a bug in 'tam.linking' (thanks to Sandra Preusser)
+
+NOTES:
+* set argument 'beta.fixed' to FALSE as the default in 'tam.latreg'
+* added 'print' method for 'tam.linking'
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* IRT.frequencies (1), tam.linking (3)
+
+
+-------------------------------------------------------------
+VERSIONS TAM 2.2  |  2017-06-17  |  Last: TAM 2.2-49
+-------------------------------------------------------------
+
+FEATURES:
+* included function 'tam.pv.mcmc' which allows drawing plausible
+  values based on fully Bayesian estimation. A recommendation for
+  using 'tam.pv.mcmc' in case of stochastic nodes is now 
+  displayed in 'tam.pv'. TAM now depends on the coda package for
+  analyzing the MCMC output.
+* included linking methods Stocking-Lord and Haebara in the
+  functions 'tam.linking' and 'tam_linking_2studies' 
+
+BUG FIXES:
+* fixed a recently introduced bug in estimating models with
+  stochastic nodes in TAM functions 
+  (thanks to Boris Girnat, Steffen Wild and Reg Allen)
+
+NOTES:
+* exported utility functions 'tam_interval_index' and
+  'tam_rowCumsums'
+* disabled argument 'normal.approx' for multidimensional models
+  in 'tam.pv' because it is not properly working
+* allowed nonnumeric person identifiers for matching
+  in 'tampv2datlist' function (thanks to Stefan Behrendt)
+* restructured 'tam.mml.wle' and 'tam.mml.wle2' functions. Now,
+  WLEs can also be estimated without fitting the model in TAM
+  (see Example 1 in ?tam.wle).
+* included a summary method for 'tam.wle'. In addition, more
+  descriptive output is computed as values in 'attr(object, ...)' 
+  in 'tam.wle'.
+* exported functions 'weighted_mean', 'tam_irf_3pl',
+  'tam_NA_pattern', 'tam_01_pattern', 'tam_normalize_vector',
+  'tam_remove_missings', 'tam_AXsi_compute', 'tam_AXsi_fit'
+
+DATASETS INCLUDED OR MODIFIED:
+* data.ex16, data.ex17
+
+EXAMPLES INCLUDED OR MODIFIED:
+* tam.pv (1,3), tam.wle (1), tam_irf_3pl (1), tam_NA_pattern (1,2),
+  tam.linking (1,2)
+
+-------------------------------------------------------------
+VERSIONS TAM 2.1  |  2017-05-10  |  Last: TAM 2.1-43
+-------------------------------------------------------------
+
+FEATURES:
+* ---
+ 
+BUG FIXES:
+* ---
+
+NOTES:
+* included argument 'verbose' in TAM functions which is 
+  frequently used in many other R functions
+* exported utility functions 'tam_args_CALL_search', 'tam_matrix2',
+  'tam_outer', 'tam_normalize_matrix_rows', 'tam_trim_increment',
+  'tam_difference_quotient', 'tam_assign_list_elements',
+  'tam_aggregate'
+* fixed bug in 'IRT.informationCurve' when only one item is used 
+  (thanks to Asghar Minaei)
+* changed the default of the argument 'est.variance' to TRUE in
+  'tam.mml' and 'tam.mml.mfr'
+* included optional control argument 'trim_increment' in 
+  argument list 'control' in 'tam_foo' functions which allows
+  the user to choose between two methods 'half' and 'cut' for 
+  reducing the size of increments
+* internal restructure of the main functions
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* ---
+
+-------------------------------------------------------------
+VERSIONS TAM 2.0  |  2017-04-12  |  Last: TAM 2.0-37
+-------------------------------------------------------------
+
+FEATURES:
+* extended multiple group models to multidimensional IRT
+  models in 'tam.mml.3pl' (see Example 1.9)
+ 
+BUG FIXES:
+* fixed a bug in 'tam.mml.3pl' with option skillspace='normal'
+  and estimated means (i.e., means not fixed to zero)
+* fixed a bug in handling multiple groups in 'tam.mml.3pl'
+  (thanks to Laura Zieger)
+
+NOTES:
+* changed calculation of item response probabilities to avoid
+  numerical overflow
+* removed dependencies to the packages msm and tensor
+* included example for extracting posterior probabilities in
+  Rasch mixture models (requested by Ling Liaw)
+* changed order of items in output of value 'item' in 'tam.mml.mfr'  
+* exported utility functions 'tam_packageinfo', 'tam_print_call' and
+  'tam_rsessinfo' for usage in other packages
+* added 'logLik' method for objects of class 'tam.jml'
+* moved function 'tam.jml2' into 'tam.jml' (now available as the 
+  default with argument 'version=2')
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* data.geiser (2), tam.mml.3pl (1.9), tam.jml (1,2,3)
+
+-------------------------------------------------------------
+VERSIONS TAM 1.99999  |  2017-03-02  |  Last: TAM 1.99999-31
+-------------------------------------------------------------
+
+FEATURES:
+* ---
+ 
+BUG FIXES:
+* removed adjustment for WLE estimation of extreme scores in 
+  'adj' in 'tam.wle'. Now, WLE estimation in TAM should be
+  equivalent to ConQuest software, sirt::IRT.mle and
+  mirt::fscores. The adjustment 'adj' is only applicable for
+  MLE estimation in 'tam.wle'. The WLE estimation of the recent
+  TAM version is equivalent to 'adj=0' of previous TAM versions.
+
+NOTES:
+* restructured Rcpp functions
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* ---
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.99993 (2017-02-06)  --  CRAN 1.99993-0
+-------------------------------------------------------------
+
+FEATURES:
+* ---
+ 
+BUG FIXES:
+* changed handling of item names in 'tam.mml.mfr' back to
+  TAM 1.995-0 version (problem communicated by Barth Riley)
+* fixed a bug in 'tam.mml.2pl' for irtmodel='GPCM.design' with
+  provided design matrices for item slopes
+  (thanks to Matthias Trendtel) 
+
+NOTES:
+* ---
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* ---
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.99992 (2017-01-23)  --  CRAN 1.99992-0
+-------------------------------------------------------------
+
+FEATURES:
+* ---
+ 
+BUG FIXES:
+* fixed incorrect handling of item renaming in 'tam.mml.mfr'
+  (thanks to Barth Riley) 
+* fixed a bug in calculation of p values in 'tam.fit'
+  (thanks to David Torres Irribarra)
+* fixed a bug in 'IRT.simulate' with used argument 'nobs'
+  (thanks to Mark Dulhunty)
+* the fixing of the random seed within the 'tam.fit' function
+  is removed (thanks to Sebastian Weirich)
+* fixed crucial bug in 3PL estimation in 'tam.mml.3pl' function
+  (thanks to Petra Kleiber)
+
+NOTES:
+* stop estimation in 'tam.jml' (and 'tam.jml2') if there are persons
+  with only missing item responses (communicated by Ricardo Primi)
+* included standard errors for constrained parameters in 'tam.mml.mfr'
+  similar to the software ConQuest software 
+  (requested by Florian Keller und Domenico Angelone)
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* ---
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.995    (2016-05-31)  --  CRAN 1.995-0
+-------------------------------------------------------------
+
+FEATURES:
+* ---
+
+BUG FIXES:
+* fixed a bug in 'tam.fit' when proving a fit matrix F with
+  missing labels (thanks to Maxim Morin)
+
+NOTES:
+* included argument 'version' in 'msq.itemfit'. Another Rcpp
+  implementation (version=2) of the fit calculation has been 
+  added which avoids the storage of memory intensive objects
+  (previous function; version=1). Additionally, a pure 
+  R function of calculating fit can be requested using 
+  version=3 (thanks to Frank Musekamp).
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* ---
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.99    (2016-04-15)  --  CRAN 1.99-6
+-------------------------------------------------------------
+
+FEATURES:
+* ---
+
+BUG FIXES:
+* fixed a bug in 'tam.wle' which occured if some persons were
+  eliminated from the analysis
+* fixed a recently induced bug in 'tam.wle' estimation of
+  multidimensional models (thanks to Sascha Bernholt)
+
+NOTES:
+* ---
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* ---
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.17   (2016-03-11)  --  CRAN 1.17-0
+-------------------------------------------------------------
+
+FEATURES:
+* included function 'IRTLikelihood.ctt' which computes the 
+  individual likelihood under classical test theory and
+  normally distributed measurement errors
+
+BUG FIXES:
+* fixed a bug in plausible value imputation 'tam.pv' in case 
+  of 'normal.approx=FALSE' (thanks to Matthias Trendtel)
+* fixed a bug in plotting 'png' files in 'plot.tam'
+  (thanks to Rainer Alexandrowicz) 
+* fixed a bug in calculating standard errors with only one
+  estimated xsi parameter
+* fixed a crash in 'tam.jml2'
+* fixed a bug in 'tam.wle' when using the argument 'score.resp'
+
+NOTES:
+* included Example 24 for specifying sum constraints in partial
+  credit models (requested by Chen-Wei Liu) 
+* output of 'tam.wle' is now an object of class 'tam.wle'.
+  A print method for this class is defined.
+* WLE reliability in 'tam.wle' is now calculated by taken
+  sample weights 'pweights' into account
+* included Example 11 of 'tam.mml.3pl' with mixed item 
+  response format (thanks to a correspondence with Andreas Seifert)
+* included utility functions for weighted statistics 'weighted_Stats'
+* included utility functions 'WLErel' and 'EAPrel' for computation of 
+  WLE/EAP reliability
+* added 'print' methods for tam classes ('tam.mml', 'tamaan', ...)
+* added S3 methods 'Scale' and 'DescribeBy'. The application of these
+  methods to object classes will be included in future TAM versions.
+* slight change in summary output of 'IRT.modelfit'
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* tam.mml (24), WLErel (1), tam.mml.3pl (11), weighted_Stats (1,2,3),
+  IRTLikelihood.ctt (1), tam.pv (2)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.16   (2016-01-31)  --  CRAN 1.16-0
+-------------------------------------------------------------
+
+Features:
+* ---
+
+Bug fixes:
+* fixed a crucial bug in estimation of 'tam.mml.2pl', 
+  irtmodel='GPCM.design'
+
+Notes:
+* included a warning message in 'IRT.truescore' when
+  not all values in the theta grid can be computed
+* cleaned namespace file and defined imported functions
+  in a more explicit way
+* included argument 'Q' in 'IRT.truescore' function which
+  allows for computation of weighted true scores
+  (thanks to David Sichau)
+* fixed a bug in 'tam.mml.2pl' with irtmodel='GPCM.design'
+  in case of blank categories
+
+Datasets included or modified:
+* ---
+
+Examples included or modified:
+* IRT.truescore (2)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.15   (2015-12-15)  --  CRAN 1.15-0
+-------------------------------------------------------------
+
+Features:
+* ---
+
+Bug fixes:
+* fixed a bug in postprocessing of parameter names in 'tam.mml.mfr'
+  with the option "constraint='items'"
+* avoided NA entries in posterior calculation in 'tam.mml' and
+  'tam.mml.2pl' 
+
+Notes:
+* corrected output of likelihood when minimum value was not
+  obtained in last iteration
+* changed behavior of parameters 'max.increment' and 'increment.factor'
+  in 'tam.mml.mfr' which should result in more stable deviance
+  behavior
+* included attributes 'pid' and 'pweights' in 'IRT.likelihood' and
+  'IRT.posterior'
+* included optional argument 'gamma.init' for 'tam.mml.2pl' and 
+  irtmodel='GPCM.design'
+* included argument 'item.elim' in 'tam.mml', 'tam.mml.2pl' and 
+  'tam.mml.3pl' which prevents the omission of items with a 
+  maximum score of zero (suggested by Anja Mikolajetz)
+* changed output of 'pweights' to original provided person weights,
+  not the transformed person weights
+
+Datasets included or modified:
+* ---
+
+Examples included or modified:
+* ---
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.14   (2015-10-15)  --  CRAN 1.14-0
+-------------------------------------------------------------
+
+Features:
+* ---
+
+Bug fixes:
+* fixed a bug in creating design matrices with more than 9 levels
+  of a factor in a facet for facet models with items with
+  varying number of categories
+* fixed a recently introduced bug in 'tam.pv' which occured due
+  to a change in the list of arguments in auxiliary function 
+  'stud_prior.v2' (thanks to Florian Gigl)
+
+Notes:
+* ---
+
+Datasets included or modified:
+* ---
+
+Examples included or modified:
+* ---
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.13   (2015-08-29)  --  CRAN 1.13-0
+-------------------------------------------------------------
+
+Features:
+* ---
+
+Bug fixes:
+* fixed a recently introduced bug in TAM 1.12-0 when
+  creating the item parameter table
+
+Notes:
+* extended value 'item' to output of category 0 if design
+  matrices put values on zero categories
+
+Datasets included or modified:
+* ---
+
+Examples included or modified:
+* tam.mml (23)
+
+
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.12   (2015-08-27)  --  CRAN 1.12-0
+-------------------------------------------------------------
+
+Features:
+* ---
+
+Bug fixes:
+* fixed a recently included bug (in TAM 1.11-0) in 
+  'tam.mml.3pl' estimation when guessing parameters are
+  estimated (thanks to Rolf Strietholt and Laura Zieger)
+
+Notes:
+* ---
+
+Datasets included or modified:
+* ---
+
+Examples included or modified:
+* ---
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.11   (2015-08-11)  --  CRAN 1.11-0
+-------------------------------------------------------------
+
+Features:
+* ---
+
+Bug fixes:
+* fixed a recently included bug in TAM 1.10-0 in calculation 
+  of deviance in 'tam.mml.2pl', 'tam.mml.3pl' and 'tam.mml.3pl'
+  (thanks to Christopher Gess)
+* fixed a recently included bug in TAM 1.9-0 in estimation
+  of models with estimated means of latent trait
+  (thanks to Frank Musekamp)
+
+Notes:
+* included guessing parameters and its standard errors in
+  output of 'tam.mml.3pl' ('guess' and 'se.guess')
+
+Datasets included or modified:
+* ---
+
+Examples included or modified:
+* ---
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.10   (2015-07-25)  --  CRAN 1.10-0
+-------------------------------------------------------------
+
+Features:
+* added simulation function 'IRT.simulate'
+* added function 'IRT.truescore' which converts theta 
+  scores into true scores
+
+Bug fixes:
+* fixed a bug in calculation of expected counts 
+
+Notes:
+* included argument 'dev_crit' in 'control' in tam 
+  functions which allows a decision whether change in 
+  absolute deviance difference (dev_crit="absolute") 
+  or in relative deviance differences (dev_crit="relative")
+  should be assessed.
+* extended 'IRT.itemfit' S3 method to objects of classes
+  generated in TAM (suggested by Karoline Sachse)
+* included item-wise calculation of thresholds according
+  to Ali, Chang and Anderson (2015) suggestion in 
+  'IRT.threshold'
+
+Datasets included or modified:
+* ---
+
+Examples included or modified:
+* IRT.itemfit.tam (1,2), IRT.threshold (3), 
+  IRT.simulate (1,2,3,4), IRT.truescore (1)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.9   (2015-06-30)  --  CRAN 1.9-0
+-------------------------------------------------------------
+
+Features:
+* included accelerators of the EM algorithm according to
+  Ramsay (1975) and Yu (2012). In the recent TAM package
+  version, no acceleration is used as an default.
+
+Bug fixes:
+* Fixed recently broken 'tam.mml.3pl' function when the
+  design matrix E is used.
+
+Notes:
+* small speedup for large samples of students in
+  unidimensional models
+
+Datasets included or modified:
+* ---
+
+Examples included or modified:
+* tam.mml (21,22)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.8   (2015-06-26)  --  CRAN 1.8-0
+-------------------------------------------------------------
+
+Features:
+* added S3 method 'IRT.informationCurves' for computing
+  item and test information curves (suggested by Ray Opao) 
+
+Bug fixes:
+* fixed a crucial bug in 'tam.mml.3pl' for mixed dichotomous 
+  and polytomous data occur and guessing parameters
+  are estimated (thanks to Matthias Trendtel)
+
+Notes:
+* added the argument 'Q.fixed' in 'tam.mml.3pl' for usage
+  of fixed item loadings
+* small speedup in M-step for datasets with large number of items
+
+Datasets included or modified:
+* ---
+
+Examples included or modified:
+* tam.mml (15c), tam.mml.3pl (10), IRT.informationCurves (1,2)
+
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.7   (2015-06-05)  --  CRAN 1.7-1
+-------------------------------------------------------------
+
+Features:
+* included S3 method 'IRT.residuals' (and 'residuals') 
+  for objects of classes 'tam.mml', 'tam.mml.2pl' and 
+  'tam.mml.mfr'
+* added function 'msq.itemfitWLE' (see ?msq.itemfit) 
+  which computes outfit and infit statistics based on 
+  weighted likelihood estimates (WLEs)
+* added function 'tam.Q3' for calculation of Q3 statistics
+  based on WLEs
+
+Bug fixes:
+* fixed a bug in 'tam.mml.3pl' (which led to an error)
+  in case of multiple groups
+* fixed a bug in 'tam.mml.mfr' when no person identifiers
+  were provided (thanks to by Michal Modzelewski)  
+* fixed a bug in 'msq.itemfit' with differing number of 
+  categories per item
+* fixed a bug in calculation of expected counts for 
+  multifaceted models
+* fixed a bug in 'tam.mml.mfr' with non-unique combinations
+  of person and facet identifiers
+
+Notes:
+* speeded 'tam.mml.3pl' for models with many item parameters
+* added argument 'change' in 'plotDevianceTAM' for plotting
+  iteration progress in deviance values
+* added arguments 'progress' and 'output.prob' in 'tam.wle'
+* added summary of fit statistics in output of 'msq.itemfit' and
+  'summary.msq.itemfit'
+* included sample size of each item pair in 'tam.modelfit' output
+  value 'stat.itempair'
+* renamed datset 'sim.rasch' into 'data.sim.rasch'. The same 
+  procedure was conducted for all other 'sim.xxx' datasets.
+
+Datasets included or modified:
+* ---
+
+Examples included or modified:
+* IRT.residuals (1), msq.itemfit (1,2,3), tam.modelfit (4)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.6   (2015-04-03)  --  CRAN 1.6-0
+-------------------------------------------------------------
+
+Features:
+* included function 'IRT.drawPV' for drawing plausible values
+  based on individual posterior (output of 'IRT.posterior')
+
+Bug fixes:
+* fixed a bug for input of a B loading matrix with no item labels
+* fixed a bug in 'plot.tam' with missing data in item responses
+  (bug fix provided by Michal Modzelewski)
+* corrected an included bug in recent TAM versions in AIC
+  calculation (thanks to Simon Grund)
+* fixed a bug in variance fixing in 'tam.fa' which occured in a 
+  recent TAM version due to changes in defaults in 'tam.mml.2pl'
+* fixed a bug when constraining of item parameters was ignored
+  in 'tamaan' (thanks to Stefan Behrendt)
+
+Notes:
+* speeded data/design matrix preparation phase in 'tam.mml.mfr'
+* included internal function 'tamcat' for analyzing computation time
+* changed numerical behavior in 'tam.mml.mfr' in order to avoid a zero sum 
+  of all individual posterior probabilities (thanks to Roman Freunberger)
+* included argument 'xsi.setnull' in 'tam.mml.mfr' for convenient
+  fixing of xsi parameter groups. A warning is now given if the
+  combination of person and facet identifiers is not unique.     
+* allowed also explicit use of facets without effects in 'tam.mml.mfr'
+  on 'formulaA', e.g. 'item*step + 0*rater' sets all rater effects
+  to zero
+* included warning in 'tam.wle' if the WLE is (possibly) not estimable
+  (suggested by Rainer Alexandrowicz)
+
+Datasets included or modified:
+* ---
+
+Examples included or modified:
+* tam.mml (19, 20, 10a), IRT.drawPV (1), tamaan (1.9)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.5   (2015-02-24)  --  CRAN 1.5-2
+-------------------------------------------------------------
+
+Features:
+* included S3 methods 'IRT.expectedCounts', 'IRT.modelfit',
+  'predict' and 'IRT.data' for fitted models in TAM
+* included item fit statistic on item level 'msq.itemfit' 
+  as an alternative to the simulation based 'tam.fit' function 
+* included linear approximation for confirmatory factor analysis  
+  'IRT.linearCFA'
+
+Bug fixes:
+* fixed a bug in plausible value imputation in multidimensional
+  models and normal approximation (reported by Dan Su)
+* changed resp in output of 'tam.mml', 'tam.mml.2pl' and
+  'tam.mml.3pl' to output the original used data with missings
+  (thanks to Matthias Trendtel)
+* extended tam.modelfit to handle multi matrix design appropriately
+* changed defaults in 'est.variance' if 'variance.fixed' is provided
+  in 'tam.mml.2pl'. The previous default led to bugs in the
+  tamaan function. (reported by Christoph Duchhardt)
+
+Notes:
+* added output values 'xsi.fixed.estimated', 'B.fixed.estimated'
+  for default item parameter fixings in tam.mml, tam.mml.2pl, 
+  tam.mml.mfr and tam.mml.3pl (suggested by Matthias Trendtel)
+* extended tan.modelfit function for more flexible input to
+  allow for assessing model fit for objects which were not
+  fitted in TAM ('tam.modelfit.IRT', 'tam.modelfit.args')
+* added 'IRT.likelihood' and 'IRT.posterior' S3 method for 
+  object of class 'tam.latreg'
+* extended 'plotctt' and 'plot.tam' the using graphics package
+  in addition to lattice (suggested by Michal Modzelewski)
+* included function for computing Thurstonian thresholds ('IRT.threshold')   
+
+Datasets included or modified:
+* ---
+
+Examples included or modified:
+* tam.mml (1,5t,6), IRT.expectedCounts.tam (1), tam.modelfit (1),
+  predict (1), msq.itemfit (1), IRT.linearCFA (1,2),
+  IRT.threshold (1,2)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.4   (2015-01-15)  --  CRAN 1.4-1
+-------------------------------------------------------------
+
+Features:
+* included function 'cfa.extract.itempars' for extracting
+  item parameters from a fitted confirmatory factor analysis
+  with the cfa function in lavaan package
+* included the function 'IRTLikelihood.cfa' for extracting 
+  the individual likelihood from fitted confirmatory factor
+  analyses
+* included an S3 method 'IRT.WrightMap' which is a wrapper
+  to the WrightMap package
+
+Bug fixes:
+* fixed a bug for item response dataset with only one column
+* fixed a bug in tamaan function when applied to TYPE="TRAIT"
+  and models without guessing parameters
+* fixed a bug in plot.ctt function for input of item response
+  data with only one columns (thanks to Michal Modzelewski)
+
+Notes:
+* added item types 'PCM(kk)' and 'GPCM(kk)' for smoothing
+  item intercepts in tamaan function
+* included a summary method for 'tam.fit'  
+* included 'MEASERR' convenience method for single indicators
+  with measurement errors in 'lavaanify.IRT'
+* changed some internal handling in 'lavaanify.IRT' due to
+  announced changes in lavaan 0.5-18 in 'lavaanify'
+* changed equality constraints in the section "MODEL CONSTRAINT"
+  in 'tamaanify' to the usage of "==" instead of "=" (as in lavaan)
+
+Datasets included or modified:
+* data.ctest2
+
+Examples included or modified:
+* cfa.extract.itempars (1), IRTLikelihood.cfa (1),
+  tamaan (2), tam.fit (1,2), data.geiser (2), tam.latreg (2,3),
+  IRT.WrightMap (1,2,3,4), data.cqc (1,2,3), lavaanify.IRT (6)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.3   (2015-01-06)  --  CRAN 1.3
+-------------------------------------------------------------
+
+Features:
+* included option for sum constraints on item intercepts
+  (constraint="items") in 'tam.mml'.
+  For polytomous data, this option automatically specifies
+  irtmodel="PCM2".
+* included truncated normal prior distributions for
+  gammaslope parameters in 'tam.mml.3pl'
+* included 'tamaan' and 'tamaanify' functions for more
+  more convenient model specifications in TAM
+* included 'doparse' function as a shortcut for writing
+  loops in model syntax
+* included item-category specific curves in 'plot.tam' using  
+  the argument type="items" (suggested by Cheng-Hsuan Li and
+  Michal Modzelewski)
+* plot function for type="items" now also works for multidimensional
+  item response models with between item dimensionality
+* included normal approximation and sampling of regression 
+  coefficients for plausible value imputation ('tam.pv') for 
+  multidimensional item response models. 
+  The theta grid can also be fixed (argument theta.model=TRUE)
+  and is taken from the fitted model.
+* included the function 'tampv2datalist' for converting plausible
+  values and a set of covariates into a list of multiply imputed
+  datasets 
+* included the function 'tam.latreg' which performs a latent
+  regression model in which only the individual likelihood is 
+  needed as an input
+
+Bug fixes:
+* corrected algorithmic stopping criteria in 'tam.mml.3pl'
+* fixed a bug in 'tam.mml.2pl' when design matrix B.fixed 
+  for fixed loadings contains only one row
+* another bug was fixed by Michal Modzelewski in data preparation
+  in the multi-facet function 'tam.mml.mfr'
+* fixed a bug in estimation routines if a dataset resp is provided
+  without column names (thanks to Alec Nyce)
+
+Notes:
+* included parametrization of mean item intercept (irtmodel="PCM2")
+  in output of tam.mml and tam.mml.2pl (value item$xsi.item)
+* included nonlinear terms in lavaan syntax in 'lavaanify.IRT'
+* included option for initial delta parameters in 'tam.mml.3pl'
+* added AIC3 information criterion in summary
+* included datasets data.geiser and data.janssen for latent
+  class analysis and mixture Rasch analysis (thanks to
+  Christian Geiser and Anne Janssen)
+* included Example 3 in 'tam.wle' comparing WLE person parameter
+  estimates from the  TAM and the PP package
+* included Example 3 in 'tam.threshold' for creating Wright maps
+  with the WrightMap package
+
+Datasets included or modified:
+* data.geiser, data.janssen, data.janssen2
+
+Examples included or modified:
+* tam.modelfit (3), tam.mml (1,4,5,6,13,18), lavaanify.IRT (3,4),
+  tam.mml.3pl (1.6b,4,7,8,9), tamaanify (1,2), tamaan (1,2), 
+  plot.tam (1,2), tam.wle (3), tam.threshold (3), tam.pv (2,3),
+  tam.latreg (1)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.2   (2014-11-22)  --  CRAN 1.2
+-------------------------------------------------------------
+
+Features:
+* included fit of constrained facet parameters for output
+  of 'tam.mml.mfr'
+* included extended lavaan syntax 'lavaanify.IRT'. This
+  function was previously included in sirt package as
+  'lavaanify.sirt'. 
+* added argument 'gammaslope.center' in 'tam.mml.3pl' for 
+  centering item parameters within iterations in estimation 
+* included an argument of fixing person parameters in 'tam.jml'
+  (see tam.jml, Example 1)  
+* added S3 methods for fitted models in TAM: 
+  'logLik', 'IRT.likelihood', 'IRT.posterior', 'IRT.irfprob', 
+  'IRT.factor.scores'. These S3 methods were defined in the
+  recent version of the CDM (>= 4.0) package.
+
+Bug fixes:
+* improved model identification in 'tam.mml.mfr' in case
+  of differing number of categories per item and fixed
+  a bug in creating the A matrix (thanks to Michal Modzelewski). 
+* fixed a miscount of number of estimated parameters in
+  multiple group models (thanks to Michal Modzelewski). 
+* fixed incorrect handling of irtmodel="PCM2" in 'tam.mml'
+  for multidimensional models (thanks to Chen-Wei Liu)
+* fixed a bug in 'tam.jml2' when some item parameters were
+  fixed with the xsi.fixed argument
+* fixed a bug in fit calculation for tam.jml objects
+  (thanks to Hillary Ferral)
+
+Notes:
+* included Rcpp based version of item fit calculation to
+  reduce computational time
+* changed calculation of tam.fit in case of missing item responses
+  which substantially changes fit statistics especially for
+  faceted models.  
+* changed handling of simulating abilities in 'tam.fit'
+* included p values in output for fit statistics in 'tam.fit'
+* included estimation of Thurstonian thresholds for multidimensional
+  models 
+* added an example of a 2PL mixture distribution IRT model with
+  two latent classes (tam.mml.3pl, Simulated Example 8)
+* changed summary layout in 'tam.mml.3pl'
+* made item parameter estimation in 'tam.jml' more computationally
+  efficient
+* added anova method for 'tam.mml.3pl'
+* added value of the individual likelihood in 'tam.mml',
+  'tam.mml.2pl' and 'tam.mml.3pl'
+
+Datasets included or modified:
+* rating dataset data.exJ03 (provided by Matt Barney)
+
+Examples included or modified:
+* tam.fit (4), tam.threshold (2), tam.mml.3pl (7,8), lavaanify.IRT (1,2),
+  tam.jml (1,4), IRT.likelihood.tam (1), IRT.factor.scores (1),
+  IRT.irfprob (1)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.1   (2014-10-19)  --  CRAN 1.1
+-------------------------------------------------------------
+
+Features:
+* added user defined variance function in tam.mml and
+  tam.mml.2pl
+* added user defined constraints on slope parameters
+  in 'tam.mml.3pl'
+
+Bug fixes:
+* fixed a bug in deviance computation in 'tam.mml.3pl' when
+  stochastic nodes are used
+* (hopefully) fixed computational problems in multidimensional models
+  with nearly singular covariance matrix 
+  (thanks to a discussion with Johannes Hartig)  
+
+Notes:
+* added a plot function 'plot.ctt' accompanying the classical test 
+  theory based statistic
+* fixed a bug in creation of design matrices in faceted models with
+  differing categories per item (thanks to Michal Modzelewski). 
+  Note that the treatment of faceted models is still not compatible
+  with other software (like ConQuest). A substantial bug fix
+  is planned in future TAM relaeses. 
+
+Datasets included or modified:
+* data.ctest1 (thanks to HGP)
+
+Examples included or modified:
+* tam.fit (4), tam.mml (17), tam.ctt (1)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.0-3.18 (2014-09-08)  --  CRAN 1.0-3.18-1
+-------------------------------------------------------------
+
+Bug fixes:
+* modified incorrectly calculated thresholds with 'tam.threshold'
+  for multidimensional models (reported by Janine Buchholz and
+  Joerg-Henrik Heine)
+
+Notes:
+* included SRMSR fit statistic in tam.modelfit
+* included argument "Nsimul" in "tam.fit" which improves
+  calculation of fit statistics
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.0-3 (2014-06-27)  --  CRAN 1.0-3
+-------------------------------------------------------------
+
+Features:
+* included model fit statistics (Q3, SRMR, MADRESIDCOV): 'tam.modelfit'
+* included 'tam.mml.3pl' for 3PL estimation, general design
+  matrices for item slopes and options for discrete 
+  latent variables (estimation of latent class models,
+  located latent class model, skew distributions,
+  mixed IRT models, cognitive diagnosis models, ...
+  is now possible)
+* extended tam.pv for objects of class 'tam.mml.3pl'
+* speeded data preparation of faceted models a bit
+* tam.se now computes standard errors for estimated slope parameters, B 
+  (for irtmodel in c("2PL", "GPCM", "2PL.groups")); highly experimental 
+  for irtmodel="GPCM.design"). 
+* plot.tam now prints a message about the location of the exported graphics.
+* plot.tam has a new argument 'items' for selecting the items to
+  be displayed. RD-file adjusted.
+* plot.tam has new arguments 'export.type="png"' and "export.args=list()" for 
+  selecting the file type for the graphics export. The supported file types 
+  are those supported by ?dev.new. The argument 'export.args=list()' is 
+  for specifying a list of arguments for the export device method.
+* tam.threshold has a new argument prob.lvl to set the probability level of 
+  the thresholds.
+
+Bug fixes:
+* fixed a bug in pid output in object 'person' for multidimensional models
+  (thanks to Sebastian Weirich)
+* fixed a bug in variance estimation for multiple group 2PL models
+* included 'designMatrices.mfr2' for a provisional bug fix
+  for multifaceted models with differing number of categories
+  per item (see Example 16 in tam.mml; thanks to Christoph Duchhardt)
+* fixed a bug in 'tam.mml.mfr' for differing number of categories
+  per item -> now a xsi vector with parameter fixings to values 
+  of 99 is used 
+* plot.tam is debugged regarding the case of missing WLEs for some 
+  person (thanks to Florian Buchwald). 
+* plot.tam now doesn't throw a warning when the 'Plots' directory 
+  already exists.
+* fixed a bug in plot.tam for cross-platform accordance (thanks to Uli Keller).
+* fixed a bug in tam.fit with missing item scores
+* fixed a bug in tam.jml so that ../Tutorials/6Population.htm now runs without 
+  error.
+
+Notes:
+* tam.fit is experimental for objects obtained from tam.mml.mfr.
+* changed convergence behavior in tam.wle (thanks to Peter Harych)
+* changed item sorting in output object 'item'
+* tam.mml(/.2pl/.mfr) methods now return Q, tam.mml.2pl additionaly returns
+  B.fixed, basispar, E, and est.slopegroups objects. RD-file adjusted.
+* tam.jml(/.jml2) do not return fit statistics anymore. Item and person fit can
+  be obtained by a call to tam.fit (/.jml.fit).
+* in case of multidimensional analyses, we recommend an update of 
+  the R-package mvtnorm to version 0.9-99992 or higher.
+* extended example 13 in tam.mml.Rd to the case of polytomous longitudinal 
+  data (requested by and thanks to Florian Buchwald)
+* extended example 6 in tam.mml.Rd to the specification of sum constraints 
+  on the item parameters in a PCM model for differing number of categories.
+* Some minor changes in RD-files (eg., irtmodel for argument 'E' in 
+  tam.mml.2pl is "GPCM.design", theta value in tam.jml is "MLE in final step").
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.0-2 (2014-03-26)  --  CRAN 1.0-2   --  CRAN 1.0-2.1
+-------------------------------------------------------------
+
+* fixed a Bug in the optional specification of a B matrix
+  in tam.mml.mfr
+* new faster tam.mml.wle2; included Rcpp helper functions for 
+  tam.mml.wle2 for fast computation; tam.mml.wle2 new 
+  reference in tam.wle for objects of class tam.mml, rd-file
+  adapted
+* tam.mml.mfr now accepts polytomous data with more than 
+  ten categories per item
+* specification of response matrix in 'long format' fixed,
+  see example section (thanks to Takuya Yanagida)
+* some minor changes in usability (eg., pid can be specified as 
+  vector, one-column matrix or data.frame)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 1.0 (2014-02-02)  --  CRAN 1.0-0  --  CRAN 1.0-1
+-------------------------------------------------------------
+
+* updated DESCRIPTION and NAMESPACE due to changes in Rcpp
+* change in package maintenance: Thomas Kiefer is now
+  the package maintainer
+* fixed a bug in item labeling in tam.se
+  (thanks to Sebastian Weirich)
+* fixed a bug in labeling of reduced reponse matrices in 
+  tam.mml.mfr
+* fixed some examples in .Rd files
+
+-------------------------------------------------------------
+CHANGES IN VERSION 0.91/0.99 (2013-11-02)  --  CRAN 0.99-7
+-------------------------------------------------------------
+
+* added 'AXsi_' as value in tam.mml, tam.mml.2pl and tam.mml.mfr
+* cleaned labels in 'tam.mml.mfr' for faceted models
+* included the argument 'score.resp' in tam.wle for scoring
+  a new dataset different than the one which is used for item
+  calibration in tam (requested by Jan Boehnke)
+* added examples for applying a sum constraint of item
+  parameters in 'tam.mml' (request by Kelvin Gregory)
+* included argument 'adj' in tam.jml/tam.jml2 for modifying 
+  the adjustment in case of perfect scores (thanks to Courtney Castle)
+* included dataset 'data.timssAusTwn.scored'
+* included summary for tam.jml
+* use plausible values for calculation in item fit (in tam.mml.fit)
+* included an example for creation of user-defined fit statistics
+
+-------------------------------------------------------------
+CHANGES IN VERSION 0.9 (2013-10-13)  --  CRAN 0.99-9
+-------------------------------------------------------------
+
+* removed blanks in item category labels in tam.ctt2 and 
+  tam.ctt3
+* allowed non-integer group labels
+* fixed a bug in data preparation for facet models 
+  which appeared since a change in TAM 0.7 
+  (thanks to Jonathan Williams)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 0.8 (2013-10-02)  --  CRAN 0.8-19
+-------------------------------------------------------------
+
+* changed rating scale parametrization for unequal
+  number categories per item
+* included a warning in tam.ctt2 if memory allocation is
+  reached
+* included deviance plot 'plotDevianceTAM' 
+  (thanks to Sebastian Weirich)
+* included tam.ctt3
+
+-------------------------------------------------------------
+CHANGES IN VERSION 0.7 (2013-09-15)  --  CRAN 0.7-35
+-------------------------------------------------------------
+
+* include crossprod in some functions
+* fixed a bug for using latent regression models in
+  facet model function 'tam.mml.mfr'
+  (thanks to Jonathan Williams)
+* included another facet example (Example 14)
+* fixed a bug in tam.mml.mfr if all facets possess
+  the same number of levels
+* fixed a bug in multidimensional generalized partial
+  credit model estimation and speeded 2PL estimation a bit
+* included bifactor model and exploratory factor analysis
+  -> function 'tam.fa' with arguments irtmodel='efa','bifactor'
+* now printing progress in tam.ctt2 correctly
+* fixed a bug in data processing in tam.mml.mfr for factor
+  or string input of facets
+* included more examples in tam.fit, anova.tam.mml, tam.pv,
+  tam.jml, tam.se, tam.wle 
+* avoided inversion of singular matrices in multidimensional
+  WLE estimation tam.wle (thanks to Iasonas Lamprianou)
+* removed bugs for item response datasets with only one item
+  in tam.mml and tam.mml.2pl
+* fixed a bug in tam.ctt2: multiple groups were not displayed 
+* included an option for deleting redundant generalized items
+  which sometimes improves computation speed
+* cleaned the TAM manual (thanks to Michaela Mayr)
+* changed output structure of tam.fa and included rotation
+  examples in tam.fa.Rd
+* included additional convergence stabilizing approach which
+  can be activated using the argument 'fac.oldxsi' in control
+  -> See Example 15 for such a non-converging model where
+     changing algorithmic defaults seems necessary
+   (problem addressed thanks to Sebastian Weirich) 
+* substituted internal 'theta.sq' function by Rcpp based
+  function 'theta.sq2'
+* started with including examples similar to the ones in
+  the ConQuest 2.0 manual (see data.cqc.Rd)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 0.6 (2013-08-28)  --  CRAN 0.6-26
+-------------------------------------------------------------
+
+* fixed a bug when in latent regression when providing a formula
+  in argument 'formulaY'
+* fixed a bug in output of tam.se (thanks to Sebastian Weirich)
+* included a faster alternative to tam.ctt -> tam.ctt2 is based
+  on a Rcpp function
+* allowed freeing beta constraints by the user by including
+  the possible argument beta.fixed=FALSE
+* removed a bug in data processing for faceted designs
+  (thanks to Michaela Mayr)
+* fixed a bug with varying string lengths of facet levels
+* fixed a bug in tam.ctt2 for numeric input matrices
+* fixed incorrect handling of constraints in regression coefficients
+  which was just included in a recent 0.6 version
+* fixed an output bug in tam.wle in multidimensional models
+  (thanks to Jan Henning-Kahmann)
+* accelerated estimation of multdimensional models (different
+  approach of calculating the prior distribution)
+* fixed a bug when submitting xsi.inits and beta.inits to tam
+* fixed a bug in facet models when a facet contains only one
+  element (twice thanks to Michaela Mayr)
+* included irtmodel='PCM2' (partial credit model with ConQuest
+  parametrization) and irtmodel='RSM' (rating scale model)
+* added a longitudinal data example in 'tam.mml' manual
+
+-------------------------------------------------------------
+CHANGES IN VERSION 0.5 (2013-07-28)  --  CRAN 0.5-21
+-------------------------------------------------------------
+
+* included data.ex11 example dataset
+* removed a bug in WLE calculation for multifaceted designs
+* avoided warning in cov2cor for tam.mml.2pl function
+  (thanks to Linda Graefe)
+* included argument increment.factor for obtaining
+  convergence behavior in bad suited data constellations
+* changed default of np.adj in tam.pv to 8
+* included two helper functions written in Rcpp in
+  plausible value imputation function tam.pv for
+  better performance
+* included S3 plot method
+* included data.numeracy and data.timssAusTwn datasets
+
+-------------------------------------------------------------
+CHANGES IN VERSION 0.4 (2013-07-01)  --  CRAN 0.04-43 
+    [*** First CRAN Release ***]
+-------------------------------------------------------------
+
+* included quasi-Monte Carlo integration as an alternative
+  to stochastic integration
+* multifaceted model completely implemented
+* print warning if there are items in resp with only zeroes
+  (thanks to Ronny Scherer)
+* fixed a bug in tam.wle, tam.pv and tam.se
+* fixed a bug in creating design matrices for faceted designs
+* changed initial xsi values for indetermined parameters
+  (thanks to Sebastian Weirich)
+* included function for calculating Thurstonian thresholds
+* included Rcpp function in M step for calculating item parameters
+* fixed a bug for partial credit models
+* included parametrization of the dispersion model for ordered data
+* included a function tam.ctt for calculating some statistics
+  based on classical test theory
+* fixed a bug in tam.mml.2pl with irtmodel="GPCM" for models
+  with differering numbers of item categories
+
+-------------------------------------------------------------
+CHANGES IN VERSION 0.3 (2013-03-23)
+-------------------------------------------------------------
+
+* cleaned Rd manual files a bit
+* included standard errors in tam.mml and tam.mml.2pl
+* included summary.tam and summary.tam.mml
+* included anova.tam for model comparisons
+* fixed a bug in multiple group estimation during tam.mml and
+   summary application
+* fixed a bug in WLE estimation in the multdimensional case
+
+-------------------------------------------------------------
+CHANGES IN VERSION 0.2 (2013-02-20)
+-------------------------------------------------------------
+
+* removed bugs in tam.pv for sampling plausible values
+  with the argument normal.approx=FALSE 
+  (thanks to Sebastian Weirich)
+* included seed for stochastic integration in the tam
+  control argument
+* fixed a bug in stochastic integration
+  (thanks to Steffen Brandt)
+* fixed a bug in the calculation of reliability and person
+  parameter estimates when applying stochastic integration
+  (thanks to Steffen Brandt and Caroline Just)
+* use estimated parameters with minimal deviance in the output
+  (thanks to Ulrich Schroeders and Steffen Brandt)
+
+-------------------------------------------------------------
+CHANGES IN VERSION 0.1-03 (2012-11-21)
+-------------------------------------------------------------
+
+* 2PL calibration outsourced
+* designMatrices and tam.mml.mfr method for multifacet rasch model 
+  calibration included. Both highly experimental.
+* Examples for the calibration included, see help file of sim.mfr
+ 
