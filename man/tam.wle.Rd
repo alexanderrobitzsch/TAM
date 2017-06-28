@@ -1,7 +1,6 @@
 \name{tam.wle}
 
 \alias{tam.wle}
-\alias{tam.mml.wle}
 \alias{tam.mml.wle2}
 \alias{tam.jml.WLE}
 \alias{print.tam.wle}
@@ -21,9 +20,6 @@ respectively.
 
 \usage{
 tam.wle(tamobj, ...)
-
-tam.mml.wle(tamobj, score.resp=NULL, WLE=TRUE, adj=0.3, Msteps=20, convM=1e-04,
-        progress=TRUE , output.prob=FALSE )
 
 tam.mml.wle2(tamobj, score.resp=NULL, WLE=TRUE, adj=0.3, Msteps=20, convM=1e-04,
         progress=TRUE , output.prob=FALSE )
