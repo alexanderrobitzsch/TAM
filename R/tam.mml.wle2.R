@@ -27,6 +27,8 @@ tam.mml.wle2 <-
 	maxK <- res$maxK
 	pweights <- res$pweights
 	pid <- res$pid
+	A <- res$A
+	xsi <- res$xsi
 
 	#*** readjust in case of WLE
 	if (WLE){
@@ -55,11 +57,11 @@ tam.mml.wle2 <-
     PersonScores[PersonScores==0] <- PersonScores[PersonScores==0] + adj
     
     #Calculate Axsi. Only need to do this once.
-    for (i in 1:nitems) {
-      for (k in 1:maxK){
-        AXsi[i,k] <- ( A[i,k,] %*% xsi )
-      }
-    }
+    # for (i in 1:nitems) {
+    #  for (k in 1:maxK){
+    #    AXsi[i,k] <- ( A[i,k,] %*% xsi )
+    #  }
+    # }
     
     #Initialise theta (WLE) values for all students
     theta <- log((PersonScores+.5)/(PersonMax-PersonScores+1)) #log of odds ratio of raw score
@@ -90,7 +92,7 @@ tam.mml.wle2 <-
       
       resWLE <- calc_prob.v5(iIndex = 1:nitems , A , AXsi , 
                              B , xsi , theta , nstud, maxK , recalc=FALSE )      	
-      rprobsWLE <- resWLE[["rprobs"]] 
+      rprobsWLE <- resWLE$rprobs
       rprobsWLEL <- matrix(rprobsWLE, nitems*maxK, nstud )
       
       rprobsWLEL[is.na(rprobsWLEL)] <- 0
