@@ -117,6 +117,22 @@ tam_pv_mcmc_likelihood_Rcpp <- function(probs, resp, resp_ind, maxK, nstud, nite
     .Call('TAM_tam_pv_mcmc_likelihood_Rcpp', PACKAGE = 'TAM', probs, resp, resp_ind, maxK, nstud, nitems)
 }
 
+tam_mvrnorm_rcpp <- function(n, mu, sigma) {
+    .Call('TAM_tam_mvrnorm_rcpp', PACKAGE = 'TAM', n, mu, sigma)
+}
+
+tam_pv_weighted_mean <- function(theta, wgt) {
+    .Call('TAM_tam_pv_weighted_mean', PACKAGE = 'TAM', theta, wgt)
+}
+
+tam_pv_weighted_cov <- function(theta, wgt) {
+    .Call('TAM_tam_pv_weighted_cov', PACKAGE = 'TAM', theta, wgt)
+}
+
+tam_pv_sample_theta_multidim <- function(post, theta) {
+    .Call('TAM_tam_pv_sample_theta_multidim', PACKAGE = 'TAM', post, theta)
+}
+
 tam_wle_Bs <- function(RPROBS, RESPIND, CBL, CBB, CBBB, cndim, cnitems, cmaxK, cnstud) {
     .Call('TAM_tam_wle_Bs', PACKAGE = 'TAM', RPROBS, RESPIND, CBL, CBB, CBBB, cndim, cnitems, cmaxK, cnstud)
 }

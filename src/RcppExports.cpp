@@ -430,6 +430,55 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// tam_mvrnorm_rcpp
+Rcpp::NumericMatrix tam_mvrnorm_rcpp(int n, Rcpp::NumericVector mu, Rcpp::NumericMatrix sigma);
+RcppExport SEXP TAM_tam_mvrnorm_rcpp(SEXP nSEXP, SEXP muSEXP, SEXP sigmaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type mu(muSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type sigma(sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(tam_mvrnorm_rcpp(n, mu, sigma));
+    return rcpp_result_gen;
+END_RCPP
+}
+// tam_pv_weighted_mean
+Rcpp::NumericVector tam_pv_weighted_mean(Rcpp::NumericMatrix theta, Rcpp::NumericVector wgt);
+RcppExport SEXP TAM_tam_pv_weighted_mean(SEXP thetaSEXP, SEXP wgtSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type wgt(wgtSEXP);
+    rcpp_result_gen = Rcpp::wrap(tam_pv_weighted_mean(theta, wgt));
+    return rcpp_result_gen;
+END_RCPP
+}
+// tam_pv_weighted_cov
+Rcpp::List tam_pv_weighted_cov(Rcpp::NumericMatrix theta, Rcpp::NumericVector wgt);
+RcppExport SEXP TAM_tam_pv_weighted_cov(SEXP thetaSEXP, SEXP wgtSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type wgt(wgtSEXP);
+    rcpp_result_gen = Rcpp::wrap(tam_pv_weighted_cov(theta, wgt));
+    return rcpp_result_gen;
+END_RCPP
+}
+// tam_pv_sample_theta_multidim
+Rcpp::NumericMatrix tam_pv_sample_theta_multidim(Rcpp::NumericMatrix post, Rcpp::NumericMatrix theta);
+RcppExport SEXP TAM_tam_pv_sample_theta_multidim(SEXP postSEXP, SEXP thetaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type post(postSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type theta(thetaSEXP);
+    rcpp_result_gen = Rcpp::wrap(tam_pv_sample_theta_multidim(post, theta));
+    return rcpp_result_gen;
+END_RCPP
+}
 // tam_wle_Bs
 Rcpp::List tam_wle_Bs(Rcpp::NumericMatrix RPROBS, Rcpp::NumericMatrix RESPIND, Rcpp::NumericMatrix CBL, Rcpp::NumericMatrix CBB, Rcpp::NumericMatrix CBBB, int cndim, int cnitems, int cmaxK, int cnstud);
 RcppExport SEXP TAM_tam_wle_Bs(SEXP RPROBSSEXP, SEXP RESPINDSEXP, SEXP CBLSEXP, SEXP CBBSEXP, SEXP CBBBSEXP, SEXP cndimSEXP, SEXP cnitemsSEXP, SEXP cmaxKSEXP, SEXP cnstudSEXP) {

@@ -45,12 +45,12 @@ a0 <- Sys.time()
 	YSD <- tamobj$YSD
     nitems <- tamobj$nitems
 	snodes <- tamobj$control$snodes 
-	
+	ndim <- tamobj$ndim
     beta <- tamobj$beta
     variance <- tamobj$variance
     nstud <- tamobj$nstud
 		
-	if ( theta.model ){
+	if ( theta.model | ( normal.approx & (ndim > 1) ) ){
         ntheta <- nrow(tamobj$theta)			
 	}	
 	
@@ -61,7 +61,7 @@ a0 <- Sys.time()
 
 	#-- warning message if normal.approx is chosen if ndim > 1
 	if (normal.approx & ( ndim > 1 ) ){
-		stop("normal.approx=TRUE can only be used for one-dimensional models.\n")
+		# stop("normal.approx=TRUE can only be used for one-dimensional models.\n")
 	}
 	
 	#***************************
@@ -99,14 +99,12 @@ a0 <- Sys.time()
 	###################################################
 	# routine for drawing plausible values
 	while ( iterate ){
-a0 <- Sys.time()				
-# cat("pp ------ " , pp , "\n")
+
 		#--- sampling theta
 		res <- tam_pv_sampling_theta( theta.model=theta.model, ndim=ndim, normal.approx=normal.approx, 
 					tamobj=tamobj, MEAP=MEAP, SDEAP=SDEAP, np.adj=np.adj, theta=theta, ntheta=ntheta, 
 					mu1=mu1, Sigma1=Sigma1, na.grid=na.grid ) 	
 		theta <- res$theta
- # cat("start prob") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1	
  
 		#--- compute item response probabilities
 		if ( ! latreg ){				
@@ -115,14 +113,12 @@ a0 <- Sys.time()
 			rprobs <- res$rprobs
 			AXsi <- res$AXsi
 		}
- # cat("calc prob") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1			
 
 		#--- calculate student prior distribution    	
 		gwt <- tam_stud_prior( theta=theta , Y=Y , beta=beta , variance=variance , nstud=nstud , 
                           nnodes=nnodes , ndim=ndim , YSD=YSD , unidim_simplify=FALSE,
 						  snodes = snodes )
- #cat("stud prior") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1							     
-   
+						  
 		#--- posterior distribution
 		if ( ! latreg ){		
 			hwt <- tam_calc_posterior( rprobs=rprobs , gwt=gwt , resp=tamobj$resp , nitems=nitems , 
@@ -134,11 +130,10 @@ a0 <- Sys.time()
 			hwt <- hwt / rowSums(hwt)	 		
 		}			
 		hwt1 <- hwt			  	   
-# cat("posterior") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1							  		
- 
+
 		#--- cumulative posterior probabilities
 		hwt1 <- tam_rowCumsums(matr=hwt1)
- #cat("rowcumsums TAM") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1							  		
+
 
 		#**** sampling of regression coefficients
 		if ( samp.regr ){		
@@ -152,6 +147,10 @@ a0 <- Sys.time()
 				res <- tam_pv_draw_pv_normal_approximation_1dim( theta=theta, nstud=nstud, 
 							ntheta=ntheta, pv=pv, hwt=hwt, pp=pp ) 
 			}
+			if ( normal.approx & ( ndim > 1) ){
+				res <- tam_pv_draw_pv_normal_approximation_multidim( theta=theta, hwt=hwt, 
+									pp=pp, ndim=ndim, pv=pv ) 
+			}				
 			pv <- res$pv
 			theta1 <- res$theta1
 								
@@ -170,7 +169,7 @@ a0 <- Sys.time()
 				cat("-" )
 			}
 		}
-# cat(" end draw PVs") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1							  		
+
 		#**** no sampling of regression cofficients
    		if ( ! samp.regr ){
 			for ( pp in 1:nplausible ){
@@ -184,6 +183,10 @@ a0 <- Sys.time()
 					res <- tam_pv_draw_pv_normal_approximation_1dim( theta=theta, nstud=nstud, 
 							ntheta=ntheta, pv=pv, hwt=hwt, pp=pp ) 
 				}
+				if ( normal.approx & ( ndim > 1) ){
+					res <- tam_pv_draw_pv_normal_approximation_multidim( theta=theta, hwt=hwt, 
+									pp=pp, ndim=ndim, pv=pv ) 
+				}				
 				pv <- res$pv
 				cat("-")
 				utils::flush.console() 
