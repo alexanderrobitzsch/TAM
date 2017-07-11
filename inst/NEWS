@@ -40,6 +40,31 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
+VERSIONS TAM 2.5  |  2017-07-11  |  Last: TAM 2.5-4
+-------------------------------------------------------------
+
+FEATURES:
+* ---
+ 
+BUG FIXES:
+* ---
+
+NOTES:
+* replaced MASS:mvrnorm by mvtnorm::rmvnorm in functions in
+  the TAM package. Removed MASS package from 'Imports'.
+  Moved GPArotation, lattice, plyr, psych and WrightMap packages 
+  from 'Imports' to 'Suggests'.
+* included utility function 'require_namespace_msg'.
+* included d values in output of 'tam.linking'
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* ---
+
+
+-------------------------------------------------------------
 VERSIONS TAM 2.4  |  2017-06-30  |  Last: TAM 2.4-9
 -------------------------------------------------------------
 
@@ -48,7 +73,7 @@ FEATURES:
   multivariate normal approximation of the posterior distribution
  
 BUG FIXES:
-* fixed a recently introduced in 'tam.wle' since TAM 2.2
+* fixed a recently introduced bug in 'tam.wle' since TAM 2.2
   (thanks to Mark Dulherty). The function 'tam.mml.wle' is not
   exported anymore.
 
@@ -60,7 +85,6 @@ DATASETS INCLUDED OR MODIFIED:
 
 EXAMPLES INCLUDED OR MODIFIED:
 * ---
-
 
 -------------------------------------------------------------
 VERSIONS TAM 2.3  |  2017-06-25  |  Last: TAM 2.3-18

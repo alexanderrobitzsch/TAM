@@ -48,7 +48,7 @@ IRT.drawPV <- function( object , NPV = 5 )
 					Sigma[dd2,dd1] <- Sigma[dd1,dd2]
 				}
 			}
-			pv_nn <- MASS::mvrnorm( NPV , mu = mu , Sigma = Sigma )				
+			pv_nn <- mvtnorm::rmvnorm( NPV , mean = mu , sigma = Sigma )				
 			pvmatr[nn, ] <- as.vector( matrix( t(pv_nn) , nrow=NPV*D , ncol=1,byrow=TRUE ))
 		}
 	}

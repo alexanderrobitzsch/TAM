@@ -3,11 +3,13 @@
 tam.fa <- function( resp , irtmodel , dims=NULL , nfactors=NULL ,
                  pid = NULL ,pweights = NULL , verbose = TRUE , control = list() )
 {
-#  s1 <- Sys.time()
-  # display
-  disp <- "....................................................\n"  
-  increment.factor <- progress <- nodes <- snodes <- ridge <- xsi.start0 <- QMC <- NULL
-  maxiter <- conv <- convD <- min.variance <- max.increment <- Msteps <- convM <- NULL 
+
+	require_namespace_msg("GPArotation")
+	require_namespace_msg("psych")
+  
+    disp <- "....................................................\n"  
+	increment.factor <- progress <- nodes <- snodes <- ridge <- xsi.start0 <- QMC <- NULL
+	maxiter <- conv <- convD <- min.variance <- max.increment <- Msteps <- convM <- NULL 
 	
 	#**** handle verbose argument
 	args_CALL <- as.list( sys.call() )

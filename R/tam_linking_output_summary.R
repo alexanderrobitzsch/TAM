@@ -16,7 +16,8 @@ tam_linking_output_summary <- function( parameters_list, linking_list)
 		}
 		rownames(dfr) <- row_names
 		M_SD <- rbind(M_SD, dfr)		
-	}
+	}	
+	M_SD$d <- M_SD$M / mean(M_SD$SD)	
 	#--- transformation item parameters
 	trafo_items <- matrix( 0 , nrow=NM , ncol=2)
 	rownames(trafo_items) <- paste0( "study",1:NM)

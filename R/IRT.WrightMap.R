@@ -12,28 +12,29 @@ IRT.WrightMap <- function(object , ...) {
 
 ############################################################
 IRT.WrightMap.IRT.threshold <- function( object , label.items=NULL , ... ){
-		#----------------------
-		# create trait distribution
-		N1 <- 20000	
-		thresh1 <- object
-		theta <- attr(thresh1 , "theta")
-		ind <- N1 * attr(thresh1 , "prob.theta")   
-		TP <- nrow(theta)
-		ind <- round( ind[,1] )
-		theta <- theta[ rep( 1:TP , ind ) , ]
-		#--------------------------
-		# input for WrightMap function
-		thresh0 <- as.matrix(thresh1)
-		class(thresh0) <- NULL
-		attr(thresh0,"prob.theta") <- attr(thresh0,"theta") <- NULL
-		if ( is.null(label.items)){
-			label.items <- rownames(thresh1)
-							} 
-		#--- create WrightMap							
-        res <- WrightMap::wrightMap( thetas= theta , thresholds= thresh0 ,
+	require_namespace_msg("WrightMap")
+	#----------------------
+	# create trait distribution
+	N1 <- 20000	
+	thresh1 <- object
+	theta <- attr(thresh1 , "theta")
+	ind <- N1 * attr(thresh1 , "prob.theta")   
+	TP <- nrow(theta)
+	ind <- round( ind[,1] )
+	theta <- theta[ rep( 1:TP , ind ) , ]
+	#--------------------------
+	# input for WrightMap function
+	thresh0 <- as.matrix(thresh1)
+	class(thresh0) <- NULL
+	attr(thresh0,"prob.theta") <- attr(thresh0,"theta") <- NULL
+	if ( is.null(label.items)){
+		label.items <- rownames(thresh1)
+	} 
+	#--- create WrightMap							
+    res <- WrightMap::wrightMap( thetas= theta , thresholds= thresh0 ,
 				    label.items = label.items , ...)
-	    invisible(res)
-				}
+	invisible(res)
+}
 ###############################################################		
 
 
@@ -42,7 +43,8 @@ IRT.WrightMap.IRT.threshold <- function( object , label.items=NULL , ... ){
 # Wright map for TAM models
 IRT.WrightMap.tam.mml <- function( object , prob.lvl=.5 , 
 		    type="PV" , ... ){
-  
+	require_namespace_msg("WrightMap")
+	
     #*****************************
 	# extract dimensionality
 	ndim <- object$ndim
@@ -86,7 +88,7 @@ IRT.WrightMap.tam.mml <- function( object , prob.lvl=.5 ,
 	# draw Wright Map
 	res <- WrightMap::wrightMap( pers.estimates , thresh , ... )
     invisible(res)	
-		}
+}
 ###########################################################
 
 

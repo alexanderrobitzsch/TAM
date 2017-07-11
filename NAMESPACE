@@ -72,20 +72,24 @@ importFrom(coda, effectiveSize)
 importFrom(coda, gelman.diag)
 importFrom(coda, mcmc)
 importFrom(coda, mcmc.list)
-importFrom(GPArotation, oblimin)
 importFrom(lavaan, lavaanify)
 importFrom(lavaan, parameterTable)
-importFrom(lattice, xyplot)
-importFrom(MASS, mvrnorm)
 importFrom(mvtnorm, dmvnorm)
 importFrom(mvtnorm, pmvnorm)
 importFrom(mvtnorm, rmvnorm)
-importFrom(plyr, ldply)
-importFrom(psych, schmid)
 importFrom(sfsmisc, QUnif)
-importFrom(WrightMap, wrightMap)
 
 
+#***************************************************
+#************** Suggests ***************************
+# requireNamespace("another_package")
+# require_namespace_msg("another_package")
+
+# importFrom(GPArotation, oblimin)
+# importFrom(lattice, xyplot)
+# importFrom(plyr, ldply)
+# importFrom(psych, schmid)
+# importFrom(WrightMap, wrightMap)
 
 
 ########################################################
@@ -117,6 +121,7 @@ export(msq.itemfitWLE)
 export(plotctt)
 export(plotDevianceTAM)
 # export(prior_list_include)
+export(require_namespace_msg)
 export(Scale)
 export(tam)
 export(tam.ctt)

@@ -17,6 +17,8 @@
 \alias{tam_remove_missings}
 \alias{tam_AXsi_compute}
 \alias{tam_AXsi_fit}
+\alias{require_namespace_msg}
+
 
 \title{Utility Functions in \pkg{TAM}}
 
@@ -33,6 +35,8 @@ tam_print_call(CALL)
 tam_rsessinfo()
 ## grep list of arguments for a specific variable
 tam_args_CALL_search(args_CALL, variable, default_value)
+## requireNamespace with message of needed installation
+require_namespace_msg(pkg)
 
 ## base::matrix function with argument value byrow=TRUE
 tam_matrix2(x, nrow=NULL, ncol=NULL)
@@ -71,6 +75,7 @@ tam_assign_list_elements(x, envir)
 \item{args_CALL}{Arguments obtained from \code{as.list( sys.call() )}}
 \item{variable}{Name of a variable}
 \item{default_value}{Default value of a variable}
+\item{pkg}{String}
 \item{x}{Vector or matrix or list}
 \item{nrow}{Number of rows}
 \item{ncol}{Number of columns}
