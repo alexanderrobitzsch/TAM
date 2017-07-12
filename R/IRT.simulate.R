@@ -33,7 +33,7 @@ simulate_mml <- function(object, iIndex = NULL, theta = NULL, nobs = NULL, ...){
     if(ndim == 1){
       theta <- stats::rnorm(nnodes, mean = t.mean, sd = sqrt(t.sigma))  
     } else {
-      theta <- mvtnorm::rmvnorm(nnodes, mean = t.mean, sigma = t.sigma)
+      theta <- CDM::CDM_rmvnorm(nnodes, mean = t.mean, sigma = t.sigma)
     }  
     theta <-  matrix(theta, ncol = ndim)
   }

@@ -17,7 +17,7 @@ tam_pv_sampling_theta <- function( theta.model, ndim, normal.approx , tamobj, ME
 		# multidimensional PV imputation									
 		if( ndim > 1 ){
 			if ( ! normal.approx){
-				theta <- mvtnorm::rmvnorm( ntheta , mean = mu1 , sigma = Sigma1 )
+				theta <- CDM::CDM_rmvnorm( ntheta , mean = mu1 , sigma = Sigma1 )
 			} else {
 				theta <- tamobj$theta
 			}

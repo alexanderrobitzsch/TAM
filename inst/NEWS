@@ -40,7 +40,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.5  |  2017-07-11  |  Last: TAM 2.5-4
+VERSIONS TAM 2.5  |  2017-07-12  |  Last: TAM 2.5-7
 -------------------------------------------------------------
 
 FEATURES:
@@ -52,8 +52,8 @@ BUG FIXES:
 NOTES:
 * replaced MASS:mvrnorm by mvtnorm::rmvnorm in functions in
   the TAM package. Removed MASS package from 'Imports'.
-  Moved GPArotation, lattice, plyr, psych and WrightMap packages 
-  from 'Imports' to 'Suggests'.
+  Moved GPArotation, lattice, lavaan, plyr, psych and 
+  WrightMap packages from 'Imports' to 'Suggests'.
 * included utility function 'require_namespace_msg'.
 * included d values in output of 'tam.linking'
 

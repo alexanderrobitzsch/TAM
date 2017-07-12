@@ -7,7 +7,6 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
                      export.args=list(), observed=TRUE, overlay=FALSE , 
                      ask=FALSE, package="lattice" , 
 					 fix.devices=FALSE , ...) {
-    require_namespace_msg("plyr")
 	if ( package=="lattice"){
 		require_namespace_msg("lattice")
 	}
@@ -100,8 +99,11 @@ if ( fix.devices ){
     d2 <- d1[-1]
     obScore <- apply(d2,2, function(x) stats::aggregate(x, list(groupnumber), mean, na.rm=TRUE))
   }
+  
+  #----------------------------------------------------
   # adds observed score for type="items"
   if (type == "items") {
+  	require_namespace_msg("plyr")
     if (is.null(wle)) {
       if (tammodel == "mml") {
         wleobj <- tam.wle(tamobj)

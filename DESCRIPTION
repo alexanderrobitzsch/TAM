@@ -1,8 +1,8 @@
 Package: TAM
 Type: Package
 Title: Test Analysis Modules
-Version: 2.5-4
-Date: 2017-07-11 10:28:28
+Version: 2.5-7
+Date: 2017-07-12 11:20:34
 Author:
     Alexander Robitzsch [aut, cre], Thomas Kiefer [aut], Margaret Wu [aut]
 Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
@@ -17,13 +17,13 @@ Description:
     Latent regression models and plausible value imputation are 
     also supported.
 Depends: 
-    R (>= 2.15.1), CDM (>= 5.7-3)
+    R (>= 2.15.1), CDM (>= 5.8-5)
 Imports: 
-    coda, graphics, grDevices, lavaan, 
-    methods, mvtnorm, Rcpp, sfsmisc, 
-    stats, utils
+    coda, graphics, grDevices, methods, mvtnorm, Rcpp, 
+    sfsmisc, stats, utils
 Suggests: 
-    GPArotation, lattice, LSAmitR, miceadds, plyr, psych, sirt, WrightMap
+    GPArotation, lattice, lavaan, LSAmitR, miceadds, plyr, 
+    psych, sirt, WrightMap
 LinkingTo: 
     Rcpp, RcppArmadillo
 License: GPL (>= 2)

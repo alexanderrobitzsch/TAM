@@ -1,8 +1,9 @@
 
 ######################################################################
 # extract item parameters from fitted cfa object (in lavaan)
-cfa.extract.itempars <- function( object ){
-
+cfa.extract.itempars <- function( object )
+{
+	require_namespace_msg("lavaan")
 	if ( object@Options$model.type != "cfa" ){
 		stop("Function can only be applied \n if cfa (in lavaan) is used.")
 	}								

@@ -72,20 +72,21 @@ importFrom(coda, effectiveSize)
 importFrom(coda, gelman.diag)
 importFrom(coda, mcmc)
 importFrom(coda, mcmc.list)
-importFrom(lavaan, lavaanify)
-importFrom(lavaan, parameterTable)
 importFrom(mvtnorm, dmvnorm)
 importFrom(mvtnorm, pmvnorm)
-importFrom(mvtnorm, rmvnorm)
+# importFrom(mvtnorm, rmvnorm)  # replaced by CDM::CDM_rmvnorm
 importFrom(sfsmisc, QUnif)
 
 
 #***************************************************
 #************** Suggests ***************************
-# requireNamespace("another_package")
-# require_namespace_msg("another_package")
+# base::requireNamespace("another_package")
+# TAM::require_namespace_msg("another_package")
+# CDM::CDM_require_namespace("another_package")
 
 # importFrom(GPArotation, oblimin)
+# importFrom(lavaan, lavaanify)
+# importFrom(lavaan, parameterTable)
 # importFrom(lattice, xyplot)
 # importFrom(plyr, ldply)
 # importFrom(psych, schmid)

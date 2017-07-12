@@ -40,7 +40,7 @@ tam_mml_create_nodes <- function(snodes, nodes, ndim, QMC,
 				theta0.samp <- theta0.samp[ order(theta0.samp[,1]) , ]
 			}
 		} else {
-			theta0.samp <- matrix( mvtnorm::rmvnorm( snodes , mean = rep(0,ndim) , 
+			theta0.samp <- matrix( CDM::CDM_rmvnorm( snodes , mean = rep(0,ndim) , 
                                         sigma = diag(1,ndim ) )	, nrow= snodes , ncol=ndim )			
 		}
 		nnodes <- nrow(theta0.samp)

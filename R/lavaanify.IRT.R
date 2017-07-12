@@ -27,7 +27,7 @@ lavaanify.IRT <- function( lavmodel , items=NULL , data = NULL , include.residua
 	nonlin_factors <- res$nonlin_factors
 	nonlin_syntable <- res$nonlin_syntable
 	items <- res$items
-    res <- lavaanify.sirt.v1( lavmodel = lavmodel )	
+    res <- TAM_lavaanify( lavmodel = lavmodel )	
 	
 	ind <- grep( "__[A-Z,a-z]" , lavmodel )
 	
@@ -35,8 +35,7 @@ lavaanify.IRT <- function( lavmodel , items=NULL , data = NULL , include.residua
 		res <- lavpartable.grep.underbrace( lavpartable=res$lavpartable , items )		
 		
  		res <- remove.duplicated.variances.lavsyn(res , items)	
-		res <- lavaanify.sirt.v1( lavmodel = res)
-# cat("\n*** sirt.v1 second") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1					
+		res <- TAM_lavaanify( lavmodel = res)					
 		lavpar <- res$lavpartable
 		lavsyn <- res$lavaan.syntax
 
@@ -88,7 +87,7 @@ lavaanify.IRT <- function( lavmodel , items=NULL , data = NULL , include.residua
 	res$nonlin_syntable <- nonlin_syntable
 # cat("all out") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1					
 	return(res)
-			}
+}
 
 			
 ##*****************************************************************			
