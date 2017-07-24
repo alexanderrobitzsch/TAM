@@ -40,14 +40,15 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.5  |  2017-07-12  |  Last: TAM 2.5-7
+VERSIONS TAM 2.5  |  2017-07-24  |  Last: TAM 2.5-11
 -------------------------------------------------------------
 
 FEATURES:
 * ---
  
 BUG FIXES:
-* ---
+* argument 'progress' was disabled due to changes in last TAM 
+  version and has been fixed (thanks to Sebastian Weirich)
 
 NOTES:
 * replaced MASS:mvrnorm by mvtnorm::rmvnorm in functions in
@@ -56,6 +57,7 @@ NOTES:
   WrightMap packages from 'Imports' to 'Suggests'.
 * included utility function 'require_namespace_msg'.
 * included d values in output of 'tam.linking'
+* exported utility function 'tam_dmvnorm'
 
 DATASETS INCLUDED OR MODIFIED:
 * ---

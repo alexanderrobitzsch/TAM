@@ -64,7 +64,6 @@ import(CDM)
 
 
 
-
 #***************************************************
 #************** Imports ****************************
 
@@ -121,7 +120,7 @@ export(msq.itemfit)
 export(msq.itemfitWLE)
 export(plotctt)
 export(plotDevianceTAM)
-# export(prior_list_include)
+ # export(prior_list_include)
 export(require_namespace_msg)
 export(Scale)
 export(tam)
@@ -157,6 +156,7 @@ export(tam_assign_list_elements)
 export(tam_AXsi_compute)
 export(tam_AXsi_fit)
 export(tam_difference_quotient)
+export(tam_dmvnorm)
 export(tam_interval_index)
 export(tam_irf_3pl)
 export(tam_linking_2studies)

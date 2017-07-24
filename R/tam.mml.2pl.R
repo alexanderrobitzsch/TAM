@@ -28,8 +28,10 @@ function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
 	
 	#**** handle verbose argument
 	args_CALL <- as.list( sys.call() )
-	control$progress <- tam_args_CALL_search( args_CALL=args_CALL , variable="verbose" , 
+	if ( ! tam_in_names_list( list=control, variable="progress" )	 ){
+		control$progress <- tam_args_CALL_search( args_CALL=args_CALL , variable="verbose" , 
 								default_value = TRUE )				
+	}
 	#*******  
   
 	if ( is.null(A)){ printxsi <- FALSE  } else { printxsi <- TRUE }  

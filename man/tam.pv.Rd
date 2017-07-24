@@ -15,7 +15,7 @@ a list of multiply imputed datasets see \code{\link{tampv2datalist}}
 and the Examples 2 and 3 of this function.
 
 The function \code{tam.pv.mcmc} employs fully Bayesian estimation for drawing
-plausible values ans is recommended in cases when the latent regression model
+plausible values and is recommended in cases when the latent regression model
 is unreliably estimated (multidimensional model with stochastic nodes). 
 Regression parameters are conditionally drawn by Bayesian bootstrap.
 }
@@ -26,7 +26,7 @@ tam.pv(tamobj, nplausible = 10, ntheta = 2000, normal.approx = FALSE,
     
 tam.pv.mcmc( tamobj, Y, group=NULL, beta_groups = TRUE, nplausible=10, level = .95, 
     n.iter = 1000, n.burnin = 500, adj_MH = .5, adj_change_MH = .05, refresh_MH = 50,
-    accrate_bound_MH = c(.45, .55),	print_iter = 20, verbose = TRUE) 
+    accrate_bound_MH = c(.45, .55), print_iter = 20, verbose = TRUE) 
     
 \method{summary}{tam.pv.mcmc}(object, file=NULL, \dots)
 

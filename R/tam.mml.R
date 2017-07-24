@@ -29,10 +29,12 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 	
 	#**** handle verbose argument
 	args_CALL <- as.list( sys.call() )
-	control$progress <- tam_args_CALL_search( args_CALL=args_CALL , variable="verbose" , 
+	if ( ! tam_in_names_list( list=control, variable="progress" )	 ){
+		control$progress <- tam_args_CALL_search( args_CALL=args_CALL , variable="verbose" , 
 								default_value = TRUE )				
+	}
 	#*******
-    
+   
     if ( is.null(A)){ printxsi <- FALSE  } else { printxsi <- TRUE }
     
 	#--- attach control elements
@@ -43,7 +45,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 				prior_list_xsi=prior_list_xsi)
 	con <- res$con
 	con1a <- res$con1a
-
+	
 	resp <- as.matrix(resp)
 	resp0 <- resp <- add.colnames.resp(resp)
 	

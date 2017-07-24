@@ -18,7 +18,7 @@
 \alias{tam_AXsi_compute}
 \alias{tam_AXsi_fit}
 \alias{require_namespace_msg}
-
+\alias{tam_dmvnorm}
 
 \title{Utility Functions in \pkg{TAM}}
 
@@ -52,6 +52,8 @@ tam_aggregate(x, group, mean=FALSE, na.rm=TRUE)
 tam_interval_index(matr, rn)
 ## cumulative sum of row entries in a matrix
 tam_rowCumsums(matr)
+## extension of mvtnorm::dmvnorm to matrix entries of mean
+tam_dmvnorm(x, mean, sigma, log = FALSE )
 
 ## remove items or persons with complete missing entries
 tam_remove_missings( dat, items, elim_items=TRUE, elim_persons=TRUE )
@@ -85,6 +87,10 @@ tam_assign_list_elements(x, envir)
 \item{mean}{Logical indicating whether mean should be calculated or the sum}
 \item{na.rm}{Logical indicating whether missing values should be removed}
 \item{matr}{Matrix}
+\item{x}{Matrix}
+\item{mean}{Vector or matrix}
+\item{sigma}{Matrix}
+\item{log}{Logical}
 \item{rn}{Vector}
 \item{dat}{Data frame}
 \item{items}{Vector}
