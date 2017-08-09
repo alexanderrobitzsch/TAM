@@ -84,11 +84,10 @@ tam_assign_list_elements(x, envir)
 \item{y}{Vector}
 \item{op}{An operation \code{"*"}, \code{"+"} or \code{"-"}}
 \item{group}{Vector of grouping identifiers}
-\item{mean}{Logical indicating whether mean should be calculated or the sum}
+\item{mean}{Logical indicating whether mean should be calculated or the sum or
+vector or matrix}
 \item{na.rm}{Logical indicating whether missing values should be removed}
 \item{matr}{Matrix}
-\item{x}{Matrix}
-\item{mean}{Vector or matrix}
 \item{sigma}{Matrix}
 \item{log}{Logical}
 \item{rn}{Vector}

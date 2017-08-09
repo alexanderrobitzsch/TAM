@@ -1,8 +1,8 @@
 Package: TAM
 Type: Package
 Title: Test Analysis Modules
-Version: 2.5-11
-Date: 2017-07-24 15:11:26
+Version: 2.5-14
+Date: 2017-08-08 15:00:55
 Author:
     Alexander Robitzsch [aut, cre], Thomas Kiefer [aut], Margaret Wu [aut]
 Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
