@@ -39,6 +39,27 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+
+-------------------------------------------------------------
+VERSIONS TAM 2.6  |  2017-08-10  |  Last: TAM 2.6-2
+-------------------------------------------------------------
+
+FEATURES:
+* ---
+ 
+BUG FIXES:
+* ---
+
+NOTES:
+* set 'dontrun' to example 1 of 'tam.latreg' because the CRAN
+  check failed
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* ---
+
 -------------------------------------------------------------
 VERSIONS TAM 2.5  |  2017-08-08  |  Last: TAM 2.5-14
 -------------------------------------------------------------

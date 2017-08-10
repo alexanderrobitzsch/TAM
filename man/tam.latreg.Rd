@@ -140,6 +140,7 @@ See also \code{\link{tam.pv}} for plausible value imputation.
 }
 
 \examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Unidimensional latent regression model with fitted IRT model in
 #            sirt package
@@ -168,7 +169,6 @@ Y <- dat[ , c("idstud" , "idschool" , "female" , "hisei" , "migra") ]
 pvnames <- c("PVREAD")
 datlist <- TAM::tampv2datalist( pv2, pvnames = pvnames , Y=Y , Y.pid="idstud")
 
-\dontrun{
 #--- fit some models
 library(mice)
 library(miceadds)
