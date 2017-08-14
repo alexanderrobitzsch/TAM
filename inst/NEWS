@@ -40,6 +40,31 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 
+
+-------------------------------------------------------------
+VERSIONS TAM 2.7  |  2017-08-14  |  Last: TAM 2.7-5
+-------------------------------------------------------------
+
+FEATURES:
+* included option for providing initial theta values in 
+  'tam.pv.mcmc'
+ 
+BUG FIXES:
+* fixed a bug in 'tam.pv.mcmc' which was recently introduced
+  with an updated version of the CDM package
+* fixed a bug in 'tam.pv.mcmc' which caused a crash when only
+  one plausible values is requested
+
+NOTES:
+* ---
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* tam.pv (1)
+
+
 -------------------------------------------------------------
 VERSIONS TAM 2.6  |  2017-08-10  |  Last: TAM 2.6-2
 -------------------------------------------------------------

@@ -3,7 +3,7 @@ tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE ,
 				nplausible=10, level = .95, n.iter = 1000 ,
 				n.burnin = 500, adj_MH = .5, adj_change_MH = .05 , 
 				refresh_MH = 50, accrate_bound_MH = c(.45, .55), 
-				print_iter = 20 , verbose = TRUE)
+				theta_init = NULL, print_iter = 20 , verbose = TRUE)
 {
     s1 <- Sys.time()
 	CALL <- match.call()
@@ -30,13 +30,13 @@ tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE ,
 	Y <- res$Y
 	
 	#--- compute initial person parameters
-	theta <- theta0 <- tam_pv_mcmc_inits_theta(person=person)	
-
+	theta <- theta0 <- tam_pv_mcmc_inits_theta(person=person, theta_init=theta_init)	
+	
 	#--- compute response probabilities theta value
 	probs0 <- tam_irf_3pl(theta=theta, AXsi=AXsi, B=B, guess=guess)
 	loglike <- tam_pv_mcmc_likelihood( probs=probs0, resp=resp, resp.ind=resp.ind, nstud=nstud, 
 					nitems=nitems, maxK=maxK ) 
-	
+					
 	#--- add colnames to Y if not provided
 	Y <- tam_pv_mcmc_proc_regressors(Y=Y)
 	
@@ -46,7 +46,7 @@ tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE ,
 					beta_groups=beta_groups )
 	beta <- res$beta
 	variance <- res$variance
-
+	
 	#--- init adjustment factor for MH sampling
 	res <- tam_pv_mcmc_inits_MH_sampling_objects( adj_MH=adj_MH, nstud=nstud ) 
 	adj_MH <- res$adj_MH
@@ -59,7 +59,7 @@ tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE ,
 	pv_iter <- res$pv_iter
 	pv_index_matrix <- res$pv_index_matrix	
 	nplausible <- res$nplausible
-
+	
 	#--- create objects for saving sampled latent regression parameters
 	res <- tam_pv_mcmc_inits_sampled_parameters_objects( n.burnin=n.burnin, n.iter=n.iter, 
 				beta=beta, variance=variance, G=G, Y=Y, beta_groups=beta_groups ) 
@@ -80,10 +80,10 @@ tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE ,
 		dens_theta <- tam_pv_mcmc_prior_density( theta=theta, beta=beta, variance=variance, 
 							Y=Y, log=FALSE,	G=G, group_index=group_index, 
 							beta_groups=beta_groups)
-							
+						
 		#--- new theta proposal and evaluation of prior density
 		theta_new <- tam_pv_mcmc_proposal_theta( theta=theta, nstud=nstud, variance=variance, 
-							adj_MH=adj_MH, D=D,	G=G, group_index=group_index ) 
+							adj_MH=adj_MH, D=D,	G=G, group_index=group_index ) 	
 		dens_theta_new <- tam_pv_mcmc_prior_density( theta=theta_new, beta=beta, variance=variance, 
 								Y=Y, log=FALSE,	G=G, group_index=group_index,
 								beta_groups=beta_groups )
@@ -92,7 +92,7 @@ tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE ,
 		probs_new <- tam_irf_3pl(theta=theta_new, AXsi=AXsi, B=B, guess=guess)		
 		loglike_new <- tam_pv_mcmc_likelihood( probs=probs_new, resp=resp, resp.ind=resp.ind, 
 							nstud=nstud, nitems=nitems, maxK=maxK ) 	
-		
+							
 		#--- Metropolis Hastings Ratio and sampled theta values
 		res <- tam_pv_mcmc_theta_MH_ratio_accept( loglike=loglike, dens_theta=dens_theta, 
 					loglike_new=loglike_new, dens_theta_new=dens_theta_new, 
@@ -123,7 +123,7 @@ tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE ,
 						beta_groups=beta_groups )
 		beta <- res$beta
 		variance <- res$variance
-		
+	
 		#--- save sampled parameters
 		if ( iter %in% saved_iter ){
 			res <- tam_pv_mcmc_save_parameters( beta=beta, beta_samples=beta_samples, 
@@ -167,7 +167,7 @@ tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE ,
 	theta_samples_mean <- res$theta_samples_mean
 	theta_samples_sd <- res$theta_samples_sd
 	EAP_rel <- res$EAP_rel
-
+	
 	#--- evaluate information criteria
 	ic <- tam_pv_mcmc_postproc_ic( parameter_samples=parameter_samples, deviance_samples=deviance_samples, 
 				theta_samples_mean=theta_samples_mean, AXsi=AXsi, B=B, guess=guess, beta=beta, 
@@ -189,7 +189,8 @@ tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE ,
 					deviance_samples=deviance_samples, 
 					theta_acceptance_MH=theta_acceptance_MH,
 					theta_samples_mean=theta_samples_mean, 
-					theta_samples_sd=theta_samples_sd, EAP_rel=EAP_rel, 
+					theta_samples_sd=theta_samples_sd, theta_last = theta , 
+					EAP_rel=EAP_rel, 
 					beta=beta, variance=variance, 
 					parameter_summary=parameter_summary,
 					nplausible=nplausible, ndim=D, pweights=pweights, pid=pid,

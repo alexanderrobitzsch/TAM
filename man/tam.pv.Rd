@@ -26,7 +26,7 @@ tam.pv(tamobj, nplausible = 10, ntheta = 2000, normal.approx = FALSE,
     
 tam.pv.mcmc( tamobj, Y, group=NULL, beta_groups = TRUE, nplausible=10, level = .95, 
     n.iter = 1000, n.burnin = 500, adj_MH = .5, adj_change_MH = .05, refresh_MH = 50,
-    accrate_bound_MH = c(.45, .55), print_iter = 20, verbose = TRUE) 
+    accrate_bound_MH = c(.45, .55), theta_init = NULL, print_iter = 20, verbose = TRUE) 
     
 \method{summary}{tam.pv.mcmc}(object, file=NULL, \dots)
 
@@ -91,12 +91,14 @@ tam.pv.mcmc( tamobj, Y, group=NULL, beta_groups = TRUE, nplausible=10, level = .
 \item{n.iter}{Number of iterations}
 \item{n.burnin}{Number of burnin-iterations}
 \item{adj_MH}{Adjustment factor for Metropolis-Hastings (MH) steps which controls
-    the variance of the proposal distribution for \eqn{\theta}}
+    the variance of the proposal distribution for \eqn{\theta}. Can be also 
+    a vector of length equal to the number of persons.}
 \item{adj_change_MH}{Allowed change for MH adjustment factor after refreshing}
 \item{refresh_MH}{Number of iterations after which the variance of the proposal
  distribution should be updated}
 \item{accrate_bound_MH}{Bounds for target acceptance rates of sampled \eqn{\theta}
    values.}
+\item{theta_init}{Optional matrix with initial \eqn{\bold{\theta}} values}
 \item{print_iter}{Print iteration progress every \code{print_iter}th iteration}   
 \item{verbose}{Logical indicating whether iteration progress should be displayed.}
 \item{object}{Object of class \code{tam.pv.mcmc}}           
@@ -134,6 +136,9 @@ The value of \code{tam.pv.mcmc} is a list containing entries
 \item{ic}{Information criteria}
 \item{beta}{Estimate of regression parameters \eqn{\bold{\beta}}}
 \item{variance}{Estimate of residual variance matrix \eqn{\bold{\Sigma}}}
+\item{theta_acceptance_MH}{Acceptance rates and acceptance MH factors for each
+individual}
+\item{theta_last}{Last sampled \eqn{\bold{\theta}} value}
 \item{\dots}{Further values}   
 }
 
@@ -199,6 +204,11 @@ str(pv2)
 summary(pv2)
 # assessing convergence with traceplots
 plot(pv2, ask=TRUE)
+
+# use starting values for theta and MH factors which fulfill acceptance rates
+# from previously fitted model
+pv3 <- TAM::tam.pv.mcmc( tamobj=mod, Y=Y, nplausible=5, theta_init = pv2$theta_last,
+            adj_MH = pv2$theta_acceptance_MH$adj_MH )
 
 #############################################################################
 # EXAMPLE 2: Unidimensional plausible value imputation with
