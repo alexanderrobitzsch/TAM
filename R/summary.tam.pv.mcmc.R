@@ -79,8 +79,16 @@ summary.tam.pv.mcmc <- function( object , file = NULL , ...)
 	}
 	print(obji)
 
-	#******
-	CDM::csink(file)
+	#*** print covariance matrix 
+	cov_digits <- 3
+	res <- tam_pv_summary_covariance( obji=object$variance, 
+				label="Residual Covariance Matrix", digits=cov_digits)
+				
+	#*** print correlation matrix 
+	res <- tam_pv_summary_covariance( obji=object$correlation, 
+				label="Residual Correlation Matrix", digits=cov_digits)				
 	
+	#******
+	CDM::csink(file)	
 }
 #*******************************************************

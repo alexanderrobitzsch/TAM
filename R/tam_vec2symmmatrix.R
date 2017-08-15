@@ -2,9 +2,14 @@
 tam_vec2symmmatrix <- function(variance)
 {
 	H <- length(variance)
-	D0 <- round( sqrt( 2*H + .25 ) - .5 )
+	D0 <- tam_anticomb2(H=H)
 	variance0 <- matrix( NA , nrow=D0, ncol=D0)	
-	variance0[ ! lower.tri(variance0) ] <- variance
-	variance0[ ! upper.tri(variance0) ] <- variance
+	ii <- 1
+	for (dd in 1:D0){
+		for (ee in dd:D0){
+			variance0[dd,ee] <- variance0[ee,dd] <- variance[ii]
+			ii <- ii+1
+		}
+	}
 	return(variance0)
 }

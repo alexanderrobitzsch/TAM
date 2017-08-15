@@ -28,17 +28,23 @@ tam_pv_mcmc_parameter_samples <- function(beta_samples, variance_samples)
 		}	
 	}
 	
-	#--- variance estimates
-	variance <- list()
+	#--- variance and correlation estimates
+	correlation <- variance <- list()	
 	variance_index <- attr( variance_samples, "variance_index")
 	variance_M <- colMeans(variance_samples)
 	for (gg in 1:G){
 		ind_gg <- variance_index[[gg]]
-		variance[[gg]] <- tam_vec2symmmatrix(variance=variance_M[ind_gg] )
-	}		
-		
+		variance_M_gg <- variance_M[ind_gg] 
+		var_gg <- tam_vec2symmmatrix(variance=variance_M_gg)
+		variance[[gg]] <- var_gg
+		cor_index <- tam_pv_mcmc_parameter_samples_correlation_index(index=ind_gg) 
+		cor_gg <- tam_pv_mcmc_parameter_samples_correlation(variance_samples=variance_samples, 
+						cor_index=cor_index)
+		correlation[[gg]] <- cor_gg
+	}				
 	#--- OUTPUT
-	res <- list(parameter_samples=parameter_samples, beta=beta, variance=variance)
+	res <- list(parameter_samples=parameter_samples, beta=beta, variance=variance,
+					correlation=correlation)
 	return(res)
 }
 	

@@ -24,7 +24,7 @@ Regression parameters are conditionally drawn by Bayesian bootstrap.
 tam.pv(tamobj, nplausible = 10, ntheta = 2000, normal.approx = FALSE, 
     samp.regr = FALSE, theta.model=FALSE, np.adj=8, na.grid = 5)
     
-tam.pv.mcmc( tamobj, Y, group=NULL, beta_groups = TRUE, nplausible=10, level = .95, 
+tam.pv.mcmc( tamobj, Y=NULL, group=NULL, beta_groups = TRUE, nplausible=10, level = .95, 
     n.iter = 1000, n.burnin = 500, adj_MH = .5, adj_change_MH = .05, refresh_MH = 50,
     accrate_bound_MH = c(.45, .55), theta_init = NULL, print_iter = 20, verbose = TRUE) 
     
@@ -83,7 +83,7 @@ tam.pv.mcmc( tamobj, Y, group=NULL, beta_groups = TRUE, nplausible=10, level = .
 \item{na.grid}{Range of the grid in normal approximation. Default is from
 -5 to 5.}
 \item{\dots}{Further arguments to be passed}	        
-\item{Y}{Matrix of regressors}
+\item{Y}{Optional matrix of regressors}
 \item{group}{Optional vector of group identifiers}
 \item{beta_groups}{Logical indicating whether group specific beta coefficients
    shall be estimated.}
@@ -136,6 +136,8 @@ The value of \code{tam.pv.mcmc} is a list containing entries
 \item{ic}{Information criteria}
 \item{beta}{Estimate of regression parameters \eqn{\bold{\beta}}}
 \item{variance}{Estimate of residual variance matrix \eqn{\bold{\Sigma}}}
+\item{correlation}{Estimate of residual correlation matrix corresponding to
+\code{variance}}
 \item{theta_acceptance_MH}{Acceptance rates and acceptance MH factors for each
 individual}
 \item{theta_last}{Last sampled \eqn{\bold{\theta}} value}

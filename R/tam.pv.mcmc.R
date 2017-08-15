@@ -1,5 +1,5 @@
 
-tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE , 
+tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE , 
 				nplausible=10, level = .95, n.iter = 1000 ,
 				n.burnin = 500, adj_MH = .5, adj_change_MH = .05 , 
 				refresh_MH = 50, accrate_bound_MH = c(.45, .55), 
@@ -134,7 +134,7 @@ tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE ,
 			variance_samples <- res$variance_samples
 			deviance_samples <- res$deviance_samples
 			theta_samples_mean <- res$theta_samples_mean
-			theta_samples_sd <- res$theta_samples_sd
+			theta_samples_sd <- res$theta_samples_sd	
 		}
 		#--- iteration index update
 		iter <- iter + 1
@@ -160,6 +160,7 @@ tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE ,
 	parameter_samples <- res$parameter_samples
 	beta <- res$beta
 	variance <- res$variance
+	correlation <- res$correlation
 	
 	#--- mean, SD and reliability of theta posterior distribution
 	res <- tam_pv_mcmc_postproc_theta_posterior( theta_samples_mean=theta_samples_mean, 
@@ -191,7 +192,7 @@ tam.pv.mcmc <- function( tamobj, Y , group=NULL, beta_groups = TRUE ,
 					theta_samples_mean=theta_samples_mean, 
 					theta_samples_sd=theta_samples_sd, theta_last = theta , 
 					EAP_rel=EAP_rel, 
-					beta=beta, variance=variance, 
+					beta=beta, variance=variance, correlation=correlation,
 					parameter_summary=parameter_summary,
 					nplausible=nplausible, ndim=D, pweights=pweights, pid=pid,
 					n.iter=n.iter, n.burnin=n.burnin, ndim=D,

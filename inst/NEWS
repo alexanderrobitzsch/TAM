@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.7  |  2017-08-14  |  Last: TAM 2.7-5
+VERSIONS TAM 2.7  |  2017-08-15  |  Last: TAM 2.7-8
 -------------------------------------------------------------
 
 FEATURES:
@@ -54,9 +54,14 @@ BUG FIXES:
   with an updated version of the CDM package
 * fixed a bug in 'tam.pv.mcmc' which caused a crash when only
   one plausible values is requested
+* fixed a bug in output of variance matrices in 'tam.pv.mcmc'
+* included residual correlation matrices in output of
+  'tam.pv.mcmc'
+
 
 NOTES:
-* ---
+* included residual variances and correlations in summary
+  output of 'tam.pv.mcmc' 
 
 DATASETS INCLUDED OR MODIFIED:
 * ---

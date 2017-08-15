@@ -59,6 +59,9 @@ tam_pv_mcmc_proc_input <- function( tamobj, group, Y )
 	dfr <- data.frame("start"=c(1 , c2[-G] + 1 ), "end" = c2 )
 	attr(group_index,"N_groups_cumsum") <- dfr
 
+	if ( is.null(Y) ){
+		Y <- matrix(1 , nrow=nstud, ncol=1)
+	}	
 	Y <- as.matrix(Y)
 	
 	#--- OUTPUT
