@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.7  |  2017-08-15  |  Last: TAM 2.7-8
+VERSIONS TAM 2.7  |  2017-08-17  |  Last: TAM 2.7-16
 -------------------------------------------------------------
 
 FEATURES:
@@ -58,10 +58,13 @@ BUG FIXES:
 * included residual correlation matrices in output of
   'tam.pv.mcmc'
 
-
 NOTES:
 * included residual variances and correlations in summary
   output of 'tam.pv.mcmc' 
+* added argument 'subtract_max' in 'tam_irf_3pl'
+* calculation of item response probabilities for 'tam.pv.mcmc'
+  now takes place in Rcpp, some speed improvement
+* export utility function 'add.lead'
 
 DATASETS INCLUDED OR MODIFIED:
 * ---

@@ -19,6 +19,7 @@
 \alias{tam_AXsi_fit}
 \alias{require_namespace_msg}
 \alias{tam_dmvnorm}
+\alias{add.lead}
 
 \title{Utility Functions in \pkg{TAM}}
 
@@ -37,6 +38,8 @@ tam_rsessinfo()
 tam_args_CALL_search(args_CALL, variable, default_value)
 ## requireNamespace with message of needed installation
 require_namespace_msg(pkg)
+## add leading zeroes
+add.lead(x, width=max(nchar(x)))
 
 ## base::matrix function with argument value byrow=TRUE
 tam_matrix2(x, nrow=NULL, ncol=NULL)
@@ -79,6 +82,7 @@ tam_assign_list_elements(x, envir)
 \item{default_value}{Default value of a variable}
 \item{pkg}{String}
 \item{x}{Vector or matrix or list}
+\item{width}{Number of zeroes before decimal}
 \item{nrow}{Number of rows}
 \item{ncol}{Number of columns}
 \item{y}{Vector}

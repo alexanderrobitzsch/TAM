@@ -12,7 +12,7 @@ package.
 }
 
 \usage{
-tam_irf_3pl(theta, AXsi, B, guess=NULL)
+tam_irf_3pl(theta, AXsi, B, guess=NULL, subtract_max=TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -22,6 +22,8 @@ Matrix or vector of \eqn{\bold{\theta}} values
 \item{AXsi}{Matrix of item-category parameters}
 \item{B}{Array containing item-category loadings} 
 \item{guess}{Optional parameter of guessing parameters}
+\item{subtract_max}{Logical indicating whether numerical underflow in 
+probabilities should be explicitly avoided}
 }
 
 

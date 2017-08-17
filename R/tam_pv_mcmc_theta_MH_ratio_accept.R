@@ -1,9 +1,10 @@
 
-tam_pv_mcmc_theta_MH_ratio_accept <- function(loglike, dens_theta,
-	loglike_new, dens_theta_new, theta_acceptance_MH, theta, theta_new)
+tam_pv_mcmc_theta_MH_ratio_accept <- function(loglike, log_dens_theta,
+	loglike_new, log_dens_theta_new, theta_acceptance_MH, theta, theta_new)
 {
-	nstud <- length(dens_theta)
-	MH_ratio <- exp( log( loglike_new ) + log( dens_theta_new ) - log( loglike ) - log( dens_theta ) )		
+	nstud <- length(log_dens_theta)
+	eps <- 1E-100
+	MH_ratio <- exp( log( loglike_new + eps ) + log_dens_theta_new - log( loglike + eps ) - log_dens_theta  )		
 	accept_MH <- ( MH_ratio > stats::runif(nstud) )
 	loglike[ accept_MH ] <- loglike_new[ accept_MH ]
 	theta_acceptance_MH$n_samples <- theta_acceptance_MH$n_samples + 1

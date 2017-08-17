@@ -10,6 +10,7 @@ tam_pv_mcmc_proc_input <- function( tamobj, group, Y )
 	#** extract some elements
 	person <- tamobj$person
 	AXsi <- tamobj$AXsi
+	AXsi[ is.na(AXsi ) ] <- -99	
 	B <- tamobj$B
 	guess <- tamobj$guess
 	resp <- tamobj$resp

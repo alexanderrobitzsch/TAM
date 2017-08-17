@@ -117,6 +117,10 @@ tam_pv_mcmc_likelihood_Rcpp <- function(probs, resp, resp_ind, maxK, nstud, nite
     .Call('TAM_tam_pv_mcmc_likelihood_Rcpp', PACKAGE = 'TAM', probs, resp, resp_ind, maxK, nstud, nitems)
 }
 
+tam_pv_mcmc_calc_probs_irf_3pl_rcpp <- function(theta, B, I, maxK, resp_ind, AXsi) {
+    .Call('TAM_tam_pv_mcmc_calc_probs_irf_3pl_rcpp', PACKAGE = 'TAM', theta, B, I, maxK, resp_ind, AXsi)
+}
+
 tam_mvrnorm_rcpp <- function(n, mu, sigma) {
     .Call('TAM_tam_mvrnorm_rcpp', PACKAGE = 'TAM', n, mu, sigma)
 }

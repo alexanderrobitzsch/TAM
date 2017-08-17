@@ -75,27 +75,31 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 	iter <- 1
 	
 	#--------------- BEGIN MCMC ITERATIONS ---------------------
-	while (iterate_mcmc){	
+	while (iterate_mcmc){
+
 		#*** individual prior distributions
-		dens_theta <- tam_pv_mcmc_prior_density( theta=theta, beta=beta, variance=variance, 
-							Y=Y, log=FALSE,	G=G, group_index=group_index, 
+		log_dens_theta <- tam_pv_mcmc_prior_density( theta=theta, beta=beta, variance=variance, 
+							Y=Y, log=TRUE,	G=G, group_index=group_index, 
 							beta_groups=beta_groups)
-						
+		dens_theta <- exp( log_dens_theta )				
+ 		
 		#--- new theta proposal and evaluation of prior density
 		theta_new <- tam_pv_mcmc_proposal_theta( theta=theta, nstud=nstud, variance=variance, 
-							adj_MH=adj_MH, D=D,	G=G, group_index=group_index ) 	
-		dens_theta_new <- tam_pv_mcmc_prior_density( theta=theta_new, beta=beta, variance=variance, 
-								Y=Y, log=FALSE,	G=G, group_index=group_index,
+							adj_MH=adj_MH, D=D,	G=G, group_index=group_index ) 								
+		log_dens_theta_new <- tam_pv_mcmc_prior_density( theta=theta_new, beta=beta, variance=variance, 
+								Y=Y, log=TRUE,	G=G, group_index=group_index,
 								beta_groups=beta_groups )
+		dens_theta_new <- exp( log_dens_theta_new )							
 		
 		#--- compute response probabilities theta value
-		probs_new <- tam_irf_3pl(theta=theta_new, AXsi=AXsi, B=B, guess=guess)		
+		probs_new <- tam_pv_mcmc_calc_probs( theta_new=theta_new, AXsi=AXsi, B=B, guess=guess, 
+							subtract_max=FALSE, resp.ind=resp.ind ) 
 		loglike_new <- tam_pv_mcmc_likelihood( probs=probs_new, resp=resp, resp.ind=resp.ind, 
 							nstud=nstud, nitems=nitems, maxK=maxK ) 	
 							
 		#--- Metropolis Hastings Ratio and sampled theta values
-		res <- tam_pv_mcmc_theta_MH_ratio_accept( loglike=loglike, dens_theta=dens_theta, 
-					loglike_new=loglike_new, dens_theta_new=dens_theta_new, 
+		res <- tam_pv_mcmc_theta_MH_ratio_accept( loglike=loglike, log_dens_theta=log_dens_theta, 
+					loglike_new=loglike_new, log_dens_theta_new=log_dens_theta_new, 
 					theta_acceptance_MH=theta_acceptance_MH, theta=theta, theta_new=theta_new ) 
 		loglike <- res$loglike
 		theta <- res$theta
@@ -123,7 +127,7 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 						beta_groups=beta_groups )
 		beta <- res$beta
 		variance <- res$variance
-	
+		
 		#--- save sampled parameters
 		if ( iter %in% saved_iter ){
 			res <- tam_pv_mcmc_save_parameters( beta=beta, beta_samples=beta_samples, 
@@ -147,7 +151,7 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 				cat("* Iteration ", iter , "\n")
 			}
 			utils::flush.console()
-		}
+		}						
 	}
 	#--------------- END MCMC ITERATIONS ---------------------	
 	

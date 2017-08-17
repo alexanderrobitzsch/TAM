@@ -429,6 +429,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// tam_pv_mcmc_calc_probs_irf_3pl_rcpp
+Rcpp::List tam_pv_mcmc_calc_probs_irf_3pl_rcpp(Rcpp::NumericMatrix theta, Rcpp::NumericVector B, int I, int maxK, Rcpp::IntegerMatrix resp_ind, Rcpp::NumericMatrix AXsi);
+RcppExport SEXP TAM_tam_pv_mcmc_calc_probs_irf_3pl_rcpp(SEXP thetaSEXP, SEXP BSEXP, SEXP ISEXP, SEXP maxKSEXP, SEXP resp_indSEXP, SEXP AXsiSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type B(BSEXP);
+    Rcpp::traits::input_parameter< int >::type I(ISEXP);
+    Rcpp::traits::input_parameter< int >::type maxK(maxKSEXP);
+    Rcpp::traits::input_parameter< Rcpp::IntegerMatrix >::type resp_ind(resp_indSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type AXsi(AXsiSEXP);
+    rcpp_result_gen = Rcpp::wrap(tam_pv_mcmc_calc_probs_irf_3pl_rcpp(theta, B, I, maxK, resp_ind, AXsi));
+    return rcpp_result_gen;
+END_RCPP
+}
 // tam_mvrnorm_rcpp
 Rcpp::NumericMatrix tam_mvrnorm_rcpp(int n, Rcpp::NumericVector mu, Rcpp::NumericMatrix sigma);
 RcppExport SEXP TAM_tam_mvrnorm_rcpp(SEXP nSEXP, SEXP muSEXP, SEXP sigmaSEXP) {
@@ -510,3 +526,4 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+
