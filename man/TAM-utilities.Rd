@@ -20,6 +20,10 @@
 \alias{require_namespace_msg}
 \alias{tam_dmvnorm}
 \alias{add.lead}
+\alias{tam_bayesian_bootstrap}
+\alias{tam_cov_wt}
+\alias{tam_cor_wt}
+
 
 \title{Utility Functions in \pkg{TAM}}
 
@@ -57,6 +61,12 @@ tam_interval_index(matr, rn)
 tam_rowCumsums(matr)
 ## extension of mvtnorm::dmvnorm to matrix entries of mean
 tam_dmvnorm(x, mean, sigma, log = FALSE )
+## Bayesian bootstrap in TAM (used in tam.pv.mcmc)
+tam_bayesian_bootstrap(N, do_boot=TRUE)
+## weighted covariance matrix
+tam_cov_wt(x, wt=NULL, method="ML")
+## weighted correlation matrix
+tam_cor_wt(x, wt=NULL, method="ML")
 
 ## remove items or persons with complete missing entries
 tam_remove_missings( dat, items, elim_items=TRUE, elim_persons=TRUE )
@@ -94,6 +104,10 @@ vector or matrix}
 \item{matr}{Matrix}
 \item{sigma}{Matrix}
 \item{log}{Logical}
+\item{N}{Integer}
+\item{do_boot}{Logical}
+\item{wt}{Optional vector containing weights}
+\item{method}{Method, see \code{\link[stats:cov.wt]{stats::cov.wt}} }
 \item{rn}{Vector}
 \item{dat}{Data frame}
 \item{items}{Vector}

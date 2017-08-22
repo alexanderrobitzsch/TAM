@@ -151,7 +151,8 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 				cat("* Iteration ", iter , "\n")
 			}
 			utils::flush.console()
-		}						
+		}		
+		
 	}
 	#--------------- END MCMC ITERATIONS ---------------------	
 	

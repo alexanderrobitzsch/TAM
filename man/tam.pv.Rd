@@ -17,7 +17,8 @@ and the Examples 2 and 3 of this function.
 The function \code{tam.pv.mcmc} employs fully Bayesian estimation for drawing
 plausible values and is recommended in cases when the latent regression model
 is unreliably estimated (multidimensional model with stochastic nodes). 
-Regression parameters are conditionally drawn by Bayesian bootstrap.
+The parameters of the latent regression (regression coefficients and 
+residual covariance matrices) are drawn by Bayesian bootstrap (Rubin, 1981).
 }
 
 \usage{
@@ -154,6 +155,9 @@ Adams, R. J., & Wu, M. L. (2007). The mixed-coefficients multinomial logit model
 A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.):
 \emph{Multivariate and mixture distribution Rasch models: Extensions and applications}
 (pp. 55-76). New York: Springer.
+
+Rubin, D. B. (1981). The bayesian bootstrap. \emph{The Annals of Statistics}, \bold{9}(1), 
+130-134.
 }
 
 
