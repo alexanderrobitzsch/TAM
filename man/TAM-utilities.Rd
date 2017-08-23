@@ -62,7 +62,7 @@ tam_rowCumsums(matr)
 ## extension of mvtnorm::dmvnorm to matrix entries of mean
 tam_dmvnorm(x, mean, sigma, log = FALSE )
 ## Bayesian bootstrap in TAM (used in tam.pv.mcmc)
-tam_bayesian_bootstrap(N, do_boot=TRUE)
+tam_bayesian_bootstrap(N, sample_integers=FALSE, do_boot=TRUE)
 ## weighted covariance matrix
 tam_cov_wt(x, wt=NULL, method="ML")
 ## weighted correlation matrix
@@ -105,6 +105,8 @@ vector or matrix}
 \item{sigma}{Matrix}
 \item{log}{Logical}
 \item{N}{Integer}
+\item{sample_integers}{Logical indicating whether weights for complete cases
+should be sampled in bootstrap}
 \item{do_boot}{Logical}
 \item{wt}{Optional vector containing weights}
 \item{method}{Method, see \code{\link[stats:cov.wt]{stats::cov.wt}} }

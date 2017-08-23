@@ -3,7 +3,8 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 				nplausible=10, level = .95, n.iter = 1000 ,
 				n.burnin = 500, adj_MH = .5, adj_change_MH = .05 , 
 				refresh_MH = 50, accrate_bound_MH = c(.45, .55), 
-				theta_init = NULL, print_iter = 20 , verbose = TRUE)
+				sample_integers = FALSE, theta_init = NULL, print_iter = 20 , 
+				verbose = TRUE)
 {
     s1 <- Sys.time()
 	CALL <- match.call()
@@ -43,7 +44,7 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 	#--- compute initial beta and variance parameters
 	res <- tam_pv_mcmc_sample_beta_variance( theta=theta , Y=Y, nstud=nstud, 
 					pweights=pweights, samp.regr=FALSE, G=G, group_index=group_index,
-					beta_groups=beta_groups )
+					beta_groups=beta_groups, sample_integers=sample_integers )
 	beta <- res$beta
 	variance <- res$variance
 	
@@ -124,7 +125,7 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 		#--- sample new regression parameters
 		res <- tam_pv_mcmc_sample_beta_variance( theta=theta , Y=Y, nstud=nstud, 
 						pweights=pweights, samp.regr=TRUE,  G=G, group_index=group_index,
-						beta_groups=beta_groups )
+						beta_groups=beta_groups , sample_integers=sample_integers )
 		beta <- res$beta
 		variance <- res$variance
 		

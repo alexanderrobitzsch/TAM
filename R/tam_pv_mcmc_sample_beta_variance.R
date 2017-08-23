@@ -1,6 +1,6 @@
 
 tam_pv_mcmc_sample_beta_variance <- function( theta , Y, nstud , pweights, samp.regr=FALSE,
-		G, group_index, beta_groups)
+		G, group_index, beta_groups, sample_integers)
 {	
 	formula_theta <- theta0 ~ 0 + Y0	
 	D <- ncol(theta)
@@ -16,7 +16,8 @@ tam_pv_mcmc_sample_beta_variance <- function( theta , Y, nstud , pweights, samp.
 	ind <- c()
 	for (gg in 1:G){
 		N_group_gg <- attr(group_index0, "N_groups")[gg] 
-		bootstrap_weights[[gg]] <- tam_bayesian_bootstrap(N=N_group_gg, do_boot=samp.regr)
+		bootstrap_weights[[gg]] <- tam_bayesian_bootstrap(N=N_group_gg, 
+						sample_integers=sample_integers, do_boot=samp.regr)
 		# group_index[[gg]] <- sample( group_index0[[gg]] , N_group_gg, replace=TRUE )
 	}
 	ind <- unlist( group_index )

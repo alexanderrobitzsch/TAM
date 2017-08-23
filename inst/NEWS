@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.7  |  2017-08-22  |  Last: TAM 2.7-22
+VERSIONS TAM 2.7  |  2017-08-23  |  Last: TAM 2.7-23
 -------------------------------------------------------------
 
 FEATURES:
@@ -66,8 +66,9 @@ NOTES:
   now takes place in Rcpp, some speed improvement
 * exported utility function 'add.lead', 'tam_bayesian_bootstrap',
   'tam_cov_wt' and 'tam_cor_wt'
-* changed bootstrap to Bayesian bootstrap (Rubin, 1981) in
-  'tam.pv.mcmc'
+* included two options for Bayesian bootstrap (Rubin, 1981) in
+  'tam.pv.mcmc': sampling of case of probabilities and sampling
+  of cases (which corresponds to sampling of integers)
   
 
 DATASETS INCLUDED OR MODIFIED:
