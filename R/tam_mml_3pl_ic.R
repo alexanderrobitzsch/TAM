@@ -1,3 +1,6 @@
+## File Name: tam_mml_3pl_ic.R
+## File Version: 9.15
+## File Last Change: 2017-06-01 10:43:34
 
 
 ##################################

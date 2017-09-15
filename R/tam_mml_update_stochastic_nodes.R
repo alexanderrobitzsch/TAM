@@ -1,3 +1,6 @@
+## File Name: tam_mml_update_stochastic_nodes.R
+## File Version: 0.01
+## File Last Change: 2017-04-29 17:26:00
 
 tam_mml_update_stochastic_nodes <- function(theta0.samp, variance, snodes, beta,
 		theta)

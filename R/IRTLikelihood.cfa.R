@@ -1,20 +1,22 @@
+## File Name: IRTLikelihood.cfa.R
+## File Version: 9.06
+## File Last Change: 2017-09-14 18:48:35
 
 #########################################
 # IRTLikelihood for fitted CFA model
 IRTLikelihood.cfa <- function( data , cfaobj=NULL ,
 		theta=NULL, L=NULL , nu=NULL , psi=NULL ,
-		snodes = NULL , snodes.adj=2 , version=1){ 
-	#***************
+		snodes = NULL , snodes.adj=2 , version=1)
+{ 
 	
 	if ( ! is.null(cfaobj) ){
 		cfaobj <- cfa.extract.itempars(cfaobj)
 		L <- cfaobj$L
 		nu <- cfaobj$nu
 		psi <- cfaobj$psi 
-		obs.vars <- cfaobj$obs.vars
-		data <- data[ , obs.vars , drop=FALSE ]
-		
-				}
+		obs.vars <- cfaobj$obs.vars	
+		data <- data[ , obs.vars , drop=FALSE ]		
+	}
 	D <- ncol(L)
 	#*****
 	# create theta if it is not provided
@@ -23,20 +25,22 @@ IRTLikelihood.cfa <- function( data , cfaobj=NULL ,
 			if ( D==1){ snodes <- 100 }
 			if ( D==2){ snodes <- 200 }	
 			if ( D>2){ snodes <- 1000 }			
-						}
+		}
+		theta0 <- snodes.adj * seq(-3,3,len=21)
 		if (D>2){				
 			r1 <- sfsmisc::QUnif(n=snodes, min = 0, max = 1, n.min = 1, p=D, leap = 409)						
 			theta <- stats::qnorm( r1 )
 			for ( dd in 1:D){
 				theta[,dd] <- snodes.adj*theta[,dd]
-							}
-					}
-		if (D==1){ theta <- matrix( seq(-6,6,len=21) , ncol=1 ) }
+			}
+		}
+		if (D==1){ 
+			theta <- matrix( theta0 , ncol=1 ) 
+		}
 		if (D==2){ 
-			theta <- seq(-6,6,len=21)
-			theta <- expand.grid( theta , theta )
-				}
-				}
+			theta <- expand.grid( theta0 , theta0 )
+		}
+	}
 	
 	#*************************************************
 	#**** R version
@@ -57,8 +61,8 @@ IRTLikelihood.cfa <- function( data , cfaobj=NULL ,
 			h1 <- stats::dnorm( data[,ii] , mean = term , sd = sqrt( psi[ii,ii] ) )
 			ind <- which( ! is.na( data[,ii] ) )
 			hwt[ind,] <- hwt[ind,] * h1[ind,]
-			    	}
-				}
+	   	}
+	}
     #********************************************************				
 	#***** Rcpp version
 	if (version == 1){

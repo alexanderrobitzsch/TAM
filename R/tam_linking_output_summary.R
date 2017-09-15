@@ -1,3 +1,6 @@
+## File Name: tam_linking_output_summary.R
+## File Version: 0.08
+## File Last Change: 2017-07-10 14:54:24
 
 tam_linking_output_summary <- function( parameters_list, linking_list)
 {

@@ -1,3 +1,6 @@
+## File Name: tam_pv_mcmc_parameter_samples_correlation_index.R
+## File Version: 0.03
+## File Last Change: 2017-08-15 15:21:46
 
 tam_pv_mcmc_parameter_samples_correlation_index <- function(index) 
 {

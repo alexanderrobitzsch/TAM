@@ -1,3 +1,6 @@
+## File Name: tam.mml.3pl.R
+## File Version: 9.791
+## File Last Change: 2017-09-14 19:41:39
 tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,  
             formulaY = NULL , dataY = NULL , 
             ndim = 1 , pid = NULL ,
@@ -63,7 +66,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 		A <- res$A
 		xsi.fixed <- res$xsi.fixed
 	}
-						
+	
 	#********************			
 	#********************
 	# compute B from E or an input statement
@@ -83,7 +86,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 		Edes <- tam_mml_3pl_nonzero_entries( E=as.vector(E) , dimE=dim(E) )$E_design
 	}											
 	B <- tam_mml_3pl_computeB( Edes=Edes , gammaslope=gammaslope , E=E )
-	 
+	
 	#*********************** 	
     if ( is.null(A)){ printxsi <- FALSE  } else { printxsi <- TRUE }  
 
@@ -115,7 +118,6 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 	if ( ! is.null( variance.fixed ) ){
 		est.variance <- TRUE			
 	}    
-	
 	
 	# manage guessing parameters
 	if ( is.null(guess) ){
@@ -163,7 +165,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
     varConv <- FALSE          #flag of variance convergence
     nnodes <- length(nodes)^ndim
     if ( snodes > 0 ){ nnodes <- snodes }
-
+	
 	#--- print information about nodes
 	res <- tam_mml_progress_proc_nodes( progress=progress, snodes=snodes, nnodes=nnodes, 
 					skillspace= skillspace, QMC=QMC )  		
@@ -194,7 +196,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
     #---2PL---
     B_orig <- B  #keep a record of generated B before estimating it in 2PL model 
     #---end 2PL---
-
+	
 	#--- xsi parameter index
 	res <- tam_mml_proc_est_xsi_index(A, xsi.inits, xsi.fixed)
 	np <- res$np
@@ -274,7 +276,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
     beta.min.deviance <- beta
     variance.min.deviance <- variance
 	
-	#--- create grid of nodes for numeric or stochastic integration
+	#--- create grid of nodes for numeric or stochastic integration	
 	res <- tam_mml_create_nodes( snodes=snodes, nodes=nodes, ndim=ndim, QMC=QMC,
 				skillspace=skillspace, theta.k=theta.k) 
 	theta <- res$theta
@@ -284,7 +286,6 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 	thetasamp.density <- res$thetasamp.density
 	nnodes <- res$nnodes	
 	snodes <- res$snodes
-	
     deviance <- 0  
 	deviance.history <- tam_deviance_history_init(maxiter=maxiter)
 	
@@ -422,7 +423,6 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 		group_indices[[gg]] <- which( group == gg )
 	}
 	#**************************
-
     
     hwt.min <- 0
     rprobs.min <- 0
@@ -457,11 +457,11 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 			pi.k[,gg] <- exp( delta.designmatrix %*% delta.inits[,gg] )
 		}
 	}
-
+	
 	#--- speed gains, further auxiliary objects, 2015-06-26
 	unidim_simplify <- TRUE
 	if (G > 1){ unidim_simplify <- FALSE }
-	if ( YSD){ unidim_simplify <- FALSE }							
+	if ( YSD){ unidim_simplify <- FALSE }																		
 							
 	##############################################################
 	##############################################################

@@ -1,3 +1,6 @@
+## File Name: tam.modelfit.func.R
+## File Version: 9.02
+## File Last Change: 2017-01-24 18:13:51
 
 ########################################################
 # tam.modelfit with user defined input

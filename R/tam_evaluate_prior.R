@@ -1,3 +1,6 @@
+## File Name: tam_evaluate_prior.R
+## File Version: 0.08
+## File Last Change: 2017-06-19 13:28:49
 
 tam_evaluate_prior <- function( prior_list , parameter , derivatives=TRUE, 
 		h = 1E-4)

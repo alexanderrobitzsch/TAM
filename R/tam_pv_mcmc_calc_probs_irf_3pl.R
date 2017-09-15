@@ -1,3 +1,6 @@
+## File Name: tam_pv_mcmc_calc_probs_irf_3pl.R
+## File Version: 0.27
+## File Last Change: 2017-08-17 17:24:21
 
 
 tam_pv_mcmc_calc_probs_irf_3pl <- function(theta, AXsi, B, guess, subtract_max=FALSE,

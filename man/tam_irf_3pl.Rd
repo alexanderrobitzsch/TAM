@@ -1,3 +1,7 @@
+%% File Name: tam_irf_3pl.Rd
+%% File Version: 0.11
+%% File Last Change: 2017-08-16 18:16:37
+
 \name{tam_irf_3pl}
 \alias{tam_irf_3pl}
 %- Also NEED an '\alias' for EACH other topic documented here.

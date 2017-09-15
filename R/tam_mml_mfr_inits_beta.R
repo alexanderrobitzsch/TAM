@@ -1,3 +1,6 @@
+## File Name: tam_mml_mfr_inits_beta.R
+## File Version: 0.01
+## File Last Change: 2017-05-25 14:43:16
 
 
 tam_mml_mfr_inits_beta <- function(Y, formulaY, dataY, G, group, groups, nstud,

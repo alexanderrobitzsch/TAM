@@ -1,3 +1,7 @@
+%% File Name: TAM-package.Rd
+%% File Version: 2.53
+%% File Last Change: 2017-06-22 17:41:52
+
 \name{TAM-package}
 \alias{TAM-package}
 \alias{TAM}

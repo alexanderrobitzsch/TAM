@@ -1,3 +1,6 @@
+## File Name: tam_pv_mcmc_save_parameters.R
+## File Version: 0.02
+## File Last Change: 2017-05-29 11:16:19
 
 tam_pv_mcmc_save_parameters <- function( beta, beta_samples, 
 		variance, variance_samples, deviance, deviance_samples,

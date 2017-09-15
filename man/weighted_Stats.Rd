@@ -1,3 +1,7 @@
+%% File Name: weighted_Stats.Rd
+%% File Version: 1.14
+%% File Last Change: 2017-06-22 17:41:53
+
 \name{weighted_Stats}
 \alias{weighted_Stats}
 \alias{weighted_var}

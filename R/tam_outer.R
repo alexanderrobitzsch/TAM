@@ -1,3 +1,6 @@
+## File Name: tam_outer.R
+## File Version: 0.04
+## File Last Change: 2017-05-30 18:50:58
 
 tam_outer <- function(x,y, op="*")
 {

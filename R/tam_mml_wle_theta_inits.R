@@ -1,3 +1,6 @@
+## File Name: tam_mml_wle_theta_inits.R
+## File Version: 0.01
+## File Last Change: 2017-06-01 16:54:22
 
 
 tam_mml_wle_theta_inits <- function(WLE, adj, nitems, maxK, resp, resp.ind, B,

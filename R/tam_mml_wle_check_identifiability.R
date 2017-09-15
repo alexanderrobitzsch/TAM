@@ -1,3 +1,6 @@
+## File Name: tam_mml_wle_check_identifiability.R
+## File Version: 0.01
+## File Last Change: 2017-06-01 17:32:57
 
 tam_mml_wle_check_identifiability <- function(B)
 {

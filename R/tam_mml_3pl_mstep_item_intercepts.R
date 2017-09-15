@@ -1,3 +1,6 @@
+## File Name: tam_mml_3pl_mstep_item_intercepts.R
+## File Version: 9.41
+## File Last Change: 2017-05-15 09:43:44
 
 
 ##########################################################################

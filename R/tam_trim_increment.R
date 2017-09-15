@@ -1,3 +1,6 @@
+## File Name: tam_trim_increment.R
+## File Version: 0.14
+## File Last Change: 2017-06-01 17:06:25
 
 tam_trim_increment <- function(increment, max.increment, trim_increment="cut",
 	trim_incr_factor = 2, eps = 1E-10, avoid_na=FALSE)

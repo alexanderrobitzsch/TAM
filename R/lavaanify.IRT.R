@@ -1,3 +1,6 @@
+## File Name: lavaanify.IRT.R
+## File Version: 9.04
+## File Last Change: 2017-07-12 11:16:23
 
 ########################################################################
 # lavaanify extension

@@ -1,3 +1,6 @@
+## File Name: tam_mml_ic_criteria.R
+## File Version: 0.01
+## File Last Change: 2017-05-31 13:47:45
 
 
 tam_mml_ic_criteria <- function(ic)

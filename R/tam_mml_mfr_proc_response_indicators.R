@@ -1,3 +1,6 @@
+## File Name: tam_mml_mfr_proc_response_indicators.R
+## File Version: 0.02
+## File Last Change: 2017-05-25 18:13:12
 
 tam_mml_mfr_proc_response_indicators <- function(nitems, gresp, gresp.noStep)
 {

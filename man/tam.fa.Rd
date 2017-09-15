@@ -1,3 +1,7 @@
+%% File Name: tam.fa.Rd
+%% File Version: 2.12
+%% File Last Change: 2017-06-22 17:41:52
+
 \name{tam.fa}
 \alias{tam.fa}
 %- Also NEED an '\alias' for EACH other topic documented here.

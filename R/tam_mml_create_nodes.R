@@ -1,3 +1,6 @@
+## File Name: tam_mml_create_nodes.R
+## File Version: 0.14
+## File Last Change: 2017-09-14 19:38:50
 
 tam_mml_create_nodes <- function(snodes, nodes, ndim, QMC,
 		skillspace="normal", theta.k=NULL)
@@ -7,16 +10,26 @@ tam_mml_create_nodes <- function(snodes, nodes, ndim, QMC,
 	thetawidth <- NULL
 	theta0.samp <- NULL
 	theta <- NULL	
+	do_numeric <- TRUE
 	
 	#--- 
 	if ( is.null(theta.k) & ( skillspace == "discrete") ){
 		snodes <- 0
 	}	
 	
+	if ( skillspace == "discrete"){
+		do_numeric <- FALSE
+	}	
+
+	if ( ( skillspace == "discrete") & ( ! is.null(theta.k) ) ){	  
+		theta <- as.matrix( theta.k )
+		nnodes <- nrow(theta)
+	}	
+	
 	#----------------------------------------
     #--- numeric integration
-    if ( snodes == 0 ){ 
-		theta <- as.matrix( expand.grid( as.data.frame( matrix( rep(nodes, ndim) , ncol = ndim ) ) ) )
+    if ( ( snodes == 0 ) & do_numeric ){ 
+		theta <- tam_mml_create_nodes_multidim_nodes(nodes=nodes, ndim=ndim)	
 		if ( ( skillspace != "normal") & ( ! is.null(theta.k) ) ){	  
 			theta <- as.matrix( theta.k )
 			nnodes <- nrow(theta)

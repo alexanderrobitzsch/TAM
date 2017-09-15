@@ -1,3 +1,6 @@
+## File Name: tam_mml_mstep_intercept.R
+## File Version: 0.33
+## File Last Change: 2017-06-19 13:31:55
 
 tam_mml_mstep_intercept <- function( A, xsi, AXsi, B, theta , nnodes , maxK,
 		Msteps, rprobs, np , est.xsi.index0, itemwt, indexIP.no , indexIP.list2 , 

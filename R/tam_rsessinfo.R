@@ -1,3 +1,6 @@
+## File Name: tam_rsessinfo.R
+## File Version: 0.01
+## File Last Change: 2017-04-06 16:59:30
 
 
 #***********************************************

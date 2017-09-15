@@ -1,3 +1,7 @@
+%% File Name: msq.itemfit.Rd
+%% File Version: 0.30
+%% File Last Change: 2017-06-22 17:41:52
+
 \name{msq.itemfit}
 
 \alias{msq.itemfit}

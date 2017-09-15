@@ -1,3 +1,6 @@
+## File Name: tam.fa.R
+## File Version: 9.09
+## File Last Change: 2017-07-24 15:09:26
 #################################################################
 # Exploratory Factor Analysis and Bifactor Models
 tam.fa <- function( resp , irtmodel , dims=NULL , nfactors=NULL ,

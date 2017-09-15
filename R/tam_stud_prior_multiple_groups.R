@@ -1,3 +1,6 @@
+## File Name: tam_stud_prior_multiple_groups.R
+## File Version: 0.04
+## File Last Change: 2017-04-06 14:06:34
 
 
 tam_stud_prior_multiple_groups <- function(theta , Y , beta , variance , nstud , 

@@ -1,3 +1,6 @@
+## File Name: summary.msq.itemfitWLE.R
+## File Version: 9.03
+## File Last Change: 2017-04-06 17:00:25
 
 ###################################################
 # summary for objects of class msq.itemfitWLE

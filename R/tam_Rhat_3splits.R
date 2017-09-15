@@ -1,3 +1,6 @@
+## File Name: tam_Rhat_3splits.R
+## File Version: 0.01
+## File Last Change: 2017-05-31 14:49:08
 
 tam_Rhat_3splits <- function(parameter_samples)
 {

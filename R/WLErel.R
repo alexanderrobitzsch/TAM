@@ -1,3 +1,6 @@
+## File Name: WLErel.R
+## File Version: 9.07
+## File Last Change: 2017-06-01 13:42:13
 
 #####################################################
 # computes reliability for one-dimensional WLEs

@@ -1,3 +1,6 @@
+## File Name: tam_mml_calc_prob.R
+## File Version: 9.23
+## File Last Change: 2017-05-10 11:45:04
 
 #####################################################################
 # calc_prob

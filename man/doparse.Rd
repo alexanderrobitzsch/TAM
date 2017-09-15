@@ -1,3 +1,7 @@
+%% File Name: doparse.Rd
+%% File Version: 0.17
+%% File Last Change: 2017-06-22 17:41:51
+
 \name{doparse}
 \alias{doparse}
 %- Also NEED an '\alias' for EACH other topic documented here.

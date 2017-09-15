@@ -1,3 +1,6 @@
+## File Name: designMatrices.mfr_aux.R
+## File Version: 9.15
+## File Last Change: 2017-04-28 12:11:02
 
 .generate.interactions <- function(X , facets , formulaA , mm ){	
 	d1 <- d0 <- X	

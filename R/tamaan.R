@@ -1,3 +1,6 @@
+## File Name: tamaan.R
+## File Version: 9.04
+## File Last Change: 2017-09-15 09:38:28
 
 ##########################################################
 # tamaan function
@@ -7,15 +10,14 @@ tamaan <- function( tammodel , resp , tam.method=NULL,
 	# process syntax with tamaanify
 	cl <- match.call()
 	cl1 <- paste(cl)
-	# cl1con <- cl1["con"]
-    incr.fac <- FALSE	
+	incr.fac <- FALSE	
 	if ( length( grep("increment.factor" , cl1 ) ) > 0 ){
 		incr.fac <- TRUE 
-			}	
+	}	
 
 	s0 <- Sys.time()	
 	res0 <- tamaanify( tammodel=tammodel , resp=resp , tam.method=tam.method ,
-			doparse=doparse )
+			    doparse=doparse )
 	
 			
 	anal.list <- res0$ANALYSIS.list
@@ -28,24 +30,21 @@ tamaan <- function( tammodel , resp , tam.method=NULL,
                  maxiter = 1000 , max.increment = 1 , 
                  min.variance = .001 , progress = TRUE , ridge=0 ,
                  seed = NULL , xsi.start0=FALSE , increment.factor=1 , fac.oldxsi=0)
-		if ( anal.list$type %in% c("LCA","OLCA") ){
-			#con$increment.factor <- 1.05 
-			con$increment.factor <- 1.01
-						}
-		if ( anal.list$type %in% c("TRAIT") ){
-			# con$increment.factor <- 1.02 
-			con$increment.factor <- 1.01
-						}
-		if ( anal.list$type %in% c("MIXTURE") ){
-#			con$increment.factor <- 1.035
-			con$increment.factor <- 1.01
-						}						
-		if ( anal.list$type %in% c("LOCLCA") ){
-			con$increment.factor <- 1.01
-						}
+	if ( anal.list$type %in% c("LCA","OLCA") ){
+		con$increment.factor <- 1.01
+	}
+	if ( anal.list$type %in% c("TRAIT") ){
+		con$increment.factor <- 1.01
+	}
+	if ( anal.list$type %in% c("MIXTURE") ){
+		con$increment.factor <- 1.04
+	}						
+	if ( anal.list$type %in% c("LOCLCA") ){
+		con$increment.factor <- 1.01
+	}
 	if ( incr.fac ){
-		    con$increment.factor <- control$increment.factor 	
-					}
+	    con$increment.factor <- control$increment.factor 	
+	}
 					
 	#a0 <- Sys.time()			   
     con[ names(control) ] <- control  

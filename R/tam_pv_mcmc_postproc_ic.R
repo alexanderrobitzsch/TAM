@@ -1,3 +1,6 @@
+## File Name: tam_pv_mcmc_postproc_ic.R
+## File Version: 0.05
+## File Last Change: 2017-05-31 13:51:12
 
 tam_pv_mcmc_postproc_ic <- function(parameter_samples, deviance_samples,
 		theta_samples_mean, AXsi, B, guess, beta, variance, group_index, G, Y,

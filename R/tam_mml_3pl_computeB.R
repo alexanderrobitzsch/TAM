@@ -1,3 +1,6 @@
+## File Name: tam_mml_3pl_computeB.R
+## File Version: 0.02
+## File Last Change: 2017-06-23 12:45:06
 
 
 #############################################################

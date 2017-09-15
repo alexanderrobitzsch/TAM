@@ -1,3 +1,6 @@
+## File Name: summary.tam.fit.R
+## File Version: 9.03
+## File Last Change: 2017-06-15 13:41:50
 
 ###################################################
 # summary for tam.fit

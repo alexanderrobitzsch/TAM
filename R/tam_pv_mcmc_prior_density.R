@@ -1,3 +1,6 @@
+## File Name: tam_pv_mcmc_prior_density.R
+## File Version: 0.07
+## File Last Change: 2017-08-16 11:17:55
 
 tam_pv_mcmc_prior_density <- function( theta, beta, variance, Y, log=FALSE,
 		G, group_index, beta_groups )

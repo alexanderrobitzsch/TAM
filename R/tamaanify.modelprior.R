@@ -1,3 +1,6 @@
+## File Name: tamaanify.modelprior.R
+## File Version: 9.04
+## File Last Change: 2017-04-06 15:19:57
 
 ############################################
 # model prior parsing

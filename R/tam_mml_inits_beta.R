@@ -1,3 +1,6 @@
+## File Name: tam_mml_inits_beta.R
+## File Version: 0.06
+## File Last Change: 2017-05-25 14:43:09
 
 tam_mml_inits_beta <- function(Y, formulaY, dataY, G, group, groups, nstud,
 		pweights, ridge, beta.fixed, xsi.fixed, constraint, ndim, beta.inits)

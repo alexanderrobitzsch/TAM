@@ -1,3 +1,6 @@
+## File Name: tam.fit.R
+## File Version: 9.04
+## File Last Change: 2017-02-18 21:59:10
 tam.fit <- function( tamobj, ... ){
   if(class(tamobj) == "tam.mml"){
     res <- tam.mml.fit( tamobj, ...)

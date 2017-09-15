@@ -1,3 +1,6 @@
+//// File Name: tam_modelfit_aux.cpp
+//// File Version: 3.06
+//// File Last Change: 2017-02-18 21:29:23
 
 
 #include <Rcpp.h>

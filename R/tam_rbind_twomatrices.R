@@ -1,3 +1,6 @@
+## File Name: tam_rbind_twomatrices.R
+## File Version: 9.03
+## File Last Change: 2017-04-29 18:02:46
 
 #########################################
 # bind two matrices

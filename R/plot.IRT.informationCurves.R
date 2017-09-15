@@ -1,3 +1,6 @@
+## File Name: plot.IRT.informationCurves.R
+## File Version: 9.02
+## File Last Change: 2017-01-24 18:13:50
 
 #############################################################################
 plot.IRT.informationCurves <- function(x , curve_type="test" , ... ){

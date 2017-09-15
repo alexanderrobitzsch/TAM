@@ -1,3 +1,6 @@
+## File Name: tam_mml_3pl_distributionmoments.R
+## File Version: 9.05
+## File Last Change: 2017-04-06 14:31:35
 
 #######################################################################
 # moments of distribution

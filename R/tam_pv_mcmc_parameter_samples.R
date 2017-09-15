@@ -1,3 +1,6 @@
+## File Name: tam_pv_mcmc_parameter_samples.R
+## File Version: 0.14
+## File Last Change: 2017-08-16 10:40:18
 
 tam_pv_mcmc_parameter_samples <- function(beta_samples, variance_samples)
 {	

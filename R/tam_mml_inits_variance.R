@@ -1,3 +1,6 @@
+## File Name: tam_mml_inits_variance.R
+## File Version: 0.02
+## File Last Change: 2017-05-25 14:51:52
 
 tam_mml_inits_variance <- function( variance.inits, ndim , variance.fixed )
 {

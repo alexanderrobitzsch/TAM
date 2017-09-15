@@ -1,3 +1,6 @@
+## File Name: IRT.modelfit.tam.R
+## File Version: 9.02
+## File Last Change: 2017-01-24 18:13:49
 
 ###########################################################
 # general model fit function for TAM objects

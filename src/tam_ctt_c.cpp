@@ -1,3 +1,6 @@
+//// File Name: tam_ctt_c.cpp
+//// File Version: 3.01
+//// File Last Change: 2017-02-18 20:41:05
 
 
 // [[Rcpp::depends(RcppArmadillo)]]

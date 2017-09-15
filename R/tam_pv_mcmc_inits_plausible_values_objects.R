@@ -1,3 +1,6 @@
+## File Name: tam_pv_mcmc_inits_plausible_values_objects.R
+## File Version: 0.05
+## File Last Change: 2017-05-31 13:55:34
 
 tam_pv_mcmc_inits_plausible_values_objects <- function( n.burnin, n.iter,
 		nplausible, D, nstud, pid )

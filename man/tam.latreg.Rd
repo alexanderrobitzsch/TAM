@@ -1,3 +1,7 @@
+%% File Name: tam.latreg.Rd
+%% File Version: 0.23
+%% File Last Change: 2017-08-10 11:04:26
+
 \name{tam.latreg}
 \alias{tam.latreg}
 \alias{summary.tam.latreg}

@@ -1,3 +1,6 @@
+## File Name: cfa.extract.itempars.R
+## File Version: 9.04
+## File Last Change: 2017-08-14 09:32:44
 
 ######################################################################
 # extract item parameters from fitted cfa object (in lavaan)
@@ -11,7 +14,7 @@ cfa.extract.itempars <- function( object )
 	ParTable$parname <- paste0( ParTable$lhs , ParTable$op , ParTable$rhs )	
 	labels1 <- paste(ParTable$label)
 	ParTable$parname <- ifelse ( labels1 != "" , labels1 , ParTable$parname )	
-	ParTable$est <- ParTable$ustart
+	# ParTable$est <- ParTable$ustart
 	# extract sample statistics
 	means <- object@SampleStats@mean[[1]]
 	obs.vars <- object@Data@ov.names[[1]]
@@ -73,11 +76,11 @@ cfa.extract.itempars <- function( object )
 	}
 					
 	#**** output				
-	res <- list( "L"=L , "nu"= nu , "psi"= psi ,
-			"Sigma" = Sigma , "mu" = mu ,
-			"obs.means" = means , "obs.cov" = covs ,
-			"obs.vars" = obs.vars , "lat.vars" = lat.vars ,
-			"NOV" = NOV , "NLV" = NLV )
+	res <- list( L=L , nu= nu , psi= psi ,
+			Sigma = Sigma , mu = mu ,
+			obs.means = means , obs.cov = covs ,
+			obs.vars = obs.vars , lat.vars = lat.vars ,
+			NOV = NOV , NLV = NLV )
 	return(res)
 }
 ######################################################

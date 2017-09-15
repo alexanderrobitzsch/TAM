@@ -1,3 +1,6 @@
+## File Name: require_namespace_msg.R
+## File Version: 0.02
+## File Last Change: 2017-07-12 10:46:43
 
 require_namespace_msg <- function(pkg)
 {

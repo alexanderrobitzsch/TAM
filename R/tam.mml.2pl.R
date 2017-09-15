@@ -1,3 +1,6 @@
+## File Name: tam.mml.2pl.R
+## File Version: 9.531
+## File Last Change: 2017-07-24 15:08:11
 tam.mml.2pl <-
 function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
                  formulaY = NULL , dataY = NULL , 

@@ -1,3 +1,6 @@
+## File Name: tam.mml.R
+## File Version: 9.737
+## File Last Change: 2017-07-24 15:06:59
 tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
             formulaY = NULL , dataY = NULL , 
             ndim = 1 , pid = NULL ,

@@ -1,3 +1,6 @@
+## File Name: tam_deviance_history_init.R
+## File Version: 0.01
+## File Last Change: 2017-05-08 16:31:28
 
 tam_deviance_history_init <- function(maxiter)
 {

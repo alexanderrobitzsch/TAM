@@ -1,3 +1,6 @@
+## File Name: tam.latreg.R
+## File Version: 9.325
+## File Last Change: 2017-09-14 19:14:22
 
 ###################################################################
 # latent regression
@@ -64,10 +67,10 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
     
     #!! check dim of person ID pid
     if ( is.null(pid) ){ 
-			pid <- seq(1,nstud) 
-				} else { 
-			pid <- unname(c(unlist(pid))) 
-						}
+		pid <- seq(1,nstud) 
+	} else { 
+		pid <- unname(c(unlist(pid))) 
+	}
        
     # normalize person weights to sum up to nstud
     pweights <- nstud * pweights / sum(pweights)
@@ -75,10 +78,10 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
     betaConv <- FALSE         #flag of regression coefficient convergence
     varConv <- FALSE          #flag of variance convergence
     # nnodes <- length(nodes)^ndim
-	nnodes <- nrow(nodes)
-
-	
-	if ( snodes > 0 ){ nnodes <- snodes }
+	nnodes <- nrow(nodes)	
+	if ( snodes > 0 ){ 
+		nnodes <- snodes 
+	}
     
 	#--- print information about nodes
 	res <- tam_mml_progress_proc_nodes( progress=progress, snodes=snodes, nnodes=nnodes, 
@@ -115,7 +118,7 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
     
 	#--- create grid of nodes for numeric or stochastic integration
 	res <- tam_mml_create_nodes( snodes=snodes, nodes=nodes, ndim=ndim, QMC=QMC ) 
-	theta <- res$theta
+	theta <- res$theta	
 	theta2 <- res$theta2
 	thetawidth <- res$thetawidth
 	theta0.samp <- res$theta0.samp
@@ -163,14 +166,14 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
 			thetasamp.density <- res$thetasamp.density  
 		}			
 		olddeviance <- deviance
-      
+	
 		# calculate student's prior distribution
 		gwt <- tam_stud_prior(theta=theta , Y=Y , beta=beta , variance=variance , nstud=nstud , 
                            nnodes=nnodes , ndim=ndim,YSD=YSD, unidim_simplify=FALSE)
 	    hwt <- like * gwt
 		res.hwt$rfx <- rowSums(hwt)
 		hwt <- hwt / rowSums(hwt)	 
-            
+		
 		#-- M step: estimation of beta and variance
 		if (progress){ 
 	       cat("M Step Latent Regression")

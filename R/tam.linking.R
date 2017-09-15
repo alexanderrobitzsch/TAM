@@ -1,3 +1,6 @@
+## File Name: tam.linking.R
+## File Version: 0.19
+## File Last Change: 2017-06-23 12:13:16
 
 tam.linking <- function( tamobj_list , type = "SL", theta=NULL, wgt=NULL, fix.slope=FALSE,
 	verbose=TRUE)

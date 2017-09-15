@@ -1,3 +1,6 @@
+## File Name: tam_mml_wle_proc_input_data.R
+## File Version: 0.02
+## File Last Change: 2017-06-01 13:22:34
 
 tam_mml_wle_proc_input_data <- function(tamobj, score.resp)
 {	

@@ -1,3 +1,6 @@
+## File Name: summary.tam.mml.3pl.R
+## File Version: 9.06
+## File Last Change: 2017-04-06 17:10:08
 #*******************************************************
 # Summary for tam.mml.3pl object                 *
 summary.tam.mml.3pl <- function( object , file = NULL , ...){

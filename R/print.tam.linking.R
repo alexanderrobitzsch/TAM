@@ -1,3 +1,6 @@
+## File Name: print.tam.linking.R
+## File Version: 0.01
+## File Last Change: 2017-06-23 12:22:14
 
 print.tam.linking <- function(x, ...)
 {

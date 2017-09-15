@@ -1,3 +1,6 @@
+## File Name: tam.mml.mfr.R
+## File Version: 9.877
+## File Last Change: 2017-07-24 15:09:04
 tam.mml.mfr <-
   function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
             formulaY = NULL , dataY = NULL , 

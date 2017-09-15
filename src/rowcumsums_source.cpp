@@ -1,3 +1,6 @@
+//// File Name: rowcumsums_source.cpp
+//// File Version: 3.02
+//// File Last Change: 2017-02-18 20:24:57
 
 
 #include <Rcpp.h>

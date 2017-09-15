@@ -1,3 +1,6 @@
+## File Name: tam_calc_counts.R
+## File Version: 9.05
+## File Last Change: 2017-04-28 12:39:15
 
 #######################################################
 # calculate counts

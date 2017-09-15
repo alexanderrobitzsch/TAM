@@ -1,3 +1,6 @@
+## File Name: tam_latreg_ic.R
+## File Version: 9.06
+## File Last Change: 2017-06-17 13:04:10
 
 ########################################
 # latent regression information criteria

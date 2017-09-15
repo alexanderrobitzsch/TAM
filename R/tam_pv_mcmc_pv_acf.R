@@ -1,3 +1,6 @@
+## File Name: tam_pv_mcmc_pv_acf.R
+## File Version: 0.03
+## File Last Change: 2017-05-31 14:39:10
 
 
 tam_pv_mcmc_pv_acf <- function(pv, theta_samples_mean, theta_samples_sd)

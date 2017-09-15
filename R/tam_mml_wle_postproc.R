@@ -1,3 +1,6 @@
+## File Name: tam_mml_wle_postproc.R
+## File Version: 0.08
+## File Last Change: 2017-06-02 10:00:24
 
 tam_mml_wle_postproc <- function(ndim, err_inv, theta, pid, resp.ind,
 	PersonScores, PersonMax, adj, WLE, rprobsWLE, output.prob, progress,

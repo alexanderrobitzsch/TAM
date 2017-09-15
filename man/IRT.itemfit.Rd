@@ -1,3 +1,7 @@
+%% File Name: IRT.itemfit.Rd
+%% File Version: 0.10
+%% File Last Change: 2017-06-22 17:41:51
+
 \name{IRT.itemfit.tam}
 
 \alias{IRT.itemfit.tam.mml}

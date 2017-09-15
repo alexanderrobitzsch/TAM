@@ -1,3 +1,6 @@
+## File Name: tam_theta_sq.R
+## File Version: 0.01
+## File Last Change: 2017-04-29 17:25:32
 
 tam_theta_sq <- function(theta, is_matrix = FALSE ){
 	D <- ncol(theta)

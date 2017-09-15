@@ -1,3 +1,6 @@
+## File Name: summary.msq.itemfit.R
+## File Version: 9.03
+## File Last Change: 2017-04-06 17:00:16
 
 
 

@@ -1,3 +1,6 @@
+## File Name: tam_mml_3pl_itempartable.R
+## File Version: 9.04
+## File Last Change: 2017-04-06 14:20:12
 
 
 ##################################################

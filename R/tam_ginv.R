@@ -1,3 +1,6 @@
+## File Name: tam_ginv.R
+## File Version: 0.02
+## File Last Change: 2017-04-06 13:56:27
 
 ###################################################
 # covariance stabilization in TAM

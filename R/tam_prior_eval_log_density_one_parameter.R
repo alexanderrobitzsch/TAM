@@ -1,3 +1,6 @@
+## File Name: tam_prior_eval_log_density_one_parameter.R
+## File Version: 0.03
+## File Last Change: 2017-06-19 13:28:38
 
 tam_prior_eval_log_density_one_parameter <- function( density_pp, args_pp, parameter_pp, deriv=0)
 {

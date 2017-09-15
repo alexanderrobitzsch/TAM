@@ -1,3 +1,6 @@
+## File Name: tam_mml_mfr_proc_compute_maxKi.R
+## File Version: 0.01
+## File Last Change: 2017-05-27 14:05:26
 
 tam_mml_mfr_proc_compute_maxKi <- function(resp, facets)
 {

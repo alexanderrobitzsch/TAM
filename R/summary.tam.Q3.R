@@ -1,3 +1,6 @@
+## File Name: summary.tam.Q3.R
+## File Version: 9.02
+## File Last Change: 2017-01-24 18:13:50
 
 ########################################################
 # summary tam.modelfit method

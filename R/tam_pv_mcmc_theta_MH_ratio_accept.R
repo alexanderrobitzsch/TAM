@@ -1,3 +1,6 @@
+## File Name: tam_pv_mcmc_theta_MH_ratio_accept.R
+## File Version: 0.07
+## File Last Change: 2017-08-16 11:17:40
 
 tam_pv_mcmc_theta_MH_ratio_accept <- function(loglike, log_dens_theta,
 	loglike_new, log_dens_theta_new, theta_acceptance_MH, theta, theta_new)

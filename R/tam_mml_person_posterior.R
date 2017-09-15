@@ -1,3 +1,6 @@
+## File Name: tam_mml_person_posterior.R
+## File Version: 0.06
+## File Last Change: 2017-04-28 12:27:54
 
 tam_mml_person_posterior <- function(pid, nstud, pweights,
 	resp , resp.ind, snodes, hwtE, hwt, ndim, theta )

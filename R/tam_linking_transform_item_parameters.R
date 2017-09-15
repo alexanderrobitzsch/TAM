@@ -1,3 +1,6 @@
+## File Name: tam_linking_transform_item_parameters.R
+## File Version: 0.02
+## File Last Change: 2017-06-15 18:58:45
 
 tam_linking_transform_item_parameters <- function( B, AXsi, A, trafo_items )
 {

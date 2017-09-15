@@ -1,3 +1,6 @@
+## File Name: tam_linking_extract_parameters.R
+## File Version: 0.07
+## File Last Change: 2017-06-22 14:29:53
 
 tam_linking_extract_parameters <- function( tamobj )
 {

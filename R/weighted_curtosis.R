@@ -1,3 +1,6 @@
+## File Name: weighted_curtosis.R
+## File Version: 0.01
+## File Last Change: 2017-04-29 18:12:15
 
 #######################################################		
 # curtosis

@@ -1,3 +1,6 @@
+## File Name: tam.ctt2.R
+## File Version: 9.04
+## File Last Change: 2017-02-23 18:14:02
 tam.ctt2 <-
 function( resp , wlescore=NULL , group=NULL , allocate=30 , 
 	progress=TRUE){

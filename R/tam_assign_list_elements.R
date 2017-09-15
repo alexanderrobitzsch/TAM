@@ -1,3 +1,6 @@
+## File Name: tam_assign_list_elements.R
+## File Version: 0.03
+## File Last Change: 2017-05-10 10:58:26
 
 tam_assign_list_elements <- function(x, envir)
 {

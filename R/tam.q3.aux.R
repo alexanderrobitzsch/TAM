@@ -1,3 +1,6 @@
+## File Name: tam.q3.aux.R
+## File Version: 9.02
+## File Last Change: 2017-01-24 18:13:51
 
 ############################################################
 # computation of Q3 statistic from residuals

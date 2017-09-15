@@ -1,3 +1,6 @@
+## File Name: IRT.linearCFA.R
+## File Version: 9.06
+## File Last Change: 2017-04-28 16:57:55
 
 #########################################################
 # linear approximation of confirmatory factor analysis 

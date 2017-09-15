@@ -1,3 +1,6 @@
+## File Name: tam.pv.R
+## File Version: 9.33
+## File Last Change: 2017-06-28 13:42:25
 tam.pv <- function( tamobj , nplausible = 10 , 
 			ntheta = 2000 , 
 			normal.approx = FALSE , 

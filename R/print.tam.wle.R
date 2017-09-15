@@ -1,3 +1,6 @@
+## File Name: print.tam.wle.R
+## File Version: 9.04
+## File Last Change: 2017-06-02 09:56:56
 
 #############################################
 # print method for tam.wle objects

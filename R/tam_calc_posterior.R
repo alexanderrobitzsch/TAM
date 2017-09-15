@@ -1,3 +1,6 @@
+## File Name: tam_calc_posterior.R
+## File Version: 9.12
+## File Last Change: 2017-05-27 15:42:45
 
 
 

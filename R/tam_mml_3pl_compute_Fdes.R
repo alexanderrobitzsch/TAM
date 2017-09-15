@@ -1,3 +1,6 @@
+## File Name: tam_mml_3pl_compute_Fdes.R
+## File Version: 0.01
+## File Last Change: 2017-05-08 17:19:50
 
 #####################################################################
 # compute F design matrix

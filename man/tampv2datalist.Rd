@@ -1,3 +1,7 @@
+%% File Name: tampv2datalist.Rd
+%% File Version: 0.11
+%% File Last Change: 2017-06-22 17:41:53
+
 \name{tampv2datalist}
 \alias{tampv2datalist}
 %- Also NEED an '\alias' for EACH other topic documented here.

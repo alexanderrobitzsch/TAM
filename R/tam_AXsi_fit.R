@@ -1,3 +1,6 @@
+## File Name: tam_AXsi_fit.R
+## File Version: 0.02
+## File Last Change: 2017-06-15 16:30:15
 
 tam_AXsi_fit <- function(A, AXsi)
 {

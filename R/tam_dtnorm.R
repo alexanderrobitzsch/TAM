@@ -1,3 +1,6 @@
+## File Name: tam_dtnorm.R
+## File Version: 0.03
+## File Last Change: 2017-05-25 22:00:54
 
 ########################################
 # This is a copy of msm::dtnorm

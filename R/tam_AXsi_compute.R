@@ -1,3 +1,6 @@
+## File Name: tam_AXsi_compute.R
+## File Version: 0.01
+## File Last Change: 2017-06-15 13:56:16
 
 tam_AXsi_compute <- function(A, xsi)
 {

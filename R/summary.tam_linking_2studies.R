@@ -1,3 +1,6 @@
+## File Name: summary.tam_linking_2studies.R
+## File Version: 0.01
+## File Last Change: 2017-06-15 13:55:06
 
 
 summary.tam_linking_2studies <- function( object , file = NULL , ...)

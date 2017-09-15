@@ -1,8 +1,12 @@
+## File Name: summary.tam.R
+## File Version: 9.15
+## File Last Change: 2017-09-15 10:19:22
 #*******************************************************
 # Summary for tam object                               *
 summary.tam.mml <- summary.tam.2pl <- 
 	summary.tam.mfr <- summary.tam <- summary.tam.latreg <- 
-function( object , file = NULL , ...){
+function( object , file = NULL , ...)
+{
 
 
 	CDM::osink( file = file , suffix = "__SUMMARY.Rout" )
@@ -57,9 +61,9 @@ function( object , file = NULL , ...){
 	if( ! is.null( object$formulaA)  ){	
 	    cat( "Number of generalized items = " , object$nitems , "\n" )    
 	    cat( "Number of items = " , ncol(object$resp_orig) , "\n" )  		
-								} else {
+	} else {
 	    cat( "Number of items = " , object$nitems , "\n" )    				
-						}
+	}
 		
     cat( "Number of estimated parameters = " , object$ic$Npars , "\n" )    
 	if (! latreg ){

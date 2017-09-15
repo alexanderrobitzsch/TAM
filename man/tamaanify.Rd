@@ -1,3 +1,7 @@
+%% File Name: tamaanify.Rd
+%% File Version: 0.46
+%% File Last Change: 2017-06-22 17:41:53
+
 \name{tamaanify}
 \alias{tamaanify}
 %- Also NEED an '\alias' for EACH other topic documented here.

@@ -1,3 +1,7 @@
+%% File Name: tam.ctt.Rd
+%% File Version: 3.07
+%% File Last Change: 2017-06-22 17:41:52
+
 \name{tam.ctt}
 \alias{tam.ctt}
 \alias{tam.ctt2}

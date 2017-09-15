@@ -1,3 +1,6 @@
+## File Name: summary.tam.jml.R
+## File Version: 9.05
+## File Last Change: 2017-04-13 11:04:00
 #*******************************************************
 # Summary for tam object                 *
 summary.tam.jml <- function( object , file = NULL , ...){

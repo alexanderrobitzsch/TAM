@@ -1,3 +1,6 @@
+## File Name: tam.ctt.R
+## File Version: 9.02
+## File Last Change: 2017-01-24 18:13:50
 tam.ctt <-
 function( resp , wlescore=NULL, pvscores=NULL , group=NULL , progress=TRUE){
     I <- ncol(resp)

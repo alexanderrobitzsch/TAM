@@ -1,3 +1,6 @@
+## File Name: tam_cov_wt.R
+## File Version: 0.04
+## File Last Change: 2017-08-22 17:37:48
 
 
 tam_cov_wt <- function(x, wt=NULL, method="ML")

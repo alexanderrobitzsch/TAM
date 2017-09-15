@@ -1,3 +1,7 @@
+%% File Name: data.mc.Rd
+%% File Version: 2.07
+%% File Last Change: 2017-06-22 17:41:51
+
 \name{data.mc}
 \alias{data.mc}
 \docType{data}

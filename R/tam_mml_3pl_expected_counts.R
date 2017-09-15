@@ -1,3 +1,6 @@
+## File Name: tam_mml_3pl_expected_counts.R
+## File Version: 0.01
+## File Last Change: 2017-04-06 13:38:10
 
 
 ##########################################################################

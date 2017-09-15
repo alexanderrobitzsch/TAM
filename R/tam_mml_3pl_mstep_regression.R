@@ -1,3 +1,6 @@
+## File Name: tam_mml_3pl_mstep_regression.R
+## File Version: 0.32
+## File Last Change: 2017-05-15 09:35:09
 ###############################################
 # mstep.regression
 tam_mml_3pl_mstep_regression <- function( resp , hwt ,  resp.ind , 

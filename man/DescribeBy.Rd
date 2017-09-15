@@ -1,3 +1,7 @@
+%% File Name: DescribeBy.Rd
+%% File Version: 0.08
+%% File Last Change: 2017-06-22 17:41:51
+
 \name{DescribeBy}
 \alias{DescribeBy}
 %- Also NEED an '\alias' for EACH other topic documented here.

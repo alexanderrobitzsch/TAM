@@ -1,3 +1,7 @@
+%% File Name: data.sim.rasch.Rd
+%% File Version: 2.11
+%% File Last Change: 2017-06-22 17:41:51
+
 \name{data.sim.rasch}
 
 \alias{data.sim.rasch}

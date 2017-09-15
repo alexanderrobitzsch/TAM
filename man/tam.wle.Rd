@@ -1,3 +1,7 @@
+%% File Name: tam.wle.Rd
+%% File Version: 2.34
+%% File Last Change: 2017-06-28 10:28:10
+
 \name{tam.wle}
 
 \alias{tam.wle}

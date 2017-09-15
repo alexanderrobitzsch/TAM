@@ -1,3 +1,6 @@
+## File Name: tam_mml_proc_unidim_simplify.R
+## File Version: 0.01
+## File Last Change: 2017-05-27 14:55:55
 
 tam_mml_proc_unidim_simplify <- function(Y, A, G, beta.fixed)
 {

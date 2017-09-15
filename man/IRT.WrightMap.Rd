@@ -1,3 +1,7 @@
+%% File Name: IRT.WrightMap.Rd
+%% File Version: 0.21
+%% File Last Change: 2017-06-22 17:41:51
+
 \name{IRT.WrightMap}
 % \alias{IRT.WrightMap}
 \alias{IRT.WrightMap.tam.mml}

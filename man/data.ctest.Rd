@@ -1,3 +1,7 @@
+%% File Name: data.ctest.Rd
+%% File Version: 0.14
+%% File Last Change: 2017-06-22 17:41:50
+
 \name{data.ctest}
 \alias{data.ctest}
 \alias{data.ctest1}

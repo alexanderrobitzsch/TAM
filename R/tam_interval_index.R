@@ -1,3 +1,6 @@
+## File Name: tam_interval_index.R
+## File Version: 0.01
+## File Last Change: 2017-05-25 19:47:20
 
 		
 # 'interval_index' searches an index when a frequency is exceeded

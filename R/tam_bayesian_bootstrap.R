@@ -1,3 +1,6 @@
+## File Name: tam_bayesian_bootstrap.R
+## File Version: 0.05
+## File Last Change: 2017-08-23 09:56:13
 
 tam_bayesian_bootstrap <- function(N, sample_integers=FALSE, do_boot=TRUE)
 {

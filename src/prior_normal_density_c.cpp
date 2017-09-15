@@ -1,3 +1,6 @@
+//// File Name: prior_normal_density_c.cpp
+//// File Version: 3.02
+//// File Last Change: 2017-09-15 10:38:30
 
 #include <Rcpp.h>
 
@@ -38,7 +41,7 @@ Rcpp::NumericMatrix prior_normal_density_C( Rcpp::NumericMatrix theta,
      // int qq=0 ;  
        
      for (int nn=0;nn<nstud;nn++){  
-     for (int qq=0;qq<nnodes;qq++){  
+       for (int qq=0;qq<nnodes;qq++){  
        
          for (int dd=0;dd<ndim;dd++){  
              x1[dd] = theta(qq,dd) - mu(nn,dd) ;  
@@ -47,7 +50,7 @@ Rcpp::NumericMatrix prior_normal_density_C( Rcpp::NumericMatrix theta,
          for (int dd1=0;dd1<ndim;dd1++){  // beg dd1  
              gwt(nn,qq) += x1[dd1]*x1[dd1] * varInverse(dd1,dd1) ;  
              for (int dd2=(dd1+1);dd2<ndim;dd2++){ // beg dd2  
-                     gwt(nn,qq) += 2*x1[dd1]*x1[dd2] * varInverse(dd1,dd2) ;  
+                gwt(nn,qq) += 2*x1[dd1]*x1[dd2] * varInverse(dd1,dd2) ;  
              }   // end dd2  
          }  // end dd1  
        
@@ -102,12 +105,12 @@ Rcpp::NumericVector prior_normal_densityALL_C( Rcpp::NumericMatrix theta,
          for (int dd1=0;dd1<ndim;dd1++){  // beg dd1  
              gwt[qq] += x1[dd1]*x1[dd1] * varInverse(dd1,dd1) ;  
              for (int dd2=(dd1+1);dd2<ndim;dd2++){ // beg dd2  
-                     gwt[qq] += 2*x1[dd1]*x1[dd2] * varInverse(dd1,dd2) ;  
+                gwt[qq] += 2*x1[dd1]*x1[dd2] * varInverse(dd1,dd2) ;  
              }   // end dd2  
          }  // end dd1  
        
          gwt[qq] = coeff * exp( -0.5*gwt[qq] ) ;  
-         } // end qq  
+     } // end qq  
                
      //// OUTPUT  
      return gwt ;  

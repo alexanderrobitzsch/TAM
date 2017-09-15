@@ -1,3 +1,6 @@
+## File Name: tam_mml_inits_groups.R
+## File Version: 0.02
+## File Last Change: 2017-05-25 15:23:29
 
 tam_mml_inits_groups <- function( group )
 {

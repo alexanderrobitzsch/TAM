@@ -1,3 +1,6 @@
+## File Name: tam.jml.R
+## File Version: 9.26
+## File Last Change: 2017-04-13 10:58:37
 
 
 tam.jml <- function( resp , group = NULL , adj=.3 , disattenuate = FALSE ,

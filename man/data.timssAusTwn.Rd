@@ -1,3 +1,7 @@
+%% File Name: data.timssAusTwn.Rd
+%% File Version: 2.10
+%% File Last Change: 2017-06-22 17:41:51
+
 \name{data.timssAusTwn}
 \alias{data.timssAusTwn}
 \alias{data.timssAusTwn.scored}

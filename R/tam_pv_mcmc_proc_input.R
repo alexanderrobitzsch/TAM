@@ -1,3 +1,6 @@
+## File Name: tam_pv_mcmc_proc_input.R
+## File Version: 0.09
+## File Last Change: 2017-08-17 17:23:17
 
 tam_pv_mcmc_proc_input <- function( tamobj, group, Y )
 {

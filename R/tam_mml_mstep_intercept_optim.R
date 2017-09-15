@@ -1,3 +1,6 @@
+## File Name: tam_mml_mstep_intercept_optim.R
+## File Version: 0.05
+## File Last Change: 2017-06-19 13:19:48
 
 tam_mml_mstep_intercept_optim <- function( xsi, n.ik, prior_list_xsi, nitems, A,
 		AXsi, B, theta, nnodes, maxK, Msteps, xsi.fixed, eps=1E-40)

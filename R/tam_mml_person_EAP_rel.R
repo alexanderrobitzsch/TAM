@@ -1,3 +1,6 @@
+## File Name: tam_mml_person_EAP_rel.R
+## File Version: 0.03
+## File Last Change: 2017-04-28 14:19:14
 
 tam_mml_person_EAP_rel <- function(EAP, SD.EAP , pweights=NULL)
 {

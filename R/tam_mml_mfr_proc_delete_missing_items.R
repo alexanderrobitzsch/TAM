@@ -1,3 +1,6 @@
+## File Name: tam_mml_mfr_proc_delete_missing_items.R
+## File Version: 0.02
+## File Last Change: 2017-05-31 18:09:13
 
 tam_mml_mfr_proc_delete_missing_items <- function(miss.items, delete.red.items, maxK,
 	gresp, gresp.noStep, gresp.noStep.ind, A, B, resp.ind.list, resp.ind, nitems,

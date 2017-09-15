@@ -1,3 +1,7 @@
+%% File Name: tam.pv.Rd
+%% File Version: 2.54
+%% File Last Change: 2017-08-23 10:02:11
+
 \name{tam.pv}
 \alias{tam.pv}
 \alias{tam.pv.mcmc}

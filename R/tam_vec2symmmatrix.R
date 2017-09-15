@@ -1,3 +1,6 @@
+## File Name: tam_vec2symmmatrix.R
+## File Version: 0.08
+## File Last Change: 2017-08-15 15:20:42
 
 tam_vec2symmmatrix <- function(variance)
 {

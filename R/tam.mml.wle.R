@@ -1,3 +1,6 @@
+## File Name: tam.mml.wle.R
+## File Version: 0.18
+## File Last Change: 2017-06-01 17:54:18
 
 
 tam.mml.wle <- function( tamobj, score.resp=NULL , WLE=TRUE , adj=.3 , Msteps=20 , 

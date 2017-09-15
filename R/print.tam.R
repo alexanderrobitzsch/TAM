@@ -1,3 +1,6 @@
+## File Name: print.tam.R
+## File Version: 9.04
+## File Last Change: 2017-06-15 13:42:43
 
 ##############################################
 # print method for TAM

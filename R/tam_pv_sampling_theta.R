@@ -1,3 +1,6 @@
+## File Name: tam_pv_sampling_theta.R
+## File Version: 0.05
+## File Last Change: 2017-07-12 10:49:57
 
 tam_pv_sampling_theta <- function( theta.model, ndim, normal.approx , tamobj, MEAP,
 		SDEAP, np.adj, theta, ntheta , mu1 , Sigma1, na.grid=5 )

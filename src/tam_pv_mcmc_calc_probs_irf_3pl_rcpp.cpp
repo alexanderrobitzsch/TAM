@@ -1,3 +1,6 @@
+//// File Name: tam_pv_mcmc_calc_probs_irf_3pl_rcpp.cpp
+//// File Version: 0.25
+//// File Last Change: 2017-08-17 17:26:09
 
 
 

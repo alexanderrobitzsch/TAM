@@ -1,3 +1,7 @@
+%% File Name: data.cqc.Rd
+%% File Version: 2.23
+%% File Last Change: 2017-06-22 17:41:50
+
 \name{data.cqc}
 
 

@@ -1,3 +1,6 @@
+## File Name: tam_pv_mcmc_postproc_theta_acceptance_MH.R
+## File Version: 0.01
+## File Last Change: 2017-05-29 11:55:22
 
 tam_pv_mcmc_postproc_theta_acceptance_MH <- function(theta_acceptance_MH)
 {

@@ -1,3 +1,7 @@
+%% File Name: IRT.threshold.Rd
+%% File Version: 1.32
+%% File Last Change: 2017-06-22 17:41:51
+
 \name{IRT.threshold}
 \alias{IRT.threshold}
 \alias{IRT.WrightMap}

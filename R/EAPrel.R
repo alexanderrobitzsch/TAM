@@ -1,3 +1,6 @@
+## File Name: EAPrel.R
+## File Version: 9.03
+## File Last Change: 2017-06-01 13:42:43
 
 #######################################################	
 EAPrel <- function( theta , error , w = rep(1,length(theta) ))

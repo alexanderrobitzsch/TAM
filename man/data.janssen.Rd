@@ -1,3 +1,7 @@
+%% File Name: data.janssen.Rd
+%% File Version: 0.16
+%% File Last Change: 2017-06-22 17:41:51
+
 \name{data.janssen}
 \alias{data.janssen}
 \alias{data.janssen2}

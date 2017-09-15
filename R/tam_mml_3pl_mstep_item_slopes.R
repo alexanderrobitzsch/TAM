@@ -1,3 +1,6 @@
+## File Name: tam_mml_3pl_mstep_item_slopes.R
+## File Version: 9.54
+## File Last Change: 2017-06-23 12:40:41
 
 ########################################
 # tam.mml.3pl estimate item slopes

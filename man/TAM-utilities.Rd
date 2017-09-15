@@ -1,3 +1,7 @@
+%% File Name: TAM-utilities.Rd
+%% File Version: 0.47
+%% File Last Change: 2017-09-15 10:08:38
+
 \name{TAM-utilities}
 \alias{TAM-utilities}
 \alias{tam_packageinfo}
@@ -23,6 +27,8 @@
 \alias{tam_bayesian_bootstrap}
 \alias{tam_cov_wt}
 \alias{tam_cor_wt}
+\alias{tam_round_data_frame}
+\alias{tam_round_data_frame_print}
 
 
 \title{Utility Functions in \pkg{TAM}}
@@ -44,7 +50,11 @@ tam_args_CALL_search(args_CALL, variable, default_value)
 require_namespace_msg(pkg)
 ## add leading zeroes
 add.lead(x, width=max(nchar(x)))
-
+## round some columns in a data frame
+tam_round_data_frame(obji, from=1, to=ncol(obji), digits=3)
+## round some columns in a data frame and print this data frame
+tam_round_data_frame_print(obji, from=1, to=ncol(obji), digits=3)
+                          
 ## base::matrix function with argument value byrow=TRUE
 tam_matrix2(x, nrow=NULL, ncol=NULL)
 ## more efficient base::outer functions for operations "*", "+" and "-"
@@ -93,6 +103,10 @@ tam_assign_list_elements(x, envir)
 \item{pkg}{String}
 \item{x}{Vector or matrix or list}
 \item{width}{Number of zeroes before decimal}
+\item{obji}{Data frame or vector}
+\item{from}{Integer}
+\item{to}{Integer}
+\item{digits}{Integer}
 \item{nrow}{Number of rows}
 \item{ncol}{Number of columns}
 \item{y}{Vector}

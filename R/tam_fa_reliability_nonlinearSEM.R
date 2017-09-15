@@ -1,3 +1,6 @@
+## File Name: tam_fa_reliability_nonlinearSEM.R
+## File Version: 9.05
+## File Last Change: 2017-04-28 17:06:33
 
 
 #********************************************************************

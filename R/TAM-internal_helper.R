@@ -1,3 +1,6 @@
+## File Name: TAM-internal_helper.R
+## File Version: 9.11
+## File Last Change: 2017-06-04 17:23:31
 
 ####################################################################
 rowcumsums <-

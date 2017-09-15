@@ -1,3 +1,7 @@
+%% File Name: tamaan.Rd
+%% File Version: 0.44
+%% File Last Change: 2017-06-22 17:41:53
+
 \name{tamaan}
 \alias{tamaan}
 \alias{summary.tamaan}

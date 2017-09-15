@@ -1,3 +1,6 @@
+## File Name: weighted_skewness.R
+## File Version: 9.03
+## File Last Change: 2017-04-29 18:11:55
 
 #####################################################
 # skewness

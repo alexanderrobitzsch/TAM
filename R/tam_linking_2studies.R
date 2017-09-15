@@ -1,3 +1,6 @@
+## File Name: tam_linking_2studies.R
+## File Version: 0.15
+## File Last Change: 2017-06-23 12:12:56
 
 tam_linking_2studies <- function( B1 , AXsi1 , guess1, B2 , AXsi2, guess2, theta , wgt , type ,
 	M1=0, SD1=1, M2=0, SD2=1, fix.slope=FALSE)

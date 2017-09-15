@@ -1,3 +1,6 @@
+## File Name: tam_mml_proc_response_indicators.R
+## File Version: 0.01
+## File Last Change: 2017-05-25 17:31:31
 
 tam_mml_proc_response_indicators <- function( resp, nitems )
 {    

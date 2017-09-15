@@ -1,3 +1,6 @@
+## File Name: tam_mml_se_AXsi.R
+## File Version: 0.01
+## File Last Change: 2017-04-28 13:06:29
 
 tam_mml_se_AXsi <- function(AXsi, A, se.xsi, maxK)
 {

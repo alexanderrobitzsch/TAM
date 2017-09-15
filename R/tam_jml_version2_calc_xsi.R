@@ -1,3 +1,6 @@
+## File Name: tam_jml_version2_calc_xsi.R
+## File Version: 9.46
+## File Last Change: 2017-05-25 18:38:49
  
 tam_jml_version2_calc_xsi <- function ( resp , resp.ind, A, A.0 , B, nstud, nitems, maxK, convM, 
              ItemScore, theta, xsi, Msteps, pweightsM,

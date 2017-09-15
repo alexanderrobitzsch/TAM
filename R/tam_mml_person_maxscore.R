@@ -1,3 +1,6 @@
+## File Name: tam_mml_person_maxscore.R
+## File Version: 0.05
+## File Last Change: 2017-04-27 20:52:50
 
 tam_mml_person_maxscore <- function(resp, resp.ind=NULL)
 {

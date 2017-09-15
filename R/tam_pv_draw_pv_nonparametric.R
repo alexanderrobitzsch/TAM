@@ -1,3 +1,6 @@
+## File Name: tam_pv_draw_pv_nonparametric.R
+## File Version: 0.01
+## File Last Change: 2017-05-25 19:55:10
 
 tam_pv_draw_pv_nonparametric <- function(nstud, hwt1, theta, pv, ndim, pp)
 {
