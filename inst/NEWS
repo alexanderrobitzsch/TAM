@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.7  |  2017-09-15  |  Last: TAM 2.7-29
+VERSIONS TAM 2.7  |  2017-09-16  |  Last: TAM 2.7-41
 -------------------------------------------------------------
 
 FEATURES:
@@ -73,8 +73,10 @@ NOTES:
 * included two options for Bayesian bootstrap (Rubin, 1981) in
   'tam.pv.mcmc': sampling of case of probabilities and sampling
   of cases (which corresponds to sampling of integers)
-* exported utility functions 'tam_round_data_frame' and
-  'tam_round_data_frame_print'
+* exported utility functions 'tam_round_data_frame',
+  'tam_round_data_frame_print', 'tam_osink' and 'tam_csink'
+
+* included argument 'file' in 'summary.msq.itemfit'
   
 
 DATASETS INCLUDED OR MODIFIED:

@@ -1,16 +1,16 @@
 ## File Name: summary.tam.linking.R
-## File Version: 0.02
-## File Last Change: 2017-06-15 16:01:12
-
+## File Version: 0.06
+## File Last Change: 2017-09-16 13:43:35
 
 summary.tam.linking <- function( object , file = NULL , ...)
 {
 
-	CDM::osink( file = file , suffix = "__SUMMARY.Rout" )
+	tam_osink( file = file)
 						
 	cat("------------------------------------------------------------\n")	
-	cat( tam_packageinfo("TAM") , "\n" )	
-	cat( tam_rsessinfo() , "\n\n")				
+
+	#- package and R session
+    tam_print_package_rsession(pack="TAM")			
 	
     cat( paste0("Linking of " , object$NS , " Studies") )
     tam_print_call(object$CALL)	
@@ -43,7 +43,7 @@ summary.tam.linking <- function( object , file = NULL , ...)
 	print(obji)
 	
 	#******
-	CDM::csink(file)
+	tam_csink(file=file)
 	
 }
 #*******************************************************

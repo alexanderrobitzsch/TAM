@@ -1,6 +1,6 @@
 ## File Name: tam_jml_version1.R
-## File Version: 9.22
-## File Last Change: 2017-04-13 11:14:00
+## File Version: 9.24
+## File Last Change: 2017-09-15 17:32:01
 tam_jml_version1 <-
 function( resp , group = NULL , adj=.3 , disattenuate = FALSE ,
                      bias = TRUE, xsi.fixed=NULL ,  xsi.inits = NULL ,  
@@ -132,7 +132,7 @@ function( resp , group = NULL , adj=.3 , disattenuate = FALSE ,
   ItemScore <- crossprod(cResp %*% cA , pweights )
   
   # Computer possible maximum parameter score for each person
-  maxAi <-  - (apply(-(A) , 3 , rowMaxs , na.rm=TRUE))  
+  maxAi <-  - (apply(-(A) , 3 , tam_rowMaxs , na.rm=TRUE))  
   personMaxA <- resp.ind %*% maxAi
   # ItemMax <- personMaxA %t*% pweights
   ItemMax <- crossprod( personMaxA , pweights )

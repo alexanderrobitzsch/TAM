@@ -1,17 +1,19 @@
 ## File Name: summary.msq.itemfitWLE.R
-## File Version: 9.03
-## File Last Change: 2017-04-06 17:00:25
+## File Version: 9.09
+## File Last Change: 2017-09-16 13:43:23
 
 ###################################################
 # summary for objects of class msq.itemfitWLE
-summary.msq.itemfitWLE <- function( object , ... ){
+summary.msq.itemfitWLE <- function( object , file=NULL, ... ){
+
+	tam_osink( file = file )
 
 	cat("------------------------------------------------------------\n")
-    d1 <- utils::packageDescription("TAM")
-	cat( paste( d1$Package , " " , d1$Version , " (" , d1$Date , ")" , 
-			sep="") , "\n\n" )	
-	cat( "Date of Analysis:" , paste( object$time[2] ) , "\n" )
-	cat("Computation time:" , print(object$time[2] - object$time[1]), "\n\n")
+
+	#- package and R session
+    tam_print_package_rsession(pack="TAM")			
+	#- computation time
+	tam_print_computation_time(object=object)	
 
 	cat("MSQ item fit statitics (Function 'msq.itemfitWLE')\n\n")
 
@@ -25,26 +27,31 @@ summary.msq.itemfitWLE <- function( object , ... ){
 					}	
 	
     obji <- object1
+	rownames(obji) <- NULL
+	
 	for ( vv in seq(2,ncol(obji) ) ){
 		obji[,vv] <- round( obji[,vv] , 3 )
-					}	
-	rownames(obji) <- NULL
+	}	
+	
 	print(obji)
 	
 	cat("\n****************************************************\n")
 	cat("\nOutfit and infit statistic\n")		
-	
-	
+		
 	if ( is.null(object$fitindices) ){
 		object <- object$fit_data 
-				} else {
+	} else {
 		object <- object$fit_parm 
-					}
+	}
+	
 	obji <- object
+	rownames(obji) <- NULL
 	for ( vv in seq(2,ncol(obji) ) ){
 		obji[,vv] <- round( obji[,vv] , 3 )
-					}
-    rownames(obji) <- NULL					
+	}
+    
 	print(obji)
-		}
+	
+	tam_csink(file=file)
+}
 ###################################################

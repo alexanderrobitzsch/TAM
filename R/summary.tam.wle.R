@@ -1,13 +1,12 @@
 ## File Name: summary.tam.wle.R
-## File Version: 0.02
-## File Last Change: 2017-06-02 10:08:14
+## File Version: 0.04
+## File Last Change: 2017-09-16 13:33:38
 
-summary.tam.wle <- function( object , file = NULL , digits = 3 , ...){
-
-	CDM::osink( file=file , suffix = "__SUMMARY.Rout" )
-
+summary.tam.wle <- function( object , file = NULL , digits = 3 , ...)
+{
+	tam_osink(file=file)
+	
 	print.tam.wle(x=object, digits = digits , ...)
-
-	CDM::csink(file=file)	
+	
+	tam_csink(file=file)	
 }
-#*******************************************************

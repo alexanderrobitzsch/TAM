@@ -1,6 +1,6 @@
 %% File Name: TAM-utilities.Rd
-%% File Version: 0.47
-%% File Last Change: 2017-09-15 10:08:38
+%% File Version: 0.52
+%% File Last Change: 2017-09-16 13:27:20
 
 \name{TAM-utilities}
 \alias{TAM-utilities}
@@ -29,6 +29,8 @@
 \alias{tam_cor_wt}
 \alias{tam_round_data_frame}
 \alias{tam_round_data_frame_print}
+\alias{tam_osink}
+\alias{tam_csink}
 
 
 \title{Utility Functions in \pkg{TAM}}
@@ -51,9 +53,13 @@ require_namespace_msg(pkg)
 ## add leading zeroes
 add.lead(x, width=max(nchar(x)))
 ## round some columns in a data frame
-tam_round_data_frame(obji, from=1, to=ncol(obji), digits=3)
+tam_round_data_frame(obji, from=1, to=ncol(obji), digits=3, rownames_null=FALSE)
 ## round some columns in a data frame and print this data frame
-tam_round_data_frame_print(obji, from=1, to=ncol(obji), digits=3)
+tam_round_data_frame_print(obji, from=1, to=ncol(obji), digits=3, rownames_null=FALSE)
+## copy of CDM::osink
+tam_osink(file, suffix="__SUMMARY.Rout")                          
+## copy of CDM::csink
+tam_csink(file)                          
                           
 ## base::matrix function with argument value byrow=TRUE
 tam_matrix2(x, nrow=NULL, ncol=NULL)
@@ -107,6 +113,9 @@ tam_assign_list_elements(x, envir)
 \item{from}{Integer}
 \item{to}{Integer}
 \item{digits}{Integer}
+\item{rownames_null}{Logical}
+\item{file}{File name}
+\item{suffix}{Suffix for file name of summary output}
 \item{nrow}{Number of rows}
 \item{ncol}{Number of columns}
 \item{y}{Vector}

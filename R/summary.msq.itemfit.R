@@ -1,30 +1,31 @@
 ## File Name: summary.msq.itemfit.R
-## File Version: 9.03
-## File Last Change: 2017-04-06 17:00:16
-
-
+## File Version: 9.08
+## File Last Change: 2017-09-16 13:43:14
 
 ###################################################
 # summary for tam.fit
-summary.msq.itemfit <- function( object , ... ){
+summary.msq.itemfit <- function( object , file=NULL,  ... ){
+
+	tam_osink( file = file)
 
 	cat("------------------------------------------------------------\n")
-    d1 <- utils::packageDescription("TAM")
-	cat( paste( d1$Package , " " , d1$Version , " (" , d1$Date , ")" , 
-			sep="") , "\n\n" )	
-	cat( "Date of Analysis:" , paste( object$time[2] ) , "\n" )
-	cat("Computation time:" , print(object$time[2] - object$time[1]), "\n\n")
 
+	#- package and R session
+    tam_print_package_rsession(pack="TAM")			
+	#- computation time
+	tam_print_computation_time(object=object)
+	
 	cat("MSQ item fit statitics (Function 'msq.itemfit')\n\n")
 
 	cat("****************************************************\n")
 	cat("\nSummary outfit and infit statistic\n")
     obji <- object$summary_itemfit
+	rownames(obji) <- NULL
 	for ( vv in seq(2,ncol(obji) ) ){
 		obji[,vv] <- round( obji[,vv] , 3 )
-					}	
-	rownames(obji) <- NULL
+	}		
 	print(obji)
+	
 	cat("\n****************************************************\n")
 	cat("\nOutfit and infit statistic\n")	
     object <- object$itemfit
@@ -32,8 +33,10 @@ summary.msq.itemfit <- function( object , ... ){
 	obji <- object
 	for ( vv in seq(ind+1,ncol(obji) ) ){
 		obji[,vv] <- round( obji[,vv] , 3 )
-					}
+	}
 	print(obji)
 	invisible(obji)
-		}
+	
+	tam_csink(file=file)
+}
 ###################################################

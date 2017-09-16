@@ -1,18 +1,18 @@
 ## File Name: summary_tamaan_3pl_intro.R
-## File Version: 9.06
-## File Last Change: 2017-09-15 10:18:21
+## File Version: 9.11
+## File Last Change: 2017-09-16 13:42:13
 
 
 ################################################
 # tamaan summary 3pl introduction
 summary_tamaan_3pl_intro <- function(object){
+
 	cat("------------------------------------------------------------\n")
 	
-	cat( tam_packageinfo("TAM") , "\n" )	
-	cat( tam_rsessinfo() , "\n\n")				
-	
-	cat( "Date of Analysis:" , paste(object$time[2]) , "\n" )
-	cat("Computation time:" , print(object$time[2] - object$time[1]), "\n\n")	
+	#- package and R session
+    tam_print_package_rsession(pack="TAM")			
+	#- computation time
+	tam_print_computation_time(object=object)
 	
 	cat("Multidimensional Item Response Model in TAM \n\n")
 	irtmodel <- object$irtmodel
@@ -58,24 +58,8 @@ summary_tamaan_3pl_intro <- function(object){
 	cat( "    (Co)Variance parameters    = " , object$ic$Nparscov , "\n" )    		
 	cat( "    Delta parameters           = " , object$ic$Ndelta , "\n\n" )    	
 		
-	cat( "AIC  = " , round( object$ic$AIC , 2 ) , " | penalty =" , 
-				round( object$ic$AIC - object$ic$deviance ,2 ) , 
-				"   | AIC = -2*LL + 2*p  \n" )    
-	cat( "AIC3 = " , round( object$ic$AIC3 , 2 ) , " | penalty =" , 
-				round( object$ic$AIC3 - object$ic$deviance ,2 ) , 
-				"   | AIC3 = -2*LL + 3*p  \n" )  				
-	cat( "AICc = " , round( object$ic$AICc , 2 ) ," | penalty =" , 
-				round( object$ic$AICc - object$ic$deviance ,2 ) )
-	cat("    | AICc = -2*LL + 2*p + 2*p*(p+1)/(n-p-1)  (bias corrected AIC)\n" )   	
-	cat( "BIC  = " , round( object$ic$BIC , 2 ) , " | penalty =" , 
-					round( object$ic$BIC - object$ic$deviance ,2 ) , 
-				"   | BIC = -2*LL + log(n)*p  \n" )  
-	cat( "aBIC = " , round( object$ic$aBIC , 2 ) , " | penalty =" , 
-					round( object$ic$aBIC - object$ic$deviance ,2 ) , 
-				"   | aBIC = -2*LL + log((n-2)/24)*p  (adjusted BIC) \n" ) 
-	cat( "CAIC = " , round( object$ic$CAIC , 2 ) ," | penalty =" , 
-						round( object$ic$CAIC - object$ic$deviance ,2 ) )
-	cat("   | CAIC = -2*LL + [log(n)+1]*p  (consistent AIC)\n\n" )   
+	#--- print information criteria
+	tam_summary_print_ic( object=object )	
 }
 ########################################################
 

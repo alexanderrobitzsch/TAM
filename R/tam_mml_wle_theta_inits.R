@@ -1,6 +1,6 @@
 ## File Name: tam_mml_wle_theta_inits.R
-## File Version: 0.01
-## File Last Change: 2017-06-01 16:54:22
+## File Version: 0.03
+## File Last Change: 2017-09-15 17:32:46
 
 
 tam_mml_wle_theta_inits <- function(WLE, adj, nitems, maxK, resp, resp.ind, B,
@@ -21,7 +21,7 @@ tam_mml_wle_theta_inits <- function(WLE, adj, nitems, maxK, resp, resp.ind, B,
     PersonScores <- cResp %*% cB
     
     #Compute possible maximum score for each item on each dimension
-    maxBi <- apply(B , 3 , rowMaxs , na.rm = TRUE)
+    maxBi <- apply(B , 3 , tam_rowMaxs , na.rm = TRUE)
     
     #Compute possible maximum score for each person on each dimension
     PersonMax <- resp.ind %*% maxBi

@@ -1,6 +1,6 @@
 ## File Name: tam.fit.R
-## File Version: 9.04
-## File Last Change: 2017-02-18 21:59:10
+## File Version: 9.05
+## File Last Change: 2017-09-15 11:32:09
 tam.fit <- function( tamobj, ... ){
   if(class(tamobj) == "tam.mml"){
     res <- tam.mml.fit( tamobj, ...)
@@ -117,19 +117,13 @@ tam.mml.fit <-
       Vz2i <- C4i - vari^2
       Uz2i <- C4i/(vari^2) - 1
       
-      # xbar <- resp.ind[,ip]%*%t( xbari )      
 	  xbar <- tcrossprod( resp.ind[,ip] ,  xbari )
-	  # var1 <- resp.ind[,ip]%*%t( vari )
 	  var1 <- tcrossprod( resp.ind[,ip] ,  vari )	  	  
-      # Vz2 <- resp.ind[,ip]%*%t( Vz2i )
 	  Vz2 <- tcrossprod( resp.ind[,ip] ,  Vz2i )	  	  
-      # Uz2 <- resp.ind[,ip]%*%t( Uz2i )
 	  Uz2 <- tcrossprod( resp.ind[,ip] ,  Uz2i )	
       
       Ax <- matrix(rep(ParamScore[,p],nnodes),nrow=nstud, ncol=nnodes)
-      
-      
-      #	c_hwt0 <- aperm(apply (hwt,1,cumsum),c(2,1))
+            
       c_hwt <- rowCumsums.TAM(hwt)
       
 	  Outfit_SIM <- Infit_SIM <- rep(NA, Nsimul )

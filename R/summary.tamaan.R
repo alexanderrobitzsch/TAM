@@ -1,13 +1,13 @@
 ## File Name: summary.tamaan.R
-## File Version: 9.05
-## File Last Change: 2017-09-15 10:03:18
+## File Version: 9.06
+## File Last Change: 2017-09-16 13:22:51
 
 ###############################################
 # summary tamaan
 summary.tamaan <- function( object , file=NULL , ... )
 {
 	
-	CDM::osink( file = file , suffix = "__SUMMARY.Rout" )
+	tam_osink( file = file)
 	
 	#**********************
 	# general tamaan syntax
@@ -54,7 +54,7 @@ summary.tamaan <- function( object , file=NULL , ... )
 		if ( object$tamaanify$ANALYSIS.list$type %in% c( "MIXTURE" ) ){
 			summary_tamaan_3pl_distr_mixture(object)
 		}
-								
+	
 		#--- Item parameters
 		print_ipars <- FALSE
 		if (object$skillspace == "normal"){ 
@@ -80,6 +80,6 @@ summary.tamaan <- function( object , file=NULL , ... )
 	}
 
 	#******
-	CDM::csink(file)	
+	tam_csink(file=file)	
 }
 ################################################				

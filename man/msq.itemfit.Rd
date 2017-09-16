@@ -1,6 +1,6 @@
 %% File Name: msq.itemfit.Rd
-%% File Version: 0.30
-%% File Last Change: 2017-06-22 17:41:52
+%% File Version: 0.32
+%% File Last Change: 2017-09-16 13:19:05
 
 \name{msq.itemfit}
 
@@ -30,11 +30,11 @@ but these are based on weighted likelihood estimates obtained from
 \usage{
 msq.itemfit( object , fitindices=NULL, version=2 )
 
-\method{summary}{msq.itemfit}(object, ... )
+\method{summary}{msq.itemfit}(object, file=NULL, ... )
 
 msq.itemfitWLE( tamobj , fitindices=NULL , ... )
 
-\method{summary}{msq.itemfitWLE}(object, ... )
+\method{summary}{msq.itemfitWLE}(object, file=NULL, ... )
 }
 
 
@@ -51,6 +51,7 @@ A pure \R routine can be requested by \code{version=3}.}
 \item{tamobj}{Object of class \code{tam.mml}, \code{tam.mml.2pl}
   or \code{tam.mml.mfr}.
 }
+\item{file}{Optional name of a file to which the summary should be written}
 \item{\dots}{Further arguments to be passed}
 }
 

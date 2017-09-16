@@ -1,6 +1,6 @@
 ## File Name: tam.mml.wle2.R
-## File Version: 0.37
-## File Last Change: 2017-06-28 11:04:30
+## File Version: 0.38
+## File Last Change: 2017-09-15 17:31:34
 ################################################################
 ################################################################
 ################################################################
@@ -47,7 +47,7 @@ tam.mml.wle2 <-
     PersonScores <- cResp %*% cB
     
     #Compute possible maximum score for each item on each dimension
-    maxBi <- apply(B , 3 , rowMaxs , na.rm = TRUE)
+    maxBi <- apply(B , 3 , tam_rowMaxs , na.rm = TRUE)
     
     #Compute possible maximum score for each person on each dimension
     PersonMax <- resp.ind %*% maxBi

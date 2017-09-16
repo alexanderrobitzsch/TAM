@@ -1,16 +1,16 @@
 ## File Name: summary.tam_linking_2studies.R
-## File Version: 0.01
-## File Last Change: 2017-06-15 13:55:06
-
+## File Version: 0.06
+## File Last Change: 2017-09-16 13:43:58
 
 summary.tam_linking_2studies <- function( object , file = NULL , ...)
 {
 
-	CDM::osink( file = file , suffix = "__SUMMARY.Rout" )
+	tam_osink( file = file )
 						
 	cat("------------------------------------------------------------\n")	
-	cat( tam_packageinfo("TAM") , "\n" )	
-	cat( tam_rsessinfo() , "\n\n")				
+
+	#- package and R session
+    tam_print_package_rsession(pack="TAM")			
 	
     cat("Linking of Two Studies")
     tam_print_call(object$CALL)	
@@ -22,23 +22,19 @@ summary.tam_linking_2studies <- function( object , file = NULL , ...)
 	cat("------------------------------------------------------------\n")
 	cat( "Transformation Constants for Item Parameters\n" )	
 	obji <- object$trafo_items
-	obji <- round(obji,3)
-	print(obji)
+	tam_round_data_frame_print(obji=obji, digits=3)	
 
 	cat("------------------------------------------------------------\n")
 	cat( "Transformation Constants for Person Parameters\n" )	
 	obji <- object$trafo_persons
-	obji <- round(obji,3)
-	print(obji)
-
+	tam_round_data_frame_print(obji=obji, digits=3)	
+	
 	cat("------------------------------------------------------------\n")
 	cat( "Means and Standard Deviations of Studies \n" )	
 	obji <- object$M_SD
-	obji <- round(obji,3)
-	print(obji)
+	tam_round_data_frame_print(obji=obji, digits=3)	
 	
 	#******
-	CDM::csink(file)
-	
+	tam_csink(file=file)	
 }
 #*******************************************************
