@@ -1,6 +1,6 @@
 ## File Name: summary.tam.pv.mcmc.R
-## File Version: 0.12
-## File Last Change: 2017-09-16 13:51:42
+## File Version: 0.13
+## File Last Change: 2017-09-18 10:34:59
 
 #*******************************************************
 # summary
@@ -58,24 +58,24 @@ summary.tam.pv.mcmc <- function( object , file = NULL , ...)
 				round( attr(object$theta_acceptance_MH, "M_adj_MH"),3) , "\n" )	
 		
 	cat("\nAutocorrelation of Drawn Plausible Values\n")
-	res <- tam_round_data_frame_print(obji=object$theta_acf, digits=3)		
+	tam_round_data_frame_print(obji=object$theta_acf, digits=3)		
 	
 	cat("\nEAP Reliability\n")
-	res <- tam_round_data_frame_print(obji=object$EAP_rel, digits=3)		
+	tam_round_data_frame_print(obji=object$EAP_rel, digits=3)		
 	
 	cat("------------------------------------------------------------\n")
 		
 	cat("Regression Parameters\n")
 	obji <- object$parameter_summary
-	res <- tam_round_data_frame_print(obji=obji, from=2, digits=3)		
+	tam_round_data_frame_print(obji=obji, from=2, digits=3)		
 	
 	#*** print covariance matrix 
 	cov_digits <- 3
-	res <- tam_pv_summary_covariance( obji=object$variance, 
+	tam_pv_summary_covariance( obji=object$variance, 
 				label="Residual Covariance Matrix", digits=cov_digits)
 				
 	#*** print correlation matrix 
-	res <- tam_pv_summary_covariance( obji=object$correlation, 
+	tam_pv_summary_covariance( obji=object$correlation, 
 				label="Residual Correlation Matrix", digits=cov_digits)				
 	
 	#******
