@@ -1,6 +1,6 @@
 ## File Name: tam.mml.wle2.R
-## File Version: 0.43
-## File Last Change: 2017-09-19 15:24:27
+## File Version: 0.44
+## File Last Change: 2017-09-19 16:06:11
 
 ################################################################
 tam.mml.wle2 <- function( tamobj, score.resp=NULL , WLE=TRUE , adj=.3 , Msteps=20 , 
@@ -20,7 +20,11 @@ tam.mml.wle2 <- function( tamobj, score.resp=NULL , WLE=TRUE , adj=.3 , Msteps=2
 	pweights <- res$pweights
 	if ( is.null(pid)){
 		pid <- res$pid
+		if ( ! is.null(score.resp)){
+			pid <- rep(NA, nrow(score.resp) )
+		}
 	}
+	
 	A <- res$A
 	xsi <- res$xsi
 

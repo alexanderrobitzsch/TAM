@@ -1,6 +1,6 @@
 ## File Name: tam_mml_wle_postproc.R
-## File Version: 0.16
-## File Last Change: 2017-09-19 15:38:10
+## File Version: 0.17
+## File Last Change: 2017-09-19 16:06:34
 
 tam_mml_wle_postproc <- function(ndim, err_inv, theta, pid, resp.ind,
 	PersonScores, PersonMax, adj, WLE, rprobsWLE, output.prob, progress,
@@ -24,9 +24,6 @@ tam_mml_wle_postproc <- function(ndim, err_inv, theta, pid, resp.ind,
     if ( ndim> 1){
 		colnames(error) <- paste0("error.Dim" , dimlabels )
     }
-	if ( ! is.null(score.resp) ){
-		pid <- NA
-	}	
     res <- data.frame( "pid" = pid , 
                        "N.items" = rowSums(resp.ind) , 
                        "PersonScores" = PersonScores, 
