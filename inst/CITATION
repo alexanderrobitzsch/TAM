@@ -1,26 +1,36 @@
 
+
 year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
 vers <- paste("R package version", meta$Version)
+pkg <- meta$Package
 
-citHeader("To cite the 'TAM' package in publications use:")
+#*** package and its name
+pkg_title <- "Test analysis modules"
 
+#*** list of authors
+person_list1 <- c(
+                   person(given = "Alexander", family = "Robitzsch"),
+                   person(given = "Thomas", family = "Kiefer"),
+    	      person(given = c("Margaret"), family = "Wu") 
+                      )
+
+person_list2 <- "Robitzsch, A., Kiefer, T., & Wu, M."
+
+
+#*******************************************
+# automatic generation of citation key
+
+citHeader( paste0( "To cite the '", pkg , "' package in publications use:") )
 
 citEntry(entry="Manual",
-         title = "TAM: Test Analysis Modules",
-         author = c(
-                   person(given = "Alexander",
-                          family = "Robitzsch"),
-                   person(given = "Thomas",
-                          family = "Kiefer"),
-		person(given = c("Margaret"),
-                          family = "Wu") ) ,
+         title = paste0( pkg , ": " , pkg_title ) ,
+         author = personList( person_list1 ),
          year = year,
          note = vers,
-	 url = "https://CRAN.R-project.org/package=TAM" ,
+         url =  paste0( "https://CRAN.R-project.org/package=", pkg) ,
          textVersion =
-         paste0("Robitzsch, A., Kiefer, T., & Wu, M. (",
-               year,
-               "). TAM: Test analysis modules. ",
-               vers, ". https://CRAN.R-project.org/package=TAM")
-	)
+         paste0( person_list2 , " (",   year, "). " , 
+               pkg , ": " , pkg_title , ". ",
+               vers, paste0( ". https://CRAN.R-project.org/package=", pkg) )
+    )
 

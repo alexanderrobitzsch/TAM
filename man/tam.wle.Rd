@@ -1,6 +1,6 @@
 %% File Name: tam.wle.Rd
-%% File Version: 2.34
-%% File Last Change: 2017-06-28 10:28:10
+%% File Version: 2.36
+%% File Last Change: 2017-09-19 15:23:47
 
 \name{tam.wle}
 
@@ -26,7 +26,7 @@ respectively.
 tam.wle(tamobj, ...)
 
 tam.mml.wle2(tamobj, score.resp=NULL, WLE=TRUE, adj=0.3, Msteps=20, convM=1e-04,
-        progress=TRUE , output.prob=FALSE )
+        progress=TRUE , output.prob=FALSE, pid = NULL )
 
 tam.jml.WLE(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM, 
     PersonScores, theta, xsi, Msteps, WLE=FALSE, theta.fixed = NULL)
@@ -68,6 +68,7 @@ tam.jml.WLE(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
 \item{progress}{Logical indicating whether progress should be displayed.}
 \item{output.prob}{Logical indicating whether evaluated probabilities should
 be included in the list of outputs.}
+\item{pid}{Optional vector of person identifiers}
 \item{resp}{Data frame with item responses (only for \code{tam.jml.WLE})
 }
 \item{resp.ind}{Data frame with response indicators (only for \code{tam.jml.WLE})

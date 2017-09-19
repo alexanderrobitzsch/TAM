@@ -1,10 +1,18 @@
 ## File Name: WLErel.R
-## File Version: 9.07
-## File Last Change: 2017-06-01 13:42:13
+## File Version: 9.09
+## File Last Change: 2017-09-19 15:28:56
 
 #####################################################
 # computes reliability for one-dimensional WLEs
-WLErel <- function( theta , error , w = rep(1,length(theta) )){
+WLErel <- function( theta , error , w = rep(1,length(theta)), select = NULL)
+{
+	#--- select cases
+	if ( ! is.null(select) ){
+		theta <- theta[ select ]
+		error <- error[ select ]
+		w <- w[ select ]
+	}
+	#--- exclude missings
 	res <- WLErel_exclude_missings(theta=theta, error=error, w=w)
 	theta <- res$theta
 	error <- res$error

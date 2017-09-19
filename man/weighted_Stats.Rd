@@ -1,6 +1,6 @@
 %% File Name: weighted_Stats.Rd
-%% File Version: 1.14
-%% File Last Change: 2017-06-22 17:41:53
+%% File Version: 1.16
+%% File Last Change: 2017-09-19 15:36:28
 
 \name{weighted_Stats}
 \alias{weighted_Stats}
@@ -23,17 +23,17 @@ frequency tables. Missing values are automatically removed from
 the data.
 }
 \usage{
-weighted_mean(x, w = rep(1, length(x)) )
+weighted_mean(x, w = rep(1, length(x)), select = NULL  )
 
-weighted_var(x, w = rep(1, length(x)), method = "unbiased")
+weighted_var(x, w = rep(1, length(x)), method = "unbiased", select = NULL )
 
-weighted_sd(x, w = rep(1, length(x)), method = "unbiased")
+weighted_sd(x, w = rep(1, length(x)), method = "unbiased", select = NULL )
 
-weighted_skewness( x , w = rep(1,length(x)) )
+weighted_skewness( x , w = rep(1,length(x)), select = NULL  )
 
-weighted_curtosis( x , w = rep(1,length(x)) )
+weighted_curtosis( x , w = rep(1,length(x)), select = NULL  )
 
-weighted_quantile( x , w=rep(1,length(x)), probs=seq(0,1,.25), type=NULL)
+weighted_quantile( x , w=rep(1,length(x)), probs=seq(0,1,.25), type=NULL, select = NULL )
 
 weighted_table( x , w = NULL, props=FALSE )
 }
@@ -46,6 +46,7 @@ two columns can be used as input for cross-tabulation.
   \item{w}{
 Optional vector of sample weights
 }
+\item{select}{Vector referring to selected cases}
   \item{method}{
 Computation method (can be \code{"unbiased"} or \code{"ML"})), see
 \code{\link[stats:cov.wt]{stats::cov.wt}}

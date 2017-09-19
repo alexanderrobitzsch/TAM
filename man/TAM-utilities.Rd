@@ -1,6 +1,6 @@
 %% File Name: TAM-utilities.Rd
-%% File Version: 0.52
-%% File Last Change: 2017-09-16 13:27:20
+%% File Version: 0.53
+%% File Last Change: 2017-09-19 14:27:08
 
 \name{TAM-utilities}
 \alias{TAM-utilities}
@@ -31,6 +31,7 @@
 \alias{tam_round_data_frame_print}
 \alias{tam_osink}
 \alias{tam_csink}
+\alias{tam_ginv}
 
 
 \title{Utility Functions in \pkg{TAM}}
@@ -83,6 +84,8 @@ tam_bayesian_bootstrap(N, sample_integers=FALSE, do_boot=TRUE)
 tam_cov_wt(x, wt=NULL, method="ML")
 ## weighted correlation matrix
 tam_cor_wt(x, wt=NULL, method="ML")
+## generalized inverse
+tam_ginv(x, eps=.05)
 
 ## remove items or persons with complete missing entries
 tam_remove_missings( dat, items, elim_items=TRUE, elim_persons=TRUE )

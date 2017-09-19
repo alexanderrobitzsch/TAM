@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.7  |  2017-09-18  |  Last: TAM 2.7-43
+VERSIONS TAM 2.7  |  2017-09-19  |  Last: TAM 2.7-47
 -------------------------------------------------------------
 
 FEATURES:
@@ -61,6 +61,8 @@ BUG FIXES:
   'tam_mml_create_nodes' (thanks to Tom Benton)
 * fixed a bug in 'tamaan' (and 'tam.mml.3pl') caused by
   'tam_mml_create_nodes' (thanks to Markus Buehner)
+* fixed a bug in 'tam.mml.wle2' when submitting a new dataset
+  (thanks to Plamen Mirazchiyski)
 
 NOTES:
 * included residual variances and correlations in summary
@@ -74,9 +76,11 @@ NOTES:
   'tam.pv.mcmc': sampling of case of probabilities and sampling
   of cases (which corresponds to sampling of integers)
 * exported utility functions 'tam_round_data_frame',
-  'tam_round_data_frame_print', 'tam_osink' and 'tam_csink'
-
+  'tam_round_data_frame_print', 'tam_osink', 'tam_csink' and
+  'tam_ginv'
 * included argument 'file' in 'summary.msq.itemfit'
+* included argument 'select' for weighted statistics (e.g., in
+  'weighted_mean', 'weighted_sd', ...)
   
 
 DATASETS INCLUDED OR MODIFIED:
