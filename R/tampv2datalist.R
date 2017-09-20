@@ -1,11 +1,11 @@
 ## File Name: tampv2datalist.R
-## File Version: 9.04
-## File Last Change: 2017-05-31 16:51:54
+## File Version: 9.06
+## File Last Change: 2017-09-19 19:59:42
 
 
 ##################################################################
 tampv2datalist <- function( tam.pv.object , pvnames = NULL , Y = NULL ,
-			Y.pid = "pid" )
+			Y.pid = "pid" , as_mids = FALSE)
 {
 	pv <- tam.pv.object$pv
 	ndim <- tam.pv.object$ndim
@@ -33,6 +33,11 @@ tampv2datalist <- function( tam.pv.object , pvnames = NULL , Y = NULL ,
 		dat <- Y0
 		datalist[[ii]] <- dat
 	}
+	if (as_mids){
+	    require_namespace_msg(pkg="miceadds")
+		datalist <- miceadds::datalist2mids(datalist)
+	}
+	
 	return(datalist)
 }
 ##################################################################			

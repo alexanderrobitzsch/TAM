@@ -1,6 +1,6 @@
 %% File Name: tampv2datalist.Rd
-%% File Version: 0.11
-%% File Last Change: 2017-06-22 17:41:53
+%% File Version: 0.16
+%% File Last Change: 2017-09-20 16:46:21
 
 \name{tampv2datalist}
 \alias{tampv2datalist}
@@ -18,7 +18,7 @@ or \pkg{BIFIEsurvey}.
 }
 
 \usage{
-tampv2datalist(tam.pv.object, pvnames = NULL, Y = NULL, Y.pid = "pid")
+tampv2datalist(tam.pv.object, pvnames = NULL, Y = NULL, Y.pid = "pid", as_mids=FALSE)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -37,6 +37,11 @@ Person identifier in \code{Y} matrix. It is not required that a person
 identifier is provided. In this case, the merge of the datasets will
 be conducted as for \code{rbind}.
 }
+\item{as_mids}{Logical indicating whether the datalist
+  should be converted into an object of class \code{mids} for
+  analysis in the \pkg{mice} package. This functionality uses the
+  the function \code{\link[miceadds:datalist2mids]{miceadds::datalist2mids}}.
+}
 }
 
 
@@ -44,7 +49,7 @@ be conducted as for \code{rbind}.
 %%  ~~ If necessary, more details than the description above ~~
 %}
 \value{
-List of multiply imputed datasets
+List of multiply imputed datasets or an \code{mids} object
 }
 
 %\references{

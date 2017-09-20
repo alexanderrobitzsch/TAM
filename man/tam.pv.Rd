@@ -1,6 +1,6 @@
 %% File Name: tam.pv.Rd
-%% File Version: 2.54
-%% File Last Change: 2017-08-23 10:02:11
+%% File Version: 2.56
+%% File Last Change: 2017-09-19 20:01:38
 
 \name{tam.pv}
 \alias{tam.pv}
@@ -31,7 +31,7 @@ can be used for the Bootstrap step by obtaining posterior draws of regression pa
 
 \usage{
 tam.pv(tamobj, nplausible = 10, ntheta = 2000, normal.approx = FALSE, 
-    samp.regr = FALSE, theta.model=FALSE, np.adj=8, na.grid = 5)
+    samp.regr = FALSE, theta.model=FALSE, np.adj=8, na.grid = 5, verbose=TRUE)
     
 tam.pv.mcmc( tamobj, Y=NULL, group=NULL, beta_groups = TRUE, nplausible=10, level = .95, 
     n.iter = 1000, n.burnin = 500, adj_MH = .5, adj_change_MH = .05, refresh_MH = 50,

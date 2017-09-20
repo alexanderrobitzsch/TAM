@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.7  |  2017-09-19  |  Last: TAM 2.7-48
+VERSIONS TAM 2.7  |  2017-09-20  |  Last: TAM 2.7-51
 -------------------------------------------------------------
 
 FEATURES:
@@ -81,7 +81,10 @@ NOTES:
 * included argument 'file' in 'summary.msq.itemfit'
 * included argument 'select' for weighted statistics (e.g., in
   'weighted_mean', 'weighted_sd', ...)
-  
+* included argument 'verbose' in 'tam.pv'  
+* included argument 'as_mids' in 'tam.pv' which allows to convert
+  the set of plausible values into an object of class mids for
+  analysis in the mice package.
 
 DATASETS INCLUDED OR MODIFIED:
 * ---

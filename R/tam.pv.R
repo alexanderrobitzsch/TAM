@@ -1,10 +1,10 @@
 ## File Name: tam.pv.R
-## File Version: 9.33
-## File Last Change: 2017-06-28 13:42:25
+## File Version: 9.35
+## File Last Change: 2017-09-19 19:50:37
 tam.pv <- function( tamobj , nplausible = 10 , 
-			ntheta = 2000 , 
-			normal.approx = FALSE , 
-            samp.regr = FALSE , theta.model = FALSE , np.adj = 8 , na.grid = 5){
+			ntheta = 2000 , normal.approx = FALSE , samp.regr = FALSE , 
+			theta.model = FALSE , np.adj = 8 , na.grid = 5, verbose=TRUE)
+{
     #####################################################
     # INPUT:
     # tamobj ... result from tam analysis
@@ -61,11 +61,6 @@ a0 <- Sys.time()
 	nnodes <- ntheta    
 	ndim <- tamobj$ndim
 	pweights <- tamobj$pweights
-
-	#-- warning message if normal.approx is chosen if ndim > 1
-	if (normal.approx & ( ndim > 1 ) ){
-		# stop("normal.approx=TRUE can only be used for one-dimensional models.\n")
-	}
 	
 	#***************************
     # define theta grid
@@ -94,11 +89,13 @@ a0 <- Sys.time()
     pp <- 1
 	iter <- 1
 	iterate <- TRUE
-	cat("|")
-	cat( paste( rep("*" , nplausible ) , collapse="") )
-	cat("|\n|")
-	utils::flush.console()
-
+	if ( verbose ){
+		cat("|")
+		cat( paste( rep("*" , nplausible ) , collapse="") )
+		cat("|\n|")
+		utils::flush.console()
+	}
+	
 	###################################################
 	# routine for drawing plausible values
 	while ( iterate ){
@@ -169,7 +166,10 @@ a0 <- Sys.time()
 			#-- sample beta value
 			beta <- tam_pv_sampling_beta( theta1, ndim , Y , pweights )
 			if (iter>2){
-				cat("-" )
+				if (verbose){ 
+					cat("-" ) 
+					utils::flush.console()
+				}
 			}
 		}
 
@@ -191,8 +191,10 @@ a0 <- Sys.time()
 									pp=pp, ndim=ndim, pv=pv ) 
 				}				
 				pv <- res$pv
-				cat("-")
-				utils::flush.console() 
+				if (verbose){
+					cat("-")
+					utils::flush.console() 
+				}
 			}
 			NPV <- nplausible / 2
 			iterate <- FALSE
@@ -201,9 +203,8 @@ a0 <- Sys.time()
 		utils::flush.console()
 	}  # end while loop
 	##################################################	
-	cat("|\n")
-# cat("rest") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1							  			
-	# label the pv matrix	
+	if (verbose){ cat("|\n") }
+	#-- label the pv matrix	
 	colnames(pv) <- paste("PV" , rep(1:nplausible,each=ndim) , 
 					".Dim" , rep(1:ndim,nplausible) , sep="")   
     pv <- data.frame( "pid" =tamobj$pid , pv )					
