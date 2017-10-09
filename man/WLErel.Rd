@@ -1,6 +1,6 @@
 %% File Name: WLErel.Rd
-%% File Version: 0.14
-%% File Last Change: 2017-06-22 17:41:53
+%% File Version: 0.15
+%% File Last Change: 2017-10-09 10:25:39
 
 \name{WLErel}
 \alias{WLErel}
@@ -17,9 +17,9 @@ Functions for computation of reliability estimates.
 }
 
 \usage{
-WLErel(theta, error, w = rep(1, length(theta)))
+WLErel(theta, error, w = rep(1, length(theta)), select=NULL)
 
-EAPrel(theta, error, w = rep(1, length(theta)))
+EAPrel(theta, error, w = rep(1, length(theta)), select=NULL)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -33,6 +33,7 @@ Vector with standard errors of theta estimates
   \item{w}{
 Optional vector of person weights
 }
+\item{select}{Optional vector for selecting cases}
 }
 
 \details{
