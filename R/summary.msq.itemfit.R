@@ -1,6 +1,6 @@
 ## File Name: summary.msq.itemfit.R
-## File Version: 9.08
-## File Last Change: 2017-09-16 13:43:14
+## File Version: 9.09
+## File Last Change: 2017-10-20 10:09:21
 
 ###################################################
 # summary for tam.fit
@@ -11,7 +11,7 @@ summary.msq.itemfit <- function( object , file=NULL,  ... ){
 	cat("------------------------------------------------------------\n")
 
 	#- package and R session
-    tam_print_package_rsession(pack="TAM")			
+	tam_print_package_rsession(pack="TAM")			
 	#- computation time
 	tam_print_computation_time(object=object)
 	

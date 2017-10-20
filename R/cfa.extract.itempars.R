@@ -1,6 +1,6 @@
 ## File Name: cfa.extract.itempars.R
 ## File Version: 9.04
-## File Last Change: 2017-08-14 09:32:44
+## File Last Change: 2017-09-14 18:48:09
 
 ######################################################################
 # extract item parameters from fitted cfa object (in lavaan)

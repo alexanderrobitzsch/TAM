@@ -1,6 +1,6 @@
 ## File Name: tam_pv_mcmc_inits_MH_sampling_objects.R
 ## File Version: 0.02
-## File Last Change: 2017-08-14 09:32:48
+## File Last Change: 2017-08-14 10:53:37
 
 tam_pv_mcmc_inits_MH_sampling_objects <- function( adj_MH, nstud)
 {

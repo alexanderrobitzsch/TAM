@@ -1,6 +1,6 @@
 ## File Name: tam_pv_mcmc_sample_beta_variance.R
 ## File Version: 0.27
-## File Last Change: 2017-08-23 09:58:40
+## File Last Change: 2017-08-23 10:00:00
 
 tam_pv_mcmc_sample_beta_variance <- function( theta , Y, nstud , pweights, samp.regr=FALSE,
 		G, group_index, beta_groups, sample_integers)

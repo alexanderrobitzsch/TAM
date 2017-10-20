@@ -1,6 +1,6 @@
 ## File Name: tam_mml_3pl_calc_prob.R
 ## File Version: 1.25
-## File Last Change: 2017-08-17 18:21:53
+## File Last Change: 2017-08-17 18:22:15
 
 #####################################################################
 # calc_prob

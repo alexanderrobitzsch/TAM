@@ -1,6 +1,6 @@
 ## File Name: tamaan.R
 ## File Version: 9.04
-## File Last Change: 2017-09-15 09:38:28
+## File Last Change: 2017-09-15 09:38:31
 
 ##########################################################
 # tamaan function

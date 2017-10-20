@@ -1,6 +1,6 @@
 ## File Name: tam_rowcumsums1.R
 ## File Version: 0.01
-## File Last Change: 2017-09-15 17:27:28
+## File Last Change: 2017-09-15 17:27:32
 
 
 tam_rowcumsums1 <- function(m1)

@@ -1,6 +1,6 @@
 ## File Name: summary.tam.mml.3pl.R
-## File Version: 9.09
-## File Last Change: 2017-09-16 13:43:03
+## File Version: 9.11
+## File Last Change: 2017-10-20 10:09:54
 #*******************************************************
 # Summary for tam.mml.3pl object                 *
 summary.tam.mml.3pl <- function( object , file = NULL , ...){
@@ -10,7 +10,7 @@ summary.tam.mml.3pl <- function( object , file = NULL , ...){
 	cat("------------------------------------------------------------\n")
 	
 	#- package and R session
-    tam_print_package_rsession(pack="TAM")			
+	tam_print_package_rsession(pack="TAM")			
 	#- computation time
 	tam_print_computation_time(object=object)
 	

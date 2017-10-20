@@ -1,6 +1,6 @@
 ## File Name: summary.tam.R
-## File Version: 9.27
-## File Last Change: 2017-09-16 13:40:03
+## File Version: 9.28
+## File Last Change: 2017-10-20 10:10:13
 #*******************************************************
 # Summary for tam object                               *
 summary.tam.mml <- summary.tam.2pl <- summary.tam.mfr <- summary.tam <- 
@@ -18,7 +18,7 @@ summary.tam.mml <- summary.tam.2pl <- summary.tam.mfr <- summary.tam <-
 	cat("------------------------------------------------------------\n")
 	
 	#- package and R session
-    tam_print_package_rsession(pack="TAM")			
+	tam_print_package_rsession(pack="TAM")			
 	#- computation time
 	tam_print_computation_time(object=object)
 	

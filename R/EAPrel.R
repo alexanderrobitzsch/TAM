@@ -1,6 +1,6 @@
 ## File Name: EAPrel.R
 ## File Version: 9.04
-## File Last Change: 2017-10-09 10:25:13
+## File Last Change: 2017-10-09 10:25:19
 
 #######################################################	
 EAPrel <- function( theta , error , w = rep(1,length(theta) ), select=NULL )

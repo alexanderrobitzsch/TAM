@@ -1,6 +1,6 @@
 ## File Name: tamcat.R
 ## File Version: 9.04
-## File Last Change: 2017-09-15 17:25:43
+## File Last Change: 2017-09-15 17:25:46
 
 ######################################################
 tamcat <- function( label , time0 , active )

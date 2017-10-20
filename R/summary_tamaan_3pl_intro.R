@@ -1,6 +1,6 @@
 ## File Name: summary_tamaan_3pl_intro.R
-## File Version: 9.11
-## File Last Change: 2017-09-16 13:42:13
+## File Version: 9.12
+## File Last Change: 2017-10-20 10:10:32
 
 
 ################################################
@@ -10,7 +10,7 @@ summary_tamaan_3pl_intro <- function(object){
 	cat("------------------------------------------------------------\n")
 	
 	#- package and R session
-    tam_print_package_rsession(pack="TAM")			
+	tam_print_package_rsession(pack="TAM")			
 	#- computation time
 	tam_print_computation_time(object=object)
 	

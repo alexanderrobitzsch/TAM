@@ -1,6 +1,6 @@
 ## File Name: tam_pv_mcmc_inits_theta.R
 ## File Version: 0.04
-## File Last Change: 2017-08-14 10:50:51
+## File Last Change: 2017-08-14 10:51:06
 
 tam_pv_mcmc_inits_theta <- function(person, theta_init)
 {

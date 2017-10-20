@@ -1,6 +1,6 @@
 ## File Name: summary.tam.linking.R
-## File Version: 0.06
-## File Last Change: 2017-09-16 13:43:35
+## File Version: 0.07
+## File Last Change: 2017-10-20 10:09:45
 
 summary.tam.linking <- function( object , file = NULL , ...)
 {
@@ -10,7 +10,7 @@ summary.tam.linking <- function( object , file = NULL , ...)
 	cat("------------------------------------------------------------\n")	
 
 	#- package and R session
-    tam_print_package_rsession(pack="TAM")			
+	tam_print_package_rsession(pack="TAM")			
 	
     cat( paste0("Linking of " , object$NS , " Studies") )
     tam_print_call(object$CALL)	
