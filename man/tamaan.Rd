@@ -1,6 +1,6 @@
 %% File Name: tamaan.Rd
-%% File Version: 0.44
-%% File Last Change: 2017-06-22 17:41:53
+%% File Version: 0.45
+%% File Last Change: 2017-10-23 10:50:44
 
 \name{tamaan}
 \alias{tamaan}
@@ -74,7 +74,9 @@ or \code{tam.mml.3pl}. In addition, the list also contains the (optional) entrie
 			}
 \item{probs_MIXTURE}{Class probabilities (for \code{TYPE="MIXTURE"})}
 \item{moments_MIXTURE}{Distribution parameters (for \code{TYPE="MIXTURE"})}
-\item{itempartable_MIXTURE}{Item parameters (for \code{TYPE="MIXTURE"})}						
+\item{itempartable_MIXTURE}{Item parameters (for \code{TYPE="MIXTURE"})}
+\item{ind_classprobs}{Individual posterior probabilities for
+  latent classes (for \code{TYPE="MIXTURE"})}						
 }
 
 

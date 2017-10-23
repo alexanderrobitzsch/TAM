@@ -1,6 +1,6 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.791
-## File Last Change: 2017-09-14 19:41:39
+## File Version: 9.792
+## File Last Change: 2017-10-23 10:24:39
 tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,  
             formulaY = NULL , dataY = NULL , 
             ndim = 1 , pid = NULL ,
@@ -690,9 +690,6 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 					
     } # end of EM algorithm loop
     ############################################################################
-    ############################################################################
-    ############################################################################
-# stop("check here")  
 
     xsi.min.deviance -> xsi 
     beta.min.deviance -> beta
@@ -722,7 +719,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 				gammaslope.constr.V=gammaslope.constr.V, gammaslope.constr.Npars=gammaslope.constr.Npars,
 				gammaslope.center.index=gammaslope.center.index, gammaslope.prior=gammaslope.prior, 
 				numdiff.parm=5*1E-4 ) 				   
-# cat("q200\n")
+
     #***
     # calculate counts
 	res <- tam_calc_counts( resp=resp, theta=theta, resp.ind=resp.ind, group=group, 
@@ -737,7 +734,6 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
     item1 <- tam_mml_3pl_itempartable( resp=resp , maxK=maxK , AXsi=AXsi , 
 					B=B, ndim=ndim, resp.ind=resp.ind, rprobs=rprobs, 
 					n.ik=n.ik, pi.k=pi.k, guess=guess , est.guess=est.guess )
-# cat("q300\n")
 								
 	# distribution moments
 	if ( skillspace != "normal" ){
@@ -768,8 +764,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
       item2 <- item
       item2[,"est"] <- round( item2[,"est"] , 4 )
       print(item2)
-	  #*****
-	  # skillspace == normal
+	  #**** skillspace == normal
 	  if (skillspace=="normal"){	
 		  cat("...................................\n")
 		  cat("Regression Coefficients\n")
@@ -796,7 +791,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
                   " with deviance " , round(deviance.history[ devmin , 2 ],3) , sep="") , "\n")
         cat("The corresponding estimates are\n")
         cat("  xsi.min.deviance\n  beta.min.deviance \n  variance.min.deviance\n\n")
-			}
+      }
       cat( "\nStart: " , paste(s1))
       cat( "\nEnd: " , paste(s2),"\n")
       print(s2-s1)

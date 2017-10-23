@@ -42,11 +42,12 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.8  |  2017-10-20  |  Last: TAM 2.8-3
+VERSIONS TAM 2.8  |  2017-10-23  |  Last: TAM 2.8-4
 -------------------------------------------------------------
 
 FEATURES:
-* ---
+* include individual class probabilities as an output value 
+  'ind_classprobs' in 'tamaan' (thanks to Rudolf Debelak)
  
 BUG FIXES:
 * ---
