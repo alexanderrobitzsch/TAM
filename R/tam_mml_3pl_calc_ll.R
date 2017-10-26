@@ -1,6 +1,6 @@
 ## File Name: tam_mml_3pl_calc_ll.R
 ## File Version: 0.03
-## File Last Change: 2017-01-24 18:13:51
+## File Last Change: 2017-01-24 17:13:51
 
 
 tam_mml_3pl_calc_ll <- function( n.ik , probs, eps )

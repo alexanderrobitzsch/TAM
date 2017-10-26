@@ -1,6 +1,6 @@
 ## File Name: IRT.irfprob.tam.R
 ## File Version: 9.04
-## File Last Change: 2017-03-25 15:22:48
+## File Last Change: 2017-03-25 14:22:48
 ###########################################################
 # object of class character (= estimation method)
 IRT.irfprob.character <- function(object, A, B, 

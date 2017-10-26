@@ -1,6 +1,6 @@
 ## File Name: anova.tam.R
 ## File Version: 9.02
-## File Last Change: 2017-01-24 18:13:48
+## File Last Change: 2017-01-24 17:13:48
 ##############################################################
 # Likelihood ratio test for tam objects
 # Function is copied from the CDM package

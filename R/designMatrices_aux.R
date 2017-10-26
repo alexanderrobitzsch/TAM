@@ -1,6 +1,6 @@
 ## File Name: designMatrices_aux.R
 ## File Version: 9.03
-## File Last Change: 2017-02-18 21:55:13
+## File Last Change: 2017-02-18 20:55:13
 
 #############################################################
 print.designMatrices <-

@@ -1,6 +1,6 @@
 ## File Name: plotDevianceTAM.R
 ## File Version: 9.03
-## File Last Change: 2017-02-18 22:28:25
+## File Last Change: 2017-02-18 21:28:25
 ###############################################################################
 plotDevianceTAM   <- function ( tam.obj , omitUntil = 1, reverse = TRUE ,
 			change=TRUE) {

@@ -1,6 +1,6 @@
 ## File Name: predict.tam.R
 ## File Version: 9.03
-## File Last Change: 2017-02-18 22:27:48
+## File Last Change: 2017-02-18 21:27:48
 
 ##################################################
 # predict methods in TAM

@@ -10,15 +10,15 @@ The official version of `TAM` is hosted on CRAN and may be found [here](https://
 The CRAN version can be installed from within R using:
 
 ```r
-install.packages("TAM")
+utils::install.packages("TAM")
 ```
 
-#### GitHub version `TAM` 2.8-8 (2017-10-26)
+#### GitHub version `TAM` 2.8-9 (2017-10-26)
 
 The version hosted [here](https://github.com/alexanderrobitzsch/TAM) is the development version of `TAM`. 
 The GitHub version can be installed using `devtools` as:
 
 ```r
-install.packages("devtools")
+utils::install.packages("devtools")
 devtools::install_github("alexanderrobitzsch/TAM")
 ```

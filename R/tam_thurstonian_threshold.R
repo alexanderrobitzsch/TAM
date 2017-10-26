@@ -1,6 +1,6 @@
 ## File Name: tam_thurstonian_threshold.R
 ## File Version: 9.03
-## File Last Change: 2017-03-25 15:28:30
+## File Last Change: 2017-03-25 14:28:30
 ####################################################################
 # Thurstonian thresholds (gammas)
 #...................................................................

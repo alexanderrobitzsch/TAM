@@ -1,6 +1,6 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.813
-## File Last Change: 2017-10-26 11:05:59
+## File Version: 9.818
+## File Last Change: 2017-10-26 16:38:31
 tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,  
             formulaY = NULL , dataY = NULL , 
             ndim = 1 , pid = NULL ,
@@ -169,7 +169,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 	#--- print information about nodes
 	res <- tam_mml_progress_proc_nodes( progress=progress, snodes=snodes, nnodes=nnodes, 
 					skillspace= skillspace, QMC=QMC )  		
-    
+					
     # maximum no. of categories per item. Assuming dichotomous
     maxK <- max( resp , na.rm=TRUE ) + 1 
 	  
@@ -275,7 +275,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
     xsi.min.deviance <- xsi
     beta.min.deviance <- beta
     variance.min.deviance <- variance
-	
+
 	#--- create grid of nodes for numeric or stochastic integration	
 	res <- tam_mml_create_nodes( snodes=snodes, nodes=nodes, ndim=ndim, QMC=QMC,
 				skillspace=skillspace, theta.k=theta.k) 
@@ -286,6 +286,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 	thetasamp.density <- res$thetasamp.density
 	nnodes <- res$nnodes	
 	snodes <- res$snodes
+	ntheta <- res$ntheta
     deviance <- 0  
 	deviance.history <- tam_deviance_history_init(maxiter=maxiter)
 	
@@ -300,7 +301,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 	# skill space
 	if ( ! is.null(theta) ){ 
 		ntheta <- nrow(theta)
-	} 															
+	} 				
 	fulldesign <- FALSE
 	if ( skillspace != "normal" ){	    
 		gwt <- hwt <- matrix( 1/ntheta , nrow=nstud , ncol=ntheta)				 						
@@ -320,7 +321,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 		
 		# design matrix		
 		if ( is.null( delta.designmatrix) ){
-		    delta.designmatrix <- diag( ntheta )
+		    delta.designmatrix <- diag(ntheta )
 			fulldesign <- TRUE
 		}
         delta <- matrix( 0 , nrow= ncol(delta.designmatrix) , ncol=G)	
@@ -461,7 +462,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 	#--- speed gains, further auxiliary objects, 2015-06-26
 	unidim_simplify <- TRUE
 	if (G > 1){ unidim_simplify <- FALSE }
-	if ( YSD){ unidim_simplify <- FALSE }																		
+	if (YSD){ unidim_simplify <- FALSE }																		
 							
 	##############################################################
 	##############################################################
@@ -488,8 +489,8 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 					theta=theta, nnodes=nnodes, maxK=maxK, recalc=TRUE, guess=guess ) 
 		rprobs <- res$rprobs
 		rprobs0 <- res$rprobs0
-		AXsi <- res$AXsi
- 	
+		AXsi <- res$AXsi	
+
 # cat("calc_prob") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
     
 		#***********************************
