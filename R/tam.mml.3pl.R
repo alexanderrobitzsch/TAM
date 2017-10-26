@@ -1,6 +1,6 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.792
-## File Last Change: 2017-10-23 10:24:39
+## File Version: 9.813
+## File Last Change: 2017-10-26 11:05:59
 tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,  
             formulaY = NULL , dataY = NULL , 
             ndim = 1 , pid = NULL ,
@@ -295,11 +295,11 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
     # a4 <- 999   
     basispar <- NULL
     #		} else{  a4 <- 0 }
-        
+	
 	#*************************
 	# skill space
-	if ( ! is.null(theta ) ){ 
-			ntheta <- nrow(theta)
+	if ( ! is.null(theta) ){ 
+		ntheta <- nrow(theta)
 	} 															
 	fulldesign <- FALSE
 	if ( skillspace != "normal" ){	    
@@ -326,11 +326,11 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
         delta <- matrix( 0 , nrow= ncol(delta.designmatrix) , ncol=G)	
 	}
 	gwt1 <- matrix( 1 , nrow=nstud , ncol=ntheta )	
-
+	
 	#***** inits for delta
 	if ( ! is.null(delta.inits) ){
 		delta <- delta.inits 
-				}
+	}
 	
 	#****** indicator matrices
 	datindw <- list(1:maxK)

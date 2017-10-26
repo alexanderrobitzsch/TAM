@@ -1,6 +1,6 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9820
-%% File Last Change: 2017-06-22 17:41:52
+%% File Version: 2.9821
+%% File Last Change: 2017-10-26 11:12:46
 
 \name{tam.mml}
 
@@ -1985,6 +1985,30 @@ B[1,,]
 #-- test run
 mod1 <- TAM::tam.mml( resp , B = B , control=list( snodes=1000 , maxiter=5)  )
 summary(mod1)
+
+# Same model with TAM::tam.mml.3pl instead
+
+dim4 <- sum(apply(B, c(1, 3), function(x) any(!(x == 0))))
+E1 <- array(0, dim = c(dim(B), dim4))
+
+kkk <- 0
+for (iii in seq_len(dim(E1)[1])) {
+    for (jjj in seq_len(dim(E1)[3])) {
+        if (any(B[iii, , jjj] != 0)) {
+            kkk <- kkk + 1
+            E1[iii, , jjj, kkk] <- B[iii, , jjj]
+        }
+    }
+}
+if (kkk != dim4) stop("Something went wrong in the loop, because 'kkk != dim4'.")
+
+mod2 <- TAM::tam.mml.3pl(resp, E = E1, est.some.slopes = FALSE, control = list(maxiter = 50))
+summary(mod2)
+
+cor(mod1$person$EAP.Dim3, mod2$person$EAP.Dim3)
+cor(mod1$person$EAP.Dim2, mod2$person$EAP.Dim2)
+cor(mod1$person$EAP.Dim1, mod2$person$EAP.Dim1)
+cor(mod1$xsi$xsi, mod2$xsi$xsi)
 
 #############################################################################
 # EXAMPLE 21: Acceleration of EM algorithm | dichotomous data   

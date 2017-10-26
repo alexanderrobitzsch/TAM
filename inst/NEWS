@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.8  |  2017-10-23  |  Last: TAM 2.8-4
+VERSIONS TAM 2.8  |  2017-10-26  |  Last: TAM 2.8-8
 -------------------------------------------------------------
 
 FEATURES:
@@ -50,17 +50,20 @@ FEATURES:
   'ind_classprobs' in 'tamaan' (thanks to Rudolf Debelak)
  
 BUG FIXES:
-* ---
+* fixed a bug in 'tam.mml.3pl' for models with stochastic
+  nodes (thanks to Bodo Eickhorst and Hansjoerg Plieninger)
 
 NOTES:
-* ---
+* added an example ('tam.mml', Example 20, Model 2) for 
+  conversion of design matrices of multidimensional partial 
+  credit models from 'tam.mml' into 'tam.mml.3pl' 
+  (created by Hansjoerg Plieninger)
 
 DATASETS INCLUDED OR MODIFIED:
 * ---
 
 EXAMPLES INCLUDED OR MODIFIED:
-* ---
-
+* tam.mml (20.2)
 
 
 

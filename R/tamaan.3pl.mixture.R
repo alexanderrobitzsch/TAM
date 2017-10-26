@@ -1,6 +1,6 @@
 ## File Name: tamaan.3pl.mixture.R
-## File Version: 9.05
-## File Last Change: 2017-10-23 10:49:31
+## File Version: 9.07
+## File Last Change: 2017-10-23 11:11:57
 
 #######################################################################
 # tamaan 3PL mixture module
@@ -99,7 +99,7 @@ tamaan.3pl.mixture <- function( res0 , anal.list , con , ... )
 	# processing output
 				
 	# probabilities mixture distributions
-    itempartable <- res0$itempartable_MIXTURE
+	itempartable <- res0$itempartable_MIXTURE
 	theta_MIXTURE <- res0$theta_MIXTURE
 	TG <- nrow(theta_MIXTURE)
 	TP <- ncl*TG
@@ -116,7 +116,7 @@ tamaan.3pl.mixture <- function( res0 , anal.list , con , ... )
 		probs_MIXTURE[cl] <- sum(pi.k[ cl.index , 1 ] )
 		pi.ktemp <- pi.k[ cl.index ,,drop=FALSE]
 		pi.ktemp <- pi.ktemp / colSums( pi.ktemp)
-		moments_MIXTURE[[cl]] <- .mml.3pl.distributionmoments( D =D , 
+		moments_MIXTURE[[cl]] <- tam_mml_3pl_distributionmoments( D =D , 
 				G =G , pi.k=pi.ktemp , theta.k=theta_MIXTURE )
 	}
 	# item parameters

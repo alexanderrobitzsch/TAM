@@ -1,6 +1,6 @@
 ## File Name: tam_mml_create_nodes.R
-## File Version: 0.14
-## File Last Change: 2017-09-14 19:38:50
+## File Version: 0.17
+## File Last Change: 2017-10-26 10:49:44
 
 tam_mml_create_nodes <- function(snodes, nodes, ndim, QMC,
 		skillspace="normal", theta.k=NULL)
@@ -57,11 +57,12 @@ tam_mml_create_nodes <- function(snodes, nodes, ndim, QMC,
                                         sigma = diag(1,ndim ) )	, nrow= snodes , ncol=ndim )			
 		}
 		nnodes <- nrow(theta0.samp)
+		theta <- theta0.samp
     }
 	#---- OUTPUT	
 	res <- list( theta=theta, theta2=theta2, thetawidth=thetawidth,
 					theta0.samp=theta0.samp, thetasamp.density=thetasamp.density,
 					nodes=nodes, snodes=snodes, QMC=QMC, nnodes=nnodes,
-					theta.k=theta.k)
+					theta.k=theta.k)			
 	return(res)	
 }
