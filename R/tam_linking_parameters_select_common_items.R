@@ -1,6 +1,5 @@
 ## File Name: tam_linking_parameters_select_common_items.R
 ## File Version: 0.03
-## File Last Change: 2017-06-22 14:06:50
 
 tam_linking_parameters_select_common_items <- function(out, items_sel, names_suffix=NULL)
 {

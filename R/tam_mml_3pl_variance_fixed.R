@@ -1,6 +1,5 @@
 ## File Name: tam_mml_3pl_variance_fixed.R
 ## File Version: 0.04
-## File Last Change: 2017-04-06 13:54:12
 
 
 tam_mml_3pl_variance_fixed <- function( variance , variance.inits , 

@@ -1,6 +1,5 @@
 ## File Name: tam_calc_prob_helper_subtract_max.R
 ## File Version: 0.03
-## File Last Change: 2017-03-21 21:27:19
 
 tam_calc_prob_helper_subtract_max <- function( rr0 )
 {

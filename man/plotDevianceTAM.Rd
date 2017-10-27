@@ -1,6 +1,5 @@
 %% File Name: plotDevianceTAM.Rd
 %% File Version: 2.12
-%% File Last Change: 2017-06-22 17:41:52
 
 \name{plotDevianceTAM}
 \alias{plotDevianceTAM}

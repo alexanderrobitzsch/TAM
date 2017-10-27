@@ -1,6 +1,5 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.818
-## File Last Change: 2017-10-26 16:38:31
+## File Version: 9.821
 tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,  
             formulaY = NULL , dataY = NULL , 
             ndim = 1 , pid = NULL ,
@@ -102,7 +101,11 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
       cat(disp)	
       cat("Processing Data     ", paste(Sys.time()) , "\n") ; flush.console()
     }     
-    if ( ! is.null(group) ){ 
+	
+	#-- activate stochastic/QMC integration in case of multiple groups
+	#-- if requested
+    # if ( ! is.null(group) ){
+	if (FALSE){
       con1a$QMC <- QMC <- FALSE
       con1a$snodes <- snodes <- 0
     }   

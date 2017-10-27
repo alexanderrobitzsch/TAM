@@ -1,6 +1,5 @@
 ## File Name: msq.itemfitWLE.R
 ## File Version: 9.04
-## File Last Change: 2017-09-19 14:37:47
 
 ################################################
 # item fit statistics based on WLEs

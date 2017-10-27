@@ -1,6 +1,5 @@
 ## File Name: tam_mml_proc_est_xsi_index.R
 ## File Version: 0.01
-## File Last Change: 2017-05-25 17:43:44
 
 tam_mml_proc_est_xsi_index <- function(A, xsi.inits, xsi.fixed)
 {

@@ -1,6 +1,5 @@
 ## File Name: tam_pv_summary_covariance.R
 ## File Version: 0.03
-## File Last Change: 2017-08-15 18:40:47
 
 tam_pv_summary_covariance <- function( obji, label, digits=3)
 {

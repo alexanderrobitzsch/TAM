@@ -1,6 +1,5 @@
 ## File Name: IRT.informationCurve.R
 ## File Version: 9.12
-## File Last Change: 2017-04-19 15:56:10
 
 
 

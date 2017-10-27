@@ -1,6 +1,5 @@
 %% File Name: data.fims.Aus.Jpn.Rd
 %% File Version: 2.08
-%% File Last Change: 2017-06-22 17:41:51
 
 \name{data.fims.Aus.Jpn.scored}
 \alias{data.fims.Aus.Jpn.raw}

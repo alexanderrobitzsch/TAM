@@ -1,6 +1,5 @@
 %% File Name: IRT.residuals.Rd
 %% File Version: 0.14
-%% File Last Change: 2017-06-22 17:41:51
 
 \name{IRT.residuals}
 \alias{IRT.residuals}

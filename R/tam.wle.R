@@ -1,6 +1,5 @@
 ## File Name: tam.wle.R
 ## File Version: 9.13
-## File Last Change: 2017-06-01 13:02:40
 
 tam.wle <- function( tamobj, ... )
 {

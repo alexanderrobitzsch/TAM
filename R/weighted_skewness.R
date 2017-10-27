@@ -1,6 +1,5 @@
 ## File Name: weighted_skewness.R
 ## File Version: 9.04
-## File Last Change: 2017-09-19 15:35:03
 
 #####################################################
 # skewness

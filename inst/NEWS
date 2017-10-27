@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.8  |  2017-10-26  |  Last: TAM 2.8-9
+VERSIONS TAM 2.8  |  2017-10-27  |  Last: TAM 2.8-12
 -------------------------------------------------------------
 
 FEATURES:
@@ -58,6 +58,9 @@ NOTES:
   conversion of design matrices of multidimensional partial 
   credit models from 'tam.mml' into 'tam.mml.3pl' 
   (created by Hansjoerg Plieninger)
+* allowed stochastic integration and Quasi Monte Carlo
+  integration for multiple group models in 'tam.mml.3pl'
+  (suggested by Hansjoerg Plieninger)
 
 DATASETS INCLUDED OR MODIFIED:
 * ---

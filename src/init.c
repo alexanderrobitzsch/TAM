@@ -1,6 +1,5 @@
 //// File Name: init.c
 //// File Version: 0.23
-//// File Last Change: 2017-10-20 10:21:30
 #include <R.h>
 #include <Rinternals.h>
 #include <stdlib.h> // for NULL

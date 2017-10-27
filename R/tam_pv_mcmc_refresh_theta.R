@@ -1,6 +1,5 @@
 ## File Name: tam_pv_mcmc_refresh_theta.R
 ## File Version: 0.03
-## File Last Change: 2017-05-31 15:41:16
 
 tam_pv_mcmc_refresh_theta <- function( theta_acceptance_MH, adj_MH , adj_change_MH ,
 		accrate_bound_MH , verbose , adj_min_MH = .1)

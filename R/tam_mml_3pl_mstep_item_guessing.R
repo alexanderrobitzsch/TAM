@@ -1,6 +1,5 @@
 ## File Name: tam_mml_3pl_mstep_item_guessing.R
 ## File Version: 9.402
-## File Last Change: 2017-05-10 10:22:09
 ####################################################
 # estimation guessing parameters
 tam_mml_3pl_mstep_item_guessing <- function( guess , Msteps , convM , 

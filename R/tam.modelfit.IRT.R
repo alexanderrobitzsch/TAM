@@ -1,6 +1,5 @@
 ## File Name: tam.modelfit.IRT.R
 ## File Version: 0.01
-## File Last Change: 2017-09-15 17:13:36
 
 
 ###############################################################	

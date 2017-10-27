@@ -1,6 +1,5 @@
 ## File Name: tam_mml_mfr_inits_xsi.R
 ## File Version: 0.02
-## File Last Change: 2017-05-25 16:12:11
 
 tam_mml_mfr_inits_xsi <- function( gresp.noStep.ind, col.index, cA , pweights , 
 		xsi, xsi.start0, resp, A, xsi.inits, xsi.fixed, ItemScore, est.xsi.index, addnumb=.5 )

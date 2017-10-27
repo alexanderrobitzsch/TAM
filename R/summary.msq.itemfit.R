@@ -1,6 +1,5 @@
 ## File Name: summary.msq.itemfit.R
 ## File Version: 9.09
-## File Last Change: 2017-10-20 10:09:21
 
 ###################################################
 # summary for tam.fit

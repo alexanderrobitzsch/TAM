@@ -1,6 +1,5 @@
 ## File Name: tam_pv_mcmc_inits_sampled_parameters_objects.R
 ## File Version: 0.09
-## File Last Change: 2017-08-15 15:17:57
 
 tam_pv_mcmc_inits_sampled_parameters_objects <- function( n.burnin, n.iter,
 	beta , variance , G, Y, beta_groups)

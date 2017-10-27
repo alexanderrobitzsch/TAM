@@ -1,6 +1,5 @@
 ## File Name: tamaan.3pl.mixture.R
 ## File Version: 9.07
-## File Last Change: 2017-10-23 11:11:57
 
 #######################################################################
 # tamaan 3PL mixture module

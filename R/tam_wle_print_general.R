@@ -1,6 +1,5 @@
 ## File Name: tam_wle_print_general.R
 ## File Version: 0.02
-## File Last Change: 2017-06-02 10:04:08
 
 
 

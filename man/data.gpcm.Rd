@@ -1,6 +1,5 @@
 %% File Name: data.gpcm.Rd
 %% File Version: 2.08
-%% File Last Change: 2017-06-22 17:41:51
 
 \name{data.gpcm}
 \alias{data.gpcm}

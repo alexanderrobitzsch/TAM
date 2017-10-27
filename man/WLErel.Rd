@@ -1,6 +1,5 @@
 %% File Name: WLErel.Rd
 %% File Version: 0.15
-%% File Last Change: 2017-10-09 10:26:01
 
 \name{WLErel}
 \alias{WLErel}

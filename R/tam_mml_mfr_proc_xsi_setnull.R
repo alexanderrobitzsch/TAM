@@ -1,6 +1,5 @@
 ## File Name: tam_mml_mfr_proc_xsi_setnull.R
 ## File Version: 0.01
-## File Last Change: 2017-05-25 18:25:13
 
 tam_mml_mfr_proc_xsi_setnull <- function(xsi.setnull, A, xsi.fixed)
 {

@@ -1,6 +1,5 @@
 ## File Name: tam_mml_person_SD_EAP.R
 ## File Version: 0.01
-## File Last Change: 2017-04-27 20:24:28
 
 
 tam_mml_person_SD_EAP <- function( hwt, theta, EAP )

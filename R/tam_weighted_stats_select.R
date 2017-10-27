@@ -1,6 +1,5 @@
 ## File Name: tam_weighted_stats_select.R
 ## File Version: 0.02
-## File Last Change: 2017-09-19 15:44:43
 
 tam_weighted_stats_select <- function(x, w, select)
 {

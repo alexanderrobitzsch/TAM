@@ -1,6 +1,5 @@
 ## File Name: tam.se.R
 ## File Version: 9.05
-## File Last Change: 2017-04-06 16:16:13
 tam.se <-
   function( tamobj , ...){
     SE.quick <- TRUE

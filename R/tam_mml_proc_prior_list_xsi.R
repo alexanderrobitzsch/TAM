@@ -1,6 +1,5 @@
 ## File Name: tam_mml_proc_prior_list_xsi.R
 ## File Version: 0.02
-## File Last Change: 2017-06-16 18:10:05
 
 tam_mml_proc_prior_list_xsi <- function( prior_list_xsi , xsi )
 {

@@ -1,6 +1,5 @@
 ## File Name: tam_mml_control_list_define.R
 ## File Version: 0.08
-## File Last Change: 2017-06-18 16:57:35
 
 tam_mml_control_list_define <- function(control, envir, tam_fct,
 		prior_list_xsi)

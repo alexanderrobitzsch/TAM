@@ -1,6 +1,5 @@
 ## File Name: tam_pv_mcmc_proposal_theta.R
 ## File Version: 0.06
-## File Last Change: 2017-08-13 22:09:59
 
 tam_pv_mcmc_proposal_theta <- function(theta, nstud, variance, adj_MH, D, G, group_index)
 {

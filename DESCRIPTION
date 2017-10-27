@@ -1,8 +1,8 @@
 Package: TAM
 Type: Package
 Title: Test Analysis Modules
-Version: 2.8-9
-Date: 2017-10-26 16:39:50
+Version: 2.8-12
+Date: 2017-10-27 10:43:18
 Author:
     Alexander Robitzsch [aut, cre], Thomas Kiefer [aut], Margaret Wu [aut]
 Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
@@ -15,10 +15,10 @@ Description:
     structured latent class model, mixture distribution IRT models, 
     and located latent class models. Latent regression models and 
     plausible value imputation are also supported. For details see
-    Adams, Wilson, and Wang, 1997, <doi:10.1177/0146621697211001>,
-    Adams, Wilson, and Wu, 1997, <doi:10.3102/10769986022001047>,
-    Formann, 1982, <doi:10.1002/bimj.4710240209>,
-    Formann, 1992, <doi:10.1080/01621459.1992.10475229>.
+    Adams, Wilson, and Wang, 1997 <doi:10.1177/0146621697211001>,
+    Adams, Wilson, and Wu, 1997 <doi:10.3102/10769986022001047>,
+    Formann, 1982 <doi:10.1002/bimj.4710240209>,
+    Formann, 1992 <doi:10.1080/01621459.1992.10475229>.
 Depends: 
     R (>= 2.15.1), CDM (>= 5.8-5)
 Imports: 

@@ -1,6 +1,5 @@
 %% File Name: tampv2datalist.Rd
 %% File Version: 0.16
-%% File Last Change: 2017-09-20 16:46:21
 
 \name{tampv2datalist}
 \alias{tampv2datalist}

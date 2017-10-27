@@ -1,6 +1,5 @@
 ## File Name: tam_mml_mfr_proc_create_design_matrices.R
 ## File Version: 0.01
-## File Last Change: 2017-05-27 14:18:01
 
 tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
 	facets, constraint, ndim, Q, A, B, progress, xsi.fixed, resp00, B00,

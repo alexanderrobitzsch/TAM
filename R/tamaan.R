@@ -1,6 +1,5 @@
 ## File Name: tamaan.R
 ## File Version: 9.06
-## File Last Change: 2017-10-23 10:33:09
 
 ##########################################################
 # tamaan function

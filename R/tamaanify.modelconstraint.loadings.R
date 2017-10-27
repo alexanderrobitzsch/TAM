@@ -1,6 +1,5 @@
 ## File Name: tamaanify.modelconstraint.loadings.R
 ## File Version: 9.02
-## File Last Change: 2017-01-24 17:13:52
 
 ##########################################################
 # model constraint loadings

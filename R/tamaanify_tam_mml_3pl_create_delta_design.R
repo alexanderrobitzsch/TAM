@@ -1,6 +1,5 @@
 ## File Name: tamaanify_tam_mml_3pl_create_delta_design.R
 ## File Version: 9.04
-## File Last Change: 2017-04-29 18:03:03
 ###################################################
 # create delta design matrix
 tamaanify_tam_mml_3pl_create_delta_design <- function(X , main=2 , int=TRUE ){

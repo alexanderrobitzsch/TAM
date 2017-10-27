@@ -1,6 +1,5 @@
 ## File Name: tam_mml_progress_em.R
 ## File Version: 0.08
-## File Last Change: 2017-06-17 13:05:01
 
 tam_mml_progress_em <- function(progress, deviance, deviance_change , iter,
 		rel_deviance_change, xsi_change, beta_change, variance_change, B_change ,

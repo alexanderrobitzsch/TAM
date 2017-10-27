@@ -1,6 +1,5 @@
 ## File Name: tam_mml_mfr_dataprep.R
 ## File Version: 9.11
-## File Last Change: 2017-04-28 12:16:38
 
 ############################################################
 tam_mml_mfr_dataprep <- function( formulaA , xsi.setnull , B , Q ,

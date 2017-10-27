@@ -1,6 +1,5 @@
 //// File Name: tam_pv_multivariate_normal_approximation.cpp
 //// File Version: 0.22
-//// File Last Change: 2017-06-28 16:47:07
 
 
 // [[Rcpp::depends(RcppArmadillo)]]

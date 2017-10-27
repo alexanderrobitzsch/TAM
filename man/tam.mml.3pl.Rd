@@ -1,6 +1,5 @@
 %% File Name: tam.mml.3pl.Rd
 %% File Version: 2.64
-%% File Last Change: 2017-06-22 17:41:52
 
 \name{tam.mml.3pl}
 \alias{tam.mml.3pl}

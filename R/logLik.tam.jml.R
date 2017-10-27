@@ -1,6 +1,5 @@
 ## File Name: logLik.tam.jml.R
 ## File Version: 0.02
-## File Last Change: 2017-04-12 15:20:13
 
 ###############################################################
 # log-likelihood function tam.jml

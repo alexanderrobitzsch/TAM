@@ -1,6 +1,5 @@
 ## File Name: tam_remove_missings.R
 ## File Version: 0.02
-## File Last Change: 2017-06-16 10:26:56
 
 tam_remove_missings <- function( dat , items, elim_items=TRUE, elim_persons=TRUE )
 {

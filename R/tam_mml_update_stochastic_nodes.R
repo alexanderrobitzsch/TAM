@@ -1,10 +1,17 @@
 ## File Name: tam_mml_update_stochastic_nodes.R
-## File Version: 0.01
-## File Last Change: 2017-04-29 17:26:00
+## File Version: 0.04
 
 tam_mml_update_stochastic_nodes <- function(theta0.samp, variance, snodes, beta,
 		theta)
 {
+	if ( is.array(variance) ){
+		# adapt nodes with respect to distribution in first group
+		dim_variance <- dim(variance)
+		if ( length( dim_variance ) == 3 ){
+			variance <- variance[ 1, , ]
+			variance <- matrix( variance , nrow=dim_variance[2], ncol=dim_variance[3])
+		}	
+	}
 	#-- compute new mean for each person
 	theta <- beta[ rep(1,snodes) , ] + theta0.samp %*% chol(variance) 		
 	# calculate density for all nodes

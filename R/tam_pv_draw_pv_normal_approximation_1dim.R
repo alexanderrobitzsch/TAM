@@ -1,6 +1,5 @@
 ## File Name: tam_pv_draw_pv_normal_approximation_1dim.R
 ## File Version: 0.01
-## File Last Change: 2017-05-25 20:14:36
 
 tam_pv_draw_pv_normal_approximation_1dim <- function( theta, nstud, ntheta, pv, hwt, pp)
 {			

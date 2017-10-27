@@ -1,6 +1,5 @@
 ## File Name: msq.itemfit.R
 ## File Version: 9.03
-## File Last Change: 2017-02-18 20:57:00
 
 #######################################
 # Item fit mean squares statistics

@@ -1,6 +1,5 @@
 ## File Name: tam_pv_mcmc_person_inits_from_resp.R
 ## File Version: 0.03
-## File Last Change: 2017-05-28 14:02:49
 
 tam_pv_mcmc_person_inits_from_resp <- function( resp, D, adj = .02 , sd_noise = .5)
 {

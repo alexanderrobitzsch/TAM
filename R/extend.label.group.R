@@ -1,6 +1,5 @@
 ## File Name: extend.label.group.R
 ## File Version: 9.04
-## File Last Change: 2017-04-29 18:31:55
 
 #######################################################
 # extend labels arranged in a group

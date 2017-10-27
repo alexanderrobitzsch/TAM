@@ -1,6 +1,5 @@
 ## File Name: IRT.simulate.R
 ## File Version: 9.09
-## File Last Change: 2017-07-12 10:48:33
 
 #####################################################
 # S3 method

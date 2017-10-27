@@ -1,6 +1,5 @@
 //// File Name: prior_normal_density_c.cpp
 //// File Version: 3.02
-//// File Last Change: 2017-09-15 10:38:42
 
 #include <Rcpp.h>
 

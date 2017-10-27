@@ -1,6 +1,5 @@
 ## File Name: tam_linking_include_list.R
 ## File Version: 0.01
-## File Last Change: 2017-06-15 14:58:47
 
 tam_linking_include_list <- function( list1, list2 )
 {

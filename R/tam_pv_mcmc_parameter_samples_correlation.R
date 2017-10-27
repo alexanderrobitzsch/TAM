@@ -1,6 +1,5 @@
 ## File Name: tam_pv_mcmc_parameter_samples_correlation.R
 ## File Version: 0.08
-## File Last Change: 2017-08-16 10:39:56
 
 
 tam_pv_mcmc_parameter_samples_correlation <- function(variance_samples, cor_index)

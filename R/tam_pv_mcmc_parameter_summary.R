@@ -1,6 +1,5 @@
 ## File Name: tam_pv_mcmc_parameter_summary.R
 ## File Version: 0.02
-## File Last Change: 2017-05-31 14:46:07
 
 tam_pv_mcmc_parameter_summary <- function(parameter_samples, level)
 {

@@ -1,6 +1,5 @@
 ## File Name: tam_acceleration_inits.R
 ## File Version: 0.04
-## File Last Change: 2017-05-08 15:03:06
 
 
 tam_acceleration_inits <- function(acceleration, G, xsi, variance, B=NULL, 

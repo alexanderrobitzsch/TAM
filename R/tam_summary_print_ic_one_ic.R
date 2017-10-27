@@ -1,6 +1,5 @@
 ## File Name: tam_summary_print_ic_one_ic.R
 ## File Version: 0.08
-## File Last Change: 2017-09-16 12:59:37
 
 tam_summary_print_ic_one_ic <- function(ic, crit, digits_ic=0, digits_penalty=2){
 	ic_val <- ic[[ crit ]]

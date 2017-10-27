@@ -1,6 +1,5 @@
 ## File Name: tam_jml_version1.R
 ## File Version: 9.24
-## File Last Change: 2017-09-15 17:32:01
 tam_jml_version1 <-
 function( resp , group = NULL , adj=.3 , disattenuate = FALSE ,
                      bias = TRUE, xsi.fixed=NULL ,  xsi.inits = NULL ,  

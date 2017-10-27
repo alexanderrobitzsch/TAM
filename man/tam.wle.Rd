@@ -1,6 +1,5 @@
 %% File Name: tam.wle.Rd
 %% File Version: 2.36
-%% File Last Change: 2017-09-19 15:23:47
 
 \name{tam.wle}
 

@@ -1,6 +1,5 @@
 ## File Name: tam_ginv.R
 ## File Version: 0.03
-## File Last Change: 2017-09-19 14:25:32
 
 # covariance stabilization in TAM using generalized inverse, see also MASS::ginv
 tam_ginv <- function(x, eps=.05)

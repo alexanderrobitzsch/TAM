@@ -1,6 +1,5 @@
 ## File Name: tam.pv.mcmc.R
 ## File Version: 0.813
-## File Last Change: 2017-08-23 10:02:26
 
 tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE , 
 				nplausible=10, level = .95, n.iter = 1000 ,

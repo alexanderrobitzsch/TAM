@@ -1,6 +1,5 @@
 ## File Name: summary_tamaan_item_parameters.R
 ## File Version: 0.06
-## File Last Change: 2017-09-18 10:35:59
 
 #########################################################################
 # item parameters

@@ -1,6 +1,5 @@
 %% File Name: data.examples.Rd
 %% File Version: 2.16
-%% File Last Change: 2017-06-22 17:41:51
 
 \name{data.examples}
 

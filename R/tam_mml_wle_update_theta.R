@@ -1,6 +1,5 @@
 ## File Name: tam_mml_wle_update_theta.R
 ## File Version: 0.01
-## File Last Change: 2017-06-01 17:31:05
 
 tam_mml_wle_update_theta <- function( theta, PersonScores, err_inv, nstud, ndim,
 		B2_B, B_Cube, BBB_bari, expected, WLE, Miter, progress, convM,

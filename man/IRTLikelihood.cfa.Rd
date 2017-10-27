@@ -1,6 +1,5 @@
 %% File Name: IRTLikelihood.cfa.Rd
 %% File Version: 0.15
-%% File Last Change: 2017-06-22 17:41:51
 
 \name{IRTLikelihood.cfa}
 \alias{IRTLikelihood.cfa}

@@ -1,6 +1,5 @@
 ## File Name: tam_mml_3pl_deviance.R
 ## File Version: 0.05
-## File Last Change: 2017-05-08 11:56:39
 
 tam_mml_3pl_deviance <- function( hwt0 , rfx , res.hwt , pweights , snodes,
 		deviance=NA, deviance.history=NULL , iter=NULL )

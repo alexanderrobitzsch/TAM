@@ -1,6 +1,5 @@
 ## File Name: summary_tamaan_item_parameters_mixture.R
 ## File Version: 0.07
-## File Last Change: 2017-09-18 10:36:17
 
 #########################################################################
 # item parameters

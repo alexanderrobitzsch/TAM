@@ -1,6 +1,5 @@
 ## File Name: tam_mml_mfr_collect_xsi_parameters.R
 ## File Version: 0.01
-## File Last Change: 2017-05-31 18:07:58
 
 tam_mml_mfr_collect_xsi_parameters <- function( xsi.constr, resp, A, xsi, se.xsi ,
 		delete.red.items, itemnames, miss.items )

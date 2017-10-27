@@ -1,6 +1,5 @@
 ## File Name: tam_accelerate_parameters.R
 ## File Version: 9.12
-## File Last Change: 2017-05-15 09:34:41
 
 ##############################################################################
 # acceleration

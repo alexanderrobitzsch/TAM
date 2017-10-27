@@ -1,6 +1,5 @@
 %% File Name: TAM-utilities.Rd
 %% File Version: 0.53
-%% File Last Change: 2017-09-19 14:27:08
 
 \name{TAM-utilities}
 \alias{TAM-utilities}

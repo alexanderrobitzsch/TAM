@@ -1,6 +1,5 @@
 ## File Name: tam_NA_pattern.R
 ## File Version: 0.04
-## File Last Change: 2017-06-04 17:31:06
 
 ###################################################################
 # Function for defining different missing response patterns

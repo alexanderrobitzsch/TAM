@@ -1,6 +1,5 @@
 %% File Name: IRTLikelihood.ctt.Rd
 %% File Version: 0.14
-%% File Last Change: 2017-06-22 17:41:51
 
 \name{IRTLikelihood.ctt}
 \alias{IRTLikelihood.ctt}

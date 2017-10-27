@@ -1,6 +1,5 @@
 %% File Name: tam_NA_pattern.Rd
 %% File Version: 0.05
-%% File Last Change: 2017-06-22 17:41:53
 
 \name{tam_NA_pattern}
 \alias{tam_NA_pattern}

@@ -1,6 +1,5 @@
 ## File Name: tam_pv_mcmc_likelihood.R
 ## File Version: 0.11
-## File Last Change: 2017-05-28 13:57:05
 
 tam_pv_mcmc_likelihood <- function( probs, resp, resp.ind, nstud, nitems , maxK )
 {

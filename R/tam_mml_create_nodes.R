@@ -1,6 +1,5 @@
 ## File Name: tam_mml_create_nodes.R
 ## File Version: 0.21
-## File Last Change: 2017-10-26 16:37:38
 
 tam_mml_create_nodes <- function(snodes, nodes, ndim, QMC,
 		skillspace="normal", theta.k=NULL)

@@ -1,6 +1,5 @@
 ## File Name: tam.Q3.R
 ## File Version: 9.02
-## File Last Change: 2017-01-24 17:13:51
 
 #############################################
 # Q3 statistic based on weighted likelihood estimates

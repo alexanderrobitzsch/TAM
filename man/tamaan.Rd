@@ -1,6 +1,5 @@
 %% File Name: tamaan.Rd
 %% File Version: 0.45
-%% File Last Change: 2017-10-23 10:50:44
 
 \name{tamaan}
 \alias{tamaan}

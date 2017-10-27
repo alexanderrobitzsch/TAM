@@ -1,6 +1,5 @@
 ## File Name: tam_packageinfo.R
 ## File Version: 0.04
-## File Last Change: 2017-09-16 13:41:24
 
 tam_packageinfo <- function(pack)
 {

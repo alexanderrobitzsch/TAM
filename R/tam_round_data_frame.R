@@ -1,6 +1,5 @@
 ## File Name: tam_round_data_frame.R
 ## File Version: 0.03
-## File Last Change: 2017-09-16 13:15:44
 
 tam_round_data_frame <- function(obji, from=1, to=ncol(obji), digits=3,
 	rownames_null=FALSE)

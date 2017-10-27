@@ -1,6 +1,5 @@
 ## File Name: tam_mml_proc_xsi_parameter_index_A.R
 ## File Version: 0.01
-## File Last Change: 2017-05-25 17:39:33
 
 tam_mml_proc_xsi_parameter_index_A <- function(A, np)
 {

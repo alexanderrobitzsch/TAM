@@ -1,6 +1,5 @@
 ## File Name: tam_linking_2studies_create_M_SD.R
 ## File Version: 0.05
-## File Last Change: 2017-06-22 16:06:30
 
 tam_linking_2studies_create_M_SD <- function(M1, SD1, M2, SD2, trafo_persons)
 {

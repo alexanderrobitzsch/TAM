@@ -1,6 +1,5 @@
 ## File Name: tam.ctt3.R
 ## File Version: 9.05
-## File Last Change: 2017-04-28 13:55:06
 tam.ctt3 <- function( resp , wlescore=NULL , group=NULL , allocate=30 , 
 	progress=TRUE)
 {

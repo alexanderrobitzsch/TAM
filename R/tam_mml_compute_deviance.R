@@ -1,6 +1,5 @@
 ## File Name: tam_mml_compute_deviance.R
 ## File Version: 0.07
-## File Last Change: 2017-06-18 17:41:33
 
 tam_mml_compute_deviance <- function( loglike_num , loglike_sto , snodes,
 	thetawidth , pweights, deviance=NA, deviance.history=NULL , iter=NULL,

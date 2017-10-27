@@ -1,6 +1,5 @@
 ## File Name: tam_mml_2pl_sufficient_statistics_item_slope.R
 ## File Version: 0.02
-## File Last Change: 2017-04-29 14:34:53
 
 tam_mml_2pl_sufficient_statistics_item_slope <- function(hwt, theta, cResp,
 	pweights, maxK, nitems, ndim)

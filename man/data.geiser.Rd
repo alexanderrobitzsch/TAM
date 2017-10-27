@@ -1,6 +1,5 @@
 %% File Name: data.geiser.Rd
 %% File Version: 0.16
-%% File Last Change: 2017-06-22 17:41:51
 
 \name{data.geiser}
 \alias{data.geiser}

@@ -1,6 +1,5 @@
 ## File Name: tam_aggregate.R
 ## File Version: 0.02
-## File Last Change: 2017-05-08 13:30:58
 
 tam_aggregate <- function(x, group, mean=FALSE, na.rm=TRUE)
 {

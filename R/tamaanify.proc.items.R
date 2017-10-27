@@ -1,6 +1,5 @@
 ## File Name: tamaanify.proc.items.R
 ## File Version: 9.02
-## File Last Change: 2017-01-24 17:13:52
 
 
 

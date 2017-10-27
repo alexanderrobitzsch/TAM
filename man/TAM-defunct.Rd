@@ -1,6 +1,5 @@
 %% File Name: TAM-defunct.Rd
 %% File Version: 0.07
-%% File Last Change: 2017-06-22 17:41:52
 
 \name{TAM-defunct}
 \alias{TAM-defunct}

@@ -1,6 +1,5 @@
 ## File Name: tam.pv.R
 ## File Version: 9.35
-## File Last Change: 2017-09-19 19:52:19
 tam.pv <- function( tamobj , nplausible = 10 , 
 			ntheta = 2000 , normal.approx = FALSE , samp.regr = FALSE , 
 			theta.model = FALSE , np.adj = 8 , na.grid = 5, verbose=TRUE)

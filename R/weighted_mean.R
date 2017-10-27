@@ -1,6 +1,5 @@
 ## File Name: weighted_mean.R
 ## File Version: 9.11
-## File Last Change: 2017-09-19 15:45:09
 ############################################
 # weighted mean
 weighted_mean <- function( x , w=rep(1,length(x)), select=NULL ){

@@ -1,6 +1,5 @@
 ## File Name: tam_pv_draw_pv_normal_approximation_multidim.R
 ## File Version: 0.02
-## File Last Change: 2017-06-28 13:41:07
 
 tam_pv_draw_pv_normal_approximation_multidim <- function(theta, hwt, pp, ndim, pv)
 {

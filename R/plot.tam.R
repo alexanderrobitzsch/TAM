@@ -1,6 +1,5 @@
 ## File Name: plot.tam.R
 ## File Version: 9.09
-## File Last Change: 2017-07-12 11:10:24
 ###########################################################
 # plotting tam expected scores curves
 #..........................................................

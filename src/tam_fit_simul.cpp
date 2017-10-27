@@ -1,6 +1,5 @@
 //// File Name: tam_fit_simul.cpp
 //// File Version: 1.01
-//// File Last Change: 2017-02-18 19:45:39
 
 
 #include <Rcpp.h>

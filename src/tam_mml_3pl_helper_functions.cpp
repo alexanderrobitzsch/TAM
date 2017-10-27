@@ -1,6 +1,5 @@
 //// File Name: tam_mml_3pl_helper_functions.cpp
 //// File Version: 3.12
-//// File Last Change: 2017-06-23 12:46:07
 
 
 #include <Rcpp.h>

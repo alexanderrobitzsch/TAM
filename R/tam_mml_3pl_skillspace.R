@@ -1,6 +1,5 @@
 ## File Name: tam_mml_3pl_skillspace.R
 ## File Version: 0.07
-## File Last Change: 2017-05-02 11:38:41
 
 ###########################################################################
 # reduced skillspace estimation

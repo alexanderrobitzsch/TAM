@@ -1,6 +1,5 @@
 %% File Name: tam.pv.Rd
 %% File Version: 2.56
-%% File Last Change: 2017-09-19 20:01:38
 
 \name{tam.pv}
 \alias{tam.pv}

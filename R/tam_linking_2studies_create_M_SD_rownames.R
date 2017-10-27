@@ -1,6 +1,5 @@
 ## File Name: tam_linking_2studies_create_M_SD_rownames.R
 ## File Version: 0.01
-## File Last Change: 2017-06-22 14:55:25
 
 tam_linking_2studies_create_M_SD_rownames <- function(G1, G2, study1="study1", study2="study2")
 {

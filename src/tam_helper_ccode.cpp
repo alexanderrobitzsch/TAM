@@ -1,6 +1,5 @@
 //// File Name: tam_helper_ccode.cpp
 //// File Version: 3.11
-//// File Last Change: 2017-05-31 17:23:28
 
 // [[Rcpp::depends(RcppArmadillo)]]
 

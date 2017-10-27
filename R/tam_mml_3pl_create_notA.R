@@ -1,6 +1,5 @@
 ## File Name: tam_mml_3pl_create_notA.R
 ## File Version: 0.01
-## File Last Change: 2017-05-08 17:20:39
 
 
 ####################################################

@@ -1,6 +1,5 @@
 ## File Name: summary.tam.R
 ## File Version: 9.28
-## File Last Change: 2017-10-20 10:10:13
 #*******************************************************
 # Summary for tam object                               *
 summary.tam.mml <- summary.tam.2pl <- summary.tam.mfr <- summary.tam <- 

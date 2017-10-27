@@ -1,6 +1,5 @@
 ## File Name: tam_difference_quotient.R
 ## File Version: 0.03
-## File Last Change: 2017-05-10 10:21:25
 
 tam_difference_quotient <- function( d0 , d0p , d0m , h)
 {

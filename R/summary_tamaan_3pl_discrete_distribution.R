@@ -1,6 +1,5 @@
 ## File Name: summary_tamaan_3pl_discrete_distribution.R
 ## File Version: 0.01
-## File Last Change: 2017-09-15 09:43:30
 
 
 

@@ -1,6 +1,5 @@
 %% File Name: tam.mml.Rd
 %% File Version: 2.9821
-%% File Last Change: 2017-10-26 11:12:46
 
 \name{tam.mml}
 

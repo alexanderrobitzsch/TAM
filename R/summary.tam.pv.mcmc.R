@@ -1,6 +1,5 @@
 ## File Name: summary.tam.pv.mcmc.R
 ## File Version: 0.14
-## File Last Change: 2017-10-20 10:10:03
 
 #*******************************************************
 # summary

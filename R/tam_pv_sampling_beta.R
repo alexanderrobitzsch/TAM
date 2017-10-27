@@ -1,6 +1,5 @@
 ## File Name: tam_pv_sampling_beta.R
 ## File Version: 0.02
-## File Last Change: 2017-05-30 18:49:52
 
 tam_pv_sampling_beta <- function( theta1, ndim , Y , pweights )
 {

@@ -1,6 +1,5 @@
 ## File Name: tamaan.3pl.lca.R
 ## File Version: 9.02
-## File Last Change: 2017-01-24 17:13:51
 
 #######################################################################
 # tamaan 3PL LCA module

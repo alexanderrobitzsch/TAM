@@ -1,6 +1,5 @@
 ## File Name: tam_dmvnorm.R
 ## File Version: 9.11
-## File Last Change: 2017-05-27 17:48:16
 
 ##########################################################################
 tam_dmvnorm <- function( x , mean , sigma , log = FALSE ){

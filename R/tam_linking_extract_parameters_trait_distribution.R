@@ -1,6 +1,5 @@
 ## File Name: tam_linking_extract_parameters_trait_distribution.R
 ## File Version: 0.01
-## File Last Change: 2017-06-22 14:28:03
 
 tam_linking_extract_parameters_trait_distribution <- function(tamobj)
 {

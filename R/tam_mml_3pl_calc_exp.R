@@ -1,6 +1,5 @@
 ## File Name: tam_mml_3pl_calc_exp.R
 ## File Version: 1.05
-## File Last Change: 2017-06-23 12:41:37
 
 
 

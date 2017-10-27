@@ -1,6 +1,5 @@
 %% File Name: lavaanify.IRT.Rd
 %% File Version: 1.30
-%% File Last Change: 2017-06-22 17:41:51
 
 \name{lavaanify.IRT}
 \alias{lavaanify.IRT}

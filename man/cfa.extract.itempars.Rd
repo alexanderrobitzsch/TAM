@@ -1,6 +1,5 @@
 %% File Name: cfa.extract.itempars.Rd
 %% File Version: 0.16
-%% File Last Change: 2017-06-22 17:41:50
 
 \name{cfa.extract.itempars}
 \alias{cfa.extract.itempars}

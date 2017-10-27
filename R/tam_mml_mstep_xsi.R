@@ -1,6 +1,5 @@
 ## File Name: tam_mml_mstep_xsi.R
 ## File Version: 0.04
-## File Last Change: 2017-04-06 17:28:01
 
 tam_mml_mstep_xsi <- function( max_increment , est.xsi.index0 , control ,
      np , nitems , A , AXsi , B , xsi , theta , nnodes , maxK , rprobs ,

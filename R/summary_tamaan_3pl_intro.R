@@ -1,6 +1,5 @@
 ## File Name: summary_tamaan_3pl_intro.R
 ## File Version: 9.12
-## File Last Change: 2017-10-20 10:10:32
 
 
 ################################################

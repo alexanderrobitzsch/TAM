@@ -1,6 +1,5 @@
 ## File Name: tam_pv_mcmc_sample_beta_variance_lm_beta.R
 ## File Version: 0.05
-## File Last Change: 2017-08-22 17:29:45
 
 tam_pv_mcmc_sample_beta_variance_lm_beta <- function(Y0, theta0, pweights0, D, 
 		use_lm=TRUE)

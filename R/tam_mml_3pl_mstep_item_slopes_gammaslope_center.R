@@ -1,6 +1,5 @@
 ## File Name: tam_mml_3pl_mstep_item_slopes_gammaslope_center.R
 ## File Version: 0.01
-## File Last Change: 2017-05-02 12:51:43
 
 
 ################################################################################			

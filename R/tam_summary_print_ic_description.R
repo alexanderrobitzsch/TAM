@@ -1,6 +1,5 @@
 ## File Name: tam_summary_print_ic_description.R
 ## File Version: 0.02
-## File Last Change: 2017-09-16 13:04:50
 
 tam_summary_print_ic_description <- function(crit)
 { 	

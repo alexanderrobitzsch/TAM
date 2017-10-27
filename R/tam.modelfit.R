@@ -1,6 +1,5 @@
 ## File Name: tam.modelfit.R
 ## File Version: 9.04
-## File Last Change: 2017-02-18 21:02:11
 
 ##############################################
 # Q3 and model fit statistics for objects of class tam

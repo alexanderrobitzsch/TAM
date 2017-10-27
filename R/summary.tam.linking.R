@@ -1,6 +1,5 @@
 ## File Name: summary.tam.linking.R
 ## File Version: 0.07
-## File Last Change: 2017-10-20 10:09:45
 
 summary.tam.linking <- function( object , file = NULL , ...)
 {

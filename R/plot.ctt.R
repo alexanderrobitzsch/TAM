@@ -1,6 +1,5 @@
 ## File Name: plot.ctt.R
 ## File Version: 9.02
-## File Last Change: 2017-01-24 17:13:50
 
 #########################################################################
 # plot function for empirical item characteristic curves

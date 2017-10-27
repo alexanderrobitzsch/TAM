@@ -1,6 +1,5 @@
 %% File Name: IRT.drawPV.Rd
 %% File Version: 0.11
-%% File Last Change: 2017-06-22 17:41:51
 
 \name{IRT.drawPV}
 \alias{IRT.drawPV}

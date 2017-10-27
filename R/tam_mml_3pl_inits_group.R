@@ -1,6 +1,5 @@
 ## File Name: tam_mml_3pl_inits_group.R
 ## File Version: 0.01
-## File Last Change: 2017-05-25 15:27:28
 
 tam_mml_3pl_inits_group <- function(group, ndim, G, variance.inits, groups)
 {

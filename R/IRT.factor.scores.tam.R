@@ -1,6 +1,5 @@
 ## File Name: IRT.factor.scores.tam.R
 ## File Version: 9.02
-## File Last Change: 2017-01-24 17:13:49
 
 ###########################################################
 # object of class tam

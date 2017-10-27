@@ -1,6 +1,5 @@
 ## File Name: tam_mml_mstep_intercept_quasi_newton_R.R
 ## File Version: 0.06
-## File Last Change: 2017-06-19 13:31:46
 
 tam_mml_mstep_intercept_quasi_newton_R <- function( rprobs, converge, Miter, Msteps,
 	nitems, A, AXsi, B, xsi, theta, nnodes, maxK, est.xsi.index, itemwt, indexIP.no,

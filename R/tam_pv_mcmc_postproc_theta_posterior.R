@@ -1,6 +1,5 @@
 ## File Name: tam_pv_mcmc_postproc_theta_posterior.R
 ## File Version: 0.02
-## File Last Change: 2017-05-30 11:54:54
 
 tam_pv_mcmc_postproc_theta_posterior <- function(theta_samples_mean,
 		theta_samples_sd, N_samples, pweights)

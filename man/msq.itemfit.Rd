@@ -1,6 +1,5 @@
 %% File Name: msq.itemfit.Rd
 %% File Version: 0.32
-%% File Last Change: 2017-09-16 13:19:05
 
 \name{msq.itemfit}
 

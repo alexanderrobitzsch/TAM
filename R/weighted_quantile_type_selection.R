@@ -1,6 +1,5 @@
 ## File Name: weighted_quantile_type_selection.R
 ## File Version: 0.02
-## File Last Change: 2017-09-19 15:44:26
 
 
 #####################################################			

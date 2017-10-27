@@ -1,6 +1,5 @@
 ## File Name: tam_mml_sufficient_statistics.R
 ## File Version: 0.04
-## File Last Change: 2017-05-25 15:44:25
 
 tam_mml_sufficient_statistics <- function( nitems , maxK, resp, resp.ind ,
 		pweights , cA, progress )

@@ -1,6 +1,5 @@
 ## File Name: tam_pv_mcmc_compute_marginal_likelihood.R
 ## File Version: 0.02
-## File Last Change: 2017-05-31 13:52:47
 
 tam_pv_mcmc_compute_marginal_likelihood <- function(pv, AXsi, B, guess, resp,
 		resp.ind, maxK)

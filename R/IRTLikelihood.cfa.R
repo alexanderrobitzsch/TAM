@@ -1,6 +1,5 @@
 ## File Name: IRTLikelihood.cfa.R
 ## File Version: 9.06
-## File Last Change: 2017-09-14 18:52:38
 
 #########################################
 # IRTLikelihood for fitted CFA model

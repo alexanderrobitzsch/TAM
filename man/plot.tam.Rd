@@ -1,6 +1,5 @@
 %% File Name: plot.tam.Rd
 %% File Version: 3.28
-%% File Last Change: 2017-06-22 17:41:52
 
 \name{plot.tam}
 \alias{plot.tam}

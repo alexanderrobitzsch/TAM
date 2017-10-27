@@ -1,6 +1,5 @@
 %% File Name: tam.linking.Rd
 %% File Version: 0.44
-%% File Last Change: 2017-06-23 13:30:49
 
 \name{tam.linking}
 \alias{tam.linking}

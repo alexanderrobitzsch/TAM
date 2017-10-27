@@ -1,6 +1,5 @@
 ## File Name: tamaanify.tam.mml.3pl.deltadesign.R
 ## File Version: 9.04
-## File Last Change: 2017-04-29 18:03:37
 
 ###################################
 #*** delta design matrix

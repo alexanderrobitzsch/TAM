@@ -1,6 +1,5 @@
 ## File Name: tam_mml_progress_proc_nodes.R
 ## File Version: 0.02
-## File Last Change: 2017-05-10 13:09:08
 
 tam_mml_progress_proc_nodes <- function( progress, snodes, nnodes , maxnodes=8000,
 		skillspace="normal", QMC=FALSE)  
