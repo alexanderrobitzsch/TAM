@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.8  |  2017-10-27  |  Last: TAM 2.8-12
+VERSIONS TAM 2.8  |  2017-11-06  |  Last: TAM 2.8-16
 -------------------------------------------------------------
 
 FEATURES:
@@ -52,6 +52,10 @@ FEATURES:
 BUG FIXES:
 * fixed a bug in 'tam.mml.3pl' for models with stochastic
   nodes (thanks to Bodo Eickhorst and Hansjoerg Plieninger)
+* fixed a bug with 'verbose' input of 'T' or 'F'
+  (thanks to Hansjoerg Plieninger)
+* fixed a bug in 'tamaan' with latent classes estimation
+  which was recently introduced due to other bug fixes
 
 NOTES:
 * added an example ('tam.mml', Example 20, Model 2) for 

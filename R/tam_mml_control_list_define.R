@@ -1,5 +1,5 @@
 ## File Name: tam_mml_control_list_define.R
-## File Version: 0.08
+## File Version: 0.11
 
 tam_mml_control_list_define <- function(control, envir, tam_fct,
 		prior_list_xsi)
@@ -52,6 +52,9 @@ tam_mml_control_list_define <- function(control, envir, tam_fct,
     con[ names(control) ] <- control  	
 	#-- adjust values of fac.oldxsi
 	con$fac.oldxsi <- max( 0 , min( c( con$fac.oldxsi , .95 ) ) )  		
+	#-- adjust progress
+	if ( con$progress == "F" ){ con$progress <- FALSE }
+	if ( con$progress == "T" ){ con$progress <- TRUE }
 	#-- copy lists
     con1a <- con1 <- con	
 	#-- assign elements

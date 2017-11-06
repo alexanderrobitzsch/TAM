@@ -1,5 +1,5 @@
 ## File Name: tam_mml_create_nodes.R
-## File Version: 0.21
+## File Version: 0.23
 
 tam_mml_create_nodes <- function(snodes, nodes, ndim, QMC,
 		skillspace="normal", theta.k=NULL)
@@ -23,6 +23,7 @@ tam_mml_create_nodes <- function(snodes, nodes, ndim, QMC,
 	if ( ( skillspace == "discrete") & ( ! is.null(theta.k) ) ){	  
 		theta <- as.matrix( theta.k )
 		nnodes <- nrow(theta)
+		ntheta <- nnodes
 	}	
 	
 	#----------------------------------------
