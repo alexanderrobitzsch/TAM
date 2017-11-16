@@ -39,10 +39,30 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+-------------------------------------------------------------
+VERSIONS TAM 2.9  |  2017-11-16  |  Last: TAM 2.9-1
+-------------------------------------------------------------
+
+FEATURES:
+* ---
+ 
+BUG FIXES:
+* ---
+
+NOTES:
+* ---
+
+DATASETS INCLUDED OR MODIFIED:
+* ---
+
+EXAMPLES INCLUDED OR MODIFIED:
+* ---
+
+
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.8  |  2017-11-16  |  Last: TAM 2.8-20
+VERSIONS TAM 2.8  |  2017-11-16  |  Last: TAM 2.8-21
 -------------------------------------------------------------
 
 FEATURES:
@@ -73,8 +93,6 @@ DATASETS INCLUDED OR MODIFIED:
 
 EXAMPLES INCLUDED OR MODIFIED:
 * tam.mml (20.2)
-
-
 
 -------------------------------------------------------------
 VERSIONS TAM 2.7  |  2017-10-19  |  Last: TAM 2.7-56
