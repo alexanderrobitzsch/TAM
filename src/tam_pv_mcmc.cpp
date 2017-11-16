@@ -1,5 +1,5 @@
 //// File Name: tam_pv_mcmc.cpp
-//// File Version: 0.22
+//// File Version: 0.23
 
 
 
@@ -16,21 +16,19 @@ using namespace Rcpp;
 // [[Rcpp::export]]           
 Rcpp::NumericVector tam_pv_mcmc_likelihood_Rcpp( 
 	Rcpp::NumericMatrix probs, Rcpp::NumericMatrix resp,
-	Rcpp::IntegerMatrix resp_ind , 
-	int maxK, int nstud, int nitems ){
-		
-     Rcpp::NumericVector like(nstud); 
-     like.fill(1);
-     for (int nn=0; nn<nstud; nn++){
-        // int nn=1;
-        for (int ii=0; ii<nitems; ii++){
-           if ( resp_ind(nn,ii) == 1 ){
-           	 like[nn] = like[nn]*probs(nn, ii + resp(nn,ii)*nitems);
-           }
-        }
-     }      
-     //-------- OUTPUT              
-     return like;  
+	Rcpp::IntegerMatrix resp_ind, int maxK, int nstud, int nitems )
+{
+	Rcpp::NumericVector like(nstud); 
+	like.fill(1);
+	for (int nn=0; nn<nstud; nn++){
+		for (int ii=0; ii<nitems; ii++){
+			if ( resp_ind(nn,ii) == 1 ){
+				like[nn] = like[nn]*probs(nn, ii + resp(nn,ii)*nitems);
+			}
+		}
+	}      
+	//-------- OUTPUT              
+	return like;  
 }
 ///********************************************************************
 

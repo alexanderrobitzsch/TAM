@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mstep_regression.R
-## File Version: 9.36
+## File Version: 9.39
 ###############################################
 # mstep.regression
 tam_mml_mstep_regression <- function( resp , hwt ,  resp.ind , 
@@ -131,8 +131,8 @@ tam_mml_mstep_regression <- function( resp , hwt ,  resp.ind ,
 	}
 		
 	#---- parameter change
-	beta_change <- max( abs( beta - beta_old ) )
-	variance_change <- max( abs( as.vector( variance - variance_old ) ) )
+	beta_change <- max( abs( beta - beta_old ) )	
+	variance_change <- max( abs( as.vector( variance ) - as.vector( variance_old ) ) )
 	#----- OUTPUT
     res <- list( beta = beta , variance = variance , itemwt = itemwt ,
 				variance_acceleration=variance_acceleration, beta_change=beta_change,

@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.8  |  2017-11-06  |  Last: TAM 2.8-16
+VERSIONS TAM 2.8  |  2017-11-16  |  Last: TAM 2.8-20
 -------------------------------------------------------------
 
 FEATURES:
@@ -56,6 +56,8 @@ BUG FIXES:
   (thanks to Hansjoerg Plieninger)
 * fixed a bug in 'tamaan' with latent classes estimation
   which was recently introduced due to other bug fixes
+* fixed a problem causing a warning message in multiple
+  group models (thanks to Hon-Jang Yang)
 
 NOTES:
 * added an example ('tam.mml', Example 20, Model 2) for 

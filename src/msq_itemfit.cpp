@@ -1,5 +1,5 @@
 //// File Name: msq_itemfit.cpp
-//// File Version: 2.02
+//// File Version: 2.08
 
 
 
@@ -17,13 +17,13 @@ using namespace Rcpp;
 Rcpp::List msq_itemfit( Rcpp::NumericMatrix resp, 
 	Rcpp::NumericVector irf1, int K, int TP, 
 	Rcpp::NumericMatrix post1, Rcpp::NumericMatrix FIT, 
-	Rcpp::NumericMatrix fitIndexM ){
+	Rcpp::NumericMatrix fitIndexM )
+{
 
      int N=resp.nrow();  
      int I=resp.ncol();  
      int FF = FIT.nrow();    
-     Rcpp::NumericVector probs_categ(N*K*TP*I);   
-     // Rcpp::NumericVector pred(N*TP*I);  
+     Rcpp::NumericVector probs_categ(N*K*TP*I);
      arma::cube pred(N,TP,I);  
      arma::cube var1(N,TP,I);  
      arma::cube resid1(N,TP,I);  
@@ -226,7 +226,8 @@ Rcpp::List msq_itemfit( Rcpp::NumericMatrix resp,
 Rcpp::List msq_itemfit2( Rcpp::NumericMatrix resp, 
 	Rcpp::NumericVector irf1, int K, int TP, 
 	Rcpp::NumericMatrix post1, Rcpp::NumericMatrix FIT, 
-	Rcpp::NumericMatrix fitIndexM ){
+	Rcpp::NumericMatrix fitIndexM )
+{
 
           int N=resp.nrow();    
           int I=resp.ncol();    
@@ -363,7 +364,7 @@ Rcpp::List msq_itemfit2( Rcpp::NumericMatrix resp,
           		fit_temp2[nn] = 0 ;    
           		N1 += 1 ;    
           		for (int tt=0;tt<TP;tt++){    
-          			sresid_temp = pow( resp( nn , ii ) - pred(nn,tt+ii*TP) , 2.0 ) / var1(nn,tt+ii*TP) ;      			  
+          			sresid_temp = pow( resp( nn , ii ) - pred(nn,tt+ii*TP) , 2.0 ) / var1(nn,tt+ii*TP) ;
           		    fit_temp[nn] += post1(nn,tt) * sresid_temp * var1(nn,tt+ii*TP);    
           		    fit_temp2[nn] += post1(nn,tt)*var1(nn,tt+ii*TP) ;    
           					}    
