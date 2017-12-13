@@ -1,5 +1,5 @@
 ## File Name: tam_jml_version1.R
-## File Version: 9.24
+## File Version: 9.26
 tam_jml_version1 <-
 function( resp , group = NULL , adj=.3 , disattenuate = FALSE ,
                      bias = TRUE, xsi.fixed=NULL ,  xsi.inits = NULL ,  
@@ -178,7 +178,8 @@ function( resp , group = NULL , adj=.3 , disattenuate = FALSE ,
   meanChangeWLE <- maxChangeWLE <- maxChangeP <- 999	# item parameter change
   # display
   disp <- "....................................................\n"
-  
+
+
   ##############################################################   
   #Start convergence loop here
   while ( ((meanChangeWLE > conv) | (maxChangeP > conv))  & (iter < maxiter) ) { 

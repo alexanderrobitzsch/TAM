@@ -73,6 +73,7 @@ importFrom(coda, effectiveSize)
 importFrom(coda, gelman.diag)
 importFrom(coda, mcmc)
 importFrom(coda, mcmc.list)
+importFrom(MASS, ginv)
 importFrom(mvtnorm, dmvnorm)
 importFrom(mvtnorm, pmvnorm)
 # importFrom(mvtnorm, rmvnorm)  # replaced by CDM::CDM_rmvnorm

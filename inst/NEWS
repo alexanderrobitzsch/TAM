@@ -40,7 +40,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.9  |  2017-11-16  |  Last: TAM 2.9-1
+VERSIONS TAM 2.9  |  2017-12-13  |  Last: TAM 2.9-11
 -------------------------------------------------------------
 
 FEATURES:
@@ -50,7 +50,12 @@ BUG FIXES:
 * ---
 
 NOTES:
-* ---
+* columns with NAs are omitted from 'tam.ctt' 
+  (thanks to Hiroyuki Yamada)
+* compute pseudoinverse matrix of covariates in latent
+  regression model to allow estimation in case of 
+  multicollinearity
+
 
 DATASETS INCLUDED OR MODIFIED:
 * ---

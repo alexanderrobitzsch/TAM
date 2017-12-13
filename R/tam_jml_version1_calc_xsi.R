@@ -1,13 +1,11 @@
 ## File Name: tam_jml_version1_calc_xsi.R
-## File Version: 9.21
+## File Version: 9.45
 
   
 ###########################################################################  
-tam_jml_version1_calc_xsi <- 
-  function ( resp , resp.ind, A, B, nstud, nitems, maxK, convM, 
-             ItemScore, theta, xsi, Msteps, pweightsM,
-             est.xsi.index
-  ){
+tam_jml_version1_calc_xsi <- function ( resp , resp.ind, A, B, nstud, nitems, maxK, convM, 
+			ItemScore, theta, xsi, Msteps, pweightsM, est.xsi.index)
+{
     
     #Update item parameters
     
@@ -32,12 +30,15 @@ tam_jml_version1_calc_xsi <-
 	old_xsi <- xsi
     old_increment <- rep(5,max(p_loop))
     cat(" Item parameter estimation |")
+	
+	#--- begin algorithm
     while (!convergeAllP & ( iterP <= Msteps ) ) {  
       res.p <- tam_mml_calc_prob( iIndex = 1:nitems , A , AXsi , 
-                             B , xsi , theta , nstud, maxK , TRUE )        	
+                             B , xsi , theta , nstud, maxK , recalc=TRUE )        	
       rprobs <- res.p[["rprobs"]]               
-      
-      #compute probability weights, summed over students, so that there is no cycling through students for parameter estimation (p loop)
+	  
+      # compute probability weights, summed over students, so that there is no cycling 
+	  # through students for parameter estimation (p loop)
       for (k1 in 1:maxK) {
         r[,k1] <- colSums(t(rprobs[,k1,]) * resp.ind * pweightsM, na.rm=TRUE)
         for (k2 in 1:maxK) {
@@ -45,26 +46,23 @@ tam_jml_version1_calc_xsi <-
         }
       }
 
-
 		  A_Sq <- AA_bari <- A_bari <- matrix( 0 , PP1 , nitems )
-		  
 		  for (kk in 1:maxK){ 
 			A_bari <- A_bari + t( A.0[ , kk , ] * r[ , kk ] )
 			AA_bari <- AA_bari + t( A.0[ , kk , ]^2 * r[ , kk ] )		
 		  }
+		  
 		  for (kk1 in 1:maxK){ 
 			for (kk2 in 1:maxK){ 
 			  A_Sq <- A_Sq + t( A.0[,kk1,] * A.0[,kk2,] * rr[ , kk1 , kk2 ] )	
 			}
 		  }		
-        
-#        expected <- sum (A_bari, na.rm=TRUE) # sum over items 
-#        err <- sum (AA_bari - A_Sq, na.rm=TRUE)   #sum over the items  
 		  expected <- rowSums (A_bari, na.rm=TRUE) # sum over items
 		  err <- rowSums(AA_bari - A_Sq, na.rm=TRUE)   #sum over the items		
-				
+		  
 		  err_inv <- abs (1/( abs(err) + 10^(-10) ))		  
 		  scores <- ItemScore * ( ! convergeP ) - expected
+  
 		  increment <-  err_inv*scores
 		  ci <- ceiling( abs(increment) / ( abs( old_increment) + 10^(-10) ) )
 		  increment <- ifelse( abs( increment) > abs(old_increment)  , 

@@ -1,14 +1,14 @@
 ## File Name: tam_jml_wle.R
-## File Version: 9.11
+## File Version: 9.15
 
 
 ################################################################
 ################################################################
 ################################################################
-tam_jml_wle <- 
-  function ( tamobj, resp , resp.ind, A, B, nstud, nitems, maxK, convM, 
+tam_jml_wle <- function ( tamobj, resp , resp.ind, A, B, nstud, nitems, maxK, convM, 
              PersonScores, theta, xsi, Msteps, WLE=FALSE ,
-			 theta.fixed=NULL){
+			 theta.fixed=NULL)
+{
     
     AXsi <- matrix(0, nrow=nitems, ncol=maxK) 
     B1 <- B[,,1]
@@ -39,6 +39,7 @@ tam_jml_wle <-
     # BBB	[ nitems , maxK ]
     maxChangeWLE <- 0
     thetaOld <- theta
+	
 a0 <- Sys.time()
     while (!convergeWLE & ( iterWLE <= Msteps ) ) {  
       resWLE <- tam_mml_calc_prob(iIndex = 1:nitems , A , AXsi , 
@@ -88,13 +89,14 @@ a0 <- Sys.time()
       if (maxChangeWLE < max(abs(increment))) {
         maxChangeWLE <- max(abs(increment))
       }
+
       
       increment[abs(increment)>3] <- sign(increment[abs(increment)>3])*3
       
 	  if ( ! is.null(theta.fixed ) ){
 	      increment[ theta.fixed[,1] ] <- 0
-						}
-	  
+	}	 
+	  	 
       theta <- theta + increment
       if ( max(abs(increment)) < convM ) {
         convergeWLE <- TRUE
@@ -104,6 +106,8 @@ a0 <- Sys.time()
       utils::flush.console()
 # cat("one iteration WLE rest") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
     }  # end of Newton-Raphson   
+	#------------
+
     cat("\n")
     meanChangeWLE <- mean(theta - thetaOld)
     #standard errors of theta estimates
