@@ -1,5 +1,5 @@
 ## File Name: tam.pv.R
-## File Version: 9.35
+## File Version: 9.457
 tam.pv <- function( tamobj , nplausible = 10 , 
 			ntheta = 2000 , normal.approx = FALSE , samp.regr = FALSE , 
 			theta.model = FALSE , np.adj = 8 , na.grid = 5, verbose=TRUE)
@@ -98,13 +98,12 @@ a0 <- Sys.time()
 	###################################################
 	# routine for drawing plausible values
 	while ( iterate ){
-
 		#--- sampling theta
 		res <- tam_pv_sampling_theta( theta.model=theta.model, ndim=ndim, normal.approx=normal.approx, 
 					tamobj=tamobj, MEAP=MEAP, SDEAP=SDEAP, np.adj=np.adj, theta=theta, ntheta=ntheta, 
 					mu1=mu1, Sigma1=Sigma1, na.grid=na.grid ) 	
 		theta <- res$theta
- 
+		
 		#--- compute item response probabilities
 		if ( ! latreg ){				
 			res <- tam_mml_3pl_calc_prob( iIndex=1:nitems , A=A , AXsi=AXsi , B=B , xsi=xsi , theta=theta , 
@@ -112,11 +111,15 @@ a0 <- Sys.time()
 			rprobs <- res$rprobs
 			AXsi <- res$AXsi
 		}
-
+		
 		#--- calculate student prior distribution    	
 		gwt <- tam_stud_prior( theta=theta , Y=Y , beta=beta , variance=variance , nstud=nstud , 
                           nnodes=nnodes , ndim=ndim , YSD=YSD , unidim_simplify=FALSE,
 						  snodes = snodes )
+		ind0 <- which( rowSums(gwt) == 0 )
+		if ( length(ind0) > 0 ){
+			gwt[ind0,] <- 1
+		}
 						  
 		#--- posterior distribution
 		if ( ! latreg ){		
@@ -124,12 +127,13 @@ a0 <- Sys.time()
 		                          resp.ind.list=tamobj$resp.ind.list , normalization=TRUE , 
 		                          thetasamp.density=NULL , snodes=0 )$hwt
 		}
+		
 		if (latreg){
    		    hwt <- like * gwt
 			hwt <- hwt / rowSums(hwt)	 		
 		}			
 		hwt1 <- hwt			  	   
-
+		
 		#--- cumulative posterior probabilities
 		hwt1 <- tam_rowCumsums(matr=hwt1)
 
@@ -145,14 +149,15 @@ a0 <- Sys.time()
 			if ( normal.approx & ( ndim == 1 ) ){
 				res <- tam_pv_draw_pv_normal_approximation_1dim( theta=theta, nstud=nstud, 
 							ntheta=ntheta, pv=pv, hwt=hwt, pp=pp ) 
-			}
+			}	
+			
 			if ( normal.approx & ( ndim > 1) ){
 				res <- tam_pv_draw_pv_normal_approximation_multidim( theta=theta, hwt=hwt, 
 									pp=pp, ndim=ndim, pv=pv ) 
-			}				
+			}			
 			pv <- res$pv
 			theta1 <- res$theta1
-								
+		
 			pp <- pp + 1
 			if (iter == 1){
 				pp <- pp - 1
@@ -161,15 +166,17 @@ a0 <- Sys.time()
 			if (pp > NPV){
 				iterate <- FALSE
 			}
-			
+
 			#-- sample beta value
-			beta <- tam_pv_sampling_beta( theta1, ndim , Y , pweights )
+			beta <- tam_pv_sampling_beta( theta1=theta1, ndim=ndim, Y=Y, pweights=pweights )
+			
 			if (iter>2){
 				if (verbose){ 
 					cat("-" ) 
 					utils::flush.console()
 				}
 			}
+			
 		}
 
 		#**** no sampling of regression cofficients

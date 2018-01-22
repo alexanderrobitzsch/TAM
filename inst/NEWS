@@ -40,7 +40,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.9  |  2017-12-13  |  Last: TAM 2.9-11
+VERSIONS TAM 2.9  |  2018-01-22  |  Last: TAM 2.9-13
 -------------------------------------------------------------
 
 FEATURES:
@@ -50,11 +50,13 @@ BUG FIXES:
 * ---
 
 NOTES:
-* columns with NAs are omitted from 'tam.ctt' 
+* columns with NAs are omitted from tam.ctt() 
   (thanks to Hiroyuki Yamada)
 * compute pseudoinverse matrix of covariates in latent
   regression model to allow estimation in case of 
   multicollinearity
+* avoid error in tam.pv() when the prior only has zeroes
+  in a row
 
 
 DATASETS INCLUDED OR MODIFIED:
@@ -72,25 +74,25 @@ VERSIONS TAM 2.8  |  2017-11-16  |  Last: TAM 2.8-21
 
 FEATURES:
 * include individual class probabilities as an output value 
-  'ind_classprobs' in 'tamaan' (thanks to Rudolf Debelak)
+  'ind_classprobs' in tamaan() (thanks to Rudolf Debelak)
  
 BUG FIXES:
-* fixed a bug in 'tam.mml.3pl' for models with stochastic
+* fixed a bug in tam.mml.3pl() for models with stochastic
   nodes (thanks to Bodo Eickhorst and Hansjoerg Plieninger)
 * fixed a bug with 'verbose' input of 'T' or 'F'
   (thanks to Hansjoerg Plieninger)
-* fixed a bug in 'tamaan' with latent classes estimation
+* fixed a bug in tamaan() with latent classes estimation
   which was recently introduced due to other bug fixes
 * fixed a problem causing a warning message in multiple
   group models (thanks to Hon-Jang Yang)
 
 NOTES:
-* added an example ('tam.mml', Example 20, Model 2) for 
+* added an example (tam.mml(), Example 20, Model 2) for 
   conversion of design matrices of multidimensional partial 
-  credit models from 'tam.mml' into 'tam.mml.3pl' 
+  credit models from tam.mml() into tam.mml.3pl() 
   (created by Hansjoerg Plieninger)
 * allowed stochastic integration and Quasi Monte Carlo
-  integration for multiple group models in 'tam.mml.3pl'
+  integration for multiple group models in tam.mml.3pl()
   (suggested by Hansjoerg Plieninger)
 
 DATASETS INCLUDED OR MODIFIED:
