@@ -1,5 +1,5 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.823
+## File Version: 9.826
 tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,  
             formulaY = NULL , dataY = NULL , 
             ndim = 1 , pid = NULL ,
@@ -15,7 +15,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 			gammaslope.constr.V=NULL , gammaslope.constr.c = NULL , 
 			gammaslope.center.index=NULL ,  gammaslope.center.value=NULL , 
 			gammaslope.prior=NULL ,  userfct.gammaslope = NULL ,
-			gammaslope.constr.Npars = 0 ,
+			gammaslope.constr.Npars = 0 , 
 			est.guess = NULL ,  guess = rep(0,ncol(resp)) , 
 			guess.prior=NULL , max.guess = .50 , 
             skillspace = "normal" , theta.k = NULL , 
@@ -722,7 +722,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 				gammaslope=gammaslope, gammaslope.fixed=gammaslope.fixed, 
 				gammaslope.constr.V=gammaslope.constr.V, gammaslope.constr.Npars=gammaslope.constr.Npars,
 				gammaslope.center.index=gammaslope.center.index, gammaslope.prior=gammaslope.prior, 
-				numdiff.parm=5*1E-4 ) 				   
+				numdiff.parm=5*1E-4) 		
 
     #***
     # calculate counts

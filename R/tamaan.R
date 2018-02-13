@@ -1,10 +1,11 @@
 ## File Name: tamaan.R
-## File Version: 9.06
+## File Version: 9.07
 
 ##########################################################
 # tamaan function
 tamaan <- function( tammodel , resp , tam.method=NULL, 
-             control=list() , doparse=TRUE , ... ){
+             control=list() , doparse=TRUE , ... )
+{
     #******************************
 	# process syntax with tamaanify
 	cl <- match.call()
@@ -16,8 +17,7 @@ tamaan <- function( tammodel , resp , tam.method=NULL,
 
 	s0 <- Sys.time()	
 	res0 <- tamaanify( tammodel=tammodel , resp=resp , tam.method=tam.method ,
-			    doparse=doparse )
-				
+			    doparse=doparse )				
 	anal.list <- res0$ANALYSIS.list
     type <- anal.list$type	
 	resp <- res0$resp
@@ -103,7 +103,7 @@ tamaan <- function( tammodel , resp , tam.method=NULL,
 	#******************************
 	# 3PL: mixture distribution models
 	if ( ( res0$method == "tam.mml.3pl" ) & ( anal.list$type == "MIXTURE" ) ){	
-		res <- tamaan.3pl.mixture( res0=res0 , anal.list=anal.list , con=con , ... )			
+		res <- tamaan.3pl.mixture( res0=res0 , anal.list=anal.list , con=con , ... )
 	}
 	#***********************************		
 	

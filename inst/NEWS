@@ -40,7 +40,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.9  |  2018-01-22  |  Last: TAM 2.9-13
+VERSIONS TAM 2.9  |  2018-02-13  |  Last: TAM 2.9-17
 -------------------------------------------------------------
 
 FEATURES:
@@ -50,14 +50,19 @@ BUG FIXES:
 * ---
 
 NOTES:
-* columns with NAs are omitted from tam.ctt() 
+* columns with NAs are now omitted from tam.ctt() 
   (thanks to Hiroyuki Yamada)
 * compute pseudoinverse matrix of covariates in latent
   regression model to allow estimation in case of 
   multicollinearity
 * avoid error in tam.pv() when the prior only has zeroes
   in a row
-
+* included class-specific item averages in summary output
+  of tamaan() function for methods LCA, LOCLCA and OLCA
+* compute correct number of parameters with non-identified
+  located latent class models (LOCLCA) in tamaan(). The estimation
+  is conducted without constraints, but one non-identified parameter
+  will be subtracted.
 
 DATASETS INCLUDED OR MODIFIED:
 * ---

@@ -1,5 +1,5 @@
 ## File Name: summary.tamaan.R
-## File Version: 9.06
+## File Version: 9.09
 
 ###############################################
 # summary tamaan
@@ -74,10 +74,14 @@ summary.tamaan <- function( object , file=NULL , ... )
 		#--- Mixture distribution
 		if ( object$tamaanify$ANALYSIS.list$type %in% c( "MIXTURE" ) ){	
 			summary_tamaan_item_parameters_mixture( object )
-		}										
-		
-	}
+		}				
 
+		#--- Item means
+		if ( object$tamaanify$ANALYSIS.list$type %in% c( "LCA" , "OLCA") ){
+			summary_tamaan_3pl_class_item_average(object=object)		
+		}
+	
+	}
 	#******
 	tam_csink(file=file)	
 }

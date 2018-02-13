@@ -1,9 +1,10 @@
 ## File Name: tamaanify.R
-## File Version: 9.02
+## File Version: 9.03
 
 ######################################################
 # tamaanify
-tamaanify <- function( tammodel , resp , tam.method=NULL , doparse=TRUE ){	
+tamaanify <- function( tammodel , resp , tam.method=NULL , doparse=TRUE )
+{	
     dat <- resp		
 	if ( doparse ){	
 		tammodel <- doparse( tammodel )	
@@ -19,7 +20,6 @@ tamaanify <- function( tammodel , resp , tam.method=NULL , doparse=TRUE ){
     tam1 <- tam1[ substring( tam1 , 1 , 1 ) != "#" ]
 	# tam1 <- paste0( tam1 , collapse="\n")
 	tam1 <- data.frame( "index" = seq(1,length(tam1)) ,"syn" = tam1  )
-
 	#***
 	# identify markers
 	markers <- c("LAVAANMODEL:" , "ITEMTYPE:" , "PRIOR:" , "ANALYSIS:" ,
@@ -41,30 +41,22 @@ tamaanify <- function( tammodel , resp , tam.method=NULL , doparse=TRUE ){
 	#***************************
 	# process analysis
 	res <- tamaanify.proc.analysis( res )
-# cat("**  analysis\n")
-
  
 	#***************************
 	#***** extract lavaan model	
 	res <- tamaanify.proc.lavaanmodel(res , resp )	
-# cat("**  lavaanmodel\n")
 
 	#*****************************
 	# item characteristics
 	res <- tamaanify.proc.items( res , resp)
-# Revalpr("res$lavpartable")
-
 	
 	#****************************
 	# item type
-	res <- tamaanify.proc.itemtype(  res )	
-# cat("**  itemtype\n")
-
+	res <- tamaanify.proc.itemtype( res )	
 
 	#*******************************************
 	# include model constraints	
-	res <- tamaanify.proc.modelconstraint(  res )	
-#  cat("**  model constraint \n")
+	res <- tamaanify.proc.modelconstraint( res )	
  
 	#******
 	# add response dataset
@@ -120,8 +112,7 @@ tamaanify <- function( tammodel , resp , tam.method=NULL , doparse=TRUE ){
 
 
 	#************************************************+
-	# OUTPUT:
-	
+	# OUTPUT:	
 	return(res)	
-				}
+}
 ###############################################################

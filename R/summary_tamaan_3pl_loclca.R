@@ -1,5 +1,5 @@
 ## File Name: summary_tamaan_3pl_loclca.R
-## File Version: 0.04
+## File Version: 0.05
 
 
 ##############################################res#################
@@ -12,5 +12,7 @@ summary_tamaan_3pl_loclca <- function(object)
 	tam_round_data_frame_print(obji=object$locs, digits=3)	
 	#-- print item response probabilities
 	summary_tamaan_3pl_lcaprobs(object=object)
+	#-- class-specific item averages
+	summary_tamaan_3pl_class_item_average(object=object)		
 } 
 ######################################################################				

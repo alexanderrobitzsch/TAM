@@ -1,5 +1,5 @@
 ## File Name: tam_mml_3pl_ic.R
-## File Version: 9.15
+## File Version: 9.16
 
 
 ##################################
@@ -10,7 +10,7 @@ tam_mml_3pl_ic <- function( nstud , deviance , xsi , xsi.fixed ,
 	est.slopegroups=NULL , skillspace , delta , delta.fixed , est.guess , fulldesign ,
 	est.some.slopes , gammaslope , gammaslope.fixed, gammaslope.constr.V ,
 	gammaslope.constr.Npars , gammaslope.center.index ,
-    gammaslope.prior , numdiff.parm )
+    gammaslope.prior , numdiff.parm, Ngamma.nonactive = 0 )
 {
 	#***Model parameters
 	h <- numdiff.parm
@@ -36,7 +36,7 @@ tam_mml_3pl_ic <- function( nstud , deviance , xsi , xsi.fixed ,
 		ic$NparsB <- ic$NparsB - max( gammaslope.center.index )
 	}
     # non-active gammaslope parameters
-	ic$Ngamma.nonactive <- 0
+	ic$Ngamma.nonactive <- Ngamma.nonactive
 	if ( ! is.null(gammaslope.prior ) ){
 	     if ( ncol(gammaslope.prior) > 2 ){
 			ic$Ngamma.nonactive <- ic$Ngamma.nonactive + 
