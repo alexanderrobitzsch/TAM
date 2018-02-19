@@ -1,5 +1,5 @@
 ## File Name: tam.latreg.R
-## File Version: 9.325
+## File Version: 9.326
 
 ###################################################################
 # latent regression
@@ -279,8 +279,11 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
       print(s2-s1)
       cat( "\n" )
     }
-    
-    # Output list
+
+	#***** standardized coefficients
+	latreg_stand <- tam_latent_regression_standardized_solution(variance=variance, beta=beta, Y=Y)	
+	      
+    #---- Output list
     deviance.history <- deviance.history[ 1:iter , ]
     res <- list( "beta" = beta , "variance" = variance ,
                  "person" = person , pid = pid , "EAP.rel" = EAP.rel , 
@@ -300,9 +303,7 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
                  "ic" = ic , 
                  "deviance.history" = deviance.history ,
                  "control" = con1a ,    "iter" = iter ,
-                 "YSD"=YSD , CALL = CALL 
-
-    )
+                 "YSD"=YSD , CALL = CALL , latreg_stand=latreg_stand	 )
     class(res) <- "tam.latreg"
     return(res)
   }

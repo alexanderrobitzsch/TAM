@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9821
+%% File Version: 2.9822
 
 \name{tam.mml}
 
@@ -495,6 +495,7 @@ credit model (only applies to \code{tam.mml.2pl} in case of
 \item{ic}{Vector with information criteria}
 \item{deviance.history}{Deviance history in iterations}
 \item{control}{List of control arguments}
+\item{latreg_stand}{List containing standardized regression coefficients}
 \item{\dots}{Further values}
 }
 

@@ -1,5 +1,5 @@
 ## File Name: tamaan_3pl_lca_extract_lcaprobs.R
-## File Version: 0.04
+## File Version: 0.05
 
 
 ##########################################################
@@ -24,8 +24,8 @@ tamaan_3pl_lca_extract_lcaprobs <- function(res)
 	rownames(obji) <- NULL
 	
 	#--- average probabilities	
-	a1 <- aggregate( obji$Cat * obji[,class_labels] , list(obji$item) , sum , na.rm=TRUE)
-	a2 <- aggregate( obji$itemno, list(obji$item) , mean , na.rm=TRUE)
+	a1 <- stats::aggregate( obji$Cat * obji[,class_labels] , list(obji$item) , sum , na.rm=TRUE)
+	a2 <- stats::aggregate( obji$itemno, list(obji$item) , mean , na.rm=TRUE)
 	lca_M <- data.frame( item = a1[,1] , itemno = a2[,2] , a1[,-1])
 	colnames(lca_M)[-c(1,2)] <- class_labels
 	

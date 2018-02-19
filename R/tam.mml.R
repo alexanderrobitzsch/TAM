@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.742
+## File Version: 9.745
 tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
             formulaY = NULL , dataY = NULL , 
             ndim = 1 , pid = NULL ,
@@ -478,7 +478,11 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 					resp.ind.list=resp.ind.list, normalization=FALSE, 
 					thetasamp.density=thetasamp.density, snodes=snodes, resp.ind=resp.ind ) 
     res.like <- res.hwt$hwt
-		
+	
+	#***** standardized coefficients
+	latreg_stand <- tam_latent_regression_standardized_solution(variance=variance, beta=beta, Y=Y)
+	
+	#-------------------------------
     # Output list
     deviance.history <- deviance.history[ 1:iter , ]
     res <- list( "xsi" = xsi ,
@@ -513,13 +517,8 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
                  "control" = con1a , "irtmodel" = irtmodel ,
                  "iter" = iter ,
                  "printxsi" = printxsi ,
-                 "YSD"=YSD , CALL =CALL,
-				 prior_list_xsi=prior_list_xsi, penalty_xsi=penalty_xsi 				 
-                 #			   "design"=design
-                 #			   "xsi.min.deviance" = xsi.min.deviance ,
-                 #			   "beta.min.deviance" = beta.min.deviance , 
-                 # "variance.min.deviance" = variance.min.deviance 
-    )
+                 "YSD"=YSD , CALL =CALL, latreg_stand=latreg_stand,
+				 prior_list_xsi=prior_list_xsi, penalty_xsi=penalty_xsi	     )
     class(res) <- "tam.mml"
     return(res)
   }

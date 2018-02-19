@@ -1,5 +1,5 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.877
+## File Version: 9.879
 tam.mml.mfr <-
   function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
             formulaY = NULL , dataY = NULL , 
@@ -541,6 +541,9 @@ tam.mml.mfr <-
 					resp.ind.list=resp.ind.list, normalization=FALSE, thetasamp.density=thetasamp.density, 
 					snodes=snodes, resp.ind=resp.ind ) 
     res.like <- res.hwt$hwt
+
+	#***** standardized coefficients
+	latreg_stand <- tam_latent_regression_standardized_solution(variance=variance, beta=beta, Y=Y)		  
 	
     #--- OUTPUT LIST
     deviance.history <- deviance.history[ 1:iter , ]
@@ -577,7 +580,7 @@ tam.mml.mfr <-
                  "control" = con1a , "irtmodel" = irtmodel ,
                  "iter" = iter , "resp_orig" = resp_orig ,
                  "printxsi"=TRUE , "YSD"=YSD , "PSF" = PSF ,
-				 CALL = CALL ,
+				 CALL = CALL , latreg_stand=latreg_stand, 
 				  prior_list_xsi=prior_list_xsi, penalty_xsi=penalty_xsi 	
     )
     class(res) <- "tam.mml"

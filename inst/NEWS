@@ -40,37 +40,29 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.9  |  2018-02-13  |  Last: TAM 2.9-17
+VERSIONS TAM 2.9  |  2018-02-19  |  Last: TAM 2.9-24
 -------------------------------------------------------------
 
-FEATURES:
-* ---
- 
-BUG FIXES:
-* ---
+NOTE  * columns with NAs are now omitted from tam.ctt() 
+        (thanks to Hiroyuki Yamada)
+NOTE  * compute pseudoinverse matrix of covariates in latent
+        regression model to allow estimation in case of 
+        multicollinearity
+NOTE  * avoid error in tam.pv() when the prior only has zeroes
+        in a row
+NOTE  * included class-specific item averages in summary output
+        of tamaan() function for methods LCA, LOCLCA and OLCA
+NOTE  * compute correct number of parameters with non-identified
+        located latent class models (LOCLCA) in tamaan(). The estimation
+        is conducted without constraints, but one non-identified parameter
+        will be subtracted.
+ADDED * included standardized regression coefficients and explained
+        variance in output for functions tam.mml(), tam.mml.2pl(),
+        tam.mml.mfr() and tam.latreg() with value 'latreg_stand'
+        (suggested by Jana Gross Ophoff)
 
-NOTES:
-* columns with NAs are now omitted from tam.ctt() 
-  (thanks to Hiroyuki Yamada)
-* compute pseudoinverse matrix of covariates in latent
-  regression model to allow estimation in case of 
-  multicollinearity
-* avoid error in tam.pv() when the prior only has zeroes
-  in a row
-* included class-specific item averages in summary output
-  of tamaan() function for methods LCA, LOCLCA and OLCA
-* compute correct number of parameters with non-identified
-  located latent class models (LOCLCA) in tamaan(). The estimation
-  is conducted without constraints, but one non-identified parameter
-  will be subtracted.
-
-DATASETS INCLUDED OR MODIFIED:
-* ---
-
-EXAMPLES INCLUDED OR MODIFIED:
-* ---
-
-
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
 
 
 -------------------------------------------------------------
