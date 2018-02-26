@@ -39,8 +39,20 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+
 -------------------------------------------------------------
-VERSIONS TAM 2.9  |  2018-02-26  |  Last: TAM 2.9-34
+VERSIONS TAM 2.10  |  2018-02-26  |  Last: TAM 2.10-1
+-------------------------------------------------------------
+
+xxx   * ...
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+-------------------------------------------------------------
+VERSIONS TAM 2.9  |  2018-02-26  |  Last: TAM 2.9-35
 -------------------------------------------------------------
 
 NOTE  * columns with NAs are now omitted from tam.ctt() 
@@ -68,7 +80,6 @@ NOTE  * included argument 'stringsAsFactors' in tampv2datalist()
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
-
 
 -------------------------------------------------------------
 VERSIONS TAM 2.8  |  2017-11-16  |  Last: TAM 2.8-21
