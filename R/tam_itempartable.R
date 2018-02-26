@@ -1,5 +1,5 @@
 ## File Name: tam_itempartable.R
-## File Version: 9.04
+## File Version: 9.06
 
 
 
@@ -40,7 +40,8 @@ tam_itempartable <- function( resp , maxK , AXsi , B , ndim ,
 		}
 	}						
     item1 <- item1[ item1$N > 0 , ]	
-	rownames(item1) <- NULL	
+	# rownames(item1) <- NULL	
+	rownames(item1) <- paste( item1$item )
 	
 	#--- ordering rows for items
 	if (order){

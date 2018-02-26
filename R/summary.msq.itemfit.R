@@ -1,9 +1,9 @@
 ## File Name: summary.msq.itemfit.R
-## File Version: 9.09
+## File Version: 9.14
 
-###################################################
-# summary for tam.fit
-summary.msq.itemfit <- function( object , file=NULL,  ... ){
+#**** summary for msq.itemfit
+summary.msq.itemfit <- function( object , file=NULL,  ... )
+{
 
 	tam_osink( file = file)
 
@@ -14,27 +14,21 @@ summary.msq.itemfit <- function( object , file=NULL,  ... ){
 	#- computation time
 	tam_print_computation_time(object=object)
 	
-	cat("MSQ item fit statitics (Function 'msq.itemfit')\n\n")
+	cat("MSQ item fit statitics (Function 'msq.itemfit')")
 
+	#--- print call
+    tam_print_call(object$CALL)			
+	
 	cat("****************************************************\n")
 	cat("\nSummary outfit and infit statistic\n")
     obji <- object$summary_itemfit
-	rownames(obji) <- NULL
-	for ( vv in seq(2,ncol(obji) ) ){
-		obji[,vv] <- round( obji[,vv] , 3 )
-	}		
-	print(obji)
+	tam_round_data_frame_print(obji=obji, from=2, digits=3, rownames_null=TRUE)		
 	
 	cat("\n****************************************************\n")
 	cat("\nOutfit and infit statistic\n")	
-    object <- object$itemfit
-	ind <- grep( "fitgroup" , colnames(object) )
-	obji <- object
-	for ( vv in seq(ind+1,ncol(obji) ) ){
-		obji[,vv] <- round( obji[,vv] , 3 )
-	}
-	print(obji)
-	invisible(obji)
+    obji <- object$itemfit
+	ind <- grep( "fitgroup" , colnames(obji) )
+	tam_round_data_frame_print(obji=obji, from=ind+1, digits=3, rownames_null=FALSE)	
 	
 	tam_csink(file=file)
 }

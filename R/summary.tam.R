@@ -1,12 +1,9 @@
 ## File Name: summary.tam.R
-## File Version: 9.34
+## File Version: 9.38
 
-#*******************************************************
-# Summary for tam object                               *
-summary.tam.mml <- summary.tam.2pl <- summary.tam.mfr <- summary.tam <- 
-   summary.tam.latreg <- function( object , file = NULL , ...)
+#****** summary for tam object                              
+summary.tam <- function( object , file = NULL , ...)
 {
-
 	tam_osink( file = file)
 						
 	latreg <- FALSE
@@ -110,7 +107,8 @@ summary.tam.mml <- summary.tam.2pl <- summary.tam.mfr <- summary.tam <-
 		cat("------------------------------------------------------------\n")		
 		cat("Item Parameters -A*Xsi\n")
 		obji <- object$item
-		tam_round_data_frame_print(obji=obji, from=2, to=ncol(obji), digits=3)		
+		tam_round_data_frame_print(obji=obji, from=2, to=ncol(obji), digits=3, rownames_null=FALSE)	
+		
 		# print xsi parameters if 
 		if( ! is.null( object$formulaA)  ){
 			cat("\nItem Facet Parameters Xsi\n")
@@ -166,3 +164,8 @@ summary.tam.mml <- summary.tam.2pl <- summary.tam.mfr <- summary.tam <-
 	tam_csink(file=file)
 }
 #*******************************************************
+
+summary.tam.mml <- summary.tam
+summary.tam.2pl <- summary.tam
+summary.tam.mfr <- summary.tam
+summary.tam.latreg <- summary.tam

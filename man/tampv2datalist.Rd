@@ -1,5 +1,5 @@
 %% File Name: tampv2datalist.Rd
-%% File Version: 0.16
+%% File Version: 0.18
 
 \name{tampv2datalist}
 \alias{tampv2datalist}
@@ -17,7 +17,8 @@ or \pkg{BIFIEsurvey}.
 }
 
 \usage{
-tampv2datalist(tam.pv.object, pvnames = NULL, Y = NULL, Y.pid = "pid", as_mids=FALSE)
+tampv2datalist(tam.pv.object, pvnames = NULL, Y = NULL, Y.pid = "pid", 
+      as_mids=FALSE, stringsAsFactors = FALSE)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -41,6 +42,8 @@ be conducted as for \code{rbind}.
   analysis in the \pkg{mice} package. This functionality uses the
   the function \code{\link[miceadds:datalist2mids]{miceadds::datalist2mids}}.
 }
+\item{stringsAsFactors}{Logical indicating whether strings in the data frame
+should be converted into factors}
 }
 
 

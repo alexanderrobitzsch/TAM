@@ -1,5 +1,5 @@
 ## File Name: tam_mml_3pl_mstep_item_intercepts.R
-## File Version: 9.41
+## File Version: 9.43
 
 
 ##########################################################################
@@ -53,8 +53,7 @@ tam_mml_3pl_mstep_item_intercepts <-
 			#Compute the Newton-Raphson derivative for the equation to be solved
 			deriv <- xbar2 - xxf 	
 		}
-		
-		if ( guess_exists){
+		if (guess_exists){
 			NX <- length(xsi)		
 			ll0 <- rep( NA , NX )
 			ll1m <- ll1p <- NA*ll0
