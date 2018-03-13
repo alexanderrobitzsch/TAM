@@ -1,5 +1,5 @@
 ## File Name: tam_pv_mcmc_parameter_summary.R
-## File Version: 0.02
+## File Version: 0.08
 
 tam_pv_mcmc_parameter_summary <- function(parameter_samples, level)
 {
@@ -9,10 +9,15 @@ tam_pv_mcmc_parameter_summary <- function(parameter_samples, level)
 				"est" = colMeans(parameter_samples) )
 	dfr$se <- apply( parameter_samples, 2 , stats::sd )
 	#--- credibility interval
-	dfr$low <- apply( parameter_samples, 2 , stats::quantile , prob = (1-level)/2 )
-	dfr$upp <- apply( parameter_samples, 2 , stats::quantile , prob = 1 - (1-level)/2 )
+	dfr$low <- apply( parameter_samples, 2 , stats::quantile , prob = (1-level)/2 , na.rm=TRUE)
+	dfr$upp <- apply( parameter_samples, 2 , stats::quantile , prob = 1 - (1-level)/2, na.rm=TRUE)
+	some_miss <- sum( is.na(parameter_samples) ) > 0
 	#--- effective sample size
-	dfr$ESS <- round( coda::effectiveSize( parameter_samples ), 1)
+	if ( some_miss){ 
+		dfr$ESS <- NA
+	} else {
+		dfr$ESS <- round( coda::effectiveSize( x=parameter_samples ), 1)
+	}
 	#--- Rhat statistic
 	dfr$Rhat <- tam_Rhat_3splits(parameter_samples=parameter_samples)	
 	#--- OUTPUT

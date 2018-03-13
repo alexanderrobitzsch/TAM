@@ -1,5 +1,5 @@
 ## File Name: tam.pv.mcmc.R
-## File Version: 0.813
+## File Version: 0.817
 
 tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE , 
 				nplausible=10, level = .95, n.iter = 1000 ,
@@ -151,11 +151,10 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 		#--- print progress
 		if ( verbose ){
 			if (iter %% print_iter == 0 ){
-				cat("* Iteration ", iter , "\n")
+				cat("* Iteration ", iter-1 , "\n")
 			}
 			utils::flush.console()
-		}		
-		
+		}			
 	}
 	#--------------- END MCMC ITERATIONS ---------------------	
 	
@@ -190,7 +189,7 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 	#--- parameter summary
 	parameter_summary <- tam_pv_mcmc_parameter_summary( parameter_samples=parameter_samples,
 							level=level ) 
-	
+							
 	s2 <- Sys.time()	
 	#--- OUTPUT
 	res <- list( pv=pv, group=group, groups=groups, G=G, parameter_samples=parameter_samples,

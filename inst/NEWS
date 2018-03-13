@@ -41,7 +41,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.10  |  2018-03-12  |  Last: TAM 2.10-4
+VERSIONS TAM 2.10  |  2018-03-13  |  Last: TAM 2.10-6
 -------------------------------------------------------------
 
 FIXED * fixed problems of numerical overflow in tam.pv.mcmc()
