@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.747
+## File Version: 9.749
 tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
             formulaY = NULL , dataY = NULL , 
             ndim = 1 , pid = NULL ,
@@ -253,7 +253,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 	res <- tam_acceleration_inits(acceleration=acceleration, G=G, xsi=xsi, 
 				variance=variance)	
 	xsi_acceleration <- res$xsi_acceleration
-	variance_acceleration <- res$variance_acceleration						
+	variance_acceleration <- res$variance_acceleration
 			
     # define progress bar for M step
     mpr <- round( seq( 1 , np , len = 10 ) )    
@@ -281,15 +281,15 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 			theta <- res$theta
 			theta2 <- res$theta2
 			thetasamp.density <- res$thetasamp.density
-		}			
+		}
 		olddeviance <- deviance
 
 		#--- calculation of probabilities
 		res <- tam_mml_calc_prob( iIndex=1:nitems, A=A, AXsi=AXsi, B=B, xsi=xsi, theta=theta, 
 					nnodes=nnodes, maxK=maxK, recalc=TRUE ) 
 		rprobs <- res$rprobs
-		AXsi <- res$AXsi	  
-      
+		AXsi <- res$AXsi
+
 		#--- calculate student's prior distribution
 		gwt <- tam_stud_prior( theta=theta, Y=Y, beta=beta, variance=variance, nstud=nstud, 
 					nnodes=nnodes, ndim=ndim, YSD=YSD, unidim_simplify=unidim_simplify, 
@@ -344,7 +344,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 		#--- compute deviance
 		res <- tam_mml_compute_deviance( loglike_num=res.hwt$rfx, loglike_sto=res.hwt$rfx, 
 					snodes=snodes, thetawidth=thetawidth, pweights=pweights, deviance=deviance, 
-					deviance.history=deviance.history, iter=iter, logprior_xsi=logprior_xsi ) 			  
+					deviance.history=deviance.history, iter=iter, logprior_xsi=logprior_xsi )
 		deviance <- res$deviance
 		deviance.history <- res$deviance.history
 		a01 <- rel_deviance_change <- res$rel_deviance_change
@@ -416,7 +416,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
     #****
     # collect item parameters
 	item1 <- tam_itempartable( resp=resp, maxK=maxK, AXsi=AXsi, B=B, ndim=ndim, 
-					resp.ind=resp.ind, rprobs=rprobs, n.ik=n.ik, pi.k=pi.k ) 									
+					resp.ind=resp.ind, rprobs=rprobs, n.ik=n.ik, pi.k=pi.k )
 
 	#**** collect all person statistics
 	res <- tam_mml_person_posterior( pid=pid, nstud=nstud, pweights=pweights, 
@@ -424,7 +424,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 				hwtE=hwt, hwt=hwt, ndim=ndim, theta=theta ) 
 	person <- res$person
 	EAP.rel <- res$EAP.rel	
-#    cat("person parameters") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1				  
+#    cat("person parameters") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
 
     s2 <- Sys.time()
     if ( is.null( dimnames(A)[[3]] ) ){  

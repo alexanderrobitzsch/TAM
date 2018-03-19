@@ -1,5 +1,5 @@
 ## File Name: tam_mml_compute_deviance.R
-## File Version: 0.07
+## File Version: 0.08
 
 tam_mml_compute_deviance <- function( loglike_num , loglike_sto , snodes,
 	thetawidth , pweights, deviance=NA, deviance.history=NULL , iter=NULL,
@@ -27,7 +27,7 @@ tam_mml_compute_deviance <- function( loglike_num , loglike_sto , snodes,
 	
 	#----- deviance_history
 	if ( ! is.null(deviance.history) ){
-		deviance.history[iter,2] <- deviance		
+		deviance.history[iter,2] <- deviance
 	}
 	
 	#----- OUTPUT

@@ -1,5 +1,5 @@
 ## File Name: tam.wle.R
-## File Version: 9.13
+## File Version: 9.14
 
 tam.wle <- function( tamobj, ... )
 {
@@ -11,7 +11,7 @@ tam.wle <- function( tamobj, ... )
 		res <- tam.mml.wle2( tamobj, ...)
 	}
 	if(class(tamobj) == "tam.jml"){
-		res <- tam.jml.WLE( tamobj, ...)
+		res <- tam_jml_wle( tamobj, ...)
 	}
 	attr(res,"call") <- CALL
 	return( res )

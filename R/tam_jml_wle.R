@@ -1,5 +1,5 @@
 ## File Name: tam_jml_wle.R
-## File Version: 9.15
+## File Version: 9.21
 
 
 ################################################################
@@ -38,9 +38,13 @@ tam_jml_wle <- function ( tamobj, resp , resp.ind, A, B, nstud, nitems, maxK, co
     # BB	[ nitems , maxK ]
     # BBB	[ nitems , maxK ]
     maxChangeWLE <- 0
+	theta <- matrix( as.matrix(theta), ncol=1 )
     thetaOld <- theta
+
 	
 a0 <- Sys.time()
+
+
     while (!convergeWLE & ( iterWLE <= Msteps ) ) {  
       resWLE <- tam_mml_calc_prob(iIndex = 1:nitems , A , AXsi , 
                              B , xsi , theta , nstud, maxK , recalc=FALSE )      	
@@ -82,21 +86,20 @@ a0 <- Sys.time()
         warm <- -3*B2_B + 2*B_Cube + BBB_bari
         warmadd <- rowSums(warm, na.rm=TRUE)                 #sum over the items
         warmaddon <- err_inv*warmadd
-        scores <- scores + warmaddon/2.0      
-      }     
+        scores <- scores + warmaddon/2.0   		
+      }       
       increment <-  err_inv*scores
       
       if (maxChangeWLE < max(abs(increment))) {
         maxChangeWLE <- max(abs(increment))
       }
-
       
       increment[abs(increment)>3] <- sign(increment[abs(increment)>3])*3
       
 	  if ( ! is.null(theta.fixed ) ){
 	      increment[ theta.fixed[,1] ] <- 0
 	}	 
-	  	 
+
       theta <- theta + increment
       if ( max(abs(increment)) < convM ) {
         convergeWLE <- TRUE
@@ -108,16 +111,16 @@ a0 <- Sys.time()
     }  # end of Newton-Raphson   
 	#------------
 
-    cat("\n")
-    meanChangeWLE <- mean(theta - thetaOld)
+	cat("\n")
+	meanChangeWLE <- mean(theta - thetaOld)
     #standard errors of theta estimates
-    errorWLE <- sqrt(err_inv)
-	  if ( ! is.null(theta.fixed ) ){
-	      errorWLE[ theta.fixed[,1] ] <- 0
-						}
-    
-    res <- list( "theta" = theta , "errorWLE" = errorWLE, "meanChangeWLE" = meanChangeWLE)
-    return (res)
-  }
+	errorWLE <- sqrt(err_inv)
+	if ( ! is.null(theta.fixed ) ){
+		errorWLE[ theta.fixed[,1] ] <- 0
+	}
+
+	res <- list( "theta" = theta , "errorWLE" = errorWLE, "meanChangeWLE" = meanChangeWLE)
+	return (res)
+}
   
 tam.jml.WLE <- tam_jml_wle  

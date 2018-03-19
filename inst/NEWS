@@ -41,11 +41,15 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.10  |  2018-03-13  |  Last: TAM 2.10-6
+VERSIONS TAM 2.10  |  2018-03-19  |  Last: TAM 2.10-9
 -------------------------------------------------------------
 
 FIXED * fixed problems of numerical overflow in tam.pv.mcmc()
         (thanks to Domenico Angelone and Florian Keller)
+NOTE  * handled non-vector input for tam.wle() with tam.jml()
+        values (thanks to Andres Alberto Burga Leon)
+NOTE  * changed default in plot.tam() to 'fix.devices=TRUE'
+        (communicated by David Torres Irribarra)
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---

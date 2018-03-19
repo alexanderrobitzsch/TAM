@@ -1,5 +1,5 @@
 ## File Name: plot.tam.R
-## File Version: 9.09
+## File Version: 9.12
 ###########################################################
 # plotting tam expected scores curves
 #..........................................................
@@ -8,11 +8,14 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
                      wle=NULL, export=TRUE, export.type="png", 
                      export.args=list(), observed=TRUE, overlay=FALSE , 
                      ask=FALSE, package="lattice" , 
-					 fix.devices=FALSE , ...) {
+					 fix.devices=TRUE , ...)
+{
 	if ( package=="lattice"){
 		require_namespace_msg("lattice")
 	}
 
+	# device.Option <- getOption("device")	
+	
 time1 <- NULL
 if ( fix.devices ){
 	old.opt.dev <- getOption("device")
@@ -404,7 +407,9 @@ if ( fix.devices ){
              options("device"=old.opt.dev)
              options(show.error.messages = as.character(old.opt.err))        
     }
-    
+   
+	# options(device = device.Option)
+   
     #*****
     # Print path
     if(is.null(dev.err)){ cat("....................................................\n",

@@ -1,5 +1,5 @@
 %% File Name: plot.tam.Rd
-%% File Version: 3.28
+%% File Version: 3.29
 
 \name{plot.tam}
 \alias{plot.tam}
@@ -20,17 +20,17 @@ or \code{tam.mml}.
 \method{plot}{tam}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6, 
                    wle=NULL, export=TRUE, export.type="png", 
                    export.args=list(), observed=TRUE, overlay=FALSE , 
-                   ask=FALSE, package="lattice" , fix.devices=FALSE , ...)
+                   ask=FALSE, package="lattice" , fix.devices=TRUE , ...)
 	
 \method{plot}{tam.mml}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6, 
                        wle=NULL, export=TRUE, export.type="png", 
                        export.args=list(), observed=TRUE, overlay=FALSE , 
-                       ask=FALSE,  package="lattice" ,  fix.devices=FALSE , ...)
+                       ask=FALSE,  package="lattice" ,  fix.devices=TRUE , ...)
      
 \method{plot}{tam.jml}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6, 
                        wle=NULL, export=TRUE, export.type="png", 
                        export.args=list(), observed=TRUE, overlay=FALSE , 
-                       ask=FALSE,  package="lattice" , fix.devices=FALSE , ...)
+                       ask=FALSE,  package="lattice" , fix.devices=TRUE , ...)
 }
 %- maybe also 'usage' for other objects documented here.
 
