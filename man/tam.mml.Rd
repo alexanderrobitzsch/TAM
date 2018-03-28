@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9823
+%% File Version: 2.9825
 
 \name{tam.mml}
 
@@ -2127,6 +2127,51 @@ summary(mod2 , file="mod2")
 
 #--- compare model fit
 IRT.compareModels(mod1, mod2 )  # -> equivalent model fit
+
+#############################################################################
+# EXAMPLE 25: Different GPCM parametrizations in IRT packages 
+#############################################################################
+
+library(TAM)
+library(mirt)
+library(ltm)
+
+data(data.gpcm, package="TAM")
+dat <- data.gpcm
+
+
+#*** TAM
+mod1 <- TAM::tam.mml.2pl(dat, irtmodel="GPCM")
+#*** mirt
+mod2 <- mirt::mirt(dat, 1, itemtype="gpcm", verbose=TRUE)
+#*** ltm
+mod3 <- ltm::gpcm( dat , control=list(verbose=TRUE) )
+mod3b <- ltm::gpcm( dat , control=list(verbose=TRUE), IRT.param=FALSE)
+
+#-- comparison log likelihood
+logLik(mod1)
+logLik(mod2)
+logLik(mod3)
+logLik(mod3b)
+
+#*** intercept parametrization (like in TAM)
+
+# TAM
+mod1$B[,2,1]   # slope
+mod1$AXsi      # intercepts
+# mirt
+coef(mod2)
+# ltm
+coef(mod3b, IRT.param=FALSE)[ , c(4,1:3)]
+
+#*** IRT parametrization
+
+# TAM
+mod1$AXsi / mod1$B[,2,1]
+# mirt
+coef(mod2, IRTpars=TRUE)
+# ltm
+coef(mod3)[ , c(4,1:3)]
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

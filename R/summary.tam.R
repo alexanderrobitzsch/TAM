@@ -1,5 +1,5 @@
 ## File Name: summary.tam.R
-## File Version: 9.38
+## File Version: 9.42
 
 #****** summary for tam object                              
 summary.tam <- function( object , file = NULL , ...)
@@ -150,7 +150,8 @@ summary.tam <- function( object , file = NULL , ...)
 			tam_round_data_frame_print(obji=obji, digits=3)	
 			meas <- object$meas									
 			cat("\nDimensionality/Reliability Statistics\n\n")	
-			cat("ECV (Omega Asymptotical)=" , round( meas["ECV(omega_a)"] ,3 ) , "\n")
+			cat("ECV =" , round( meas["ECV"] ,3 ) , "\n")
+			cat("Omega Asymptotical =" , round( meas["omega_a"] ,3 ) , "\n")
 			cat("Omega Total =" , round( meas["omega_t"] ,3 ) , "\n")
 			cat("Omega Hierarchical =" , round( meas["omega_h"] ,3 ) , "\n")		
 			if (object$maxK==2){		

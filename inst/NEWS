@@ -41,18 +41,27 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.10  |  2018-03-19  |  Last: TAM 2.10-9
+VERSIONS TAM 2.10  |  2018-03-28  |  Last: TAM 2.10-16
 -------------------------------------------------------------
 
 FIXED * fixed problems of numerical overflow in tam.pv.mcmc()
         (thanks to Domenico Angelone and Florian Keller)
-NOTE  * handled non-vector input for tam.wle() with tam.jml()
-        values (thanks to Andres Alberto Burga Leon)
+NOTE  * handled non-vector input for 'theta' in tam.wle() with 
+        tam.jml() values (thanks to Andres Alberto Burga Leon)
 NOTE  * changed default in plot.tam() to 'fix.devices=TRUE'
         (communicated by David Torres Irribarra)
+NOTE  * included Example 25 in ?tam.mml which illustrated
+        different GPCM parametrizations in the TAM, mirt and 
+        ltm package
+NOTE  * exported tam.jml.fit() function
+ADDED * added tam.personfit() function
+NOTE  * updated documentation ?IRT.itemfit. Use now the label 
+        RMSD statistic instead of RMSEA fit statistic.
+NOTE  * included ECV statistic in tam.fa() function
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: tam.mml (25), tam.jml (1),
+        tam.personfit (1)
 
 
 

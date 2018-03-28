@@ -1,7 +1,7 @@
 ## File Name: tam_jml_version1.R
-## File Version: 9.26
-tam_jml_version1 <-
-function( resp , group = NULL , adj=.3 , disattenuate = FALSE ,
+## File Version: 9.28
+
+tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALSE ,
                      bias = TRUE, xsi.fixed=NULL ,  xsi.inits = NULL ,  
 					 theta.fixed=NULL , 
                      A=NULL , B=NULL , Q=NULL , ndim=1 ,					
@@ -242,7 +242,7 @@ function( resp , group = NULL , adj=.3 , disattenuate = FALSE ,
     }
     #@ARb 2012-08-27
     # stop loop (break) if there is no change in deviation
-    if ( abs( deviance-olddeviance) < 10^(-10) ){ break }
+    if ( abs( deviance-olddeviance) < 1E-10 ){ break }
   }# end of all convergence 
   
   #After convergence, compute final WLE (WLE set to TRUE)

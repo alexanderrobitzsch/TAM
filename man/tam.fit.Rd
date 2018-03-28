@@ -1,5 +1,5 @@
 %% File Name: tam.fit.Rd
-%% File Version: 2.43
+%% File Version: 2.46
 
 \name{tam.fit}
 
@@ -58,10 +58,10 @@ fit for all facet parameters should be computed.}
 \item{\dots}{Further arguments to be passed}
 }
 
-\details{
-Item fit is automatically calculated in JML estimation using
-\code{\link{tam.jml}}.
-}
+%% \details{
+%% Item fit is automatically calculated in JML estimation using
+%% \code{\link{tam.jml}}.
+%% }
 
 \value{
 In case of \code{tam.mml.fit} a data frame as entry \code{itemfit} 
@@ -99,7 +99,12 @@ A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.
 Fit statistics can be also calculated by the function \code{\link{msq.itemfit}}
 which avoids simulations and directly evaluates individual
 posterior distributions.
-	
+
+See \code{\link{tam.jml.fit}} for calculating item fit and person fit statistics
+for models fitted with JML.	
+    
+See \code{\link{tam.personfit}} for computing person fit statistics.    
+    
 Item fit and person fit based on estimated person parameters can also be 
 calculated using the \code{\link[sirt:pcm.fit]{sirt::pcm.fit}} function
 in the \pkg{sirt} package (see Example 1 and Example 2).

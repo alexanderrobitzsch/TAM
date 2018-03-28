@@ -1,15 +1,13 @@
 ## File Name: tam.fa.R
-## File Version: 9.09
+## File Version: 9.17
 #################################################################
 # Exploratory Factor Analysis and Bifactor Models
 tam.fa <- function( resp , irtmodel , dims=NULL , nfactors=NULL ,
                  pid = NULL ,pweights = NULL , verbose = TRUE , control = list() )
 {
-
 	require_namespace_msg("GPArotation")
 	require_namespace_msg("psych")
-  
-    disp <- "....................................................\n"  
+	disp <- "....................................................\n"  
 	increment.factor <- progress <- nodes <- snodes <- ridge <- xsi.start0 <- QMC <- NULL
 	maxiter <- conv <- convD <- min.variance <- max.increment <- Msteps <- convM <- NULL 
 	
@@ -24,10 +22,10 @@ tam.fa <- function( resp , irtmodel , dims=NULL , nfactors=NULL ,
 	# attach control elements
 	e1 <- environment()
 	con <- list( nodes = seq(-6,6,len=21) , snodes = 1500 ,QMC=TRUE,
-               convD = .001 ,conv = .0001 , convM = .0001 , Msteps = 4 ,            
-               maxiter = 1000 , max.increment = 1 , 
-			   min.variance = .001 , progress = TRUE , ridge=0,seed=NULL,
-			   xsi.start0=FALSE , increment.factor=1)  	
+				convD = .001 ,conv = .0001 , convM = .0001 , Msteps = 4 ,            
+				maxiter = 1000 , max.increment = 1 , 
+				min.variance = .001 , progress = TRUE , ridge=0,seed=NULL,
+				xsi.start0=FALSE , increment.factor=1) 
 	con[ names(control) ] <- control  
 	Lcon <- length(con)
 	con1a <- con1 <- con ; 
@@ -36,7 +34,7 @@ tam.fa <- function( resp , irtmodel , dims=NULL , nfactors=NULL ,
 		assign( names(con)[cc] , con1[[cc]] , envir = e1 ) 
 	}
 	if ( !is.null(con$seed)){ set.seed( con$seed )	 }
-    maxK <- max(resp ,na.rm=TRUE)
+	maxK <- max(resp ,na.rm=TRUE)
    
 	#************************************************************
 	# irtmodel = bifactor 1 or bifactor2
@@ -115,39 +113,29 @@ tam.fa <- function( resp , irtmodel , dims=NULL , nfactors=NULL ,
 		B <- B * matrix( Bsd , nrow=nrow(B) , ncol= ncol(B) , byrow=TRUE)
 	}
 	itemvariance <- rowSums( B^2 ) + 1.7^2	# add logistic variance
-	itemvariance <- matrix( itemvariance ,  nrow=nrow(B) , ncol= ncol(B) , byrow=FALSE) 
+	itemvariance <- matrix( itemvariance, nrow=nrow(B), ncol= ncol(B), byrow=FALSE) 
 	if (irtmodel %in% c("bifactor1","bifactor2","efa") ){
 		B.stand <- B / sqrt( itemvariance )
 	}
 	res$B.stand <- B.stand
+	res$itemvariance <- itemvariance
 	
-	# oblimin rotation in expploratory factor analysis
+	# oblimin rotation in exploratory factor analysis
 	if (irtmodel=="efa"){
-		res$efa.oblimin <- GPArotation::oblimin(B.stand )
-			# needs GPArotation package
-		# Schmid Leiman solution
+		res$efa.oblimin <- GPArotation::oblimin(L=B.stand)
+		# Schmid Leiman transformation
 		corrmatr <- tcrossprod( B.stand )
 		diag(corrmatr) <- 1
-		sl.sol <- psych::schmid(model=corrmatr , nfactors = nfactors )
-		res$B.SL <- B.stand <- sl.sol$sl[ , seq(1,nfactors+1) ]		
-				}
-	res$itemvariance <- itemvariance
+		sl.sol <- psych::schmid(model=corrmatr, nfactors = nfactors )
+		res$B.SL <- B.stand <- sl.sol$sl[ , seq(1,nfactors+1) ]	
+	}
+	
 	res$irtmodel <- irtmodel
 	#****
 	# calculate dimensionality/reliability measures
-	g0 <- B.stand[,1] %*% t(B.stand[,1])
-	g1 <- B.stand[,-1] %*% t(B.stand[,-1])
-	g2 <- diag(1-rowSums( B.stand^2 ))
-	meas <- c("ECV(omega_a)"=sum(g0) / sum(g0+g1) , 
-		"omega_t"=sum(g0+g1) / sum(g0+g1+g2) ,
-		"omega_h" = sum(g0) / sum(g0+g1+g2) )
-	itemvariance <- res$itemvariance
-	# omega_tot
-	if (maxK==1){
-		meas["omega_tot_diff"] <- tam_fa_reliability_nonlinearSEM(facloadings=B.stand, 
-					thresh = - res$xsi[,1] / sqrt( itemvariance ) )$omega.rel	
-	}
-	res$meas <- meas	
-	return(res)							
+	res$meas <- tam_fa_reliability_measures( B.stand=B.stand, 
+					itemvariance=itemvariance, xsi=res$xsi, maxK=maxK ) 
+	#--- output
+	return(res)
 }
 #####################################################################

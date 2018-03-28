@@ -1,5 +1,5 @@
 ## File Name: tam.mml.2pl.R
-## File Version: 9.532
+## File Version: 9.533
 tam.mml.2pl <-
 function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
                  formulaY = NULL , dataY = NULL , 
@@ -566,7 +566,7 @@ function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
 			   "est.slopegroups" = est.slopegroups , "E" = E , "basispar" = basispar,
                "variance.fixed" = variance.fixed ,
                "nnodes" = nnodes , "deviance" = deviance ,
-			   "ic" = ic , 
+			   "ic" = ic , thetasamp.density=thetasamp.density, 
                "deviance.history" = deviance.history ,
                "control" = con1a , "irtmodel" = irtmodel ,
 			   "iter" = iter ,

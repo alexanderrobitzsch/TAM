@@ -1,17 +1,17 @@
 ## File Name: tam.jml.R
-## File Version: 9.26
+## File Version: 9.27
 
 
 tam.jml <- function( resp , group = NULL , adj=.3 , disattenuate = FALSE ,
-            bias = TRUE, xsi.fixed=NULL ,  xsi.inits = NULL ,  theta.fixed = NULL , 
-            A=NULL , B=NULL , Q=NULL , ndim=1 ,
-            pweights = NULL , verbose = TRUE , control = list() , version = 2 )
-{           	
+			bias = TRUE, xsi.fixed=NULL ,  xsi.inits = NULL ,  theta.fixed = NULL , 
+			A=NULL , B=NULL , Q=NULL , ndim=1 ,
+			pweights = NULL , verbose = TRUE , control = list() , version = 2 )
+{
 	CALL <- match.call()
 	#**** handle verbose argument	
 	args_CALL <- as.list( sys.call() )
 	control$progress <- tam_args_CALL_search( args_CALL=args_CALL , variable="verbose" , 
-								default_value = TRUE )				
+								default_value = TRUE )
 	#*******
 	if ( ! is.null(theta.fixed) ){
 		version <- 1

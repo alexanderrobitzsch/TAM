@@ -1,5 +1,5 @@
 %% File Name: tam.fa.Rd
-%% File Version: 2.12
+%% File Version: 2.13
 
 \name{tam.fa}
 \alias{tam.fa}
@@ -111,7 +111,8 @@ loadings form the Schmid-Leimann solution of the \pkg{psych} package.}
 \item{efa.oblimin}{Output from oblimin rotation in exploratory
    factor analysis which is produced by the \pkg{GPArotation} package}
 \item{meas}{Vector of dimensionality and reliability statistics.
-   Included are the ECV measure (Reise, Moore & Haviland, 2010; Reise, 2012), 
+   Included are the ECV measure (explained common variation;
+   Reise, Moore & Haviland, 2010; Reise, 2012), 
    \eqn{\omega_t} (Omega Total), \eqn{\omega_a} (Omega asymptotical) 
    and \eqn{\omega_h} (Omega hierarchical) (Revelle & Zinbarg, 2009). 
    The reliability of the sum score based on

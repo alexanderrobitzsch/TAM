@@ -1,5 +1,5 @@
 %% File Name: tam.jml.Rd
-%% File Version: 2.31
+%% File Version: 2.32
 
 \name{tam.jml}
 
@@ -228,6 +228,11 @@ round( pers1[ c(698, 683, 608) , ] ,3  )
   ##   608          9.7        4.315          9.95         6.179
 
 \dontrun{
+#*** item fit and person fit statistics
+fmod1a <- TAM::tam.jml.fit(mod1a)
+head(fmod1a$fit.item)
+head(fmod1a$fit.person)
+
 #*** Models in which some item parameters are fixed
 xsi.fixed <- cbind( c(1,3,9,10) , c(-2 , -1.2 , 1.6 , 2 ) )
 mod1e <- TAM::tam.jml( resp=resp , xsi.fixed = xsi.fixed )

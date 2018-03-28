@@ -1,5 +1,5 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.828
+## File Version: 9.829
 tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,  
             formulaY = NULL , dataY = NULL , 
             ndim = 1 , pid = NULL ,
@@ -847,7 +847,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 				 "est.slopegroups" = est.slopegroups , "E" = E , "basispar" = basispar,
                  "variance.fixed" = variance.fixed ,
                  "nnodes" = nnodes , "deviance" = deviance ,
-                 "ic" = ic , 
+                 "ic" = ic , thetasamp.density=thetasamp.density, 
                  "deviance.history" = deviance.history ,
                  "control" = con1a , "irtmodel" = irtmodel ,
                  "iter" = iter ,

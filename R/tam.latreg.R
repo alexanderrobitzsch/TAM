@@ -1,5 +1,5 @@
 ## File Name: tam.latreg.R
-## File Version: 9.326
+## File Version: 9.327
 
 ###################################################################
 # latent regression
@@ -300,7 +300,7 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
                  "beta.fixed" = beta.fixed , 
                  "variance.fixed" = variance.fixed ,
                  "nnodes" = nnodes , "deviance" = deviance ,
-                 "ic" = ic , 
+                 "ic" = ic , thetasamp.density=thetasamp.density, 
                  "deviance.history" = deviance.history ,
                  "control" = con1a ,    "iter" = iter ,
                  "YSD"=YSD , CALL = CALL , latreg_stand=latreg_stand	 )

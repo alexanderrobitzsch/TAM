@@ -1,5 +1,5 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.879
+## File Version: 9.881
 tam.mml.mfr <-
   function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
             formulaY = NULL , dataY = NULL , 
@@ -575,7 +575,7 @@ tam.mml.mfr <-
 				 "xsi.constr" = xsi.constr , 
                  "variance.fixed" = variance.fixed ,
                  "nnodes" = nnodes , "deviance" = ic$deviance ,
-                 "ic" = ic , 
+                 "ic" = ic , thetasamp.density=thetasamp.density, 
                  "deviance.history" = deviance.history ,
                  "control" = con1a , "irtmodel" = irtmodel ,
                  "iter" = iter , "resp_orig" = resp_orig ,

@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.749
+## File Version: 9.751
 tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
             formulaY = NULL , dataY = NULL , 
             ndim = 1 , pid = NULL ,
@@ -512,7 +512,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 				 "beta.fixed" = beta.fixed , "Q" = Q  ,
                  "variance.fixed" = variance.fixed ,
                  "nnodes" = nnodes , "deviance" = ic$deviance ,
-                 "ic" = ic , 
+                 "ic" = ic , thetasamp.density=thetasamp.density, 
                  "deviance.history" = deviance.history ,
                  "control" = con1a , "irtmodel" = irtmodel ,
                  "iter" = iter ,
