@@ -1,5 +1,5 @@
-//// File Name: tamwle_helper_ccode.cpp
-//// File Version: 3.03
+//// File Name: tam_wle_helper_rcpp.cpp
+//// File Version: 3.06
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
@@ -10,7 +10,7 @@ using namespace Rcpp;
 
 
 ///********************************************************************
-///** kernelplsaux
+///** tam_wle_Bs
 // [[Rcpp::export]]           
 Rcpp::List tam_wle_Bs( Rcpp::NumericMatrix RPROBS, 
 	Rcpp::NumericMatrix RESPIND, Rcpp::NumericMatrix CBL, 
@@ -64,12 +64,12 @@ Rcpp::List tam_wle_Bs( Rcpp::NumericMatrix RPROBS,
 	    ///////////////////////////////////////////////////////
 	    ///////////// O U T P U T   ///////////////////////////	    
 	    return Rcpp::List::create(
-                    Rcpp::_["B_bari"]=B_bari, 
-                    Rcpp::_["BB_bari"]=BB_bari, 
-                    Rcpp::_["BBB_bari"]=BBB_bari,
-                    Rcpp::_["B_Sq"]=B_Sq, 
-                    Rcpp::_["B2_B"]=B2_B, 
-                    Rcpp::_["B_Cube"]=B_Cube );
+                    Rcpp::Named("B_bari")=B_bari, 
+                    Rcpp::Named("BB_bari")=BB_bari, 
+                    Rcpp::Named("BBB_bari")=BBB_bari,
+                    Rcpp::Named("B_Sq")=B_Sq, 
+                    Rcpp::Named("B2_B")=B2_B, 
+                    Rcpp::Named("B_Cube")=B_Cube );
 }
 
 ///********************************************************************

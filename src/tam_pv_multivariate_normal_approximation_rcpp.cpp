@@ -1,5 +1,5 @@
-//// File Name: tam_pv_multivariate_normal_approximation.cpp
-//// File Version: 0.25
+//// File Name: tam_pv_multivariate_normal_approximation_rcpp.cpp
+//// File Version: 0.27
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -46,7 +46,7 @@ Rcpp::NumericVector tam_pv_weighted_mean( Rcpp::NumericMatrix theta, Rcpp::Numer
 		}
 		Mu[dd] = y;
 	}
-	return(Mu);
+	return Mu;
 }
 
 

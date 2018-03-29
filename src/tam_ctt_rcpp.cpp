@@ -1,5 +1,5 @@
-//// File Name: tam_ctt_c.cpp
-//// File Version: 3.01
+//// File Name: tam_ctt_rcpp.cpp
+//// File Version: 3.02
 
 
 // [[Rcpp::depends(RcppArmadillo)]]

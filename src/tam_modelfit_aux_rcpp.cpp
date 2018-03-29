@@ -1,5 +1,5 @@
-//// File Name: tam_modelfit_aux.cpp
-//// File Version: 3.06
+//// File Name: tam_modelfit_aux_rcpp.cpp
+//// File Version: 3.07
 
 
 #include <Rcpp.h>

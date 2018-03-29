@@ -1,5 +1,5 @@
-//// File Name: tam_fit_simul.cpp
-//// File Version: 1.01
+//// File Name: tam_fit_simul_rcpp.cpp
+//// File Version: 1.02
 
 
 #include <Rcpp.h>

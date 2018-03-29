@@ -1,5 +1,5 @@
-//// File Name: tam_helper_ccode.cpp
-//// File Version: 3.11
+//// File Name: tam_helper_rcpp.cpp
+//// File Version: 3.12
 
 // [[Rcpp::depends(RcppArmadillo)]]
 

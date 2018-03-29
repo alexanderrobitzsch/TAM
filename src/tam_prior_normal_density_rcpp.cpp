@@ -1,5 +1,5 @@
-//// File Name: prior_normal_density_c.cpp
-//// File Version: 3.04
+//// File Name: tam_prior_normal_density_rcpp.cpp
+//// File Version: 3.05
 
 #include <Rcpp.h>
 

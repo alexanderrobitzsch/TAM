@@ -1,5 +1,5 @@
 %% File Name: IRT.itemfit.Rd
-%% File Version: 0.14
+%% File Version: 0.17
 
 \name{IRT.itemfit.tam}
 
@@ -14,7 +14,8 @@ RMSD Item Fit Statistics for \pkg{TAM} Objects
 }
 
 \description{
-Computes the RMSEA item fit statistic for fitted objects in the
+Computes the RMSD item fit statistic (formerly labeled as RMSEA;
+Yamamoto, Khorramdel, & von Davier, 2013) for fitted objects in the
 \pkg{TAM} package, see 
 \code{\link[CDM:IRT.itemfit]{CDM::IRT.itemfit}} and
 \code{\link[CDM:IRT.RMSD]{CDM::IRT.RMSD}}.
@@ -69,9 +70,11 @@ Further arguments to be passed.
 
 
 
-%\references{
-%% ~put references to the literature/web site here ~
-%}
+\references{
+Yamamoto, K., Khorramdel, L., & von Davier, M. (2013). Scaling PIAAC cognitive data. 
+In OECD (Eds.). \emph{Technical Report of the Survey of Adults Skills (PIAAC)} (Ch. 17). 
+Paris: OECD. 
+}
 
 
 %\note{		

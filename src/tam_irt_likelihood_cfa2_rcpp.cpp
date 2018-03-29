@@ -1,5 +1,5 @@
-//// File Name: irt_likelihood_cfa2.cpp
-//// File Version: 2.02
+//// File Name: tam_irt_likelihood_cfa2_rcpp.cpp
+//// File Version: 2.03
 
 
 

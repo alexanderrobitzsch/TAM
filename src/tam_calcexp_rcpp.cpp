@@ -1,5 +1,5 @@
-//// File Name: tam_calcexp.cpp
-//// File Version: 3.04
+//// File Name: tam_calcexp_rcpp.cpp
+//// File Version: 3.05
 
 
 #include <Rcpp.h>
