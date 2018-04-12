@@ -1,5 +1,5 @@
 //// File Name: tam_wle_helper_rcpp.cpp
-//// File Version: 3.06
+//// File Version: 3.07
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
@@ -8,14 +8,14 @@
 
 using namespace Rcpp;
 
-
 ///********************************************************************
 ///** tam_wle_Bs
 // [[Rcpp::export]]           
 Rcpp::List tam_wle_Bs( Rcpp::NumericMatrix RPROBS, 
 	Rcpp::NumericMatrix RESPIND, Rcpp::NumericMatrix CBL, 
 	Rcpp::NumericMatrix CBB, Rcpp::NumericMatrix CBBB, 
-	int cndim, int cnitems, int cmaxK, int cnstud){
+	int cndim, int cnitems, int cmaxK, int cnstud)
+{
    
 	    ///////////////////////////////////////////////////////////
 	    // INPUT indices

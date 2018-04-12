@@ -1,5 +1,5 @@
 //// File Name: tam_calcexp_rcpp.cpp
-//// File Version: 3.11
+//// File Version: 3.13
 
 
 #include <Rcpp.h>
@@ -67,9 +67,9 @@ Rcpp::List TAM_CALCEXP( int NP, Rcpp::NumericMatrix rprobs,
      ///////////////////////////////////////////////////////  
      ///////////// O U T P U T   ///////////////////////////         
      return Rcpp::List::create(
-           Rcpp::_["xbar"]=XBAR , 
-           Rcpp::_["xbar2"]=XBAR2 , 
-           Rcpp::_["xxf"]=XXF  
+           Rcpp::Named("xbar")=XBAR , 
+           Rcpp::Named("xbar2")=XBAR2 , 
+           Rcpp::Named("xxf")=XXF  
                 ); 
 }
 ///********************************************************************
@@ -82,7 +82,8 @@ Rcpp::List TAM_CALCEXP( int NP, Rcpp::NumericMatrix rprobs,
 Rcpp::List TAM_CALCEXP2( int NP, Rcpp::NumericVector rprobs, 
 	Rcpp::NumericVector A, Rcpp::NumericMatrix INDEXIPNO, 
 	Rcpp::NumericVector INDEXIPLIST2, Rcpp::NumericVector ESTXSIINDEX, 
-	int C, Rcpp::NumericMatrix ITEMWT , int NR , int TP){
+	int C, Rcpp::NumericMatrix ITEMWT , int NR , int TP)
+{
   
      ////////////////////////////////////////////////////////////  
      // define output vectors  
@@ -134,32 +135,29 @@ Rcpp::List TAM_CALCEXP2( int NP, Rcpp::NumericVector rprobs,
      ///////////////////////////////////////////////////////  
      ///////////// O U T P U T   ///////////////////////////         
      return Rcpp::List::create(
-                Rcpp::_["xbar"]=XBAR , 
-                Rcpp::_["xbar2"]=XBAR2 , 
-                Rcpp::_["xxf"]=XXF  
+                Rcpp::Named("xbar")=XBAR , 
+                Rcpp::Named("xbar2")=XBAR2 , 
+                Rcpp::Named("xxf")=XXF  
                     ); 
 }
-
 
 
 ///********************************************************************
 ///** redefine_vector_na
 // [[Rcpp::export]]           
-Rcpp::NumericVector redefine_vector_na( Rcpp::NumericVector A, 
-	double val ){
-
-     int N = A.size();    
-     Rcpp::NumericVector A1(N);         
-     for( int nn=0;nn<N;nn++){  
-	     if ( R_IsNA( A[nn] ) ){  
-		A1[nn] = val ;  
-	     } else {  
-		A1[nn] = A[nn];  
-             }  
-     }    
-     //*************************************************      
-     // OUTPUT              
-     return A1;
+Rcpp::NumericVector redefine_vector_na( Rcpp::NumericVector A, double val )
+{
+	int N = A.size();    
+	Rcpp::NumericVector A1(N);         
+	for( int nn=0;nn<N;nn++){  
+		if ( R_IsNA( A[nn] ) ){  
+			A1[nn] = val ;  
+		} else {  
+			A1[nn] = A[nn];  
+		}  
+	}
+	//---- OUTPUT              
+	return A1;
 }
 
 

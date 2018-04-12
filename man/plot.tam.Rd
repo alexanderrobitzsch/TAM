@@ -1,5 +1,5 @@
 %% File Name: plot.tam.Rd
-%% File Version: 3.29
+%% File Version: 3.31
 
 \name{plot.tam}
 \alias{plot.tam}
@@ -17,18 +17,18 @@ or \code{tam.mml}.
 }
 
 \usage{
-\method{plot}{tam}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6, 
-                   wle=NULL, export=TRUE, export.type="png", 
+\method{plot}{tam}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6,  
+                   groups_by_item = FALSE, wle=NULL, export=TRUE, export.type="png", 
                    export.args=list(), observed=TRUE, overlay=FALSE , 
                    ask=FALSE, package="lattice" , fix.devices=TRUE , ...)
 	
 \method{plot}{tam.mml}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6, 
-                       wle=NULL, export=TRUE, export.type="png", 
+                       groups_by_item = FALSE, wle=NULL, export=TRUE, export.type="png",
                        export.args=list(), observed=TRUE, overlay=FALSE , 
                        ask=FALSE,  package="lattice" ,  fix.devices=TRUE , ...)
      
 \method{plot}{tam.jml}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6, 
-                       wle=NULL, export=TRUE, export.type="png", 
+                       groups_by_item = FALSE, wle=NULL, export=TRUE, export.type="png",
                        export.args=list(), observed=TRUE, overlay=FALSE , 
                        ask=FALSE,  package="lattice" , fix.devices=TRUE , ...)
 }
@@ -55,6 +55,9 @@ Highest \eqn{\theta} value to be displayed
 Number of score groups to be displayed. The default are
 six groups.
 }
+\item{groups_by_item}{Logical indicating whether grouping of persons 
+should be conducted item-wise. The groupings will differ from item to item
+in case of missing item responses.}
   \item{wle}{
 Use WLE estimate for displaying observed scores.
 }

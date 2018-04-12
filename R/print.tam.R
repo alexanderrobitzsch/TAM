@@ -1,9 +1,10 @@
 ## File Name: print.tam.R
-## File Version: 9.04
+## File Version: 9.05
 
 ##############################################
 # print method for TAM
-print_tam <- function( x , ...){	
+print_tam <- function( x , ...)
+{	
 	object <- x
 	cat( tam_packageinfo("TAM") , "\n" )	
 	# print Call

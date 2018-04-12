@@ -41,13 +41,14 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.11  |  2018-04-12  |  Last: TAM 2.11-22
+VERSIONS TAM 2.11  |  2018-04-12  |  Last: TAM 2.11-24
 -------------------------------------------------------------
 
 FIXED * fixed a bug in tam.pv.mcmc() when almost singular
         predictor matrices are used (thanks to Florian Keller)
 NOTE  * included argument 'calc_ic' in tam.pv.mcmc()
-
+NOTE  * included argument 'groups_by_item' in plot.tam()
+        function (thanks to Laura Helbling)
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---

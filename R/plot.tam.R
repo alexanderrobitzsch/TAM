@@ -1,14 +1,15 @@
 ## File Name: plot.tam.R
-## File Version: 9.12
+## File Version: 9.22
+
 ###########################################################
 # plotting tam expected scores curves
 #..........................................................
 plot.tam <- function(x, items=1:x$nitems, type="expected" ,
-                     low=-3, high=3, ngroups=6, 
-                     wle=NULL, export=TRUE, export.type="png", 
-                     export.args=list(), observed=TRUE, overlay=FALSE , 
-                     ask=FALSE, package="lattice" , 
-					 fix.devices=TRUE , ...)
+					low=-3, high=3, ngroups=6, groups_by_item = FALSE,
+					wle=NULL, export=TRUE, export.type="png", 
+					export.args=list(), observed=TRUE, overlay=FALSE , 
+					ask=FALSE, package="lattice" , 
+					fix.devices=TRUE , ...)
 {
 	if ( package=="lattice"){
 		require_namespace_msg("lattice")
@@ -16,156 +17,150 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
 
 	# device.Option <- getOption("device")	
 	
-time1 <- NULL
-if ( fix.devices ){
-	old.opt.dev <- getOption("device")
-	old.opt.err <- c( getOption("show.error.messages"))
-	old.par.ask <- graphics::par("ask")
-	# remember new pars' values
-	old.par.xpd <- graphics::par("xpd")
-	old.par.mar <- graphics::par("mar")
-  
-	on.exit( options("device"=old.opt.dev))
-	on.exit( options("show.error.messages"=old.opt.err), add=TRUE)
-	on.exit( graphics::par("ask"=old.par.ask), add=TRUE)
-	# restore new pars' values
-	on.exit( graphics::par("xpd"=old.par.xpd), add=TRUE)
-	on.exit( graphics::par("mar"=old.par.mar), add=TRUE)
-}  
-  
-  tamobj <- x
-  ndim <- tamobj$ndim
-  tammodel <- "mml"
-  if(is.null(ndim)) {
-    ndim <- 1
-    tammodel <- "jml"
-  }
-  if (ndim > 1 ) {
-    if ( type=="expected"){
-      stop ("Expected scores curves are only available for uni-dimensional models")
-    }
-  }
-  
-  nitems <- tamobj$nitems
-  
-  nnodes <- 100
-  if (ndim == 1 ){
-    theta <- matrix(seq(low, high, length=nnodes), nrow=nnodes, ncol=ndim)
-  } else {
-    #	theta <- tamobj$theta
-    nnodes <- 40
-    nodes <- seq(low, high, length=nnodes)
-    theta <- as.matrix( expand.grid( as.data.frame( matrix( rep(nodes, ndim) , ncol = ndim ) ) ) )	
-    nnodes <- nrow(theta)	
-    B <- tamobj$B
-  }
-  
-  iIndex <- 1:nitems
-  A <- tamobj$A
-  B <- tamobj$B
-  if (tammodel == "mml") {
-    xsi <- tamobj$xsi$xsi
-  }  else {
-    xsi <- tamobj$xsi
-  }
-  maxK <- tamobj$maxK
-  resp <- tamobj$resp
-  resp.ind <- tamobj$resp.ind
-  resp[resp.ind==0] <- NA
-  AXsi <- matrix(0,nrow=nitems,ncol=maxK )
-  res <- tam_mml_calc_prob(iIndex=1:nitems , A=A , AXsi=AXsi , B=B , xsi=xsi , theta=theta , 
-                      nnodes=nnodes , maxK=maxK , recalc=TRUE )  
-  rprobs <- res[["rprobs"]]
-  AXsi <- res[["AXsi"]]
-  cat <- 1:maxK - 1
-  
-  if ( type == "expected" ){
-    
-    expScore <- sapply(1:nitems, function(i) colSums(cat*rprobs[i,,], na.rm=TRUE))
-    
-    if (is.null(wle)) {
-      if (tammodel == "mml") {
-        wleobj <- tam.wle(tamobj)
-        wle <- wleobj$theta
-      } 
-      else {
-        wle <- tamobj$WLE    # model is jml
-      }
-    }
-    wleSorted <- sort(wle, na.last=FALSE)
-    ncases <- length(wleSorted)
-    groupnumber <- round(seq(1:ncases) / (ncases/ngroups) + 0.5)
-    
-    aggr <- stats::aggregate(wleSorted, list(groupnumber), mean)
-    theta2 <- aggr$x
-    
-    d <- data.frame(wle, resp)
-    d1 <- d[order(wle),]
-    d2 <- d1[-1]
-    obScore <- apply(d2,2, function(x) stats::aggregate(x, list(groupnumber), mean, na.rm=TRUE))
-  }
-  
-  #----------------------------------------------------
-  # adds observed score for type="items"
-  if (type == "items") {
-  	require_namespace_msg("plyr")
-    if (is.null(wle)) {
-      if (tammodel == "mml") {
-        wleobj <- tam.wle(tamobj)
-        wle <- wleobj$theta
-      } 
-      else {
-        wle <- tamobj$WLE    # model is jml
-      }
-    }
-    wleSorted <- sort(wle, na.last=FALSE)
-    ncases <- length(wleSorted)
-    # sometimes this returns one more group than requested
-    groupnumber <- round(seq(1:ncases) / (ncases/ngroups) + 0.5)  
-    groupnumber[groupnumber > ngroups] = ngroups # prevents it
-    
-    aggr <- stats::aggregate(wleSorted, list(groupnumber), mean)
-    theta2 <- aggr$x
-    
-    d <- data.frame(wle, resp)
-    d1 <- d[order(wle),]
-    d2 <- d1[-1]
-    obScore <- lapply(d2, function(item) {
-      comp_case = stats::complete.cases(item)
-      item = item[comp_case]
-      uniq_cats = sort(unique(item))
-      plyr::ldply(split(item, groupnumber[comp_case]), .id = "group", 
-                  function (group) {
-        ngroup = length(group)
-        cat_freq = list()
-        for (catt in uniq_cats) {
-          cat_freq[[paste0("cat_", catt)]] = sum(group == catt)/ngroup
-        }
-        data.frame(cat_freq)
-      })
-    })
-  }
-  
-  #*************************************************
-  # begin plot function
-  
-  for (i in (1:nitems)[items]) {
-    #***********************************************************
-    #** expected item response curves	
-    if ( type=="expected"){
-      if (i==1 || !overlay) {
-        ylim2 <- c(0,max( tamobj$resp[,i] , na.rm=TRUE ) )
-        graphics::plot(theta, expScore[,i], ,col=12, type="l", lwd=3, las=1, ylab="Score", xlab="Ability",
-             main=paste("Expected Scores Curve - Item ", colnames(tamobj$resp)[i] )	 ,
-             ylim=ylim2 , ...
-        )
-      } else {
-        graphics::lines(theta, expScore[,i],type="l", col=i, lwd=3, pch=1) 
-      }
-      if (observed) {
-        graphics::lines(theta2,obScore[[i]]$x, type="o", lwd=2, pch=1)
-      }
-    }
+	time1 <- NULL
+	if ( fix.devices ){
+		old.opt.dev <- getOption("device")
+		old.opt.err <- c( getOption("show.error.messages"))
+		old.par.ask <- graphics::par("ask")
+		# remember new pars' values
+		old.par.xpd <- graphics::par("xpd")
+		old.par.mar <- graphics::par("mar")
+		on.exit( options("device"=old.opt.dev))
+		on.exit( options("show.error.messages"=old.opt.err), add=TRUE)
+		on.exit( graphics::par("ask"=old.par.ask), add=TRUE)
+		# restore new pars' values
+		on.exit( graphics::par("xpd"=old.par.xpd), add=TRUE)
+		on.exit( graphics::par("mar"=old.par.mar), add=TRUE)
+	}  
+
+	tamobj <- x
+	ndim <- tamobj$ndim
+	tammodel <- "mml"
+	if(is.null(ndim)) {
+		ndim <- 1
+		tammodel <- "jml"
+	}
+	if (ndim > 1 ) {
+		if ( type=="expected"){
+			stop ("Expected scores curves are only available for uni-dimensional models")
+		}
+	}
+
+	nitems <- tamobj$nitems
+	nnodes <- 100
+
+	if (ndim == 1 ){
+		theta <- matrix(seq(low, high, length=nnodes), nrow=nnodes, ncol=ndim)
+	} else {
+		#	theta <- tamobj$theta
+		nnodes <- 40
+		nodes <- seq(low, high, length=nnodes)
+		theta <- as.matrix( expand.grid( as.data.frame( matrix( rep(nodes, ndim) , ncol = ndim ) ) ) )	
+		nnodes <- nrow(theta)	
+		B <- tamobj$B
+	}
+
+	iIndex <- 1:nitems
+	A <- tamobj$A
+	B <- tamobj$B
+	if (tammodel == "mml") {
+		xsi <- tamobj$xsi$xsi
+	}  else {
+		xsi <- tamobj$xsi
+	}
+	maxK <- tamobj$maxK
+	resp <- tamobj$resp
+	resp.ind <- tamobj$resp.ind
+	resp[resp.ind==0] <- NA
+	AXsi <- matrix(0,nrow=nitems,ncol=maxK )
+	res <- tam_mml_calc_prob(iIndex=iIndex , A=A , AXsi=AXsi , B=B , xsi=xsi , theta=theta , 
+					nnodes=nnodes , maxK=maxK , recalc=TRUE )  
+	rprobs <- res[["rprobs"]]
+	AXsi <- res[["AXsi"]]
+	cat <- 1:maxK - 1
+
+	#**** type = 'expected'
+	if ( type == "expected" ){
+		expScore <- sapply(1:nitems, function(i) colSums(cat*rprobs[i,,], na.rm=TRUE))
+		#-- compute WLE score groups
+		res <- plot_tam_grouped_wle( tamobj=tamobj, tammodel=tammodel, 
+						wle=wle, ngroups=ngroups, resp=resp )
+		wle <- res$wle
+		theta2 <- res$theta2
+		d <- res$d
+		d1 <- res$d1
+		d2 <- res$d2
+		groupnumber <- res$groupnumber
+		ngroups <- res$ngroups
+		#-- compute observed scores	
+		obScore <- apply(d2,2, function(x){
+							stats::aggregate(x, list(groupnumber), mean, na.rm=TRUE)
+							} )
+	}
+
+	#----------------------------------------------------
+	# adds observed score for type="items"
+	if (type == "items") {
+		require_namespace_msg("plyr")
+		#-- compute WLE score groups
+		res <- plot_tam_grouped_wle( tamobj=tamobj, tammodel=tammodel, 
+						wle=wle, ngroups=ngroups, resp=resp ) 		
+		wle <- res$wle
+		theta2 <- res$theta2
+		d <- res$d
+		d1 <- res$d1
+		d2 <- res$d2
+		groupnumber <- res$groupnumber
+		ngroups <- res$ngroups
+
+		obScore <- lapply(d2, function(item) {
+					comp_case = stats::complete.cases(item)
+					item = item[comp_case]
+					uniq_cats = sort(unique(item))
+					plyr::ldply(split(item, groupnumber[comp_case]), .id = "group", 
+							function (group) {
+								ngroup = length(group)
+								cat_freq = list()
+								for (catt in uniq_cats) {
+									cat_freq[[paste0("cat_", catt)]] = sum(group == catt)/ngroup
+							}
+					data.frame(cat_freq)
+				})
+			})
+	}
+	
+	#*************************************************
+	# begin plot function
+
+	for (i in (1:nitems)[items]) {
+		#***********************************************************
+		#** expected item response curves	
+		if ( type=="expected"){
+			if (i==1 || !overlay) {
+				ylim2 <- c(0,max( tamobj$resp[,i] , na.rm=TRUE ) )
+				graphics::plot(theta, expScore[,i], ,col=12, type="l", lwd=3, las=1, ylab="Score", xlab="Ability",
+						main=paste("Expected Scores Curve - Item ", colnames(tamobj$resp)[i] )	 ,
+						ylim=ylim2 , ... )
+			} else {
+				graphics::lines(theta, expScore[,i],type="l", col=i, lwd=3, pch=1) 
+			}
+			if (observed){
+				theta2_i <- theta2
+				obScore_i <- obScore[[i]]$x
+				if (groups_by_item){
+					ind_i <- ! is.na(resp[,i])
+					resp_i <- resp[ind_i, i, drop=FALSE]
+					wle_i <- wle[ ind_i ]
+					res <- plot_tam_grouped_wle( tamobj=tamobj, tammodel=tammodel, 
+								wle=wle_i, ngroups=ngroups, resp=resp_i )
+					theta2_i <- res$theta2
+					groupnumber_i <- res$groupnumber
+					aggr <- stats::aggregate(resp_i, list(groupnumber_i), mean, na.rm=TRUE )
+					obScore_i <- aggr[,2]
+				}				
+				graphics::lines(theta2_i, obScore_i, type="o", lwd=2, pch=1)
+			}
+		}
     #***********************************************************
     if ( type=="items"){	
       
@@ -185,7 +180,6 @@ if ( fix.devices ){
       }
       #**************
       for (kk in 1:K){
-        # kk <- 1
         dat2a <- data.frame( "Theta" = theta0[,1] , "cat" = kk , "P" = rprobs.ii[kk,] )
         dat2 <- rbind(dat2 , dat2a)
       }
