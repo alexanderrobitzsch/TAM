@@ -1,5 +1,5 @@
 ## File Name: tam_pv_mcmc_proc_input.R
-## File Version: 0.09
+## File Version: 0.11
 
 tam_pv_mcmc_proc_input <- function( tamobj, group, Y )
 {
@@ -72,6 +72,6 @@ tam_pv_mcmc_proc_input <- function( tamobj, group, Y )
 				AXsi=AXsi, B=B, guess=guess, resp.ind= as.matrix(resp.ind), 
 				pweights=pweights, nitems=nitems, nstud=nstud,
 				maxK=maxK, D=D, pid=pid, group=group, G=G, groups=groups,
-				group_index=group_index, Y=Y)
+				group_index=group_index, Y=Y, resp_ind_bool=resp_ind_bool)
 	return(res)
 }

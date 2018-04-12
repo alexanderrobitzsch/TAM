@@ -1,5 +1,5 @@
 ## File Name: tam_calc_posterior.R
-## File Version: 9.12
+## File Version: 9.13
 
 
 
@@ -28,7 +28,7 @@ tam_calc_posterior <-
     nstud <- nrow(fx)
     storage.mode(resp) <- "integer"	
 	fx0 <- fx	
-    fx <- .Call("calcfx", fx, rprobs, resp.ind.list, resp)
+    fx <- .Call('_TAM_calcfx', PACKAGE = 'TAM', fx, rprobs, resp.ind.list, resp)
 # cat("nach calcfx") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1		
 	
 	if (avoid.zerosum ){	

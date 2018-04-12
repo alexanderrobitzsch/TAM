@@ -1,12 +1,10 @@
 //// File Name: tam_calcexp_rcpp.cpp
-//// File Version: 3.05
+//// File Version: 3.11
 
 
 #include <Rcpp.h>
 
 using namespace Rcpp;
-
-
 
 
 ///********************************************************************
@@ -15,8 +13,8 @@ using namespace Rcpp;
 Rcpp::List TAM_CALCEXP( int NP, Rcpp::NumericMatrix rprobs, 
 	Rcpp::NumericMatrix A, Rcpp::NumericMatrix INDEXIPNO, 
 	Rcpp::NumericVector INDEXIPLIST2, Rcpp::NumericVector ESTXSIINDEX, 
-	int C, Rcpp::NumericMatrix ITEMWT ){
-         
+	int C, Rcpp::NumericMatrix ITEMWT )
+{         
      ////////////////////////////////////////////////////////////  
      // define output vectors  
      Rcpp::NumericVector XBAR (NP) ;  

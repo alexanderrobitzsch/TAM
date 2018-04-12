@@ -1,8 +1,8 @@
 //// File Name: tam_caux.c
-//// File Version: 2.11
+//// File Version: 2.12
 #include <Rinternals.h>
 
-SEXP calcfx(SEXP sFx, SEXP sRprobs, SEXP sRespIndList, SEXP sResp){
+SEXP _TAM_calcfx(SEXP sFx, SEXP sRprobs, SEXP sRespIndList, SEXP sResp){
   
 /****************************************************/
 /* Get dimension of sRprobs and sResp               */

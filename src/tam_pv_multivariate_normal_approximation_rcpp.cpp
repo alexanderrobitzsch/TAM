@@ -1,11 +1,11 @@
 //// File Name: tam_pv_multivariate_normal_approximation_rcpp.cpp
-//// File Version: 0.27
+//// File Version: 0.28
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
 #include <RcppArmadillo.h>
-#include <Rcpp.h>
+// #include <Rcpp.h>
 
 using namespace Rcpp;
 using namespace arma;

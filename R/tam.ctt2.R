@@ -1,5 +1,5 @@
 ## File Name: tam.ctt2.R
-## File Version: 9.04
+## File Version: 9.06
 tam.ctt2 <-
 function( resp , wlescore=NULL , group=NULL , allocate=30 , 
 	progress=TRUE){
@@ -25,10 +25,6 @@ function( resp , wlescore=NULL , group=NULL , allocate=30 ,
 		ind.gg <- which( group == groups[gg] )
 		resp <- resp0[ ind.gg , ]
 		wlescore <- wlescore0[ ind.gg ]
-#		resp <- as.matrix(resp)
-#		res <- tam.ctt2(tdat= t(resp) , wle=wlescore , maxK=maxK)
-# resp <- as.matrix( paste( t(resp) ))
-
 		prg <- round( seq( 1 , I , len=10 ) )
 		prg[ prg == I ] <- I-1
 	    if (progress){
@@ -41,8 +37,7 @@ function( resp , wlescore=NULL , group=NULL , allocate=30 ,
 		
 		if ( ! progress ){ prg <- 1 }
 	    resp <- as.matrix( t(resp) )
-	    res <- tam_ctt_C(resp , wlescore , maxK , est_wle ,
-				   prg )
+	    res <- tam_rcpp_ctt2( TDAT=resp, WLE=wlescore, MAXK=maxK, EST_WLE=est_wle, prg=prg )
 		ind <- which( paste(res$desV) !="" )
 		res1 <- res$des[ ind , ]
 				
@@ -59,12 +54,9 @@ function( resp , wlescore=NULL , group=NULL , allocate=30 ,
 		dfr.gg <- dfr.gg[ ! is.na( dfr.gg$Categ ) , ]
 		dfr <- rbind( dfr , dfr.gg )				
 	    if (progress){
-#			cat( paste( rep("*" , 10 ) , collapse="") )
 			cat("|\n")
-#			prg <- round( seq( 1 , I , len=10 ) )
-#			prg[ prg == I ] <- I-1
-            }	
-			} # end group
+        }	
+	} # end group
 	dfr <- dfr[ dfr$item != "_h" , ]
 	dfr$Categ <- gsub( " " , "" , dfr$Categ  )	
     dfr <- dfr[ order( paste0( 10000+ dfr$itemno , dfr$group , dfr$Categ ) ) , ]
@@ -72,5 +64,5 @@ function( resp , wlescore=NULL , group=NULL , allocate=30 ,
 	if ( est_wle == 0 ){ dfr <- dfr[ , - ind ] }
     dfr <- data.frame( "index" = seq(1,nrow(dfr) ) , dfr )
     return(dfr)
-        }
+}
 #########################################################

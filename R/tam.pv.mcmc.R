@@ -1,12 +1,12 @@
 ## File Name: tam.pv.mcmc.R
-## File Version: 0.817
+## File Version: 0.833
 
 tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE , 
 				nplausible=10, level = .95, n.iter = 1000 ,
 				n.burnin = 500, adj_MH = .5, adj_change_MH = .05 , 
 				refresh_MH = 50, accrate_bound_MH = c(.45, .55), 
 				sample_integers = FALSE, theta_init = NULL, print_iter = 20 , 
-				verbose = TRUE)
+				verbose = TRUE, calc_ic = TRUE )
 {
     s1 <- Sys.time()
 	CALL <- match.call()
@@ -31,14 +31,15 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 	G <- res$G
 	group_index <- res$group_index
 	Y <- res$Y
+	resp_ind_bool <- res$resp_ind_bool
 	
 	#--- compute initial person parameters
 	theta <- theta0 <- tam_pv_mcmc_inits_theta(person=person, theta_init=theta_init)	
 	
 	#--- compute response probabilities theta value
 	probs0 <- tam_irf_3pl(theta=theta, AXsi=AXsi, B=B, guess=guess)
-	loglike <- tam_pv_mcmc_likelihood( probs=probs0, resp=resp, resp.ind=resp.ind, nstud=nstud, 
-					nitems=nitems, maxK=maxK ) 
+	loglike <- tam_pv_mcmc_likelihood( probs=probs0, resp=resp, 
+					resp_ind_bool=resp_ind_bool, nstud=nstud, nitems=nitems, maxK=maxK ) 
 					
 	#--- add colnames to Y if not provided
 	Y <- tam_pv_mcmc_proc_regressors(Y=Y)
@@ -97,8 +98,8 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 		#--- compute response probabilities theta value
 		probs_new <- tam_pv_mcmc_calc_probs( theta_new=theta_new, AXsi=AXsi, B=B, guess=guess, 
 							subtract_max=FALSE, resp.ind=resp.ind ) 
-		loglike_new <- tam_pv_mcmc_likelihood( probs=probs_new, resp=resp, resp.ind=resp.ind, 
-							nstud=nstud, nitems=nitems, maxK=maxK ) 	
+		loglike_new <- tam_pv_mcmc_likelihood( probs=probs_new, resp=resp, 
+							resp_ind_bool=resp_ind_bool, nstud=nstud, nitems=nitems, maxK=maxK ) 	
 							
 		#--- Metropolis Hastings Ratio and sampled theta values
 		res <- tam_pv_mcmc_theta_MH_ratio_accept( loglike=loglike, log_dens_theta=log_dens_theta, 
@@ -123,14 +124,14 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 			pv <- tam_pv_mcmc_update_plausible_values(pv=pv, theta=theta, 
 							pv_index_matrix=pv_index_matrix)
 		}
-		
+
 		#--- sample new regression parameters
 		res <- tam_pv_mcmc_sample_beta_variance( theta=theta , Y=Y, nstud=nstud, 
 						pweights=pweights, samp.regr=TRUE,  G=G, group_index=group_index,
 						beta_groups=beta_groups , sample_integers=sample_integers )
 		beta <- res$beta
 		variance <- res$variance
-		
+
 		#--- save sampled parameters
 		if ( iter %in% saved_iter ){
 			res <- tam_pv_mcmc_save_parameters( beta=beta, beta_samples=beta_samples, 
@@ -157,7 +158,7 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 		}			
 	}
 	#--------------- END MCMC ITERATIONS ---------------------	
-	
+
 	#-- compute acceptance rate and update theta acceptanec object
 	theta_acceptance_MH <- tam_pv_mcmc_postproc_theta_acceptance_MH(theta_acceptance_MH=theta_acceptance_MH)
 	
@@ -168,24 +169,30 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 	beta <- res$beta
 	variance <- res$variance
 	correlation <- res$correlation
-	
+
 	#--- mean, SD and reliability of theta posterior distribution
 	res <- tam_pv_mcmc_postproc_theta_posterior( theta_samples_mean=theta_samples_mean, 
 				theta_samples_sd=theta_samples_sd, N_samples=N_samples, pweights=pweights )
 	theta_samples_mean <- res$theta_samples_mean
 	theta_samples_sd <- res$theta_samples_sd
 	EAP_rel <- res$EAP_rel
-	
+
 	#--- evaluate information criteria
-	ic <- tam_pv_mcmc_postproc_ic( parameter_samples=parameter_samples, deviance_samples=deviance_samples, 
+	if (calc_ic){
+		ic <- tam_pv_mcmc_postproc_ic( parameter_samples=parameter_samples, deviance_samples=deviance_samples, 
 				theta_samples_mean=theta_samples_mean, AXsi=AXsi, B=B, guess=guess, beta=beta, 
 				variance=variance, group_index=group_index, G=G, Y=Y, resp=resp, 
-				resp.ind=resp.ind, maxK=maxK, pv=pv ) 
-
+				resp.ind=resp.ind, maxK=maxK, pv=pv, resp_ind_bool=resp_ind_bool ) 
+	} else {
+		ic <- list()		
+		ic$n <- nrow(resp)
+		ic$Npars <- ic$np <- ncol(parameter_samples)		
+	}
+				
 	#--- autocorrelation function for plausible values
 	theta_acf <- tam_pv_mcmc_pv_acf( pv=pv, theta_samples_mean=theta_samples_mean, 
 					theta_samples_sd=theta_samples_sd ) 				
-					
+
 	#--- parameter summary
 	parameter_summary <- tam_pv_mcmc_parameter_summary( parameter_samples=parameter_samples,
 							level=level ) 
@@ -203,8 +210,11 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
 					parameter_summary=parameter_summary,
 					nplausible=nplausible, ndim=D, pweights=pweights, pid=pid,
 					n.iter=n.iter, n.burnin=n.burnin, ndim=D,
-					nplausible=nplausible,
+					nplausible=nplausible, calc_ic = calc_ic, 
 					time = c(s1,s2,s2-s1), CALL=CALL )
 	class(res) <- "tam.pv.mcmc"
 	return(res)
 }
+
+# z0 <- tamcat( label = "theta acf", time0 = z0, active=active)				
+					

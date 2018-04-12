@@ -1,5 +1,5 @@
 ## File Name: tam.ctt3.R
-## File Version: 9.05
+## File Version: 9.07
 tam.ctt3 <- function( resp , wlescore=NULL , group=NULL , allocate=30 , 
 	progress=TRUE)
 {
@@ -39,8 +39,8 @@ tam.ctt3 <- function( resp , wlescore=NULL , group=NULL , allocate=30 ,
 			prg[ prg == I ] <- I-1
         }			
 		if ( ! progress ){ prg <- 1 }
-	    resp <- as.matrix( t(resp) )
-	    res <- tamctt3csource( resp , wlescore , maxK , est_wle , prg )
+	    resp <- as.matrix( t(resp) )		
+	    res <- tam_rcpp_ctt3( TDAT=resp, WLE=wlescore, MAXK=maxK, EST_WLE=est_wle, prg=prg )				
 		ind <- which( paste(res$desV) !="" )
 		res1 <- res$des[ ind , ]
 		dfr.gg <- data.frame( "group"=groups[gg] , "groupindex" = gg , 

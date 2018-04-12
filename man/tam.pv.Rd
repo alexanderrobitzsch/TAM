@@ -1,5 +1,5 @@
 %% File Name: tam.pv.Rd
-%% File Version: 2.56
+%% File Version: 2.57
 
 \name{tam.pv}
 \alias{tam.pv}
@@ -35,7 +35,7 @@ tam.pv(tamobj, nplausible = 10, ntheta = 2000, normal.approx = FALSE,
 tam.pv.mcmc( tamobj, Y=NULL, group=NULL, beta_groups = TRUE, nplausible=10, level = .95, 
     n.iter = 1000, n.burnin = 500, adj_MH = .5, adj_change_MH = .05, refresh_MH = 50,
     accrate_bound_MH = c(.45, .55), sample_integers = FALSE, theta_init = NULL, 
-    print_iter = 20, verbose = TRUE) 
+    print_iter = 20, verbose = TRUE, calc_ic = TRUE) 
     
 \method{summary}{tam.pv.mcmc}(object, file=NULL, \dots)
 
@@ -112,6 +112,7 @@ should be sampled in bootstrap}
 \item{theta_init}{Optional matrix with initial \eqn{\bold{\theta}} values}
 \item{print_iter}{Print iteration progress every \code{print_iter}th iteration}   
 \item{verbose}{Logical indicating whether iteration progress should be displayed.}
+\item{calc_ic}{Logical indicating whether information criteria should be computed.}
 \item{object}{Object of class \code{tam.pv.mcmc}}           
 \item{x}{Object of class \code{tam.pv.mcmc}}
 \item{file}{A file name in which the summary output will be written}

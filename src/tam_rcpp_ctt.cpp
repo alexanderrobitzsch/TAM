@@ -1,5 +1,5 @@
-//// File Name: tam_ctt_rcpp.cpp
-//// File Version: 3.02
+//// File Name: tam_rcpp_ctt.cpp
+//// File Version: 3.06
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -12,11 +12,12 @@ using namespace Rcpp;
 
 
 ///********************************************************************
-///** tam_ctt_C
+///** tam_rcpp_ctt2
 // [[Rcpp::export]]           
-Rcpp::List tam_ctt_C( Rcpp::CharacterMatrix TDAT, 
+Rcpp::List tam_rcpp_ctt2( Rcpp::CharacterMatrix TDAT, 
 	Rcpp::NumericVector WLE, Rcpp::NumericVector MAXK, 
-	int EST_WLE , Rcpp::NumericVector prg ){
+	int EST_WLE , Rcpp::NumericVector prg )
+{
 
      int N = TDAT.ncol() ;  
      int I = TDAT.nrow() ;  
@@ -123,19 +124,20 @@ Rcpp::List tam_ctt_C( Rcpp::CharacterMatrix TDAT,
      ///////////////////////////////////////////  
      // OUTPUT:  
      return Rcpp::List::create(  
-              Rcpp::_["des"] = des ,  
-              Rcpp::_["desV"] = desV   ,
-              Rcpp::_["LP"] = LP
+              Rcpp::Named("des") = des ,  
+              Rcpp::Named("desV") = desV   ,
+              Rcpp::Named("LP") = LP
             		) ;  
 }
 
 
 ///********************************************************************
-///** tamctt3csource
+///** tam_rcpp_ctt3
 // [[Rcpp::export]]           
-Rcpp::List tamctt3csource( Rcpp::CharacterMatrix TDAT, 
+Rcpp::List tam_rcpp_ctt3( Rcpp::CharacterMatrix TDAT, 
 	Rcpp::NumericVector WLE, Rcpp::NumericVector MAXK, 
-	int EST_WLE , Rcpp::NumericVector prg ){
+	int EST_WLE , Rcpp::NumericVector prg )
+{
         
           int N = TDAT.ncol() ;    
           int I = TDAT.nrow() ;    

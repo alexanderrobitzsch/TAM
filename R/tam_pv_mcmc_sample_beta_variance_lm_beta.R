@@ -1,5 +1,5 @@
 ## File Name: tam_pv_mcmc_sample_beta_variance_lm_beta.R
-## File Version: 0.05
+## File Version: 0.08
 
 tam_pv_mcmc_sample_beta_variance_lm_beta <- function(Y0, theta0, pweights0, D, 
 		use_lm=TRUE)
@@ -9,13 +9,16 @@ tam_pv_mcmc_sample_beta_variance_lm_beta <- function(Y0, theta0, pweights0, D,
 		mod2 <- stats::lm( formula=formula_theta , weights= pweights0 )
 		beta2 <- mod2$coef
 		beta2 <- matrix( beta2 , ncol=D )
-		res2 <- stats::resid(mod2)
+		res2 <- stats::resid(mod2)			
 	}
 	if (! use_lm){
 		mod <- stats::lm.wfit(y=theta0, x=Y0, w=pweights0)
 		beta2 <- matrix( mod$coefficients , ncol=D)
 		res2 <- matrix( mod$residuals , ncol=D )
-	}		
+	}
+	#--- clean beta2 if some entries are NA
+	beta2[ is.na(beta2) ] <- 0
+	
 	#--- output
 	res <- list( beta2=beta2 , res2=res2)
 	return(res)

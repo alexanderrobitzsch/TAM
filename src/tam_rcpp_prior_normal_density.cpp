@@ -1,23 +1,16 @@
-//// File Name: tam_prior_normal_density_rcpp.cpp
-//// File Version: 3.05
+//// File Name: tam_rcpp_prior_normal_density.cpp
+//// File Version: 3.12
 
 #include <Rcpp.h>
 
 using namespace Rcpp;
 
 
-
-/////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////
-//*******************************************************************
-// normal density with different person means
-/////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////
-
 ///********************************************************************
-///** prior_normal_density_C
+///-- normal density with different person means
+///** tam_rcpp_prior_normal_density_unequal_means
 // [[Rcpp::export]]           
-Rcpp::NumericMatrix prior_normal_density_C( 
+Rcpp::NumericMatrix tam_rcpp_prior_normal_density_unequal_means( 
 	Rcpp::NumericMatrix theta, Rcpp::NumericMatrix mu, Rcpp::NumericMatrix varInverse, 
 	Rcpp::NumericVector COEFF )
 {
@@ -47,21 +40,14 @@ Rcpp::NumericMatrix prior_normal_density_C(
 	//// OUTPUT  
 	return gwt ; 
 }
-
-
-/////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////
 //*******************************************************************
-// normal density applied for all subjects
-/////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////
-
 
 
 ///********************************************************************
-///** prior_normal_densityALL_C
+///-- normal density with equal mean for all subjects
+///** tam_rcpp_prior_normal_density_equal_means
 // [[Rcpp::export]]           
-Rcpp::NumericVector prior_normal_densityALL_C( 
+Rcpp::NumericVector tam_rcpp_prior_normal_density_equal_means( 
 	Rcpp::NumericMatrix theta, Rcpp::NumericMatrix mu, Rcpp::NumericMatrix varInverse, 
 	Rcpp::NumericVector COEFF )
 {

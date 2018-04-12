@@ -1,5 +1,5 @@
 ## File Name: summary.tam.pv.mcmc.R
-## File Version: 0.14
+## File Version: 0.18
 
 #*******************************************************
 # summary
@@ -7,7 +7,9 @@ summary.tam.pv.mcmc <- function( object , file = NULL , ...)
 {
 
 	tam_osink( file = file )
-						
+	
+	calc_ic <- object$calc_ic
+	
 	cat("------------------------------------------------------------\n")
 	
 	#- package and R session
@@ -26,25 +28,17 @@ summary.tam.pv.mcmc <- function( object , file = NULL , ...)
 
 	cat("------------------------------------------------------------\n")
 	
-	cat("\nCriteria based on Marginal Likelihood\n")
-	
-    cat( "\nDeviance = " , round( object$ic$deviance , 2 ) , " | " )
-    cat( "Log Likelihood = " , round( -object$ic$deviance/2 , 2 ) , "\n" )	
+	if (calc_ic){
+		cat("\nCriteria based on Marginal Likelihood\n")		
+		cat( "\nDeviance = " , round( object$ic$deviance , 2 ) , " | " )
+		cat( "Log Likelihood = " , round( -object$ic$deviance/2 , 2 ) , "\n" )	
+	}
     cat( "Number of persons = " , object$ic$n , "\n" )    			
-    cat( "Number of estimated parameters = " , object$ic$Npars , "\n" )    
+    cat( "Number of estimated parameters = " , object$ic$Npars , "\n\n" )    
 	
 	#--- print information criteria
-	tam_summary_print_ic( object=object )
-	
-	#--- information criteria based on Bayesian inference
-	cat("Criteria based on Fully Bayesian Inference\n")		
-    cat( "\nDbar =" , round( object$ic$Dbar , 2 )  )
-	cat( "\nDhat =" , round( object$ic$Dhat , 2 )  )
-	cat( "\npD   =" , round( object$ic$pD , 2 )  )
-    cat( "\nDIC  =" , round( object$ic$DIC , 0 ) ," | penalty =" , 
-					round( 2*object$ic$pD ,2 ) )
-		cat("   | DIC = Dhat + 2*pD\n\n" )
-	
+	tam_summary_print_ic( object=object, bayes_crit=TRUE )
+		
 	#----- properties of plausible values
 	cat("------------------------------------------------------------\n")
 	cat("Plausible Values\n\n")

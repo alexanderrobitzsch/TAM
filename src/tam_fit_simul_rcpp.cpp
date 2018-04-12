@@ -1,5 +1,5 @@
 //// File Name: tam_fit_simul_rcpp.cpp
-//// File Version: 1.02
+//// File Version: 1.03
 
 
 #include <Rcpp.h>
@@ -14,8 +14,8 @@ Rcpp::List tam_fit_simul( Rcpp::NumericMatrix rn1M,
 	Rcpp::NumericMatrix c_hwt, Rcpp::NumericMatrix Ax, 
 	Rcpp::NumericMatrix xbar, Rcpp::NumericMatrix var1, 
 	Rcpp::NumericMatrix Uz2, Rcpp::NumericMatrix Vz2, 
-	Rcpp::NumericVector nstud_ip, Rcpp::NumericVector pweights ){
-
+	Rcpp::NumericVector nstud_ip, Rcpp::NumericVector pweights )
+{
      int N = rn1M.nrow() ;  
      int Nsimul = rn1M.ncol() ;  
      int TP=c_hwt.ncol();  
@@ -117,6 +117,3 @@ Rcpp::List tam_fit_simul( Rcpp::NumericMatrix rn1M,
          Rcpp::_["Outfit_t_SIM"] = Outfit_t_SIM  
          ) ;  
 }
-
-
-
