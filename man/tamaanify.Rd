@@ -1,5 +1,5 @@
 %% File Name: tamaanify.Rd
-%% File Version: 0.46
+%% File Version: 0.47
 
 \name{tamaanify}
 \alias{tamaanify}
@@ -147,15 +147,15 @@ be estimated (\code{\link{tam.mml.2pl}})
 \references{
 Bartolucci, F. (2007). A class of multidimensional IRT models for testing 
 unidimensionality and clustering items. 
-\emph{Psychometrika}, \bold{72}, 141-157. 	
+\emph{Psychometrika, 72}, 141-157. 	
 	
 Formann, A. K. (1989). Constrained latent class models: Some further
 applications. \emph{British Journal of Mathematical and Statistical
-Psychology}, \bold{42}, 37-54.	
+Psychology, 42}, 37-54.	
 	
 Hojtink, H., & Molenaar, I. W. (1997). A multidimensional item response model: 
 Constrained latent class analysis using the Gibbs sampler and posterior 
-predictive checks. \emph{Psychometrika}, \bold{62(2)}, 171-189.
+predictive checks. \emph{Psychometrika, 62}(2), 171-189.
 
 Thissen, D., Cai, L., & Bock, R. D. (2010).
 The nominal categories item response model.

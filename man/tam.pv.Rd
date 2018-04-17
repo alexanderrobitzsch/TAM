@@ -1,5 +1,5 @@
 %% File Name: tam.pv.Rd
-%% File Version: 2.57
+%% File Version: 2.58
 
 \name{tam.pv}
 \alias{tam.pv}
@@ -167,7 +167,7 @@ A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.
 \emph{Multivariate and mixture distribution Rasch models: Extensions and applications}
 (pp. 55-76). New York: Springer.
 
-Rubin, D. B. (1981). The Bayesian bootstrap. \emph{The Annals of Statistics}, \bold{9}(1), 
+Rubin, D. B. (1981). The Bayesian bootstrap. \emph{The Annals of Statistics, 9}(1), 
 130-134.
 }
 

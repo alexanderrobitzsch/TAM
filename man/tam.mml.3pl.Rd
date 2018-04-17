@@ -1,5 +1,5 @@
 %% File Name: tam.mml.3pl.Rd
-%% File Version: 2.64
+%% File Version: 2.66
 
 \name{tam.mml.3pl}
 \alias{tam.mml.3pl}
@@ -233,13 +233,13 @@ A file name in which the summary output will be written
 \details{
 The item response model for item \eqn{i} and category \eqn{h} and no guessing
 parameters can be written as
-\deqn{ P( X_{i} = h | \bold{\theta} ) \propto exp( \sum_d b_{ihd} \theta_d +  
+\deqn{ P( X_{i} = h | \bold{\theta} ) \propto \exp( \sum_d b_{ihd} \theta_d +  
  \sum_k a_{ih} \xi_k ) }
 For item slopes, a linear decomposition is allowed 
 \deqn{ b_{ihd} =  \sum_k   e_{ihdk} \gamma_k }
 In case of a guessing parameter, the item response function is
 \deqn{ P( X_{i} = h | \bold{\theta} ) = c_i + ( 1 - c_i ) \cdot
-	( 1 + exp( - \sum_d b_{ihd} \theta_d - \sum_k a_{ih} \xi_k ) )^{-1} 
+	( 1 + \exp( - \sum_d b_{ihd} \theta_d - \sum_k a_{ih} \xi_k ) )^{-1} 
 		}
 For possibilities of definitions of the design matrix \eqn{E=(e_{ihdk})}
 see Formann (2007), for the strongly related linear logistic latent
@@ -254,7 +254,7 @@ can be specified (\code{skillspace="normal"}).
 
 Alternatively, a log-linear distribution of the skill classes \eqn{P(\theta)}
 (\code{skillspace="discrete"}) 
-is performed \deqn{log P(\theta ) = D_{ \delta } \delta } See Xu and
+is performed \deqn{\log P(\theta ) = D_{ \delta } \delta } See Xu and
 von Davier (2008). The design matrix \eqn{D_{\delta}} can be specified in
 \code{delta.designmatrix}. The theta grid \eqn{\bold{\theta}} of the skill space 
 can be defined in \code{theta.k}.
@@ -278,7 +278,7 @@ The same output as in \code{\link{tam.mml}} and additional entries
 
 \references{
 Formann, A. K. (1992). Linear logistic latent class analysis for polytomous data. 
-\emph{Journal of the American Statistical Association}, \bold{87}, 476-486.	
+\emph{Journal of the American Statistical Association, 87}, 476-486.	
 
 Formann, A. K. (2007). (Almost) Equivalence between conditional and mixture maximum
 likelihood estimates for some models of the Rasch type. In M. von Davier & C. H. Carstensen

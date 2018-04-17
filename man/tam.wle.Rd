@@ -1,5 +1,5 @@
 %% File Name: tam.wle.Rd
-%% File Version: 2.36
+%% File Version: 2.37
 
 \name{tam.wle}
 
@@ -123,10 +123,10 @@ For \code{tam.jml.WLE}, it is a list with following entries:
 \references{
 Penfield, R. D., & Bergeron, J. M. (2005). Applying a weighted maximum 
 likelihood latent trait estimator to the generalized partial credit model. 
-\emph{Applied Psychological Measurement}, \bold{29}, 218-233. 	
+\emph{Applied Psychological Measurement, 29}, 218-233. 	
 	
 Warm, T. A. (1989). Weighted likelihood estimation of ability in item 
-response theory. \emph{Psychometrika}, \bold{54}, 427-450.
+response theory. \emph{Psychometrika, 54}, 427-450.
 }
 
 %\author{

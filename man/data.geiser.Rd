@@ -1,5 +1,5 @@
 %% File Name: data.geiser.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{data.geiser}
 \alias{data.geiser}
@@ -46,7 +46,7 @@ Datenanalyse} (S. 311-332). VS Verlag fuer Sozialwissenschaften.
 	
 Geiser, C., Lehmann, W., & Eid, M. (2006). Separating rotators from
 nonrotators in the mental rotations test: A multigroup latent class analysis. 
-\emph{Multivariate Behavioral Research}, \bold{41(3)}, 261-293.
+\emph{Multivariate Behavioral Research, 41}(3), 261-293.
 }
 
 

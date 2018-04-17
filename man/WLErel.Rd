@@ -1,5 +1,5 @@
 %% File Name: WLErel.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{WLErel}
 \alias{WLErel}
@@ -12,7 +12,7 @@ Reliability Estimation in \pkg{TAM}
 }
 
 \description{
-Functions for computation of reliability estimates. 
+Functions for computing reliability estimates. 
 }
 
 \usage{
@@ -50,7 +50,7 @@ Numeric value
 
 \references{
 Adams, R. J. (2005). Reliability as a measurement design effect. 
-\emph{Studies in Educational Evaluation}, \bold{31}(2), 162-172.
+\emph{Studies in Educational Evaluation, 31}(2), 162-172.
 }
 %\author{
 %%  ~~who you are~~

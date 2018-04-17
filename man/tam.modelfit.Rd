@@ -1,5 +1,5 @@
 %% File Name: tam.modelfit.Rd
-%% File Version: 2.28
+%% File Version: 2.29
 
 \name{tam.modelfit}
 \alias{tam.modelfit}
@@ -160,28 +160,28 @@ A list with following entries
 \references{
 Chen, J., de la Torre, J., & Zhang, Z. (2013). 
 Relative and absolute fit evaluation in cognitive diagnosis modeling. 
-\emph{Journal of Educational Measurement}, \bold{50}, 123-140.	
+\emph{Journal of Educational Measurement, 50}, 123-140.	
 
 Chen, W., & Thissen, D. (1997). Local dependence indexes for item pairs 
-using item response theory. \emph{Journal of Educational and Behavioral Statistics},
-\bold{22}, 265-289.		
+using item response theory. \emph{Journal of Educational and Behavioral Statistics,
+22}, 265-289.		
 
 Levy, R., Xu, Y., Yel, N., & Svetina, D. (2015). A standardized 
 generalized dimensionality discrepancy measure and a standardized model-based
 covariance for dimensionality assessment for multidimensional models.
-\emph{Journal of Educational Measurement}, \bold{52(2)}, 144--158.
+\emph{Journal of Educational Measurement, 52}(2), 144--158.
 
 Maydeu-Olivares, A. (2013). Goodness-of-fit assessment of item response
 theory models (with discussion). 
-\emph{Measurement: Interdisciplinary Research and Perspectives},
-\bold{11}, 71-137.
+\emph{Measurement: Interdisciplinary Research and Perspectives,
+11}, 71-137.
 
 McDonald, R. P., & Mok, M. M.-C. (1995). Goodness of fit in item response models.
-\emph{Multivariate Behavioral Research}, \bold{30}, 23-40.
+\emph{Multivariate Behavioral Research, 30}, 23-40.
 
 Yen, W. M. (1984). Effects of local item dependence on the fit and equating 
 performance of the three-parameter logistic model. 
-\emph{Applied Psychological Measurement}, \bold{8}, 125-145.
+\emph{Applied Psychological Measurement, 8}, 125-145.
 }
 
 %\author{

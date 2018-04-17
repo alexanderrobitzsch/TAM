@@ -1,5 +1,5 @@
 %% File Name: tam.fa.Rd
-%% File Version: 2.13
+%% File Version: 2.14
 
 \name{tam.fa}
 \alias{tam.fa}
@@ -133,22 +133,22 @@ loadings form the Schmid-Leimann solution of the \pkg{psych} package.}
 \references{
 Green, S. B., & Yang, Y. (2009). Reliability of summed item 
 scores using structural equation modeling: An alternative to 
-coefficient alpha. \emph{Psychometrika}, \bold{74}, 155-167. 
+coefficient alpha. \emph{Psychometrika, 74}, 155-167. 
 
 Reise, S. P. (2012). The rediscovery of bifactor measurement models. 
-\emph{Multivariate Behavioral Research}, \bold{47}, 667-696.
+\emph{Multivariate Behavioral Research, 47}, 667-696.
 
 Reise, S. P., Moore, T. M., & Haviland, M. G.  (2010).
 Bifactor models and rotations: Exploring the extent to which 
 multidimensional data yield univocal scale scores, 
-\emph{Journal of Personality Assessment}, \bold{92}, 544-559.
+\emph{Journal of Personality Assessment, 92}, 544-559.
 
 Revelle, W., & Zinbarg, R. E. (2009). 
 Coefficients alpha, beta, omega and the glb: Comments on Sijtsma. 
-\emph{Psychometrika}, \bold{74}, 145-154.
+\emph{Psychometrika, 74}, 145-154.
 
 Wang, W.-C., & Wilson, M. (2005). The Rasch testlet model.
-\emph{Applied Psychological Measurement}, \bold{29}, 126-149.
+\emph{Applied Psychological Measurement, 29}, 126-149.
 }
 
 %\author{

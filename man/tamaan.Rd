@@ -1,5 +1,5 @@
 %% File Name: tamaan.Rd
-%% File Version: 0.45
+%% File Version: 0.46
 
 \name{tamaan}
 \alias{tamaan}
@@ -443,6 +443,66 @@ mod7 <- TAM::tamaan( tammodel , dat )
 summary(mod7)
 # -> This function can also be applied for the generalized partial credit
 #    model (GPCM). 
+
+#############################################################################
+# EXAMPLE 3: Rasch model and mixture Rasch model (Geiser & Eid, 2010)
+#############################################################################
+
+data(data.geiser, package="TAM")
+dat <- data.geiser
+
+#*********************************************************************
+#*** Model 1: Rasch model
+tammodel <- "
+LAVAAN MODEL:
+  F =~ mrt1__mrt6
+  F ~~ F
+ITEM TYPE:
+  ALL(Rasch);
+    "    
+mod1 <- TAM::tamaan( tammodel , resp=dat  )
+summary(mod1)
+
+#*********************************************************************
+#*** Model 2: Mixed Rasch model with two classes
+tammodel <- "
+ANALYSIS:
+  TYPE=MIXTURE ;
+  NCLASSES(2);
+  NSTARTS(20,25);
+LAVAAN MODEL:
+  F =~ mrt1__mrt6
+  F ~~ F
+ITEM TYPE:
+  ALL(Rasch);
+    "    
+mod2 <- TAM::tamaan( tammodel , resp=dat  )
+summary(mod2)
+
+# plot item parameters
+ipars <- mod2$itempartable_MIXTURE[ 1:6 , ]
+plot( 1:6 , ipars[,3] , type="o" , ylim=c(-3,2) , pch=16 ,
+        xlab="Item" , ylab="Item difficulty")
+lines( 1:6 , ipars[,4] , type="l", col=2 , lty=2)
+points( 1:6 , ipars[,4] ,  col=2 , pch=2)
+
+# extract individual posterior distribution
+post2 <- IRT.posterior(mod2)
+str(post2)
+# num [1:519, 1:30] 0.000105 0.000105 0.000105 0.000105 0.000105 ...
+# - attr(*, "theta")= num [1:30, 1:30] 1 0 0 0 0 0 0 0 0 0 ...
+# - attr(*, "prob.theta")= num [1:30, 1] 1.21e-05 2.20e-04 2.29e-03 1.37e-02 4.68e-02 ...
+# - attr(*, "G")= num 1
+
+# There are 2 classes and 15 theta grid points for each class
+# The loadings of the theta grid on items are as follows
+mod2$E[1,2,,"mrt1_F_load_Cl1"]
+mod2$E[1,2,,"mrt1_F_load_Cl2"]
+
+# compute individual posterior probability for class 1 (first 15 columns)
+round( rowSums( post2[ , 1:15] ) , 3 )
+# columns 16 to 30 refer to class 2
+
 }	
 }
 

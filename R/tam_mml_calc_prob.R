@@ -1,5 +1,5 @@
 ## File Name: tam_mml_calc_prob.R
-## File Version: 9.24
+## File Version: 9.26
 
 #####################################################################
 # calc_prob
@@ -17,7 +17,8 @@ tam_mml_calc_prob <- function(iIndex, A, AXsi, B, xsi, theta,
 		}	 
 		AXsi[iIndex,] = AXsi.tmp[,,1]
 	} else {
-		AXsi.tmp <- array( AXsi, dim = c( length(iIndex) , maxK , nnodes ) )
+		# AXsi.tmp <- array( AXsi, dim = c( length(iIndex) , maxK , nnodes ) )
+		AXsi.tmp <- array( AXsi[ iIndex, ] , dim = c( length(iIndex) , maxK , nnodes ) )
 	}
 	Btheta <- array(0, dim = c(length(iIndex) , maxK , nnodes) )
 	for( dd in 1:ncol(theta) ){ 

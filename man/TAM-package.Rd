@@ -1,5 +1,5 @@
 %% File Name: TAM-package.Rd
-%% File Version: 2.58
+%% File Version: 2.61
 
 \name{TAM-package}
 \alias{TAM-package}
@@ -33,12 +33,12 @@ Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
 }
 \references{
 Adams, R. J., Wilson, M., & Wang, W. C. (1997). The multidimensional random coefficients 
-multinomial logit model. \emph{Applied Psychological Measurement}, \bold{21}(1), 1-23.
+multinomial logit model. \emph{Applied Psychological Measurement, 21}(1), 1-23.
 
 Adams, R. J., Wilson, M., & Wu, M. (1997).
 Multilevel item response models: An approach to errors in
 variables regression. \emph{Journal of Educational and Behavioral 
-Statistics}, \bold{22}, 47-76.
+Statistics, 22}, 47-76.
 
 Adams, R. J., & Wu, M. L. (2007). The mixed-coefficients multinomial logit model.
 A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.):
@@ -46,10 +46,10 @@ A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.
 (pp. 55-76). New York: Springer.
 
 Formann, A. K. (1982). Linear logistic latent class analysis. 
-\emph{Biometrical Journal}, \bold{24}(2), 171-190.
+\emph{Biometrical Journal, 24}(2), 171-190.
 
 Formann, A. K. (1992). Linear logistic latent class analysis for polytomous data. 
-\emph{Journal of the American Statistical Association}, \bold{87}, 476-486.
+\emph{Journal of the American Statistical Association, 87}, 476-486.
 }
 \keyword{package}
 

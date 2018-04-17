@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9825
+%% File Version: 2.9829
 
 \name{tam.mml}
 
@@ -510,7 +510,7 @@ credit model (only applies to \code{tam.mml.2pl} in case of
 Adams, R. J., Wilson, M., & Wu, M. (1997).
 Multilevel item response models: An approach to errors in
 variables regression. \emph{Journal of Educational and Behavioral 
-Statistics}, \bold{22}, 47-76.
+Statistics, 22}, 47-76.
 
 Adams, R. J., & Wu, M. L. (2007). The mixed-coefficients multinomial logit model.
 A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.):
@@ -518,21 +518,21 @@ A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.
 (pp. 55-76). New York: Springer.
 
 Embretson, S. E. (1999). Generating items during testing: 
-Psychometric issues and models. \emph{Psychometrika}, \bold{64}, 407-433.
+Psychometric issues and models. \emph{Psychometrika, 64}, 407-433.
 
 Gonzalez, J., Tuerlinckx, F., De Boeck, P., & Cools, R. (2006). 
 Numerical integration in logistic-normal models. 
-\emph{Computational Statistics & Data Analysis}, \bold{51}, 1535-1548.
+\emph{Computational Statistics & Data Analysis, 51}, 1535-1548.
 
 Pan, J., & Thompson, R. (2007). Quasi-Monte Carlo estimation in
 generalized linear mixed models. \emph{Computational Statistics &
-Data Analysis}, \bold{51}, 5765-5775.
+Data Analysis, 51}, 5765-5775.
 
 Ramsay, J. O. (1975). Solving implicit equations in psychometric data analysis. 
-\emph{Psychometrika}, \bold{40(3)}, 337-360.
+\emph{Psychometrika, 40}(3), 337-360.
 
 Yu, Y. (2012). Monotonically overrelaxed EM algorithms. 
-\emph{Journal of Computational and Graphical Statistics}, \bold{21(2)}, 518-537.
+\emph{Journal of Computational and Graphical Statistics, 21}(2), 518-537.
 
 Wu, M. L., Adams, R. J., Wilson, M. R. & Haldane, S. (2007).
 \emph{ACER ConQuest Version 2.0}. Mulgrave.
@@ -1025,7 +1025,7 @@ summary(mod5t)
 #############################################################################
 # EXAMPLE 6: ordered data - Generalized partial credit model
 #############################################################################
-data( data.gpcm )
+data(data.gpcm, package="TAM")
 
 #************************************************************
 # Ex6.1: Nominal response model (irtmodel="2PL")
@@ -2138,7 +2138,6 @@ library(ltm)
 
 data(data.gpcm, package="TAM")
 dat <- data.gpcm
-
 
 #*** TAM
 mod1 <- TAM::tam.mml.2pl(dat, irtmodel="GPCM")
