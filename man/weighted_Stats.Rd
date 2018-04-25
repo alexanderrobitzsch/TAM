@@ -1,5 +1,5 @@
 %% File Name: weighted_Stats.Rd
-%% File Version: 1.16
+%% File Version: 1.17
 
 \name{weighted_Stats}
 \alias{weighted_Stats}
@@ -57,7 +57,7 @@ Computation method (can be \code{"unbiased"} or \code{"ML"})), see
 For weighted data, the quantile type \code{"i/n"}
 is used (see \code{Hmisc::wtd.quantile})).
 }
-\item{props}{Logical indicating whether relative or abosolute
+\item{props}{Logical indicating whether relative or absolute
 frequencies should be calculated.}
 }
 

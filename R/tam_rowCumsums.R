@@ -1,8 +1,8 @@
 ## File Name: tam_rowCumsums.R
-## File Version: 0.01
+## File Version: 0.02
 
 tam_rowCumsums <- function(matr){ 
-	rowCumsums2_source(matr)
+	tam_rcpp_rowCumsums(input=matr)
 }
 
 rowCumsums.TAM <- tam_rowCumsums

@@ -1,5 +1,5 @@
 ## File Name: lavaanify.IRT.R
-## File Version: 9.04
+## File Version: 9.05
 
 ########################################################################
 # lavaanify extension
@@ -29,7 +29,7 @@ lavaanify.IRT <- function( lavmodel , items=NULL , data = NULL , include.residua
 	nonlin_factors <- res$nonlin_factors
 	nonlin_syntable <- res$nonlin_syntable
 	items <- res$items
-    res <- TAM_lavaanify( lavmodel = lavmodel )	
+    res <- tam_lavaanify( lavmodel = lavmodel )	
 	
 	ind <- grep( "__[A-Z,a-z]" , lavmodel )
 	
@@ -37,7 +37,7 @@ lavaanify.IRT <- function( lavmodel , items=NULL , data = NULL , include.residua
 		res <- lavpartable.grep.underbrace( lavpartable=res$lavpartable , items )		
 		
  		res <- remove.duplicated.variances.lavsyn(res , items)	
-		res <- TAM_lavaanify( lavmodel = res)					
+		res <- tam_lavaanify( lavmodel = res)					
 		lavpar <- res$lavpartable
 		lavsyn <- res$lavaan.syntax
 
@@ -55,8 +55,7 @@ lavaanify.IRT <- function( lavmodel , items=NULL , data = NULL , include.residua
 		v2 <- c(v2,paste0( cn , "?=0*" , cn ))
 		lavsyn1 <- lavsyn1[ ! (lavsyn1 %in% v2 ) ]
 		lavsyn1 <- paste0( lavsyn1 , collapse="\n" )
-		res$lavaan.syntax <- lavsyn1
- # cat("rest ind") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1							
+		res$lavaan.syntax <- lavsyn1 
 				}
 		
 
@@ -87,12 +86,10 @@ lavaanify.IRT <- function( lavmodel , items=NULL , data = NULL , include.residua
 	res$lavpartable <- lavpar0
 	res$nonlin_factors <- nonlin_factors
 	res$nonlin_syntable <- nonlin_syntable
-# cat("all out") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1					
 	return(res)
 }
 
-			
-##*****************************************************************			
-###################################################################
+
+# cat("rest ind") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1							
 
 

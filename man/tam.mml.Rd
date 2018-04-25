@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9829
+%% File Version: 2.9836
 
 \name{tam.mml}
 
@@ -121,7 +121,7 @@ tam.mml.mfr(resp, Y = NULL, group = NULL, irtmodel = "1PL", formulaY = NULL,
 }
   \item{formulaY}{
      An \R formula for latent regression. Transformations of predictors
-     in \eqn{Y} (included in \code{dataY}) can be easily spcified,
+     in \eqn{Y} (included in \code{dataY}) can be easily specified,
      e. g. \code{female*race} or \code{I(age^2)}.
 }
   \item{dataY}{
@@ -150,7 +150,7 @@ tam.mml.mfr(resp, Y = NULL, group = NULL, irtmodel = "1PL", formulaY = NULL,
      A matrix with three columns for fixing regression coefficients.
      1st column: Index of \eqn{Y} value, 2nd column: dimension,
      3rd column: fixed \eqn{\beta} value. \cr
-     If no constraints should be inposed on \eqn{\beta}, then
+     If no constraints should be imposed on \eqn{\beta}, then
      set \code{beta.fixed=FALSE} (see Example 2, Model \code{2_4}).
 }
   \item{beta.inits}{
@@ -219,7 +219,7 @@ tam.mml.mfr(resp, Y = NULL, group = NULL, irtmodel = "1PL", formulaY = NULL,
 \item{facets}{A data frame with facet entries (only applies to 
 	\code{tam.mml.mfr})
 		}
-\item{userfct.variance}{Optional user customized function for variance speicification
+\item{userfct.variance}{Optional user customized function for variance specification
 (See Simulated Example 17).}
 \item{variance.Npars}{Number of estimated parameters of variance matrix
 if a \code{userfct.variance} is provided.} 		
@@ -246,7 +246,7 @@ be printed during iterations. This argument replaces \code{control$progress}.
 
 \code{QMC}: A logical indicating whether quasi Monte Carlo integration
    (Gonzales at al., 2006; Pan & Thompson, 2007) should be used. The default is \code{TRUE}. 
-Quasi Monte Carlo integrationn is a nonstochastic integration approach 
+Quasi Monte Carlo integration is a nonstochastic integration approach 
 but prevents the very demanding numeric integration using Gaussian quadrature. 
 In case of \code{QMC=FALSE}, "ordinary" stochastic integration is used 
 (see the section \emph{Integration} in Details).
@@ -307,7 +307,7 @@ larger than 0 (maybe .4 or .5) is helpful in stabilizing the algorithm
 
 \code{acceleration}: String indicating whether convergence acceleration of
 the EM algorithm should be employed. Options are \code{"none"} (no acceleration,
-the default), the monoton overrelaxation method of \code{"Yu"} (Yu, 2012) and
+the default), the monotone overrelaxation method of \code{"Yu"} (Yu, 2012) and
 \code{"Ramsay"} for the Ramsay (1975) acceleration method. 
 
 \code{dev_crit}: Criterion for convergence in deviance. \code{dev_crit="abolute"}
@@ -357,7 +357,7 @@ described in Adams, Wilson and Wu (1997) or Adams and Wu (2007).
 The data frame \code{resp} contains item responses of \eqn{N} persons (in rows) 
 at \eqn{I} items (in columns), each item having at most
 \eqn{K} categories \eqn{k=0,...,K}.
-The item reponse model has \eqn{D} dimensions of the \eqn{\theta} ability
+The item response model has \eqn{D} dimensions of the \eqn{\theta} ability
 vector and can be written as
 \deqn{ 
         P( X_{pi} = k | \theta_p )  \propto exp( b_{ik} \theta_p + a_{ik} \xi ) 

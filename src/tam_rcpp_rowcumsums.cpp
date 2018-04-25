@@ -1,5 +1,5 @@
-//// File Name: tam_rowcumsums_source_rcpp.cpp
-//// File Version: 3.04
+//// File Name: tam_rcpp_rowcumsums.cpp
+//// File Version: 3.08
 
 
 #include <Rcpp.h>
@@ -11,9 +11,9 @@ using namespace Rcpp;
 //# http://lists.r-forge.r-project.org/pipermail/rcpp-devel/2010-October/001198.html
 
 ///********************************************************************
-///** rowCumsums2_source
+///** tam_rcpp_rowCumsums
 // [[Rcpp::export]]           
-Rcpp::NumericMatrix rowCumsums2_source( Rcpp::NumericMatrix input )
+Rcpp::NumericMatrix tam_rcpp_rowCumsums( Rcpp::NumericMatrix input )
 {     
      Rcpp::NumericMatrix output  = Rcpp::clone< Rcpp::NumericMatrix >(input);  
      int nr = input.nrow();

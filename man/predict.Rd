@@ -1,5 +1,5 @@
 %% File Name: predict.Rd
-%% File Version: 0.17
+%% File Version: 0.19
 
 \name{predict}
 
@@ -14,7 +14,7 @@ Expected Values and Predicted Probabilities for Fitted \pkg{TAM} Models
 
 
 \description{
-Extracts predicted values from the posterior disribution for models
+Extracts predicted values from the posterior distribution for models
 fitted in \pkg{TAM}. 
 
 See \code{\link[CDM:predict]{CDM::predict}} 

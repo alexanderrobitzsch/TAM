@@ -1,5 +1,5 @@
-//// File Name: tam_irt_likelihood_cfa2_rcpp.cpp
-//// File Version: 2.03
+//// File Name: tam_rcpp_irt_likelihood_cfa.cpp
+//// File Version: 2.06
 
 
 
@@ -10,13 +10,12 @@ using namespace Rcpp;
 // user includes
 
 ///********************************************************************
-///** irt_likelihood_cfa2
+///** tam_rcpp_irt_likelihood_cfa
 // [[Rcpp::export]]   
-Rcpp::List irt_likelihood_cfa2( Rcpp::NumericMatrix data, 
+Rcpp::List tam_rcpp_irt_likelihood_cfa( Rcpp::NumericMatrix data, 
 	Rcpp::NumericVector nu, Rcpp::NumericMatrix psi, 
 	Rcpp::NumericMatrix L, Rcpp::NumericMatrix theta )
-{
- 
+{ 
 	int N = data.nrow();  
 	int I = data.ncol();  
 	int D = L.ncol();  
@@ -37,7 +36,7 @@ Rcpp::List irt_likelihood_cfa2( Rcpp::NumericMatrix data,
 			sdii = sqrt( psi(ii,ii) ) ;  
 			for (int nn=0;nn<N;nn++){
 				if ( ! R_IsNA( data(nn,ii) ) ){
-					val = Rf_dnorm4( data(nn,ii) , term , sdii , false ) ; 
+					val = ::Rf_dnorm4( data(nn,ii) , term , sdii , false ) ; 
 					hwt(nn,tt) = hwt(nn,tt) * val ;  
 				}    // end if not missing  
 			}  // end nn  

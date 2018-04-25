@@ -1,5 +1,5 @@
 %% File Name: IRT.itemfit.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{IRT.itemfit.tam}
 
@@ -44,7 +44,7 @@ Object of class \code{tam.mml}, \code{tam.mml.2pl}, \code{tam.mml.mfr}
 or \code{tam.mml.3pl}.
 }
 \item{method}{Requested method for item fit calculation. Currently,
-only the RMSD fit statistic (formerly labelled as the RMSEA statistic,
+only the RMSD fit statistic (formerly labeled as the RMSEA statistic,
 see \code{\link[CDM:IRT.RMSD]{CDM::IRT.RMSD}}) 
 can be used.
 }

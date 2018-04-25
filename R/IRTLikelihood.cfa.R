@@ -1,5 +1,5 @@
 ## File Name: IRTLikelihood.cfa.R
-## File Version: 9.06
+## File Version: 9.08
 
 #########################################
 # IRTLikelihood for fitted CFA model
@@ -26,8 +26,8 @@ IRTLikelihood.cfa <- function( data , cfaobj=NULL ,
 			if ( D>2){ snodes <- 1000 }			
 		}
 		theta0 <- snodes.adj * seq(-3,3,len=21)
-		if (D>2){				
-			r1 <- sfsmisc::QUnif(n=snodes, min = 0, max = 1, n.min = 1, p=D, leap = 409)						
+		if (D>2){
+			r1 <- sfsmisc::QUnif(n=snodes, min = 0, max = 1, n.min = 1, p=D, leap = 409)
 			theta <- stats::qnorm( r1 )
 			for ( dd in 1:D){
 				theta[,dd] <- snodes.adj*theta[,dd]
@@ -54,9 +54,8 @@ IRTLikelihood.cfa <- function( data , cfaobj=NULL ,
 			#ii <- 1
 			term <- matrix( nu[ii] , nrow=N , ncol=TP) 
 			for (dd in 1:D){
-			#    dd <- 1
 				term <- term + matrix( L[ii,dd] * theta[,dd] , nrow=N , ncol=TP , byrow=TRUE )
-						}					
+			}
 			h1 <- stats::dnorm( data[,ii] , mean = term , sd = sqrt( psi[ii,ii] ) )
 			ind <- which( ! is.na( data[,ii] ) )
 			hwt[ind,] <- hwt[ind,] * h1[ind,]
@@ -70,7 +69,7 @@ IRTLikelihood.cfa <- function( data , cfaobj=NULL ,
 		psi <- as.matrix(psi)
 		L <- as.matrix(L)	
 		theta <- as.matrix(theta)	
-		hwt <- irt_likelihood_cfa2( data , nu , psi , L , theta )		
+		hwt <- tam_rcpp_irt_likelihood_cfa( data=data, nu=nu, psi=psi, L=L, theta=theta )
 		hwt <- hwt$hwt
 	}	
 	res <- hwt

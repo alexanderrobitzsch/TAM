@@ -1,5 +1,5 @@
 %% File Name: cfa.extract.itempars.Rd
-%% File Version: 0.16
+%% File Version: 0.18
 
 \name{cfa.extract.itempars}
 \alias{cfa.extract.itempars}
@@ -38,7 +38,7 @@ List with following entries
 \item{nu}{Vector of item intercepts}
 \item{psi}{Residual covariance matrix}
 \item{Sigma}{Covariance matrix of latent variables}
-\item{nu}{Vcetor of means of latent variables}
+\item{nu}{Vector of means of latent variables}
 \item{\dots}{Further values}
 }
 

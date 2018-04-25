@@ -1,5 +1,5 @@
 %% File Name: lavaanify.IRT.Rd
-%% File Version: 1.30
+%% File Version: 1.34
 
 \name{lavaanify.IRT}
 \alias{lavaanify.IRT}
@@ -30,7 +30,7 @@ of the \code{DO} statement, see \code{\link{doparse}} for specification.
 
 The operators \code{MEASERR1} and \code{MEASERR0} can be used for
 model specification for variables which contains known measurement
-error (see Example 6). While \code{MEASERR1} can be used for endogeneous
+error (see Example 6). While \code{MEASERR1} can be used for endogenous
 variables, \code{MEASERR0} provides the specification for exogeneous variables.
 
 }
@@ -269,7 +269,7 @@ cat(res$lavaan.syntax)
 # define lavaan model
 lavmodel <- "
   ytrue ~ xtrue + z
-  # endogeneous variable error-prone y with error variance .20
+  # exogeneous variable error-prone y with error variance .20
   MEASERR1(ytrue,y,.20)
   # exogeneous variable error-prone x with error variance .35  
   MEASERR0(xtrue,x,.35)

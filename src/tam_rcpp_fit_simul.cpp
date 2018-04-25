@@ -1,5 +1,5 @@
-//// File Name: tam_fit_simul_rcpp.cpp
-//// File Version: 1.03
+//// File Name: tam_rcpp_fit_simul.cpp
+//// File Version: 1.11
 
 
 #include <Rcpp.h>
@@ -8,18 +8,18 @@ using namespace Rcpp;
 
 
 ///********************************************************************
-///** tam_fit_simul
+///** tam_rcpp_fit_simul
 // [[Rcpp::export]]           
-Rcpp::List tam_fit_simul( Rcpp::NumericMatrix rn1M, 
+Rcpp::List tam_rcpp_fit_simul( Rcpp::NumericMatrix rn1M, 
 	Rcpp::NumericMatrix c_hwt, Rcpp::NumericMatrix Ax, 
 	Rcpp::NumericMatrix xbar, Rcpp::NumericMatrix var1, 
 	Rcpp::NumericMatrix Uz2, Rcpp::NumericMatrix Vz2, 
 	Rcpp::NumericVector nstud_ip, Rcpp::NumericVector pweights )
 {
-     int N = rn1M.nrow() ;  
-     int Nsimul = rn1M.ncol() ;  
-     int TP=c_hwt.ncol();  
-     Rcpp::NumericVector j(N);  
+	int N = rn1M.nrow();  
+	int Nsimul = rn1M.ncol();  
+	int TP=c_hwt.ncol();  
+	Rcpp::NumericVector j(N);  
      Rcpp::NumericVector wt_numer(N);  
      Rcpp::NumericVector wt_denom(N);  
      Rcpp::NumericVector z2(N);  
@@ -96,21 +96,19 @@ Rcpp::List tam_fit_simul( Rcpp::NumericMatrix rn1M,
      // Infit_t[p] <- (Infit[p]^(1/3)-1) * 3/sqrt(vf) + sqrt(vf)/3    
        
      vf = tmp3c / ( tmp3b*tmp3b ) ;  
-     Infit_t_SIM[hh] = ( pow( Infit_SIM[hh] , ot ) - 1 ) * 3 / sqrt(vf) + sqrt(vf)/3;  
+     Infit_t_SIM[hh] = ( std::pow( Infit_SIM[hh] , ot ) - 1 ) * 3 / std::sqrt(vf) + std::sqrt(vf)/3;  
        
      // #Outfit t  
      //  vf2 <- sum(varz2*pweights,na.rm = TRUE )/(nstud.ip^2)  
      //  Outfit_t[p] <- (Outfit[p]^(1/3)-1) * 3/sqrt(vf2) + sqrt(vf2)/3  
        
      vf = tmp4 / ( nstud_ip[0] * nstud_ip[0] ) ;  
-     Outfit_t_SIM[hh] = ( pow( Outfit_SIM[hh] , ot ) - 1 ) * 3 / sqrt(vf) + sqrt(vf)/3;  
+     Outfit_t_SIM[hh] = ( std::pow( Outfit_SIM[hh] , ot ) - 1 ) * 3 / std::sqrt(vf) + std::sqrt(vf)/3;  
        
      }  
        
-     //*************************************************      
-     // OUTPUT              
-                   
-      return Rcpp::List::create(    
+	//--- OUTPUT                   
+	return Rcpp::List::create(    
          Rcpp::_["Outfit_SIM"] = Outfit_SIM ,  
          Rcpp::_["Infit_SIM"] = Infit_SIM ,  
          Rcpp::_["Infit_t_SIM"] = Infit_t_SIM ,  

@@ -1,5 +1,5 @@
-//// File Name: tam_wle_helper_rcpp.cpp
-//// File Version: 3.07
+//// File Name: tam_rcpp_wle.cpp
+//// File Version: 3.13
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
@@ -9,17 +9,16 @@
 using namespace Rcpp;
 
 ///********************************************************************
-///** tam_wle_Bs
+///** tam_rcpp_wle_Bs
 // [[Rcpp::export]]           
-Rcpp::List tam_wle_Bs( Rcpp::NumericMatrix RPROBS, 
+Rcpp::List tam_rcpp_wle_Bs( Rcpp::NumericMatrix RPROBS, 
 	Rcpp::NumericMatrix RESPIND, Rcpp::NumericMatrix CBL, 
 	Rcpp::NumericMatrix CBB, Rcpp::NumericMatrix CBBB, 
 	int cndim, int cnitems, int cmaxK, int cnstud)
 {
-   
-	    ///////////////////////////////////////////////////////////
-	    // INPUT indices
-	    int citstud = cnitems*cnstud;
+	///////////////////////////////////////////////////////////
+	// INPUT indices
+	int citstud = cnitems*cnstud;
 	    
 	    ////////////////////////////////////////////////////////////
 	    // define output vectors
@@ -73,11 +72,11 @@ Rcpp::List tam_wle_Bs( Rcpp::NumericMatrix RPROBS,
 }
 
 ///********************************************************************
-///** tam_wle_errinv
+///** tam_rcpp_wle_errinv
 // [[Rcpp::export]]           
-Rcpp::NumericMatrix tam_wle_errinv( Rcpp::NumericMatrix myERR, 
-	int cndim, int cnstud ){
-
+Rcpp::NumericMatrix tam_rcpp_wle_errinv( Rcpp::NumericMatrix myERR, 
+	int cndim, int cnstud )
+{
 	////////////////////////////////////////////////////////////
 	// define output vectors
 	arma::mat ERR_j = arma::zeros(cndim, cndim);

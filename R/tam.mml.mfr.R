@@ -1,5 +1,5 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.881
+## File Version: 9.882
 tam.mml.mfr <-
   function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
             formulaY = NULL , dataY = NULL , 
@@ -35,8 +35,7 @@ tam.mml.mfr <-
 	#**** handle verbose argument
 	args_CALL <- as.list( sys.call() )
 	if ( ! tam_in_names_list( list=control, variable="progress" )	 ){
-		control$progress <- tam_args_CALL_search( args_CALL=args_CALL , variable="verbose" , 
-								default_value = TRUE )				
+		control$progress <- verbose			
 	}
 	#*******	
   	#--- attach control elements

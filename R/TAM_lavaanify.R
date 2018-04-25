@@ -1,10 +1,10 @@
-## File Name: TAM_lavaanify.R
-## File Version: 9.04
+## File Name: tam_lavaanify.R
+## File Version: 9.07
 
 
 
 ###################################################################
-TAM_lavaanify <- function( lavmodel )
+tam_lavaanify <- function( lavmodel )
 {
 	require_namespace_msg("lavaan")
 	syn <- lavmodel
@@ -23,10 +23,9 @@ TAM_lavaanify <- function( lavmodel )
 	N1 <- nrow(dfr1)
 	vv <- 1
 	for (ii in 1:N1){
-	#    ii <- 1
 		dfr1[ ii , "eqind" ] <- vv
 		if ( length( grep( "\n" , dfr1$syntax[ii] ) ) > 0 ){ vv <- vv + 1 }
-					}										
+	}										
 	syn0 <- lavmodel
 	
 	#***************************************************************
@@ -90,3 +89,5 @@ TAM_lavaanify <- function( lavmodel )
 	return(res)	
 }
 ##################################################################			
+
+TAM_lavaanify <- tam_lavaanify

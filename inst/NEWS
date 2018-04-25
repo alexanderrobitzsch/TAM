@@ -41,7 +41,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.11  |  2018-04-17  |  Last: TAM 2.11-32
+VERSIONS TAM 2.11  |  2018-04-25  |  Last: TAM 2.11-47
 -------------------------------------------------------------
 
 FIXED * fixed a bug in tam.pv.mcmc() when almost singular
@@ -49,6 +49,9 @@ FIXED * fixed a bug in tam.pv.mcmc() when almost singular
 NOTE  * included argument 'calc_ic' in tam.pv.mcmc()
 NOTE  * included argument 'groups_by_item' in plot.tam()
         function (thanks to Laura Helbling)
+NOTE  * changed behavior of 'verbose' argument in tam.mml(),
+        tam.mml.2pl(), ... functions when it is called in
+        other functions (thanks to Hansjoerg Plieninger)
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: tamaan (3)

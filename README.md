@@ -8,9 +8,7 @@ If you use `TAM` and have suggestions for improvement or have found bugs, please
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/TAM)](https://cran.r-project.org/package=TAM)
 &#160;&#160;
-[![downloads](http://cranlogs.r-pkg.org/badges/TAM)](http://cranlogs.r-pkg.org/)
-&#160;&#160;
-[![total](http://cranlogs.r-pkg.org/badges/grand-total/TAM)](http://cranlogs.r-pkg.org/)
+
 
 The official version of `TAM` is hosted on CRAN and may be found [here](https://cran.r-project.org/package=TAM). 
 The CRAN version can be installed from within R using:
@@ -19,7 +17,9 @@ The CRAN version can be installed from within R using:
 utils::install.packages("TAM")
 ```
 
-#### GitHub version `TAM` 2.11-32 (2018-04-17)
+#### GitHub version `TAM` 2.11-47 (2018-04-25)
+
+[![](https://img.shields.io/badge/github%20version-2.11--47-orange.svg)](https://github.com/alexanderrobitzsch/TAM)&#160;&#160;
 
 The version hosted [here](https://github.com/alexanderrobitzsch/TAM) is the development version of `TAM`. 
 The GitHub version can be installed using `devtools` as:

@@ -1,5 +1,5 @@
 %% File Name: IRT.WrightMap.Rd
-%% File Version: 0.21
+%% File Version: 0.23
 
 \name{IRT.WrightMap}
 % \alias{IRT.WrightMap}
@@ -44,7 +44,7 @@ See Examples.
 }
 
 \details{
-A Wright map is only created for models with an assumed normal distibution.
+A Wright map is only created for models with an assumed normal distribution.
 Hence, not for all models of the \code{\link{tamaan}} functions
 Wright maps are created.
 }

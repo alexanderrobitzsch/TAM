@@ -1,5 +1,5 @@
 %% File Name: tam.fa.Rd
-%% File Version: 2.14
+%% File Version: 2.16
 
 \name{tam.fa}
 \alias{tam.fa}
@@ -35,7 +35,7 @@ tam.fa(resp, irtmodel, dims = NULL, nfactors = NULL, pid = NULL,
      Missing responses must be declared as \code{NA}.
 }
   \item{irtmodel}{
-A string which defines the IRT model to be estmated. Options
+A string which defines the IRT model to be estimated. Options
 are \code{"efa"} (exploratory factor analysis), \code{"bifactor1"} (Rasch
 testlet model in case of dichotomous data; Wang & Wilson, 2005;
 for polytomous data it assumes item slopes of 1) and \code{"bifactor2"}
@@ -113,7 +113,7 @@ loadings form the Schmid-Leimann solution of the \pkg{psych} package.}
 \item{meas}{Vector of dimensionality and reliability statistics.
    Included are the ECV measure (explained common variation;
    Reise, Moore & Haviland, 2010; Reise, 2012), 
-   \eqn{\omega_t} (Omega Total), \eqn{\omega_a} (Omega asymptotical) 
+   \eqn{\omega_t} (Omega Total), \eqn{\omega_a} (Omega asymptotic) 
    and \eqn{\omega_h} (Omega hierarchical) (Revelle & Zinbarg, 2009). 
    The reliability of the sum score based on
    the bifactor model for dichotomous item responses is also

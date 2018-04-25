@@ -1,5 +1,5 @@
 %% File Name: tamaanify.Rd
-%% File Version: 0.47
+%% File Version: 0.49
 
 \name{tamaanify}
 \alias{tamaanify}
@@ -160,7 +160,7 @@ predictive checks. \emph{Psychometrika, 62}(2), 171-189.
 Thissen, D., Cai, L., & Bock, R. D. (2010).
 The nominal categories item response model.
 In M. L. Nering & Ostini, R. (Eds.).
-\emph{Handbook of Polytomous Item Reponse Models} 
+\emph{Handbook of Polytomous Item Response Models} 
 (pp. 43-75). New York: Routledge.
 
 Shojima, K. (2007). \emph{Latent rank theory: Estimation of item reference 

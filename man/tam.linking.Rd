@@ -1,5 +1,5 @@
 %% File Name: tam.linking.Rd
-%% File Version: 0.44
+%% File Version: 0.45
 
 \name{tam.linking}
 \alias{tam.linking}
@@ -45,7 +45,7 @@ List of fitted objects in \pkg{TAM}
 }
   \item{type}{
 Type of linking method: \code{"SL"} (Stocking-Lord) or \code{"Hae"} (Haebara).
-The default is the Stocking-Lord methode.
+The default is the Stocking-Lord method.
 }
   \item{theta}{
 Grid of \eqn{\theta} points. The default is \code{seq(-6,6,len=101)}.

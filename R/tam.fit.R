@@ -1,5 +1,5 @@
 ## File Name: tam.fit.R
-## File Version: 9.05
+## File Version: 9.07
 tam.fit <- function( tamobj, ... ){
   if(class(tamobj) == "tam.mml"){
     res <- tam.mml.fit( tamobj, ...)
@@ -190,17 +190,16 @@ tam.mml.fit <-
 		  }
 				}
 	
-      # calculate fit in Rcpp	
-	  if ( useRcpp ){
-		res0 <- tam_fit_simul(
-					rn1M , c_hwt , Ax , xbar , var1 , Uz2 , Vz2 , nstud.ip ,
-					pweights )
+	#--- calculate fit in Rcpp	
+	if ( useRcpp ){
+		res0 <- tam_rcpp_fit_simul( rn1M=rn1M, c_hwt=c_hwt, Ax=Ax, xbar=xbar, 
+					var1=var1, Uz2=Uz2, Vz2=Vz2, nstud_ip=nstud.ip, pweights=pweights )
 		Outfit_SIM <- res0$Outfit_SIM
 		Infit_SIM <- res0$Infit_SIM
 		Infit_t_SIM <- res0$Infit_t_SIM
 		Outfit_t_SIM <- res0$Outfit_t_SIM
-					}
-				
+	}
+
 	  Outfit[p] <- mean( Outfit_SIM)
 	  Infit[p] <- mean( Infit_SIM)
 	  Infit_t[p] <- mean( Infit_t_SIM )

@@ -1,5 +1,5 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.829
+## File Version: 9.831
 tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,  
             formulaY = NULL , dataY = NULL , 
             ndim = 1 , pid = NULL ,
@@ -43,8 +43,7 @@ tam.mml.3pl <- function( resp , Y=NULL , group = NULL ,
 	#**** handle verbose argument
 	args_CALL <- as.list( sys.call() )
 	if ( ! tam_in_names_list( list=control, variable="progress" )	 ){
-		control$progress <- tam_args_CALL_search( args_CALL=args_CALL , variable="verbose" , 
-								default_value = TRUE )				
+		control$progress <- verbose			
 	}
 	#*******	
 	

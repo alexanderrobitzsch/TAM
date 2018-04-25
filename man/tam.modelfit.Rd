@@ -1,5 +1,5 @@
 %% File Name: tam.modelfit.Rd
-%% File Version: 2.29
+%% File Version: 2.31
 
 \name{tam.modelfit}
 \alias{tam.modelfit}
@@ -134,7 +134,7 @@ A list with following entries
   \item{stat.MADaQ3}{Global fit statistic \code{MADaQ3} and
   global model test with \code{p} value obtained
   by Holm adjustment}
-  \item{chi2.stat}{Data frame with chi square tests of condional independence
+  \item{chi2.stat}{Data frame with chi square tests of conditional independence
      for every item pair (Chen & Thissen, 1997)}
   \item{fitstat}{Model fit statistics \eqn{100 \cdot MADRESIDCOV},
       \eqn{SRMR} and \eqn{SRMSR}}

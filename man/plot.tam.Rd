@@ -1,5 +1,5 @@
 %% File Name: plot.tam.Rd
-%% File Version: 3.31
+%% File Version: 3.33
 
 \name{plot.tam}
 \alias{plot.tam}
@@ -63,7 +63,7 @@ Use WLE estimate for displaying observed scores.
 }
   \item{export}{
 A logical which indicates whether all graphics should be separately 
-exported in files of type \code{export.type} in a subfolder \code{'Plots'}
+exported in files of type \code{export.type} in a subdirectory \code{'Plots'}
 of the working directory.
 }
 \item{export.type}{

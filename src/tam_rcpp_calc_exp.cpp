@@ -1,5 +1,5 @@
-//// File Name: tam_calcexp_rcpp.cpp
-//// File Version: 3.13
+//// File Name: tam_rcpp_calc_exp.cpp
+//// File Version: 3.18
 
 
 #include <Rcpp.h>
@@ -8,9 +8,9 @@ using namespace Rcpp;
 
 
 ///********************************************************************
-///** TAM_CALCEXP
+///** tam_rcpp_calcexp
 // [[Rcpp::export]]           
-Rcpp::List TAM_CALCEXP( int NP, Rcpp::NumericMatrix rprobs, 
+Rcpp::List tam_rcpp_calcexp( int NP, Rcpp::NumericMatrix rprobs, 
 	Rcpp::NumericMatrix A, Rcpp::NumericMatrix INDEXIPNO, 
 	Rcpp::NumericVector INDEXIPLIST2, Rcpp::NumericVector ESTXSIINDEX, 
 	int C, Rcpp::NumericMatrix ITEMWT )
@@ -77,9 +77,9 @@ Rcpp::List TAM_CALCEXP( int NP, Rcpp::NumericMatrix rprobs,
 
 
 ///********************************************************************
-///** TAM_CALCEXP2
+///** tam_rcpp_calcexp2
 // [[Rcpp::export]]           
-Rcpp::List TAM_CALCEXP2( int NP, Rcpp::NumericVector rprobs, 
+Rcpp::List tam_rcpp_calcexp2( int NP, Rcpp::NumericVector rprobs, 
 	Rcpp::NumericVector A, Rcpp::NumericMatrix INDEXIPNO, 
 	Rcpp::NumericVector INDEXIPLIST2, Rcpp::NumericVector ESTXSIINDEX, 
 	int C, Rcpp::NumericMatrix ITEMWT , int NR , int TP)
@@ -143,9 +143,9 @@ Rcpp::List TAM_CALCEXP2( int NP, Rcpp::NumericVector rprobs,
 
 
 ///********************************************************************
-///** redefine_vector_na
+///** tam_rcpp_calc_exp_redefine_vector_na
 // [[Rcpp::export]]           
-Rcpp::NumericVector redefine_vector_na( Rcpp::NumericVector A, double val )
+Rcpp::NumericVector tam_rcpp_calc_exp_redefine_vector_na( Rcpp::NumericVector A, double val )
 {
 	int N = A.size();    
 	Rcpp::NumericVector A1(N);         

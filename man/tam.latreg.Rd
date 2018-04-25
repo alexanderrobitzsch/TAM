@@ -1,5 +1,5 @@
 %% File Name: tam.latreg.Rd
-%% File Version: 0.23
+%% File Version: 0.26
 
 \name{tam.latreg}
 \alias{tam.latreg}
@@ -52,7 +52,7 @@ is automatically extracted as an attribute.
 }
   \item{formulaY}{
      An \R formula for latent regression. Transformations of predictors
-     in \eqn{Y} (included in \code{dataY}) can be easily spcified,
+     in \eqn{Y} (included in \code{dataY}) can be easily specified,
      e. g. \code{female*race} or \code{I(age^2)}.
 }
   \item{dataY}{
@@ -64,7 +64,7 @@ is automatically extracted as an attribute.
      A matrix with three columns for fixing regression coefficients.
      1st column: Index of \eqn{Y} value, 2nd column: dimension,
      3rd column: fixed \eqn{\beta} value. \cr
-     If no constraints should be inposed on \eqn{\beta}, then
+     If no constraints should be imposed on \eqn{\beta}, then
      set \code{beta.fixed=FALSE} (see Example 2, Model \code{2_4})
      which is the default.
 }
@@ -95,7 +95,7 @@ is automatically extracted as an attribute.
   \item{pid}{
      An optional vector of person identifiers
 }
-\item{userfct.variance}{Optional user customized function for variance speicification
+\item{userfct.variance}{Optional user customized function for variance specification
 (See Simulated Example 17).}
 \item{variance.Npars}{Number of estimated parameters of variance matrix
 if a \code{userfct.variance} is provided.}

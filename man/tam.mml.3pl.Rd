@@ -1,5 +1,5 @@
 %% File Name: tam.mml.3pl.Rd
-%% File Version: 2.66
+%% File Version: 2.674
 
 \name{tam.mml.3pl}
 \alias{tam.mml.3pl}
@@ -52,7 +52,7 @@ tam.mml.3pl(resp, Y = NULL, group = NULL, formulaY = NULL, dataY = NULL, ndim = 
 }
   \item{formulaY}{
      An \R formula for latent regression. Transformations of predictors
-     in \eqn{Y} (included in \code{dataY}) can be easily spcified,
+     in \eqn{Y} (included in \code{dataY}) can be easily specified,
      e. g. \code{female*race} or \code{I(age^2)}.
 }
   \item{dataY}{
@@ -83,7 +83,7 @@ tam.mml.3pl(resp, Y = NULL, group = NULL, formulaY = NULL, dataY = NULL, ndim = 
      A matrix with three columns for fixing regression coefficients.
      1st column: Index of \eqn{Y} value, 2nd column: dimension,
      3rd column: fixed \eqn{\beta} value. \cr
-     If no constraints should be inposed on \eqn{\beta}, then
+     If no constraints should be imposed on \eqn{\beta}, then
      set \code{beta.fixed=FALSE} (see Example 2, Model \code{2_4}).
 }
   \item{beta.inits}{
