@@ -1,5 +1,5 @@
 ## File Name: tam_mml_3pl_calc_exp.R
-## File Version: 1.05
+## File Version: 1.08
 
 
 
@@ -22,10 +22,8 @@ tam_mml_3pl_calc_exp <- function( rprobs , A , np , est.xsi.index , itemwt ,
 	# use nik
 	nik <- as.vector(n.ik)
 	ni <- as.vector(N.ik)
-
-	#******
-	# Call .mml.3pl function  (define CALL)	
-	res <- tam_mml_3pl_calcexp(  np , rprobsL , AL ,	indexIP.no , 
+	# rcpp call
+	res <- tam_rcpp_mml_3pl_calcexp(  np , rprobsL , AL ,	indexIP.no , 
 			    indexIP.list2 , est.xsi.index , CC , itemwt , rprobsL0 , 
 			    guess , nik , ni )
 	return(res)

@@ -1,5 +1,5 @@
 ## File Name: tam_pv_mcmc_evaluate_likelihood.R
-## File Version: 0.07
+## File Version: 0.11
 
 tam_pv_mcmc_evaluate_likelihood <- function(theta, 
 	AXsi, B, guess, resp, resp.ind, maxK, resp_ind_bool )

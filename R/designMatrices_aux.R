@@ -1,5 +1,5 @@
 ## File Name: designMatrices_aux.R
-## File Version: 9.03
+## File Version: 9.04
 
 #############################################################
 print.designMatrices <-
@@ -209,7 +209,8 @@ rownames.design2 <- function(X){
 	index_matr <- index_matr[ order( index_matr[ , 1] ) , ]
 
 	SG <- length(stepgroups2)	
-	res <- a_matrix_cumsum( as.matrix(index_matr)-1 , as.matrix(mm) , SG )
+	res <- tam_rcpp_mml_mfr_a_matrix_cumsum( index_matr=as.matrix(index_matr)-1, 
+					mm=as.matrix(mm), SG=SG )
 	mm.sg.temp <- res$cumsum_mm
 	rownames(mm.sg.temp) <- paste0("I", seq(1,nrow(mm.sg.temp) ) )
 	ind2 <- seq( 1 , NRX+SG , maxK+1 )

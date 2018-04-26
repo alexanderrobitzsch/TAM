@@ -1,5 +1,5 @@
 ## File Name: tam_mml_3pl_mstep_item_slopes.R
-## File Version: 9.54
+## File Version: 9.55
 
 ########################################
 # tam.mml.3pl estimate item slopes
@@ -37,7 +37,7 @@ tam_mml_3pl_mstep_item_slopes <- function( max.increment , np ,
 # cat(" +++ calc prob") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1				
 		# init derivatives		
 		d2.b <- d1.b <- rep(eps,Nlam)		
-		res <- tam_mml_3pl_slca_deriv(XdesM=FdesM, dimXdes=dimFdes , Xlambda=gammaslope , 
+		res <- tam_rcpp_mml_3pl_slca_deriv(XdesM=FdesM, dimXdes=dimFdes , Xlambda=gammaslope , 
 					probs=as.vector(rprobs), nik=as.vector(n.ik), Nik=as.vector(N.ik), 
 					guess=guess, probs0=as.vector(rprobs0) )   
 		d1.b <- res$d1b

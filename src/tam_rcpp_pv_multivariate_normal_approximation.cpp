@@ -1,5 +1,5 @@
-//// File Name: tam_pv_multivariate_normal_approximation_rcpp.cpp
-//// File Version: 0.28
+//// File Name: tam_rcpp_pv_multivariate_normal_approximation.cpp
+//// File Version: 0.35
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -12,9 +12,9 @@ using namespace arma;
 
 
 ///********************************************************************
-///** tam_mvrnorm_rcpp
-// [[Rcpp::export]]           
-Rcpp::NumericMatrix tam_mvrnorm_rcpp(int n, Rcpp::NumericVector mu, 
+///** tam_rcpp_mvrnorm
+// [[Rcpp__NOexport]]           
+Rcpp::NumericMatrix tam_rcpp_mvrnorm(int n, Rcpp::NumericVector mu, 
 	Rcpp::NumericMatrix sigma)
 {
 	int ncols = sigma.ncol();
@@ -32,7 +32,7 @@ Rcpp::NumericMatrix tam_mvrnorm_rcpp(int n, Rcpp::NumericVector mu,
 //**********************************************************************
 //** weighted mean
 //** tam_pv_weighted_mean
-// [[Rcpp::export]] 
+// [[Rcpp__NOexport]] 
 Rcpp::NumericVector tam_pv_weighted_mean( Rcpp::NumericMatrix theta, Rcpp::NumericVector wgt)
 {
 	int D = theta.ncol();
@@ -48,12 +48,12 @@ Rcpp::NumericVector tam_pv_weighted_mean( Rcpp::NumericMatrix theta, Rcpp::Numer
 	}
 	return Mu;
 }
-
+//**********************************************************************
 
 //**********************************************************************
 //** weighted covariance
 //** tam_pv_weighted_cov
-// [[Rcpp::export]] 
+// [[Rcpp__NOexport]] 
 Rcpp::List tam_pv_weighted_cov( Rcpp::NumericMatrix theta, Rcpp::NumericVector wgt)
 {
 	int D = theta.ncol();
@@ -79,14 +79,13 @@ Rcpp::List tam_pv_weighted_cov( Rcpp::NumericMatrix theta, Rcpp::NumericVector w
 				Rcpp::Named("covmat") = covmat 
 			) ;  
 }
-
-
+//**********************************************************************
 
 //**********************************************************************
 //** multidimensional theta sampling
-//** tam_pv_sample_theta_multidim
+//** tam_rcpp_pv_sample_theta_multidim
 // [[Rcpp::export]] 
-Rcpp::NumericMatrix tam_pv_sample_theta_multidim( 
+Rcpp::NumericMatrix tam_rcpp_pv_sample_theta_multidim( 
       Rcpp::NumericMatrix post, Rcpp::NumericMatrix theta)
 {   
    Rcpp::List res;
@@ -99,11 +98,11 @@ Rcpp::NumericMatrix tam_pv_sample_theta_multidim(
    for (int nn=0; nn<N; nn++){   
        wgt = post( nn, _);
        res = tam_pv_weighted_cov( theta, wgt) ;
-       Z = tam_mvrnorm_rcpp( NS , res["Mu"] , res["covmat"] );
+       Z = tam_rcpp_mvrnorm( NS , res["Mu"] , res["covmat"] );
        theta_samp(nn, _) = Z(0, _) ; 
    }
    return theta_samp ;
 }
-
+//**********************************************************************
 
 

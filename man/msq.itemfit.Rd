@@ -1,5 +1,5 @@
 %% File Name: msq.itemfit.Rd
-%% File Version: 0.32
+%% File Version: 0.33
 
 \name{msq.itemfit}
 
@@ -27,7 +27,7 @@ but these are based on weighted likelihood estimates obtained from
 
 
 \usage{
-msq.itemfit( object , fitindices=NULL, version=2 )
+msq.itemfit( object , fitindices=NULL)
 
 \method{summary}{msq.itemfit}(object, file=NULL, ... )
 
@@ -44,9 +44,6 @@ Object for which the classes \code{IRT.data},
   \code{IRT.posterior} and \code{predict} are defined.}
 \item{fitindices}{Vector with parameter labels defining the item groups for
 which the fit should be evaluated.}
-\item{version}{The \pkg{Rcpp} function used for calculation. \code{version=1}
-provides results compatible with \pkg{TAM} version \eqn{\le}1.99-6.
-A pure \R routine can be requested by \code{version=3}.}
 \item{tamobj}{Object of class \code{tam.mml}, \code{tam.mml.2pl}
   or \code{tam.mml.mfr}.
 }

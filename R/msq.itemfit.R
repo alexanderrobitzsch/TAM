@@ -1,16 +1,16 @@
 ## File Name: msq.itemfit.R
-## File Version: 9.05
+## File Version: 9.12
 
 #######################################
 # Item fit mean squares statistics
-msq.itemfit <- function( object , fitindices=NULL , version = 2)
+msq.itemfit <- function( object , fitindices=NULL)
 {
 	s1 <- Sys.time()
 	CALL <- match.call()
 
 	#--- collect necessary input
 	resp <- IRT.data(object)
-# a0 <- Sys.time()		
+# a0 <- Sys.time()
 	res <- predict(object)
 	irf1 <- IRT.irfprob(object)
 	irf1[ is.na(irf1) ] <- 0
@@ -53,18 +53,17 @@ msq.itemfit <- function( object , fitindices=NULL , version = 2)
 	}
 				
 	irf1_ <- as.numeric(irf1)
-	if ( version == 1){	rcpp_fct <- msq_itemfit } 
-	if ( version == 2){	rcpp_fct <- msq_itemfit2 }
-	if (version %in% c(1,2) ){
-		res0 <- rcpp_fct( resp , irf1_ , K , TP , post1 , FIT_ , fitIndexM )$dfr_fit
-		res0 <- as.data.frame(res0)
-		colnames(res0) <- c("Outfit" , "Outfit_t" , "Infit" , "Infit_t")		
-		dfr <- cbind( dfr , res0)
-	}
-	if (version == 3){
-		dfr <- msq.itemfit.R( dfr , FF , fitindices , fitgroups ,
-					       res , post1 , N , TP , I , K , resp )
-	}	
+	resp_bool <- ! is.na(resp)
+	res0 <- tam_rcpp_msq_itemfit( resp=resp, irf1=irf1_, K=K, TP=TP, post1=post1, 
+					FIT=FIT_, fitIndexM=fitIndexM, resp_bool=resp_bool )
+	res0 <- as.data.frame(res0)
+	colnames(res0) <- c("Outfit" , "Outfit_t" , "Infit" , "Infit_t")		
+	dfr <- cbind( dfr , res0)
+
+	# if (version == 3){
+	# dfr <- msq.itemfit.R( dfr , FF , fitindices , fitgroups ,
+	# 				       res , post1 , N , TP , I , K , resp )
+
 	#---   compute p values
 	dfr$Outfit_p <- 2 * stats::pnorm( -abs( dfr$Outfit_t )	)
 	dfr$Infit_p <- 2 * stats::pnorm( -abs( dfr$Infit_t ))	

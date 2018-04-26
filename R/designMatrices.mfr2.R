@@ -1,12 +1,12 @@
 ## File Name: designMatrices.mfr2.R
-## File Version: 9.03
+## File Version: 9.09
 
 
 #########################################################################
-designMatrices.mfr2 <-
-  function( resp, formulaA = ~ item + item:step, facets = NULL,  
+designMatrices.mfr2 <- function( resp, formulaA = ~ item + item:step, facets = NULL,  
             constraint = c("cases", "items"), ndim = 1,
-            Q=NULL, A=NULL, B=NULL , progress=FALSE ){
+            Q=NULL, A=NULL, B=NULL , progress=FALSE )
+{
     z0 <- Sys.time()
 	# sort items according alpha numeric sorting
 	cn <- colnames(resp)
@@ -156,7 +156,7 @@ designMatrices.mfr2 <-
 #     cat(" ---  after gresp   " ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1    
     # This step is time-consuming!!	
 	#**** ARb 2014-05-30
-	gresp <- gresp_extend(  as.matrix(gresp) , as.numeric( X[,"step"] ) )
+	gresp <- tam_rcpp_mml_mfr_gresp_extend( gresp=as.matrix(gresp), xstep=as.numeric( X[,"step"] ) )
     # cat(" ---  after gresp   " ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1    
     # This step is time-consuming!!
 # cat(" ---  after gresp (2) " ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1     					    
@@ -178,19 +178,23 @@ designMatrices.mfr2 <-
 #      gresp.noStep[ outer(rnFacets, rnX.noStep, "!=") ] <- NA
 # cat("gresp NA " ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1	
 		#**** ARb 2014-05-30
-	  gresp <- gresp_na_facets( as.matrix(gresp) , rnFacets , rnX )
-	  gresp.noStep <- gresp_na_facets( as.matrix(gresp.noStep ) , rnFacets , rnX.noStep )
+
+	  gresp <- tam_rcpp_mml_mfr_gresp_na_facets( gresp=as.matrix(gresp), 
+					rnfacets=rnFacets, rnx=rnX )
+	  gresp.noStep <- tam_rcpp_mml_mfr_gresp_na_facets( gresp=as.matrix(gresp.noStep), 
+						rnfacets=rnFacets, rnx=rnX.noStep )	  
+	  
 #cat("gresp NA2 " ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1	
     }
 
 #cat(" ---  after other facets" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1    	
     colnames(gresp) <- rownames(X)
 #    X$empty <- 1* (colSums( gresp, na.rm=TRUE ) == 0)
-	X$empty <- colsums_gresp( gresp )
+	X$empty <- tam_rcpp_mml_mfr_colsums_gresp( gresp )
 	
     colnames(gresp.noStep) <- rownames(X.noStep)
 #    X.noStep$empty <- 1* (colSums( gresp.noStep, na.rm=TRUE ) == 0)
-	X.noStep$empty <- colsums_gresp( gresp.noStep)
+	X.noStep$empty <- tam_rcpp_mml_mfr_colsums_gresp( gresp.noStep)
 
     ### output
     ind <- X[,"empty"] == 1

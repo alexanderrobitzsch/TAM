@@ -1,5 +1,5 @@
-//// File Name: tam_mml_mfr_helper_rcpp.cpp
-//// File Version: 3.05
+//// File Name: tam_rcpp_mml_mfr.cpp
+//// File Version: 3.12
 
 
 #include <Rcpp.h>
@@ -8,15 +8,14 @@ using namespace Rcpp;
 
 
 ///********************************************************************
-///** gresp_extend
+///** tam_rcpp_mml_mfr_gresp_extend
 // [[Rcpp::export]]           
-Rcpp::NumericMatrix gresp_extend( Rcpp::NumericMatrix gresp, 
+Rcpp::NumericMatrix tam_rcpp_mml_mfr_gresp_extend( Rcpp::NumericMatrix gresp, 
 	Rcpp::NumericVector xstep )
 {
 	int I=gresp.ncol() ;  
 	int N=gresp.nrow();    
 	Rcpp::NumericMatrix gresp2(N,I);  
-
 	for (int ii=0;ii<I;ii++){  
 		for (int nn=0;nn<N;nn++){  
 			if (! R_IsNA(gresp(nn,ii)) ) {  
@@ -30,12 +29,12 @@ Rcpp::NumericMatrix gresp_extend( Rcpp::NumericMatrix gresp,
 	}  
 	return gresp2 ;
 }
-
+///********************************************************************
 
 ///********************************************************************
-///** gresp_na_facets
+///** tam_rcpp_mml_mfr_gresp_na_facets
 // [[Rcpp::export]]           
-Rcpp::NumericMatrix gresp_na_facets( Rcpp::NumericMatrix gresp, 
+Rcpp::NumericMatrix tam_rcpp_mml_mfr_gresp_na_facets( Rcpp::NumericMatrix gresp, 
 	Rcpp::CharacterVector rnfacets, Rcpp::CharacterVector rnx )
 {
 	int I=gresp.ncol() ;  
@@ -52,12 +51,12 @@ Rcpp::NumericMatrix gresp_na_facets( Rcpp::NumericMatrix gresp,
 	// output
 	return gresp2;  
 }
-
+///********************************************************************
 
 ///********************************************************************
-///** a_matrix_cumsum
+///** tam_rcpp_mml_mfr_a_matrix_cumsum
 // [[Rcpp::export]]           
-Rcpp::List a_matrix_cumsum( Rcpp::NumericMatrix index_matr, 
+Rcpp::List tam_rcpp_mml_mfr_a_matrix_cumsum( Rcpp::NumericMatrix index_matr, 
 	Rcpp::NumericMatrix mm, int SG )
 {
 	int NR = mm.nrow();  
@@ -91,12 +90,12 @@ Rcpp::List a_matrix_cumsum( Rcpp::NumericMatrix index_matr,
 				Rcpp::Named("cumsum_mm") = cumsum_mm  
 		) ;  
 }
-
+///********************************************************************
 
 ///********************************************************************
-///** colsums_gresp
+///** tam_rcpp_mml_mfr_colsums_gresp
 // [[Rcpp::export]]           
-Rcpp::NumericVector colsums_gresp( Rcpp::NumericMatrix gresp )
+Rcpp::NumericVector tam_rcpp_mml_mfr_colsums_gresp( Rcpp::NumericMatrix gresp )
 {
 	int NR = gresp.nrow();  
 	int NC = gresp.ncol();         

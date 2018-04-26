@@ -1,12 +1,11 @@
 ## File Name: tam_mml_inits_xsi.R
-## File Version: 0.04
+## File Version: 0.05
 
 tam_mml_inits_xsi <- function(A, resp.ind, ItemScore, xsi.inits, xsi.fixed ,
 		est.xsi.index, pweights, xsi.start0, xsi, resp, addnumb = .5 )
 {
-
     # starting values for xsi
-    maxAi <-  - (apply(-(A) , 3 , tam_rowMaxs , na.rm=TRUE) )  
+    maxAi <-  - apply(-(A) , 3, tam_rowMaxs, na.rm=TRUE)
     personMaxA <- resp.ind %*% maxAi
 	ItemMax <- crossprod( personMaxA , pweights ) 
 

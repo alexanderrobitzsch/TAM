@@ -1,12 +1,12 @@
 ## File Name: designMatrices.mfr.R
-## File Version: 9.06
+## File Version: 9.12
 
 
 #########################################################################
-designMatrices.mfr <-
-  function( resp, formulaA = ~ item + item:step, facets = NULL,  
+designMatrices.mfr <- function( resp, formulaA = ~ item + item:step, facets = NULL,  
             constraint = c("cases", "items"), ndim = 1,
-            Q=NULL, A=NULL, B=NULL , progress=FALSE ){
+            Q=NULL, A=NULL, B=NULL , progress=FALSE )
+{
 			
 tamcat_active <- TRUE
 tamcat_active <- FALSE			
@@ -140,7 +140,7 @@ z0 <- tamcat( " ---  after gresp selection   " , z0 , tamcat_active )
 
     # This step is time-consuming!!
 	#**** ARb 2014-05-30
-	gresp <- gresp_extend( as.matrix(gresp) , as.numeric( X[,"step"] ) )
+	gresp <- tam_rcpp_mml_mfr_gresp_extend( gresp=as.matrix(gresp), xstep=as.numeric( X[,"step"] ) )
 z0 <- tamcat( " ---  after gresp   " , z0 , tamcat_active )      
         
     ind.resp.cols <- as.numeric(X.noStep.ind)
@@ -160,29 +160,25 @@ z0 <- tamcat( " ---  rownames.design2   " , z0 , tamcat_active )
 #      gresp[ outer(rnFacets, rnX, "!=") ] <- NA
       #      gresp.noStep <- gresp.noStep * (1* outer(rnFacets, rnX.noStep, "=="))
 #      gresp.noStep[ outer(rnFacets, rnX.noStep, "!=") ] <- NA
-	  gresp <- gresp_na_facets(  as.matrix(gresp) , rnFacets , rnX )
+
+	  gresp <- tam_rcpp_mml_mfr_gresp_na_facets( gresp=as.matrix(gresp), 
+					rnfacets=rnFacets, rnx=rnX )
 z0 <- tamcat( " ---  gresp na facets gresp   " , z0 , tamcat_active )  				
-	  gresp.noStep <- gresp_na_facets( as.matrix(gresp.noStep ) , rnFacets , rnX.noStep )
+	  gresp.noStep <- tam_rcpp_mml_mfr_gresp_na_facets( gresp=as.matrix(gresp.noStep), 
+						rnfacets=rnFacets, rnx=rnX.noStep )
 z0 <- tamcat( " ---  gresp na facets gresp.noStep   " , z0 , tamcat_active )  				
       
     }
 #  cat(" ---  after other facets" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1    	
     colnames(gresp) <- rownames(X)
 
-#    X$empty <- 1* (colSums( gresp, na.rm=TRUE ) == 0)
-# cat(" ---  col sums (gresp) in X " ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1 	
-# X$empty <- colsums_gresp( gresp )
-# cat(" ---  col sums (gresp) in X (Rcpp)" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1 		
-# X$empty <- colsums_gresp2( gresp )
-# data communication with Rcpp does need no computation time
-
-	X$empty <- colsums_gresp( gresp )
+	X$empty <- tam_rcpp_mml_mfr_colsums_gresp( gresp )
 z0 <- tamcat( " ---  col sums (gresp) in X (Rcpp)" , z0 , tamcat_active )  				 
 
 
     colnames(gresp.noStep) <- rownames(X.noStep)	
 #    X.noStep$empty <- 1* (colSums( gresp.noStep, na.rm=TRUE ) == 0)
-	X.noStep$empty <- colsums_gresp( gresp.noStep )
+	X.noStep$empty <- tam_rcpp_mml_mfr_colsums_gresp( gresp.noStep )
 z0 <- tamcat( " ---  col sums (gresp noStep) in X (Rcpp)" , z0 , tamcat_active )  				 
 
     ### output

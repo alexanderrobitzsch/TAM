@@ -1,9 +1,9 @@
 ## File Name: tam_pv_mcmc_calc_probs_irf_3pl.R
-## File Version: 0.27
+## File Version: 0.28
 
 
-tam_pv_mcmc_calc_probs_irf_3pl <- function(theta, AXsi, B, guess, subtract_max=FALSE,
-		resp.ind )	
+tam_pv_mcmc_calc_probs_irf_3pl <- function(theta, AXsi, B, guess, 
+		subtract_max=FALSE, resp.ind )	
 {
 	if ( is.vector(theta) ){
 		theta <- matrix( theta , ncol=1 )
@@ -17,8 +17,7 @@ tam_pv_mcmc_calc_probs_irf_3pl <- function(theta, AXsi, B, guess, subtract_max=F
 	
 	#--- compute probabilities		
 	I <- nitems
-
-	res <- tam_pv_mcmc_calc_probs_irf_3pl_rcpp(theta=theta, B=as.vector(B) , I=I, maxK=maxK,
+	res <- tam_rcpp_pv_mcmc_calc_probs_irf_3pl(theta=theta, B=as.vector(B), I=I, maxK=maxK,
 				resp_ind = resp.ind, AXsi=AXsi )
 	rprobs <- array( res$rprobs , dim=c(I,maxK, nnodes) )
 		

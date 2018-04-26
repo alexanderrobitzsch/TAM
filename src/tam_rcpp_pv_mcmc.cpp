@@ -1,5 +1,6 @@
-//// File Name: tam_pv_mcmc_calc_probs_irf_3pl_rcpp.cpp
-//// File Version: 0.28
+//// File Name: tam_rcpp_pv_mcmc.cpp
+//// File Version: 0.29
+
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -11,9 +12,30 @@ using namespace Rcpp;
 
 
 ///********************************************************************
-///** tam_pv_mcmc_calc_probs_irf_3pl_rcpp
+///** tam_rcpp_pv_mcmc_likelihood
 // [[Rcpp::export]]           
-Rcpp::List tam_pv_mcmc_calc_probs_irf_3pl_rcpp( 
+Rcpp::NumericVector tam_rcpp_pv_mcmc_likelihood( 
+	Rcpp::NumericMatrix probs, Rcpp::NumericMatrix resp,
+	Rcpp::LogicalMatrix resp_ind_bool, int maxK, int nstud, int nitems )
+{
+	Rcpp::NumericVector like(nstud); 
+	like.fill(1);
+	for (int nn=0; nn<nstud; nn++){
+		for (int ii=0; ii<nitems; ii++){
+			if ( resp_ind_bool(nn,ii) ){
+				like[nn] = like[nn]*probs(nn, ii + resp(nn,ii)*nitems);
+			}
+		}
+	}      
+	//-------- OUTPUT              
+	return like;  
+}
+///********************************************************************
+
+///********************************************************************
+///** tam_rcpp_pv_mcmc_calc_probs_irf_3pl
+// [[Rcpp::export]]           
+Rcpp::List tam_rcpp_pv_mcmc_calc_probs_irf_3pl( 
 	Rcpp::NumericMatrix theta, Rcpp::NumericVector B, int I, int maxK,
 	Rcpp::IntegerMatrix resp_ind, Rcpp::NumericMatrix AXsi  )
 {
@@ -74,6 +96,9 @@ Rcpp::List tam_pv_mcmc_calc_probs_irf_3pl_rcpp(
 ///********************************************************************
 
 
-// if ( ! R_IsNA( resp(nn,ii) ) ){
 
-  
+// if ( ! R_IsNA( resp(nn,ii) ) ){
+//           	 Rcpp::Rcout << "ii=" << ii << " " << 
+//           	 	ii+resp(nn,ii)*nitems << " " << std::flush << std::endl ;            	 
+
+

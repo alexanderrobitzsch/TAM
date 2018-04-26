@@ -1,5 +1,5 @@
-//// File Name: tam_mml_3pl_helper_rcpp.cpp
-//// File Version: 3.13
+//// File Name: tam_rcpp_mml_3pl.cpp
+//// File Version: 3.24
 
 
 #include <Rcpp.h>
@@ -8,9 +8,10 @@ using namespace Rcpp;
 
 
 ///********************************************************************
-///** mml3_calc_Fdes
+///** tam_rcpp_mml_3pl_calc_Fdes
 // [[Rcpp::export]]           
-Rcpp::List tam_mml_3pl_calc_Fdes( Rcpp::NumericVector XDES , Rcpp::NumericVector dimXdes ){
+Rcpp::List tam_rcpp_mml_3pl_calc_Fdes( Rcpp::NumericVector XDES , Rcpp::NumericVector dimXdes )
+{
 
      int I= dimXdes[0] ;  
      int maxK= dimXdes[1] ;  
@@ -31,7 +32,7 @@ Rcpp::List tam_mml_3pl_calc_Fdes( Rcpp::NumericVector XDES , Rcpp::NumericVector
        
         rr=ii+I*kk+I*maxK*tt+I*maxK*TP*ll ;  
        
-     // Rcpp::Rcout << "rr = " << rr << " XDES[rr] = " << XDES[rr] << std::endl;  
+     
        
      if ( XDES[rr] != 0 ){  
           XdesM(ind,0) = ii ;	  
@@ -54,14 +55,17 @@ Rcpp::List tam_mml_3pl_calc_Fdes( Rcpp::NumericVector XDES , Rcpp::NumericVector
 }
 
 
+// Rcpp::Rcout << "rr = " << rr << " XDES[rr] = " << XDES[rr] << std::endl;  
+
 ///********************************************************************
-///** mml3_slca_deriv
+///** tam_rcpp_mml_3pl_slca_deriv
 // [[Rcpp::export]]           
-Rcpp::List tam_mml_3pl_slca_deriv( Rcpp::NumericMatrix XdesM, 
+Rcpp::List tam_rcpp_mml_3pl_slca_deriv( Rcpp::NumericMatrix XdesM, 
 	Rcpp::NumericVector dimXdes, Rcpp::NumericVector Xlambda, 
 	Rcpp::NumericVector probs, 
 	Rcpp::NumericVector nik, Rcpp::NumericVector Nik, 
-	Rcpp::NumericVector guess, Rcpp::NumericVector probs0 ){
+	Rcpp::NumericVector guess, Rcpp::NumericVector probs0 )
+{
 
      int I= dimXdes[0] ;  
      int maxK= dimXdes[1] ;  
@@ -173,15 +177,16 @@ Rcpp::List tam_mml_3pl_slca_deriv( Rcpp::NumericMatrix XdesM,
 
 
 ///********************************************************************
-///** mml3pl_tam_calcexp
+///** tam_rcpp_mml_3pl_calcexp
 // [[Rcpp::export]]           
-Rcpp::List tam_mml_3pl_calcexp( int NP , 
+Rcpp::List tam_rcpp_mml_3pl_calcexp( int NP , 
 	Rcpp::NumericMatrix rprobs, Rcpp::NumericMatrix A, 
 	Rcpp::NumericMatrix INDEXIPNO, Rcpp::NumericVector INDEXIPLIST2, 
 	Rcpp::NumericVector ESTXSIINDEX, int C, 
 	Rcpp::NumericMatrix ITEMWT, Rcpp::NumericMatrix rprobs0, 
 	Rcpp::NumericVector GUESS, Rcpp::NumericVector nik, 
-	Rcpp::NumericVector ni ){
+	Rcpp::NumericVector ni )
+{
 
           ////////////////////////////////////////////////////////////    
           // define output vectors    
@@ -261,17 +266,18 @@ Rcpp::List tam_mml_3pl_calcexp( int NP ,
           ///////////////////////////////////////////////////////    
           ///////////// O U T P U T   ///////////////////////////    
           return Rcpp::List::create(  
-          	     	Rcpp::_["xbar"]=XBAR , 
-                    Rcpp::_["xbar2"]=XBAR2 , 
-                    Rcpp::_["xxf"]=XXF ,  
-          	     	Rcpp::_["iscore"] = iscore  
+          	     	Rcpp::Named("xbar")=XBAR , 
+                    Rcpp::Named("xbar2")=XBAR2 , 
+                    Rcpp::Named("xxf")=XXF ,  
+          	     	Rcpp::Named("iscore") = iscore  
           	     	);   
 }
+///********************************************************************
 
 ///********************************************************************
-///** mml_3pl_compute_B_rcpp
+///** tam_rcpp_mml_3pl_compute_B
 // [[Rcpp::export]]           
-Rcpp::List tam_mml_3pl_compute_B_rcpp( Rcpp::NumericMatrix Edes, 
+Rcpp::List tam_rcpp_mml_3pl_compute_B( Rcpp::NumericMatrix Edes, 
 	Rcpp::NumericVector gammaslope, Rcpp::NumericVector dimE ){
 
      int NE=Edes.nrow();  
@@ -298,17 +304,18 @@ Rcpp::List tam_mml_3pl_compute_B_rcpp( Rcpp::NumericMatrix Edes,
      //*************************************************      
      // OUTPUT                   
       return Rcpp::List::create(    
-         Rcpp::_["E_design"] = Edes ,  
-         Rcpp::_["B"] = B  
+         Rcpp::Named("E_design") = Edes ,  
+         Rcpp::Named("B") = B  
          ) ;  
 }
 
 
 ///********************************************************************
-///** mml_3pl_nonzero_entries
+///** tam_rcpp_mml_3pl_nonzero_entries
 // [[Rcpp::export]]           
-Rcpp::List tam_mml_3pl_nonzero_entries( Rcpp::NumericVector E, 
-	Rcpp::NumericVector dimE ){
+Rcpp::List tam_rcpp_mml_3pl_nonzero_entries( Rcpp::NumericVector E, 
+	Rcpp::NumericVector dimE )
+{
      
      int NE = E.size();   
      int I=dimE[0];  
@@ -343,8 +350,8 @@ Rcpp::List tam_mml_3pl_nonzero_entries( Rcpp::NumericVector E,
      //*************************************************      
      // OUTPUT                                 
       return Rcpp::List::create(    
-         Rcpp::_["E_design"] = E_design ,  
-         Rcpp::_["maxE"] = lz   
+         Rcpp::Named("E_design") = E_design ,  
+         Rcpp::Named("maxE") = lz   
          ) ;  
 }
 
