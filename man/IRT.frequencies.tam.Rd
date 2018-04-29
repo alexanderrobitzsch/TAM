@@ -1,5 +1,5 @@
 %% File Name: IRT.frequencies.tam.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{IRT.frequencies.tam}
 
@@ -15,7 +15,7 @@ Observed and Expected Frequencies for Univariate and Bivariate Distributions
 
 \description{
 Computes observed and expected frequencies for univariate and bivariate distributions
-for models fitted in \pkg{TAM}. See \code{\link[CDM:IRT.frequencies]{CDM::IRT.frequencies}} 
+for models fitted in \pkg{TAM}. See \code{\link[CDM:IRT.frequencies]{CDM::IRT.frequencies}}
  for more details.
 }
 
@@ -62,15 +62,15 @@ See \code{\link[CDM:IRT.frequencies]{CDM::IRT.frequencies}}.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link[CDM:IRT.frequencies]{CDM::IRT.frequencies}} 
+\code{\link[CDM:IRT.frequencies]{CDM::IRT.frequencies}}
 }
 
 
-\examples{	
+\examples{
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Dichotomous data data.sim.rasch
-#############################################################################	
+#############################################################################
 
 data(data.sim.rasch)
 dat <- data.sim.rasch
@@ -80,7 +80,7 @@ mod1 <- TAM::tam.mml(dat)
 # compute observed and expected frequencies
 fmod1 <- IRT.frequencies(mod1)
 str(fmod1)
-}	
+}
 }
 
 

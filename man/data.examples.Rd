@@ -1,5 +1,5 @@
 %% File Name: data.examples.Rd
-%% File Version: 2.16
+%% File Version: 2.17
 
 \name{data.examples}
 
@@ -36,7 +36,7 @@ data(data.exJ03)
 \format{
 \itemize{
 %% Example data.ex08
-\item Data \code{data.ex08} for Example 8 in \code{\link{tam.mml}} 
+\item Data \code{data.ex08} for Example 8 in \code{\link{tam.mml}}
 has the following format:
 
 \code{List of 2} \cr
@@ -47,7 +47,7 @@ has the following format:
 \code{  .. ..$ : NULL} \cr
 \code{  .. ..$ : chr [1:10] "I0001" "I0002" "I0003" "I0004" ...} \cr
 
-\item Data \code{data.ex10} for Example 10 in \code{\link{tam.mml}} 
+\item Data \code{data.ex10} for Example 10 in \code{\link{tam.mml}}
 has the following format:
 
 \code{'data.frame':   675 obs. of  7 variables:} \cr
@@ -60,8 +60,8 @@ has the following format:
 \code{ $ I0005: num  0 0 1 1 1 0 0 1 0 1 ...} \cr
 
 % Example 11
-\item Data \code{data.ex11} for Example 11 in \code{\link{tam.mml}} 
-has the following format: 
+\item Data \code{data.ex11} for Example 11 in \code{\link{tam.mml}}
+has the following format:
 
 \code{'data.frame':   3400 obs. of  13 variables:} \cr
 \code{ $ booklet: chr  "B1" "B1" "B3" "B2" ...} \cr
@@ -76,13 +76,13 @@ has the following format:
 \code{ $ M355   : int  NA NA NA 1 NA NA NA 1 1 0 ...} \cr
 \code{ $ M444   : int  0 0 0 NA 0 0 0 NA NA NA ...} \cr
 \code{ $ M446   : int  1 0 0 1 0 1 1 1 0 0 ...} \cr
-\code{ $ M449   : int  NA NA NA 1 NA NA NA 1 1 1 ...} 
+\code{ $ M449   : int  NA NA NA 1 NA NA NA 1 1 1 ...}
 
 Missing responses by design are coded as \code{NA}, omitted
 responses are coded as \code{9}. \cr
 
 % Example 12
-\item Data \code{data.ex12} for Example 12 in \code{\link{tam.mml}} 
+\item Data \code{data.ex12} for Example 12 in \code{\link{tam.mml}}
 has the following format:
 
 \code{ num [1:100, 1:10] 1 1 1 1 1 1 1 1 1 1 ...} \cr
@@ -91,7 +91,7 @@ has the following format:
 \code{  ..$ : chr [1:10] "I0001" "I0002" "I0003" "I0004" ...} \cr
 
 % Example 14
-\item Data \code{data.ex14} for Example 14 in \code{\link{tam.mml}} 
+\item Data \code{data.ex14} for Example 14 in \code{\link{tam.mml}}
 has the following format:
 
 \code{'data.frame':   1110 obs. of  11 variables:} \cr
@@ -108,8 +108,8 @@ has the following format:
 \code{ $ crit7: int  1 0 2 0 0 0 0 0 0 0 ...} \cr
 
 % Example 15
-\item Data \code{data.ex15} for Example 15 in \code{\link{tam.mml}} 
-has the following format: 
+\item Data \code{data.ex15} for Example 15 in \code{\link{tam.mml}}
+has the following format:
 
 \code{'data.frame':   2155 obs. of  182 variables:} \cr
 \code{ $ pid    : num  10001 10002 10003 10004 10005 ...} \cr
@@ -119,15 +119,15 @@ has the following format:
 \code{ $ Item003: num  NA NA NA NA 1 NA NA NA NA 1 ...} \cr
 \code{ $ Item004: num  NA NA 0 NA NA NA NA NA NA NA ...} \cr
 \code{ $ Item005: num  NA NA 1 NA NA NA NA NA NA NA ...} \cr
-\code{[...]} 
+\code{[...]}
 
 This dataset shows an atypical convergence behavior. Look at Example 15
 to fix convergence problems using arguments \code{increment.factor} and
 \code{fac.oldxsi}. \cr
 
 %% Example data.exJ03
-\item Data \code{data.exJ03} for Example 4 in \code{\link{tam.jml}} 
-has the following format: 
+\item Data \code{data.exJ03} for Example 4 in \code{\link{tam.jml}}
+has the following format:
 
 \code{List of 2} \cr
 \code{ $ resp:'data.frame':   40 obs. of  20 variables:} \cr
@@ -140,7 +140,7 @@ has the following format:
 \code{  ..$ rater : int [1:40] 40 40 96 96 123 123 157 157 164 164 ...} \cr
 \code{  ..$ gender: int [1:40] 2 2 1 1 1 1 2 2 2 2 ...} \cr
 \code{  ..$ region: num [1:40] 1 1 1 1 2 2 1 1 1 1 ...} \cr
-\code{  ..$ leader: int [1:40] 1 2 1 2 1 2 1 2 1 2 ...} 
+\code{  ..$ leader: int [1:40] 1 2 1 2 1 2 1 2 1 2 ...}
 
 It is a rating dataset (a subset of a dataset provided by Matt Barney). \cr
 
@@ -212,7 +212,7 @@ three studies corresponding to three grades.
 %}
 \seealso{
 These examples are used in the \code{\link{tam.mml}} Examples.
-	}
+    }
 %\examples{
 %data(data.gpcm)
 %summary(data.gpcm)

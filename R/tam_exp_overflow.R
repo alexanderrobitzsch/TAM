@@ -3,8 +3,8 @@
 
 tam_exp_overflow <- function(x, max=1E200 )
 {
-	x <- ifelse( is.na(x), -max, x )
-	x <- ifelse( x > max , max, x)
-	y <- exp(x)
-	return(y)
+    x <- ifelse( is.na(x), -max, x )
+    x <- ifelse( x > max , max, x)
+    y <- exp(x)
+    return(y)
 }

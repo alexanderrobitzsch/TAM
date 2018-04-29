@@ -1,15 +1,16 @@
 ## File Name: summary.tam.fit.R
-## File Version: 9.03
+## File Version: 9.04
 
 ###################################################
 # summary for tam.fit
-summary.tam.fit <- function( object , ... ){
+summary.tam.fit <- function( object , ... )
+{
     object <- object$itemfit
-	ind <- grep( "pholm" , colnames(object) )
-	obji <- object[ , - ind ]
-	for ( vv in seq(2,ncol(obji) ) ){
-		obji[,vv] <- round( obji[,vv] , 3 )
-	}
-	return(obji)
+    ind <- grep( "pholm" , colnames(object) )
+    obji <- object[ , - ind ]
+    for ( vv in seq(2,ncol(obji) ) ){
+        obji[,vv] <- round( obji[,vv] , 3 )
+    }
+    return(obji)
 }
 ###################################################

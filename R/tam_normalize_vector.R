@@ -1,8 +1,8 @@
 ## File Name: tam_normalize_vector.R
-## File Version: 0.01
+## File Version: 0.02
 
 tam_normalize_vector <- function(x)
 {
-	x <- x / sum(x) 
-	return(x)
+    x <- x / sum(x)
+    return(x)
 }

@@ -1,5 +1,5 @@
 %% File Name: tam.ctt.Rd
-%% File Version: 3.07
+%% File Version: 3.08
 
 \name{tam.ctt}
 \alias{tam.ctt}
@@ -44,8 +44,8 @@ An optional logical indicating whether computation progress
 should be displayed.
 }
 \item{allocate}{Average number of categories per item. This argument is just
-	used for matrix size allocations. If an error is produced, use
-	a sufficiently higher number.
+    used for matrix size allocations. If an error is produced, use
+    a sufficiently higher number.
 }
 \item{theta}{A score to be conditioned}
 \item{Ncuts}{Number of break points for \code{theta}}
@@ -61,14 +61,14 @@ or \code{"graphics"}.}
 }
 }
 \details{
-The functions \code{tam.ctt2} and \code{tam.ctt3} use \pkg{Rcpp} code 
+The functions \code{tam.ctt2} and \code{tam.ctt3} use \pkg{Rcpp} code
 and are slightly faster.
 However, only \code{tam.ctt} allows the input of \code{wlescore} and
 \code{pvscores}.
 }
 
 \value{
-A data frame with following columns:	
+A data frame with following columns:
 \item{index}{Index variable in this data frame}
 \item{group}{Group identifier}
 \item{itemno}{Item number}
@@ -128,10 +128,10 @@ plotctt( resp=data.mc$raw , theta = w1$theta , Ncuts =5 , ask=TRUE)
 # use graphics for plot
 plotctt( resp=data.mc$raw , theta = w1$theta , Ncuts =5 , ask=TRUE , package="graphics")
 # change colors
-col.list <- c( "darkred" ,  "darkslateblue" , "springgreen4" , "darkorange" , 
+col.list <- c( "darkred" ,  "darkslateblue" , "springgreen4" , "darkorange" ,
                 "hotpink4" , "navy" )
-plotctt( resp=data.mc$raw , theta = w1$theta , Ncuts =5 , ask=TRUE , 
-        package="graphics" , col.list = col.list )      
+plotctt( resp=data.mc$raw , theta = w1$theta , Ncuts =5 , ask=TRUE ,
+        package="graphics" , col.list = col.list )
 
 # CTT results for scored data
 stat2 <- TAM::tam.ctt( resp=data.mc$scored , wlescore=w1$theta , pvscores=p1[,-1] )

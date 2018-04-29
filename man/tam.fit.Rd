@@ -1,5 +1,5 @@
 %% File Name: tam.fit.Rd
-%% File Version: 2.46
+%% File Version: 2.47
 
 \name{tam.fit}
 
@@ -29,7 +29,7 @@ tam.jml.fit(tamobj)
 \method{summary}{tam.fit}(object, \dots)
 }
 
-%% tam.jml.fit(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, ItemScore, 
+%% tam.jml.fit(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, ItemScore,
 %%    theta, xsi, Msteps, pweightsM, est.xsi.index)
 
 
@@ -49,7 +49,7 @@ The default is 100 (less than 400 students), 40 (less than 1000 students),
     be displayed at console.
 }
 \item{useRcpp}{Optional logical indicating whether \pkg{Rcpp}
-	or pure \R code should be used for fit calculation.
+    or pure \R code should be used for fit calculation.
 The latter is consistent with \pkg{TAM} (<=1.1).}
 \item{seed}{Fixed simulation seed.}
 \item{fit.facets}{An optional logical indicating whether
@@ -64,17 +64,17 @@ fit for all facet parameters should be computed.}
 %% }
 
 \value{
-In case of \code{tam.mml.fit} a data frame as entry \code{itemfit} 
+In case of \code{tam.mml.fit} a data frame as entry \code{itemfit}
 with four columns:
 \item{Outfit}{Item outfit statistic}
 \item{Outfit_t}{The \eqn{t} value for the outfit statistic}
 \item{Outfit_p}{Significance \eqn{p} value for outfit statistic}
-\item{Outfit_pholm}{Significance \eqn{p} value for outfit statistic, 
+\item{Outfit_pholm}{Significance \eqn{p} value for outfit statistic,
 adjusted for multiple testing according to the Holm procedure}
 \item{Infit}{Item infit statistic}
 \item{Infit_t}{The \eqn{t} value for the infit statistic}
 \item{Infit_p}{Significance \eqn{p} value for infit statistic}
-\item{Infit_pholm}{Significance \eqn{p} value for infit statistic, 
+\item{Infit_pholm}{Significance \eqn{p} value for infit statistic,
 adjusted for multiple testing according to the Holm procedure}
 }
 
@@ -101,11 +101,11 @@ which avoids simulations and directly evaluates individual
 posterior distributions.
 
 See \code{\link{tam.jml.fit}} for calculating item fit and person fit statistics
-for models fitted with JML.	
-    
-See \code{\link{tam.personfit}} for computing person fit statistics.    
-    
-Item fit and person fit based on estimated person parameters can also be 
+for models fitted with JML.
+
+See \code{\link{tam.personfit}} for computing person fit statistics.
+
+Item fit and person fit based on estimated person parameters can also be
 calculated using the \code{\link[sirt:pcm.fit]{sirt::pcm.fit}} function
 in the \pkg{sirt} package (see Example 1 and Example 2).
 }
@@ -118,7 +118,7 @@ in the \pkg{sirt} package (see Example 1 and Example 2).
 
 data(data.sim.rasch)
 # estimate Rasch model
-mod1 <- TAM::tam.mml(resp=data.sim.rasch) 
+mod1 <- TAM::tam.mml(resp=data.sim.rasch)
 # item fit
 fit1 <- TAM::tam.fit( mod1 )
 summary(fit1)
@@ -176,7 +176,7 @@ fit1a$item
 
 # generate data with local dependence and User-defined fit statistics
 set.seed(4888)
-I <- 40		# 40 items
+I <- 40        # 40 items
 N <- 1000       # 1000 persons
 
 delta <- seq(-2,2, len=I)
@@ -186,18 +186,18 @@ prob <- stats::plogis(outer(theta, delta, "-"))
 rand <- matrix( stats::runif(N*I), nrow=N, ncol=I)
 resp <- 1*(rand < prob)
 colnames(resp) <- paste("I" , 1:I, sep="")
-  
+
 #induce some local dependence
-for (item in c(10, 20, 30)){ 
+for (item in c(10, 20, 30)){
  #  20% of the item responses for items 11, 21 and 31
- #are made equal to the previous item 
-  row <- round( stats::runif(0.2*N)*N + 0.5)     
+ #are made equal to the previous item
+  row <- round( stats::runif(0.2*N)*N + 0.5)
   resp[row, item+1] <- resp[row, item]
 }
-  
+
 #run TAM
 mod1 <- TAM::tam.mml(resp)
-  
+
 #User-defined fit design matrix
 F <- array(0, dim=c(dim(mod1$A)[1], dim(mod1$A)[2], 6))
 F[,,1] <- mod1$A[,,10] + mod1$A[,,11]
@@ -225,10 +225,10 @@ a[c(1,3)] <- c(.5 , 1.5 )
 # simulate data
 dat <- sirt::sim.raschtype( rnorm(N) , b=b , fixed.a=a )
 #*** estimate Rasch model
-mod1 <- TAM::tam.mml(resp=dat) 
+mod1 <- TAM::tam.mml(resp=dat)
 #*** assess item fit by infit and outfit statistic
 fit1 <- TAM::tam.fit( mod1 )$itemfit
-round( cbind( "b"=mod1$item$AXsi_.Cat1 , fit1$itemfit[,-1] )[1:7,], 3 )  
+round( cbind( "b"=mod1$item$AXsi_.Cat1 , fit1$itemfit[,-1] )[1:7,], 3 )
 
 #*** compute item fit statistic in mirt package
 library(mirt)
@@ -240,13 +240,13 @@ fit1c <- mirt::itemfit(mod1c , method="EAP")    # model fit in mirt package
 # compare results of TAM and mirt
 dfr <- cbind( "TAM"=fit1 , "mirt"=fit1c[,-c(1:2)] )
 
-# S-X2 item fit statistic (see also the output from mirt) 
+# S-X2 item fit statistic (see also the output from mirt)
 library(CDM)
 sx2mod1 <- CDM::itemfit.sx2( mod1 )
 summary(sx2mod1)
 
 # compare results of CDM and mirt
-sx2comp <-  cbind( sx2mod1$itemfit.stat[ , c("S-X2" , "p") ]  , 
+sx2comp <-  cbind( sx2mod1$itemfit.stat[ , c("S-X2" , "p") ]  ,
                     dfr[  , c("mirt.S_X2" , "mirt.p.S_X2") ] )
 round(sx2comp , 3 )
 }

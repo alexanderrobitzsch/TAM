@@ -1,5 +1,5 @@
 %% File Name: data.timssAusTwn.Rd
-%% File Version: 2.10
+%% File Version: 2.11
 
 \name{data.timssAusTwn}
 \alias{data.timssAusTwn}
@@ -7,7 +7,7 @@
 
 \docType{data}
 \title{
-Dataset TIMSS 2011 of Australian and Taiwanese Students 
+Dataset TIMSS 2011 of Australian and Taiwanese Students
 }
 \description{
 Mathematics items of TIMSS 2011 of 1773 Australian and
@@ -60,7 +60,7 @@ data(data.timssAusTwn)
 raw_resp <- data.timssAusTwn
 
 #Recode data
-resp <- raw_resp[,1:11]          
+resp <- raw_resp[,1:11]
       #Column 12 is country code. Column 13 is gender code. Column 14 is Book ID.
 all.na <- rowMeans( is.na(resp) ) == 1
         #Find records where all responses are missing.
@@ -133,7 +133,7 @@ dummy[lower.tri(dummy)] <- 1
 dummy[12:16,c(3,4,7,8)][lower.tri(dummy[12:16,c(3,4,7,8)])]<-2
 
 mod3 <- TAM::tam.mml(dummy, xsi.fixed=anchor)
-wle3 <- TAM::tam.wle(mod3) 
+wle3 <- TAM::tam.wle(mod3)
 }
 }
 

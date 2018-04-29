@@ -1,5 +1,5 @@
 %% File Name: IRT.drawPV.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{IRT.drawPV}
 \alias{IRT.drawPV}
@@ -11,7 +11,7 @@ Function for Drawing Plausible Values
 
 \description{
 This function draws plausible values of a continuous latent variable
-based on a fitted object for which the 
+based on a fitted object for which the
 \code{\link[CDM:IRT.posterior]{CDM::IRT.posterior}} method
 is defined.
 }

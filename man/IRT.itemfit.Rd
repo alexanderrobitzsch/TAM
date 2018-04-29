@@ -1,5 +1,5 @@
 %% File Name: IRT.itemfit.Rd
-%% File Version: 0.18
+%% File Version: 0.19
 
 \name{IRT.itemfit.tam}
 
@@ -16,7 +16,7 @@ RMSD Item Fit Statistics for \pkg{TAM} Objects
 \description{
 Computes the RMSD item fit statistic (formerly labeled as RMSEA;
 Yamamoto, Khorramdel, & von Davier, 2013) for fitted objects in the
-\pkg{TAM} package, see 
+\pkg{TAM} package, see
 \code{\link[CDM:IRT.itemfit]{CDM::IRT.itemfit}} and
 \code{\link[CDM:IRT.RMSD]{CDM::IRT.RMSD}}.
 }
@@ -45,7 +45,7 @@ or \code{tam.mml.3pl}.
 }
 \item{method}{Requested method for item fit calculation. Currently,
 only the RMSD fit statistic (formerly labeled as the RMSEA statistic,
-see \code{\link[CDM:IRT.RMSD]{CDM::IRT.RMSD}}) 
+see \code{\link[CDM:IRT.RMSD]{CDM::IRT.RMSD}})
 can be used.
 }
 \item{\dots}{
@@ -71,19 +71,19 @@ Further arguments to be passed.
 
 
 \references{
-Yamamoto, K., Khorramdel, L., & von Davier, M. (2013). Scaling PIAAC cognitive data. 
-In OECD (Eds.). \emph{Technical Report of the Survey of Adults Skills (PIAAC)} (Ch. 17). 
-Paris: OECD. 
+Yamamoto, K., Khorramdel, L., & von Davier, M. (2013). Scaling PIAAC cognitive data.
+In OECD (Eds.). \emph{Technical Report of the Survey of Adults Skills (PIAAC)} (Ch. 17).
+Paris: OECD.
 }
 
 
-%\note{		
+%\note{
 %}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link[CDM:IRT.itemfit]{CDM::IRT.itemfit}}, 
+\code{\link[CDM:IRT.itemfit]{CDM::IRT.itemfit}},
 \code{\link[CDM:IRT.RMSD]{CDM::IRT.RMSD}}
 }
 

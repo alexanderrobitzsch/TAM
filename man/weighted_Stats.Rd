@@ -1,5 +1,5 @@
 %% File Name: weighted_Stats.Rd
-%% File Version: 1.17
+%% File Version: 1.18
 
 \name{weighted_Stats}
 \alias{weighted_Stats}
@@ -53,7 +53,7 @@ Computation method (can be \code{"unbiased"} or \code{"ML"})), see
 \item{probs}{Vector with probabilities}
 \item{type}{Quantile type. For unweighted data, quantile types 6 and
 7 can be used (see
-\code{\link[stats:quantile]{stats::quantile}}). 
+\code{\link[stats:quantile]{stats::quantile}}).
 For weighted data, the quantile type \code{"i/n"}
 is used (see \code{Hmisc::wtd.quantile})).
 }
@@ -82,20 +82,20 @@ Numeric value
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See \code{\link[stats:weighted.mean]{stats::weighted.mean}} for 
+See \code{\link[stats:weighted.mean]{stats::weighted.mean}} for
 computing a weighted mean.
 
 See \code{\link[stats:var]{stats::var}} for computing
 unweighted variances.
 
-See \code{\link[stats:quantile]{stats::quantile}} and 
+See \code{\link[stats:quantile]{stats::quantile}} and
 \code{Hmisc::wtd.quantile}) for quantiles.
 }
 
 \examples{
 #############################################################################
 # EXAMPLE 1: Toy example for weighted_var function
-#############################################################################	
+#############################################################################
 
 set.seed(9897)
 # simulate data
@@ -160,8 +160,8 @@ weighted_curtosis(x=x)
 y <- scan()
    1 0  1 1   1 2   1 3    1 4
    2 0  2 1   2 2   2 3    2 4
-   
-y <- matrix( y , ncol=2 , byrow=TRUE)    
+
+y <- matrix( y , ncol=2 , byrow=TRUE)
 # define probabilities
 set.seed(976)
 pr <- stats::runif(10)

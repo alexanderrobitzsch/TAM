@@ -1,5 +1,5 @@
 %% File Name: IRT.residuals.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{IRT.residuals}
 \alias{IRT.residuals}
@@ -58,7 +58,7 @@ List with following entries
   \item{X_exp}{Expected value of the item response \eqn{X_{pi}}}
   \item{X_var}{Variance of the item response \eqn{X_{pi}}}
   \item{theta}{Used person parameter estimate}
-\item{probs}{Expected item response probabilities}   
+\item{probs}{Expected item response probabilities}
 }
 %  \item{xx}{xxx}
 
@@ -89,7 +89,7 @@ See also \code{\link[TAM:predict.tam.mml]{predict.tam.mml}}.
 \examples{
 #############################################################################
 # EXAMPLE 1: Residuals data.read
-#############################################################################	
+#############################################################################
 
 library(sirt)
 data(data.read,package="sirt")

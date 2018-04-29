@@ -1,5 +1,5 @@
 %% File Name: doparse.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{doparse}
 \alias{doparse}
@@ -11,13 +11,13 @@ Parsing a String with \code{DO} Statements
 
 \description{
 This function parses a string and expands this string in case of \code{DO}
-statements which are shortcuts for writing loops. The statement 
+statements which are shortcuts for writing loops. The statement
 \code{DO(n,m,k)} increments an index from \code{n} to \code{m} in steps
 of \code{k}. The index in the string \code{model} must be defined
 as \code{\%}. For a nested loop within a loop,
 the \code{DO2} statement can be used using \code{\%1} and \code{\%2}
 as indices. See Examples for hints on the specification. The loop in \code{DO2}
-must not be explicitly crossed, e.g. in applications for specifying 
+must not be explicitly crossed, e.g. in applications for specifying
 covariances or correlations. The formal syntax for \cr
 \code{ for (ii in 1:(K-1)){  for (jj in (ii+1):K) { ... } }} \cr
 can be written as \code{DO2(1,K-1,1,\%1,K,1
@@ -84,10 +84,10 @@ model <- "
    HA1 =~ I\%
    I\% | beta\% * t1
  DOEND
- "   
+ "
 
 # process string
-out <- TAM::doparse(model) 
+out <- TAM::doparse(model)
 cat(out)
   ##    # items I1,...,I10 load on G
   ##       G =~ lamg1 * I1
@@ -101,13 +101,13 @@ cat(out)
   ##       G =~ lamg9 * I9
   ##       G =~ lamg10 * I10
   ##     I2 | 0.75*t1
-  ##     v10 > 0 
-  ##       F1 =~ a11 * A11 
-  ##       F2 =~ a21 * A21 
-  ##       F1 =~ a12 * A12 
-  ##       F2 =~ a22 * A22 
-  ##       F1 =~ a13 * A13 
-  ##       F2 =~ a23 * A23 
+  ##     v10 > 0
+  ##       F1 =~ a11 * A11
+  ##       F2 =~ a21 * A21
+  ##       F1 =~ a12 * A12
+  ##       F2 =~ a22 * A22
+  ##       F1 =~ a13 * A13
+  ##       F2 =~ a23 * A23
   ##       HA1 =~ I1
   ##       HA1 =~ I3
   ##       HA1 =~ I5
@@ -118,7 +118,7 @@ cat(out)
   ##       I5 | beta5 * t1
   ##       I7 | beta7 * t1
   ##       I9 | beta9 * t1
-  
+
 #############################################################################
 # EXAMPLE 2: doparse with nested loop example
 #############################################################################
@@ -128,19 +128,19 @@ model <- "
  DO(1,4,1)
    G =~ lamg\% * I\%
  DOEND
- # specify some correlated residuals 
+ # specify some correlated residuals
  DO2(1,3,1,\%1,4,1)
    I\%1 ~~ I\%2
  DOEND
- "   
+ "
 # process string
-out <- TAM::doparse(model) 
+out <- TAM::doparse(model)
 cat(out)
   ##       G =~ lamg1 * I1
   ##       G =~ lamg2 * I2
   ##       G =~ lamg3 * I3
   ##       G =~ lamg4 * I4
-  ##     # specify some correlated residuals 
+  ##     # specify some correlated residuals
   ##       I1 ~~ I2
   ##       I1 ~~ I3
   ##       I1 ~~ I4

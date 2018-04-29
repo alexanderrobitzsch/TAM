@@ -1,5 +1,5 @@
 %% File Name: tam.latreg.Rd
-%% File Version: 0.26
+%% File Version: 0.27
 
 \name{tam.latreg}
 \alias{tam.latreg}
@@ -13,9 +13,9 @@ Latent Regression Model
 }
 
 \description{
-This function fits a latent regression model \eqn{\bold{\theta} = \bold{Y} 
-\bold{\beta} + \bold{\varepsilon}}. 
-Only the individual likelihood evaluated at a 
+This function fits a latent regression model \eqn{\bold{\theta} = \bold{Y}
+\bold{\beta} + \bold{\varepsilon}}.
+Only the individual likelihood evaluated at a
 \eqn{\bold{\theta}} grid is needed as the input. Like in
 \code{\link{tam.mml}} a multivariate normal distribution is posed
 on the residual distribution. Plausible values can be drawn by subsequent
@@ -23,11 +23,11 @@ application of \code{\link{tam.pv}} (see Example 1).
 }
 
 \usage{
-tam.latreg(like, theta=NULL, Y = NULL, group = NULL, formulaY = NULL, dataY = NULL, 
-   beta.fixed = FALSE, beta.inits = NULL, variance.fixed = NULL, 
-   variance.inits = NULL, est.variance = TRUE, pweights = NULL, pid = NULL, 
+tam.latreg(like, theta=NULL, Y = NULL, group = NULL, formulaY = NULL, dataY = NULL,
+   beta.fixed = FALSE, beta.inits = NULL, variance.fixed = NULL,
+   variance.inits = NULL, est.variance = TRUE, pweights = NULL, pid = NULL,
    userfct.variance = NULL, variance.Npars = NULL, verbose = TRUE, control = list())
-   
+
 \method{summary}{tam.latreg}(object,file=NULL,\dots)
 
 \method{print}{tam.latreg}(x,\dots)
@@ -35,7 +35,7 @@ tam.latreg(like, theta=NULL, Y = NULL, group = NULL, formulaY = NULL, dataY = NU
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{like}{
-Individual likelihood. This can be typically extracted from fitted 
+Individual likelihood. This can be typically extracted from fitted
 item response models by making use of \code{IRT.likelihood}.
 }
   \item{theta}{
@@ -69,7 +69,7 @@ is automatically extracted as an attribute.
      which is the default.
 }
   \item{beta.inits}{
-     A matrix (same format as in \code{beta.fixed}) 
+     A matrix (same format as in \code{beta.fixed})
      with initial \eqn{\beta} values
 }
   \item{variance.fixed}{
@@ -101,7 +101,7 @@ is automatically extracted as an attribute.
 if a \code{userfct.variance} is provided.}
   \item{verbose}{
 Optional logical indicating whether iteration should be displayed.
-} 
+}
 \item{control}{
 List of control parameters, see \code{\link{tam.mml}} fro details.
 }
@@ -109,19 +109,19 @@ List of control parameters, see \code{\link{tam.mml}} fro details.
 Object of class \code{tam.latreg}
 }
 \item{file}{
-A file name in which the summary output will be written 
+A file name in which the summary output will be written
     }
-\item{x}{Object of class \code{tam.latreg}}    
+\item{x}{Object of class \code{tam.latreg}}
 \item{\dots}{
-	Further arguments to be passed
-}   
+    Further arguments to be passed
+}
 }
 
 %\details{
 %}
 
 \value{
-Subset of values of \code{\link{tam.mml}}	
+Subset of values of \code{\link{tam.mml}}
 }
 
 
@@ -166,7 +166,7 @@ Y <- dat[ , c("migra" , "hisei", "female") ]
 mod2 <- TAM::tam.latreg( like1 , theta=attr(like1, "theta") , Y = Y , pid=dat$idstud )
 summary(mod2)
 # plausible value imputation
-pv2 <- TAM::tam.pv( mod2 ) 
+pv2 <- TAM::tam.pv( mod2 )
 # create list of imputed datasets
 Y <- dat[ , c("idstud" , "idschool" , "female" , "hisei" , "migra") ]
 pvnames <- c("PVREAD")
@@ -212,7 +212,7 @@ str(like)
 mod2 <- TAM::tam.latreg( like , Y = X , pid=dat$idstud )
 summary(mod2)
 # plausible value imputation
-pv2 <- TAM::tam.pv( mod2 , samp.regr=TRUE , nplausible=5 ) 
+pv2 <- TAM::tam.pv( mod2 , samp.regr=TRUE , nplausible=5 )
 # create list of imputed datasets
 X <- dat[ , c("idstud" , "idschool" , "female" , "hisei" , "migra") ]
 pvnames <- c("PVREAD")
@@ -223,7 +223,7 @@ str(datlist)
 library(semTools)
 lavmodel <- "
    PVREAD ~ hisei + female
-           "                           
+           "
 mod1a <- semTools::sem.mi( lavmodel , datlist)
 summary(mod1a , standardized=TRUE, rsquare=TRUE)
 
@@ -249,10 +249,10 @@ lavmodel <- "
    MJ =~ mj1__mj4
    MJ ~~ 1*MJ
    SC ~~ MJ
-        "        
+        "
 # process lavaan syntax
-res <- TAM::lavaanify.IRT( lavmodel , dat )        
-# fit lavaan CFA model                        
+res <- TAM::lavaanify.IRT( lavmodel , dat )
+# fit lavaan CFA model
 mod1 <- lavaan::cfa( res$lavaan.syntax , dat , std.lv=TRUE)
 summary(mod1 , standardized=TRUE , fit.measures=TRUE )
 # extract likelihood
@@ -263,7 +263,7 @@ X <- dat[ , c("urban","female") ]
 mod2 <- TAM::tam.latreg( like1 , Y = X  )
 summary(mod2)
 # plausible value imputation
-pv2 <- TAM::tam.pv( mod2 , samp.regr=TRUE , normal.approx=TRUE ) 
+pv2 <- TAM::tam.pv( mod2 , samp.regr=TRUE , normal.approx=TRUE )
 # create list of imputed datasets
 Y <- dat[ , c("urban" , "female" ) ]
 pvnames <- c("PVSC" , "PVMJ")

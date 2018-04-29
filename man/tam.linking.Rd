@@ -1,5 +1,5 @@
 %% File Name: tam.linking.Rd
-%% File Version: 0.45
+%% File Version: 0.46
 
 \name{tam.linking}
 \alias{tam.linking}
@@ -19,24 +19,24 @@ Linking of Fitted Unidimensional Item Response Models in \pkg{TAM}
 Performs linking of fitted unidimensional item response models in \pkg{TAM}
 according to the Stocking-Lord and the Haebara method (Kolen & Brennan, 2014;
 Gonzales & Wiberg, 2017).
-Several studies are linking by a chain of linkings of two studies. The linking 
-of two studies is implemented in the \code{tam_linking_2studies} function. 
+Several studies are linking by a chain of linkings of two studies. The linking
+of two studies is implemented in the \code{tam_linking_2studies} function.
 }
 
 \usage{
-tam.linking(tamobj_list, type = "SL", theta = NULL, wgt = NULL, fix.slope = FALSE, 
+tam.linking(tamobj_list, type = "SL", theta = NULL, wgt = NULL, fix.slope = FALSE,
    verbose = TRUE)
 
-\method{summary}{tam.linking}(object, file=NULL, \dots)  
+\method{summary}{tam.linking}(object, file=NULL, \dots)
 
-\method{print}{tam.linking}(x, \dots) 
+\method{print}{tam.linking}(x, \dots)
 
-tam_linking_2studies( B1, AXsi1, guess1, B2, AXsi2, guess2, theta, wgt, type, 
+tam_linking_2studies( B1, AXsi1, guess1, B2, AXsi2, guess2, theta, wgt, type,
     M1=0, SD1=1, M2=0, SD2=1, fix.slope=FALSE)
-   
+
 \method{summary}{tam_linking_2studies}(object, file=NULL, \dots)
 
-\method{print}{tam_linking_2studies}(x, \dots)    
+\method{print}{tam_linking_2studies}(x, \dots)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -90,21 +90,21 @@ List containing entries
    linking chain}
  \item{M_SD}{Mean and standard deviation for each study after linking}
  \item{trafo_items}{Transformation constants for item parameters}
- \item{trafo_persons}{Transformation constants for person parameters} 
+ \item{trafo_persons}{Transformation constants for person parameters}
 }
 
 
 \references{
 Battauz, M. (2015). \pkg{equateIRT}: An \R package for IRT test equating.
-\emph{Journal of Statistical Software, 68}(7), 1-22.		
+\emph{Journal of Statistical Software, 68}(7), 1-22.
 
-Gonzalez, J., & Wiberg, M. (2017). 
+Gonzalez, J., & Wiberg, M. (2017).
 \emph{Applying test equating methods: Using \R}. New York, Springer.
 
-Kolen, M. J., & Brennan, R. L. (2014). \emph{Test equating, scaling, and linking: 
+Kolen, M. J., & Brennan, R. L. (2014). \emph{Test equating, scaling, and linking:
 Methods and practices}. New York, Springer.
 
-Weeks, J. P. (2010). \pkg{plink}: An \R package for linking mixed-format tests 
+Weeks, J. P. (2010). \pkg{plink}: An \R package for linking mixed-format tests
 using IRT-based methods. \emph{Journal of Statistical Software, 35}(12), 1-33.
 }
 
@@ -120,7 +120,7 @@ using IRT-based methods. \emph{Journal of Statistical Software, 35}(12), 1-33.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-Linking of item response models can be also conducted with \pkg{plink} 
+Linking of item response models can be also conducted with \pkg{plink}
 (Weeks, 2010) or \pkg{equateIRT} (Battauz, 2015) packages. See also the
 \code{\link[sirt:linking.haberman]{sirt::linking.haberman}} in the \pkg{sirt}
 package.

@@ -1,5 +1,5 @@
 %% File Name: data.sim.rasch.Rd
-%% File Version: 2.11
+%% File Version: 2.12
 
 \name{data.sim.rasch}
 
@@ -22,7 +22,7 @@ Simulated Rasch data under unidimensional trait distribution
 %% ## Safe simulation script in "inst"-folder
 
 \usage{
- data(data.sim.rasch) 
+ data(data.sim.rasch)
  data(data.sim.rasch.pweights)
  data(data.sim.rasch.missing)
 }
@@ -56,7 +56,7 @@ Simulated Rasch data under unidimensional trait distribution
 %}
 
 \examples{
-\dontrun{      
+\dontrun{
 data(data.sim.rasch)
 N <- 2000
 Y <- cbind( stats::rnorm( N , sd = 1.5) , stats::rnorm(N , sd = .3 ) )
@@ -65,7 +65,7 @@ Y <- cbind( stats::rnorm( N , sd = 1.5) , stats::rnorm(N , sd = .3 ) )
 # B <- array( 0 , dim = c( I , 2 , 1 )  )
 # B[1:(nrow(B)), 2, 1] <- 1
 B <- TAM::designMatrices(resp = data.sim.rasch)[["B"]]
-  
+
 # estimate Rasch model
 mod1_1 <- TAM::tam.mml(resp=data.sim.rasch , Y=Y)
 
@@ -77,10 +77,10 @@ tam.fit(mod1_1)
 
 # plausible value imputation
 # PV imputation has to be adpated for multidimensional case!
-pv1 <- TAM::tam.pv( mod1_1 , nplausible = 7 , # 7 plausible values 
+pv1 <- TAM::tam.pv( mod1_1 , nplausible = 7 , # 7 plausible values
                samp.regr = TRUE       # sampling of regression coefficients
               )
-              
+
 # item parameter constraints
 xsi.fixed <- matrix( c( 1, -2,5, -.22,10, 2 ), nrow=3 , ncol=2 , byrow=TRUE)
 xsi.fixed
@@ -94,7 +94,7 @@ mod1_2 <- TAM::tam.mml(data.sim.rasch.missing , Y = Y)
 data(data.sim.rasch.pweights)
 N <- 1000
 pweights <- c(  rep(3,N/2) , rep( 1, N/2 ) )
-mod1_3 <- TAM::tam.mml( data.sim.rasch.pweights , control = list(conv = .001) , 
+mod1_3 <- TAM::tam.mml( data.sim.rasch.pweights , control = list(conv = .001) ,
                pweights = pweights )
   }
 }

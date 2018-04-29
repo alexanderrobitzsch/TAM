@@ -7,15 +7,15 @@ SEXP _TAM_calcfx(SEXP sFx, SEXP sRprobs, SEXP sRespIndList, SEXP sResp){
 /****************************************************/
 /* Get dimension of sRprobs and sResp               */
   SEXP sRprobsDim = getAttrib(sRprobs, R_DimSymbol);
-	int nitems = INTEGER(sRprobsDim)[0];
-  int	ncats = INTEGER(sRprobsDim)[1];
+    int nitems = INTEGER(sRprobsDim)[0];
+  int    ncats = INTEGER(sRprobsDim)[1];
   int nnodes = INTEGER(sRprobsDim)[2];  
   int nresp = INTEGER(getAttrib(sResp, R_DimSymbol))[0];
   
   SEXP dims = allocVector(INTSXP, 2);
   PROTECT(dims);
-	INTEGER(dims)[0] = nresp; 
-	INTEGER(dims)[1] = nnodes;
+    INTEGER(dims)[0] = nresp; 
+    INTEGER(dims)[1] = nnodes;
 
 /****************************************************/
 /* initialization                                   */
@@ -43,7 +43,7 @@ SEXP _TAM_calcfx(SEXP sFx, SEXP sRprobs, SEXP sRespIndList, SEXP sResp){
   }
   
   setAttrib(sResult, R_DimSymbol, dims);
-	UNPROTECT(1);
+    UNPROTECT(1);
   return sResult;
 } 
 
@@ -57,15 +57,15 @@ SEXP calcfx_logprobs(SEXP sFx, SEXP sRprobs, SEXP sRespIndList, SEXP sResp){
 /****************************************************/
 /* Get dimension of sRprobs and sResp               */
   SEXP sRprobsDim = getAttrib(sRprobs, R_DimSymbol);
-	int nitems = INTEGER(sRprobsDim)[0];
-  int	ncats = INTEGER(sRprobsDim)[1];
+    int nitems = INTEGER(sRprobsDim)[0];
+  int    ncats = INTEGER(sRprobsDim)[1];
   int nnodes = INTEGER(sRprobsDim)[2];  
   int nresp = INTEGER(getAttrib(sResp, R_DimSymbol))[0];
   
   SEXP dims = allocVector(INTSXP, 2);
   PROTECT(dims);
-	INTEGER(dims)[0] = nresp; 
-	INTEGER(dims)[1] = nnodes;
+    INTEGER(dims)[0] = nresp; 
+    INTEGER(dims)[1] = nnodes;
 
 /****************************************************/
 /* initialization                                   */
@@ -93,6 +93,6 @@ SEXP calcfx_logprobs(SEXP sFx, SEXP sRprobs, SEXP sRespIndList, SEXP sResp){
   }
   
   setAttrib(sResult, R_DimSymbol, dims);
-	UNPROTECT(1);
+    UNPROTECT(1);
   return sResult;
 } 

@@ -1,5 +1,5 @@
 %% File Name: IRT.informationCurves.Rd
-%% File Version: 0.13
+%% File Version: 0.14
 
 \name{IRT.informationCurves}
 \alias{IRT.informationCurves}
@@ -11,7 +11,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 
 \title{
-Item and Test Information Curve 
+Item and Test Information Curve
 }
 
 \description{
@@ -21,23 +21,23 @@ An S3 method which computes item and test information curves, see Muraki (1993).
 \usage{
 IRT.informationCurves(object, ...)
 
-\method{IRT.informationCurves}{tam.mml}( object , h=.0001 , iIndex = NULL , 
-          theta = NULL , ... )
-          
-\method{IRT.informationCurves}{tam.mml.2pl}( object , h=.0001 , iIndex = NULL , 
+\method{IRT.informationCurves}{tam.mml}( object , h=.0001 , iIndex = NULL ,
           theta = NULL , ... )
 
-\method{IRT.informationCurves}{tam.mml.mfr}( object , h=.0001 , iIndex = NULL , 
+\method{IRT.informationCurves}{tam.mml.2pl}( object , h=.0001 , iIndex = NULL ,
           theta = NULL , ... )
 
-\method{IRT.informationCurves}{tam.mml.3pl}( object , h=.0001 , iIndex = NULL , 
+\method{IRT.informationCurves}{tam.mml.mfr}( object , h=.0001 , iIndex = NULL ,
           theta = NULL , ... )
-          
-\method{plot}{IRT.informationCurves}(x , curve_type="test" , \dots)           
+
+\method{IRT.informationCurves}{tam.mml.3pl}( object , h=.0001 , iIndex = NULL ,
+          theta = NULL , ... )
+
+\method{plot}{IRT.informationCurves}(x , curve_type="test" , \dots)
 }
 
-% informationCurves_mml <- function( object , h=.0001 , 
-%	iIndex = NULL , theta = NULL , ... )
+% informationCurves_mml <- function( object , h=.0001 ,
+%    iIndex = NULL , theta = NULL , ... )
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -54,7 +54,7 @@ The default is to use all items.}
 \item{theta}{Optional vector of \eqn{\theta} for which information curves
 should be computed.}
 \item{curve_type}{Type of information to be plotted. It can be \code{"test"}
-	for the test information curve and \code{"se"} for the 
+    for the test information curve and \code{"se"} for the
 standard error curve.}
   \item{x}{
 Object of class \code{tam.mml}, \code{tam.mml.2pl}, \code{tam.mml.mfr}
@@ -73,7 +73,7 @@ List with following entries
   \item{test_info_curve}{Test information curve}
   \item{info_curves_item}{Item information curves}
   \item{info_curves_categories}{Item-category information curves}
-  \item{theta}{Used \eqn{\theta} grid} 
+  \item{theta}{Used \eqn{\theta} grid}
 }
 
 \references{
@@ -94,7 +94,7 @@ model. \emph{Applied Psychological Measurement, 17}(4), 351-363.
 %}
 
 \examples{
-\dontrun{	
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Dichotomous data | data.read
 #############################################################################
@@ -103,7 +103,7 @@ data(data.read , package="sirt")
 dat <- data.read
 
 # fit 2PL model
-mod1 <- TAM::tam.mml.2pl( dat ) 
+mod1 <- TAM::tam.mml.2pl( dat )
 summary(mod1)
 
 # compute information curves at grid seq(-5,5,length=100)
@@ -118,7 +118,7 @@ plot( imod1 , curve_type = "se" , xlim=c(-3,2) , ylim = c(0,2) , lwd=2 , lty=3)
 
 #############################################################################
 # EXAMPLE 2: Mixed dichotomous and polytomous data
-#############################################################################	
+#############################################################################
 
 data(data.timssAusTwn.scored, package="TAM")
 dat <- data.timssAusTwn.scored
@@ -146,12 +146,12 @@ est.guess <- 1:I
 est.guess[ maxK > 1 ] <- 0
 guess <- .2*(est.guess >0)
 guess.prior <- matrix( 0 , nrow=I , ncol=2 )
-guess.prior[ est.guess  > 0 , 1] <- 5 
+guess.prior[ est.guess  > 0 , 1] <- 5
 guess.prior[ est.guess  > 0 , 2] <- 17
 
 # fit model
 mod3 <- TAM::tam.mml.3pl( resp , gammaslope.des = "2PL" , est.guess=est.guess , guess=guess ,
-           guess.prior = guess.prior ,  
+           guess.prior = guess.prior ,
            control=list( maxiter=100 , Msteps=10 , fac.oldxsi=0.1 ,
                         nodes = seq(-8,8,len=41) ) ,  est.variance=FALSE )
 summary(mod3)

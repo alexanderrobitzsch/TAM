@@ -1,5 +1,5 @@
 %% File Name: IRT.irfprob.tam.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{IRT.irfprob}
 
@@ -16,7 +16,7 @@ Extracting Item Response Functions
 
 \description{
 Extracts item response functions for models
-fitted in \pkg{TAM}. See \code{\link[CDM:IRT.irfprob]{CDM::IRT.irfprob}} 
+fitted in \pkg{TAM}. See \code{\link[CDM:IRT.irfprob]{CDM::IRT.irfprob}}
  for more details.
 }
 
@@ -73,7 +73,7 @@ See \code{\link[CDM:IRT.irfprob]{CDM::IRT.irfprob}}.
 #############################################################################
 # EXAMPLE 1: Dichotomous data data.sim.rasch - item response functions
 #############################################################################
-	
+
 data(data.sim.rasch)
 # 1PL estimation
 mod1 <- TAM::tam.mml(resp=data.sim.rasch)

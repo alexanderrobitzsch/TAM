@@ -1,5 +1,5 @@
 %% File Name: predict.Rd
-%% File Version: 0.19
+%% File Version: 0.20
 
 \name{predict}
 
@@ -15,9 +15,9 @@ Expected Values and Predicted Probabilities for Fitted \pkg{TAM} Models
 
 \description{
 Extracts predicted values from the posterior distribution for models
-fitted in \pkg{TAM}. 
+fitted in \pkg{TAM}.
 
-See \code{\link[CDM:predict]{CDM::predict}} 
+See \code{\link[CDM:predict]{CDM::predict}}
 for more details.
 }
 
@@ -71,11 +71,11 @@ See \code{\link[CDM:predict]{predict}} (\pkg{CDM}).
 %}
 
 
-\examples{	
+\examples{
 #############################################################################
 # EXAMPLE 1: Dichotomous data sim.rasch - predict method
 #############################################################################
-	
+
 data(data.sim.rasch)
 # 1PL estimation
 mod1 <- TAM::tam.mml(resp=data.sim.rasch)

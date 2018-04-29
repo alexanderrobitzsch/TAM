@@ -1,5 +1,5 @@
 %% File Name: IRT.simulate.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{IRT.simulate}
 \alias{IRT.simulate}
@@ -67,11 +67,11 @@ Data frame with simulated item responses
 #############################################################################
 # EXAMPLE 1: Simulating Rasch model
 #############################################################################
-	
+
 data(data.sim.rasch)
 
 #** (1) estimate model
-mod1 <- TAM::tam.mml(resp = data.sim.rasch ) 
+mod1 <- TAM::tam.mml(resp = data.sim.rasch )
 
 #** (2) simulate data
 sim.dat <- TAM::IRT.simulate(mod1)
@@ -87,8 +87,8 @@ mod.sim.dat <- TAM::tam.mml(sim.dat)
 sim.dat <- TAM::IRT.simulate(mod1, nobs = 1500, iIndex = iIndex)
 
 # Rasch - constraint = "items" ----
-mod1 <- TAM::tam.mml(resp = data.sim.rasch,  constraint = "items" , 
-                control=list( xsi.start0=1 , fac.oldxsi=.5) ) 
+mod1 <- TAM::tam.mml(resp = data.sim.rasch,  constraint = "items" ,
+                control=list( xsi.start0=1 , fac.oldxsi=.5) )
 
 # provide abilities
 theta0 <- matrix( rnorm(1500, mean=0.5, sd= sqrt(mod1$variance)) , ncol=1 )
@@ -108,7 +108,7 @@ data(data.sim.rasch)
 mod2 <- TAM::tam.mml.2pl(resp = data.sim.rasch, irtmodel = "2PL")
 # simulate 2PL
 sim.dat <- TAM::IRT.simulate(mod2)
-mod.sim.dat <- TAM::tam.mml.2pl(resp = sim.dat, irtmodel = "2PL") 
+mod.sim.dat <- TAM::tam.mml.2pl(resp = sim.dat, irtmodel = "2PL")
 
 #############################################################################
 # EXAMPLE 3: Simulate multiple group model
@@ -126,9 +126,9 @@ group <- rep(1:2 , each=N/2 )
 mod3 <- TAM::tam.mml(resp, group = group)
 
 # simulate data
-sim.dat.g1 <- TAM::IRT.simulate(mod3, 
+sim.dat.g1 <- TAM::IRT.simulate(mod3,
                    theta = matrix( stats::rnorm(N/2, mean = 0, sd = 1.5), ncol=1) )
-sim.dat.g2 <- TAM::IRT.simulate(mod3, 
+sim.dat.g2 <- TAM::IRT.simulate(mod3,
                    theta = matrix( stats::rnorm(N/2, mean = .5, sd = 1), ncol=1) )
 sim.dat <- rbind( sim.dat.g1 , sim.dat.g2)
 # estimate model
@@ -139,7 +139,7 @@ mod3s <- TAM::tam.mml( sim.dat , group = group)
 #############################################################################
 
 set.seed(6778)
-N <- 2000      
+N <- 2000
 Y <- cbind( stats::rnorm(N), stats::rnorm(N))
 theta <- mvtnorm::rmvnorm(N, mean = c(0,0), sigma = matrix(c(1,.5,.5,1), 2, 2))
 theta[,1] <- theta[,1] + .4 * Y[,1] + .2 * Y[,2]  # latent regression model
@@ -157,14 +157,14 @@ Q <- array(0 , dim = c(2 * I, 2))
 Q[cbind(1:(2*I), c(rep(1, I), rep(2, I)))] <- 1
 Q
 
-# (3) estimate models 
+# (3) estimate models
 mod4 <- TAM::tam.mml(resp = resp, Q = Q, Y = Y, control = list(  maxiter = 15))
 
-# simulate new item responses 
+# simulate new item responses
 theta <- mvtnorm::rmvnorm(N, mean = c(0,0), sigma = matrix(c(1,.5,.5,1), 2, 2))
 theta[,1] <- theta[,1] + .4 * Y[,1] + .2 * Y[,2]  # latent regression model
 theta[,2] <- theta[,2] + .8 * Y[,1] + .5 * Y[,2]  # latent regression model
-  
+
 sim.dat <- TAM::IRT.simulate(mod4, theta = theta)
 mod.sim.dat <- TAM::tam.mml(resp = sim.dat, Q = Q, Y = Y, control = list( maxiter = 15))
 }

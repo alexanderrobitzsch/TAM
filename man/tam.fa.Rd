@@ -1,5 +1,5 @@
 %% File Name: tam.fa.Rd
-%% File Version: 2.16
+%% File Version: 2.17
 
 \name{tam.fa}
 \alias{tam.fa}
@@ -12,7 +12,7 @@ Bifactor Model and Exploratory Factor Analysis
 
 \description{
 Estimates the bifactor model and exploratory factor analysis with
-marginal maximum likelihood estimation. 
+marginal maximum likelihood estimation.
 
 This function is simply a wrapper to \code{\link{tam.mml}} or
 \code{\link{tam.mml.2pl}}.
@@ -21,7 +21,7 @@ This function is simply a wrapper to \code{\link{tam.mml}} or
 
 
 \usage{
-tam.fa(resp, irtmodel, dims = NULL, nfactors = NULL, pid = NULL, 
+tam.fa(resp, irtmodel, dims = NULL, nfactors = NULL, pid = NULL,
     pweights = NULL, verbose = TRUE, control = list())
 }
 
@@ -39,7 +39,7 @@ A string which defines the IRT model to be estimated. Options
 are \code{"efa"} (exploratory factor analysis), \code{"bifactor1"} (Rasch
 testlet model in case of dichotomous data; Wang & Wilson, 2005;
 for polytomous data it assumes item slopes of 1) and \code{"bifactor2"}
-(bifactor model). 
+(bifactor model).
 See Details for more information.
 }
 \item{dims}{
@@ -64,7 +64,7 @@ be printed during iterations. This argument replaces \code{control$progress}.
 }
   \item{control}{
 See \code{\link{tam.mml}} for more details. Note that the default is
-Quasi Monte Carlo integration with 1500 nodes (\code{snodes=1500}, 
+Quasi Monte Carlo integration with 1500 nodes (\code{snodes=1500},
 \code{QMC=TRUE}).
 }
 }
@@ -74,21 +74,21 @@ Quasi Monte Carlo integration with 1500 nodes (\code{snodes=1500},
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \details{
-The exploratory factor analysis (\code{irtmodel="efa"} 
+The exploratory factor analysis (\code{irtmodel="efa"}
 is estimated using an echelon form of the loading matrix and uncorrelated factors.
-The obtained standardized loading matrix is rotated using oblimin rotation. 
+The obtained standardized loading matrix is rotated using oblimin rotation.
 In addition, a Schmid-Leimann transformation (see Revelle & Zinbarg, 2009)
 is employed.
 
-The bifactor model (\code{irtmodel="bifactor2"}; Reise 2012) 
+The bifactor model (\code{irtmodel="bifactor2"}; Reise 2012)
 for dichotomous responses is defined as
 \deqn{logit P(X_{pi}=1 | \theta_{pg} , u_{p1} , \ldots , u_{pD} ) =
-    a_{i0} \theta_{pg} + a_{i1} u_{pd(i) } } 
+    a_{i0} \theta_{pg} + a_{i1} u_{pd(i) } }
 Items load on the general factor \eqn{\theta_{pg}} and a specific (nested)
-factor \eqn{u_{pd(i) }}. All factors are assumed to be uncorrelated. 
+factor \eqn{u_{pd(i) }}. All factors are assumed to be uncorrelated.
 
-In the Rasch testlet model (\code{irtmodel="bifactor1"}), 
-all item slopes are set to 1 and variances are 
+In the Rasch testlet model (\code{irtmodel="bifactor1"}),
+all item slopes are set to 1 and variances are
 estimated.
 
 For polytomous data, the generalized partial credit model is used. The loading
@@ -102,7 +102,7 @@ structure is defined in the same way as for dichotomous data.
 
 
 \value{
-The same list entries as in \code{\link{tam.mml}} but in addition the 
+The same list entries as in \code{\link{tam.mml}} but in addition the
 following statistics are included:
 \item{B.stand}{Standardized factor loadings of the bifactor model or the
 exploratory factor analysis.}
@@ -112,9 +112,9 @@ loadings form the Schmid-Leimann solution of the \pkg{psych} package.}
    factor analysis which is produced by the \pkg{GPArotation} package}
 \item{meas}{Vector of dimensionality and reliability statistics.
    Included are the ECV measure (explained common variation;
-   Reise, Moore & Haviland, 2010; Reise, 2012), 
-   \eqn{\omega_t} (Omega Total), \eqn{\omega_a} (Omega asymptotic) 
-   and \eqn{\omega_h} (Omega hierarchical) (Revelle & Zinbarg, 2009). 
+   Reise, Moore & Haviland, 2010; Reise, 2012),
+   \eqn{\omega_t} (Omega Total), \eqn{\omega_a} (Omega asymptotic)
+   and \eqn{\omega_h} (Omega hierarchical) (Revelle & Zinbarg, 2009).
    The reliability of the sum score based on
    the bifactor model for dichotomous item responses is also
    included (Green & Yang, 2009).
@@ -131,20 +131,20 @@ loadings form the Schmid-Leimann solution of the \pkg{psych} package.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \references{
-Green, S. B., & Yang, Y. (2009). Reliability of summed item 
-scores using structural equation modeling: An alternative to 
-coefficient alpha. \emph{Psychometrika, 74}, 155-167. 
+Green, S. B., & Yang, Y. (2009). Reliability of summed item
+scores using structural equation modeling: An alternative to
+coefficient alpha. \emph{Psychometrika, 74}, 155-167.
 
-Reise, S. P. (2012). The rediscovery of bifactor measurement models. 
+Reise, S. P. (2012). The rediscovery of bifactor measurement models.
 \emph{Multivariate Behavioral Research, 47}, 667-696.
 
 Reise, S. P., Moore, T. M., & Haviland, M. G.  (2010).
-Bifactor models and rotations: Exploring the extent to which 
-multidimensional data yield univocal scale scores, 
+Bifactor models and rotations: Exploring the extent to which
+multidimensional data yield univocal scale scores,
 \emph{Journal of Personality Assessment, 92}, 544-559.
 
-Revelle, W., & Zinbarg, R. E. (2009). 
-Coefficients alpha, beta, omega and the glb: Comments on Sijtsma. 
+Revelle, W., & Zinbarg, R. E. (2009).
+Coefficients alpha, beta, omega and the glb: Comments on Sijtsma.
 \emph{Psychometrika, 74}, 145-154.
 
 Wang, W.-C., & Wilson, M. (2005). The Rasch testlet model.
@@ -201,7 +201,7 @@ GPArotation::quartimin( mod1a$B.stand )
 
 #***
 # Model 1b: Rasch testlet model with 3 testlets
-dims <- substring( colnames(resp),1,1 )	 # define dimensions
+dims <- substring( colnames(resp),1,1 )     # define dimensions
 mod1b <- TAM::tam.fa( resp=resp , irtmodel="bifactor1" , dims=dims )
 summary(mod1b)
 

@@ -1,5 +1,5 @@
 %% File Name: plot.tam.Rd
-%% File Version: 3.33
+%% File Version: 3.34
 
 \name{plot.tam}
 \alias{plot.tam}
@@ -17,19 +17,19 @@ or \code{tam.mml}.
 }
 
 \usage{
-\method{plot}{tam}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6,  
-                   groups_by_item = FALSE, wle=NULL, export=TRUE, export.type="png", 
-                   export.args=list(), observed=TRUE, overlay=FALSE , 
+\method{plot}{tam}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6,
+                   groups_by_item = FALSE, wle=NULL, export=TRUE, export.type="png",
+                   export.args=list(), observed=TRUE, overlay=FALSE ,
                    ask=FALSE, package="lattice" , fix.devices=TRUE , ...)
-	
-\method{plot}{tam.mml}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6, 
+
+\method{plot}{tam.mml}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6,
                        groups_by_item = FALSE, wle=NULL, export=TRUE, export.type="png",
-                       export.args=list(), observed=TRUE, overlay=FALSE , 
+                       export.args=list(), observed=TRUE, overlay=FALSE ,
                        ask=FALSE,  package="lattice" ,  fix.devices=TRUE , ...)
-     
-\method{plot}{tam.jml}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6, 
+
+\method{plot}{tam.jml}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6,
                        groups_by_item = FALSE, wle=NULL, export=TRUE, export.type="png",
-                       export.args=list(), observed=TRUE, overlay=FALSE , 
+                       export.args=list(), observed=TRUE, overlay=FALSE ,
                        ask=FALSE,  package="lattice" , fix.devices=TRUE , ...)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -43,8 +43,8 @@ or \code{tam.mml}.
   An index vector giving the items to be visualized.
 }
 \item{type}{Plot type. \code{type="expected"} plot the expected item
-	response curves while \code{type="items"} plots the response
-	curves of all item categories.}
+    response curves while \code{type="items"} plots the response
+    curves of all item categories.}
   \item{low}{
 Lowest \eqn{\theta} value to be displayed
 }
@@ -55,26 +55,26 @@ Highest \eqn{\theta} value to be displayed
 Number of score groups to be displayed. The default are
 six groups.
 }
-\item{groups_by_item}{Logical indicating whether grouping of persons 
+\item{groups_by_item}{Logical indicating whether grouping of persons
 should be conducted item-wise. The groupings will differ from item to item
 in case of missing item responses.}
   \item{wle}{
 Use WLE estimate for displaying observed scores.
 }
   \item{export}{
-A logical which indicates whether all graphics should be separately 
+A logical which indicates whether all graphics should be separately
 exported in files of type \code{export.type} in a subdirectory \code{'Plots'}
 of the working directory.
 }
 \item{export.type}{
-  A string which indicates the type of the graphics export. For currently 
-  supported file types, see     
+  A string which indicates the type of the graphics export. For currently
+  supported file types, see
 \code{\link[grDevices:dev.new]{grDevices::dev.new}}.
 
 }
 \item{export.args}{
-  A list of arguments that are passed to the export method can be specified. 
-  See the respective export device method for supported usage.  
+  A list of arguments that are passed to the export method can be specified.
+  See the respective export device method for supported usage.
 }
 \item{observed}{
   A logical which indicates whether observed response curve should
@@ -90,7 +90,7 @@ of the working directory.
 \item{package}{Used \R package for plot. Can be \code{"lattice"} or
 \code{"graphics"}.}
 \item{fix.devices}{Optional logical indicating whether old graphics devices should
-	 be saved.}
+     be saved.}
 \item{\dots}{
   Further arguments to be passed
 }
@@ -127,7 +127,7 @@ for a general plot method.
 }
 
 \examples{
-\dontrun{	
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Dichotomous data data.sim.rasch
 #############################################################################

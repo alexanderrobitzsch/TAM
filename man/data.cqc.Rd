@@ -1,5 +1,5 @@
 %% File Name: data.cqc.Rd
-%% File Version: 2.23
+%% File Version: 2.24
 
 \name{data.cqc}
 
@@ -34,7 +34,7 @@ data(data.cqc05)
 \format{
 
 \itemize{
-\item \code{data.cqc01} contains 512 persons on 
+\item \code{data.cqc01} contains 512 persons on
 12 dichotomous items of following format
 
 \code{'data.frame':   512 obs. of  12 variables:} \cr
@@ -44,7 +44,7 @@ data(data.cqc05)
 \code{ [...]} \cr
 \code{ $ BSMSA12: int  0 0 0 0 1 0 1 1 0 0 ...} \cr
 
-\item \code{data.cqc02} contains 431 persons on 8 polytomous 
+\item \code{data.cqc02} contains 431 persons on 8 polytomous
 variables of following format
 
 \code{'data.frame':   431 obs. of  8 variables:} \cr
@@ -55,7 +55,7 @@ variables of following format
 \code{ $ It8: int  3 1 0 0 3 1 3 0 3 0 ...} \cr
 
 \item \code{data.cqc03} contains 11200 observations for
-5600 persons, 16 raters and 2 items (\code{crit1} and \code{crit2}) 
+5600 persons, 16 raters and 2 items (\code{crit1} and \code{crit2})
 
 \code{'data.frame':   11200 obs. of  4 variables:} \cr
 \code{ $ pid  : num  10001 10001 10002 10002 10003 ...} \cr
@@ -102,7 +102,7 @@ variables of following format
 See the \code{\link[sirt:R2conquest]{sirt::R2conquest}} function
 for running ConQuest software from within \R.
 
-See the \pkg{\link[WrightMap:WrightMap]{WrightMap}} package for functions 
+See the \pkg{\link[WrightMap:WrightMap]{WrightMap}} package for functions
 connected to reading ConQuest files and creating Wright maps.
 ConQuest output files can be read into \R with the help of
 the \code{\link[WrightMap:CQmodel]{WrightMap::CQmodel}} function.
@@ -110,7 +110,7 @@ See also the \code{\link{IRT.WrightMap}} function in \pkg{TAM}.
 
 See also the \pkg{eat} package (\url{https://r-forge.r-project.org/projects/eat/})
 for elaborate functionality for communication of ConQuest with \R.
-}	
+}
 % https://r-forge.r-project.org/projects/eat/
 
 %\source{
@@ -131,8 +131,8 @@ library(sirt)
 library(WrightMap)
 # In the following, ConQuest will also be used for estimation.
 path.conquest <- "C:/Conquest"             # path of the ConQuest console.exe
-setwd( "p:/my_files/ConQuest_analyses" )  # working directory 
-	
+setwd( "p:/my_files/ConQuest_analyses" )  # working directory
+
 #############################################################################
 # EXAMPLE 01: Rasch model data.cqc01
 #############################################################################
@@ -178,14 +178,14 @@ dat <- data.cqc02
 #********************************************
 # Model 02a: Partial credit model in ConQuest parametrization 'item+item*step'
 mod02a <- TAM::tam.mml( dat , irtmodel="PCM2" )
-summary(mod02a , file = "mod02a") 
+summary(mod02a , file = "mod02a")
 fit02a <- TAM::tam.fit(mod02a)
 summary(fit02a)
 
 #--- ConQuest
 # estimate model
 maxK <- max( dat , na.rm=TRUE )
-cmod02a <- sirt::R2conquest( dat , itemcodes= 0:maxK, model= "item+item*step" , 
+cmod02a <- sirt::R2conquest( dat , itemcodes= 0:maxK, model= "item+item*step" ,
                name = "mod02a" , path.conquest=path.conquest)
 summary(cmod02a)   # summary output
 
@@ -219,7 +219,7 @@ summary( mod03a )
 X <- data.cqc03[,"rater",drop=FALSE]
 X$rater <- as.numeric(substring( X$rater , 2 )) # convert 'rater' in numeric format
 maxK <- max( resp , na.rm=TRUE)
-cmod03a <- sirt::R2conquest( resp ,  X = X , regression="" ,  model= "item+step+rater" , 
+cmod03a <- sirt::R2conquest( resp ,  X = X , regression="" ,  model= "item+step+rater" ,
              name = "mod03a" , path.conquest=path.conquest , set.constraints="cases" )
 summary(cmod03a)   # summary output
 
@@ -245,7 +245,7 @@ dat1 <- matrix( NA , nrow= length(persons) , ncol=length(raters) + 1 )
 dat1 <- as.data.frame(dat1)
 colnames(dat1) <- c("pid" , raters )
 dat1$pid <- persons
-for (rr in raters){ 
+for (rr in raters){
     dat1.rr <- data.cqc03[ data.cqc03$rater == rr , ]
     dat1[ match(dat1.rr$pid , persons) ,rr] <- dat1.rr$crit1
         }
@@ -323,7 +323,7 @@ mod05a <-tam.mml(resp= resp , irtmodel="PCM2" )
 # Model 05b: Partial credit model with latent regressors
 mod05b <-tam.mml(resp= resp , irtmodel="PCM2" ,  Y = data.cqc05[,1:3] )
 # Plausible value imputation
-pvmod05b <- TAM::tam.pv( mod05b ) 
+pvmod05b <- TAM::tam.pv( mod05b )
 }
 }
 

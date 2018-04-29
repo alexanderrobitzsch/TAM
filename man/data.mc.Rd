@@ -1,5 +1,5 @@
 %% File Name: data.mc.Rd
-%% File Version: 2.07
+%% File Version: 2.08
 
 \name{data.mc}
 \alias{data.mc}
@@ -18,7 +18,7 @@ data(data.mc)
   The dataset is a list with two elements. The entry \code{raw}
   contains unscored (raw) item responses and the entry \code{scored}
   contains the scored (recoded) item responses. The format is:
-  
+
 \code{List of 2} \cr
 \code{ $ raw   : chr [1:143, 1:30] "A" "A" "A" "A" ...} \cr
 \code{  ..- attr(*, "dimnames")=List of 2} \cr

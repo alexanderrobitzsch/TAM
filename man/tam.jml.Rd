@@ -1,5 +1,5 @@
 %% File Name: tam.jml.Rd
-%% File Version: 2.32
+%% File Version: 2.33
 
 \name{tam.jml}
 
@@ -18,13 +18,13 @@ item response models with joint maximum likelihood (JML,
 }
 
 \usage{
-tam.jml(resp, group = NULL, adj = .3, disattenuate = FALSE, bias = TRUE, 
-    xsi.fixed = NULL, xsi.inits = NULL, theta.fixed=NULL, A = NULL, B = NULL, Q = NULL, 
+tam.jml(resp, group = NULL, adj = .3, disattenuate = FALSE, bias = TRUE,
+    xsi.fixed = NULL, xsi.inits = NULL, theta.fixed=NULL, A = NULL, B = NULL, Q = NULL,
     ndim = 1, pweights = NULL, verbose = TRUE, control = list(), version = 2)
 
 \method{summary}{tam.jml}(object, file=NULL, \dots)
 
-\method{logLik}{tam.jml}(object, \dots)     
+\method{logLik}{tam.jml}(object, \dots)
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -42,8 +42,8 @@ tam.jml(resp, group = NULL, adj = .3, disattenuate = FALSE, bias = TRUE,
      An optional vector of group identifier
 }
   \item{disattenuate}{
-    An optional logical indicating whether the person parameters 
-    should be disattenuated due to unreliability? 
+    An optional logical indicating whether the person parameters
+    should be disattenuated due to unreliability?
     The disattenuation is conducted by applying the Kelley formula.
 }
 \item{adj}{Adjustment constant which is subtracted or added to extreme
@@ -65,7 +65,7 @@ scores (score of zero or maximum score. The default is a value of 0.3}
      same format as \code{xsi.fixed}.
 }
 \item{theta.fixed}{Matrix for fixed person parameters \eqn{\theta}. The first
-	column includes the index whereas the second column includes
+    column includes the index whereas the second column includes
 the fixed value. This argument can only be applied for \code{version=1}.}
   \item{A}{
      A design array \eqn{A} for item category intercepts.
@@ -101,18 +101,18 @@ Object of class \code{tam.jml} (only for \code{summary.tam}
 function)
 }
 \item{file}{
-A file name in which the summary output will be written 
+A file name in which the summary output will be written
 (only for \code{summary.tam.jml} function)
     }
 \item{\dots}{
-	Further arguments to be passed
-	}   
+    Further arguments to be passed
+    }
 
 }
 
 %\details{
 %The function \code{tam.jml2} is just a bit more efficient (for most
-%applications) implementation than \code{tam.jml}. 
+%applications) implementation than \code{tam.jml}.
 %}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -164,7 +164,7 @@ A list with following entries
 
 
 \references{
-Linacre, J. M. (1994). \emph{Many-Facet Rasch Measurement}. 
+Linacre, J. M. (1994). \emph{Many-Facet Rasch Measurement}.
 Chicago: MESA Press.
 }
 
@@ -173,7 +173,7 @@ Chicago: MESA Press.
 %}
 
 \note{
-This joint maximum likelihood estimation procedure should be 
+This joint maximum likelihood estimation procedure should be
 compatible with Winsteps and Facets software, see also
 \url{http://www.rasch.org/software.htm}.
 }
@@ -196,7 +196,7 @@ maximum likelihood estimation see \code{\link{tam.mml}}.
 data(data.sim.rasch)
 resp <- data.sim.rasch[1:700 , seq( 1 , 40 , len=10)  ]  # subsample
 # estimate the Rasch model with JML (function 'tam.jml')
-mod1a <- TAM::tam.jml(resp=resp) 
+mod1a <- TAM::tam.jml(resp=resp)
 summary(mod1a)
 itemfit <- TAM::tam.fit(mod1a)$fit.item
 
@@ -219,7 +219,7 @@ round( rbind( mod1a$xsi , mod1d$xsi ) , 3 )
   ##   [2,] -2.105 -1.766 -1.233 -0.746 -0.349 0.139 0.587 1.156 1.574 2.108
 
 # person parameters for persons with a score 0, 5 and 10
-pers1 <- data.frame( "score_adj0.3"= mod1a$PersonScore , "theta_adj0.3"= mod1a$theta , 
+pers1 <- data.frame( "score_adj0.3"= mod1a$PersonScore , "theta_adj0.3"= mod1a$theta ,
            "score_adj0.05"= mod1d$PersonScore , "theta_adj0.05"= mod1d$theta  )
 round( pers1[ c(698, 683, 608) , ] ,3  )
   ##       score_adj0.3 theta_adj0.3 score_adj0.05 theta_adj0.05
@@ -255,7 +255,7 @@ data(data.gpcm)
 mod2 <- TAM::tam.jml(resp=data.gpcm)
 mod2$xsi     # extract item parameters
 summary(mod2)
-tam.fit(mod2)	# item and person infit/outfit statistic
+tam.fit(mod2)    # item and person infit/outfit statistic
 
 #############################################################################
 # EXAMPLE 3: Facet model estimation using joint maximum likelihood
@@ -278,8 +278,8 @@ resp <- dat[ , -c(1:2) ]        # item response data
 formulaA <- ~ item * rater      # formula
 
 # use MML function only to restructure data and input obtained design matrices
-# and processed response data to tam.jml (-> therefore use only 2 iterations) 
-mod3a <- TAM::tam.mml.mfr( resp=resp , facets=facets , formulaA = formulaA , 
+# and processed response data to tam.jml (-> therefore use only 2 iterations)
+mod3a <- TAM::tam.mml.mfr( resp=resp , facets=facets , formulaA = formulaA ,
              pid=dat$pid ,  control=list(maxiter=2) )
 
 # use modified response data mod3a$resp and design matrix mod3a$A
@@ -296,7 +296,7 @@ resp <- data.exJ03$resp
 X <- data.exJ03$X
 
 #*** (0) preprocess data with TAM::tam.mml.mfr
-mod0 <- TAM::tam.mml.mfr( resp=resp , facets = X , pid = X$rater , 
+mod0 <- TAM::tam.mml.mfr( resp=resp , facets = X , pid = X$rater ,
                 formulaA = ~ leader + item + step ,
                 control=list(maxiter=2) )
 summary(mod0)
@@ -322,8 +322,8 @@ xsi.index <- rbind( xsi.index1 , xsi.index2 )
 # fix some theta parameters of persons 1, 15 and 20
 theta.fixed <- cbind(  c(1,15,20) , c(0.4 , 1 , 0 ) )
 # estimate model, theta.fixed only works for version=1
-mod2 <- TAM::tam.jml( resp=resp1 , A=A1 , xsi.fixed=xsi.fixed , theta.fixed=theta.fixed , 
-            control=list( Msteps=4 , maxiter=100) )                                
+mod2 <- TAM::tam.jml( resp=resp1 , A=A1 , xsi.fixed=xsi.fixed , theta.fixed=theta.fixed ,
+            control=list( Msteps=4 , maxiter=100) )
 summary(mod2)
 cbind( mod2$WLE , mod2$errorWLE )
 }

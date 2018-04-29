@@ -1,5 +1,5 @@
 %% File Name: TAM-utilities.Rd
-%% File Version: 0.53
+%% File Version: 0.54
 
 \name{TAM-utilities}
 \alias{TAM-utilities}
@@ -36,13 +36,13 @@
 \title{Utility Functions in \pkg{TAM}}
 
 \description{
-Utility functions in \pkg{TAM}. 
+Utility functions in \pkg{TAM}.
 }
 
 \usage{
 ## information about used package version
 tam_packageinfo(pack)
-## call statement in a string format	
+## call statement in a string format
 tam_print_call(CALL)
 ## information about R session
 tam_rsessinfo()
@@ -57,10 +57,10 @@ tam_round_data_frame(obji, from=1, to=ncol(obji), digits=3, rownames_null=FALSE)
 ## round some columns in a data frame and print this data frame
 tam_round_data_frame_print(obji, from=1, to=ncol(obji), digits=3, rownames_null=FALSE)
 ## copy of CDM::osink
-tam_osink(file, suffix="__SUMMARY.Rout")                          
+tam_osink(file, suffix="__SUMMARY.Rout")
 ## copy of CDM::csink
-tam_csink(file)                          
-                          
+tam_csink(file)
+
 ## base::matrix function with argument value byrow=TRUE
 tam_matrix2(x, nrow=NULL, ncol=NULL)
 ## more efficient base::outer functions for operations "*", "+" and "-"
@@ -93,13 +93,13 @@ tam_AXsi_compute(A, xsi)
 ## fit xsi given A and AXsi
 tam_AXsi_fit(A, AXsi)
 
-## trimming increments in iterations 
-tam_trim_increment(increment, max.increment, trim_increment="cut", 
+## trimming increments in iterations
+tam_trim_increment(increment, max.increment, trim_increment="cut",
      trim_incr_factor = 2, eps = 1E-10, avoid_na = FALSE)
 ## numerical differentiation by central difference
-tam_difference_quotient(d0, d0p, d0m, h) 
+tam_difference_quotient(d0, d0p, d0m, h)
 ## assign elements of a list in an environment
-tam_assign_list_elements(x, envir)    
+tam_assign_list_elements(x, envir)
 }
 
 \arguments{

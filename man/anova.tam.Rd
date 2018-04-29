@@ -1,5 +1,5 @@
 %% File Name: anova.tam.Rd
-%% File Version: 2.24
+%% File Version: 2.25
 
 \name{anova-logLik}
 \alias{anova.tam}
@@ -54,7 +54,7 @@ The function can be applied for values of \code{\link{tam.mml}},
   \item{object}{
 Object of class \code{\link{tam}}, \code{\link{tam.mml}},
 \code{\link{tam.mml.3pl}}, \code{\link{tam.latreg}}
-or \code{\link{tamaan}}. Note that for \code{anova} two objects 
+or \code{\link{tamaan}}. Note that for \code{anova} two objects
 (fitted models) must be provided.
 }
 \item{\dots}{Further arguments to be passed}
@@ -92,7 +92,7 @@ information criteria.
 #############################################################################
 # EXAMPLE 1: Dichotomous data sim.rasch - 1PL vs. 2PL model
 #############################################################################
-	
+
 data(data.sim.rasch)
 # 1PL estimation
 mod1 <- TAM::tam.mml(resp=data.sim.rasch)
@@ -105,7 +105,7 @@ anova( mod1 , mod2 )
   ##     Model   loglike Deviance Npars      AIC      BIC    Chisq df       p
   ##   1  mod1 -42077.88 84155.77    41 84278.77 84467.40 54.05078 39 0.05508
   ##   2  mod2 -42050.86 84101.72    80 84341.72 84709.79       NA NA      NA
-  
+
 \dontrun{
 #############################################################################
 # EXAMPLE 2: Dataset reading (sirt package): 1- vs. 2-dimensional model
@@ -114,10 +114,10 @@ anova( mod1 , mod2 )
 data(data.read,package="sirt")
 
 # 1-dimensional model
-mod1 <- TAM::tam.mml.2pl(resp= data.read ) 
+mod1 <- TAM::tam.mml.2pl(resp= data.read )
 # 2-dimensional model
 mod2 <- TAM::tam.fa(resp= data.read , irtmodel="efa" , nfactors=2 ,
-             control=list(maxiter=150) ) 
+             control=list(maxiter=150) )
 # Model comparison
 anova( mod1 , mod2 )
   ##       Model   loglike Deviance Npars      AIC      BIC    Chisq df  p

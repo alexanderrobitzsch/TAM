@@ -1,5 +1,5 @@
 %% File Name: data.fims.Aus.Jpn.Rd
-%% File Version: 2.08
+%% File Version: 2.09
 
 \name{data.fims.Aus.Jpn.scored}
 \alias{data.fims.Aus.Jpn.raw}
@@ -10,7 +10,7 @@ Dataset FIMS Study with Responses of Australian and Japanese Students
 }
 \description{
 Dataset FIMS study with raw responses (\code{data.fims.Aus.Jpn.raw}) or
-scored responses (\code{data.fims.Aus.Jpn.scored}) of Australian and 
+scored responses (\code{data.fims.Aus.Jpn.scored}) of Australian and
 Japanese Students.
 }
 
@@ -73,22 +73,22 @@ mod1 <- TAM::tam.mml(scored[,items])
 
 # extract values of the gender variable into a variable called "gender".
 gender <- scored[,"SEX"]
-# computes the test score for each student by calculating the row sum 
+# computes the test score for each student by calculating the row sum
 # of each student's scored responses.
 raw_score <- rowSums(scored[,items] )
 
 # compute the mean test score for each gender group: 1=male, and 2=female
 stats::aggregate(raw_score,by=list(gender),FUN=mean)
-# The mean test score is 6.12 for group 1 (males) and 6.27 for group 2 (females). 
-# That is, the two groups performed similarly, with girls having a slightly 
-# higher mean test score. The step of computing raw test scores is not necessary 
-# for the IRT analyses. But it's always a good practice to explore the data 
+# The mean test score is 6.12 for group 1 (males) and 6.27 for group 2 (females).
+# That is, the two groups performed similarly, with girls having a slightly
+# higher mean test score. The step of computing raw test scores is not necessary
+# for the IRT analyses. But it's always a good practice to explore the data
 # a little before delving into more complex analyses.
 
 # Facets analysis
-# To conduct a DIF analysis, we set up the variable "gender" as a facet and 
-# re-run the IRT analysis. 
-formulaA <- ~item+gender+item*gender	# define facets analysis
+# To conduct a DIF analysis, we set up the variable "gender" as a facet and
+# re-run the IRT analysis.
+formulaA <- ~item+gender+item*gender    # define facets analysis
 facets <- as.data.frame(gender)         # data frame with student covariates
 # facets model for studying differential item functioning
 mod2 <- TAM::tam.mml.mfr( resp= scored[,items], facets= facets , formulaA = formulaA )

@@ -1,5 +1,5 @@
 %% File Name: tam_irf_3pl.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{tam_irf_3pl}
 \alias{tam_irf_3pl}
@@ -23,9 +23,9 @@ tam_irf_3pl(theta, AXsi, B, guess=NULL, subtract_max=TRUE)
 Matrix or vector of \eqn{\bold{\theta}} values
 }
 \item{AXsi}{Matrix of item-category parameters}
-\item{B}{Array containing item-category loadings} 
+\item{B}{Array containing item-category loadings}
 \item{guess}{Optional parameter of guessing parameters}
-\item{subtract_max}{Logical indicating whether numerical underflow in 
+\item{subtract_max}{Logical indicating whether numerical underflow in
 probabilities should be explicitly avoided}
 }
 
@@ -37,7 +37,7 @@ probabilities should be explicitly avoided}
 
 \value{
 Array containing item response probabilities arranged by the dimensions
-theta points \eqn{\times} items \eqn{\times} categories 
+theta points \eqn{\times} items \eqn{\times} categories
 }
 
 %\references{

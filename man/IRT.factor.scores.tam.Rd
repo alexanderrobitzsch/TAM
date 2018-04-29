@@ -1,5 +1,5 @@
 %% File Name: IRT.factor.scores.tam.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{IRT.factor.scores}
 
@@ -16,7 +16,7 @@ Extracting Factor Scores in \pkg{TAM}
 
 \description{
 Extracts factor scores for models
-fitted in \pkg{TAM}. See \code{\link[CDM:IRT.factor.scores]{CDM::IRT.factor.scores}} 
+fitted in \pkg{TAM}. See \code{\link[CDM:IRT.factor.scores]{CDM::IRT.factor.scores}}
 for more details.
 }
 
@@ -39,11 +39,11 @@ Object of class \code{\link{tam}}, \code{\link{tam.mml}},
 \code{\link{tam.mml.3pl}} or \code{\link{tamaan}}.
 }
 \item{type}{Type of factor score to be used. \code{type="EAP"} can be used
-	for all classes in \pkg{TAM} while \code{type="WLE"} and
-	\code{type="MLE"} can only be used for objects of class
-	 \code{\link{tam.mml}}. Further arguments to the 
-	 used function \code{\link{tam.wle}} can be specified
-	 with \code{\dots}.
+    for all classes in \pkg{TAM} while \code{type="WLE"} and
+    \code{type="MLE"} can only be used for objects of class
+     \code{\link{tam.mml}}. Further arguments to the
+     used function \code{\link{tam.wle}} can be specified
+     with \code{\dots}.
 }
 \item{\dots}{Further arguments to be passed}
 }
@@ -77,11 +77,11 @@ See \code{\link[CDM:IRT.factor.scores]{CDM::IRT.factor.scores}}.
 
 
 \examples{
-\dontrun{	
+\dontrun{
 #############################################################################
-# EXAMPLE 1: data.sim.rasch - Different factor scores in Rasch model 
+# EXAMPLE 1: data.sim.rasch - Different factor scores in Rasch model
 #############################################################################
-	
+
 data(data.sim.rasch)
 # 1PL estimation
 mod1 <- TAM::tam.mml(resp=data.sim.rasch)

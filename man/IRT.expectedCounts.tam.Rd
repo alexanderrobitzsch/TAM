@@ -1,5 +1,5 @@
 %% File Name: IRT.expectedCounts.tam.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{IRT.expectedCounts}
 
@@ -16,7 +16,7 @@ Extracting Expected Counts
 
 \description{
 Extracts expected counts for models
-fitted in \pkg{TAM}. See \code{\link[CDM:IRT.expectedCounts]{CDM::IRT.expectedCounts}} 
+fitted in \pkg{TAM}. See \code{\link[CDM:IRT.expectedCounts]{CDM::IRT.expectedCounts}}
 for more details.
 }
 
@@ -69,12 +69,12 @@ See \code{\link[CDM:IRT.expectedCounts]{CDM::IRT.expectedCounts}}.
 %}
 
 
-\examples{	
-\dontrun{	
+\examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Dichotomous data data.sim.rasch - extract expected counts
 #############################################################################
-	
+
 data(data.sim.rasch)
 # 1PL estimation
 mod1 <- TAM::tam.mml(resp=data.sim.rasch)

@@ -1,11 +1,11 @@
 %% File Name: lavaanify.IRT.Rd
-%% File Version: 1.34
+%% File Version: 1.35
 
 \name{lavaanify.IRT}
 \alias{lavaanify.IRT}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Slight Extension of the \code{lavaan} Syntax, with Focus on Item Response Models 
+Slight Extension of the \code{lavaan} Syntax, with Focus on Item Response Models
 }
 
 \description{
@@ -13,14 +13,14 @@ This functions slightly extends the \code{lavaan}
 syntax implemented in the \pkg{lavaan} package
 (see \code{\link[lavaan:lavaanify]{lavaan::lavaanify}}).
 
-Guessing and slipping parameters can be specified 
+Guessing and slipping parameters can be specified
 by using the operators \code{?=g1} and \code{?=s1},
-respectively. 
+respectively.
 
 The operator \code{__} can be used for a convenient
 specification for groups of items. For example, \code{I1__I5} refers
 to items \code{I1,...,I5}. The operator \code{__} can also be used for
-item labels (see Example 2). 
+item labels (see Example 2).
 
 Nonlinear terms can also be specified for loadings (\code{=~}) and
 regressions (\code{~}) (see Example 3).
@@ -51,7 +51,7 @@ operators \code{?=g1}, \code{?=s1}, \code{__} and nonlinear terms.
        residual variances should be processed such that they
        are freely estimated.}
 \item{doparse}{Optional logical indicating whether \code{lavmodel}
-should be parsed for \code{DO} statements.} 
+should be parsed for \code{DO} statements.}
 }
 
 %\details{
@@ -59,12 +59,12 @@ should be parsed for \code{DO} statements.}
 %}
 
 \value{
-A list with following entries	
+A list with following entries
 \item{lavpartable}{A \code{lavaan} parameter table}
 \item{lavaan.syntax}{Processed syntax for \pkg{lavaan} package}
 \item{nonlin_factors}{Data frame with renamed and original nonlinear
 factor specifications}
-\item{nonlin_syntable}{Data frame with original and modified 
+\item{nonlin_syntable}{Data frame with original and modified
 syntax if nonlinear factors are used.}
 }
 
@@ -89,15 +89,15 @@ See \code{\link[sirt:tam2mirt]{sirt::tam2mirt}} for
 converting objects of class \code{tam} into \code{mirt}
 objects.
 
-See \code{\link[sirt:lavaan2mirt]{sirt::lavaan2mirt}} 
+See \code{\link[sirt:lavaan2mirt]{sirt::lavaan2mirt}}
 for estimating models in the \pkg{mirt} package using \code{lavaan} syntax.
 
 See \code{\link{doparse}} for the \code{DO} and \code{DO2} statements.
 }
 
 \examples{
-library(lavaan)	
-	
+library(lavaan)
+
 #############################################################################
 # EXAMPLE 1: lavaan syntax with guessing and slipping parameters
 #############################################################################
@@ -110,7 +110,7 @@ lavmodel <- "
     # joint guessing parameter for A1 and A2
     A1+A2 ?= c1*g1
     A3 | 0.75*t1
-    # fix guessing parameter to .25 and 
+    # fix guessing parameter to .25 and
     # slipping parameter to .01 for item A3
     A3 ?= .25*g1+.01*s1
     A4 ?= c2*g1
@@ -139,7 +139,7 @@ lavpartable <- TAM::lavaanify.IRT(lavmodel)$lavpartable
 \dontrun{
 #############################################################################
 # EXAMPLE 2: Usage of "__" and "?=" operators
-#############################################################################  
+#############################################################################
 
 library(sirt)
 data(data.read, package="sirt")
@@ -161,9 +161,9 @@ lavmodel <- "
    # slipping parameters
    A1__B1 + B3__C2 ?= slip1*s1
    # residual variances
-   B1__B3 ~~ errB*B1__B3 
+   B1__B3 ~~ errB*B1__B3
    A2__A4 ~~ erra1__erra3*A2__A4
-    " 
+    "
 lav2 <- TAM::lavaanify.IRT( lavmodel , data=dat)
 lav2$lavpartable
 cat( lav2$lavaan.syntax )
@@ -175,7 +175,7 @@ lavmodel <- "
    F1 ~~ F2
    F1 ~~ 1*F1
    F2 ~~ 1*F2
-    "   
+    "
 lav3 <- TAM::lavaanify.IRT( lavmodel , data=dat)
 lav3$lavpartable
 cat( lav3$lavaan.syntax )
@@ -203,9 +203,9 @@ lavmodel <- "
    F3 ~ F1 + F2 + 1.4*I(F1*F2) + b*I(F1^2) + I(F2^2 )
    # F3 ~ F2 + I(F2^2)      # this line is ignored in the lavaan model
    F1 ~~ 1*F1
-    "   
-    
-#*** process lavaan syntax    
+    "
+
+#*** process lavaan syntax
 lav3 <- TAM::lavaanify.IRT( lavmodel , items=items)
 
 #*** inspect results
@@ -218,7 +218,7 @@ lav3$nonlin_factors
 # EXAMPLE 4: Using lavaanify.IRT for estimation with lavaan
 #############################################################################
 
-data(data.big5, package="sirt") 
+data(data.big5, package="sirt")
 # extract first 10 openness items
 items <- which( substring( colnames(data.big5) , 1 , 1 ) == "O"  )[1:10]
 dat <- as.data.frame( data.big5[ , items ] )
@@ -231,9 +231,9 @@ lavmodel <- "
    O =~ O3__O48   # convenient syntax for defining the factor for all items
    O ~~ 1*O
    "
-# process lavaan syntax   
+# process lavaan syntax
 res <- TAM::lavaanify.IRT( lavmodel , data = dat )
-# estimate lavaan model 
+# estimate lavaan model
 mod1 <- lavaan::lavaan( model= res$lavaan.syntax , data=dat)
 summary(mod1 , standardized=TRUE , fit.measures = TRUE , rsquare=TRUE )
 }
@@ -248,7 +248,7 @@ lavmodel <- "
   DOEND
   DO(1,5,2)
     A =~ I\%
-  DOEND  
+  DOEND
   DO(2,6,2)
     B =~ I\%
   DOEND
@@ -259,7 +259,7 @@ lavmodel <- "
   F ~~ 0*B
   A ~~ 0*B
    "
-res <- TAM::lavaanify.IRT( lavmodel , items = paste("I",1:6) )   
+res <- TAM::lavaanify.IRT( lavmodel , items = paste("I",1:6) )
 cat(res$lavaan.syntax)
 
 #############################################################################
@@ -271,10 +271,10 @@ lavmodel <- "
   ytrue ~ xtrue + z
   # exogeneous variable error-prone y with error variance .20
   MEASERR1(ytrue,y,.20)
-  # exogeneous variable error-prone x with error variance .35  
+  # exogeneous variable error-prone x with error variance .35
   MEASERR0(xtrue,x,.35)
   ytrue ~~ ytrue
-    "  
+    "
 # observed items
 items <- c("y","x","z")
 # lavaanify
@@ -289,7 +289,7 @@ cat(res$lavaan.syntax)
   ##   x~~0.35*x
   ##   xtrue~~xtrue
   ##   ytrue~~ytrue
-  ##   z~~z 
+  ##   z~~z
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

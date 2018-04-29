@@ -1,5 +1,5 @@
 %% File Name: data.geiser.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{data.geiser}
 \alias{data.geiser}
@@ -20,7 +20,7 @@ data(data.geiser)
 
 \format{
 A data frame with 519 observations on the following 24 variables
-  
+
 \code{'data.frame':   519 obs. of  24 variables:} \cr
 \code{ $ mrt1 : num  0 0 0 0 0 0 0 0 0 0 ...} \cr
 \code{ $ mrt2 : num  0 0 0 0 0 0 0 0 0 0 ...} \cr
@@ -42,17 +42,17 @@ A data frame with 519 observations on the following 24 variables
 \references{
 Geiser, C., & Eid, M. (2010). Item-Response-Theorie.
 In C. Wolf & H. Best (Hrsg.). \emph{Handbuch der sozialwissenschaftlichen
-Datenanalyse} (S. 311-332). VS Verlag fuer Sozialwissenschaften. 	
-	
+Datenanalyse} (S. 311-332). VS Verlag fuer Sozialwissenschaften.
+
 Geiser, C., Lehmann, W., & Eid, M. (2006). Separating rotators from
-nonrotators in the mental rotations test: A multigroup latent class analysis. 
+nonrotators in the mental rotations test: A multigroup latent class analysis.
 \emph{Multivariate Behavioral Research, 41}(3), 261-293.
 }
 
 
 
 \examples{
-\dontrun{	
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Latent trait and latent class models (Geiser et al., 2006, MBR)
 #############################################################################
@@ -69,7 +69,7 @@ tammodel <- "
   ITEM TYPE:
     ALL(Rasch)
     "
-mod1 <- TAM::tamaan( tammodel , dat)    
+mod1 <- TAM::tamaan( tammodel , dat)
 summary(mod1)
 
 #**********************************************
@@ -79,14 +79,14 @@ tammodel <- "
     F =~ mrt1__mrt12
     F ~~ 1*F
     "
-mod2 <- TAM::tamaan( tammodel , dat)    
+mod2 <- TAM::tamaan( tammodel , dat)
 summary(mod2)
 
 # model comparison Rasch vs. 2PL
 anova(mod1,mod2)
 
 #*********************************************************************
-#*** Model 3: Latent class analysis with four classes  
+#*** Model 3: Latent class analysis with four classes
 
 tammodel <- "
 ANALYSIS:
@@ -95,7 +95,7 @@ ANALYSIS:
   NSTARTS(10,20); # 10 random starts with 20 iterations
 LAVAAN MODEL:
   F =~ mrt1__mrt12
-    "    
+    "
 mod3 <- TAM::tamaan( tammodel , resp=dat  )
 summary(mod3)
 
@@ -106,16 +106,16 @@ matplot( imod2 , type="o" , pch=1:4 , xlab="Item" , ylab="Probability" )
 legend( 10 ,1 , paste0("Class",1:4) , lty=1:4 , col=1:4 , pch=1:4 )
 
 #*********************************************************************
-#*** Model 4: Latent class analysis with five classes  
+#*** Model 4: Latent class analysis with five classes
 
 tammodel <- "
 ANALYSIS:
   TYPE=LCA;
-  NCLASSES(5); 
+  NCLASSES(5);
   NSTARTS(10,20);
 LAVAAN MODEL:
   F =~ mrt1__mrt12
-    "    
+    "
 mod4 <- TAM::tamaan( tammodel , resp=dat )
 summary(mod4)
 
@@ -140,7 +140,7 @@ LAVAAN MODEL:
   F ~~ F
 ITEM TYPE:
   ALL(Rasch);
-    "    
+    "
 mod1 <- TAM::tamaan( tammodel , resp=dat  )
 summary(mod1)
 
@@ -156,7 +156,7 @@ LAVAAN MODEL:
   F ~~ F
 ITEM TYPE:
   ALL(Rasch);
-    "    
+    "
 mod2 <- TAM::tamaan( tammodel , resp=dat  )
 summary(mod2)
 
@@ -196,7 +196,7 @@ LAVAAN MODEL:
   F ~~ F
 ITEM TYPE:
   ALL(Rasch);
-    "    
+    "
 mod3 <- TAM::tamaan( tammodel , resp=dat  )
 summary(mod3)
 

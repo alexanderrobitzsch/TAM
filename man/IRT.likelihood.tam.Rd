@@ -1,5 +1,5 @@
 %% File Name: IRT.likelihood.tam.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{IRT.likelihood}
 
@@ -23,7 +23,7 @@ Extracting Individual Likelihood and Individual Posterior
 
 \description{
 Extracts individual likelihood and posterior for models
-fitted in \pkg{TAM}. See \code{\link[CDM:IRT.likelihood]{CDM::IRT.likelihood}} 
+fitted in \pkg{TAM}. See \code{\link[CDM:IRT.likelihood]{CDM::IRT.likelihood}}
 for more details.
 }
 
@@ -88,7 +88,7 @@ See \code{\link[CDM:IRT.likelihood]{CDM::IRT.likelihood}}.
 #############################################################################
 # EXAMPLE 1: Dichotomous data data.sim.rasch - extracting likelihood/posterior
 #############################################################################
-	
+
 data(data.sim.rasch)
 # 1PL estimation
 mod1 <- TAM::tam.mml(resp=data.sim.rasch)

@@ -1,5 +1,5 @@
 %% File Name: tam.wle.Rd
-%% File Version: 2.37
+%% File Version: 2.38
 
 \name{tam.wle}
 
@@ -16,8 +16,8 @@ Person Parameters
 }
 
 \description{
-Compute the weighted likelihood estimator (Warm, 1989) 
-for objects of classes \code{tam}, \code{tam.mml} and \code{tam.jml}, 
+Compute the weighted likelihood estimator (Warm, 1989)
+for objects of classes \code{tam}, \code{tam.mml} and \code{tam.jml},
 respectively.
 }
 
@@ -27,12 +27,12 @@ tam.wle(tamobj, ...)
 tam.mml.wle2(tamobj, score.resp=NULL, WLE=TRUE, adj=0.3, Msteps=20, convM=1e-04,
         progress=TRUE , output.prob=FALSE, pid = NULL )
 
-tam.jml.WLE(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM, 
+tam.jml.WLE(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
     PersonScores, theta, xsi, Msteps, WLE=FALSE, theta.fixed = NULL)
 
 \method{summary}{tam.wle}(object, file=NULL, digits=3, \dots)
-    
-\method{print}{tam.wle}(x, digits=3, \dots)    
+
+\method{print}{tam.wle}(x, digits=3, \dots)
 }
 
 \arguments{
@@ -43,10 +43,10 @@ tam.jml.WLE(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
      in \pkg{TAM}.
 }
 \item{score.resp}{An optional data frame for which WLEs or MLEs
-	should be calculated. In case of the default \code{NULL},
-	\code{resp} from \code{tamobj} (i.e. \code{tamobj$resp}) is chosen. 
-	Note that items in \code{score.resp} must be the same (and in the
-	same order) as in \code{tamobj$resp}.
+    should be calculated. In case of the default \code{NULL},
+    \code{resp} from \code{tamobj} (i.e. \code{tamobj$resp}) is chosen.
+    Note that items in \code{score.resp} must be the same (and in the
+    same order) as in \code{tamobj$resp}.
 }
   \item{WLE}{
      A logical indicating whether the weighted likelihood estimate
@@ -75,22 +75,22 @@ be included in the list of outputs.}
 \item{A}{Design matrix \eqn{A} (applies only to \code{tam.jml.WLE})
 }
 \item{B}{Design matrix \eqn{B} (applies only to \code{tam.jml.WLE})
-}  
+}
 \item{nstud}{Number of persons (applies only to \code{tam.jml.WLE})
 }
 \item{nitems}{Number of items (applies only to \code{tam.jml.WLE})
 }
 \item{maxK}{Maximum item score (applies only to \code{tam.jml.WLE})
 }
-\item{PersonScores}{A vector containing the sufficient statistics for the 
-	person parameters (applies only to \code{tam.jml.WLE})
+\item{PersonScores}{A vector containing the sufficient statistics for the
+    person parameters (applies only to \code{tam.jml.WLE})
 }
 \item{theta}{Initial \eqn{\theta} estimate (applies only to \code{tam.jml.WLE})
 }
 \item{xsi}{Parameter vector \eqn{\xi} (applies only to \code{tam.jml.WLE})
 }
 \item{theta.fixed}{Matrix for fixed person parameters \eqn{\theta}. The first
-	column includes the index whereas the second column includes
+    column includes the index whereas the second column includes
 the fixed value.}
 \item{\dots}{Further arguments to be passed}
 \item{object}{Object of class \code{tam.wle}}
@@ -104,7 +104,7 @@ the fixed value.}
 %}
 
 \value{
-For \code{tam.wle.mml} and \code{tam.wle.mml2}, it is a data frame with following 
+For \code{tam.wle.mml} and \code{tam.wle.mml2}, it is a data frame with following
 columns:
 \item{pid}{Person identifier}
 \item{PersonScores}{Score of each person}
@@ -121,11 +121,11 @@ For \code{tam.jml.WLE}, it is a list with following entries:
 }
 
 \references{
-Penfield, R. D., & Bergeron, J. M. (2005). Applying a weighted maximum 
-likelihood latent trait estimator to the generalized partial credit model. 
-\emph{Applied Psychological Measurement, 29}, 218-233. 	
-	
-Warm, T. A. (1989). Weighted likelihood estimation of ability in item 
+Penfield, R. D., & Bergeron, J. M. (2005). Applying a weighted maximum
+likelihood latent trait estimator to the generalized partial credit model.
+\emph{Applied Psychological Measurement, 29}, 218-233.
+
+Warm, T. A. (1989). Weighted likelihood estimation of ability in item
 response theory. \emph{Psychometrika, 54}, 427-450.
 }
 
@@ -143,8 +143,8 @@ response theory. \emph{Psychometrika, 54}, 427-450.
 See the \code{PP::PP_gpcm} function
 in the \pkg{PP} package for more person
 parameter estimators for the partial credit model (Penfield & Bergeron, 2005).
-	
-See the S3 method \code{\link{IRT.factor.scores.tam}}.	
+
+See the S3 method \code{\link{IRT.factor.scores.tam}}.
 }
 
 \examples{
@@ -154,10 +154,10 @@ See the S3 method \code{\link{IRT.factor.scores.tam}}.
 
 data(data.sim.rasch)
 # estimate Rasch model
-mod1 <- TAM::tam.mml(resp=data.sim.rasch) 
+mod1 <- TAM::tam.mml(resp=data.sim.rasch)
 # WLE estimation
 wle1 <- TAM::tam.wle( mod1 )
-  ## WLE Reliability = 0.894 
+  ## WLE Reliability = 0.894
 
 print(wle1)
 summary(wle1)
@@ -251,7 +251,7 @@ tamw1 <- TAM::tam.wle( mod1 )
 AXsi0 <- - mod1$AXsi[,-1]
 b <- AXsi0
 K <- ncol(AXsi0)
-for (cc in 2:K){ 
+for (cc in 2:K){
     b[,cc] <- AXsi0[,cc] - AXsi0[,cc-1]
                 }
 # WLE estimation in PP
@@ -286,9 +286,9 @@ AXsi0 <- - mod2$AXsi[,-1]
 slopes <- mod2$B[,2,1]
 K <- ncol(AXsi0)
 slopesM <- matrix( slopes , I , ncol=K )
-AXsi0 <- AXsi0 / slopesM 
+AXsi0 <- AXsi0 / slopesM
 b <- AXsi0
-for (cc in 2:K){ 
+for (cc in 2:K){
     b[,cc] <- AXsi0[,cc] - AXsi0[,cc-1]
                 }
 # estimation in PP

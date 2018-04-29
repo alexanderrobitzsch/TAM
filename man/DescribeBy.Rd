@@ -1,11 +1,11 @@
 %% File Name: DescribeBy.Rd
-%% File Version: 0.08
+%% File Version: 0.09
 
 \name{DescribeBy}
 \alias{DescribeBy}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-S3 Method for Descriptive Statistics of Objects 
+S3 Method for Descriptive Statistics of Objects
 }
 \description{
 S3 method for descriptive statistics of objects

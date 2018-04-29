@@ -1,12 +1,12 @@
 ## File Name: require_namespace_msg.R
-## File Version: 0.02
+## File Version: 0.04
 
 require_namespace_msg <- function(pkg)
 {
     # if ( ! requireNamespace( pkg , quietly = TRUE) ){
-    #    stop( paste0("Package '" , pkg , "' needed fo this function 
+    #    stop( paste0("Package '" , pkg , "' needed fo this function
     #         to work. Please install it." ), call. = FALSE)
     # }
-	#--- use function from CDM package
-	CDM::CDM_require_namespace(pkg=pkg)
+    #--- use function from CDM package
+    CDM::CDM_require_namespace(pkg=pkg)
 }

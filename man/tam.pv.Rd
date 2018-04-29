@@ -1,5 +1,5 @@
 %% File Name: tam.pv.Rd
-%% File Version: 2.58
+%% File Version: 2.59
 
 \name{tam.pv}
 \alias{tam.pv}
@@ -19,27 +19,27 @@ and the Examples 2 and 3 of this function.
 
 The function \code{tam.pv.mcmc} employs fully Bayesian estimation for drawing
 plausible values and is recommended in cases when the latent regression model
-is unreliably estimated (multidimensional model with stochastic nodes). 
-The parameters of the latent regression (regression coefficients and 
+is unreliably estimated (multidimensional model with stochastic nodes).
+The parameters of the latent regression (regression coefficients and
 residual covariance matrices) are drawn by Bayesian bootstrap (Rubin, 1981).
 Either case probabilities (i.e., non-integer weights for cases in resampling;
 argument \code{sample_integers=FALSE}) or ordinary
-bootstrap (i.e., sampling cases with replacement; argument \code{sample_integers=TRUE}) 
+bootstrap (i.e., sampling cases with replacement; argument \code{sample_integers=TRUE})
 can be used for the Bootstrap step by obtaining posterior draws of regression parameters.
 }
 
 \usage{
-tam.pv(tamobj, nplausible = 10, ntheta = 2000, normal.approx = FALSE, 
+tam.pv(tamobj, nplausible = 10, ntheta = 2000, normal.approx = FALSE,
     samp.regr = FALSE, theta.model=FALSE, np.adj=8, na.grid = 5, verbose=TRUE)
-    
-tam.pv.mcmc( tamobj, Y=NULL, group=NULL, beta_groups = TRUE, nplausible=10, level = .95, 
+
+tam.pv.mcmc( tamobj, Y=NULL, group=NULL, beta_groups = TRUE, nplausible=10, level = .95,
     n.iter = 1000, n.burnin = 500, adj_MH = .5, adj_change_MH = .05, refresh_MH = 50,
-    accrate_bound_MH = c(.45, .55), sample_integers = FALSE, theta_init = NULL, 
-    print_iter = 20, verbose = TRUE, calc_ic = TRUE) 
-    
+    accrate_bound_MH = c(.45, .55), sample_integers = FALSE, theta_init = NULL,
+    print_iter = 20, verbose = TRUE, calc_ic = TRUE)
+
 \method{summary}{tam.pv.mcmc}(object, file=NULL, \dots)
 
-\method{plot}{tam.pv.mcmc}(x, \dots)     
+\method{plot}{tam.pv.mcmc}(x, \dots)
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -49,7 +49,7 @@ tam.pv.mcmc( tamobj, Y=NULL, group=NULL, beta_groups = TRUE, nplausible=10, leve
 \arguments{
   \item{tamobj}{
      Object of class \code{tam} or \code{tam.mml}. For \code{tam.pv.mcmc}, it must not
-     be an object of this class but rather a list with (at least the) 
+     be an object of this class but rather a list with (at least the)
      entries \code{AXsi}, \code{B}, \code{resp}.
 }
  \item{nplausible}{
@@ -61,25 +61,25 @@ tam.pv.mcmc( tamobj, Y=NULL, group=NULL, beta_groups = TRUE, nplausible=10, leve
     whole sample, not for every person (contrary to the software ConQuest).
 }
   \item{normal.approx}{
-     An optional logical indicating whether the individual posterior distributions 
-     should be approximated by a normal distribution? 
+     An optional logical indicating whether the individual posterior distributions
+     should be approximated by a normal distribution?
      The default is \code{FALSE}. In the case \code{normal.approx=TRUE}
-     (normal distribution approximation), the number of ability nodes 
+     (normal distribution approximation), the number of ability nodes
      \code{ntheta} can be substantially smaller than 2000, say 200 or 500.
      The normal approximation is implemented for unidimensional and
      multidimensional models.
 }
   \item{samp.regr}{
-     An optional logical indicating whether regression coefficients 
+     An optional logical indicating whether regression coefficients
      should be fixed in the plausible value imputation or
-     also sampled from their posterior distribution? 
+     also sampled from their posterior distribution?
      The default is \code{FALSE}. Sampled regression coefficients are
      obtained by nonparametric bootstrap.
 }
 \item{theta.model}{Logical indicating whether the theta grid from the
-	\code{tamobj} object should be used for plausible value
-	imputation. In case of \code{normal.approx=TRUE}, this should
-	be sufficient in many applications.
+    \code{tamobj} object should be used for plausible value
+    imputation. In case of \code{normal.approx=TRUE}, this should
+    be sufficient in many applications.
 }
   \item{np.adj}{
      This parameter defines the "spread" of the random theta values
@@ -91,7 +91,7 @@ tam.pv.mcmc( tamobj, Y=NULL, group=NULL, beta_groups = TRUE, nplausible=10, leve
         }
 \item{na.grid}{Range of the grid in normal approximation. Default is from
 -5 to 5.}
-\item{\dots}{Further arguments to be passed}	        
+\item{\dots}{Further arguments to be passed}
 \item{Y}{Optional matrix of regressors}
 \item{group}{Optional vector of group identifiers}
 \item{beta_groups}{Logical indicating whether group specific beta coefficients
@@ -100,7 +100,7 @@ tam.pv.mcmc( tamobj, Y=NULL, group=NULL, beta_groups = TRUE, nplausible=10, leve
 \item{n.iter}{Number of iterations}
 \item{n.burnin}{Number of burnin-iterations}
 \item{adj_MH}{Adjustment factor for Metropolis-Hastings (MH) steps which controls
-    the variance of the proposal distribution for \eqn{\theta}. Can be also 
+    the variance of the proposal distribution for \eqn{\theta}. Can be also
     a vector of length equal to the number of persons.}
 \item{adj_change_MH}{Allowed change for MH adjustment factor after refreshing}
 \item{refresh_MH}{Number of iterations after which the variance of the proposal
@@ -108,12 +108,12 @@ tam.pv.mcmc( tamobj, Y=NULL, group=NULL, beta_groups = TRUE, nplausible=10, leve
 \item{accrate_bound_MH}{Bounds for target acceptance rates of sampled \eqn{\theta}
    values.}
 \item{sample_integers}{Logical indicating whether weights for complete cases
-should be sampled in bootstrap}   
+should be sampled in bootstrap}
 \item{theta_init}{Optional matrix with initial \eqn{\bold{\theta}} values}
-\item{print_iter}{Print iteration progress every \code{print_iter}th iteration}   
+\item{print_iter}{Print iteration progress every \code{print_iter}th iteration}
 \item{verbose}{Logical indicating whether iteration progress should be displayed.}
 \item{calc_ic}{Logical indicating whether information criteria should be computed.}
-\item{object}{Object of class \code{tam.pv.mcmc}}           
+\item{object}{Object of class \code{tam.pv.mcmc}}
 \item{x}{Object of class \code{tam.pv.mcmc}}
 \item{file}{A file name in which the summary output will be written}
 }
@@ -141,7 +141,7 @@ The value of \code{tam.pv} is a list with following entries:
     }
   \item{hwt1}{Cumulated individual posterior distribution}
   \item{theta}{Simulated ability nodes}
-  
+
 The value of \code{tam.pv.mcmc} is a list containing entries
 \item{pv}{Data frame containing plausible values}
 \item{parameter_samples}{Sampled regression parameters}
@@ -153,7 +153,7 @@ The value of \code{tam.pv.mcmc} is a list containing entries
 \item{theta_acceptance_MH}{Acceptance rates and acceptance MH factors for each
 individual}
 \item{theta_last}{Last sampled \eqn{\bold{\theta}} value}
-\item{\dots}{Further values}   
+\item{\dots}{Further values}
 }
 
 
@@ -167,7 +167,7 @@ A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.
 \emph{Multivariate and mixture distribution Rasch models: Extensions and applications}
 (pp. 55-76). New York: Springer.
 
-Rubin, D. B. (1981). The Bayesian bootstrap. \emph{The Annals of Statistics, 9}(1), 
+Rubin, D. B. (1981). The Bayesian bootstrap. \emph{The Annals of Statistics, 9}(1),
 130-134.
 }
 
@@ -182,9 +182,9 @@ Rubin, D. B. (1981). The Bayesian bootstrap. \emph{The Annals of Statistics, 9}(
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See \code{\link{tam.latreg}} for further examples of 
+See \code{\link{tam.latreg}} for further examples of
 fitting latent regression models and drawing plausible values
-from models which provides an individual likelihood as an input. 
+from models which provides an individual likelihood as an input.
 }
 
 \examples{
@@ -235,9 +235,9 @@ pv3 <- TAM::tam.pv.mcmc( tamobj=mod, Y=Y, nplausible=5, theta_init = pv2$theta_l
 data(data.pisaRead, package="sirt")
 dat <- data.pisaRead$data
   ##   > colnames(dat)
-  ##    [1] "idstud"   "idschool" "female"   "hisei"    "migra"    "R432Q01" 
-  ##    [7] "R432Q05"  "R432Q06"  "R456Q01"  "R456Q02"  "R456Q06"  "R460Q01" 
-  ##   [13] "R460Q05"  "R460Q06"  "R466Q02"  "R466Q03"  "R466Q06" 
+  ##    [1] "idstud"   "idschool" "female"   "hisei"    "migra"    "R432Q01"
+  ##    [7] "R432Q05"  "R432Q06"  "R456Q01"  "R456Q02"  "R456Q06"  "R460Q01"
+  ##   [13] "R460Q05"  "R460Q06"  "R466Q02"  "R466Q03"  "R466Q06"
 
 ## Note that reading items have variable names starting with R4
 
@@ -253,7 +253,7 @@ xsi.fixed <- cbind( seq(1,length(xsi0)) , xsi0 )
    # fix item slopes using mod2$B
 # matrix of latent regressors female, hisei and migra
 Y <- dat[ , c("female" , "hisei" , "migra") ]
-mod2b <- TAM::tam.mml( resp=dat[,items] , B=mod2a$B , xsi.fixed=xsi.fixed , Y=Y, 
+mod2b <- TAM::tam.mml( resp=dat[,items] , B=mod2a$B , xsi.fixed=xsi.fixed , Y=Y,
             pid = dat$idstud)
 
 # plausible value imputation with normality assumption
@@ -290,19 +290,19 @@ lavmodel <- "
    PVREAD ~ migra + hisei
    PVREAD ~~ PVREAD
         "
-mod1 <- semTools::lavaan.mi( lavmodel , data = datlist1 , m=0)        
+mod1 <- semTools::lavaan.mi( lavmodel , data = datlist1 , m=0)
 summary(mod1 , standardized=TRUE, rsquare=TRUE)
 
 # apply lavaan for third imputed dataset
-mod1a <- lavaan::lavaan( lavmodel , data = datlist1[[3]] )        
+mod1a <- lavaan::lavaan( lavmodel , data = datlist1[[3]] )
 summary(mod1a , standardized=TRUE, rsquare=TRUE)
 
 # compare with mod1 by looping over all datasets
 mod1b <- lapply( datlist1 , FUN = function(dat0){
-    mod1a <- lavaan( lavmodel , data = dat0 )        
+    mod1a <- lavaan( lavmodel , data = dat0 )
     coef( mod1a)
         } )
-mod1b        
+mod1b
 mod1b <- matrix( unlist( mod1b ) , ncol= length( coef(mod1)) , byrow=TRUE )
 mod1b
 round( colMeans(mod1b) , 3 )
@@ -315,7 +315,7 @@ lavmodel <- "
    PVREAD ~~ PVREAD
    hisei ~~ hisei
         "
-mod2 <- semTools::lavaan.mi( lavmodel , data = datlist1 )        
+mod2 <- semTools::lavaan.mi( lavmodel , data = datlist1 )
 summary(mod2 , standardized=TRUE, rsquare=TRUE)
 # fit statistics
 inspect( mod2 , what="fit")
@@ -344,7 +344,7 @@ summary( mice::pool(mod1c) )
 # (1) simulate some data
 set.seed(6778)
 library(mvtnorm)
-N <- 1000      
+N <- 1000
 Y <- cbind( stats::rnorm(N) , stats::rnorm(N) )
 theta <- mvtnorm::rmvnorm( N, mean=c(0,0), sigma=matrix( c(1,.5,.5,1) , 2 , 2 ))
 theta[,1] <- theta[,1] + .4 * Y[,1] + .2 * Y[,2]  # latent regression model
@@ -356,7 +356,7 @@ p1 <- stats::plogis( outer( theta[,2] , seq( -2 , 2 , len=I ) , "-" ) )
 resp2 <- 1 * ( p1 > matrix( stats::runif( N*I ) , nrow=N , ncol=I ) )
 resp <- cbind(resp1,resp2)
 colnames(resp) <- paste("I" , 1:(2*I), sep="")
-  
+
 # (2) define loading Matrix
 Q <- array( 0 , dim = c( 2*I , 2 ))
 Q[cbind(1:(2*I), c( rep(1,I) , rep(2,I) ))] <- 1
@@ -382,7 +382,7 @@ lavmodel <- "
    PVFA ~ Y1 + Y2
    PVFA ~~ PVFA
         "
-mod1 <- semTools::lavaan.mi( lavmodel , data = datlist1 )        
+mod1 <- semTools::lavaan.mi( lavmodel , data = datlist1 )
 summary(mod1 , standardized=TRUE, rsquare=TRUE)
 
 # (7) draw plausible values with tam.pv.mcmc function
@@ -390,7 +390,7 @@ Y1 <- cbind( 1, Y )
 pv2 <- TAM::tam.pv.mcmc( tamobj = mod , Y = Y1, n.iter=1000, n.burnin=200 )
 
 # (8) group-specific plausible values
-set.seed(908)  
+set.seed(908)
 # create artificial grouping variable
 group <- sample( 1:3, N, replace=TRUE )
 pv3 <- TAM::tam.pv.mcmc( tamobj , Y = Y1, n.iter=1000, n.burnin=200, group=group )
@@ -440,7 +440,7 @@ summary(mod1)
 res1a <- TAM::tam.pv( mod1 , normal.approx=TRUE , ntheta=200 , samp.regr=TRUE)
 # create list of multiply imputed datasets
 library(miceadds)
-datlist1a <- TAM::tampv2datalist( res1a , Y=X ) 
+datlist1a <- TAM::tampv2datalist( res1a , Y=X )
 imp1a <- miceadds::datalist2mids( datlist1a )
 
 # fit linear model
@@ -451,7 +451,7 @@ lavmodel <- "
    X2 ~~ 0.3*X2  # = var.err
    PV.Dim1 ~~ PV.Dim1
    X2true ~~ X2true
-        "              
+        "
 mod1a <- semTools::lavaan.mi( lavmodel , datlist1a)
 summary(mod1a , standardized=TRUE, rsquare=TRUE)
 
@@ -489,9 +489,9 @@ library(semTools)
 
 #*** PV dataset 1
 # datalist with error-prone covariates
-datlist3a <- TAM::tampv2datalist( res3a , Y=X.err ) 
+datlist3a <- TAM::tampv2datalist( res3a , Y=X.err )
 # datalist with adjusted covariates
-datlist3b <- TAM::tampv2datalist( res3a , Y=X.adj ) 
+datlist3b <- TAM::tampv2datalist( res3a , Y=X.adj )
 
 # linear regression with measurement errors in X
 lavmodel <- "
@@ -500,14 +500,14 @@ lavmodel <- "
    X2 ~~ 0.3*X2  # = var.err
    PV.Dim1 ~~ PV.Dim1
    X2true ~~ X2true
-        "              
+        "
 mod3a <- semTools::lavaan.mi( lavmodel , datlist3a)
 summary(mod3a , standardized=TRUE, rsquare=TRUE)
 
 lavmodel <- "
    PV.Dim1 ~ X1 + X2
    PV.Dim1 ~~ PV.Dim1
-        "     
+        "
 mod3b <- semTools::lavaan.mi( lavmodel , datlist3b)
 summary(mod3b , standardized=TRUE, rsquare=TRUE)
 # => mod3b leads to the correct estimate.
@@ -533,7 +533,7 @@ likeX2 <- TAM::IRTLikelihood.cfa( data= X.err , cfaobj=mod12)
 str(likeX2)
 
 #-- create data input for mice package
-data <- data.frame( "PVA" = NA , "X1" = X[,1] , "X2" = NA  ) 
+data <- data.frame( "PVA" = NA , "X1" = X[,1] , "X2" = NA  )
 vars <- colnames(data)
 V <- length(vars)
 predictorMatrix <- 1 - diag(V)
@@ -546,14 +546,14 @@ imputationMethod[c("PVA","X2")] <- "2l.plausible.values"
 # likelihood and theta grid of plausible value derived from IRT model
 like <- list( "PVA" = likePV  , "X2" = likeX2 )
 theta <- list( "PVA" = attr(likePV,"theta") ,
-                "X2" = attr(likeX2 , "theta") )                     
+                "X2" = attr(likeX2 , "theta") )
 #-- initial imputations
 data.init <- data
 data.init$PVA <- mod11$person$EAP
 data.init$X2 <- X.err[,"X2"]
 
 #-- imputation using the mice and miceadds package
-imp1 <- mice::mice( as.matrix(data) , predictorMatrix = predictorMatrix , m = 4, maxit = 6 ,  
+imp1 <- mice::mice( as.matrix(data) , predictorMatrix = predictorMatrix , m = 4, maxit = 6 ,
              imputationMethod = imputationMethod ,  allow.na = TRUE ,
              theta=theta , like=like , data.init=data.init )
 summary(imp1)

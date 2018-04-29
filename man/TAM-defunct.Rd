@@ -1,5 +1,5 @@
 %% File Name: TAM-defunct.Rd
-%% File Version: 0.07
+%% File Version: 0.08
 
 \name{TAM-defunct}
 \alias{TAM-defunct}
@@ -11,20 +11,20 @@
 
 \description{
 These functions have been removed or replaced in the \pkg{tam.jml2}
-package. 
+package.
 }
 
-\usage{	
+\usage{
 tam.jml2(...)
 }
 
 \arguments{
-	\item{\dots}{Arguments to be passed.}
+    \item{\dots}{Arguments to be passed.}
 }
 
 \details{
-The \code{tam.jml2} is included as the default in 
-\code{\link{tam.jml}}.	
+The \code{tam.jml2} is included as the default in
+\code{\link{tam.jml}}.
 }
 
 % The \code{rasch.pml2} function has been superseeded by

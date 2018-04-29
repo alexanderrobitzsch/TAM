@@ -1,13 +1,13 @@
 ## File Name: prior_list_include.R
-## File Version: 0.01
+## File Version: 0.02
 
 prior_list_include <- function( prior_list , prior , index )
 {
-	if ( missing(prior_list) ){
-		prior_list <- list()
-	}
-	for (ii in index){
-		prior_list[[ ii ]] <- prior
-	}	
-	return(prior_list)
+    if ( missing(prior_list) ){
+        prior_list <- list()
+    }
+    for (ii in index){
+        prior_list[[ ii ]] <- prior
+    }
+    return(prior_list)
 }

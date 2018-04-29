@@ -1,5 +1,5 @@
 %% File Name: IRT.data.tam.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{IRT.data.tam}
 
@@ -15,7 +15,7 @@ Extracting Item Response Dataset
 
 \description{
 Extracts the used data set for models
-fitted in \pkg{TAM}. See \code{\link[CDM:IRT.data]{CDM::IRT.data}} 
+fitted in \pkg{TAM}. See \code{\link[CDM:IRT.data]{CDM::IRT.data}}
  for more details.
 }
 
@@ -66,11 +66,11 @@ A dataset with item responses
 %}
 
 
-\examples{	
+\examples{
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Dichotomous data data.sim.rasch
-#############################################################################	
+#############################################################################
 
 data(data.sim.rasch)
 dat <- data.sim.rasch
@@ -80,7 +80,7 @@ mod1 <- TAM::tam.mml(dat)
 # extract dataset (and weights and group if available)
 dmod1 <- IRT.data(mod1)
 str(dmod1)
-}	
+}
 }
 
 

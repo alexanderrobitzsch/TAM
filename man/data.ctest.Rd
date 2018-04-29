@@ -1,5 +1,5 @@
 %% File Name: data.ctest.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{data.ctest}
 \alias{data.ctest}
@@ -8,7 +8,7 @@
 
 \docType{data}
 \title{
-Some C-Test Datasets 
+Some C-Test Datasets
 }
 
 
@@ -25,7 +25,7 @@ data(data.ctest2)
 
 \format{
 
-\itemize{	
+\itemize{
 \item The dataset \code{data.ctest1} contains item responses of C-tests
 at two time points. The format is
 
@@ -53,7 +53,7 @@ at two time points. The format is
 \item The dataset \code{data.ctest2} contains two datasets
 (\code{$data1} containing item responses, \code{$data2}
 containing sum scores of each C-test) and
-a data frame \code{$ITEM} with item informations. 
+a data frame \code{$ITEM} with item informations.
 
 \code{List of 3} \cr
 \code{ $ data1:'data.frame':  933 obs. of  102 variables:} \cr
@@ -81,7 +81,7 @@ a data frame \code{$ITEM} with item informations.
 \code{  ..$ item   : chr [1:100] "A101" "A102" "A103" "A104" ...} \cr
 \code{  ..$ ctest  : chr [1:100] "A" "A" "A" "A" ...} \cr
 \code{  ..$ testlet: int [1:100] 1 1 2 2 2 3 3 3 NA 4 ...} \cr
-}	
+}
 }
 
 %\details{

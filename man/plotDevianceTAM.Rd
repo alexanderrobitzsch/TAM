@@ -1,5 +1,5 @@
 %% File Name: plotDevianceTAM.Rd
-%% File Version: 2.12
+%% File Version: 2.13
 
 \name{plotDevianceTAM}
 \alias{plotDevianceTAM}
@@ -18,7 +18,7 @@ plotDevianceTAM(tam.obj, omitUntil = 1, reverse = TRUE, change=TRUE)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{tam.obj}{
-Object of class \code{tam.mml}, \code{tam.mml.2pl} or \code{tam.mml.mfr}. 
+Object of class \code{tam.mml}, \code{tam.mml.2pl} or \code{tam.mml.mfr}.
 }
   \item{omitUntil}{
 An optional value indicating number of iterations to be omitted for
@@ -63,7 +63,7 @@ Martin Hecht, Sebastian Weirich, Alexander Robitzsch
 data(data.sim.rasch)
 
 # 2PL model
-mod1 <- TAM::tam.mml.2pl(resp=data.sim.rasch ) 
+mod1 <- TAM::tam.mml.2pl(resp=data.sim.rasch )
 # plot deviance change
 plotDevianceTAM( mod1 )
 # plot deviance

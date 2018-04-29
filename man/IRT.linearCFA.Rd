@@ -1,5 +1,5 @@
 %% File Name: IRT.linearCFA.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{IRT.linearCFA}
 
@@ -15,14 +15,14 @@ Linear Approximation of a Confirmatory Factor Analysis
 This function approximates a fitted item response model by a linear
 confirmatory factor analysis. I.e., given item response functions, the
 expectation \eqn{E(X_i | \theta_1 , \ldots , \theta_D)} is
-linearly approximated by \eqn{a_{i1} \theta _1 + \ldots + a_{iD} \theta_D}. 
+linearly approximated by \eqn{a_{i1} \theta _1 + \ldots + a_{iD} \theta_D}.
 See Vermunt and Magidson (2005) for details.
 }
 
 
 \usage{
 IRT.linearCFA( object , group=1)
-	
+
 \method{summary}{IRT.linearCFA}(object,  \dots)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -56,17 +56,17 @@ and item communality.
 }
 
 \references{
-Vermunt, J. K., & Magidson, J. (2005). Factor Analysis with categorical 
-indicators: A comparison between traditional and latent class approaches. 
-In A. Van der Ark, M.A. Croon & K. Sijtsma (Eds.), 
-\emph{New Developments in Categorical Data Analysis for the Social and 
+Vermunt, J. K., & Magidson, J. (2005). Factor Analysis with categorical
+indicators: A comparison between traditional and latent class approaches.
+In A. Van der Ark, M.A. Croon & K. Sijtsma (Eds.),
+\emph{New Developments in Categorical Data Analysis for the Social and
 Behavioral Sciences} (pp. 41-62). Mahwah: Erlbaum
 }
 
 %\author{
 %}
 
-% \note{		
+% \note{
 % See \url{http://wrightmap.org/post/107431190622/wrightmap-multifaceted-models}
 % for creating Wright maps for multi-faceted models.
 % }
@@ -74,13 +74,13 @@ Behavioral Sciences} (pp. 41-62). Mahwah: Erlbaum
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See \code{\link{tam.fa}} for confirmatory factor analysis in \pkg{TAM}. 
+See \code{\link{tam.fa}} for confirmatory factor analysis in \pkg{TAM}.
 }
 
 \examples{
 \dontrun{
-library(lavaan)	
-	
+library(lavaan)
+
 #############################################################################
 # EXAMPLE 1: Two-dimensional confirmatory factor analysis data.Students
 #############################################################################
@@ -110,7 +110,7 @@ lavmodel <- "
     sc1 ~ 1
     sc ~~ mj
     "
-mod1b <- lavaan::sem( lavmodel , data = dat , missing="fiml" , std.lv=TRUE)    
+mod1b <- lavaan::sem( lavmodel , data = dat , missing="fiml" , std.lv=TRUE)
 summary(mod1b , standardized=TRUE , fit.measures=TRUE )
 
 #############################################################################
@@ -135,7 +135,7 @@ summary(cfa1)
 lavmodel <- "
     sc =~ sc1+sc2+sc3+sc4
     "
-mod1b <- lavaan::sem( lavmodel , data = dat , missing="fiml" , std.lv=TRUE)    
+mod1b <- lavaan::sem( lavmodel , data = dat , missing="fiml" , std.lv=TRUE)
 summary(mod1b , standardized=TRUE , fit.measures=TRUE )
 }
 }

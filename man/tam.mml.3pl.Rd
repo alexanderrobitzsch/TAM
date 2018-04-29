@@ -1,5 +1,5 @@
 %% File Name: tam.mml.3pl.Rd
-%% File Version: 2.674
+%% File Version: 2.675
 
 \name{tam.mml.3pl}
 \alias{tam.mml.3pl}
@@ -15,27 +15,27 @@
 \description{
 This estimates a 3PL model with design matrices for item slopes and
 item intercepts. Discrete distributions of the latent variables are
-allowed which can be log-linearly smoothed.		
+allowed which can be log-linearly smoothed.
 }
 
 
 \usage{
-tam.mml.3pl(resp, Y = NULL, group = NULL, formulaY = NULL, dataY = NULL, ndim = 1, 
-  pid = NULL, xsi.fixed = NULL, xsi.inits = NULL, xsi.prior = NULL, 
-  beta.fixed = NULL, beta.inits = NULL, variance.fixed = NULL, variance.inits = NULL, 
-  est.variance = TRUE, A = NULL, notA=FALSE , Q = NULL, Q.fixed=NULL, E = NULL, 
-  gammaslope.des = "2PL", gammaslope = NULL, gammaslope.fixed = NULL, 
+tam.mml.3pl(resp, Y = NULL, group = NULL, formulaY = NULL, dataY = NULL, ndim = 1,
+  pid = NULL, xsi.fixed = NULL, xsi.inits = NULL, xsi.prior = NULL,
+  beta.fixed = NULL, beta.inits = NULL, variance.fixed = NULL, variance.inits = NULL,
+  est.variance = TRUE, A = NULL, notA=FALSE , Q = NULL, Q.fixed=NULL, E = NULL,
+  gammaslope.des = "2PL", gammaslope = NULL, gammaslope.fixed = NULL,
   est.some.slopes = TRUE, gammaslope.constr.V = NULL, gammaslope.constr.c = NULL,
-  gammaslope.center.index=NULL ,  gammaslope.center.value=NULL , 
+  gammaslope.center.index=NULL ,  gammaslope.center.value=NULL ,
   gammaslope.prior = NULL, userfct.gammaslope = NULL , gammaslope.constr.Npars = 0 ,
-  est.guess = NULL, guess = rep(0, ncol(resp)), 
-  guess.prior = NULL, max.guess = 0.5, skillspace = "normal", theta.k = NULL, 
-  delta.designmatrix = NULL, delta.fixed = NULL, delta.inits=NULL, pweights = NULL, 
+  est.guess = NULL, guess = rep(0, ncol(resp)),
+  guess.prior = NULL, max.guess = 0.5, skillspace = "normal", theta.k = NULL,
+  delta.designmatrix = NULL, delta.fixed = NULL, delta.inits=NULL, pweights = NULL,
   item.elim = TRUE, verbose = TRUE, control = list(), Edes=NULL )
-  
+
 \method{summary}{tam.mml.3pl}(object,file=NULL,\dots)
 
-\method{print}{tam.mml.3pl}(x,\dots)  
+\method{print}{tam.mml.3pl}(x,\dots)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -67,8 +67,8 @@ tam.mml.3pl(resp, Y = NULL, group = NULL, formulaY = NULL, dataY = NULL, ndim = 
      An optional vector of person identifiers
 }
   \item{xsi.fixed}{
-     A matrix with two columns for fixing \eqn{\xi} parameters. 
-     1st column: index of \eqn{\xi} parameter, 2nd column: fixed value 
+     A matrix with two columns for fixing \eqn{\xi} parameters.
+     1st column: index of \eqn{\xi} parameter, 2nd column: fixed value
 }
   \item{xsi.inits}{
      A matrix with two columns (in the same way defined as in
@@ -77,7 +77,7 @@ tam.mml.3pl(resp, Y = NULL, group = NULL, formulaY = NULL, dataY = NULL, ndim = 
   \item{xsi.prior}{
      Item-specific prior distribution for \eqn{\xi} parameters. It is
      assumed that \eqn{\xi_k \sim N( \mu_k , \sigma_k^2 )}. The first column
-     in \code{xsi.prior} is \eqn{\mu_k}, the second is \eqn{\sigma_k}.     
+     in \code{xsi.prior} is \eqn{\mu_k}, the second is \eqn{\sigma_k}.
 }
   \item{beta.fixed}{
      A matrix with three columns for fixing regression coefficients.
@@ -87,17 +87,17 @@ tam.mml.3pl(resp, Y = NULL, group = NULL, formulaY = NULL, dataY = NULL, ndim = 
      set \code{beta.fixed=FALSE} (see Example 2, Model \code{2_4}).
 }
   \item{beta.inits}{
-     A matrix (same format as in \code{beta.fixed}) 
+     A matrix (same format as in \code{beta.fixed})
      with initial \eqn{\beta} values
 }
   \item{variance.fixed}{
      An optional matrix. In case of a single group it is a matrix with three columns for fixing
      entries in covariance matrix:
      1st column: dimension 1, 2nd column: dimension 2,
-     3rd column: fixed value of covariance/variance. 
+     3rd column: fixed value of covariance/variance.
      In case of multiple groups, it is a matrix with four columns
-     1st column: group index (from \eqn{1,\ldots,G}, 2nd column: dimension 1, 
-     3rd column: dimension 2, 4th column: fixed value of covariance     
+     1st column: group index (from \eqn{1,\ldots,G}, 2nd column: dimension 1,
+     3rd column: dimension 2, 4th column: fixed value of covariance
 }
   \item{variance.inits}{
      Initial covariance matrix in estimation. All matrix entries have to be
@@ -116,24 +116,24 @@ tam.mml.3pl(resp, Y = NULL, group = NULL, formulaY = NULL, dataY = NULL, ndim = 
      only correspond to the design.
 }
 \item{notA}{An optional logical indicating whether all entries in
-	the \eqn{A} matrix are set to zero and no item intercept
-	\eqn{\xi} should be estimated.}	
+    the \eqn{A} matrix are set to zero and no item intercept
+    \eqn{\xi} should be estimated.}
   \item{Q}{
-  An optional \eqn{I \times D} matrix (the Q-matrix) which specifies the 
-  loading structure of items on dimensions.  
+  An optional \eqn{I \times D} matrix (the Q-matrix) which specifies the
+  loading structure of items on dimensions.
 }
 \item{Q.fixed}{Optional \eqn{I \times D} matrix of the same dimensions
-	like \code{Q}. Non \code{NA} entries contain values at which
+    like \code{Q}. Non \code{NA} entries contain values at which
 item loadings should be fixed to.}
   \item{E}{
-Optional design array for item slopes \eqn{\gamma}. It is a four 
+Optional design array for item slopes \eqn{\gamma}. It is a four
 dimensional array of size \eqn{I \times (K+1) \times D \times N_\gamma}
 containing items, categories, dimensions, \eqn{\gamma} parameter.
 }
 \item{gammaslope.des}{
 Optional string indicating type of item slope parameter to be estimated.
 \code{gammaslope.des="2PL"} estimates a slope parameter for an item,
-\code{gammaslope.des="2PLcat"} for an item and a 
+\code{gammaslope.des="2PLcat"} for an item and a
 }
   \item{gammaslope}{
 Initial or fixed vector of \eqn{\gamma} parameters
@@ -154,24 +154,24 @@ An optional constraint vector \eqn{c} for item slope parameters \eqn{\gamma}
 \item{gammaslope.center.index}{
 Indices of \code{gammaslope} parameters which should be fixed to
 sum specified in \code{gammaslope.center.value} (see Example 7).
-	}
+    }
 \item{gammaslope.center.value}{Specified values of sum of
-subset of \code{gammaslope} parameters.} 		
+subset of \code{gammaslope} parameters.}
   \item{gammaslope.prior}{
      Item-specific prior distribution for \eqn{\gamma} parameters. It is
      assumed that \eqn{\gamma_k \sim N( \mu_k , \sigma_k^2 )}. The first column
-     in \code{gammaslope.prior} is \eqn{\mu_k}, the second is \eqn{\sigma_k}. 
+     in \code{gammaslope.prior} is \eqn{\mu_k}, the second is \eqn{\sigma_k}.
 }
 \item{userfct.gammaslope}{A user specified function for
-	constraints or transformations of the \eqn{\gamma} parameters
+    constraints or transformations of the \eqn{\gamma} parameters
 within the algorithm. See Example 17 in \code{\link{tam.mml}}.}
 \item{gammaslope.constr.Npars}{Number of constrained
-	\eqn{\gamma} parameters in \code{userfct.gammaslope}	
+    \eqn{\gamma} parameters in \code{userfct.gammaslope}
 }
 
   \item{est.guess}{
 An optional vector of integers indicating for which items a guessing
-parameter should be estimated. Same integers correspond to same estimated 
+parameter should be estimated. Same integers correspond to same estimated
 guessing parameters. A value of 0 denotes an item for which no guessing
 parameter is estimated.
 }
@@ -213,56 +213,56 @@ Optional vector of person weights.
     is \code{TRUE}.}
 \item{verbose}{Logical indicating whether output should
 be printed during iterations. This argument replaces \code{control$progress}.
-}    
+}
   \item{control}{
 See \code{\link{tam.mml}} for more details.
 }
 \item{Edes}{Compact form of design matrix. This argument is only
-	defined for convenience for models with random starting
-	values to avoid recalculations.}	
+    defined for convenience for models with random starting
+    values to avoid recalculations.}
   \item{object}{
 Object of class \code{tam.mml.3pl}
 }
 \item{file}{
-A file name in which the summary output will be written 
+A file name in which the summary output will be written
     }
-\item{x}{Object of class \code{tam.mml.3pl}}  	
+\item{x}{Object of class \code{tam.mml.3pl}}
 \item{\dots}{Further arguments to be passed}
 }
 
 \details{
 The item response model for item \eqn{i} and category \eqn{h} and no guessing
 parameters can be written as
-\deqn{ P( X_{i} = h | \bold{\theta} ) \propto \exp( \sum_d b_{ihd} \theta_d +  
+\deqn{ P( X_{i} = h | \bold{\theta} ) \propto \exp( \sum_d b_{ihd} \theta_d +
  \sum_k a_{ih} \xi_k ) }
-For item slopes, a linear decomposition is allowed 
+For item slopes, a linear decomposition is allowed
 \deqn{ b_{ihd} =  \sum_k   e_{ihdk} \gamma_k }
 In case of a guessing parameter, the item response function is
 \deqn{ P( X_{i} = h | \bold{\theta} ) = c_i + ( 1 - c_i ) \cdot
-	( 1 + \exp( - \sum_d b_{ihd} \theta_d - \sum_k a_{ih} \xi_k ) )^{-1} 
-		}
+    ( 1 + \exp( - \sum_d b_{ihd} \theta_d - \sum_k a_{ih} \xi_k ) )^{-1}
+        }
 For possibilities of definitions of the design matrix \eqn{E=(e_{ihdk})}
 see Formann (2007), for the strongly related linear logistic latent
-class model see Formann (1992). Linear constraints on \eqn{\gamma} 
+class model see Formann (1992). Linear constraints on \eqn{\gamma}
 can be specified by equations \eqn{V \gamma = c} and using the arguments
 \code{gammaslope.constr.V} and \code{gammaslope.constr.c}.
 
-Like in \code{\link{tam.mml}}, a multivariate linear regression 
+Like in \code{\link{tam.mml}}, a multivariate linear regression
 \deqn{ \bold{\theta} = Y \beta + \bold{\epsilon}}
 assuming a multivariate normal distribution on the residuals \eqn{\bold{\epsilon}}
 can be specified (\code{skillspace="normal"}).
 
 Alternatively, a log-linear distribution of the skill classes \eqn{P(\theta)}
-(\code{skillspace="discrete"}) 
+(\code{skillspace="discrete"})
 is performed \deqn{\log P(\theta ) = D_{ \delta } \delta } See Xu and
 von Davier (2008). The design matrix \eqn{D_{\delta}} can be specified in
-\code{delta.designmatrix}. The theta grid \eqn{\bold{\theta}} of the skill space 
+\code{delta.designmatrix}. The theta grid \eqn{\bold{\theta}} of the skill space
 can be defined in \code{theta.k}.
 }
 
 
 \value{
-The same output as in \code{\link{tam.mml}} and additional entries		
+The same output as in \code{\link{tam.mml}} and additional entries
  \item{delta}{Parameter vector \eqn{\delta}}
  \item{gammaslope}{Estimated \eqn{\gamma} item slope parameters}
  \item{se.gammaslope}{Standard errors \eqn{\gamma} item slope parameters}
@@ -270,21 +270,21 @@ The same output as in \code{\link{tam.mml}} and additional entries
  \item{Edes}{Used design matrix \eqn{E} in compact form}
  \item{guess}{Estimated \eqn{c} guessing parameters}
  \item{se.guess}{Standard errors \eqn{c} guessing parameters}
- 
+
 }
 % \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
 
 
 \references{
-Formann, A. K. (1992). Linear logistic latent class analysis for polytomous data. 
-\emph{Journal of the American Statistical Association, 87}, 476-486.	
+Formann, A. K. (1992). Linear logistic latent class analysis for polytomous data.
+\emph{Journal of the American Statistical Association, 87}, 476-486.
 
 Formann, A. K. (2007). (Almost) Equivalence between conditional and mixture maximum
 likelihood estimates for some models of the Rasch type. In M. von Davier & C. H. Carstensen
-(Eds.), \emph{Multivariate and mixture distribution Rasch models} (pp. 177-189). 
+(Eds.), \emph{Multivariate and mixture distribution Rasch models} (pp. 177-189).
 New York: Springer.
-	
+
 Xu, X., & von Davier, M. (2008). \emph{Fitting the structured general diagnostic
 model to NAEP data}. ETS Research Report ETS RR-08-27. Princeton, ETS.
 }
@@ -324,20 +324,20 @@ dat <- data.sim.rasch
 ctl.list <- list(maxiter=100) # increase the number of iterations in applications!
 
 #*** Model 1: Rasch model, normal trait distribution
-mod1 <- TAM::tam.mml.3pl(resp=dat , skillspace= "normal" , est.some.slopes=FALSE , 
+mod1 <- TAM::tam.mml.3pl(resp=dat , skillspace= "normal" , est.some.slopes=FALSE ,
               control=ctl.list)
 summary(mod1)
 
 #*** Model 2: Rasch model, discrete trait distribution
 #  choose theta grid
-theta.k <- seq( -3 , 3 , len=7 )	# discrete theta grid distribution
+theta.k <- seq( -3 , 3 , len=7 )    # discrete theta grid distribution
 # define symmetric trait distribution
 delta.designmatrix <- matrix( 0 , nrow=7 , ncol= 4 )
 delta.designmatrix[4,1] <- 1
 delta.designmatrix[c(3,5),2] <- 1
 delta.designmatrix[c(2,6),3] <- 1
 delta.designmatrix[c(1,7),4] <- 1
-mod2 <- TAM::tam.mml.3pl(resp=dat , skillspace= "discrete" , est.some.slopes=FALSE , 
+mod2 <- TAM::tam.mml.3pl(resp=dat , skillspace= "discrete" , est.some.slopes=FALSE ,
            theta.k=theta.k, delta.designmatrix=delta.designmatrix , control=ctl.list)
 summary(mod2)
 
@@ -393,7 +393,7 @@ MODEL PRIOR:
 mod5a <- TAM::tamaan( tammodel , resp=dat , control=list(maxiter=20))
 
 #*** Model 6: 2PL model with design matrix for item slopes
-I <- 40	     # number of items
+I <- 40         # number of items
 D <- 1       # dimensions
 maxK <- 2    # maximum number of categories
 Ngam <- 13   # number of different slope parameters
@@ -430,7 +430,7 @@ gammaslope.constr.c[1] <- 1.8
 # set sum of entries 4, 5 and 6 to 3
 gammaslope.constr.V[4:6,2] <- 1
 gammaslope.constr.c[2] <- 3
-mod7 <- TAM::tam.mml.3pl(resp= dat, control= ctl.list ,  E=E ,  est.variance=FALSE , 
+mod7 <- TAM::tam.mml.3pl(resp= dat, control= ctl.list ,  E=E ,  est.variance=FALSE ,
    gammaslope.constr.V=gammaslope.constr.V , gammaslope.constr.c=gammaslope.constr.c)
 summary(mod7)
 
@@ -450,8 +450,8 @@ gammaslope.constr.c <- c(0)
 gammaslope <- c( -2 , 0 , 2 )
 # estimate model
 mod8 <- TAM::tam.mml.3pl(resp= dat, control= ctl.list ,  E=E ,  skillspace="discrete" ,
-     theta.k=theta.k , gammaslope=gammaslope , gammaslope.constr.V=gammaslope.constr.V , 
-     gammaslope.constr.c=gammaslope.constr.c )            
+     theta.k=theta.k , gammaslope=gammaslope , gammaslope.constr.V=gammaslope.constr.V ,
+     gammaslope.constr.c=gammaslope.constr.c )
 summary(mod8)
 
 #*** Model 9: Multidimensional multiple group model
@@ -461,7 +461,7 @@ group <- c( rep(1,N/4) , rep(2,N/4) , rep(3,N/2) )
 Q <- matrix(0,nrow=I,ncol=2)
 Q[ 1:(I/2) , 1] <- Q[ seq(I/2+1,I) , 2] <- 1
 # estimate model
-mod9 <- TAM::tam.mml.3pl(resp=dat, skillspace="normal", est.some.slopes=FALSE, 
+mod9 <- TAM::tam.mml.3pl(resp=dat, skillspace="normal", est.some.slopes=FALSE,
                group=group, Q=Q)
 summary(mod9)
 
@@ -474,7 +474,7 @@ dat <- data.mg[1:1000, paste0("I",1:11)]
 
 #*******************************************************
 #*** Model 1: 1-dimensional 1PL estimation, normal skill distribution
-mod1 <- TAM::tam.mml.3pl(resp=dat , skillspace="normal" , 
+mod1 <- TAM::tam.mml.3pl(resp=dat , skillspace="normal" ,
            gammaslope.des = "2PL", est.some.slopes=FALSE ,  est.variance=TRUE  )
 summary(mod1)
 
@@ -490,7 +490,7 @@ xsi.fixed <- cbind( 13 , 0 )
 gammaslope.fixed <- cbind( 10 , 1 )
 # estimate model
 mod2 <- TAM::tam.mml.3pl(resp=dat , skillspace="discrete" , theta.k=theta.k ,
-          delta.designmatrix=delta.designmatrix, gammaslope.des = "2PL" , xsi.fixed=xsi.fixed , 
+          delta.designmatrix=delta.designmatrix, gammaslope.des = "2PL" , xsi.fixed=xsi.fixed ,
           gammaslope.fixed=gammaslope.fixed)
 summary(mod2)
 
@@ -528,9 +528,9 @@ est.guess[ guess.items ] <- seq(1, length(guess.items) )
 guess.prior <- matrix( cbind( 5 , 17 ) , I , 2 , byrow=TRUE )
 guess.prior[ ! est.guess , ] <- 0
 # estimate model
-mod1 <- TAM::tam.mml.3pl(resp= dat , guess = guess , est.guess = est.guess , 
+mod1 <- TAM::tam.mml.3pl(resp= dat , guess = guess , est.guess = est.guess ,
            guess.prior=guess.prior , control= ctl.list ,est.variance=TRUE  ,
-           est.some.slopes=FALSE )          
+           est.some.slopes=FALSE )
 summary(mod1)
 
 #*******************************************************
@@ -538,9 +538,9 @@ summary(mod1)
 est.guess <- rep(0,I)
 est.guess[ guess.items ] <- 1
 # estimate model
-mod2 <- TAM::tam.mml.3pl(resp= dat , guess = guess , est.guess = est.guess , 
+mod2 <- TAM::tam.mml.3pl(resp= dat , guess = guess , est.guess = est.guess ,
             guess.prior=guess.prior , control= ctl.list ,est.variance=TRUE  ,
-            est.some.slopes=FALSE )          
+            est.some.slopes=FALSE )
 summary(mod2)
 
 #############################################################################
@@ -584,9 +584,9 @@ for (ii in 1:I){
                     }
 
 # estimation command
-mod1 <- TAM::tam.mml.3pl(resp= dat , E=E , control= list(maxit=20), skillspace="discrete", 
-          theta.k=theta.k , notA=TRUE)          
-summary(mod1)         
+mod1 <- TAM::tam.mml.3pl(resp= dat , E=E , control= list(maxit=20), skillspace="discrete",
+          theta.k=theta.k , notA=TRUE)
+summary(mod1)
 # compare simulated and estimated data
 cbind( mod1$rprobs[,2,1] , a2 )  # Simulated class 2
 cbind( mod1$rprobs[,2,2] , a1 )  # Simulated class 1
@@ -600,10 +600,10 @@ ANALYSIS:
   NSTARTS(5,20); # 5 random starts with 20 iterations
 LAVAAN MODEL:
   F =~ I1__I7
-    "    
+    "
 mod1b <- TAM::tamaan( tammodel , resp=dat )
 summary(mod1b)
-# compare with mod1    
+# compare with mod1
 logLik(mod1)
 logLik(mod1b)
 
@@ -634,7 +634,7 @@ E <- array( 0 , dim=c(I , maxK , TP ,  Ngam ) )
 dimnames(E)[[1]] <- colnames(dat)
 dimnames(E)[[2]] <- paste0("Cat", 1:(maxK) )
 dimnames(E)[[3]] <- paste0("Class", 1:TP)
-dimnames(E)[[4]] <- paste0("theta", 1:TP) 
+dimnames(E)[[4]] <- paste0("theta", 1:TP)
 # theta design
 for (tt in 1:TP){   E[1:I , 2 , tt ,  tt] <- 1       }
 theta.k <- diag(TP)
@@ -643,9 +643,9 @@ xsi.fixed <- cbind( 8 , 0 )
 # initial gamma parameter
 gammaslope <- seq( -1.5 , 1.5 , len=TP)
 # estimate model
-mod1 <- TAM::tam.mml.3pl(resp= dat , E=E , xsi.fixed=xsi.fixed , 
-           control= list(maxiter=100) , skillspace="discrete" , 
-           theta.k=theta.k , gammaslope=gammaslope)          
+mod1 <- TAM::tam.mml.3pl(resp= dat , E=E , xsi.fixed=xsi.fixed ,
+           control= list(maxiter=100) , skillspace="discrete" ,
+           theta.k=theta.k , gammaslope=gammaslope)
 summary(mod1)
 # compare estimated and simulated theta class locations
 cbind( mod1$gammaslope , theta0 )
@@ -674,7 +674,7 @@ set.seed(487)
 N <- 3000   # number of persons
 # define Q-matrix
 I <- 9  # 9 items
-NS <- 2 # 2 skills 
+NS <- 2 # 2 skills
 TP <- 4 # number of skill classes
 Q <- scan(nlines=3, text=
   "1 0   1 0   1 0
@@ -700,9 +700,9 @@ E <- array( 0 , dim=c(I , maxK , TP ,  Ngam ) )
 dimnames(E)[[1]] <- colnames(dat)
 dimnames(E)[[2]] <- paste0("Cat" , 1:(maxK) )
 dimnames(E)[[3]] <- c("S00","S10","S01","S11")
-dimnames(E)[[4]] <- paste0( "antislip" , 1:I ) 
+dimnames(E)[[4]] <- paste0( "antislip" , 1:I )
 # define anti-slipping parameters in E
-for (ii in 1:I){  
+for (ii in 1:I){
         # define latent responses
         latresp <- 1*( alpha0 \%*\% Q[ii,]  == sum(Q[ii,]) )[,1]
         # model slipping parameters
@@ -710,11 +710,11 @@ for (ii in 1:I){
                  }
 # skill space definition
 theta.k <- diag(TP)
-gammaslope <- rep( qlogis( .8 ) , I ) 
+gammaslope <- rep( qlogis( .8 ) , I )
 
 # estimate model
 mod1 <- TAM::tam.mml.3pl(resp=dat, E=E, control= list(maxiter=100), skillspace="discrete",
-          theta.k=theta.k , gammaslope=gammaslope)          
+          theta.k=theta.k , gammaslope=gammaslope)
 summary(mod1)
 # compare estimated and simulated latent class proportions
 cbind( mod1$pi.k , probs0 )
@@ -765,8 +765,8 @@ delta.designmatrix[, 2:3] <- cbind( theta.k1 , theta.k1^2 )
 E <- array( 0 , dim=c(I,2,TT,I + 1) )  # last parameter is constant 1
 for (ii in 1:I){
     E[ ii , 2 , 1:TT , ii ] <- -1   # '-b' in '1*theta - b'
-    E[ ii , 2 , 1:TT , I+1] <- theta.k1  # '1*theta' in '1*theta - b'    
-                }                               
+    E[ ii , 2 , 1:TT , I+1] <- theta.k1  # '1*theta' in '1*theta - b'
+                }
 # initial gammaslope parameters
 par1 <- stats::qlogis( colMeans( dat ) )
 gammaslope <- c( par1 , 1 )
@@ -777,11 +777,11 @@ gammaslope.constr.c <- c(0)
 # fixed gammaslope parameter
 gammaslope.fixed <- cbind( I+1 , 1 )
 # estimate model
-mod1 <- TAM::tam.mml.3pl(resp= dat1, E=E, skillspace="discrete" , 
+mod1 <- TAM::tam.mml.3pl(resp= dat1, E=E, skillspace="discrete" ,
            theta.k=theta.k , delta.designmatrix=delta.designmatrix ,
            gammaslope=gammaslope , gammaslope.constr.V=gammaslope.constr.V ,
            gammaslope.constr.c=gammaslope.constr.c , gammaslope.fixed=gammaslope.fixed ,
-           notA=TRUE , est.variance=FALSE)                                            
+           notA=TRUE , est.variance=FALSE)
 summary(mod1)
 
 #*** Model 2: Mixed Rasch model with two latent classes
@@ -804,15 +804,15 @@ E <- array( 0 , dim=c(I,2,2*TT,2*I + 1) )  # last parameter is constant 1
 dimnames(E)[[1]] <- colnames(dat)
 dimnames(E)[[2]] <- c("Cat0","Cat1")
 dimnames(E)[[3]] <- c( paste0("Class1_theta" , 1:TT) , paste0("Class2_theta" , 1:TT) )
-dimnames(E)[[4]] <- c( paste0("b_Class1_" , colnames(dat)) , 
+dimnames(E)[[4]] <- c( paste0("b_Class1_" , colnames(dat)) ,
        paste0("b_Class2_" , colnames(dat)) , "One")
 for (ii in 1:I){
   # Class 1 item parameters
     E[ ii , 2 , 1:TT , ii ] <- -1   # '-b' in '1*theta - b'
     E[ ii , 2 , 1:TT , 2*I+1] <- theta.k1  # '1*theta' in '1*theta - b'
   # Class 2 item parameters
-    E[ ii , 2 , TT + 1:TT , I + ii ] <- -1 
-    E[ ii , 2 , TT + 1:TT , 2*I+1] <- theta.k1 
+    E[ ii , 2 , TT + 1:TT , I + ii ] <- -1
+    E[ ii , 2 , TT + 1:TT , 2*I+1] <- theta.k1
                 }
 # initial gammaslope parameters
 par1 <- qlogis( colMeans( dat ) )
@@ -822,16 +822,16 @@ gammaslope.center.index <- c( rep( 1, I ) , rep(2,I) , 0 )
 gammaslope.center.value <- c(0,0)
 
 # estimate model
-mod1 <- TAM::tam.mml.3pl(resp= dat , E=E , skillspace="discrete" , 
+mod1 <- TAM::tam.mml.3pl(resp= dat , E=E , skillspace="discrete" ,
             theta.k=theta.k , delta.designmatrix=delta.designmatrix ,
             gammaslope=gammaslope , gammaslope.center.index=gammaslope.center.index ,
             gammaslope.center.value=gammaslope.center.value, gammaslope.fixed=gammaslope.fixed ,
-            notA=TRUE)          
+            notA=TRUE)
 summary(mod1)
 # latent class proportions
 stats::aggregate( mod1$pi.k , list( rep(1:2, each=TT)) , sum )
 # compare simulated and estimated item parameters
-cbind( b1 , b2 , - mod1$gammaslope[1:I] , - mod1$gammaslope[I + 1:I ] ) 
+cbind( b1 , b2 , - mod1$gammaslope[1:I] , - mod1$gammaslope[I + 1:I ] )
 
 #--- specification in tamaan
 tammodel <- "
@@ -855,7 +855,7 @@ summary(mod1b)
 set.seed(9187)
 library(sirt)
 # simulate two latent classes of Rasch populations
-I <- 20 
+I <- 20
 b1 <- seq( -1.5 , 1.5 , len=I)      # difficulties latent class 1
 b2 <- b1    # difficulties latent class 2
 b2[ c(4,7, 9 , 11 , 12, 13 , 16 , 18) ] <- c(1 , -.5 , -.5 , .33 , .33 , -.66 , -1 , .3)
@@ -889,27 +889,27 @@ delta.designmatrix[TT+1:TT , 4] <- 1
 delta.designmatrix[TT+1:TT , 5:6] <- cbind( theta.k1 , theta.k1^2 )
 
 #-- define loading matrix E
-E <- array( 0 , dim=c(I,2,2*TT,4*I ) ) 
+E <- array( 0 , dim=c(I,2,2*TT,4*I ) )
 dimnames(E)[[1]] <- colnames(dat)
 dimnames(E)[[2]] <- c("Cat0","Cat1")
 dimnames(E)[[3]] <- c( paste0("Class1_theta" , 1:TT) , paste0("Class2_theta" , 1:TT) )
-dimnames(E)[[4]] <- c( paste0("b_Class1_" , colnames(dat)) ,  
+dimnames(E)[[4]] <- c( paste0("b_Class1_" , colnames(dat)) ,
                        paste0("a_Class1_" , colnames(dat)) ,
-                       paste0("b_Class2_" , colnames(dat)) , 
+                       paste0("b_Class2_" , colnames(dat)) ,
                        paste0("a_Class2_" , colnames(dat)) )
-       
+
 for (ii in 1:I){
   # Class 1 item parameters
     E[ ii , 2 , 1:TT , ii ] <- -1           # '-b' in 'a*theta - b'
     E[ ii , 2 , 1:TT , I + ii] <- theta.k1  # 'a*theta' in 'a*theta - b'
   # Class 2 item parameters
-    E[ ii , 2 , TT + 1:TT , 2*I + ii ] <- -1 
-    E[ ii , 2 , TT + 1:TT , 3*I + ii ] <- theta.k1 
+    E[ ii , 2 , TT + 1:TT , 2*I + ii ] <- -1
+    E[ ii , 2 , TT + 1:TT , 3*I + ii ] <- theta.k1
 }
-                                               
+
 # initial gammaslope parameters
 par1 <- scale( - stats::qlogis( colMeans( dat ) ) , scale =FALSE )
-gammaslope <- c( par1 , rep(1,I) ,  scale( par1 + runif(I, - 1.4  , 1.4 ), 
+gammaslope <- c( par1 , rep(1,I) ,  scale( par1 + runif(I, - 1.4  , 1.4 ),
         scale=FALSE)  , stats::runif( I,.6,1.4) )
 
 # constraint matrix
@@ -923,12 +923,12 @@ gammaslope.constr.V[ 3*I + 1:I , 4] <- 1  # Class 2 (a)
 gammaslope.constr.c <- c(0,0,I,I)
 
 # estimate model
-mod1 <- TAM::tam.mml.3pl(resp= dat , E=E , control= list(maxiter=80) , skillspace="discrete" , 
+mod1 <- TAM::tam.mml.3pl(resp= dat , E=E , control= list(maxiter=80) , skillspace="discrete" ,
       theta.k=theta.k , delta.designmatrix=delta.designmatrix ,
       gammaslope=gammaslope , gammaslope.constr.V=gammaslope.constr.V ,
       gammaslope.constr.c=gammaslope.constr.c ,  gammaslope.fixed=gammaslope.fixed ,
-      notA=TRUE)      
-      
+      notA=TRUE)
+
 # estimated item parameters
 mod1$gammaslope
 # summary
@@ -936,10 +936,10 @@ summary(mod1)
 # latent class proportions
 round( stats::aggregate( mod1$pi.k , list( rep(1:2, each=TT)) , sum ) , 3 )
 # compare simulated and estimated item intercepts
-int <- cbind( b1*a1 , b2 * a2 , - mod1$gammaslope[1:I] , - mod1$gammaslope[2*I + 1:I ] ) 
+int <- cbind( b1*a1 , b2 * a2 , - mod1$gammaslope[1:I] , - mod1$gammaslope[2*I + 1:I ] )
 round( int , 3 )
 # simulated and estimated item slopes
-slo <- cbind( a1 , a2 ,  mod1$gammaslope[I+1:I] , mod1$gammaslope[3*I + 1:I ] ) 
+slo <- cbind( a1 , a2 ,  mod1$gammaslope[I+1:I] , mod1$gammaslope[3*I + 1:I ] )
 round(slo,3)
 
 #--- specification in tamaan
@@ -950,7 +950,7 @@ ANALYSIS:
   NSTARTS(10,25)
 LAVAAN MODEL:
   F =~ I0001__I0020
-    "    
+    "
 mod1t <- TAM::tamaan( tammodel , resp=dat )
 summary(mod1t)
 
@@ -973,13 +973,13 @@ TP <- 4   # 4 discrete theta points
 # define skill space
 theta.k <- diag(TP)
 # define loading matrix E
-E <- array( -99 , dim=c(I,K,TP,1 ) ) 
+E <- array( -99 , dim=c(I,K,TP,1 ) )
 for (vv in 1:K){
     E[ 1, vv , vv , 1 ] <- 9
-                }               
+                }
 # estimate model
 mod1 <- TAM::tam.mml.3pl(resp= dat , E=E , skillspace="discrete" ,
-         theta.k=theta.k ,  notA=TRUE)      
+         theta.k=theta.k ,  notA=TRUE)
 summary(mod1)
 # -> the latent distribution corresponds to the manifest distribution, because ...
 round( mod1$pi.k , 3 )
@@ -989,17 +989,17 @@ round( t1 / sum(t1) , 3 )
 # EXAMPLE 10: Some fixed item loadings
 #############################################################################
 
-data(data.Students,package="CDM") 
+data(data.Students,package="CDM")
 dat <- data.Students
 # select variables
 vars <- scan( nlines=1 , what="character")
-    act1 act2 act3 act4 act5 sc1 sc2 sc3 sc4 
+    act1 act2 act3 act4 act5 sc1 sc2 sc3 sc4
 dat <- data.Students[ , vars  ]
 
 # define loading matrix: two-dimensional model
 Q <- matrix( 0 , nrow=9 , ncol=2 )
 Q[1:5,1] <- 1
-Q[6:9,2] <- 1 
+Q[6:9,2] <- 1
 # define some fixed item loadings
 Q.fixed <- NA*Q
 Q.fixed[ c(1,4) , 1] <- .5
@@ -1044,13 +1044,13 @@ est.guess2 <- 1 * ( guess0 == .25 )  # joint guessing parameter
 A0 <- mod0$A
 
 #--- Model 1: fixed guessing parameters of .25 and item slopes of 1
-mod1 <- TAM::tam.mml.3pl( dat , guess = guess0 , est.guess = est.guess1 , 
+mod1 <- TAM::tam.mml.3pl( dat , guess = guess0 , est.guess = est.guess1 ,
             A = A0 , est.some.slopes=FALSE , control= list(maxiter=50) )
 summary(mod1)
 
 #--- Model 2: estimate joint guessing parameters and item slopes of 1
-mod2 <- TAM::tam.mml.3pl( dat , guess = guess0 , est.guess = est.guess2 , 
-            A = A0 , est.some.slopes=FALSE, control= list(maxiter=50) )                        
+mod2 <- TAM::tam.mml.3pl( dat , guess = guess0 , est.guess = est.guess2 ,
+            A = A0 , est.some.slopes=FALSE, control= list(maxiter=50) )
 summary(mod2)
 
 # model comparison

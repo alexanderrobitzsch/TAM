@@ -1,41 +1,34 @@
 ## File Name: tam_mml_calc_prob.R
-## File Version: 9.26
+## File Version: 9.385
 
 #####################################################################
-# calc_prob
-# Calculation of probabilities
-tam_mml_calc_prob <- function(iIndex, A, AXsi, B, xsi, theta, 
-           nnodes, maxK, recalc=TRUE)
+# calc_prob: Calculation of probabilities
+tam_mml_calc_prob <- function(iIndex, A, AXsi, B, xsi, theta,
+            nnodes, maxK, recalc=TRUE, use_rcpp=FALSE, maxcat=NULL)
 {
-	if(recalc){
-		LI <- length(iIndex)
-		LXsi <- dim(A)[3]
-		AXsi.tmp <- array( 0 , dim = c( LI , maxK , nnodes ) )
-		for (kk in 1:maxK){
-			A_kk <- matrix( A[ iIndex , kk , ] , nrow = LI , ncol = LXsi )
-			AXsi.tmp[, kk , 1:nnodes ] <- A_kk %*% xsi
-		}	 
-		AXsi[iIndex,] = AXsi.tmp[,,1]
-	} else {
-		# AXsi.tmp <- array( AXsi, dim = c( length(iIndex) , maxK , nnodes ) )
-		AXsi.tmp <- array( AXsi[ iIndex, ] , dim = c( length(iIndex) , maxK , nnodes ) )
-	}
-	Btheta <- array(0, dim = c(length(iIndex) , maxK , nnodes) )
-	for( dd in 1:ncol(theta) ){ 
-		Btheta <- Btheta + array(B[iIndex,,dd ,drop = FALSE] %o% theta[,dd] , dim = dim(Btheta))
-	}
-
-	#*** subtract maximum in Rcpp to avoid numerical overflow
-	rr0 <- Btheta + AXsi.tmp
-	rr1 <- tam_calc_prob_helper_subtract_max( rr0=rr0 )
-	rr <- exp(rr1)
-	rprobs <- rr / aperm( array( rep( colSums( aperm( rr , c(2,1,3) ) ,
-					dims=1 , na.rm = TRUE) ,    maxK ), dim=dim(rr)[c(1,3,2)] ) , c(1,3,2) )	
-	#---- output
-	res <- list("rprobs" = rprobs, "AXsi" = AXsi)
-	return(res)
+    if (use_rcpp){
+        if ( is.null(maxcat) ){ use_rcpp <- FALSE }
+        if ( ! recalc ){ use_rcpp <- FALSE }
+    }
+    if ( ! use_rcpp ){
+        #-- R function
+        res <- tam_mml_calc_prob_R( iIndex=iIndex, A=A, AXsi=AXsi, B=B, xsi=xsi,
+                    theta=theta, nnodes=nnodes, maxK=maxK, recalc=recalc )
+        rprobs <- res$rprobs
+        AXsi <- res$AXsi
+    } else {
+        #-- Rcpp function
+        res <- tam_rcpp_calc_prob( A=as.vector(A), dimA=dim(A), xsi=xsi,
+                        maxcat=maxcat, AXsi0=AXsi, iIndex=iIndex, theta=theta, B=as.vector(B) )
+        LI <- length(iIndex)
+        rprobs <- array( res$rprobs, dim=c(LI,maxK,nnodes) )
+        AXsi <- res$AXsi
+    }
+    #---- output
+    res <- list("rprobs" = rprobs, "AXsi" = AXsi)
+    return(res)
 }
-########################################################################  
+########################################################################
 
 
 calc_prob.v5 <- tam_mml_calc_prob

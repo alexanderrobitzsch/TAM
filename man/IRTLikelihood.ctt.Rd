@@ -1,11 +1,11 @@
 %% File Name: IRTLikelihood.ctt.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{IRTLikelihood.ctt}
 \alias{IRTLikelihood.ctt}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Computes Individual Likelihood from Classical Test Theory Estimates 
+Computes Individual Likelihood from Classical Test Theory Estimates
 }
 
 \description{

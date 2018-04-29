@@ -1,5 +1,5 @@
 %% File Name: data.numeracy.Rd
-%% File Version: 2.08
+%% File Version: 2.09
 
 \name{data.numeracy}
 \alias{data.numeracy}
@@ -11,7 +11,7 @@ Dataset Numeracy
 
 
 \description{
-Dataset numeracy with unscored (\code{raw}) and scored (\code{scored}) 
+Dataset numeracy with unscored (\code{raw}) and scored (\code{scored})
 item responses of 876 persons and 15 items.
 }
 
@@ -21,7 +21,7 @@ data(data.numeracy)
 }
 
 \format{
-The format is a list a two entries: 
+The format is a list a two entries:
 
 \code{List of 2} \cr
 \code{ $ raw   :'data.frame':} \cr
@@ -81,7 +81,7 @@ stats::sd(PersonAbility)
 \dontrun{
 #Extension
 #plot histograms of ability and item parameters in the same graph
-oldpar <- par(no.readonly = TRUE)	      # save writable default graphic settings
+oldpar <- par(no.readonly = TRUE)          # save writable default graphic settings
 windows(width=4.45, height=4.45, pointsize=12)
 layout(matrix(c(1,1,2),3,byrow=TRUE))
 layout.show(2)
@@ -99,7 +99,7 @@ raw_resp <- data.numeracy$raw
 
 #score responses
 key <- c(1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1)
-scored <- sapply( seq(1,length(key)) , 
+scored <- sapply( seq(1,length(key)) ,
             FUN = function(ii){ 1*(raw_resp[,ii] == key[ii]) } )
 
 #run IRT analysis
@@ -118,7 +118,7 @@ Fit <- TAM::tam.fit(mod1)
 Fit
 
 # plot expected response curves
-plot( mod1 , ask=TRUE ) 
+plot( mod1 , ask=TRUE )
 }
 }
 

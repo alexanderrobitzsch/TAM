@@ -2,7 +2,7 @@
 ## File Version: 0.05
 
 TAM_IRT_frequencies_wrapper <- function( object, ...){
-	CDM::IRT_frequencies_wrapper( object=object, ...)
+    CDM::IRT_frequencies_wrapper( object=object, ...)
 }
 
 IRT.frequencies.tam.mml <- TAM_IRT_frequencies_wrapper

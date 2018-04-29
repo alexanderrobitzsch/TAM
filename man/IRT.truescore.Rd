@@ -1,5 +1,5 @@
 %% File Name: IRT.truescore.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{IRT.truescore}
 \alias{IRT.truescore}
@@ -8,7 +8,7 @@
 Converts a \eqn{\theta} Score into a True Score \eqn{\tau ( \theta)}
 }
 \description{
-Converts a \eqn{\theta} score into an unweighted true score 
+Converts a \eqn{\theta} score into an unweighted true score
 \eqn{\tau ( \theta) = \sum_i \sum_h h P_i ( \theta ) }.
 In addition, a weighted true score
 \eqn{\tau ( \theta) = \sum_i \sum_h q_{ih} P_i ( \theta ) }
@@ -21,8 +21,8 @@ IRT.truescore(object, iIndex = NULL, theta = NULL, Q = NULL)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{object}{
-Object for which the 
-\code{\link[CDM:IRT.irfprob]{CDM::IRT.irfprob}} S3 method is defined 
+Object for which the
+\code{\link[CDM:IRT.irfprob]{CDM::IRT.irfprob}} S3 method is defined
 }
   \item{iIndex}{
 Optional vector with item indices
@@ -52,7 +52,7 @@ true scores \eqn{\tau( \theta ) }.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See also \code{\link[sirt:truescore.irt]{sirt::truescore.irt}} 
+See also \code{\link[sirt:truescore.irt]{sirt::truescore.irt}}
 for a conversion function for generalized partial credit models.
 }
 
@@ -74,7 +74,7 @@ round( tmod1 , 4 )
 # true score conversion with user-defined theta grid
 tmod1b <- TAM::IRT.truescore( mod1 , theta=seq( -8,8, len=33 ) )
 # plot results
-plot( tmod1$theta , tmod1$truescore , type="l" , 
+plot( tmod1$theta , tmod1$truescore , type="l" ,
             xlab=expression(theta) , ylab=expression(tau( theta ) ) )
 points( tmod1b$theta , tmod1b$truescore , pch=16 , col="brown" )
 
@@ -92,7 +92,7 @@ ind <- which( apply( dat ,  2, max , na.rm=TRUE ) == 2 )
 I <- ncol(dat)
 # define Q-matrix with scoring variant
 Q <- matrix( 1 , nrow=I , ncol=1 )
-Q[ ind , 1 ] <- .5    # score of 0.5 for polyomous items 
+Q[ ind , 1 ] <- .5    # score of 0.5 for polyomous items
 
 # estimate model
 mod1 <- TAM::tam.mml( dat , Q=Q , irtmodel="PCM2" , control=list( nodes=seq(-10,10,len=61) ) )

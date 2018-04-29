@@ -1,5 +1,5 @@
 %% File Name: tam.threshold.Rd
-%% File Version: 2.16
+%% File Version: 2.17
 
 \name{tam.threshold}
 \alias{tam.threshold}
@@ -20,8 +20,8 @@ tam.threshold(tamobj, prob.lvl=0.5)
 Object of class \code{tam}
 }
 \item{prob.lvl}{
-A numeric specifying the probability level of the threshold. 
-The default is \code{prob.lvl=0.5}.  
+A numeric specifying the probability level of the threshold.
+The default is \code{prob.lvl=0.5}.
 }
 }
 
@@ -53,8 +53,8 @@ columns to item steps.
 
 \seealso{
 See the \pkg{WrightMap} package and Example 3 for creating Wright maps
-with fitted models in \pkg{TAM}, see 
-\code{\link[WrightMap:wrightMap]{wrightMap}}. 	
+with fitted models in \pkg{TAM}, see
+\code{\link[WrightMap:wrightMap]{wrightMap}}.
 }
 
 \examples{
@@ -78,12 +78,12 @@ TAM::tam.threshold(mod1)
   ##   Comfort -1.325226 2.0717468 3.139801
   ##   Work    -1.777679 0.6459045 1.971222
   ##   Benefit -1.343536 0.7491760 2.403168
-   
+
 \dontrun{
 #############################################################################
 # EXAMPLE 2: Multidimensional model data.math
 #############################################################################
-	
+
 library(sirt)
 data(data.math, package="sirt")
 dat <- data.math$data
@@ -131,7 +131,7 @@ WrightMap::wrightMap( thetas = wlemod1 , thresholds= tmod1 , label.items.srt=-90
 uni.proficiency <- rep( mod1$theta[,1] , round( mod1$pi.k * mod1$ic$n) )
 # draw WrightMap
 WrightMap::wrightMap( thetas=uni.proficiency, thresholds= tmod1 , label.items.rows=3)
-}	
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

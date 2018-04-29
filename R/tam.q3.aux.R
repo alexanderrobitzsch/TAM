@@ -1,5 +1,5 @@
 ## File Name: tam.q3.aux.R
-## File Version: 9.02
+## File Version: 9.03
 
 ############################################################
 # computation of Q3 statistic from residuals
@@ -17,22 +17,22 @@
 #############################################################
 # Jackknife estimation with bias correction
 .tam.q3.jackknife2 <- function( ms1 , ms.jack ){
-        # pseudo values		
-#		res0 <- jackknife_calc( ms1 , as.matrix(ms.jack ) )
-		ms <- data.frame("val" = ms1 )
-		JJ <- ncol(ms.jack)
-        psx <- ms1 + ( JJ-1 ) * ( ms1 - ms.jack )		
+        # pseudo values
+#        res0 <- jackknife_calc( ms1 , as.matrix(ms.jack ) )
+        ms <- data.frame("val" = ms1 )
+        JJ <- ncol(ms.jack)
+        psx <- ms1 + ( JJ-1 ) * ( ms1 - ms.jack )
         # jackknife estimate
-        ms$jkunits <- JJ    
+        ms$jkunits <- JJ
         ms$jk_est <- rowMeans( psx )
 
         ms$jk_se <- sqrt( rowSums( ( psx - ms$jk_est )^2 ) / (JJ-1 ) / JJ  )
-#        ms$jk_se <- sqrt( apply( ms.jack , 1 , FUN = function(ll){ 
+#        ms$jk_se <- sqrt( apply( ms.jack , 1 , FUN = function(ll){
 #                sum( ( ll - mean(ll) )^2 ) } ) * (JJ-1) / JJ )
         ms$est_low <- ms$jk_est - 1.96 * ms$jk_se
         ms$est_upp <- ms$jk_est + 1.96 * ms$jk_se
-		return(ms)
-		}
+        return(ms)
+        }
 ##############################################################
 
 

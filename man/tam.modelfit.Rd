@@ -1,5 +1,5 @@
 %% File Name: tam.modelfit.Rd
-%% File Version: 2.31
+%% File Version: 2.32
 
 \name{tam.modelfit}
 \alias{tam.modelfit}
@@ -26,7 +26,7 @@ Model Fit Statistics in \pkg{TAM}
 \description{
 The function \code{tam.modelfit} computes several model fit statistics.
 It includes the Q3 statistic (Yen, 1984) and an
-adjusted variant of it (see Details). Effect sizes of model fit 
+adjusted variant of it (see Details). Effect sizes of model fit
 (\code{MADaQ3}, \eqn{MADRESIDCOV},
 \eqn{SRMR}) are also available.
 
@@ -35,7 +35,7 @@ but allows convenient model comparisons by using the
 \code{\link[CDM:IRT.compareModels]{CDM::IRT.compareModels}} function.
 
 The \code{tam.modelfit} function can also be used for fitted
-models outside the \pkg{TAM} package by applying 
+models outside the \pkg{TAM} package by applying
 \code{tam.modelfit.IRT} or \code{tam.modelfit.args}.
 
 The function \code{tam.Q3} computes the \eqn{Q_3} statistic based on
@@ -101,31 +101,31 @@ estimates (WLEs) from \code{\link{tam.wle}}.
 It is known that under local independence, the expected value of \eqn{Q_3}
 is slightly smaller than zero. Therefore,
 an adjusted Q3 statistic (\code{aQ3}; \eqn{aQ3_{ij}})
-is computed by subtracting the average of all Q3 statistics from 
-Q3. To control for multiple testing, 
+is computed by subtracting the average of all Q3 statistics from
+Q3. To control for multiple testing,
 a p value adjustment by the method of
 Holm (\code{p.holm}) is employed (see Chen, de la Torre & Zhang, 2013).
 
 An effect size of model fit (\code{MADaQ3}) is defined as
 the average of absolute values of \eqn{aQ3} statistics. An equivalent
 statistic based on the \eqn{Q_3} statistic is similar to the
-standardized generalized dimensionality discrepancy measure (SGDDM; Levy, 
+standardized generalized dimensionality discrepancy measure (SGDDM; Levy,
 Xu, Yel & Svetina, 2015).
 
 The SRMSR (standardized root mean square root of squared residuals,
-Maydeu-Olivaras, 2013) is based on comparing residual correlations 
+Maydeu-Olivaras, 2013) is based on comparing residual correlations
 of item pairs
-\deqn{ SRMSR = \sqrt{ \frac{1}{ J(J-1)/2 } \sum_{i < j} 
-	( r_{ij} - \hat{r}_{ij} )^2 } }
-Additionally, the SRMR is computed as	
-\deqn{ SRMR = \frac{1}{ J(J-1)/2 } \sum_{i < j} 
-	 | r_{ij} - \hat{r}_{ij} | } 
+\deqn{ SRMSR = \sqrt{ \frac{1}{ J(J-1)/2 } \sum_{i < j}
+    ( r_{ij} - \hat{r}_{ij} )^2 } }
+Additionally, the SRMR is computed as
+\deqn{ SRMR = \frac{1}{ J(J-1)/2 } \sum_{i < j}
+     | r_{ij} - \hat{r}_{ij} | }
 
-The \eqn{MADRESIDCOV} statistic (McDonald & Mok, 1995) is based on comparing 
+The \eqn{MADRESIDCOV} statistic (McDonald & Mok, 1995) is based on comparing
 residual covariances of item pairs
-\deqn{ MADRESIDCOV = \frac{1}{ J(J-1)/2 } \sum_{i < j} 
-	| c_{ij} - \hat{c}_{ij} |  }	
-This statistic is just multiplied by 100 in the output of this function.	
+\deqn{ MADRESIDCOV = \frac{1}{ J(J-1)/2 } \sum_{i < j}
+    | c_{ij} - \hat{c}_{ij} |  }
+This statistic is just multiplied by 100 in the output of this function.
 }
 
 
@@ -140,7 +140,7 @@ A list with following entries
       \eqn{SRMR} and \eqn{SRMSR}}
   \item{modelfit.test}{Test statistic of global fit based on multiple
   testing correction of \eqn{\chi^2} statistics
-  		}
+          }
   \item{stat.itempair}{Q3 and adjusted Q3 statistic for all item pairs}
   \item{residuals}{Residuals}
   \item{Q3.matr}{Matrix of \eqn{Q_3} statistics}
@@ -151,36 +151,36 @@ A list with following entries
 
 %  \item{chisquare.itemfit}{Item-wise \eqn{\chi ^2} local independence statistics}
 
-%	res <- list( "stat.MADaQ3"=stat.MADaQ3 , "chi2.stat"=chi2.stat ,
-%		   "fitstat" = fitstat , "modelfit.test"= modelfit.test , 
-%		   "stat.itempair"=dfr , "residuals" = residM )
+%    res <- list( "stat.MADaQ3"=stat.MADaQ3 , "chi2.stat"=chi2.stat ,
+%           "fitstat" = fitstat , "modelfit.test"= modelfit.test ,
+%           "stat.itempair"=dfr , "residuals" = residM )
 
 
 
 \references{
-Chen, J., de la Torre, J., & Zhang, Z. (2013). 
-Relative and absolute fit evaluation in cognitive diagnosis modeling. 
-\emph{Journal of Educational Measurement, 50}, 123-140.	
+Chen, J., de la Torre, J., & Zhang, Z. (2013).
+Relative and absolute fit evaluation in cognitive diagnosis modeling.
+\emph{Journal of Educational Measurement, 50}, 123-140.
 
-Chen, W., & Thissen, D. (1997). Local dependence indexes for item pairs 
+Chen, W., & Thissen, D. (1997). Local dependence indexes for item pairs
 using item response theory. \emph{Journal of Educational and Behavioral Statistics,
-22}, 265-289.		
+22}, 265-289.
 
-Levy, R., Xu, Y., Yel, N., & Svetina, D. (2015). A standardized 
+Levy, R., Xu, Y., Yel, N., & Svetina, D. (2015). A standardized
 generalized dimensionality discrepancy measure and a standardized model-based
 covariance for dimensionality assessment for multidimensional models.
 \emph{Journal of Educational Measurement, 52}(2), 144--158.
 
 Maydeu-Olivares, A. (2013). Goodness-of-fit assessment of item response
-theory models (with discussion). 
+theory models (with discussion).
 \emph{Measurement: Interdisciplinary Research and Perspectives,
 11}, 71-137.
 
 McDonald, R. P., & Mok, M. M.-C. (1995). Goodness of fit in item response models.
 \emph{Multivariate Behavioral Research, 30}, 23-40.
 
-Yen, W. M. (1984). Effects of local item dependence on the fit and equating 
-performance of the three-parameter logistic model. 
+Yen, W. M. (1984). Effects of local item dependence on the fit and equating
+performance of the three-parameter logistic model.
 \emph{Applied Psychological Measurement, 8}, 125-145.
 }
 

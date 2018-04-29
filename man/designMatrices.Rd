@@ -1,5 +1,5 @@
 %% File Name: designMatrices.Rd
-%% File Version: 2.13
+%% File Version: 2.14
 
 \name{designMatrices}
 
@@ -22,21 +22,21 @@ Generate design matrices, and display them at console.
 \usage{
 designMatrices(modeltype = c("PCM", "RSM"), maxKi = NULL, resp = resp,
     ndim = 1, A = NULL, B = NULL, Q = NULL, R = NULL, constraint = "cases" ,...)
-    
+
 print.designMatrices(X, ...)
 
-designMatrices.mfr(resp, formulaA = ~ item + item:step, facets = NULL, 
+designMatrices.mfr(resp, formulaA = ~ item + item:step, facets = NULL,
     constraint = c("cases", "items"), ndim = 1, Q=NULL, A=NULL, B=NULL ,
     progress=FALSE)
-designMatrices.mfr2(resp, formulaA = ~ item + item:step, facets = NULL, 
+designMatrices.mfr2(resp, formulaA = ~ item + item:step, facets = NULL,
     constraint = c("cases", "items"), ndim = 1, Q=NULL, A=NULL, B=NULL ,
-    progress=FALSE)    
-    
-.A.matrix(resp, formulaA = ~ item + item*step, facets = NULL, 
+    progress=FALSE)
+
+.A.matrix(resp, formulaA = ~ item + item*step, facets = NULL,
     constraint = c("cases", "items") , progress=FALSE , maxKi=NULL)
 rownames.design(X)
 
-.A.PCM2( resp, Kitem=NULL , constraint = "cases" , Q = NULL) 
+.A.PCM2( resp, Kitem=NULL , constraint = "cases" , Q = NULL)
    # generates ConQuest parametrization of partial credit model
 
 .A.PCM3( resp, Kitem=NULL ) # parametrization for A matrix in the dispersion model
@@ -89,7 +89,7 @@ rownames.design(X)
 \item{constraint}{
     Constraint in estimation: \code{cases} assumes zero means
     of trait distributions and \code{items} a sum constraint of
-    zero of item parameters 
+    zero of item parameters
         }
 \item{Kitem}{Maximum number of categories per item}
 \item{progress}{Display progress for creation of design matrices}
@@ -119,7 +119,7 @@ design matrix in the dispersion model for ordered data (Andrich, 1982).
 \references{
 Andrich, D. (1982). An extension of the Rasch model for ratings providing
 both location and dispersion parameters. \emph{Psychometrika, 47},
-105-113.	
+105-113.
 }
 
 %\author{
@@ -134,7 +134,7 @@ items with differing number of response options.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See \code{\link{data.sim.mfr}} for some examples for creating design matrices.	
+See \code{\link{data.sim.mfr}} for some examples for creating design matrices.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 

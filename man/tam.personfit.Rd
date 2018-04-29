@@ -1,5 +1,5 @@
 %% File Name: tam.personfit.Rd
-%% File Version: 0.06
+%% File Version: 0.07
 
 \name{tam.personfit}
 \alias{tam.personfit}
@@ -59,7 +59,7 @@ data(data.sim.rasch, package="TAM")
 resp <- data.sim.rasch
 
 #*** estimate Rasch model
-mod1 <- TAM::tam.mml(resp=resp) 
+mod1 <- TAM::tam.mml(resp=resp)
 summary(mod1)
 
 #*** compute person fit statistics

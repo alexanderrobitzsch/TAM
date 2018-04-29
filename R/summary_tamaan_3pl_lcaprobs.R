@@ -5,10 +5,10 @@
 ########################################################
 summary_tamaan_3pl_lcaprobs <- function(object)
 {
-	cat("------------------------------------------------------------\n")
-	cat("Item Response Probabilities\n")
-	obji <- object$lcaprobs
-	tam_round_data_frame_print(obji=obji, from=2, to=ncol(obji), digits=4)
+    cat("------------------------------------------------------------\n")
+    cat("Item Response Probabilities\n")
+    obji <- object$lcaprobs
+    tam_round_data_frame_print(obji=obji, from=2, to=ncol(obji), digits=4)
 }
 ##########################################################
 

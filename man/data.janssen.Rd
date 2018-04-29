@@ -1,5 +1,5 @@
 %% File Name: data.janssen.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{data.janssen}
 \alias{data.janssen}
@@ -20,9 +20,9 @@ data(data.janssen2)
 }
 
 \format{
-\itemize{	
+\itemize{
 
-\item \code{data.janssen} is a data frame with 346 observations on the 8 
+\item \code{data.janssen} is a data frame with 346 observations on the 8
 items of the following format
 
 \code{'data.frame':   346 obs. of  8 variables:} \cr
@@ -55,8 +55,8 @@ items of the following format
 
 
 \references{
-Janssen, A. B., & Geiser, C. (2010). On the relationship between solution 
-strategies in two mental rotation tasks. 
+Janssen, A. B., & Geiser, C. (2010). On the relationship between solution
+strategies in two mental rotation tasks.
 \emph{Learning and Individual Differences, 20}(5), 473-478.
 }
 
@@ -74,17 +74,17 @@ colnames(dat)
   ##   [1] "PIS1"  "PIS3"  "PIS4"  "PIS5"  "SCR6"  "SCR9"  "SCR10" "SCR17"
 
 #*********************************************************************
-#*** Model 1: Latent class analysis with two classes  
+#*** Model 1: Latent class analysis with two classes
 
 tammodel <- "
 ANALYSIS:
   TYPE=LCA;
-  NCLASSES(2);   
-  NSTARTS(10,20); 
+  NCLASSES(2);
+  NSTARTS(10,20);
 LAVAAN MODEL:
   # missing item numbers (e.g. PIS2) are ignored in the model
   F =~ PIS1__PIS5 + SCR6__SCR17
-    "    
+    "
 mod3 <- TAM::tamaan( tammodel , resp=dat  )
 summary(mod3)
 
@@ -96,16 +96,16 @@ matplot( imod2 , type="o" , pch=1:ncl , xlab="Item" , ylab="Probability" )
 legend( 1 , .3 , paste0("Class",1:ncl) , lty=1:ncl , col=1:ncl , pch=1:ncl )
 
 #*********************************************************************
-#*** Model 2: Latent class analysis with three classes  
+#*** Model 2: Latent class analysis with three classes
 
 tammodel <- "
 ANALYSIS:
   TYPE=LCA;
-  NCLASSES(3);   
-  NSTARTS(10,20); 
+  NCLASSES(3);
+  NSTARTS(10,20);
 LAVAAN MODEL:
   F =~ PIS1__PIS5 + SCR6__SCR17
-    "    
+    "
 mod3 <- TAM::tamaan( tammodel , resp=dat  )
 summary(mod3)
 
@@ -117,7 +117,7 @@ matplot( imod2 , type="o" , pch=1:ncl , xlab="Item" , ylab="Probability" )
 legend( 1 , .3 , paste0("Class",1:ncl) , lty=1:ncl , col=1:ncl , pch=1:ncl )
 
 # compare models
-AIC(mod1); AIC(mod2)		
-}	
+AIC(mod1); AIC(mod2)
+}
 }
 \keyword{datasets}

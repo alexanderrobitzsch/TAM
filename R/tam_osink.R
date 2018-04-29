@@ -3,5 +3,5 @@
 
 tam_osink <- function(file, suffix="__SUMMARY.Rout")
 {
-	CDM::osink( file = file , suffix = suffix )
+    CDM::osink( file = file , suffix = suffix )
 }

@@ -1,5 +1,5 @@
 %% File Name: tamaanify.Rd
-%% File Version: 0.49
+%% File Version: 0.50
 
 \name{tamaanify}
 \alias{tamaanify}
@@ -10,7 +10,7 @@ Function for Parsing \pkg{TAM} Input
 }
 
 \description{
-This function parses a so called \code{tammodel} which is a 
+This function parses a so called \code{tammodel} which is a
 string used for model estimation in \pkg{TAM}.
 The function is based on the \pkg{lavaan} syntax and operates
 at the extension \code{\link{lavaanify.IRT}}.
@@ -35,7 +35,7 @@ One of the \pkg{TAM} methods \code{tam.mml}, \code{tam.mml.2pl}
 or \code{tam.mml.3pl}.
 }
 \item{doparse}{Optional logical indicating whether \code{lavmodel}
-should be parsed for \code{DO} statements.} 
+should be parsed for \code{DO} statements.}
 }
 
 %% ordered latent class models (\code{"OLCA"}),
@@ -47,10 +47,10 @@ Some of them are optional. \cr
 \code{ANALYSIS:} \cr
 Possible model types are unidimensional and multidimensional
 item response models (\code{TYPE="TRAIT"}), latent class models
-(\code{"LCA"}), located latent class models (\code{"LOCLCA"}; 
+(\code{"LCA"}), located latent class models (\code{"LOCLCA"};
 e.g. Formann, 1989; Bartolucci, 2007),
 ordered latent class models (\code{"OLCA"}; only works for
-dichotomous item responses; e.g. Hoijtink, 1997; Shojima, 2007) and 
+dichotomous item responses; e.g. Hoijtink, 1997; Shojima, 2007) and
 mixture distribution models (\code{"MIXTURE"}; e.g. von Davier, 2007). \cr
 
 \code{LAVAAN MODEL:} \cr
@@ -63,7 +63,7 @@ with the \code{+} operator. Equality constraints are
 set by using the \code{==} operator as in \pkg{lavaan}. \cr
 
 \code{ITEM TYPE:} \cr
-The following item types can be defined: Rasch model (\code{Rasch}), 
+The following item types can be defined: Rasch model (\code{Rasch}),
 the 2PL model (\code{2PL}), partial credit model (\code{PCM})
 and the generalized partial credit model (\code{GPCM}).
 
@@ -74,16 +74,16 @@ of score of \eqn{K}, a smoothed partial credit model
 is requested by \code{PCM(kk)} where \code{kk} is an
 integer between 1 and \eqn{K}. With \code{kk}=1, only a linear
 function is used. The subsequent integers correspond to
-Fourier functions with decreasing periods. 
+Fourier functions with decreasing periods.
 See Example 2, Model 7 of the \code{\link{tamaan}}
 function. \cr
 
 
 
 \code{PRIOR:} \cr
-Possible prior distributions: Normal distribution \code{N(mu,sd)}, 
-truncated normal distribution \code{TN(mu,sd,low,upp)} and 
-Beta distribution \code{Beta(a,b)}. 
+Possible prior distributions: Normal distribution \code{N(mu,sd)},
+truncated normal distribution \code{TN(mu,sd,low,upp)} and
+Beta distribution \code{Beta(a,b)}.
 Parameter labels and prior specification must be separated
 by \code{~}.\cr
 
@@ -111,7 +111,7 @@ A list with following (optional) entries
 \item{ANALYSIS}{Syntax specified in \code{ANALYSIS}}
 \item{ANALYSIS.list}{Parsed specifications in \code{ANALYSIS}}
 \item{LAVAANMODEL}{Syntax specified in \code{LAVAAN MODEL}}
-\item{lavpartable}{Parameter table processed by the 
+\item{lavpartable}{Parameter table processed by the
 syntax in \code{LAVAAN MODEL}}
 \item{items}{Informations about items: Number of categories,
   specified item response function}
@@ -126,13 +126,13 @@ syntax in \code{LAVAAN MODEL}}
 \item{A}{Design matrix A}
 \item{Q}{Design matrix for loadings}
 \item{Q.fixed}{Fixed values in \eqn{Q} matrix}
-\item{B.fixed}{Matrix with fixed item loadings 
+\item{B.fixed}{Matrix with fixed item loadings
       (used for \code{tam.mml.2pl})}
-\item{L}{Processed design matrix for loadings when there 
+\item{L}{Processed design matrix for loadings when there
 are model constraints for loadings}
 \item{variance.fixed}{Matrix for specification of fixed values
 in covariance matrix}
-\item{est.variance}{Logical indicating whether variance should 
+\item{est.variance}{Logical indicating whether variance should
 be estimated (\code{\link{tam.mml.2pl}})
 }
 \item{theta.k}{Theta design matrix}
@@ -141,33 +141,33 @@ be estimated (\code{\link{tam.mml.2pl}})
 \item{gammaslope.fixed}{Fixed \code{gammaslope} parameters}
 \item{gammaslope.prior}{Prior distributions for \code{gammaslope} parameters}
 \item{xsi.fixed}{Fixed \eqn{\xi} parameter}
-\item{xsi.prior}{Prior distributions for \eqn{\xi} parameters} 
+\item{xsi.prior}{Prior distributions for \eqn{\xi} parameters}
 }
 
 \references{
-Bartolucci, F. (2007). A class of multidimensional IRT models for testing 
-unidimensionality and clustering items. 
-\emph{Psychometrika, 72}, 141-157. 	
-	
+Bartolucci, F. (2007). A class of multidimensional IRT models for testing
+unidimensionality and clustering items.
+\emph{Psychometrika, 72}, 141-157.
+
 Formann, A. K. (1989). Constrained latent class models: Some further
 applications. \emph{British Journal of Mathematical and Statistical
-Psychology, 42}, 37-54.	
-	
-Hojtink, H., & Molenaar, I. W. (1997). A multidimensional item response model: 
-Constrained latent class analysis using the Gibbs sampler and posterior 
+Psychology, 42}, 37-54.
+
+Hojtink, H., & Molenaar, I. W. (1997). A multidimensional item response model:
+Constrained latent class analysis using the Gibbs sampler and posterior
 predictive checks. \emph{Psychometrika, 62}(2), 171-189.
 
 Thissen, D., Cai, L., & Bock, R. D. (2010).
 The nominal categories item response model.
 In M. L. Nering & Ostini, R. (Eds.).
-\emph{Handbook of Polytomous Item Response Models} 
+\emph{Handbook of Polytomous Item Response Models}
 (pp. 43-75). New York: Routledge.
 
-Shojima, K. (2007). \emph{Latent rank theory: Estimation of item reference 
+Shojima, K. (2007). \emph{Latent rank theory: Estimation of item reference
 profile by marginal maximum likelihood method with EM algorithm}.
 DNC Research Note 07-12.
 
-von Davier, M. (2007). \emph{Mixture distribution diagnostic models}. 
+von Davier, M. (2007). \emph{Mixture distribution diagnostic models}.
 ETS Research Report ETS RR-07-32. Princeton, ETS.
 }
 
@@ -184,8 +184,8 @@ ETS Research Report ETS RR-07-32. Princeton, ETS.
 
 \seealso{
 See \code{\link{tamaan}} for more examples. Other examples
-are included in \code{\link{tam.mml}} and \code{\link{tam.mml.3pl}}. 
-	
+are included in \code{\link{tam.mml}} and \code{\link{tam.mml.3pl}}.
+
 \code{\link{lavaanify.IRT}}
 }
 
@@ -213,14 +213,14 @@ LAVAAN MODEL:
   F2 ~~ F2
   F1 ~~ F2
   B1 | 1.23*t1 ; A3 | 0.679*t1
-  A2 | a*t1 ; C2 | a*t1 ; C4 | a*t1  
+  A2 | a*t1 ; C2 | a*t1 ; C4 | a*t1
   C3 | x1*t1 ; C1 | x1*t1
 ITEM TYPE:
   A1__A3 (Rasch) ;
   A4 (2PL) ;
   B1__C4 (Rasch) ;
     "
-# process model    
+# process model
 out <- TAM::tamaanify( tammodel , resp=dat)
 # inspect some output
 out$method          # used TAM function
@@ -236,7 +236,7 @@ ANALYSIS:
 LAVAAN MODEL:
   F =~ A1__C4
     "
-# process syntax    
+# process syntax
 out <- TAM::tamaanify( tammodel , resp=dat)
 str(out$E)     # E design matrix for estimation with tam.mml.3pl function
 
@@ -269,7 +269,7 @@ MODEL CONSTRAINT:
   lam8 == lam0
   lam9 == lam0
     "
-# parse syntax    
+# parse syntax
 mod1 <- TAM::tamaanify( tammodel , resp=dat)
 mod1$A          # design matrix A for intercepts
 mod1$L[,1,]     # design matrix L for loadings
@@ -319,7 +319,7 @@ tammodel <- "
   "
 # tamaanify model
 res <- TAM::tamaanify( tammodel , dat )
-res$MODELCONSTRAINT.dfr 
+res$MODELCONSTRAINT.dfr
 res$modelconstraint.loading
 }
 
