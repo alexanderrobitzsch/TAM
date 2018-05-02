@@ -1,5 +1,5 @@
 ## File Name: msq.itemfit.R
-## File Version: 9.31
+## File Version: 9.32
 
 #######################################
 # Item fit mean squares statistics
@@ -53,8 +53,8 @@ msq.itemfit <- function( object , fitindices=NULL)
 
     irf1_ <- as.numeric(irf1)
     resp_bool <- ! is.na(resp)
-    res0 <- tam_rcpp_msq_itemfit( resp=resp, irf1=irf1_, K=K, TP=TP, post1=post1, 
-                        FIT=FIT_, fitIndexM=fitIndexM, resp_bool=resp_bool ) 
+    res0 <- tam_rcpp_msq_itemfit( resp=resp, irf1=irf1_, K=K, TP=TP, post1=post1,
+                        FIT=FIT_, fitIndexM=fitIndexM, resp_bool=resp_bool )
     res0 <- as.data.frame(res0)
     colnames(res0) <- c("Outfit" , "Outfit_t" , "Infit" , "Infit_t")
     dfr <- cbind( dfr , res0)

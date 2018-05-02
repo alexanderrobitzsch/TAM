@@ -1,5 +1,5 @@
 ## File Name: summary.tam.jml.R
-## File Version: 9.08
+## File Version: 9.09
 #*******************************************************
 # Summary for tam object                 *
 summary.tam.jml <- function( object , file = NULL , ...)
@@ -104,8 +104,8 @@ summary.tam.jml <- function( object , file = NULL , ...)
     #    if (( object$maxK > 2 ) | ( object$printxsi) ){
     cat("\nItem Parameters Xsi\n")
     obji <- object$item
-    for (vv in seq(2,ncol(obji) ) ){ 
-        obji[,vv] <- round( obji[,vv] , 3) 
+    for (vv in seq(2,ncol(obji) ) ){
+        obji[,vv] <- round( obji[,vv] , 3)
     }
     print(obji)
 

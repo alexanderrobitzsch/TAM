@@ -41,7 +41,18 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.11  |  2018-04-29  |  Last: TAM 2.11-85
+VERSIONS TAM 2.12  |  2018-05-02  |  Last: TAM 2.12-1
+-------------------------------------------------------------
+
+xxx   * ...
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+-------------------------------------------------------------
+VERSIONS TAM 2.11  |  2018-05-02  |  Last: TAM 2.11-9x-93
 -------------------------------------------------------------
 
 FIXED * fixed a bug in tam.pv.mcmc() when almost singular
@@ -57,8 +68,6 @@ NOTE  * moved some parts of the M-step computations in
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: tamaan (3)
-
-
 
 -------------------------------------------------------------
 VERSIONS TAM 2.10  |  2018-03-29  |  Last: TAM 2.10-24

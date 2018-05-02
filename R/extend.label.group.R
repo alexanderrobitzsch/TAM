@@ -1,9 +1,10 @@
 ## File Name: extend.label.group.R
-## File Version: 9.05
+## File Version: 9.06
 
 #######################################################
 # extend labels arranged in a group
-extend.label.group <- function( label.group ){
+extend.label.group <- function( label.group )
+{
     str1 <- unlist( strsplit( label.group , split="__" ) )
     M1 <- min( nchar(str1) )
     M2 <- max( nchar(str1) )

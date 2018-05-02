@@ -1,5 +1,5 @@
 ## File Name: IRT.threshold.R
-## File Version: 9.07
+## File Version: 9.08
 
 ###################################################
 # general function for computing thresholds from a fitted
@@ -39,7 +39,7 @@ IRT.threshold <- function( object , prob.lvl = .5 , type="category")
         x1 <- theta[,dd]
         for (kk in 1:K){
             y1 <- colSums( irf.ii[seq(kk+1,K+1), , drop=FALSE] )
-            thresh[ii,kk] <- tam_find_root( x1=x1, y1=y1, prob.lvl=prob.lvl, theta=theta ) 
+            thresh[ii,kk] <- tam_find_root( x1=x1, y1=y1, prob.lvl=prob.lvl, theta=theta )
         }
     }
     if (type=="item"){

@@ -1,5 +1,5 @@
 ## File Name: tam_mml_inits_beta.R
-## File Version: 0.08
+## File Version: 0.11
 
 tam_mml_inits_beta <- function(Y, formulaY, dataY, G, group, groups, nstud,
         pweights, ridge, beta.fixed, xsi.fixed, constraint, ndim, beta.inits)
@@ -8,9 +8,9 @@ tam_mml_inits_beta <- function(Y, formulaY, dataY, G, group, groups, nstud,
     # beta inits
     # (Y'Y)
     if ( ! is.null( formulaY ) ){
-      formulaY <- stats::as.formula( formulaY )
-      Y <- stats::model.matrix( formulaY , dataY )[,-1]   # remove intercept
-      nullY <- FALSE
+        formulaY <- stats::as.formula( formulaY )
+        Y <- stats::model.matrix( formulaY , dataY )[,-1]   # remove intercept
+        nullY <- FALSE
     }
     # labeling Y
     if (! nullY){

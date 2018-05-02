@@ -1,5 +1,5 @@
 ## File Name: tam_mml_ic_criteria.R
-## File Version: 0.02
+## File Version: 0.03
 
 
 tam_mml_ic_criteria <- function(ic)

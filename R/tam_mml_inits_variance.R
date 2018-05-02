@@ -1,5 +1,5 @@
 ## File Name: tam_mml_inits_variance.R
-## File Version: 0.03
+## File Version: 0.04
 
 tam_mml_inits_variance <- function( variance.inits, ndim , variance.fixed )
 {

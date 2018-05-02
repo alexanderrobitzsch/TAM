@@ -1,12 +1,12 @@
 //// File Name: init.c
-//// File Version: 0.11062
+//// File Version: 2.012001
 #include <R.h>
 #include <Rinternals.h>
 #include <stdlib.h> // for NULL
 #include <R_ext/Rdynload.h>
 
 extern SEXP _TAM_calcfx(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _TAM_tam_rcpp_calcexp2(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _TAM_tam_rcpp_calc_exp(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_calc_exp_redefine_vector_na(SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_calc_prob_subtract_max(SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_calc_prob(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
@@ -39,12 +39,12 @@ extern SEXP _TAM_tam_rcpp_pv_mcmc_likelihood(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP)
 extern SEXP _TAM_tam_rcpp_pv_mcmc_calc_probs_irf_3pl(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_pv_sample_theta_multidim(SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_rowCumsums(SEXP);
-extern SEXP _TAM_tam_rcpp_wle_Bs(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _TAM_tam_rcpp_wle_suffstat(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_wle_errinv(SEXP, SEXP, SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
     {"_TAM_calcfx", (DL_FUNC) &_TAM_calcfx, 4},
-    {"_TAM_tam_rcpp_calcexp2", (DL_FUNC) &_TAM_tam_rcpp_calcexp2, 10},
+    {"_TAM_tam_rcpp_calc_exp", (DL_FUNC) &_TAM_tam_rcpp_calc_exp, 10},
     {"_TAM_tam_rcpp_calc_exp_redefine_vector_na", (DL_FUNC) &_TAM_tam_rcpp_calc_exp_redefine_vector_na, 2},
     {"_TAM_tam_rcpp_calc_prob_subtract_max", (DL_FUNC) &_TAM_tam_rcpp_calc_prob_subtract_max, 4},
     {"_TAM_tam_rcpp_calc_prob", (DL_FUNC) &_TAM_tam_rcpp_calc_prob, 8},
@@ -77,7 +77,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_TAM_tam_rcpp_pv_mcmc_calc_probs_irf_3pl", (DL_FUNC) &_TAM_tam_rcpp_pv_mcmc_calc_probs_irf_3pl, 6},
     {"_TAM_tam_rcpp_pv_sample_theta_multidim", (DL_FUNC) &_TAM_tam_rcpp_pv_sample_theta_multidim, 2},
     {"_TAM_tam_rcpp_rowCumsums", (DL_FUNC) &_TAM_tam_rcpp_rowCumsums, 1},
-    {"_TAM_tam_rcpp_wle_Bs", (DL_FUNC) &_TAM_tam_rcpp_wle_Bs, 9},
+    {"_TAM_tam_rcpp_wle_suffstat", (DL_FUNC) &_TAM_tam_rcpp_wle_suffstat, 9},
     {"_TAM_tam_rcpp_wle_errinv", (DL_FUNC) &_TAM_tam_rcpp_wle_errinv, 3},
     {NULL, NULL, 0}
 };

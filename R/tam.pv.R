@@ -1,5 +1,5 @@
 ## File Name: tam.pv.R
-## File Version: 9.461
+## File Version: 9.462
 tam.pv <- function( tamobj , nplausible = 10 ,
             ntheta = 2000 , normal.approx = FALSE , samp.regr = FALSE ,
             theta.model = FALSE , np.adj = 8 , na.grid = 5, verbose=TRUE)
@@ -107,15 +107,15 @@ tam.pv <- function( tamobj , nplausible = 10 ,
         #--- compute item response probabilities
         if ( ! latreg ){
             res <- tam_mml_3pl_calc_prob( iIndex=1:nitems , A=A , AXsi=AXsi , B=B , xsi=xsi , theta=theta ,
-                              nnodes=nnodes, maxK=maxK , recalc=TRUE , guess=guess)
+                            nnodes=nnodes, maxK=maxK , recalc=TRUE , guess=guess)
             rprobs <- res$rprobs
             AXsi <- res$AXsi
         }
 
         #--- calculate student prior distribution
         gwt <- tam_stud_prior( theta=theta , Y=Y , beta=beta , variance=variance , nstud=nstud ,
-                          nnodes=nnodes , ndim=ndim , YSD=YSD , unidim_simplify=FALSE,
-                          snodes = snodes )
+                        nnodes=nnodes , ndim=ndim , YSD=YSD , unidim_simplify=FALSE,
+                        snodes = snodes )
         ind0 <- which( rowSums(gwt) == 0 )
         if ( length(ind0) > 0 ){
             gwt[ind0,] <- 1

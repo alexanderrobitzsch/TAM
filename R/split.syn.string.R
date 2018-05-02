@@ -1,5 +1,5 @@
 ## File Name: split.syn.string.R
-## File Version: 9.05
+## File Version: 9.06
 
 
 
@@ -41,8 +41,8 @@ split_conc <- function( syn.ll , vv )
     g1 <- strsplit( syn.ll , vv , perl=FALSE )[[1]]
     Lg1 <- length(g1)
     vec <- NULL
-    if (Lg1 == 1 ){ 
-        vec <- c( g1 , vv ) 
+    if (Lg1 == 1 ){
+        vec <- c( g1 , vv )
     }
     if (Lg1 > 1 ){
         vec <- rep("" , Lg1 + (Lg1-1) )

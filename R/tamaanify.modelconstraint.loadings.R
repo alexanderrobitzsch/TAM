@@ -1,5 +1,5 @@
 ## File Name: tamaanify.modelconstraint.loadings.R
-## File Version: 9.04
+## File Version: 9.05
 
 ##########################################################
 # model constraint loadings
@@ -18,19 +18,19 @@ tamaanify.modelconstraints.loadings <- function(res)
     labels1 <- sort( names(t1) )
     AL <- length(labels1)
     if (AL>0){
-    for (aa in 1:AL){
-        lab.aa <- labels1[aa]
-        ind.aa <- which( paste(lav1$label) == lab.aa )
-        dfr.aa <- data.frame( "index" = 999 ,
+        for (aa in 1:AL){
+            lab.aa <- labels1[aa]
+            ind.aa <- which( paste(lav1$label) == lab.aa )
+            dfr.aa <- data.frame( "index" = 999 ,
                 "syn" = paste0( lav1$label_ren[ind.aa] , "==" , lab.aa ) )
-        dfr.aa$derived <- 1
-        dfr.aa$trafopar <- lav1$label_ren[ind.aa]
-        dfr.aa$expanded <- 0
-        dfr.aa <- cbind( dfr.aa , lav1[ ind.aa , c("lhs" , "op" , "rhs" , "fullsyn") ] )
-        mdfr <- rbind( mdfr , dfr.aa )
-        lav1[ ind.aa , "label" ] <- lav1[ ind.aa , "label_ren" ]
-                        }
-                }
+            dfr.aa$derived <- 1
+            dfr.aa$trafopar <- lav1$label_ren[ind.aa]
+            dfr.aa$expanded <- 0
+            dfr.aa <- cbind( dfr.aa , lav1[ ind.aa , c("lhs" , "op" , "rhs" , "fullsyn") ] )
+            mdfr <- rbind( mdfr , dfr.aa )
+            lav1[ ind.aa , "label" ] <- lav1[ ind.aa , "label_ren" ]
+        }
+    }
 
 
     if ( ! is.null( mdfr ) ){

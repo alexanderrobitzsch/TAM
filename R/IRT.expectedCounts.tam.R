@@ -1,5 +1,5 @@
 ## File Name: IRT.expectedCounts.tam.R
-## File Version: 9.04
+## File Version: 9.05
 
 ###########################################################
 ###########################################################
@@ -29,23 +29,23 @@ IRT.expectedCounts.tam.mml.3pl <- function( object , ... ){
     dimnames(ll)[[1]] <- colnames(object$resp)
     attr(ll,"theta") <- object$theta
     attr(ll,"prob.theta") <- object$pi.k
-    res <- list( "delta" = object$delta ,
-                 "delta.designmatrix" = object$delta.designmatrix )
+    res <- list( "delta" = object$delta,"delta.designmatrix" = object$delta.designmatrix )
     attr(ll,"skillspace") <- res
     attr(ll,"G") <- object$G
     return(ll)
-        }
+}
 ###########################################################
 
 ###########################################################
 # objects of class tamaan
-IRT.expectedCounts.tamaan <- function( object , ... ){
+IRT.expectedCounts.tamaan <- function( object , ... )
+{
     if (object$tamaanify$method %in% c( "tam.mml" , "tam.mml.2pl")  ){
-            res0 <- IRT.expectedCounts.tam( object , ... )
-            }
+        res0 <- IRT.expectedCounts.tam( object , ... )
+    }
     if (object$tamaanify$method == "tam.mml.3pl"){
-            res0 <- IRT.expectedCounts.tam.mml.3pl( object , ... )
-                            }
+        res0 <- IRT.expectedCounts.tam.mml.3pl( object , ... )
+    }
     return(res0)
-            }
+}
 ###################################################################

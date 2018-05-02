@@ -1,5 +1,5 @@
 ## File Name: plotDevianceTAM.R
-## File Version: 9.05
+## File Version: 9.06
 ###############################################################################
 plotDevianceTAM   <- function ( tam.obj , omitUntil = 1, reverse = TRUE ,
             change=TRUE)
@@ -20,7 +20,7 @@ plotDevianceTAM   <- function ( tam.obj , omitUntil = 1, reverse = TRUE ,
     }
 
     if(reverse){
-        devChange <- -1 *  devChange 
+        devChange <- -1 *  devChange
     }
     devChange <- data.frame ( nr = omitUntil + 1:length(devChange), devChange)
     xm <- ceiling( max(devChange[,1])/10 )*10
@@ -30,7 +30,7 @@ plotDevianceTAM   <- function ( tam.obj , omitUntil = 1, reverse = TRUE ,
     }
     xt <- max ( which ( xt ) )
     cex <- 0.85 - ( length(devChange[,1]) / 1000 )
-    if ( cex < 0.40 ){ 
+    if ( cex < 0.40 ){
         cex <- 0.40
     }
     graphics::plot ( devChange[,1] , devChange[,2] , type = "o" ,

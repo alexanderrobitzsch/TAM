@@ -1,5 +1,5 @@
 ## File Name: tam_mml_inits_xsi.R
-## File Version: 0.06
+## File Version: 0.07
 
 tam_mml_inits_xsi <- function(A, resp.ind, ItemScore, xsi.inits, xsi.fixed ,
         est.xsi.index, pweights, xsi.start0, xsi, resp, addnumb = .5 )
@@ -20,7 +20,7 @@ tam_mml_inits_xsi <- function(A, resp.ind, ItemScore, xsi.inits, xsi.fixed ,
 
     #--- inits for xsi
     xsi[est.xsi.index] <- - log(abs(( ItemScore[est.xsi.index]+addnumb)/
-                                      (ItemMax[est.xsi.index]-ItemScore[est.xsi.index]+addnumb) ) )
+                    (ItemMax[est.xsi.index]-ItemScore[est.xsi.index]+addnumb) ) )
     # starting values of zero
     if( xsi.start0 ){
         xsi <- 0*xsi
