@@ -41,7 +41,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.12  |  2018-05-02  |  Last: TAM 2.12-1
+VERSIONS TAM 2.12  |  2018-05-02  |  Last: TAM 2.12-2
 -------------------------------------------------------------
 
 xxx   * ...
@@ -52,7 +52,7 @@ EXAMP * included/modified examples: ---
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.11  |  2018-05-02  |  Last: TAM 2.11-9x-93
+VERSIONS TAM 2.11  |  2018-05-02  |  Last: TAM 2.11-93
 -------------------------------------------------------------
 
 FIXED * fixed a bug in tam.pv.mcmc() when almost singular
