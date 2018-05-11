@@ -1,5 +1,5 @@
 ## File Name: tam_mml_se_quick.R
-## File Version: 0.35
+## File Version: 0.38
 
 
 tam_mml_se_quick <- function( tamobj , numdiff.parm = .001, item_pars = TRUE )
@@ -175,6 +175,7 @@ tam_mml_se_quick <- function( tamobj , numdiff.parm = .001, item_pars = TRUE )
         }
     }
 
+
     #-----------------------------------------------------------
     # handle fixed parameters
     if ( ! is.null( tamobj$xsi.fixed ) ){
@@ -194,6 +195,8 @@ tam_mml_se_quick <- function( tamobj , numdiff.parm = .001, item_pars = TRUE )
 
     #-----------------------------------------------------------
     cat("|\n")
+
+
     #***
     N1 <- nrow(tamobj$item)
     if (N1 != length(xsi) ){

@@ -1,5 +1,5 @@
 ## File Name: summary.tam.mml.3pl.R
-## File Version: 9.16
+## File Version: 9.23
 
 #*******************************************************
 # Summary for tam.mml.3pl object                 *
@@ -123,7 +123,7 @@ summary.tam.mml.3pl <- function( object , file = NULL , ...)
         print( obji )
     }   # end distribution skillspace=="normal"
     #*******************************************************************
-    if (object$skillspace!="normal"){
+    if (object$skillspace != "normal"){
         cat("------------------------------------------------------------\n")
         cat("Trait distribution parameters delta\n")
         obji <- round( object$delta , 4 )
@@ -155,6 +155,7 @@ summary.tam.mml.3pl <- function( object , file = NULL , ...)
             }
         }
     }
+
     if (PK < 10 ){
         cat("------------------------------------------------------------\n")
         cat("Item Parameters -A*Xsi\n")
@@ -178,15 +179,17 @@ summary.tam.mml.3pl <- function( object , file = NULL , ...)
             obji <- object$xsi
             tam_round_data_frame_print(obji=obji, from=1, digits=3)
         }
-        cat("\nGammaslope Parameters\n")
-        obji <- object$gammaslope
-        tam_round_data_frame_print(obji=obji, from=1, digits=3)
 
         cat("\nGuessing Parameters\n")
         obji <- object$item$guess
         names(obji) <- colnames(object$resp)
         tam_round_data_frame_print(obji=obji, from=1, digits=3)
     }
+
+    cat("\nGammaslope Parameters\n")
+    obji <- object$gammaslope
+    tam_round_data_frame_print(obji=obji, from=1, digits=3)
+
 
     #******
     tam_csink(file=file)

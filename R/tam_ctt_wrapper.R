@@ -1,5 +1,5 @@
 ## File Name: tam_ctt_wrapper.R
-## File Version: 0.02
+## File Version: 0.03
 
 
 tam_ctt_wrapper <- function( resp , wlescore=NULL , group=NULL , allocate=30, progress=TRUE,
@@ -13,15 +13,15 @@ tam_ctt_wrapper <- function( resp , wlescore=NULL , group=NULL , allocate=30, pr
     if ( is.null(wlescore) ){
         est_wle <- 0
         wlescore <- rep(1 , nrow(resp) )
-    } else { 
-        est_wle <- 1 
+    } else {
+        est_wle <- 1
     }
     wlescore0 <- wlescore
     pvscores <- NULL
     pvscores0 <- pvscores
     # define progress bar
-    if ( is.null(group) ){ 
-        group <- rep(1 , nrow(resp) ) 
+    if ( is.null(group) ){
+        group <- rep(1 , nrow(resp) )
     }
     groups <- sort( unique( group )    )
     G <- length(groups)
@@ -45,7 +45,7 @@ tam_ctt_wrapper <- function( resp , wlescore=NULL , group=NULL , allocate=30, pr
         resp <- as.matrix( t(resp) )
         if (version == 2){
             res <- tam_rcpp_ctt2( TDAT=resp, WLE=wlescore, MAXK=maxK, EST_WLE=est_wle, prg=prg )
-        } 
+        }
         if (version == 3){
             res <- tam_rcpp_ctt3( TDAT=resp, WLE=wlescore, MAXK=maxK, EST_WLE=est_wle, prg=prg )
         }

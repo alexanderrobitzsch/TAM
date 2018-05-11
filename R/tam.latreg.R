@@ -1,5 +1,5 @@
 ## File Name: tam.latreg.R
-## File Version: 9.328
+## File Version: 9.332
 
 ###################################################################
 # latent regression
@@ -172,6 +172,7 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
         hwt <- like * gwt
         res.hwt$rfx <- rowSums(hwt)
         hwt <- hwt / rowSums(hwt)
+        res.hwt$swt <- hwt
 
         #-- M step: estimation of beta and variance
         if (progress){

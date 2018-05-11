@@ -1,10 +1,11 @@
 %% File Name: tam.se.Rd
-%% File Version: 2.15
+%% File Version: 2.17
 
 \name{tam.se}
 
 \alias{tam.se}
 \alias{tam_mml_se_quick}
+\alias{tam_latreg_se_quick}
 
 \title{
 Standard Error Estimation
@@ -17,6 +18,8 @@ and \code{tam.mml}.
 tam.se(tamobj, item_pars = TRUE, ...)
 
 tam_mml_se_quick(tamobj, numdiff.parm = 0.001, item_pars = TRUE )
+
+tam_latreg_se_quick(tamobj, numdiff.parm = 0.001 )
 }
 
 % tam.se(tamobj, SE.quick=TRUE, ...)

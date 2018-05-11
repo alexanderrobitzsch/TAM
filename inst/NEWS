@@ -41,10 +41,13 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.12  |  2018-05-02  |  Last: TAM 2.12-3
+VERSIONS TAM 2.12  |  2018-05-11  |  Last: TAM 2.12-7
 -------------------------------------------------------------
 
-xxx   * ...
+ADDED * added "quick" standard error computation method for
+        fitted TAM models of class 'tam.latreg' in tam.se()
+        using helper function tam_latreg_se_quick()
+        (thanks to Yuan-Ling Linda Liaw)
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
