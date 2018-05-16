@@ -1,5 +1,5 @@
 ## File Name: designMatrices.mfr.R
-## File Version: 9.13
+## File Version: 9.14
 
 
 #########################################################################
@@ -57,7 +57,8 @@ z0 <- tamcat( " ---  z50" , z0 , tamcat_active )
 
     #********************************
     #    resp[ is.na(resp) ] <- 0
-    maxKi <- apply( resp , 2 , max , na.rm=TRUE )
+    # maxKi <- apply( resp , 2 , max , na.rm=TRUE )
+    maxKi <- tam_max_categories(resp=resp)    
     maxK <- max( maxKi )
     I <- nI <- ncol( resp )
     item <- rep( 1:nI , maxKi+1 )

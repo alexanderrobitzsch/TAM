@@ -1,10 +1,9 @@
 ## File Name: tam_mml_mfr_proc_multiple_person_ids.R
-## File Version: 0.03
+## File Version: 0.05
 
 tam_mml_mfr_proc_multiple_person_ids <- function(pid,tp, gresp, gresp.noStep,
         progress )
 {
-
     persons <- sort( unique( pid ) )
     NP <- length( persons )
     person.ids <- sapply( persons , FUN = function( pp){ which( pid == pp ) } ,
@@ -47,7 +46,7 @@ tam_mml_mfr_proc_multiple_person_ids <- function(pid,tp, gresp, gresp.noStep,
         g0[ ig1 ] <- g1[ ig1 ]
         gresp0.noStep[ ind.pos , ] <- g0
     }
-#cat("*** multiple persons loop over pos" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
+# cat("*** multiple persons loop over pos" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
     gresp0 -> gresp
     gresp0.noStep -> gresp.noStep
     pid <- persons

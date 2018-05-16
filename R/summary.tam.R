@@ -1,5 +1,5 @@
 ## File Name: summary.tam.R
-## File Version: 9.44
+## File Version: 9.45
 
 #****** summary for tam object
 summary.tam <- function( object , file = NULL , ...)

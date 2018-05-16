@@ -1,13 +1,13 @@
 ## File Name: designMatrices_aux2.R
-## File Version: 9.03
+## File Version: 9.09
 
 
 ###########################################################
 ## function .A.matrix
-.A.matrix2 <-
-  function( resp, formulaA = ~ item + item*step, facets = NULL,
+.A.matrix2 <- function( resp, formulaA = ~ item + item*step, facets = NULL,
             constraint = c("cases", "items") , progress=FALSE ,
-            maxKi = NULL , Q=Q ){
+            maxKi = NULL , Q=Q )
+{
     z0 <- Sys.time()
     ### redefine facets matrix
     facets0 <- facets
@@ -31,16 +31,16 @@
     if ( is.null(maxKi) ){
       maxKi <- apply( resp , 2 , max , na.rm=TRUE )
     }
+    
     maxK <- max( maxKi )
-    nI <- ncol( resp )
-    #cat(" +++  v70" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
+    nI <- ncol(resp)
+# cat(" +++  v70" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
 
     # stop processing if there are items with a maximum score of 0
     i11 <- names(maxKi)[ maxKi == 0 ]
     if ( length(i11) > 0 ){
       stop( cat( "Items with maximum score of 0:" , paste(i11 , collapse=" " ) ) )
     }
-
     tf <- stats::terms( formulaA )
     fvars <- as.vector( attr(tf,"variables"), mode = "character" )[-1]
     #cat("fvars 212") ; print(fvars)
@@ -62,7 +62,6 @@
     if( length( otherFacets ) > 1 ) expand.list <- c(expand.list, sapply( otherFacets , FUN = function(ff) as.factor(1:max(facets[, ff])) , simplify=FALSE ))
 
     names( expand.list ) <- fvars
-
 
     #cat(" +++  v100" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
     #     expand.list <- expand.list[ !unlist( lapply(expand.list, is.null) ) ]
@@ -89,9 +88,6 @@
                                 }
                     }
             }
-
-
-
     X <- rownames.design2( g1 )
     if (diffK){
         X2 <- rownames.design2( g2 )
@@ -163,8 +159,6 @@
       # collect xsi parameters to be excluded
       xsi.elim.index <- xsi.elim <- NULL
       ii <- 0 ; vv <- 1
-
-
       for( sg in stepgroups ){
 #         sg <- stepgroups[2]
     #    mm1 <- mm[ grep(sg, rownames(mm)) ,]
@@ -184,33 +178,38 @@
         # set entries to zero if there are no categories in data
         sg1 <- strsplit( sg , split= "-")[[1]]
         ii <- as.numeric( gsub("item" , "" , sg1[1] ) )
-        if ( maxKi[ii] < maxK ){
-        for (kk in (maxKi[ii]+1):maxK){
-#            kk <- 2
-            # set rows in A matrix to zero
-            mm.sg.temp[ grep( paste0( "-step" , kk ) , rownames(mm.sg.temp) ) ,  ] <- NA
-#            mm.sg.temp[ grep( paste0( "-step" , kk ) , rownames(mm.sg.temp) ) ,  ] <- 0
-            i1 <- grep( paste0(sg1[1] ,"\\:" ) , colnames(mm.sg.temp) , value=TRUE)
-            i2 <- grep( paste0(":step" , kk-1) ,  colnames(mm.sg.temp) , value=TRUE)
-            i3 <- intersect( i1 , i2 )
-            if ( length(i3) > 0 ){
-                xsi.elim <- c( xsi.elim , i3 )
-                xsi.elim.index <- c( xsi.elim.index ,
-                            which( colnames(mm.sg.temp ) %in% i3 ) )
-#                mm.sg.temp[  , i3 ] <- NA
-#                mm.sg.temp[ ! ( is.na( mm.sg.temp[  , i3 ] ) ) , i3 ] <- 0
+        maxKi_ii <- maxKi[ii]
+        if (is.na(ii)){
+            maxKi_ii <- maxK
+        }
+        
+        if ( maxKi_ii < maxK ){
+            for (kk in (maxKi[ii]+1):maxK){
+    #            kk <- 2
+                # set rows in A matrix to zero
+                mm.sg.temp[ grep( paste0( "-step" , kk ) , rownames(mm.sg.temp) ) ,  ] <- NA
+    #            mm.sg.temp[ grep( paste0( "-step" , kk ) , rownames(mm.sg.temp) ) ,  ] <- 0
+                i1 <- grep( paste0(sg1[1] ,"\\:" ) , colnames(mm.sg.temp) , value=TRUE)
+                i2 <- grep( paste0(":step" , kk-1) ,  colnames(mm.sg.temp) , value=TRUE)
+                i3 <- intersect( i1 , i2 )
+                if ( length(i3) > 0 ){
+                    xsi.elim <- c( xsi.elim , i3 )
+                    xsi.elim.index <- c( xsi.elim.index ,
+                                which( colnames(mm.sg.temp ) %in% i3 ) )
+    #                mm.sg.temp[  , i3 ] <- NA
+    #                mm.sg.temp[ ! ( is.na( mm.sg.temp[  , i3 ] ) ) , i3 ] <- 0
 
-                #@@@ suggestion Michal Modzelewski
-                 mm.sg.temp[ , i3 ][ ! ( is.na( mm.sg.temp[ , i3 ] ) )] <- 0
+                    #@@@ suggestion Michal Modzelewski
+                     mm.sg.temp[ , i3 ][ ! ( is.na( mm.sg.temp[ , i3 ] ) )] <- 0
 
-                            }  #**** end i3
-            #*******************
+                                }  #**** end i3
+                #*******************
 
 
-                        }
-                    }
-            A <- rbind(A, mm.sg.temp)
-        if ( maxKi[ii] < maxK ){
+                            }
+        }
+        A <- rbind(A, mm.sg.temp)
+        if ( maxKi_ii < maxK ){        
         for (kk in (maxKi[ii]+1):maxK){
             vv <- paste0( sg1[1] , "-step" , kk )
             X.out[ grep( vv , rownames(X.out) ) , 2  ] <- 0
@@ -220,6 +219,7 @@
             x.sg.temp[,"step"] <- 0
             rownames(x.sg.temp) <- gsub("step([[:digit:]])*", "step0", sg, fixed = TRUE)
             X.out <- rbind(X.out, x.sg.temp)
+        progress <- progress & ( ! is.na(ii) )
         if ( progress ){
           ii <- ii+1
           if (( ii == disp_progress[vv] ) & (vv<=10) ){
@@ -248,7 +248,6 @@
       X.out <- rownames.design2( data.frame(as.matrix(X.out), stringsAsFactors = FALSE) )
 
     }# end step in fvars
-
 
     #***
     # set entries in A to zero for constraints

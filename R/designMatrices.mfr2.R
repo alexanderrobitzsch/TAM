@@ -1,5 +1,5 @@
 ## File Name: designMatrices.mfr2.R
-## File Version: 9.10
+## File Version: 9.15
 
 
 #########################################################################
@@ -7,19 +7,18 @@ designMatrices.mfr2 <- function( resp, formulaA = ~ item + item:step, facets = N
             constraint = c("cases", "items"), ndim = 1,
             Q=NULL, A=NULL, B=NULL , progress=FALSE )
 {
+
     z0 <- Sys.time()
     # sort items according alpha numeric sorting
     cn <- colnames(resp)
     if ( ! is.null(cn) ){
         cns <- sort( cn , index.return=TRUE )$ix
-        resp <- resp[ , cns ]
+        resp <- resp[ , cns, drop=FALSE ]
         if ( !is.null(A) ){ A <- A[ cns ,, ] }
         if ( !is.null(B) ){ B <- B[ cns ,, ] }
         if ( !is.null(Q) ){ Q <- Q[ cns , ] }
 
         }
-
-
     ### Basic Information and Initializations
     constraint <- match.arg(constraint)
     ## restructure formulaA
@@ -64,7 +63,7 @@ designMatrices.mfr2 <- function( resp, formulaA = ~ item + item:step, facets = N
 
     #********************************
     #    resp[ is.na(resp) ] <- 0
-    maxKi <- apply( resp , 2 , max , na.rm=TRUE )
+    maxKi <- tam_max_categories(resp=resp)    
     maxK <- max( maxKi )
     I <- nI <- ncol( resp )
     item <- rep( 1:nI , maxKi+1 )
@@ -75,13 +74,10 @@ designMatrices.mfr2 <- function( resp, formulaA = ~ item + item:step, facets = N
 
 # cat(" ---  before .A.matrix" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
 
-
-
     # A Matrix
     if( is.null(A) ){
       AX <- .A.matrix2( resp, formulaA = formulaA, facets = facets, constraint = constraint ,
                        progress=progress , Q = Q)
-
       A <- AX$A; X <- AX$X; otherFacets <- AX$otherFacets
       xsi.elim <- AX$xsi.elim
       xsi.constr <- AX$xsi.constr
@@ -354,10 +350,8 @@ designMatrices.mfr2 <- function( resp, formulaA = ~ item + item:step, facets = N
 
     # A
     A.flat.0 <- A.flat <- A; A.flat.0[ind,] <- 0
-# cat("d300\n")
-# Revalpr("A.flat")
-    A.3d <- .generateB.3d( A.flat , diffK=TRUE )        # here occurs the problem if one works with a reduced expand.grid
-# cat("d400\n")
+    A.3d <- .generateB.3d( A.flat , diffK=TRUE )        
+            # here occurs the problem if one works with a reduced expand.grid
     A.flat <- A.flat[!ind,]
     A.3d.0 <- .generateB.3d( A.flat.0 , diffK=TRUE)
     # B

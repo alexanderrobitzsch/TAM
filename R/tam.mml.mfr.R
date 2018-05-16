@@ -1,5 +1,5 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.889
+## File Version: 9.897
 tam.mml.mfr <-
   function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
             formulaY = NULL , dataY = NULL ,
@@ -112,7 +112,7 @@ tam.mml.mfr <-
     gresp.noStep <- res$gresp.noStep
     xsi.constr <- res$xsi.constr
     design <- res$design
-#cat(" --- design matrix ready" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
+# cat(" --- design matrix ready" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
 
     #--- processing in case of multiple person IDs in a dataset
     tp <- max( table( pid ))
@@ -123,7 +123,7 @@ tam.mml.mfr <-
         gresp <- res$gresp
         gresp.noStep <- res$gresp.noStep
     }
-#cat("process data in case of multiple persons" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
+# cat("process data in case of multiple persons" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
 
     #--- set some xsi effects to zero
     res <- tam_mml_mfr_proc_xsi_setnull( xsi.setnull=xsi.setnull, A=A, xsi.fixed=xsi.fixed )

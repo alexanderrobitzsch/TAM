@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mfr_proc_create_design_matrices.R
-## File Version: 0.02
+## File Version: 0.06
 
 tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
     facets, constraint, ndim, Q, A, B, progress, xsi.fixed, resp00, B00,
@@ -11,7 +11,6 @@ tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
     if ( is.na(var_ki) ){
         var_ki <- 0
     }
-
     if ( var_ki > 1E-3 ){
         diffKi <- TRUE
         design <- designMatrices.mfr2(resp=resp, formulaA=formulaA, facets=facets,
@@ -30,7 +29,7 @@ tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
             beta.fixed <- cbind( 1 , 1:dimB[3] , 0)
         }
     } else {
-         design <- designMatrices.mfr(resp, formulaA=formulaA, facets=facets,
+        design <- designMatrices.mfr(resp, formulaA=formulaA, facets=facets,
                         constraint=constraint, ndim=ndim,
                         Q=Q, A=A, B=B , progress=progress)
     }

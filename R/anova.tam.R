@@ -1,13 +1,14 @@
 ## File Name: anova.tam.R
-## File Version: 9.03
+## File Version: 9.04
 ##############################################################
 # Likelihood ratio test for tam objects
 # Function is copied from the CDM package
-anova.tam <- function( object , ... ){
+anova.tam <- function( object , ... )
+{
     cl2 <- paste(match.call())[-1]
     if (length(list(object, ...)) != 2){
         stop("anova method can only be applied for comparison of two models.\n")
-        }
+    }
     objects <- list(object, ...)
     model1 <- objects[[1]]
     model2 <- objects[[2]]
@@ -42,10 +43,12 @@ anova.tam <- function( object , ... ){
     dfr[1,"Chisq"] <- dfr[1,"Deviance"] - dfr[2,"Deviance"]
     dfr[1,"df"] <- abs( dfr[1,"Npars"] - dfr[2,"Npars"] )
     dfr[ 1, "p" ] <- round( 1 - stats::pchisq( dfr[1,"Chisq"] , df= dfr[1,"df"] ) , 5 )
-    for ( vv in 2:( ncol(dfr))){ dfr[,vv] <- round( dfr[,vv] , 5 ) }
+    for ( vv in 2:( ncol(dfr))){ 
+        dfr[,vv] <- round( dfr[,vv] , 5 ) 
+    }
     print( dfr )
     invisible(dfr)
-            }
+}
 ##############################################################
 
 anova.tam.mml <- anova.tam
