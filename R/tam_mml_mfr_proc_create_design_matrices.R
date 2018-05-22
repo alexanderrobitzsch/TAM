@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mfr_proc_create_design_matrices.R
-## File Version: 0.06
+## File Version: 0.09
 
 tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
     facets, constraint, ndim, Q, A, B, progress, xsi.fixed, resp00, B00,
@@ -15,23 +15,23 @@ tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
         diffKi <- TRUE
         design <- designMatrices.mfr2(resp=resp, formulaA=formulaA, facets=facets,
                         constraint=constraint, ndim=ndim,
-                        Q=Q, A=A, B=B , progress=progress)
+                        Q=Q, A=A, B=B, progress=progress)
         xsi.elim <- design$xsi.elim
         if ( ! is.null(xsi.elim) ){
             if ( nrow(xsi.elim) > 0 ){
-                xsi.elim2 <- cbind( xsi.elim[,2] , 99 )
-                xsi.fixed <- rbind( xsi.fixed , xsi.elim2 )
+                xsi.elim2 <- cbind( xsi.elim[,2], 99 )
+                xsi.fixed <- rbind( xsi.fixed, xsi.elim2 )
             }
         }
         # set first beta coefficient to zero
         if ( is.null( beta.fixed ) ){
             dimB <- dim(design$B$B.3d.0    )
-            beta.fixed <- cbind( 1 , 1:dimB[3] , 0)
+            beta.fixed <- cbind( 1, 1:dimB[3], 0)
         }
     } else {
         design <- designMatrices.mfr(resp, formulaA=formulaA, facets=facets,
                         constraint=constraint, ndim=ndim,
-                        Q=Q, A=A, B=B , progress=progress)
+                        Q=Q, A=A, B=B, progress=progress)
     }
     A <- design$A$A.3d.0
     cA <- design$A$A.flat.0
@@ -50,11 +50,11 @@ tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
     if ( ! is.null(B00) ){
         rownames_A <- dimnames(A)[[1]]
         for (ii in 1:I00){
-            ind <- grep( paste0( items00[ii] , "-" ) , rownames_A )
+            ind <- grep( paste0( items00[ii], "-" ), rownames_A )
             if ( length(ind) > 0 ){
                 I2 <- length(ind)
                 for (vv in 1:I2){
-                    B[ ind[vv] , , 1:D] <- B00[ii , , 1:D ,drop=FALSE] * ( B[ ind[vv] , , 1:D] != 0  )
+                    B[ ind[vv],, 1:D] <- B00[ii,, 1:D,drop=FALSE] * ( B[ ind[vv],, 1:D] !=0  )
                 }
             }
         }
@@ -65,7 +65,7 @@ tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
     design <- NULL
     if (progress){
         cat("    * Created Design Matrices   (",
-            paste(Sys.time()) , ")\n")
+            paste(Sys.time()), ")\n")
         utils::flush.console()
     }
     #--- OUTPUT

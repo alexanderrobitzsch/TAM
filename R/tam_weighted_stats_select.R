@@ -1,5 +1,5 @@
 ## File Name: tam_weighted_stats_select.R
-## File Version: 0.03
+## File Version: 0.05
 
 tam_weighted_stats_select <- function(x, w, select)
 {
@@ -12,6 +12,6 @@ tam_weighted_stats_select <- function(x, w, select)
     x <- x[ind]
     w <- w[ind]
     #-- output
-    res <- list( x = x, w=w)
+    res <- list( x=x, w=w)
     return(res)
 }

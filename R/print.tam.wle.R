@@ -1,9 +1,9 @@
 ## File Name: print.tam.wle.R
-## File Version: 9.06
+## File Version: 9.09
 
 #############################################
 # print method for tam.wle objects
-print.tam.wle <- function(x, digits = 3 , ...)
+print.tam.wle <- function(x, digits=3, ...)
 {
     ndim <- attr(x,"ndim")
     nobs <- attr(x,"nobs")

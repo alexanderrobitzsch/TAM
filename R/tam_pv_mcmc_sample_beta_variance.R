@@ -1,7 +1,7 @@
 ## File Name: tam_pv_mcmc_sample_beta_variance.R
-## File Version: 0.28
+## File Version: 0.30
 
-tam_pv_mcmc_sample_beta_variance <- function( theta , Y, nstud , pweights, samp.regr=FALSE,
+tam_pv_mcmc_sample_beta_variance <- function( theta, Y, nstud, pweights, samp.regr=FALSE,
         G, group_index, beta_groups, sample_integers)
 {
     formula_theta <- theta0 ~ 0 + Y0
@@ -20,15 +20,15 @@ tam_pv_mcmc_sample_beta_variance <- function( theta , Y, nstud , pweights, samp.
         N_group_gg <- attr(group_index0, "N_groups")[gg]
         bootstrap_weights[[gg]] <- tam_bayesian_bootstrap(N=N_group_gg,
                         sample_integers=sample_integers, do_boot=samp.regr)
-        # group_index[[gg]] <- sample( group_index0[[gg]] , N_group_gg, replace=TRUE )
+        # group_index[[gg]] <- sample( group_index0[[gg]], N_group_gg, replace=TRUE )
     }
     ind <- unlist( group_index )
     bootstrap_weights_unlist <- unlist(bootstrap_weights)
 
     #--- estimate linear regression
     if ( ! beta_groups ){
-        Y0 <- as.matrix( Y[ ind , , drop=FALSE] )
-        theta0 <- theta[ ind, , drop=FALSE ]
+        Y0 <- as.matrix( Y[ ind,, drop=FALSE] )
+        theta0 <- theta[ ind,, drop=FALSE ]
         pweights0 <- pweights[ind] * bootstrap_weights_unlist[ ind ]
         res <- tam_pv_mcmc_sample_beta_variance_lm_beta(Y0=Y0, theta0=theta0,
                             pweights0=pweights0, D=D, use_lm=FALSE)
@@ -41,8 +41,8 @@ tam_pv_mcmc_sample_beta_variance <- function( theta , Y, nstud , pweights, samp.
     for (gg in 1:G){
         ind_gg <- group_index[[gg]]
         if (beta_groups){
-            Y0 <- as.matrix( Y[ ind_gg , , drop=FALSE] )
-            theta0 <- theta[ ind_gg, , drop=FALSE ]
+            Y0 <- as.matrix( Y[ ind_gg,, drop=FALSE] )
+            theta0 <- theta[ ind_gg,, drop=FALSE ]
             pweights0 <- pweights[ind_gg] * bootstrap_weights[[gg]]
             res <- tam_pv_mcmc_sample_beta_variance_lm_beta(Y0=Y0, theta0=theta0,
                             pweights0=pweights0, D=D, use_lm=FALSE)
@@ -54,11 +54,11 @@ tam_pv_mcmc_sample_beta_variance <- function( theta , Y, nstud , pweights, samp.
         }
         if ( ! beta_groups ){
             if ( samp.regr ){
-                ind_gg <- seq( N_groups_cumsum$start[gg] , N_groups_cumsum$end[gg] )
+                ind_gg <- seq( N_groups_cumsum$start[gg], N_groups_cumsum$end[gg] )
             } else {
                 ind_gg <- group_index[[gg]]
             }
-            res_gg <- res2[ ind_gg, , drop=FALSE ]
+            res_gg <- res2[ ind_gg,, drop=FALSE ]
             wgt_gg <- pweights0[ ind_gg ] * bootstrap_weights[[ gg ]]
         }
         variance_gg <- tam_cov_wt(x=res_gg, wt=wgt_gg)

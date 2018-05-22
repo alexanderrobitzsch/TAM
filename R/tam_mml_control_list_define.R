@@ -1,5 +1,5 @@
 ## File Name: tam_mml_control_list_define.R
-## File Version: 0.13
+## File Version: 0.16
 
 tam_mml_control_list_define <- function(control, envir, tam_fct,
         prior_list_xsi)
@@ -41,7 +41,7 @@ tam_mml_control_list_define <- function(control, envir, tam_fct,
         con$maxgamma <- 9.99
     }
     #* mstep_intercept_method
-    if ( tam_fct %in% c("tam.mml" , "tam.mml.mfr")){
+    if ( tam_fct %in% c("tam.mml", "tam.mml.mfr")){
         con$mstep_intercept_method <- "R"
         if ( ! is.null( prior_list_xsi) ){
             con$mstep_intercept_method <- "optim"
@@ -51,10 +51,10 @@ tam_mml_control_list_define <- function(control, envir, tam_fct,
     #-- overwrite default values if supplied by the user
     con[ names(control) ] <- control
     #-- adjust values of fac.oldxsi
-    con$fac.oldxsi <- max( 0 , min( c( con$fac.oldxsi , .95 ) ) )
+    con$fac.oldxsi <- max( 0, min( c( con$fac.oldxsi, .95 ) ) )
     #-- adjust progress
-    if ( con$progress == "F" ){ con$progress <- FALSE }
-    if ( con$progress == "T" ){ con$progress <- TRUE }
+    if ( con$progress=="F" ){ con$progress <- FALSE }
+    if ( con$progress=="T" ){ con$progress <- TRUE }
     #-- copy lists
     con1a <- con1 <- con
     #-- assign elements

@@ -1,14 +1,14 @@
 ## File Name: tam_find_root.R
-## File Version: 0.01
+## File Version: 0.02
 
 
 ################################################################
 # root finding utility function
-tam_find_root <- function( x1 , y1 , prob.lvl , theta )
+tam_find_root <- function( x1, y1, prob.lvl, theta )
 {
     N <- length(y1)
-    dfr <- cbind( x1 , y1 )
-    dfr <- dfr[ order( dfr[,1] ) , ]
+    dfr <- cbind( x1, y1 )
+    dfr <- dfr[ order( dfr[,1] ), ]
     x1 <- dfr[,1]
     y1 <- dfr[,2]
     y2 <- y1 - prob.lvl

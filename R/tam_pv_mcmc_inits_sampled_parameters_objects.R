@@ -1,20 +1,20 @@
 ## File Name: tam_pv_mcmc_inits_sampled_parameters_objects.R
-## File Version: 0.10
+## File Version: 0.11
 
 tam_pv_mcmc_inits_sampled_parameters_objects <- function( n.burnin, n.iter,
-    beta , variance , G, Y, beta_groups)
+    beta, variance, G, Y, beta_groups)
 {
     #----------------------
     #--- beta
     NB <- length( as.vector( unlist(beta) ) )
     N_samples <- n.iter - n.burnin
-    beta_samples <- matrix( NA , nrow=N_samples , ncol=NB)
+    beta_samples <- matrix( NA, nrow=N_samples, ncol=NB)
     attr(beta_samples,"last_sample") <- 0
     D <- ncol(variance[[1]])
     v1 <- c()
     v3 <- NULL
     for (dd in 1:D){
-        v1 <- c(v1, paste0( colnames(Y) , ".Dim" , dd ) )
+        v1 <- c(v1, paste0( colnames(Y), ".Dim", dd ) )
     }
     v1 <- paste0("beta_", v1 )
     v2 <- v1
@@ -38,7 +38,7 @@ tam_pv_mcmc_inits_sampled_parameters_objects <- function( n.burnin, n.iter,
     #--- variance
     ND <- ( D*(D+1) / 2 )
     NV <- ND  * G
-    variance_samples <- matrix( NA , nrow=N_samples , ncol=NV)
+    variance_samples <- matrix( NA, nrow=N_samples, ncol=NV)
     attr(variance_samples,"last_sample") <- 0
     v1 <- list()
     for (gg in 1:G){
@@ -49,20 +49,20 @@ tam_pv_mcmc_inits_sampled_parameters_objects <- function( n.burnin, n.iter,
     v0 <- NULL
     for (dd in 1:D){
         for (ee in dd:D){
-            v0 <- c( v0 , paste0("Sigma[" , ee, "," , dd, "]") )
+            v0 <- c( v0, paste0("Sigma[", ee, ",", dd, "]") )
         }
     }
     v1 <- v0
     if (G>1){
         v1 <- NULL
         for (gg in 1:G){
-            v1 <- c( v1 , paste0( v0 , "_group", gg ) )
+            v1 <- c( v1, paste0( v0, "_group", gg ) )
         }
     }
     attr(variance_samples,"parnames") <- v1
     colnames(variance_samples) <- v1
 
-    saved_iter <- seq( n.burnin + 1 , n.iter)
+    saved_iter <- seq( n.burnin + 1, n.iter)
     attr(beta_samples, "saved_iterations") <- saved_iter
     attr(variance_samples, "saved_iterations") <- saved_iter
 

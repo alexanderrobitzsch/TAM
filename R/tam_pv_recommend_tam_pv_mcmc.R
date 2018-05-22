@@ -1,5 +1,5 @@
 ## File Name: tam_pv_recommend_tam_pv_mcmc.R
-## File Version: 0.02
+## File Version: 0.04
 
 tam_pv_recommend_tam_pv_mcmc <- function(tamobj)
 {
@@ -8,7 +8,7 @@ tam_pv_recommend_tam_pv_mcmc <- function(tamobj)
         if ( control$snodes > 0 ){
             v1 <- paste0(" It is recommended to use TAM::tam.pv.mcmc in case\n",
                          " of fitted TAM models with stochastic nodes.\n")
-            warning(v1, call. = FALSE )
+            warning(v1, call.=FALSE )
         }
     }
 }

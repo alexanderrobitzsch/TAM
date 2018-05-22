@@ -1,14 +1,14 @@
 ## File Name: tam_latreg_ic.R
-## File Version: 9.09
+## File Version: 9.13
 
 ########################################
 # latent regression information criteria
-tam_latreg_ic <- function( nstud , deviance ,
-    beta , beta.fixed , ndim , variance.fixed , G ,
-    est.variance , variance.Npars=NULL , group )
+tam_latreg_ic <- function( nstud, deviance,
+    beta, beta.fixed, ndim, variance.fixed, G,
+    est.variance, variance.Npars=NULL, group )
 {
     #***Model parameters
-    ic <- data.frame("n" = nstud , "deviance" = deviance )
+    ic <- data.frame("n"=nstud, "deviance"=deviance )
     loglike <- - deviance / 2
     logprior <- 0
     logpost <- loglike
@@ -29,7 +29,7 @@ tam_latreg_ic <- function( nstud , deviance ,
     ic$Nparscov <- ndim + ndim*(ndim-1)/2
     if ( ! est.variance ){ ic$Nparscov <- ic$Nparscov - ndim }
     if ( ! is.null( variance.fixed) ){
-            ic$Nparscov <- max(0 , ic$Nparscov - nrow(variance.fixed ) )
+            ic$Nparscov <- max(0, ic$Nparscov - nrow(variance.fixed ) )
     }
     if ( ! is.null(variance.Npars) ){
         ic$Nparscov <- variance.Npars

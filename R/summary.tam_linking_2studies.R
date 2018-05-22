@@ -1,10 +1,10 @@
 ## File Name: summary.tam_linking_2studies.R
-## File Version: 0.09
+## File Version: 0.12
 
-summary.tam_linking_2studies <- function( object , file = NULL , ...)
+summary.tam_linking_2studies <- function( object, file=NULL, ...)
 {
 
-    tam_osink( file = file )
+    tam_osink( file=file )
 
     cat("------------------------------------------------------------\n")
 

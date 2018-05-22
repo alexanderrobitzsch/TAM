@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_irt_likelihood_cfa.cpp
-//// File Version: 2.07
+//// File Version: 2.10
 
 
 
@@ -19,9 +19,9 @@ Rcpp::List tam_rcpp_irt_likelihood_cfa( Rcpp::NumericMatrix data,
     int N = data.nrow();
     int I = data.ncol();
     int D = L.ncol();
-    int TP= theta.nrow() ;
+    int TP= theta.nrow();
     Rcpp::NumericMatrix hwt(N,TP);
-    std::fill( hwt.begin(), hwt.end() , 1 ) ;
+    std::fill( hwt.begin(), hwt.end(), 1 );
 
     double term=0;
     double val=0;
@@ -29,15 +29,15 @@ Rcpp::List tam_rcpp_irt_likelihood_cfa( Rcpp::NumericMatrix data,
 
     for (int tt=0;tt<TP;tt++){
         for (int ii=0;ii<I;ii++){
-            term = nu[ii] ;
-            for (int dd=0; dd < D ; dd++){
-                term += L(ii,dd) * theta(tt,dd) ;
+            term = nu[ii];
+            for (int dd=0; dd < D; dd++){
+                term += L(ii,dd) * theta(tt,dd);
             }
-            sdii = sqrt( psi(ii,ii) ) ;
+            sdii = sqrt( psi(ii,ii) );
             for (int nn=0;nn<N;nn++){
                 if ( ! R_IsNA( data(nn,ii) ) ){
-                    val = ::Rf_dnorm4( data(nn,ii) , term , sdii , false ) ;
-                    hwt(nn,tt) = hwt(nn,tt) * val ;
+                    val = ::Rf_dnorm4( data(nn,ii), term, sdii, false );
+                    hwt(nn,tt) = hwt(nn,tt) * val;
                 }    // end if not missing
             }  // end nn
         } // end ii
@@ -46,12 +46,12 @@ Rcpp::List tam_rcpp_irt_likelihood_cfa( Rcpp::NumericMatrix data,
     //*************************************************
     // OUTPUT
     return Rcpp::List::create(
-                Rcpp::Named("hwt") = hwt ,
-                Rcpp::Named("N") = N ,
-                Rcpp::Named("I") = I ,
-                Rcpp::Named("TP")= TP ,
+                Rcpp::Named("hwt") = hwt,
+                Rcpp::Named("N") = N,
+                Rcpp::Named("I") = I,
+                Rcpp::Named("TP")= TP,
                 Rcpp::Named("D") = D
-        ) ;
+        );
 }
 ///********************************************************************
 

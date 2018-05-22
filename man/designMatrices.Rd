@@ -1,5 +1,5 @@
 %% File Name: designMatrices.Rd
-%% File Version: 2.14
+%% File Version: 2.18
 
 \name{designMatrices}
 
@@ -20,23 +20,23 @@ Generation of Design Matrices
 Generate design matrices, and display them at console.
 }
 \usage{
-designMatrices(modeltype = c("PCM", "RSM"), maxKi = NULL, resp = resp,
-    ndim = 1, A = NULL, B = NULL, Q = NULL, R = NULL, constraint = "cases" ,...)
+designMatrices(modeltype=c("PCM", "RSM"), maxKi=NULL, resp=resp,
+    ndim=1, A=NULL, B=NULL, Q=NULL, R=NULL, constraint="cases",...)
 
 print.designMatrices(X, ...)
 
-designMatrices.mfr(resp, formulaA = ~ item + item:step, facets = NULL,
-    constraint = c("cases", "items"), ndim = 1, Q=NULL, A=NULL, B=NULL ,
+designMatrices.mfr(resp, formulaA=~ item + item:step, facets=NULL,
+    constraint=c("cases", "items"), ndim=1, Q=NULL, A=NULL, B=NULL,
     progress=FALSE)
-designMatrices.mfr2(resp, formulaA = ~ item + item:step, facets = NULL,
-    constraint = c("cases", "items"), ndim = 1, Q=NULL, A=NULL, B=NULL ,
+designMatrices.mfr2(resp, formulaA=~ item + item:step, facets=NULL,
+    constraint=c("cases", "items"), ndim=1, Q=NULL, A=NULL, B=NULL,
     progress=FALSE)
 
-.A.matrix(resp, formulaA = ~ item + item*step, facets = NULL,
-    constraint = c("cases", "items") , progress=FALSE , maxKi=NULL)
+.A.matrix(resp, formulaA=~ item + item*step, facets=NULL,
+    constraint=c("cases", "items"), progress=FALSE, maxKi=NULL)
 rownames.design(X)
 
-.A.PCM2( resp, Kitem=NULL , constraint = "cases" , Q = NULL)
+.A.PCM2( resp, Kitem=NULL, constraint="cases", Q=NULL)
    # generates ConQuest parametrization of partial credit model
 
 .A.PCM3( resp, Kitem=NULL ) # parametrization for A matrix in the dispersion model
@@ -150,13 +150,13 @@ data( data.gpcm )
 resp <- data.gpcm
 
 # parametrization for partial credit model
-A1 <- TAM::designMatrices( resp= resp )$A
+A1 <- TAM::designMatrices( resp=resp )$A
 # item difficulty and threshold parametrization
 A2 <- TAM::.A.PCM2( resp )
 # dispersion model of Andrich (1982)
 A3 <- TAM::.A.PCM3( resp )
 # rating scale model
-A4 <- TAM::designMatrices( resp= resp , modeltype="RSM" )$A
+A4 <- TAM::designMatrices( resp=resp, modeltype="RSM" )$A
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_pv_multivariate_normal_approximation.cpp
-//// File Version: 0.37
+//// File Version: 0.40
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -23,7 +23,7 @@ Rcpp::NumericMatrix tam_rcpp_mvrnorm(int n, Rcpp::NumericVector mu,
     arma::mat Y = arma::randn(n, ncols);
     arma::mat Z = arma::trans( arma::repmat(Mu, 1, n) ) + Y * arma::chol(Sigma);
     Rcpp::NumericMatrix z = Rcpp::wrap(Z);
-    return z ;
+    return z;
 }
 ///********************************************************************
 
@@ -68,16 +68,16 @@ Rcpp::List tam_pv_weighted_cov( Rcpp::NumericMatrix theta, Rcpp::NumericVector w
             for (int nn=0; nn<N; nn++){
                 y += wgt[nn] * theta(nn,dd) * theta(nn,ee);
             }
-            y1 = y - Mu[dd] * Mu[ee] ;
+            y1 = y - Mu[dd] * Mu[ee];
             covmat(dd,ee) = y1;
             covmat(ee,dd) = y1;
         }
     }
     // OUTPUT
     return Rcpp::List::create(
-                Rcpp::Named("Mu") = Mu ,
+                Rcpp::Named("Mu") = Mu,
                 Rcpp::Named("covmat") = covmat
-            ) ;
+            );
 }
 //**********************************************************************
 
@@ -97,11 +97,11 @@ Rcpp::NumericMatrix tam_rcpp_pv_sample_theta_multidim(
     int NS=1;
     for (int nn=0; nn<N; nn++){
         wgt = post( nn, _);
-        res = tam_pv_weighted_cov( theta, wgt) ;
-        Z = tam_rcpp_mvrnorm( NS , res["Mu"] , res["covmat"] );
-        theta_samp(nn, _) = Z(0, _) ;
+        res = tam_pv_weighted_cov( theta, wgt);
+        Z = tam_rcpp_mvrnorm( NS, res["Mu"], res["covmat"] );
+        theta_samp(nn, _) = Z(0, _);
     }
-    return theta_samp ;
+    return theta_samp;
 }
 //**********************************************************************
 

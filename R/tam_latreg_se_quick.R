@@ -1,8 +1,8 @@
 ## File Name: tam_latreg_se_quick.R
-## File Version: 0.09
+## File Version: 0.13
 
 
-tam_latreg_se_quick <- function( tamobj , numdiff.parm = .001)
+tam_latreg_se_quick <- function( tamobj, numdiff.parm=.001)
 {
     h <- numdiff.parm
     Y <- tamobj$Y
@@ -23,7 +23,7 @@ tam_latreg_se_quick <- function( tamobj , numdiff.parm = .001)
     ntheta <- length(theta)
     like <- tamobj$like
     # multiplication parameters for numerical differentiation
-    ll <- matrix( 0, nrow=nstud , ncol=3 )
+    ll <- matrix( 0, nrow=nstud, ncol=3 )
     mult <- c(0,1,-1)
 
 
@@ -40,8 +40,8 @@ tam_latreg_se_quick <- function( tamobj , numdiff.parm = .001)
 
     beta0 <- beta
     #--- prior distribution for each student (normal density)
-    gwt0a <- tam_stud_prior( theta=theta , Y=Y , beta=beta0 , variance=variance ,
-                                nstud=nstud , nnodes=nnodes , ndim=ndim, YSD=YSD, unidim_simplify=FALSE )
+    gwt0a <- tam_stud_prior( theta=theta, Y=Y, beta=beta0, variance=variance,
+                                nstud=nstud, nnodes=nnodes, ndim=ndim, YSD=YSD, unidim_simplify=FALSE )
     #-- compute likelihood
     ll[,1] <- tam_latreg_se_quick_likelihood( gwt=gwt0a, like=like,
                                 thetawidth=thetawidth, snodes=snodes )
@@ -52,10 +52,10 @@ tam_latreg_se_quick <- function( tamobj , numdiff.parm = .001)
         for (dd in 1:ndim){
             for (mm in 2:3){
                 beta0 <- beta
-                beta0[ pp ,dd] <- beta0[pp,dd] + mult[mm] * h
+                beta0[ pp,dd] <- beta0[pp,dd] + mult[mm] * h
                 #--- prior distribution for each student (normal density)
-                gwt0a <- tam_stud_prior( theta=theta , Y=Y , beta=beta0 , variance=variance ,
-                                nstud=nstud , nnodes=nnodes , ndim=ndim, YSD=YSD, unidim_simplify=FALSE )
+                gwt0a <- tam_stud_prior( theta=theta, Y=Y, beta=beta0, variance=variance,
+                                nstud=nstud, nnodes=nnodes, ndim=ndim, YSD=YSD, unidim_simplify=FALSE )
                 #-- compute likelihood
                 ll[,mm] <- tam_latreg_se_quick_likelihood( gwt=gwt0a, like=like,
                                 thetawidth=thetawidth, snodes=snodes )
@@ -70,11 +70,11 @@ tam_latreg_se_quick <- function( tamobj , numdiff.parm = .001)
     #-----------------------------------------------------------
     cat("|\n")
 
-    beta <- data.frame( "beta" = beta , "se" = se.beta )
-    colnames(beta) <- c( paste("est.Dim" , 1:ndim , sep="")    , paste("se.Dim" , 1:ndim , sep="")    )
+    beta <- data.frame( "beta"=beta, "se"=se.beta )
+    colnames(beta) <- c( paste("est.Dim", 1:ndim, sep="")    , paste("se.Dim", 1:ndim, sep="")    )
 
     utils::flush.console()
-    res <- list( "beta" = beta )
+    res <- list( "beta"=beta )
     #--- output
     return(res)
 }

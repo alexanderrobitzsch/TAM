@@ -1,5 +1,5 @@
 %% File Name: TAM-utilities.Rd
-%% File Version: 0.54
+%% File Version: 0.56
 
 \name{TAM-utilities}
 \alias{TAM-utilities}
@@ -76,7 +76,7 @@ tam_interval_index(matr, rn)
 ## cumulative sum of row entries in a matrix
 tam_rowCumsums(matr)
 ## extension of mvtnorm::dmvnorm to matrix entries of mean
-tam_dmvnorm(x, mean, sigma, log = FALSE )
+tam_dmvnorm(x, mean, sigma, log=FALSE )
 ## Bayesian bootstrap in TAM (used in tam.pv.mcmc)
 tam_bayesian_bootstrap(N, sample_integers=FALSE, do_boot=TRUE)
 ## weighted covariance matrix
@@ -95,7 +95,7 @@ tam_AXsi_fit(A, AXsi)
 
 ## trimming increments in iterations
 tam_trim_increment(increment, max.increment, trim_increment="cut",
-     trim_incr_factor = 2, eps = 1E-10, avoid_na = FALSE)
+     trim_incr_factor=2, eps=1E-10, avoid_na=FALSE)
 ## numerical differentiation by central difference
 tam_difference_quotient(d0, d0p, d0m, h)
 ## assign elements of a list in an environment

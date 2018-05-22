@@ -1,5 +1,5 @@
 %% File Name: data.cqc.Rd
-%% File Version: 2.24
+%% File Version: 2.28
 
 \name{data.cqc}
 
@@ -148,7 +148,7 @@ summary(mod01)
 #------- ConQuest
 
 # estimate model
-cmod01 <- sirt::R2conquest( dat , name = "mod01" , path.conquest=path.conquest)
+cmod01 <- sirt::R2conquest( dat, name="mod01", path.conquest=path.conquest)
 summary(cmod01)   # summary output
 # read shw file with some terms
 shw01a <- sirt::read.show( "mod01.shw" )
@@ -157,16 +157,16 @@ cmod01$shw.itemparameter
 pi01a <- sirt::read.pimap( "mod01.shw" )
 cmod01$shw.pimap
 # read plausible values (npv=10 plausible values)
-pv01a <- sirt::read.pv(pvfile="mod01.pv", npv = 10)
+pv01a <- sirt::read.pv(pvfile="mod01.pv", npv=10)
 cmod01$person
 
 # read ConQuest model
-res01a <- WrightMap::CQmodel(p.est = "mod01.wle", show = "mod01.shw", p.type = "WLE" )
+res01a <- WrightMap::CQmodel(p.est="mod01.wle", show="mod01.shw", p.type="WLE" )
 print(res01a)
 # plot item fit
 WrightMap::fitgraph(res01a)
 # Wright map
-plot(res01a, label.items.srt = 90 )
+plot(res01a, label.items.srt=90 )
 
 #############################################################################
 # EXAMPLE 02: Partial credit model and rating scale model data.cqc02
@@ -177,28 +177,28 @@ dat <- data.cqc02
 
 #********************************************
 # Model 02a: Partial credit model in ConQuest parametrization 'item+item*step'
-mod02a <- TAM::tam.mml( dat , irtmodel="PCM2" )
-summary(mod02a , file = "mod02a")
+mod02a <- TAM::tam.mml( dat, irtmodel="PCM2" )
+summary(mod02a, file="mod02a")
 fit02a <- TAM::tam.fit(mod02a)
 summary(fit02a)
 
 #--- ConQuest
 # estimate model
-maxK <- max( dat , na.rm=TRUE )
-cmod02a <- sirt::R2conquest( dat , itemcodes= 0:maxK, model= "item+item*step" ,
-               name = "mod02a" , path.conquest=path.conquest)
+maxK <- max( dat, na.rm=TRUE )
+cmod02a <- sirt::R2conquest( dat, itemcodes=0:maxK, model="item+item*step",
+               name="mod02a", path.conquest=path.conquest)
 summary(cmod02a)   # summary output
 
 # read ConQuest model
-res02a <- WrightMap::CQmodel(p.est = "mod02a.wle", show = "mod02a.shw", p.type = "WLE" )
+res02a <- WrightMap::CQmodel(p.est="mod02a.wle", show="mod02a.shw", p.type="WLE" )
 print(res02a)
 # Wright map
-plot(res02a, label.items.srt = 90 )
-plot(res02a , item.table="item")
+plot(res02a, label.items.srt=90 )
+plot(res02a, item.table="item")
 
 #********************************************
 # Model 02b: Rating scale model
-mod02b <- TAM::tam.mml( dat , irtmodel="RSM" )
+mod02b <- TAM::tam.mml( dat, irtmodel="RSM" )
 summary( mod02b )
 
 #############################################################################
@@ -207,32 +207,32 @@ summary( mod02b )
 
 data(data.cqc03)
 # select items
-resp <- data.cqc03[ , c("crit1","crit2") ]
+resp <- data.cqc03[, c("crit1","crit2") ]
 
 #********************************************
 # Model 03a: 'item+step+rater'
-mod03a <- TAM::tam.mml.mfr( resp , facets=data.cqc03[,"rater",drop=FALSE] ,
-            formulaA = ~ item+step+rater , pid = data.cqc03$pid )
+mod03a <- TAM::tam.mml.mfr( resp, facets=data.cqc03[,"rater",drop=FALSE],
+            formulaA=~ item+step+rater, pid=data.cqc03$pid )
 summary( mod03a )
 
 #--- ConQuest
 X <- data.cqc03[,"rater",drop=FALSE]
-X$rater <- as.numeric(substring( X$rater , 2 )) # convert 'rater' in numeric format
-maxK <- max( resp , na.rm=TRUE)
-cmod03a <- sirt::R2conquest( resp ,  X = X , regression="" ,  model= "item+step+rater" ,
-             name = "mod03a" , path.conquest=path.conquest , set.constraints="cases" )
+X$rater <- as.numeric(substring( X$rater, 2 )) # convert 'rater' in numeric format
+maxK <- max( resp, na.rm=TRUE)
+cmod03a <- sirt::R2conquest( resp,  X=X, regression="",  model="item+step+rater",
+             name="mod03a", path.conquest=path.conquest, set.constraints="cases" )
 summary(cmod03a)   # summary output
 
 # read ConQuest model
-res03a <- WrightMap::CQmodel(p.est = "mod03a.wle", show = "mod03a.shw", p.type = "WLE" )
+res03a <- WrightMap::CQmodel(p.est="mod03a.wle", show="mod03a.shw", p.type="WLE" )
 print(res03a)
 # Wright map
 plot(res03a)
 
 #********************************************
 # Model 03b: 'item:step+rater'
-mod03b <- TAM::tam.mml.mfr( resp , facets=data.cqc03[,"rater",drop=FALSE] ,
-            formulaA = ~ item + item:step+rater , pid = data.cqc03$pid )
+mod03b <- TAM::tam.mml.mfr( resp, facets=data.cqc03[,"rater",drop=FALSE],
+            formulaA=~ item + item:step+rater, pid=data.cqc03$pid )
 summary( mod03b )
 
 #********************************************
@@ -241,13 +241,13 @@ summary( mod03b )
 # Define raters as items in the new dataset 'dat1'.
 persons <- unique( data.cqc03$pid )
 raters <- unique( data.cqc03$rater )
-dat1 <- matrix( NA , nrow= length(persons) , ncol=length(raters) + 1 )
+dat1 <- matrix( NA, nrow=length(persons), ncol=length(raters) + 1 )
 dat1 <- as.data.frame(dat1)
-colnames(dat1) <- c("pid" , raters )
+colnames(dat1) <- c("pid", raters )
 dat1$pid <- persons
 for (rr in raters){
-    dat1.rr <- data.cqc03[ data.cqc03$rater == rr , ]
-    dat1[ match(dat1.rr$pid , persons) ,rr] <- dat1.rr$crit1
+    dat1.rr <- data.cqc03[ data.cqc03$rater==rr, ]
+    dat1[ match(dat1.rr$pid, persons),rr] <- dat1.rr$crit1
         }
   ##   > head(dat1)
   ##       pid R11 R12 R13 R14 R15 R16 R17 R18 R19 R20 R21 R22 R23 R24 R25 R26
@@ -258,7 +258,7 @@ for (rr in raters){
   ##   5 10005  NA  NA   1   1  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA
   ##   6 10006  NA  NA   1   1  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA
 # estimate model 03c
-mod03c <- TAM::tam.mml( dat1[,-1] , pid = dat1$pid )
+mod03c <- TAM::tam.mml( dat1[,-1], pid=dat1$pid )
 summary( mod03c )
 
 #############################################################################
@@ -267,33 +267,33 @@ summary( mod03c )
 
 data(data.cqc04)
 resp <- data.cqc04[,4:8]
-facets <- data.cqc04[ , c("rater" , "topic") ]
+facets <- data.cqc04[, c("rater", "topic") ]
 
 #********************************************
 # Model 04a: 'item*step+rater+topic'
 formulaA <- ~ item*step + rater + topic
-mod04a <- TAM::tam.mml.mfr( resp , facets= facets ,
-            formulaA = formulaA , pid = data.cqc04$pid )
+mod04a <- TAM::tam.mml.mfr( resp, facets=facets,
+            formulaA=formulaA, pid=data.cqc04$pid )
 summary( mod04a )
 
 #********************************************
 # Model 04b: 'item*step+rater+topic+item*rater+item*topic'
 formulaA <- ~ item*step + rater + topic + item*rater + item*topic
-mod04b <- TAM::tam.mml.mfr( resp , facets= facets ,
-            formulaA = formulaA , pid = data.cqc04$pid )
+mod04b <- TAM::tam.mml.mfr( resp, facets=facets,
+            formulaA=formulaA, pid=data.cqc04$pid )
 summary( mod04b )
 
 #********************************************
 # Model 04c: 'item*step' with fixing rater and topic parameters to zero
 formulaA <- ~ item*step + rater + topic
-mod04c0 <- TAM::tam.mml.mfr( resp , facets= facets ,
-            formulaA = formulaA , pid = data.cqc04$pid , control=list(maxiter=4) )
+mod04c0 <- TAM::tam.mml.mfr( resp, facets=facets,
+            formulaA=formulaA, pid=data.cqc04$pid, control=list(maxiter=4) )
 summary( mod04c0 )
 # fix rater and topic parameter to zero
 xsi.est <- mod04c0$xsi
-xsi.fixed <- cbind( seq(1,nrow(xsi.est)) , xsi.est$xsi )
+xsi.fixed <- cbind( seq(1,nrow(xsi.est)), xsi.est$xsi )
 rownames(xsi.fixed) <- rownames(xsi.est)
-xsi.fixed <- xsi.fixed[ c(8:13) ,]
+xsi.fixed <- xsi.fixed[ c(8:13),]
 xsi.fixed[,2] <- 0
   ##   > xsi.fixed
   ##             [,1] [,2]
@@ -303,8 +303,8 @@ xsi.fixed[,2] <- 0
   ##   topicFami   11    0
   ##   topicScho   12    0
   ##   topicSpor   13    0
-mod04c1 <- TAM::tam.mml.mfr( resp , facets= facets ,
-             formulaA = formulaA , pid = data.cqc04$pid , xsi.fixed=xsi.fixed )
+mod04c1 <- TAM::tam.mml.mfr( resp, facets=facets,
+             formulaA=formulaA, pid=data.cqc04$pid, xsi.fixed=xsi.fixed )
 summary( mod04c1 )
 
 #############################################################################
@@ -313,15 +313,15 @@ summary( mod04c1 )
 #############################################################################
 
 data(data.cqc05)
-resp <- data.cqc05[ , -c(1:3) ] # select item responses
+resp <- data.cqc05[, -c(1:3) ] # select item responses
 
 #********************************************
 # Model 05a: Partial credit model
-mod05a <-tam.mml(resp= resp , irtmodel="PCM2" )
+mod05a <-tam.mml(resp=resp, irtmodel="PCM2" )
 
 #********************************************
 # Model 05b: Partial credit model with latent regressors
-mod05b <-tam.mml(resp= resp , irtmodel="PCM2" ,  Y = data.cqc05[,1:3] )
+mod05b <-tam.mml(resp=resp, irtmodel="PCM2",  Y=data.cqc05[,1:3] )
 # Plausible value imputation
 pvmod05b <- TAM::tam.pv( mod05b )
 }

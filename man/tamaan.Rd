@@ -1,5 +1,5 @@
 %% File Name: tamaan.Rd
-%% File Version: 0.47
+%% File Version: 0.53
 
 \name{tamaan}
 \alias{tamaan}
@@ -20,7 +20,7 @@ and mixture item response models can be estimated.
 }
 
 \usage{
-tamaan(tammodel, resp, tam.method = NULL, control = list(), doparse=TRUE, ...)
+tamaan(tammodel, resp, tam.method=NULL, control=list(), doparse=TRUE, ...)
 
 \method{summary}{tamaan}(object,file=NULL,\dots)
 
@@ -114,13 +114,13 @@ dat <- data.read
 
 tammodel <- "
 LAVAAN MODEL:
-  F1 =~ A1__C4
+  F1=~ A1__C4
   F1 ~~ F1
 ITEM TYPE:
   ALL(Rasch);
     "
 # estimate model
-mod1 <- TAM::tamaan( tammodel , resp=dat)
+mod1 <- TAM::tamaan( tammodel, resp=dat)
 summary(mod1)
 
 \dontrun{
@@ -129,10 +129,10 @@ summary(mod1)
 
 tammodel <- "
 LAVAAN MODEL:
-  F1 =~ A1__B1 + B3 + C1__C3
+  F1=~ A1__B1 + B3 + C1__C3
   F1 ~~ F1
     "
-mod2 <- TAM::tamaan( tammodel , resp=dat)
+mod2 <- TAM::tamaan( tammodel, resp=dat)
 summary(mod2)
 
 #*********************************************************************
@@ -140,9 +140,9 @@ summary(mod2)
 
 tammodel <- "
 LAVAAN MODEL:
-  G  =~ A1__C4
-  F1 =~ A1__B4
-  F2 =~ C1__C4
+  G=~ A1__C4
+  F1=~ A1__B4
+  F2=~ C1__C4
   F1 ~~ F2
   # specify fixed entries in covariance matrix
   F1 ~~ 1*F1
@@ -151,7 +151,7 @@ LAVAAN MODEL:
   G  ~~ 0.3*F2
   G  ~~ 0.7*G
     "
-mod3 <- TAM::tamaan( tammodel , resp=dat , control=list(maxiter=30))
+mod3 <- TAM::tamaan( tammodel, resp=dat, control=list(maxiter=30))
 summary(mod3)
 
 #*********************************************************************
@@ -159,8 +159,8 @@ summary(mod3)
 
 tammodel <- "
 LAVAAN MODEL:
-  F =~ lam1__lam10*A1__C2
-  F =~ 0.78*C3
+  F=~ lam1__lam10*A1__C2
+  F=~ 0.78*C3
   F ~~ F
   A1 | a1*t1
   A2 | a2*t1
@@ -173,18 +173,18 @@ LAVAAN MODEL:
 MODEL CONSTRAINT:
   # defined parameters
   # only linear combinations are permitted
-  b2 == 1.3*b1 + (-0.6)*b3
-  a1 == q1
-  a2 == q2 + t
-  a3 == q1 + 2*t
-  a4 == q2 + 3*t
+  b2==1.3*b1 + (-0.6)*b3
+  a1==q1
+  a2==q2 + t
+  a3==q1 + 2*t
+  a4==q2 + 3*t
   # linear constraints for loadings
-  lam2 == 1.1*lam1
-  lam3 == 0.9*lam1 + (-.1)*lam0
-  lam8 == lam0
-  lam9 == lam0
+  lam2==1.1*lam1
+  lam3==0.9*lam1 + (-.1)*lam0
+  lam8==lam0
+  lam9==lam0
     "
-mod4 <- TAM::tamaan( tammodel , resp=dat , control=list(maxiter=5) )
+mod4 <- TAM::tamaan( tammodel, resp=dat, control=list(maxiter=5) )
 summary(mod4)
 
 #*********************************************************************
@@ -196,9 +196,9 @@ ANALYSIS:
   NCLASSES(3);   # 3 classes
   NSTARTS(5,20); # 5 random starts with 20 iterations
 LAVAAN MODEL:
-  F =~ A1__C4
+  F=~ A1__C4
     "
-mod5 <- TAM::tamaan( tammodel , resp=dat , control=list(maxiter=100)  )
+mod5 <- TAM::tamaan( tammodel, resp=dat, control=list(maxiter=100)  )
 summary(mod5)
 
 #*********************************************************************
@@ -210,9 +210,9 @@ ANALYSIS:
   NCLASSES(3);    # 3 classes
   NSTARTS(20,40); # 20 random starts with 40 iterations
 LAVAAN MODEL:
-  F =~ A1__C4
+  F=~ A1__C4
     "
-mod6 <- TAM::tamaan( tammodel , dat )
+mod6 <- TAM::tamaan( tammodel, dat )
 summary(mod6)
 
 #*********************************************************************
@@ -224,10 +224,10 @@ ANALYSIS:
   NCLASSES(3)
   NSTARTS(10,40)
 LAVAAN MODEL:
-  F =~ A1__C4
+  F=~ A1__C4
   B2 | 0*t1
     "
-mod7 <- TAM::tamaan( tammodel , resp=dat)
+mod7 <- TAM::tamaan( tammodel, resp=dat)
 summary(mod7)
 
 #*********************************************************************
@@ -240,8 +240,8 @@ ANALYSIS:
   NCLASSES(4);
   NSTARTS(10,20);
 LAVAAN MODEL:
-  AB =~ A1__B4
-  C =~ C1__C4
+  AB=~ A1__B4
+  C=~ C1__C4
   A1 | a1diff*t1
   B2 | 0*t1
   C2 | 0*t1
@@ -253,7 +253,7 @@ MODEL PRIOR:
   DOEND
     "
 # estimate model
-mod8 <- TAM::tamaan( tammodel , resp=dat )
+mod8 <- TAM::tamaan( tammodel, resp=dat )
 summary(mod8)
 
 #*********************************************************************
@@ -261,8 +261,8 @@ summary(mod8)
 
 tammodel <- "
 LAVAAN MODEL:
-  FA =~ A1+b*A2+A3+d*A4
-  FB =~ B1+b*B2+B3+d*B4
+  FA=~ A1+b*A2+A3+d*A4
+  FB=~ B1+b*B2+B3+d*B4
   FA ~~ 1*FA
   FA ~~ FB
   FB ~~ 1*FB
@@ -271,7 +271,7 @@ LAVAAN MODEL:
   A2 | .7*t1
     "
 # estimate model
-mod9 <- TAM::tamaan( tammodel , resp=dat , control=list(maxiter=30) )
+mod9 <- TAM::tamaan( tammodel, resp=dat, control=list(maxiter=30) )
 summary(mod9)
 
 #############################################################################
@@ -279,7 +279,7 @@ summary(mod9)
 #############################################################################
 
 library(CDM)
-data( data.Students , package="CDM")
+data( data.Students, package="CDM")
 dat <- data.Students[,3:13]
   ##   > colnames(dat)
   ##    [1] "act1" "act2" "act3" "act4" "act5" "sc1"  "sc2"  "sc3"  "sc4"  "mj1"  "mj2"
@@ -289,14 +289,14 @@ dat <- data.Students[,3:13]
 
 tammodel <- "
 LAVAAN MODEL:
-  FA =~ act1__act5
-  FS =~ sc1__sc4
+  FA=~ act1__act5
+  FS=~ sc1__sc4
   FA ~~ 1*FA
   FS ~~ 1*FS
   FA ~~ FS
     "
 # estimate model
-mod1 <- TAM::tamaan( tammodel , dat , control=list(maxiter=10)  )
+mod1 <- TAM::tamaan( tammodel, dat, control=list(maxiter=10)  )
 summary(mod1)
 
 #*********************************************************************
@@ -304,8 +304,8 @@ summary(mod1)
 
 tammodel <- "
 LAVAAN MODEL:
-  FA =~ a1__a4*act1__act4 + 0.89*act5
-  FS =~ 1*sc1 + sc2__sc4
+  FA=~ a1__a4*act1__act4 + 0.89*act5
+  FS=~ 1*sc1 + sc2__sc4
   FA ~~ FA
   FS ~~ FS
   FA ~~ FS
@@ -314,10 +314,10 @@ LAVAAN MODEL:
   act1 + act3 | a13_t2 * t2
     "
 # only create design matrices with tamaanify
-mod2 <- TAM::tamaanify( tammodel , dat  )
+mod2 <- TAM::tamaanify( tammodel, dat  )
 mod2$lavpartable
 # estimate model (only few iterations as a test)
-mod2 <- TAM::tamaan( tammodel , dat , control=list(maxiter=10)  )
+mod2 <- TAM::tamaan( tammodel, dat, control=list(maxiter=10)  )
 summary(mod2)
 
 #*********************************************************************
@@ -325,22 +325,22 @@ summary(mod2)
 
 tammodel <- "
 LAVAAN MODEL:
-  FA =~ a1__a5*act1__act5
-  FS =~ b1__b4*sc1__sc4
+  FA=~ a1__a5*act1__act5
+  FS=~ b1__b4*sc1__sc4
   FA ~~ 1*FA
   FA ~~ FS
   FS ~~ 1*FS
   act1 + act3 | a13_t1 * t1
   act1 + act3 | a13_t2 * t2
 MODEL CONSTRAINT:
-  a1 == q0
-  a2 == q0
-  a3 == q0    + q1
-  a4 ==    q2
-  a5 ==    q2 + q1
+  a1==q0
+  a2==q0
+  a3==q0    + q1
+  a4==  q2
+  a5==  q2 + q1
     "
 # estimate
-mod3 <- TAM::tamaan( tammodel , dat , control=list(maxiter=300 )  )
+mod3 <- TAM::tamaan( tammodel, dat, control=list(maxiter=300 )  )
 summary(mod3)
 
 #*********************************************************************
@@ -352,10 +352,10 @@ ANALYSIS:
   NCLASSES(3);    # 3 classes
   NSTARTS(10,30); # 10 random starts with 30 iterations
 LAVAAN MODEL:
-  F =~ act1__act5
+  F=~ act1__act5
     "
 # estimate model
-mod4 <- TAM::tamaan( tammodel , resp=dat)
+mod4 <- TAM::tamaan( tammodel, resp=dat)
 summary(mod4)
 
 #*********************************************************************
@@ -366,7 +366,7 @@ dat1 <- dat[, paste0("act",1:5) ]
 # specify tamaan model
 tammodel <- "
   LAVAAN MODEL:
-    F =~ act1__act5
+    F=~ act1__act5
     F ~~ F
     # use DO statement as shortages
     DO(1,5,1)
@@ -375,17 +375,17 @@ tammodel <- "
     DOEND
   MODEL CONSTRAINT:
     DO(1,5,1)
-      b\%_1 == delta\% + tau\%_1
-      b\%_2 == 2*delta\%
+      b\%_1==delta\% + tau\%_1
+      b\%_2==2*delta\%
     DOEND
   ITEM TYPE:
     ALL(PCM)
   "
 # estimate model
-mod5 <- TAM::tamaan( tammodel , dat1 )
+mod5 <- TAM::tamaan( tammodel, dat1 )
 summary(mod5)
 # compare with PCM2 parametrization in tam.mml
-mod5b <- TAM::tam.mml( dat1 , irtmodel="PCM2" )
+mod5b <- TAM::tam.mml( dat1, irtmodel="PCM2" )
 summary(mod5b)
 
 #*********************************************************************
@@ -398,7 +398,7 @@ psych::describe(dat1)
 # specify tamaan model
 tammodel <- "
   LAVAAN MODEL:
-    F =~ sc1__sc4
+    F=~ sc1__sc4
     F ~~ F
     # use DO statement as shortages
     DO(1,4,1)
@@ -408,18 +408,18 @@ tammodel <- "
     DOEND
   MODEL CONSTRAINT:
     DO(1,4,1)
-      b\%_1 == delta\% + step1
-      b\%_2 == 2*delta\% + step1 + step2
-      b\%_3 == 3*delta\%
+      b\%_1==delta\% + step1
+      b\%_2==2*delta\% + step1 + step2
+      b\%_3==3*delta\%
     DOEND
   ITEM TYPE:
     ALL(PCM)
   "
 # estimate model
-mod6 <- TAM::tamaan( tammodel , dat1 )
+mod6 <- TAM::tamaan( tammodel, dat1 )
 summary(mod6)
 # compare with RSM in tam.mml
-mod6b <- TAM::tam.mml( dat1 , irtmodel="RSM" )
+mod6b <- TAM::tam.mml( dat1, irtmodel="RSM" )
 summary(mod6b)
 
 #*********************************************************************
@@ -430,7 +430,7 @@ summary(mod6b)
 # define tamaan model
 tammodel <- "
 LAVAAN MODEL:
-   mj =~ mj1__mj4
+   mj=~ mj1__mj4
    mj ~~ 1*mj
 ITEM TYPE:
   mj1(PCM,2)
@@ -439,7 +439,7 @@ ITEM TYPE:
   mj4(PCM,1)
    "
 # estimate model
-mod7 <- TAM::tamaan( tammodel , dat )
+mod7 <- TAM::tamaan( tammodel, dat )
 summary(mod7)
 # -> This function can also be applied for the generalized partial credit
 #    model (GPCM).
@@ -455,12 +455,12 @@ dat <- data.geiser
 #*** Model 1: Rasch model
 tammodel <- "
 LAVAAN MODEL:
-  F =~ mrt1__mrt6
+  F=~ mrt1__mrt6
   F ~~ F
 ITEM TYPE:
   ALL(Rasch);
     "
-mod1 <- TAM::tamaan( tammodel , resp=dat  )
+mod1 <- TAM::tamaan( tammodel, resp=dat  )
 summary(mod1)
 
 #*********************************************************************
@@ -471,28 +471,28 @@ ANALYSIS:
   NCLASSES(2);
   NSTARTS(20,25);
 LAVAAN MODEL:
-  F =~ mrt1__mrt6
+  F=~ mrt1__mrt6
   F ~~ F
 ITEM TYPE:
   ALL(Rasch);
     "
-mod2 <- TAM::tamaan( tammodel , resp=dat  )
+mod2 <- TAM::tamaan( tammodel, resp=dat  )
 summary(mod2)
 
 # plot item parameters
-ipars <- mod2$itempartable_MIXTURE[ 1:6 , ]
-plot( 1:6 , ipars[,3] , type="o" , ylim=c(-3,2) , pch=16 ,
-        xlab="Item" , ylab="Item difficulty")
-lines( 1:6 , ipars[,4] , type="l", col=2 , lty=2)
-points( 1:6 , ipars[,4] ,  col=2 , pch=2)
+ipars <- mod2$itempartable_MIXTURE[ 1:6, ]
+plot( 1:6, ipars[,3], type="o", ylim=c(-3,2), pch=16,
+        xlab="Item", ylab="Item difficulty")
+lines( 1:6, ipars[,4], type="l", col=2, lty=2)
+points( 1:6, ipars[,4],  col=2, pch=2)
 
 # extract individual posterior distribution
 post2 <- IRT.posterior(mod2)
 str(post2)
 # num [1:519, 1:30] 0.000105 0.000105 0.000105 0.000105 0.000105 ...
-# - attr(*, "theta")= num [1:30, 1:30] 1 0 0 0 0 0 0 0 0 0 ...
-# - attr(*, "prob.theta")= num [1:30, 1] 1.21e-05 2.20e-04 2.29e-03 1.37e-02 4.68e-02 ...
-# - attr(*, "G")= num 1
+# - attr(*, "theta")=num [1:30, 1:30] 1 0 0 0 0 0 0 0 0 0 ...
+# - attr(*, "prob.theta")=num [1:30, 1] 1.21e-05 2.20e-04 2.29e-03 1.37e-02 4.68e-02 ...
+# - attr(*, "G")=num 1
 
 # There are 2 classes and 15 theta grid points for each class
 # The loadings of the theta grid on items are as follows
@@ -500,7 +500,7 @@ mod2$E[1,2,,"mrt1_F_load_Cl1"]
 mod2$E[1,2,,"mrt1_F_load_Cl2"]
 
 # compute individual posterior probability for class 1 (first 15 columns)
-round( rowSums( post2[ , 1:15] ) , 3 )
+round( rowSums( post2[, 1:15] ), 3 )
 # columns 16 to 30 refer to class 2
 
 }

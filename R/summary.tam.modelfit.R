@@ -1,19 +1,19 @@
 ## File Name: summary.tam.modelfit.R
-## File Version: 9.04
+## File Version: 9.06
 
 ########################################################
 # summary tam.modelfit method
 
-summary.tam.modelfit <- function( object , ... )
+summary.tam.modelfit <- function( object, ... )
 {
     #*****
     cat("Test of Global Model Fit (Maximum Chi Square)\n")
-    # cat("p =" , round( object$modelfit.test$p.holm , 5 ) )
-    print( round( object$modelfit.test , 5 ) )
+    # cat("p=", round( object$modelfit.test$p.holm, 5 ) )
+    print( round( object$modelfit.test, 5 ) )
 
     #******
     cat("\nMADaQ3 Statistic and Test of Global Model Fit (Maximum aQ3)\n")
-    obji <- round( object$stat.MADaQ3 , 4)
+    obji <- round( object$stat.MADaQ3, 4)
     print(obji)
 
     #****

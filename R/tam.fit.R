@@ -1,10 +1,10 @@
 ## File Name: tam.fit.R
-## File Version: 9.08
+## File Version: 9.12
 tam.fit <- function( tamobj, ... ){
-  if(class(tamobj) == "tam.mml"){
+  if(class(tamobj)=="tam.mml"){
     res <- tam.mml.fit( tamobj, ...)
   }
-  if(class(tamobj) == "tam.jml"){
+  if(class(tamobj)=="tam.jml"){
     res <- tam.jml.fit( tamobj, ...)
   }
   class(res) <- "tam.fit"
@@ -12,8 +12,8 @@ tam.fit <- function( tamobj, ... ){
 }
 
 tam.mml.fit <-
-  function( tamobj, FitMatrix=NULL , Nsimul=NULL , progress = TRUE ,
-     useRcpp=TRUE , seed= NA , fit.facets=TRUE ){
+  function( tamobj, FitMatrix=NULL, Nsimul=NULL, progress=TRUE,
+     useRcpp=TRUE, seed=NA, fit.facets=TRUE ){
     #####################################################
     # INPUT:
     # tamobj ... result from tam analysis
@@ -37,7 +37,7 @@ tam.mml.fit <-
         if ( nstud < 400 ){ Nsimul <- 100 }
     }
     if (progress){
-        cat( paste0("Item fit calculation based on " , Nsimul , " simulations\n") )
+        cat( paste0("Item fit calculation based on ", Nsimul, " simulations\n") )
     }
 
     resp <- tamobj$resp
@@ -61,29 +61,29 @@ tam.mml.fit <-
         FitMatrix2 <- FitMatrix.facets(tamobj)
         F1 <- dim(FitMatrix)[[3]]
         F2 <- dim(FitMatrix2)[[3]]
-        FitMatrix3 <- array( 0 , dim = c( dim(FitMatrix)[[1]] ,
-                dim(FitMatrix)[[2]] , F1+F2) )
+        FitMatrix3 <- array( 0, dim=c( dim(FitMatrix)[[1]],
+                dim(FitMatrix)[[2]], F1+F2) )
         dimnames(FitMatrix3)[[1]] <- dimnames(FitMatrix)[[1]]
         dimnames(FitMatrix3)[[2]] <- dimnames(FitMatrix)[[2]]
-        dimnames(FitMatrix3)[[3]] <- c( dimnames(FitMatrix)[[3]] ,
+        dimnames(FitMatrix3)[[3]] <- c( dimnames(FitMatrix)[[3]],
                 dimnames(FitMatrix2)[[3]] )
-        FitMatrix3[ ,,1:F1] <- FitMatrix
-        FitMatrix3[ ,,(F1+1):(F1+F2)] <- FitMatrix2
-        FitMatrix3 <- FitMatrix3[ ,, paste(tamobj$xsi.facets$parameter) ]
+        FitMatrix3[,,1:F1] <- FitMatrix
+        FitMatrix3[,,(F1+1):(F1+F2)] <- FitMatrix2
+        FitMatrix3 <- FitMatrix3[,, paste(tamobj$xsi.facets$parameter) ]
         FitMatrix <- FitMatrix3
                     }
 
-    col.index <- rep( 1:nitems , each = maxK )
-    cResp <- resp[ , col.index  ]*resp.ind[ , col.index ]
-    cResp <- 1 * t( t(cResp) == rep(0:(maxK-1), nitems) )
-    cF <- t( matrix( aperm( FitMatrix , c(2,1,3) ) , nrow = dim(FitMatrix)[3] , byrow = TRUE ) )
+    col.index <- rep( 1:nitems, each=maxK )
+    cResp <- resp[, col.index  ]*resp.ind[, col.index ]
+    cResp <- 1 * t( t(cResp)==rep(0:(maxK-1), nitems) )
+    cF <- t( matrix( aperm( FitMatrix, c(2,1,3) ), nrow=dim(FitMatrix)[3], byrow=TRUE ) )
     cF[is.na(cF)] <- 0
     cResp[ is.na(cResp) ] <- 0
     # sufficient statistics by person by parameter, for Fit design matrix.
     ParamScore <- (cResp %*% cF)
 
     np <- dim(FitMatrix)[3]  #The parameter dimension
-    indexIP <- colSums( aperm( FitMatrix, c(2,1,3) ) != 0, na.rm = TRUE )
+    indexIP <- colSums( aperm( FitMatrix, c(2,1,3) ) !=0, na.rm=TRUE )
 
     # define list of elements for item parameters
     indexIP.list <- list( 1:np )
@@ -96,30 +96,30 @@ tam.mml.fit <-
     Outfit_t <- rep(0,np)
     Infit_t <- rep(0,np)
     if (progress){
-      cat(paste( "|" , paste(rep("*" , 10 ), collapse="") , "|\n|" ,sep="") )
-      prbar <- round( seq( 1 , np , len = 10 ) )
+      cat(paste( "|", paste(rep("*", 10 ), collapse=""), "|\n|",sep="") )
+      prbar <- round( seq( 1, np, len=10 ) )
     }
 
     N <- nrow(hwt)
-    rn1M <- matrix( stats::runif(N*Nsimul) , nrow=N , ncol= Nsimul )
+    rn1M <- matrix( stats::runif(N*Nsimul), nrow=N, ncol=Nsimul )
 
 
     for (p in 1:np) {
       ip <- indexIP.list[[p]]
-      xbari <- sapply( ip, function(i) colSums(FitMatrix[i,,p] * rprobs[i,,] , na.rm = TRUE ))
-      #... TK: multiple category option -> na.rm = TRUE
-      xxfi <- sapply( ip, function(i) colSums(FitMatrix[i,,p]^2 * rprobs[i,,] , na.rm = TRUE ))
+      xbari <- sapply( ip, function(i) colSums(FitMatrix[i,,p] * rprobs[i,,], na.rm=TRUE ))
+      #... TK: multiple category option -> na.rm=TRUE
+      xxfi <- sapply( ip, function(i) colSums(FitMatrix[i,,p]^2 * rprobs[i,,], na.rm=TRUE ))
       vari <- xxfi - xbari^2
-      xxxfi <- sapply( ip, function(i) colSums((FitMatrix[i,,p])^3 * rprobs[i,,] , na.rm = TRUE ))
-      xxxxfi <- sapply( ip, function(i) colSums(FitMatrix[i,,p]^4 * rprobs[i,,] , na.rm = TRUE ))
+      xxxfi <- sapply( ip, function(i) colSums((FitMatrix[i,,p])^3 * rprobs[i,,], na.rm=TRUE ))
+      xxxxfi <- sapply( ip, function(i) colSums(FitMatrix[i,,p]^4 * rprobs[i,,], na.rm=TRUE ))
       C4i <- xxxxfi - 4*xbari*xxxfi + 6*(xbari^2)*xxfi - 3*(xbari^4)
       Vz2i <- C4i - vari^2
       Uz2i <- C4i/(vari^2) - 1
 
-      xbar <- tcrossprod( resp.ind[,ip] ,  xbari )
-      var1 <- tcrossprod( resp.ind[,ip] ,  vari )
-      Vz2 <- tcrossprod( resp.ind[,ip] ,  Vz2i )
-      Uz2 <- tcrossprod( resp.ind[,ip] ,  Uz2i )
+      xbar <- tcrossprod( resp.ind[,ip],  xbari )
+      var1 <- tcrossprod( resp.ind[,ip],  vari )
+      Vz2 <- tcrossprod( resp.ind[,ip],  Vz2i )
+      Uz2 <- tcrossprod( resp.ind[,ip],  Uz2i )
 
       Ax <- matrix(rep(ParamScore[,p],nnodes),nrow=nstud, ncol=nnodes)
 
@@ -129,9 +129,9 @@ tam.mml.fit <-
       Infit_t_SIM <- Outfit_t_SIM <- rep(NA,Nsimul )
 
       #calculate number of students per item parameter
-#      nstud.ip <- sum( rowMeans( resp.ind[ , ip , drop=FALSE],na.rm = TRUE ), na.rm=TRUE )
+#      nstud.ip <- sum( rowMeans( resp.ind[, ip, drop=FALSE],na.rm=TRUE ), na.rm=TRUE )
       if (TRUE){
-        nstud.ip <- rowSums( resp.ind[ , ip , drop=FALSE],na.rm = TRUE )
+        nstud.ip <- rowSums( resp.ind[, ip, drop=FALSE],na.rm=TRUE )
         nstud.ip <- sum( 1*(nstud.ip > 0))
                 }
 
@@ -145,7 +145,7 @@ tam.mml.fit <-
               rn1 <- rn1M[,hh]
               nthetal <- rep(1,ncol(c_hwt))
               j <- rowSums( c_hwt < rn1)
-              j[ j == 0 ] <- 1
+              j[ j==0 ] <- 1
               NW <- ncol(c_hwt)
               j <- j + 1
               j[ j > NW ] <- NW
@@ -171,20 +171,20 @@ tam.mml.fit <-
 
               #    z2[z2 > 10*sd(z2)] <- 10*sd(z2)  #Trim extreme values
 
-              Outfit[p] <- sum( z2*pweights, na.rm = TRUE  ) / nstud.ip
+              Outfit[p] <- sum( z2*pweights, na.rm=TRUE  ) / nstud.ip
               Outfit_SIM[hh] <- Outfit[p]
 
               #Infit MNSQ (weighted fit)
-              Infit[p] <- sum( wt_numer*pweights,na.rm = TRUE )/sum(wt_denom*pweights,na.rm = TRUE  )
+              Infit[p] <- sum( wt_numer*pweights,na.rm=TRUE )/sum(wt_denom*pweights,na.rm=TRUE  )
               Infit_SIM[hh] <- Infit[p]
 
               #Infit t
-              vf <- sum(wt_var*pweights,na.rm = TRUE )/(sum(wt_denom*pweights,na.rm = TRUE)^2 )
+              vf <- sum(wt_var*pweights,na.rm=TRUE )/(sum(wt_denom*pweights,na.rm=TRUE)^2 )
               Infit_t[p] <- (Infit[p]^(1/3)-1) * 3/sqrt(vf) + sqrt(vf)/3
               Infit_t_SIM[hh] <- Infit_t[p]
 
               #Outfit t
-              vf2 <- sum(varz2*pweights,na.rm = TRUE )/(nstud.ip^2)
+              vf2 <- sum(varz2*pweights,na.rm=TRUE )/(nstud.ip^2)
               Outfit_t[p] <- (Outfit[p]^(1/3)-1) * 3/sqrt(vf2) + sqrt(vf2)/3
               Outfit_t_SIM[hh] <- Outfit_t[p]
           }
@@ -209,7 +209,7 @@ tam.mml.fit <-
     # include dimnames for FitMatrix if missing
     if ( is.null( dimnames(FitMatrix) ) ){
         nd <- dim(FitMatrix)[3]
-        dimnames(FitMatrix)[[3]] <- paste0("parm" , 1:nd)
+        dimnames(FitMatrix)[[3]] <- paste0("parm", 1:nd)
             }
     #****
 
@@ -222,26 +222,26 @@ tam.mml.fit <-
     }
     if (progress){ cat("|\n") ; utils::flush.console() }
     res <- data.frame(
-        "parameter" = dimnames(FitMatrix)[[3]] ,
-                      "Outfit" = Outfit ,
-                      "Outfit_t" = Outfit_t,
-                      "Outfit_p" = 2*stats::pnorm(-abs(Outfit_t)) ,
-                      "Outfit_pholm" =NA ,
-                      "Infit" = Infit ,
-                      "Infit_t" = Infit_t,
-                      "Infit_p" = 2*stats::pnorm(-abs(Infit_t)) ,
-                      "Infit_pholm" =NA
+        "parameter"=dimnames(FitMatrix)[[3]],
+                      "Outfit"=Outfit,
+                      "Outfit_t"=Outfit_t,
+                      "Outfit_p"=2*stats::pnorm(-abs(Outfit_t)),
+                      "Outfit_pholm"=NA,
+                      "Infit"=Infit,
+                      "Infit_t"=Infit_t,
+                      "Infit_p"=2*stats::pnorm(-abs(Infit_t)),
+                      "Infit_pholm"=NA
                             )
-    res$Outfit_pholm <- stats::p.adjust( res$Outfit_p , method="holm")
-    res$Infit_pholm <- stats::p.adjust( res$Infit_p , method="holm")
+    res$Outfit_pholm <- stats::p.adjust( res$Outfit_p, method="holm")
+    res$Infit_pholm <- stats::p.adjust( res$Infit_p, method="holm")
     #--- set seed back to previous values
     # assign(".Random.seed", old_seed,
-    #            envir = parent.env(this_envir) )
+    #            envir=parent.env(this_envir) )
     # assign(".Random.seed", old_seed, envir=globalenv())
 
 
-    #data.frame( "Outfit" = round(Outfit,2) , "Outfit_t" = round(Outfit_t,1), "Infit" = round(Infit,2), Infit_t = round(Infit_t,1) )
-    res <- list( "itemfit" = res )
+    #data.frame( "Outfit"=round(Outfit,2), "Outfit_t"=round(Outfit_t,1), "Infit"=round(Infit,2), Infit_t=round(Infit_t,1) )
+    res <- list( "itemfit"=res )
     class(res) <- "tam.fit"
     return(res)
   }
@@ -254,7 +254,7 @@ FitMatrix.facets <- function(tamobj){
     xsi.constraints <- tamobj$xsi.constr$xsi.constraints
     A <- tamobj$A
     XX <- nrow(xsi.constraints)
-    A.ext <- array( 0 , dim=c( dim(A)[1],dim(A)[2] , XX ) )
+    A.ext <- array( 0, dim=c( dim(A)[1],dim(A)[2], XX ) )
     dimnames(A.ext)[[1]] <- dimnames(A)[[1]]
     dimnames(A.ext)[[2]] <- dimnames(A)[[2]]
     dimnames(A.ext)[[3]] <- rownames(xsi.constraints)

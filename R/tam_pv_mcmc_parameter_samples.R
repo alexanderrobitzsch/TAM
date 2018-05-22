@@ -1,13 +1,13 @@
 ## File Name: tam_pv_mcmc_parameter_samples.R
-## File Version: 0.15
+## File Version: 0.18
 
 tam_pv_mcmc_parameter_samples <- function(beta_samples, variance_samples)
 {
     #--- parameter_samples
     parameter_samples <- data.frame( beta_samples, variance_samples )
     saved_iter <- attr( beta_samples, "saved_iter")
-    parameter_samples <- coda::mcmc( data = parameter_samples, start = min(saved_iter),
-                            end = max(saved_iter) , thin = 1)
+    parameter_samples <- coda::mcmc( data=parameter_samples, start=min(saved_iter),
+                            end=max(saved_iter), thin=1)
 
     #--- beta estimates
     beta_groups <- attr( beta_samples, "beta_groups")
@@ -20,11 +20,11 @@ tam_pv_mcmc_parameter_samples <- function(beta_samples, variance_samples)
     if (beta_groups){
         for (gg in 1:G){
             ind_gg <- beta_index[[gg]]
-            beta[[gg]] <- matrix( beta_M[ ind_gg ] , nrow=ncol_Y, ncol=D )
+            beta[[gg]] <- matrix( beta_M[ ind_gg ], nrow=ncol_Y, ncol=D )
         }
     }
     if ( ! beta_groups ){
-        beta0 <- matrix( beta_M , nrow=ncol_Y, ncol=D )
+        beta0 <- matrix( beta_M, nrow=ncol_Y, ncol=D )
         for (gg in 1:G){
             beta[[gg]] <- beta0
         }

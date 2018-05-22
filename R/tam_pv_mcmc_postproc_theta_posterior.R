@@ -1,5 +1,5 @@
 ## File Name: tam_pv_mcmc_postproc_theta_posterior.R
-## File Version: 0.03
+## File Version: 0.06
 
 tam_pv_mcmc_postproc_theta_posterior <- function(theta_samples_mean,
         theta_samples_sd, N_samples, pweights)
@@ -12,8 +12,8 @@ tam_pv_mcmc_postproc_theta_posterior <- function(theta_samples_mean,
     EAP_rel <- rep(NA,D)
     names(EAP_rel) <- paste0("Dim",1:D)
     for (dd in 1:D){
-        EAP_rel[dd] <- EAPrel(theta=theta_samples_mean[,dd] ,
-                            error=theta_samples_sd[,dd], w = pweights )
+        EAP_rel[dd] <- EAPrel(theta=theta_samples_mean[,dd],
+                            error=theta_samples_sd[,dd], w=pweights )
     }
 
     #--- OUTPUT

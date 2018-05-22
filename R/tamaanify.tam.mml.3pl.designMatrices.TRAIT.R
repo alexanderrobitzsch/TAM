@@ -1,5 +1,5 @@
 ## File Name: tamaanify.tam.mml.3pl.designMatrices.TRAIT.R
-## File Version: 9.03
+## File Version: 9.07
 
 ######################################
 # TRAIT
@@ -24,10 +24,10 @@ tamaanify.tam.mml.3pl.designMatrices.TRAIT <- function( res ){
     B_fix <- res$B.fixed
     if ( ! is.null(B_fix) ){
         Q.fixed <- NA*Q
-        colnames(B_fix) <- c("item_index" , "cat" , "dim" , "value")
-        B_fix <- B_fix[ B_fix[,"cat"] == 2 , ]
-        h1 <-  B_fix[ , c("item_index" , "dim") ]
-        Q.fixed[ h1 ] <- B_fix[ , "value"]
+        colnames(B_fix) <- c("item_index", "cat", "dim", "value")
+        B_fix <- B_fix[ B_fix[,"cat"]==2, ]
+        h1 <-  B_fix[, c("item_index", "dim") ]
+        Q.fixed[ h1 ] <- B_fix[, "value"]
                         }
     res$Q.fixed <- Q.fixed
 
@@ -37,25 +37,25 @@ tamaanify.tam.mml.3pl.designMatrices.TRAIT <- function( res ){
     res$guess <- NULL
     res$guess.prior <- NULL
     lavpartable <- res$lavpartable
-    ind <- which( lavpartable$op == "?=" )
-    lav1 <- lavpartable[ ind , ]
+    ind <- which( lavpartable$op=="?=" )
+    lav1 <- lavpartable[ ind, ]
 
     if ( nrow(lav1) > 0){
         # include labels
-        labs <- paste0( lav1$lhs , "_guess" )
-        lav1$label <- ifelse( paste(lav1$label) != "" ,
-                paste(lav1$label) , labs )
+        labs <- paste0( lav1$lhs, "_guess" )
+        lav1$label <- ifelse( paste(lav1$label) !="",
+                paste(lav1$label), labs )
         lavpartable[ind,] <- lav1
         res$lavpartable <- lavpartable
         I <- length(items)
         est.guess <- rep(0,I)
         names(est.guess) <- items
-        lav1$item.index <- match( paste(lav1$lhs) , items )
-        lav1$ustart <- ifelse( is.na( lav1$ustart) , .2 , lav1$ustart )
+        lav1$item.index <- match( paste(lav1$lhs), items )
+        lav1$ustart <- ifelse( is.na( lav1$ustart), .2, lav1$ustart )
         guess.labels <- unique(paste(lav1$label))
 
         est.guess[ lav1$item.index] <-
-                match( paste(lav1$label) , guess.labels )
+                match( paste(lav1$label), guess.labels )
         guess <- 0 * est.guess
         guess[ paste(lav1$lhs) ] <- lav1$ustart
 

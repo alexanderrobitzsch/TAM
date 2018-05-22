@@ -1,5 +1,5 @@
 %% File Name: plotDevianceTAM.Rd
-%% File Version: 2.13
+%% File Version: 2.16
 
 \name{plotDevianceTAM}
 \alias{plotDevianceTAM}
@@ -12,7 +12,7 @@ Plots the deviance change in every iteration.
 }
 
 \usage{
-plotDevianceTAM(tam.obj, omitUntil = 1, reverse = TRUE, change=TRUE)
+plotDevianceTAM(tam.obj, omitUntil=1, reverse=TRUE, change=TRUE)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -67,7 +67,7 @@ mod1 <- TAM::tam.mml.2pl(resp=data.sim.rasch )
 # plot deviance change
 plotDevianceTAM( mod1 )
 # plot deviance
-plotDevianceTAM( mod1 , change=FALSE)
+plotDevianceTAM( mod1, change=FALSE)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

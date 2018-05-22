@@ -1,7 +1,7 @@
 ## File Name: tam_linking_2studies.R
-## File Version: 0.16
+## File Version: 0.20
 
-tam_linking_2studies <- function( B1 , AXsi1 , guess1, B2 , AXsi2, guess2, theta , wgt , type ,
+tam_linking_2studies <- function( B1, AXsi1, guess1, B2, AXsi2, guess2, theta, wgt, type,
     M1=0, SD1=1, M2=0, SD2=1, fix.slope=FALSE)
 {
     CALL <- match.call()
@@ -48,7 +48,7 @@ tam_linking_2studies <- function( B1 , AXsi1 , guess1, B2 , AXsi2, guess2, theta
         lower[1] <- 1 - eps
         upper[1] <- 1 + eps
     }
-    optim_result <- stats::optim( par=c(1,0) , fn=linking_criterion , method="L-BFGS", lower=lower, upper=upper)
+    optim_result <- stats::optim( par=c(1,0), fn=linking_criterion, method="L-BFGS", lower=lower, upper=upper)
     #--- transformations
     trafo_items <- optim_result$par
     names(trafo_items) <- c("a","b")
@@ -70,8 +70,8 @@ tam_linking_2studies <- function( B1 , AXsi1 , guess1, B2 , AXsi2, guess2, theta
         AXsi2_trans[,kk] <- B2[,kk,] * trafo_items["b"] + AXsi2[,kk]
     }
     #--- OUTPUT
-    res <- list( optim_result = optim_result, TP = TP, I=I, M_SD = M_SD, trafo_items=trafo_items,
-                    trafo_persons = trafo_persons, B1=B1, AXsi1 = AXsi1, B2=B2, AXsi2=AXsi2,
+    res <- list( optim_result=optim_result, TP=TP, I=I, M_SD=M_SD, trafo_items=trafo_items,
+                    trafo_persons=trafo_persons, B1=B1, AXsi1=AXsi1, B2=B2, AXsi2=AXsi2,
                     B2_trans=B2_trans, AXsi2_trans=AXsi2_trans, guess1=guess1, guess2=guess2,
                     type=type, theta=theta,    wgt=wgt, CALL=CALL)
     class(res) <- "tam_linking_2studies"

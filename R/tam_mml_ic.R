@@ -1,13 +1,13 @@
 ## File Name: tam_mml_ic.R
-## File Version: 9.11
+## File Version: 9.15
 
 
 ##################################
 # Information criteria
-tam_mml_ic <- function( nstud , deviance , xsi , xsi.fixed ,
-    beta , beta.fixed , ndim , variance.fixed , G , irtmodel ,
-    B_orig=NULL , B.fixed , E , est.variance , resp ,
-    est.slopegroups=NULL , variance.Npars=NULL , group, penalty_xsi=0 )
+tam_mml_ic <- function( nstud, deviance, xsi, xsi.fixed,
+    beta, beta.fixed, ndim, variance.fixed, G, irtmodel,
+    B_orig=NULL, B.fixed, E, est.variance, resp,
+    est.slopegroups=NULL, variance.Npars=NULL, group, penalty_xsi=0 )
 {
 
     #--- log likelihood and log prior
@@ -17,7 +17,7 @@ tam_mml_ic <- function( nstud , deviance , xsi , xsi.fixed ,
     logpost <- loglike + logprior
 
     #***Model parameters
-    ic <- data.frame("n" = nstud , "deviance" = deviance )
+    ic <- data.frame("n"=nstud, "deviance"=deviance )
     ic$loglike <- loglike
     ic$logprior <- logprior
     ic$logpost <- logpost
@@ -29,16 +29,16 @@ tam_mml_ic <- function( nstud , deviance , xsi , xsi.fixed ,
     }
     # B slopes
     ic$NparsB <- 0
-    if ( irtmodel == "2PL" ){
-        ic$NparsB <- sum( B_orig != 0 )
+    if ( irtmodel=="2PL" ){
+        ic$NparsB <- sum( B_orig !=0 )
     }
-    if ( irtmodel == "GPCM" ){
+    if ( irtmodel=="GPCM" ){
         ic$NparsB <- ncol(resp)
     }
-    if ( irtmodel == "GPCM.design" ){
+    if ( irtmodel=="GPCM.design" ){
         ic$NparsB <- ncol(E)
     }
-    if ( irtmodel == "2PL.groups" ){
+    if ( irtmodel=="2PL.groups" ){
         ic$NparsB <- length( unique( est.slopegroups ) )
         # This is not yet correct for multiple dimensions and multiple
         # categories
@@ -58,7 +58,7 @@ tam_mml_ic <- function( nstud , deviance , xsi , xsi.fixed ,
         ic$Nparscov <- ic$Nparscov - ndim
     }
     if ( ! is.null( variance.fixed) ){
-        ic$Nparscov <- max(0 , ic$Nparscov - nrow(variance.fixed ) )
+        ic$Nparscov <- max(0, ic$Nparscov - nrow(variance.fixed ) )
     }
 
     if ( ! is.null(variance.Npars) ){

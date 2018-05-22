@@ -1,25 +1,25 @@
 ## File Name: tam.mml.R
-## File Version: 9.766
-tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
-            formulaY = NULL , dataY = NULL ,
-            ndim = 1 , pid = NULL ,
-            xsi.fixed=NULL ,  xsi.inits = NULL ,
-            beta.fixed = NULL , beta.inits = NULL ,
-            variance.fixed = NULL , variance.inits = NULL ,
-            est.variance = TRUE , constraint="cases" ,
-            A=NULL , B=NULL , B.fixed = NULL ,
-            Q=NULL , est.slopegroups=NULL , E = NULL ,
-            pweights = NULL ,
-            userfct.variance = NULL , variance.Npars = NULL ,
-            item.elim = TRUE , verbose = TRUE ,
-            control = list()
+## File Version: 9.771
+tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
+            formulaY=NULL, dataY=NULL,
+            ndim=1, pid=NULL,
+            xsi.fixed=NULL,  xsi.inits=NULL,
+            beta.fixed=NULL, beta.inits=NULL,
+            variance.fixed=NULL, variance.inits=NULL,
+            est.variance=TRUE, constraint="cases",
+            A=NULL, B=NULL, B.fixed=NULL,
+            Q=NULL, est.slopegroups=NULL, E=NULL,
+            pweights=NULL,
+            userfct.variance=NULL, variance.Npars=NULL,
+            item.elim=TRUE, verbose=TRUE,
+            control=list()
             # control can be specified by the user
   ){
 
     s1 <- Sys.time()
     CALL <- match.call()
 
-    prior_list_xsi = NULL
+    prior_list_xsi=NULL
     mstep_intercept_method <- "R"
 
     # display
@@ -52,7 +52,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 
     if (progress){
       cat(disp)
-      cat("Processing Data     ", paste(Sys.time()) , "\n") ; flush.console()
+      cat("Processing Data     ", paste(Sys.time()), "\n") ; flush.console()
     }
 
     if ( ! is.null(group) ){
@@ -64,20 +64,20 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 #      A <- .A.PCM2( resp )
 #    }
     #**** constraints
-    if ( constraint == "items" ){
+    if ( constraint=="items" ){
         irtmodel <- "PCM2"
                         }
 
 
     if (( irtmodel=="PCM2" ) & ( is.null(A)) ){
-      A <- .A.PCM2( resp , constraint=constraint , Q=Q  )
+      A <- .A.PCM2( resp, constraint=constraint, Q=Q  )
     }
 
     if ( !is.null(con$seed)){ set.seed( con$seed )     }
 
     nitems <- ncol(resp)       # number of items
     if (is.null(colnames(resp))){
-      colnames(resp) <- paste0( "I" , 100+1:nitems )
+      colnames(resp) <- paste0( "I", 100+1:nitems )
     }
     nstud <- nrow(resp)        # number of students
     #*****
@@ -87,8 +87,8 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
       pweights <- rep(1,nstud) # weights of response pattern
     }
     if (progress){
-      cat("    * Response Data:" , nstud , "Persons and " ,
-          nitems , "Items \n" )  ;
+      cat("    * Response Data:", nstud, "Persons and ",
+          nitems, "Items \n" )  ;
       flush.console()
     }
 
@@ -104,7 +104,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 
 
     # a matrix version of person weights
-    pweightsM <- outer( pweights , rep(1,nitems) )
+    pweightsM <- outer( pweights, rep(1,nitems) )
 
     # calculate ndim if only B or Q are supplied
     if ( ! is.null(B) ){ ndim <- dim(B)[3] }
@@ -120,7 +120,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
                     skillspace="normal", QMC=QMC)
 
     # maximum no. of categories per item. Assuming dichotomous
-    maxK <- max( resp , na.rm=TRUE ) + 1
+    maxK <- max( resp, na.rm=TRUE ) + 1
 
     # create design matrices
     modeltype <- "PCM"
@@ -129,18 +129,18 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
     # ARb 2015-12-08
     maxKi <- NULL
     if ( ! (item.elim ) ){
-        maxKi <- rep( maxK - 1 , ncol(resp) )
+        maxKi <- rep( maxK - 1, ncol(resp) )
                 }
     #***
-    design <- designMatrices( modeltype= modeltype , maxKi=maxKi , resp=resp ,
-                              A=A , B=B , Q=Q , R=R, ndim=ndim  , constraint=constraint )
+    design <- designMatrices( modeltype=modeltype, maxKi=maxKi, resp=resp,
+                              A=A, B=B, Q=Q, R=R, ndim=ndim, constraint=constraint )
     A <- design$A
     B <- design$B
     cA <- design$flatA
     cA[is.na(cA)] <- 0
     if (progress){
       cat("    * Created Design Matrices   (",
-          paste(Sys.time()) , ")\n") ; flush.console()
+          paste(Sys.time()), ")\n") ; flush.console()
     }
 
     design <- NULL
@@ -214,7 +214,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
     equal.categ <- res$equal.categ
 
     #--- prior distribution xsi
-    prior_list_xsi <- tam_mml_proc_prior_list_xsi( prior_list_xsi=prior_list_xsi , xsi=xsi )
+    prior_list_xsi <- tam_mml_proc_prior_list_xsi( prior_list_xsi=prior_list_xsi, xsi=xsi )
 
     xsi.min.deviance <- xsi
     beta.min.deviance <- beta
@@ -257,7 +257,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
     maxcat <- tam_rcpp_mml_maxcat(A=as.vector(A), dimA=dim(A) )
 
     # define progress bar for M step
-    mpr <- round( seq( 1 , np , len = 10 ) )
+    mpr <- round( seq( 1, np, len=10 ) )
     hwt.min <- 0
     rprobs.min <- 0
     AXsi.min <- 0
@@ -353,7 +353,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
         a02 <- deviance_change <- res$deviance_change
         penalty_xsi <- res$penalty_xsi
 
-        if (con$dev_crit == "relative" ){ a02 <- a01 }
+        if (con$dev_crit=="relative" ){ a02 <- a01 }
 
         if( deviance < deviance.min ){
             xsi.min.deviance <- xsi
@@ -395,7 +395,7 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 
     #******
     # generate input for fixed parameters
-    xsi.fixed.estimated <- generate.xsi.fixed.estimated( xsi=xsi , A=A )
+    xsi.fixed.estimated <- generate.xsi.fixed.estimated( xsi=xsi, A=A )
     B.fixed.estimated <- generate.B.fixed.estimated( B=B )
 
     #**** standard errors AXsi
@@ -430,48 +430,48 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 
     s2 <- Sys.time()
     if ( is.null( dimnames(A)[[3]] ) ){
-      dimnames(A)[[3]] <- paste0("Xsi" , 1:dim(A)[3] )
+      dimnames(A)[[3]] <- paste0("Xsi", 1:dim(A)[3] )
     }
-    item <- data.frame( "xsi.index" = 1:np ,
-                        "xsi.label" = dimnames(A)[[3]] ,
-                        "est" = xsi )
+    item <- data.frame( "xsi.index"=1:np,
+                        "xsi.label"=dimnames(A)[[3]],
+                        "est"=xsi )
     if (progress){
       cat(disp)
       cat("Item Parameters\n")
       item2 <- item
-      item2[,"est"] <- round( item2[,"est"] , 4 )
+      item2[,"est"] <- round( item2[,"est"], 4 )
       print(item2)
       cat("...................................\n")
       cat("Regression Coefficients\n")
-      print( beta , 4  )
-      cat("\nVariance:\n" ) # , round( varianceM , 4 ))
+      print( beta, 4  )
+      cat("\nVariance:\n" ) #, round( varianceM, 4 ))
       if (G==1 ){
-        varianceM <- matrix( variance , nrow=ndim , ncol=ndim )
-        print( varianceM , 4 )
+        varianceM <- matrix( variance, nrow=ndim, ncol=ndim )
+        print( varianceM, 4 )
       } else {
-        print( variance[ var.indices] , 4 )    }
+        print( variance[ var.indices], 4 )    }
       if ( ndim > 1){
-        cat("\nCorrelation Matrix:\n" ) # , round( varianceM , 4 ))
-        print( stats::cov2cor(varianceM) , 4 )
+        cat("\nCorrelation Matrix:\n" ) #, round( varianceM, 4 ))
+        print( stats::cov2cor(varianceM), 4 )
       }
       cat("\n\nEAP Reliability:\n")
       print( round (EAP.rel,3) )
       cat("\n-----------------------------")
       devmin <- which.min( deviance.history[,2] )
       if ( devmin < iter ){
-        cat(paste("\n\nMinimal deviance at iteration " , devmin ,
-                  " with deviance " , round(deviance.history[ devmin , 2 ],3) , sep="") , "\n")
+        cat(paste("\n\nMinimal deviance at iteration ", devmin,
+                  " with deviance ", round(deviance.history[ devmin, 2 ],3), sep=""), "\n")
         cat("The corresponding estimates are\n")
         cat("  xsi.min.deviance\n  beta.min.deviance \n  variance.min.deviance\n\n")
       }
-      cat( "\nStart: " , paste(s1))
-      cat( "\nEnd: " , paste(s2),"\n")
+      cat( "\nStart: ", paste(s1))
+      cat( "\nEnd: ", paste(s2),"\n")
       print(s2-s1)
       cat( "\n" )
     }
 
     # collect xsi parameters
-    obji <- data.frame( "xsi"=xsi , "se.xsi"=se.xsi )
+    obji <- data.frame( "xsi"=xsi, "se.xsi"=se.xsi )
     rownames(obji) <- dimnames(A)[[3]]
     xsi <- obji
 
@@ -486,40 +486,40 @@ tam.mml <- function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
 
     #-------------------------------
     # Output list
-    deviance.history <- deviance.history[ 1:iter , ]
-    res <- list( "xsi" = xsi ,
-                 "beta" = beta , "variance" = variance ,
-                 "item" = item1 ,
-                 "person" = person , pid = pid , "EAP.rel" = EAP.rel ,
-                 "post" = hwt ,  "rprobs" = rprobs , "itemweight" = itemwt ,
-                 "theta" = theta ,
-                 "n.ik" = n.ik , "pi.k" = pi.k ,
-                 "Y" = Y , "resp" = resp0 ,
-                 "resp.ind" = resp.ind , "group" = group ,
-                 "G" = if ( is.null(group)){1} else { length(unique( group ) )} ,
-                 "groups" = if ( is.null(group)){1} else { groups } ,
-                 "formulaY" = formulaY , "dataY" = dataY ,
-                 "pweights" = pweights0 ,
-                 "time" = c(s1,s2,s2-s1) , "A" = A , "B" = B  ,
-                 "se.B" = se.B ,
-                 "nitems" = nitems , "maxK" = maxK , "AXsi" = AXsi ,
-                 "AXsi_" = - AXsi ,
-                 "se.AXsi" = se.AXsi ,
-                 "nstud" = nstud , "resp.ind.list" = resp.ind.list ,
-                 "hwt" = hwt ,  "like" = res.like ,
-                 "ndim" = ndim ,
-                 "xsi.fixed" = xsi.fixed ,
-                 "xsi.fixed.estimated" = xsi.fixed.estimated ,
-                 "B.fixed.estimated" = B.fixed.estimated ,
-                 "beta.fixed" = beta.fixed , "Q" = Q  ,
-                 "variance.fixed" = variance.fixed ,
-                 "nnodes" = nnodes , "deviance" = ic$deviance ,
-                 "ic" = ic , thetasamp.density=thetasamp.density,
-                 "deviance.history" = deviance.history ,
-                 "control" = con1a , "irtmodel" = irtmodel ,
-                 "iter" = iter ,
-                 "printxsi" = printxsi ,
-                 "YSD"=YSD , CALL =CALL, latreg_stand=latreg_stand,
+    deviance.history <- deviance.history[ 1:iter, ]
+    res <- list( "xsi"=xsi,
+                 "beta"=beta, "variance"=variance,
+                 "item"=item1,
+                 "person"=person, pid=pid, "EAP.rel"=EAP.rel,
+                 "post"=hwt,  "rprobs"=rprobs, "itemweight"=itemwt,
+                 "theta"=theta,
+                 "n.ik"=n.ik, "pi.k"=pi.k,
+                 "Y"=Y, "resp"=resp0,
+                 "resp.ind"=resp.ind, "group"=group,
+                 "G"=if ( is.null(group)){1} else { length(unique( group ) )},
+                 "groups"=if ( is.null(group)){1} else { groups },
+                 "formulaY"=formulaY, "dataY"=dataY,
+                 "pweights"=pweights0,
+                 "time"=c(s1,s2,s2-s1), "A"=A, "B"=B,
+                 "se.B"=se.B,
+                 "nitems"=nitems, "maxK"=maxK, "AXsi"=AXsi,
+                 "AXsi_"=- AXsi,
+                 "se.AXsi"=se.AXsi,
+                 "nstud"=nstud, "resp.ind.list"=resp.ind.list,
+                 "hwt"=hwt,  "like"=res.like,
+                 "ndim"=ndim,
+                 "xsi.fixed"=xsi.fixed,
+                 "xsi.fixed.estimated"=xsi.fixed.estimated,
+                 "B.fixed.estimated"=B.fixed.estimated,
+                 "beta.fixed"=beta.fixed, "Q"=Q,
+                 "variance.fixed"=variance.fixed,
+                 "nnodes"=nnodes, "deviance"=ic$deviance,
+                 "ic"=ic, thetasamp.density=thetasamp.density,
+                 "deviance.history"=deviance.history,
+                 "control"=con1a, "irtmodel"=irtmodel,
+                 "iter"=iter,
+                 "printxsi"=printxsi,
+                 "YSD"=YSD, CALL=CALL, latreg_stand=latreg_stand,
                  prior_list_xsi=prior_list_xsi, penalty_xsi=penalty_xsi         )
     class(res) <- "tam.mml"
     return(res)

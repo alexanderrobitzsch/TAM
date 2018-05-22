@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mstep_intercept_optim.R
-## File Version: 0.06
+## File Version: 0.10
 
 tam_mml_mstep_intercept_optim <- function( xsi, n.ik, prior_list_xsi, nitems, A,
         AXsi, B, theta, nnodes, maxK, Msteps, xsi.fixed, eps=1E-40)
@@ -12,11 +12,11 @@ tam_mml_mstep_intercept_optim <- function( xsi, n.ik, prior_list_xsi, nitems, A,
     # define posterior function
     posterior_xsi <- function(x){
         #-- calculate expected log likelihood
-        rprobs <- tam_mml_calc_prob( iIndex=1:nitems , A=A , AXsi=AXsi , B=B ,
-                            xsi=x , theta=theta , nnodes=nnodes, maxK=maxK,
+        rprobs <- tam_mml_calc_prob( iIndex=1:nitems, A=A, AXsi=AXsi, B=B,
+                            xsi=x, theta=theta, nnodes=nnodes, maxK=maxK,
                             recalc=TRUE )$rprobs
         G <- dim(n.ik)[4]
-        counts <- array( 0 , dim=dim(n.ik)[1:3] )
+        counts <- array( 0, dim=dim(n.ik)[1:3] )
         for (gg in 1:G){
             counts <- counts + n.ik[,,,gg]
         }
@@ -28,7 +28,7 @@ tam_mml_mstep_intercept_optim <- function( xsi, n.ik, prior_list_xsi, nitems, A,
             ll <- ll + sum( counts[,,kk] * log( rprobs[,,kk] ) )
         }
         #-- calculate prior distribution
-        logprior <- tam_evaluate_prior( prior_list = prior_list_xsi , parameter = xsi, derivatives = FALSE )$d0
+        logprior <- tam_evaluate_prior( prior_list=prior_list_xsi, parameter=xsi, derivatives=FALSE )$d0
         #-- posterior distribution
         logpost <- ll + sum( logprior )
         return( - logpost)
@@ -45,10 +45,10 @@ tam_mml_mstep_intercept_optim <- function( xsi, n.ik, prior_list_xsi, nitems, A,
     }
     method <- "L-BFGS-B"
 
-    args <- list( par = xsi, fn=posterior_xsi, method = method,
+    args <- list( par=xsi, fn=posterior_xsi, method=method,
                     lower=lower, upper=upper, control=list(maxit=Msteps),
                     hessian=TRUE )
-    res <- do.call( stats::optim , args)
+    res <- do.call( stats::optim, args)
     xsi <- res$par
 
     increment <- xsi - oldxsi
@@ -57,9 +57,9 @@ tam_mml_mstep_intercept_optim <- function( xsi, n.ik, prior_list_xsi, nitems, A,
     xsi <- oldxsi + increment
 
     se.xsi <- sqrt( diag( solve( res$hessian ) ) )
-    res <- tam_evaluate_prior( prior_list = prior_list_xsi , parameter = xsi )
+    res <- tam_evaluate_prior( prior_list=prior_list_xsi, parameter=xsi )
     logprior_xsi <- res$d0
     #--- output
-    res <- list( xsi = xsi , se.xsi = se.xsi, logprior_xsi=logprior_xsi )
+    res <- list( xsi=xsi, se.xsi=se.xsi, logprior_xsi=logprior_xsi )
     return(res)
 }

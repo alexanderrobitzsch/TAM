@@ -1,11 +1,11 @@
 ## File Name: tam_vec2symmmatrix.R
-## File Version: 0.09
+## File Version: 0.10
 
 tam_vec2symmmatrix <- function(variance)
 {
     H <- length(variance)
     D0 <- tam_anticomb2(H=H)
-    variance0 <- matrix( NA , nrow=D0, ncol=D0)
+    variance0 <- matrix( NA, nrow=D0, ncol=D0)
     ii <- 1
     for (dd in 1:D0){
         for (ee in dd:D0){

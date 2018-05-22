@@ -1,5 +1,5 @@
 ## File Name: tam_cor_wt.R
-## File Version: 0.03
+## File Version: 0.06
 
 
 tam_cor_wt <- function(x, wt=NULL, method="ML")
@@ -9,10 +9,10 @@ tam_cor_wt <- function(x, wt=NULL, method="ML")
     }
     D <- ncol(x)
     if ( is.null(wt) ){
-        wt <- rep( 1 / nrow(x) , nrow(x) )
+        wt <- rep( 1 / nrow(x), nrow(x) )
     }
     x <- as.data.frame(x)
-    variance_gg <- stats::cov.wt( x = x, wt = wt, cor=TRUE, method=method)$cor
-    variance_gg <- matrix( variance_gg , nrow=D , ncol=D )
+    variance_gg <- stats::cov.wt( x=x, wt=wt, cor=TRUE, method=method)$cor
+    variance_gg <- matrix( variance_gg, nrow=D, ncol=D )
     return(variance_gg)
 }

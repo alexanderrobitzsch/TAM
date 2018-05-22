@@ -1,9 +1,9 @@
 ## File Name: tam.mml.wle.R
-## File Version: 0.21
+## File Version: 0.25
 
 
-tam.mml.wle <- function( tamobj, score.resp=NULL , WLE=TRUE , adj=.3 , Msteps=20 ,
-            convM = .0001 , progress=TRUE ,
+tam.mml.wle <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
+            convM=.0001, progress=TRUE,
             output.prob=FALSE )
 {
     CALL <- match.call()
@@ -37,7 +37,7 @@ tam.mml.wle <- function( tamobj, score.resp=NULL , WLE=TRUE , adj=.3 , Msteps=20
 
     #----------------------------------
     #----- begin iterations
-    while (!converge & ( Miter <= Msteps ) ) {
+    while (!converge & ( Miter <=Msteps ) ) {
         resWLE <- tam_mml_calc_prob( iIndex=1:nitems, A=NULL, AXsi=AXsi, B=B, xsi=NULL,
                         theta=theta, nnodes=nstud, maxK=maxK, recalc=FALSE )
         rprobsWLE <- resWLE$rprobs
@@ -45,11 +45,11 @@ tam.mml.wle <- function( tamobj, score.resp=NULL , WLE=TRUE , adj=.3 , Msteps=20
         BB_bari <- array(0, dim=c(nstud, nitems, ndim, ndim))
         BBB_bari <- array(0,dim=c(nstud, nitems, ndim))
         for (d1 in 1:ndim) {
-            B_bari[,,d1] <- sapply(1:nitems, function(i) colSums(B[i,,d1] * rprobsWLE[i,,] , na.rm = TRUE)) * resp.ind
+            B_bari[,,d1] <- sapply(1:nitems, function(i) colSums(B[i,,d1] * rprobsWLE[i,,], na.rm=TRUE)) * resp.ind
             for (d2 in 1:ndim) {
-                BB_bari[,,d1,d2] <- sapply(1:nitems, function(i) colSums(BB[i,,d1,d2] * rprobsWLE[i,,] , na.rm = TRUE)) *resp.ind
+                BB_bari[,,d1,d2] <- sapply(1:nitems, function(i) colSums(BB[i,,d1,d2] * rprobsWLE[i,,], na.rm=TRUE)) *resp.ind
             }
-            BBB_bari[,,d1] <- sapply(1:nitems, function(i) colSums(BBB[i,,d1] * rprobsWLE[i,,] , na.rm = TRUE)) *resp.ind
+            BBB_bari[,,d1] <- sapply(1:nitems, function(i) colSums(BBB[i,,d1] * rprobsWLE[i,,], na.rm=TRUE)) *resp.ind
         }
 
         B_Sq <- array(0,dim=c(nstud, nitems, ndim, ndim))
@@ -66,7 +66,7 @@ tam.mml.wle <- function( tamobj, score.resp=NULL , WLE=TRUE , adj=.3 , Msteps=20
         }
         expected <- colSums(aperm(B_bari,c(2,1,3)))
         err <- colSums(aperm(BB_bari,c(2,1,3,4))) - colSums(aperm(B_Sq, c(2,1,3,4)))  #sum over the items
-        if (ndim == 1) {
+        if (ndim==1) {
             err_inv <- 1 / err
         } else {
             err_inv <- aperm(apply(err,1,function(ee){

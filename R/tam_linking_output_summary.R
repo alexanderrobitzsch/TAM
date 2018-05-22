@@ -1,5 +1,5 @@
 ## File Name: tam_linking_output_summary.R
-## File Version: 0.09
+## File Version: 0.10
 
 tam_linking_output_summary <- function( parameters_list, linking_list)
 {
@@ -14,14 +14,14 @@ tam_linking_output_summary <- function( parameters_list, linking_list)
         if (G==1){
             row_names <- paste0("study",mm)
         } else {
-            row_names <- paste0("study",mm, "-group" , 1:G)
+            row_names <- paste0("study",mm, "-group", 1:G)
         }
         rownames(dfr) <- row_names
         M_SD <- rbind(M_SD, dfr)
     }
     M_SD$d <- M_SD$M / mean(M_SD$SD)
     #--- transformation item parameters
-    trafo_items <- matrix( 0 , nrow=NM , ncol=2)
+    trafo_items <- matrix( 0, nrow=NM, ncol=2)
     rownames(trafo_items) <- paste0( "study",1:NM)
     colnames(trafo_items) <- c("a","b")
     trafo_items <- as.data.frame(trafo_items)
@@ -36,8 +36,8 @@ tam_linking_output_summary <- function( parameters_list, linking_list)
         trafo_persons[mm+1,] <- linking_list[[mm]]$linking_results$trafo_persons
     }
     #--- number of linking items
-    N_common <- matrix(0 , nrow=NM-1, ncol=1)
-    rownames(N_common) <- paste0("Linking Study " , 1:(NM-1) , " -> Study " , 2:NM )
+    N_common <- matrix(0, nrow=NM-1, ncol=1)
+    rownames(N_common) <- paste0("Linking Study ", 1:(NM-1), " -> Study ", 2:NM )
     colnames(N_common) <- "N_Items"
     for (mm in 1:(NM-1) ){
         N_common[mm,1] <- length( linking_list[[mm]]$common_items )

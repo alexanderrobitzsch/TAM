@@ -1,5 +1,5 @@
 %% File Name: data.timssAusTwn.Rd
-%% File Version: 2.11
+%% File Version: 2.14
 
 \name{data.timssAusTwn}
 \alias{data.timssAusTwn}
@@ -62,7 +62,7 @@ raw_resp <- data.timssAusTwn
 #Recode data
 resp <- raw_resp[,1:11]
       #Column 12 is country code. Column 13 is gender code. Column 14 is Book ID.
-all.na <- rowMeans( is.na(resp) ) == 1
+all.na <- rowMeans( is.na(resp) )==1
         #Find records where all responses are missing.
 resp <- resp[!all.na,]              #Delete records with all missing responses
 resp[resp==20 | resp==21] <- 2      #TIMSS double-digit coding: "20" or "21" is a score of 2
@@ -93,7 +93,7 @@ windows (width=8, height=7)
 par(ps=9)
 dotchart(t(tthresh), pch=19)
 # plot expected response curves
-plot( mod1 , ask=TRUE)
+plot( mod1, ask=TRUE)
 
 #Re-run IRT analysis in JML
 mod1.2 <- TAM::tam.jml(Scored)

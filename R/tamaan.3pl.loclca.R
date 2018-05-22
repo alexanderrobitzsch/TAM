@@ -1,9 +1,9 @@
 ## File Name: tamaan.3pl.loclca.R
-## File Version: 9.13
+## File Version: 9.18
 
 #######################################################################
 # tamaan 3PL LOCLCA module
-tamaan.3pl.loclca <- function( res0 , anal.list , con , ... )
+tamaan.3pl.loclca <- function( res0, anal.list, con, ... )
 {
     if ( ! is.null( anal.list$NSTARTS ) ){
         NSTARTS <- anal.list$NSTARTS
@@ -39,35 +39,35 @@ tamaan.3pl.loclca <- function( res0 , anal.list , con , ... )
             N2 <- nrow(res0$loclca_ITEMS)
             # trait locations
             K <- TP
-            locs <- stats::qnorm( seq( 1/(2*K) , 1 - 1/(2*K) , 1/K ) )
-            locs <- rep( locs , each= D )
+            locs <- stats::qnorm( seq( 1/(2*K), 1 - 1/(2*K), 1/K ) )
+            locs <- rep( locs, each=D )
             names(locs) <- paste(res0$loclca_LOC$parm)
             if (nn==1){ locs0 <- locs }
             gammaslope[  names(locs) ] <- locs
             # inits for item parameters
             dfr <- res0$loclca_ITEMS
             G <- 1
-            startprobs <- rep( 1/TP , each=TP ) + (nn-1)/5 * stats::runif( TP )
+            startprobs <- rep( 1/TP, each=TP ) + (nn-1)/5 * stats::runif( TP )
             startprobs <- startprobs / sum( startprobs )
-            delta.inits <- matrix( startprobs , ncol=G )
+            delta.inits <- matrix( startprobs, ncol=G )
             # delta.inits
             if (nn>1){
                 if (nn==2){ gammaslope0 <- res$gammaslope }
-                gammaslope[ 1:N1 ] <- gammaslope0[1:N1] + stats::rnorm(N1, sd = nn/8 )
-                if ( nn %% 2 == 0 ){  gammaslope0[ 1:N1 ] <- stats::rnorm(N1 , sd =2 ) }
-                locs <- locs0 + stats::rnorm( TP*D , sd = sqrt(nn/5) )
+                gammaslope[ 1:N1 ] <- gammaslope0[1:N1] + stats::rnorm(N1, sd=nn/8 )
+                if ( nn %% 2==0 ){  gammaslope0[ 1:N1 ] <- stats::rnorm(N1, sd=2 ) }
+                locs <- locs0 + stats::rnorm( TP*D, sd=sqrt(nn/5) )
                 gammaslope[ names(locs) ] <- locs
             }
-            res <- tam.mml.3pl(resp= res0$resp , E=res0$E , skillspace="discrete" ,
-                        theta.k= res0$theta.k , gammaslope=gammaslope ,
-                        A= res0$A , xsi.fixed = res0$xsi.fixed , xsi.prior=res0$xsi.prior,
-                        control=con0 , delta.inits=delta.inits ,
-                        gammaslope.fixed = res0$gammaslope.fixed ,
-                        gammaslope.prior = gammaslope.prior ,
+            res <- tam.mml.3pl(resp=res0$resp, E=res0$E, skillspace="discrete",
+                        theta.k=res0$theta.k, gammaslope=gammaslope,
+                        A=res0$A, xsi.fixed=res0$xsi.fixed, xsi.prior=res0$xsi.prior,
+                        control=con0, delta.inits=delta.inits,
+                        gammaslope.fixed=res0$gammaslope.fixed,
+                        gammaslope.prior=gammaslope.prior,
                         ... )
             if (con$progress){
-                cat( paste0( "*** Random Start " , nn  ,
-                        " | Deviance = " , round( res$deviance , 2 ) , "\n") )
+                cat( paste0( "*** Random Start ", nn,
+                        " | Deviance=", round( res$deviance, 2 ), "\n") )
                 utils::flush.console()
             }
             if ( res$deviance < devmin ){
@@ -93,12 +93,12 @@ tamaan.3pl.loclca <- function( res0 , anal.list , con , ... )
         gammaslope.constr.Npars <- max( res0$loclca_LOC$Dim )
     }
 
-    res <- tam.mml.3pl(resp= res0$resp , E=res0$E , skillspace="discrete" ,
-                        theta.k= res0$theta.k , gammaslope=gammaslope ,
-                        gammaslope.fixed = res0$gammaslope.fixed ,
-                        A= res0$A , xsi.fixed = res0$xsi.fixed , xsi.prior=res0$xsi.prior,
-                        delta.inits = delta.inits ,  control=con ,
-                        gammaslope.prior = gammaslope.prior,
+    res <- tam.mml.3pl(resp=res0$resp, E=res0$E, skillspace="discrete",
+                        theta.k=res0$theta.k, gammaslope=gammaslope,
+                        gammaslope.fixed=res0$gammaslope.fixed,
+                        A=res0$A, xsi.fixed=res0$xsi.fixed, xsi.prior=res0$xsi.prior,
+                        delta.inits=delta.inits,  control=con,
+                        gammaslope.prior=gammaslope.prior,
                         gammaslope.constr.Npars=gammaslope.constr.Npars,
                         ... )
     #--- LCA probabilities
@@ -109,8 +109,8 @@ tamaan.3pl.loclca <- function( res0 , anal.list , con , ... )
     # extract cluster locations
     locs <- res$gammaslope
     locs <- locs[ names(locs0) ]
-    locs <- matrix( locs , nrow=TP , ncol=D , byrow=TRUE )
-    rownames(locs) <- paste0("Cl" , 1:TP )
+    locs <- matrix( locs, nrow=TP, ncol=D, byrow=TRUE )
+    rownames(locs) <- paste0("Cl", 1:TP )
     colnames(locs) <- colnames(res0$Q)
     locs <- as.data.frame(locs)
     locs$prob <- res$pi.k

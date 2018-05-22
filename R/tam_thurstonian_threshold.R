@@ -1,5 +1,5 @@
 ## File Name: tam_thurstonian_threshold.R
-## File Version: 9.04
+## File Version: 9.08
 ####################################################################
 # Thurstonian thresholds (gammas)
 #...................................................................
@@ -16,7 +16,7 @@ tam.threshold <- function (tamobj, prob.lvl=0.5)
 #    stop("Thurstonian thresholds are only calculated for unidimensional models.")
 #                    }
 
-  maxKi <- apply( resp , 2 , max , na.rm=TRUE )
+  maxKi <- apply( resp, 2, max, na.rm=TRUE )
 
   threshold <- matrix(-99, nitems, maxK-1)
   for (i in 1:nitems) {
@@ -31,13 +31,13 @@ tam.threshold <- function (tamobj, prob.lvl=0.5)
     if ( dim(B)[[3]] > 1){
         D <- dim(B)[[3]]
         ind <- which( B[i,2,] > 0 )[1]
-        sel2 <- c( ind , setdiff( 1:D , ind ) )
+        sel2 <- c( ind, setdiff( 1:D, ind ) )
         B0 <- B[,,sel2]
         }
 
     while (max(abs(oldthresh-thresh)) > 0.0001) {
-      res.p <- tam_mml_calc_prob( iIndex=i:i , A=A , AXsi=AXsi , B=B0,
-                             xsi=xsi , theta=matrix(thresh,nrow=mc,ncol=1) ,
+      res.p <- tam_mml_calc_prob( iIndex=i:i, A=A, AXsi=AXsi, B=B0,
+                             xsi=xsi, theta=matrix(thresh,nrow=mc,ncol=1),
                              nnodes=mc, maxK=maxK)
       rprobs <- res.p[["rprobs"]]
       for (k in 1:mc) {
@@ -55,8 +55,8 @@ tam.threshold <- function (tamobj, prob.lvl=0.5)
 
     threshold[i, 1:mc] <- thresh
   } #end of all items
-  threshold[threshold == -99] <- NA
+  threshold[threshold==-99] <- NA
   rownames(threshold) <- colnames(tamobj$resp)
-  colnames(threshold) <- paste0("Cat" , 1:ncol(threshold))
+  colnames(threshold) <- paste0("Cat", 1:ncol(threshold))
   return(threshold)
 }

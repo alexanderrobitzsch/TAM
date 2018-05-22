@@ -1,20 +1,20 @@
 ## File Name: tam_mml_3pl_ic.R
-## File Version: 9.19
+## File Version: 9.23
 
 
 ##################################
 # Information criteria
-tam_mml_3pl_ic <- function( nstud , deviance , xsi , xsi.fixed ,
-    beta , beta.fixed , ndim , variance.fixed , G , irtmodel ,
-    B_orig=NULL , B.fixed , E , est.variance , resp ,
-    est.slopegroups=NULL , skillspace , delta , delta.fixed , est.guess , fulldesign ,
-    est.some.slopes , gammaslope , gammaslope.fixed, gammaslope.constr.V ,
-    gammaslope.constr.Npars , gammaslope.center.index ,
-    gammaslope.prior , numdiff.parm, Ngamma.nonactive = 0 )
+tam_mml_3pl_ic <- function( nstud, deviance, xsi, xsi.fixed,
+    beta, beta.fixed, ndim, variance.fixed, G, irtmodel,
+    B_orig=NULL, B.fixed, E, est.variance, resp,
+    est.slopegroups=NULL, skillspace, delta, delta.fixed, est.guess, fulldesign,
+    est.some.slopes, gammaslope, gammaslope.fixed, gammaslope.constr.V,
+    gammaslope.constr.Npars, gammaslope.center.index,
+    gammaslope.prior, numdiff.parm, Ngamma.nonactive=0 )
 {
     #***Model parameters
     h <- numdiff.parm
-    ic <- data.frame("n" = nstud , "deviance" = deviance )
+    ic <- data.frame("n"=nstud, "deviance"=deviance )
     dev <- deviance
     # xsi parameters
     ic$Nparsxsi <- length(xsi)
@@ -47,7 +47,7 @@ tam_mml_3pl_ic <- function( nstud , deviance , xsi , xsi.fixed ,
         }
     }
     #--- guessing parameters
-    ic$Nguess <- length( setdiff( unique(est.guess) , 0 ) )
+    ic$Nguess <- length( setdiff( unique(est.guess), 0 ) )
 
     # inits
     ic$Nparsbeta <- 0
@@ -61,11 +61,11 @@ tam_mml_3pl_ic <- function( nstud , deviance , xsi , xsi.fixed ,
         # variance/covariance matrix
         ic$Nparscov <- G * ( ndim + ndim*(ndim-1)/2 )
         if ( ! is.null( variance.fixed) ){
-            ic$Nparscov <- max(0 , ic$Nparscov - nrow(variance.fixed ) )
+            ic$Nparscov <- max(0, ic$Nparscov - nrow(variance.fixed ) )
         }
     }
 
-    if ( skillspace != "normal" ){
+    if ( skillspace !="normal" ){
         ic$Ndelta <- prod( dim(delta) )
         ic$Ndelta <- ic$Ndelta - ncol(delta)
         if ( ! is.null( delta.fixed ) ){

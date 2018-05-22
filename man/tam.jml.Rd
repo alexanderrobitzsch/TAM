@@ -1,5 +1,5 @@
 %% File Name: tam.jml.Rd
-%% File Version: 2.33
+%% File Version: 2.37
 
 \name{tam.jml}
 
@@ -18,9 +18,9 @@ item response models with joint maximum likelihood (JML,
 }
 
 \usage{
-tam.jml(resp, group = NULL, adj = .3, disattenuate = FALSE, bias = TRUE,
-    xsi.fixed = NULL, xsi.inits = NULL, theta.fixed=NULL, A = NULL, B = NULL, Q = NULL,
-    ndim = 1, pweights = NULL, verbose = TRUE, control = list(), version = 2)
+tam.jml(resp, group=NULL, adj=.3, disattenuate=FALSE, bias=TRUE,
+    xsi.fixed=NULL, xsi.inits=NULL, theta.fixed=NULL, A=NULL, B=NULL, Q=NULL,
+    ndim=1, pweights=NULL, verbose=TRUE, control=list(), version=2)
 
 \method{summary}{tam.jml}(object, file=NULL, \dots)
 
@@ -194,7 +194,7 @@ maximum likelihood estimation see \code{\link{tam.mml}}.
 # EXAMPLE 1: Dichotomous data
 #############################################################################
 data(data.sim.rasch)
-resp <- data.sim.rasch[1:700 , seq( 1 , 40 , len=10)  ]  # subsample
+resp <- data.sim.rasch[1:700, seq( 1, 40, len=10)  ]  # subsample
 # estimate the Rasch model with JML (function 'tam.jml')
 mod1a <- TAM::tam.jml(resp=resp)
 summary(mod1a)
@@ -204,24 +204,24 @@ itemfit <- TAM::tam.fit(mod1a)$fit.item
 mod1b <- TAM::tam.mml(resp=resp )
 
 # plot estimated parameters
-plot( mod1a$xsi , mod1b$xsi$xsi , pch=16 ,
-    xlab= expression( paste( xi[i] , " (JML)" )) ,
-    ylab= expression( paste( xi[i] , " (MML)" )) ,
+plot( mod1a$xsi, mod1b$xsi$xsi, pch=16,
+    xlab=expression( paste( xi[i], " (JML)" )),
+    ylab=expression( paste( xi[i], " (MML)" )),
     main="Item Parameter Estimate Comparison")
-lines( c(-5,5) , c(-5,5) , col="gray" )
+lines( c(-5,5), c(-5,5), col="gray" )
 
 # Now, the adjustment pf .05 instead of the default .3 is used.
-mod1d <- TAM::tam.jml(resp=resp , adj=.05)
+mod1d <- TAM::tam.jml(resp=resp, adj=.05)
 # compare item parameters
-round( rbind( mod1a$xsi , mod1d$xsi ) , 3 )
+round( rbind( mod1a$xsi, mod1d$xsi ), 3 )
   ##          [,1]   [,2]   [,3]   [,4]   [,5]  [,6]  [,7]  [,8]  [,9] [,10]
   ##   [1,] -2.076 -1.743 -1.217 -0.733 -0.338 0.147 0.593 1.158 1.570 2.091
   ##   [2,] -2.105 -1.766 -1.233 -0.746 -0.349 0.139 0.587 1.156 1.574 2.108
 
 # person parameters for persons with a score 0, 5 and 10
-pers1 <- data.frame( "score_adj0.3"= mod1a$PersonScore , "theta_adj0.3"= mod1a$theta ,
-           "score_adj0.05"= mod1d$PersonScore , "theta_adj0.05"= mod1d$theta  )
-round( pers1[ c(698, 683, 608) , ] ,3  )
+pers1 <- data.frame( "score_adj0.3"=mod1a$PersonScore, "theta_adj0.3"=mod1a$theta,
+           "score_adj0.05"=mod1d$PersonScore, "theta_adj0.05"=mod1d$theta  )
+round( pers1[ c(698, 683, 608), ],3  )
   ##       score_adj0.3 theta_adj0.3 score_adj0.05 theta_adj0.05
   ##   698          0.3       -4.404          0.05        -6.283
   ##   683          5.0       -0.070          5.00        -0.081
@@ -234,17 +234,17 @@ head(fmod1a$fit.item)
 head(fmod1a$fit.person)
 
 #*** Models in which some item parameters are fixed
-xsi.fixed <- cbind( c(1,3,9,10) , c(-2 , -1.2 , 1.6 , 2 ) )
-mod1e <- TAM::tam.jml( resp=resp , xsi.fixed = xsi.fixed )
+xsi.fixed <- cbind( c(1,3,9,10), c(-2, -1.2, 1.6, 2 ) )
+mod1e <- TAM::tam.jml( resp=resp, xsi.fixed=xsi.fixed )
 summary(mod1e)
 
 #*** Model in which also some person parameters theta are fixed
 # fix theta parameters of persons 2, 3, 4 and 33 to values -2.9, ...
-theta.fixed <- cbind( c(2,3,4,33) , c( -2.9 , 4 , -2.9 , -2.9 ) )
-mod1g <- TAM::tam.jml( resp=resp , xsi.fixed = xsi.fixed , theta.fixed=theta.fixed )
+theta.fixed <- cbind( c(2,3,4,33), c( -2.9, 4, -2.9, -2.9 ) )
+mod1g <- TAM::tam.jml( resp=resp, xsi.fixed=xsi.fixed, theta.fixed=theta.fixed )
 # look at estimated results
-ind.person <- c( 1:5 , 30:33 )
-cbind( mod1g$WLE , mod1g$errorWLE )[ind.person,]
+ind.person <- c( 1:5, 30:33 )
+cbind( mod1g$WLE, mod1g$errorWLE )[ind.person,]
 
 #############################################################################
 # EXAMPLE 2: Partial credit model
@@ -272,20 +272,20 @@ dat <- data.ex10
   ##    2     2     1     1     1     0     1
   ##    2     3     1     1     0     1     1
 
-facets <- dat[ , "rater" , drop=FALSE ] # define facet (rater)
+facets <- dat[, "rater", drop=FALSE ] # define facet (rater)
 pid <- dat$pid      # define person identifier (a person occurs multiple times)
-resp <- dat[ , -c(1:2) ]        # item response data
+resp <- dat[, -c(1:2) ]        # item response data
 formulaA <- ~ item * rater      # formula
 
 # use MML function only to restructure data and input obtained design matrices
 # and processed response data to tam.jml (-> therefore use only 2 iterations)
-mod3a <- TAM::tam.mml.mfr( resp=resp , facets=facets , formulaA = formulaA ,
-             pid=dat$pid ,  control=list(maxiter=2) )
+mod3a <- TAM::tam.mml.mfr( resp=resp, facets=facets, formulaA=formulaA,
+             pid=dat$pid,  control=list(maxiter=2) )
 
 # use modified response data mod3a$resp and design matrix mod3a$A
 resp1 <- mod3a$resp
 # JML
-mod3b <- TAM::tam.jml( resp=resp1 , A=mod3a$A , control=list(maxiter=200) )
+mod3b <- TAM::tam.jml( resp=resp1, A=mod3a$A, control=list(maxiter=200) )
 
 #############################################################################
 # EXAMPLE 4: Multi faceted model with some anchored item and person parameters
@@ -296,8 +296,8 @@ resp <- data.exJ03$resp
 X <- data.exJ03$X
 
 #*** (0) preprocess data with TAM::tam.mml.mfr
-mod0 <- TAM::tam.mml.mfr( resp=resp , facets = X , pid = X$rater ,
-                formulaA = ~ leader + item + step ,
+mod0 <- TAM::tam.mml.mfr( resp=resp, facets=X, pid=X$rater,
+                formulaA=~ leader + item + step,
                 control=list(maxiter=2) )
 summary(mod0)
 
@@ -307,7 +307,7 @@ summary(mod0)
 resp1 <- mod0$resp
 A1 <- mod0$A
 # estimate model with tam.jml
-mod1 <- TAM::tam.jml( resp=resp1 , A=A1 , control=list( Msteps=4 , maxiter=100 ) )
+mod1 <- TAM::tam.jml( resp=resp1, A=A1, control=list( Msteps=4, maxiter=100 ) )
 summary(mod1)
 
 #*** (2) fix some parameters (persons and items)
@@ -315,17 +315,17 @@ summary(mod1)
 # look at indices in mod1$xsi
 mod1$xsi
 # fix step parameters
-xsi.index1 <- cbind( 21:25 , c( -2.44 , 0.01 , -0.15 , 0.01 ,  1.55 ) )
+xsi.index1 <- cbind( 21:25, c( -2.44, 0.01, -0.15, 0.01,  1.55 ) )
 # fix some item parameters of items 1,2,3,6 and 13
-xsi.index2 <- cbind( c(1,2,3,6,13) , c(-2,-1,-1,-1.32 , -1 ) )
-xsi.index <- rbind( xsi.index1 , xsi.index2 )
+xsi.index2 <- cbind( c(1,2,3,6,13), c(-2,-1,-1,-1.32, -1 ) )
+xsi.index <- rbind( xsi.index1, xsi.index2 )
 # fix some theta parameters of persons 1, 15 and 20
-theta.fixed <- cbind(  c(1,15,20) , c(0.4 , 1 , 0 ) )
+theta.fixed <- cbind(  c(1,15,20), c(0.4, 1, 0 ) )
 # estimate model, theta.fixed only works for version=1
-mod2 <- TAM::tam.jml( resp=resp1 , A=A1 , xsi.fixed=xsi.fixed , theta.fixed=theta.fixed ,
-            control=list( Msteps=4 , maxiter=100) )
+mod2 <- TAM::tam.jml( resp=resp1, A=A1, xsi.fixed=xsi.fixed, theta.fixed=theta.fixed,
+            control=list( Msteps=4, maxiter=100) )
 summary(mod2)
-cbind( mod2$WLE , mod2$errorWLE )
+cbind( mod2$WLE, mod2$errorWLE )
 }
 }
 

@@ -1,12 +1,12 @@
 ## File Name: tam_pv_mcmc_proc_input.R
-## File Version: 0.12
+## File Version: 0.15
 
 tam_pv_mcmc_proc_input <- function( tamobj, group, Y )
 {
 
     tam_class <- class(tamobj)
     # available classes
-    tam_classes_available <- c( "tam.mml" , "tam.mml.3pl")
+    tam_classes_available <- c( "tam.mml", "tam.mml.3pl")
     is_tam_class <- tam_class %in% tam_classes_available
 
     #** extract some elements
@@ -33,7 +33,7 @@ tam_pv_mcmc_proc_input <- function( tamobj, group, Y )
 
     #** more values used in tam.pv.mcmc function
     resp1 <- resp + 1
-    resp_ind_bool <- resp.ind == 1
+    resp_ind_bool <- resp.ind==1
     maxK <- ncol(AXsi)
     if ( is.null(guess) ){
         guess <- rep(0,nitems)
@@ -55,21 +55,21 @@ tam_pv_mcmc_proc_input <- function( tamobj, group, Y )
     group_index <- list()
     N_groups <- rep(0,G)
     for (gg in 1:G){
-        group_index[[gg]] <- which( group == gg )
+        group_index[[gg]] <- which( group==gg )
         attr(group_index,"N_groups")[gg] <- v1 <- length(group_index[[gg]])
     }
     c2 <- cumsum( attr(group_index,"N_groups") )
-    dfr <- data.frame("start"=c(1 , c2[-G] + 1 ), "end" = c2 )
+    dfr <- data.frame("start"=c(1, c2[-G] + 1 ), "end"=c2 )
     attr(group_index,"N_groups_cumsum") <- dfr
 
     if ( is.null(Y) ){
-        Y <- matrix(1 , nrow=nstud, ncol=1)
+        Y <- matrix(1, nrow=nstud, ncol=1)
     }
     Y <- as.matrix(Y)
 
     #--- OUTPUT
     res <- list(person=person, is_tam_class=is_tam_class, resp=as.matrix(resp),
-                AXsi=AXsi, B=B, guess=guess, resp.ind= as.matrix(resp.ind),
+                AXsi=AXsi, B=B, guess=guess, resp.ind=as.matrix(resp.ind),
                 pweights=pweights, nitems=nitems, nstud=nstud,
                 maxK=maxK, D=D, pid=pid, group=group, G=G, groups=groups,
                 group_index=group_index, Y=Y, resp_ind_bool=resp_ind_bool)

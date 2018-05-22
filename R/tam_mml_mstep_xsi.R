@@ -1,10 +1,10 @@
 ## File Name: tam_mml_mstep_xsi.R
-## File Version: 0.09
+## File Version: 0.14
 
-tam_mml_mstep_xsi <- function( max_increment , est.xsi.index0 , control ,
-        np , nitems , A , AXsi , B , xsi , theta , nnodes , maxK , rprobs ,
-        itemwt , indexIP.no , indexIP.list2 , Avector , ItemScore ,
-        tam_function , xsi.fixed , iter , xsi_acceleration
+tam_mml_mstep_xsi <- function( max_increment, est.xsi.index0, control,
+        np, nitems, A, AXsi, B, xsi, theta, nnodes, maxK, rprobs,
+        itemwt, indexIP.no, indexIP.list2, Avector, ItemScore,
+        tam_function, xsi.fixed, iter, xsi_acceleration
         )
 {
     #M-step
@@ -15,21 +15,21 @@ tam_mml_mstep_xsi <- function( max_increment , est.xsi.index0 , control ,
     converge <- FALSE
     Miter <- 1
     max_increment -> max.increment
-    old_increment <- rep( max.increment , np )
+    old_increment <- rep( max.increment, np )
     est.xsi.index <- est.xsi.index0
 
     #---------------------------
-    while (!converge & ( Miter <= Msteps ) ) {
+    while (!converge & ( Miter <=Msteps ) ) {
         z0 <- Sys.time()
 
         if (Miter > 1){
-            res.p <- tam_mml_calc_prob( iIndex=1:nitems , A=A , AXsi=AXsi , B=B ,
-                        xsi=xsi , theta=theta , nnodes=nnodes, maxK=maxK)
+            res.p <- tam_mml_calc_prob( iIndex=1:nitems, A=A, AXsi=AXsi, B=B,
+                        xsi=xsi, theta=theta, nnodes=nnodes, maxK=maxK)
             rprobs <- res.p[["rprobs"]]
         }
 
-        res <- tam_calc_exp( rprobs , A , np , est.xsi.index , itemwt ,
-                    indexIP.no , indexIP.list2 , Avector )
+        res <- tam_calc_exp( rprobs, A, np, est.xsi.index, itemwt,
+                    indexIP.no, indexIP.list2, Avector )
         xbar <- res$xbar
         xbar2 <- res$xbar2
         xxf <- res$xxf
@@ -44,11 +44,11 @@ tam_mml_mstep_xsi <- function( max_increment , est.xsi.index0 , control ,
         }
         #!!!      necesessary to include statement to control increment?
         ci <- ceiling( abs(increment) / ( abs( old_increment) + 1E-10 ) )
-        increment <- ifelse( abs( increment) > abs(old_increment)  ,
-                            increment/(2*ci) ,
+        increment <- ifelse( abs( increment) > abs(old_increment),
+                            increment/(2*ci),
                             increment )
-        #  increment <- ifelse( abs( increment) > abs(old_increment)  ,
-        #                       sign(increment) * max.increment , increment )
+        #  increment <- ifelse( abs( increment) > abs(old_increment),
+        #                       sign(increment) * max.increment, increment )
         old_increment <- increment
         se.xsi <- sqrt( 1 / abs(deriv) )
         if ( ! is.null( xsi.fixed) ){
@@ -76,14 +76,14 @@ tam_mml_mstep_xsi <- function( max_increment , est.xsi.index0 , control ,
     #-------------------------
     max_increment <- max( abs( xsi - oldxsi )     )
     # acceleration
-    if ( xsi_acceleration$acceleration != "none" ){
-        xsi_acceleration <- accelerate_parameters( xsi_acceleration=xsi_acceleration ,
-                        xsi=xsi , iter=iter , itermin=3)
+    if ( xsi_acceleration$acceleration !="none" ){
+        xsi_acceleration <- accelerate_parameters( xsi_acceleration=xsi_acceleration,
+                        xsi=xsi, iter=iter, itermin=3)
         xsi <- xsi_acceleration$parm
     }
     #------ output
-    res <- list( xsi = xsi , xsi_accleration = xsi_acceleration     ,
-                se.xsi = se.xsi , max_increment = max_increment )
+    res <- list( xsi=xsi, xsi_accleration=xsi_acceleration     ,
+                se.xsi=se.xsi, max_increment=max_increment )
     return(res)
 }
 

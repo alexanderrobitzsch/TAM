@@ -1,8 +1,8 @@
 ## File Name: tam_mml_3pl_calc_ll.R
-## File Version: 0.03
+## File Version: 0.04
 
 
-tam_mml_3pl_calc_ll <- function( n.ik , probs, eps )
+tam_mml_3pl_calc_ll <- function( n.ik, probs, eps )
 {
     maxK <- dim(n.ik)[2]
     probs <- probs + eps

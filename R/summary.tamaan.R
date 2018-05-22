@@ -1,46 +1,46 @@
 ## File Name: summary.tamaan.R
-## File Version: 9.11
+## File Version: 9.15
 
 ###############################################
 # summary tamaan
-summary.tamaan <- function( object , file=NULL , ... )
+summary.tamaan <- function( object, file=NULL, ... )
 {
 
-    tam_osink( file = file)
+    tam_osink( file=file)
 
     #**********************
     # general tamaan syntax
     # cat("------------------------------------------------------------\n")
     cat("!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:!:\n")
-    cat(paste0("tamaan function using '" ,
-        object$tamaanify$method , "' method\n\n") )
+    cat(paste0("tamaan function using '",
+        object$tamaanify$method, "' method\n\n") )
     cat( paste(object$tamaanify$tammodel) )
     cat("\n\n")
 
     #**********************
     # tam.mml
-    if ( object$tamaan.method == "tam.mml" ){
-        summary.tam.mml( object , file=NULL ,... )
+    if ( object$tamaan.method=="tam.mml" ){
+        summary.tam.mml( object, file=NULL,... )
     }
     #**********************
     # tam.mml.2pl
-    if ( object$tamaan.method == "tam.mml.2pl" ){
-        summary.tam.mml( object , file=NULL , ... )
+    if ( object$tamaan.method=="tam.mml.2pl" ){
+        summary.tam.mml( object, file=NULL, ... )
     }
     #**********************
     # tam.mml.3pl
-    if ( object$tamaan.method == "tam.mml.3pl" ){
+    if ( object$tamaan.method=="tam.mml.3pl" ){
         #--- overview for all parameters
         summary_tamaan_3pl_intro(object)
 
         #--- distribution discrete skill space
         if ( !( object$tamaanify$ANALYSIS.list$type %in% c( "MIXTURE" ) )){
-            if ( object$skillspace == "discrete" ){
+            if ( object$skillspace=="discrete" ){
                 summary_tamaan_3pl_discrete_distribution(object)
             }
         }
         #--- distribution normal skill space
-        if (object$skillspace == "normal"){
+        if (object$skillspace=="normal"){
             summary_tamaan_normal_skillspace(object)
         }
 
@@ -56,7 +56,7 @@ summary.tamaan <- function( object , file=NULL , ... )
 
         #--- Item parameters
         print_ipars <- FALSE
-        if (object$skillspace == "normal"){
+        if (object$skillspace=="normal"){
             print_ipars <- TRUE
         }
         if ( object$tamaanify$ANALYSIS.list$type %in% c( "LOCLCA" ) ){
@@ -67,7 +67,7 @@ summary.tamaan <- function( object , file=NULL , ... )
         }
 
         #--- Latent class probabilities
-        if ( object$tamaanify$ANALYSIS.list$type %in% c( "LCA" , "OLCA" ) ){
+        if ( object$tamaanify$ANALYSIS.list$type %in% c( "LCA", "OLCA" ) ){
             summary_tamaan_3pl_lcaprobs(object)
         }
 
@@ -77,7 +77,7 @@ summary.tamaan <- function( object , file=NULL , ... )
         }
 
         #--- Item means
-        if ( object$tamaanify$ANALYSIS.list$type %in% c( "LCA" , "OLCA") ){
+        if ( object$tamaanify$ANALYSIS.list$type %in% c( "LCA", "OLCA") ){
             summary_tamaan_3pl_class_item_average(object=object)
         }
 

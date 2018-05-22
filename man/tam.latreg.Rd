@@ -1,5 +1,5 @@
 %% File Name: tam.latreg.Rd
-%% File Version: 0.27
+%% File Version: 0.30
 
 \name{tam.latreg}
 \alias{tam.latreg}
@@ -13,7 +13,7 @@ Latent Regression Model
 }
 
 \description{
-This function fits a latent regression model \eqn{\bold{\theta} = \bold{Y}
+This function fits a latent regression model \eqn{\bold{\theta}=\bold{Y}
 \bold{\beta} + \bold{\varepsilon}}.
 Only the individual likelihood evaluated at a
 \eqn{\bold{\theta}} grid is needed as the input. Like in
@@ -23,10 +23,10 @@ application of \code{\link{tam.pv}} (see Example 1).
 }
 
 \usage{
-tam.latreg(like, theta=NULL, Y = NULL, group = NULL, formulaY = NULL, dataY = NULL,
-   beta.fixed = FALSE, beta.inits = NULL, variance.fixed = NULL,
-   variance.inits = NULL, est.variance = TRUE, pweights = NULL, pid = NULL,
-   userfct.variance = NULL, variance.Npars = NULL, verbose = TRUE, control = list())
+tam.latreg(like, theta=NULL, Y=NULL, group=NULL, formulaY=NULL, dataY=NULL,
+   beta.fixed=FALSE, beta.inits=NULL, variance.fixed=NULL,
+   variance.inits=NULL, est.variance=TRUE, pweights=NULL, pid=NULL,
+   userfct.variance=NULL, variance.Npars=NULL, verbose=TRUE, control=list())
 
 \method{summary}{tam.latreg}(object,file=NULL,\dots)
 
@@ -153,24 +153,24 @@ library(sirt)
 data(data.pisaRead, package="sirt")
 dat <- data.pisaRead$data
 
-items <- grep("R4" , colnames(dat) , value=TRUE )    # select test items from data
+items <- grep("R4", colnames(dat), value=TRUE )    # select test items from data
 # define testlets
-testlets <- substring( items , 1 , 4 )
-itemcluster <- match( testlets , unique(testlets) )
+testlets <- substring( items, 1, 4 )
+itemcluster <- match( testlets, unique(testlets) )
 # fit Rasch copula model (only few iterations)
-mod <- sirt::rasch.copula2( dat[,items] , itemcluster=itemcluster , mmliter=5)
+mod <- sirt::rasch.copula2( dat[,items], itemcluster=itemcluster, mmliter=5)
 # extract individual likelihood
 like1 <- IRT.likelihood( mod )
 # fit latent regression model in TAM
-Y <- dat[ , c("migra" , "hisei", "female") ]
-mod2 <- TAM::tam.latreg( like1 , theta=attr(like1, "theta") , Y = Y , pid=dat$idstud )
+Y <- dat[, c("migra", "hisei", "female") ]
+mod2 <- TAM::tam.latreg( like1, theta=attr(like1, "theta"), Y=Y, pid=dat$idstud )
 summary(mod2)
 # plausible value imputation
 pv2 <- TAM::tam.pv( mod2 )
 # create list of imputed datasets
-Y <- dat[ , c("idstud" , "idschool" , "female" , "hisei" , "migra") ]
+Y <- dat[, c("idstud", "idschool", "female", "hisei", "migra") ]
 pvnames <- c("PVREAD")
-datlist <- TAM::tampv2datalist( pv2, pvnames = pvnames , Y=Y , Y.pid="idstud")
+datlist <- TAM::tampv2datalist( pv2, pvnames=pvnames, Y=Y, Y.pid="idstud")
 
 #--- fit some models
 library(mice)
@@ -178,9 +178,9 @@ library(miceadds)
 # convert data list into a mice object
 mids1 <- miceadds::datalist2mids( datlist )
 # perform an ANOVA
-mod3a <- with( mids1 , stats::lm(PVREAD ~ hisei*migra) )
+mod3a <- with( mids1, stats::lm(PVREAD ~ hisei*migra) )
 summary( pool( mod3a ))
-mod3b <- miceadds::mi.anova( mids1 , "PVREAD ~ hisei*migra" )
+mod3b <- miceadds::mi.anova( mids1, "PVREAD ~ hisei*migra" )
 
 #############################################################################
 # EXAMPLE 2: data.pisaRead - fitted IRT model in mirt package
@@ -193,13 +193,13 @@ data(data.pisaRead, package="sirt")
 dat <- data.pisaRead$data
 
 # define dataset with item responses
-items <- grep("R4" , colnames(dat) , value=TRUE )
+items <- grep("R4", colnames(dat), value=TRUE )
 resp <- dat[,items]
 # define dataset with covariates
-X <- dat[ , c("female","hisei","migra") ]
+X <- dat[, c("female","hisei","migra") ]
 
 # fit 2PL model in mirt
-mod <- mirt::mirt( resp , 1 , itemtype="2PL" , verbose=TRUE)
+mod <- mirt::mirt( resp, 1, itemtype="2PL", verbose=TRUE)
 print(mod)
 # extract coefficients
 sirt::mirt.wrapper.coef(mod)
@@ -209,14 +209,14 @@ like <- IRT.likelihood(mod)
 str(like)
 
 # fit latent regression model in TAM
-mod2 <- TAM::tam.latreg( like , Y = X , pid=dat$idstud )
+mod2 <- TAM::tam.latreg( like, Y=X, pid=dat$idstud )
 summary(mod2)
 # plausible value imputation
-pv2 <- TAM::tam.pv( mod2 , samp.regr=TRUE , nplausible=5 )
+pv2 <- TAM::tam.pv( mod2, samp.regr=TRUE, nplausible=5 )
 # create list of imputed datasets
-X <- dat[ , c("idstud" , "idschool" , "female" , "hisei" , "migra") ]
+X <- dat[, c("idstud", "idschool", "female", "hisei", "migra") ]
 pvnames <- c("PVREAD")
-datlist <- TAM::tampv2datalist( pv2, pvnames = pvnames , Y=X , Y.pid="idstud")
+datlist <- TAM::tampv2datalist( pv2, pvnames=pvnames, Y=X, Y.pid="idstud")
 str(datlist)
 
 # regression using semTools package
@@ -224,8 +224,8 @@ library(semTools)
 lavmodel <- "
    PVREAD ~ hisei + female
            "
-mod1a <- semTools::sem.mi( lavmodel , datlist)
-summary(mod1a , standardized=TRUE, rsquare=TRUE)
+mod1a <- semTools::sem.mi( lavmodel, datlist)
+summary(mod1a, standardized=TRUE, rsquare=TRUE)
 
 #############################################################################
 # EXAMPLE 3: data.Students - fitted confirmatory factor analysis in lavaan
@@ -237,37 +237,37 @@ library(lavaan)
 
 data(data.Students, package="CDM")
 dat <- data.Students
-vars <- scan(what="character" , nlines=1)
+vars <- scan(what="character", nlines=1)
    urban female sc1 sc2 sc3 sc4 mj1 mj2 mj3 mj4
-dat <- dat[ , vars]
+dat <- dat[, vars]
 dat <- na.omit(dat)
 
 # fit confirmatory factor analysis in lavaan
 lavmodel <- "
-   SC =~ sc1__sc4
+   SC=~ sc1__sc4
    SC ~~ 1*SC
-   MJ =~ mj1__mj4
+   MJ=~ mj1__mj4
    MJ ~~ 1*MJ
    SC ~~ MJ
         "
 # process lavaan syntax
-res <- TAM::lavaanify.IRT( lavmodel , dat )
+res <- TAM::lavaanify.IRT( lavmodel, dat )
 # fit lavaan CFA model
-mod1 <- lavaan::cfa( res$lavaan.syntax , dat , std.lv=TRUE)
-summary(mod1 , standardized=TRUE , fit.measures=TRUE )
+mod1 <- lavaan::cfa( res$lavaan.syntax, dat, std.lv=TRUE)
+summary(mod1, standardized=TRUE, fit.measures=TRUE )
 # extract likelihood
-like1 <- TAM::IRTLikelihood.cfa( dat , mod1 )
+like1 <- TAM::IRTLikelihood.cfa( dat, mod1 )
 str(like1)
 # fit latent regression model in TAM
-X <- dat[ , c("urban","female") ]
-mod2 <- TAM::tam.latreg( like1 , Y = X  )
+X <- dat[, c("urban","female") ]
+mod2 <- TAM::tam.latreg( like1, Y=X  )
 summary(mod2)
 # plausible value imputation
-pv2 <- TAM::tam.pv( mod2 , samp.regr=TRUE , normal.approx=TRUE )
+pv2 <- TAM::tam.pv( mod2, samp.regr=TRUE, normal.approx=TRUE )
 # create list of imputed datasets
-Y <- dat[ , c("urban" , "female" ) ]
-pvnames <- c("PVSC" , "PVMJ")
-datlist <- TAM::tampv2datalist( pv2, pvnames = pvnames , Y=Y )
+Y <- dat[, c("urban", "female" ) ]
+pvnames <- c("PVSC", "PVMJ")
+datlist <- TAM::tampv2datalist( pv2, pvnames=pvnames, Y=Y )
 str(datlist)
 }
 }

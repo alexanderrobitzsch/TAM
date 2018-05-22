@@ -1,5 +1,5 @@
 %% File Name: data.janssen.Rd
-%% File Version: 0.18
+%% File Version: 0.20
 
 \name{data.janssen}
 \alias{data.janssen}
@@ -83,17 +83,17 @@ ANALYSIS:
   NSTARTS(10,20);
 LAVAAN MODEL:
   # missing item numbers (e.g. PIS2) are ignored in the model
-  F =~ PIS1__PIS5 + SCR6__SCR17
+  F=~ PIS1__PIS5 + SCR6__SCR17
     "
-mod3 <- TAM::tamaan( tammodel , resp=dat  )
+mod3 <- TAM::tamaan( tammodel, resp=dat  )
 summary(mod3)
 
 # extract item response functions
 imod2 <- IRT.irfprob(mod3)[,2,]
 # plot class specific probabilities
 ncl <- 2
-matplot( imod2 , type="o" , pch=1:ncl , xlab="Item" , ylab="Probability" )
-legend( 1 , .3 , paste0("Class",1:ncl) , lty=1:ncl , col=1:ncl , pch=1:ncl )
+matplot( imod2, type="o", pch=1:ncl, xlab="Item", ylab="Probability" )
+legend( 1, .3, paste0("Class",1:ncl), lty=1:ncl, col=1:ncl, pch=1:ncl )
 
 #*********************************************************************
 #*** Model 2: Latent class analysis with three classes
@@ -104,17 +104,17 @@ ANALYSIS:
   NCLASSES(3);
   NSTARTS(10,20);
 LAVAAN MODEL:
-  F =~ PIS1__PIS5 + SCR6__SCR17
+  F=~ PIS1__PIS5 + SCR6__SCR17
     "
-mod3 <- TAM::tamaan( tammodel , resp=dat  )
+mod3 <- TAM::tamaan( tammodel, resp=dat  )
 summary(mod3)
 
 # extract item response functions
 imod2 <- IRT.irfprob(mod3)[,2,]
 # plot class specific probabilities
 ncl <- 3
-matplot( imod2 , type="o" , pch=1:ncl , xlab="Item" , ylab="Probability" )
-legend( 1 , .3 , paste0("Class",1:ncl) , lty=1:ncl , col=1:ncl , pch=1:ncl )
+matplot( imod2, type="o", pch=1:ncl, xlab="Item", ylab="Probability" )
+legend( 1, .3, paste0("Class",1:ncl), lty=1:ncl, col=1:ncl, pch=1:ncl )
 
 # compare models
 AIC(mod1); AIC(mod2)

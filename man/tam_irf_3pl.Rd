@@ -1,5 +1,5 @@
 %% File Name: tam_irf_3pl.Rd
-%% File Version: 0.12
+%% File Version: 0.15
 
 \name{tam_irf_3pl}
 \alias{tam_irf_3pl}
@@ -68,11 +68,11 @@ data(data.read, package="sirt")
 dat <- data.read
 
 #* estimate 2PL model
-mod <- TAM::tam.mml.2pl( resp = dat )
+mod <- TAM::tam.mml.2pl( resp=dat )
 #* define theta vector
 theta <- seq(-3,3, len=41)
 #* compute item response probabilities
-probs <- TAM::tam_irf_3pl( theta=theta , AXsi = mod$AXsi , B = mod$B )
+probs <- TAM::tam_irf_3pl( theta=theta, AXsi=mod$AXsi, B=mod$B )
 str(probs)
 }
 }

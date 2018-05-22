@@ -1,14 +1,14 @@
 ## File Name: tam_mml_mstep_intercept_quasi_newton_R.R
-## File Version: 0.16
+## File Version: 0.19
 
 tam_mml_mstep_intercept_quasi_newton_R <- function( rprobs, converge, Miter, Msteps,
     nitems, A, AXsi, B, xsi, theta, nnodes, maxK, est.xsi.index, itemwt, indexIP.no,
-    indexIP.list2, Avector, ItemScore, xsi.fixed, eps=1E-20, old_increment , convM,
+    indexIP.list2, Avector, ItemScore, xsi.fixed, eps=1E-20, old_increment, convM,
     fac.oldxsi, oldxsi, trim_increment, progress, np, increments_msteps, maxcat=NULL,
     use_rcpp=FALSE )
 {
     #--- begin algorithm
-    while ( ! converge & ( Miter <= Msteps ) ) {
+    while ( ! converge & ( Miter <=Msteps ) ) {
         if (Miter > 1){
             res <- tam_mml_calc_prob( iIndex=1:nitems, A=A, AXsi=AXsi, B=B, xsi=xsi,
                         theta=theta, nnodes=nnodes, maxK=maxK, maxcat=maxcat, use_rcpp=use_rcpp )
@@ -25,7 +25,7 @@ tam_mml_mstep_intercept_quasi_newton_R <- function( rprobs, converge, Miter, Mst
         diff <- as.vector(ItemScore) - xbar
         #Compute the Newton-Raphson derivative for the equation to be solved
         deriv <- xbar2 - xxf
-        # res <- tam_evaluate_prior( prior_list = prior_list_xsi , parameter = xsi )
+        # res <- tam_evaluate_prior( prior_list=prior_list_xsi, parameter=xsi )
         # diff <- diff + res$d1
         # deriv <- abs(deriv) + abs( res$d2 )
 
@@ -64,6 +64,6 @@ tam_mml_mstep_intercept_quasi_newton_R <- function( rprobs, converge, Miter, Mst
     #--------------------------------------
     # output
     res <- list( xsi=xsi, Miter=Miter, increments_msteps=increments_msteps,
-                    se.xsi=se.xsi, logprior_xsi = 0 )
+                    se.xsi=se.xsi, logprior_xsi=0 )
     return(res)
 }

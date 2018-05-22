@@ -1,5 +1,5 @@
 ## File Name: tam_mml_wle_theta_inits.R
-## File Version: 0.06
+## File Version: 0.09
 
 
 tam_mml_wle_theta_inits <- function(WLE, adj, nitems, maxK, resp, resp.ind, B,
@@ -10,21 +10,21 @@ tam_mml_wle_theta_inits <- function(WLE, adj, nitems, maxK, resp, resp.ind, B,
     if (WLE){
         adj <- 0
     }
-    col.index <- rep( 1:nitems , each = maxK )
-    cResp <- resp[ , col.index  ]*resp.ind[ , col.index ]
-    cResp <- 1 * t( t(cResp) == rep(0:(maxK-1), nitems) )
-    cB <- t( matrix( aperm( B , c(2,1,3) ) , nrow = dim(B)[3] , byrow = TRUE ) )
+    col.index <- rep( 1:nitems, each=maxK )
+    cResp <- resp[, col.index  ]*resp.ind[, col.index ]
+    cResp <- 1 * t( t(cResp)==rep(0:(maxK-1), nitems) )
+    cB <- t( matrix( aperm( B, c(2,1,3) ), nrow=dim(B)[3], byrow=TRUE ) )
     cB[is.na(cB)] <- 0
 
     #Compute person sufficient statistics (total score on each dimension)
     PersonScores <- cResp %*% cB
 
     #Compute possible maximum score for each item on each dimension
-    maxBi <- apply(B , 3 , tam_rowMaxs , na.rm = TRUE)
+    maxBi <- apply(B, 3, tam_rowMaxs, na.rm=TRUE)
 
     #Compute possible maximum score for each person on each dimension
     PersonMax <- resp.ind %*% maxBi
-    PersonMax[ PersonMax == 0 ] <- 2 * adj
+    PersonMax[ PersonMax==0 ] <- 2 * adj
 
     #Adjust perfect scores for each person on each dimension
     PersonScores[PersonScores==PersonMax] <- PersonScores[PersonScores==PersonMax] - adj

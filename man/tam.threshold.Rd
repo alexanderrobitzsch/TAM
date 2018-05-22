@@ -1,5 +1,5 @@
 %% File Name: tam.threshold.Rd
-%% File Version: 2.17
+%% File Version: 2.21
 
 \name{tam.threshold}
 \alias{tam.threshold}
@@ -64,7 +64,7 @@ with fitted models in \pkg{TAM}, see
 data( data.gpcm )
 
 # Model 1: partial credit model
-mod1 <- TAM::tam.mml( resp=data.gpcm ,control=list( maxiter=200) )
+mod1 <- TAM::tam.mml( resp=data.gpcm,control=list( maxiter=200) )
 summary(mod1)
   ##   Item Parameters -A*Xsi
   ##        item   N     M AXsi_.Cat1 AXsi_.Cat2 AXsi_.Cat3 B.Cat1.Dim1 B.Cat2.Dim1 B.Cat3.Dim1
@@ -88,19 +88,19 @@ library(sirt)
 data(data.math, package="sirt")
 dat <- data.math$data
 # select items
-items1 <- grep("M[A-D]" , colnames(dat) , value=TRUE)
-items2 <- grep("M[H-I]" , colnames(dat) , value=TRUE)
+items1 <- grep("M[A-D]", colnames(dat), value=TRUE)
+items2 <- grep("M[H-I]", colnames(dat), value=TRUE)
 # select dataset
 dat <- dat[ c(items1,items2)]
 # create Q-matrix
-Q <- matrix( 0 , nrow=ncol(dat) , ncol=2 )
-Q[ seq(1,length(items1) ) , 1 ] <- 1
-Q[ length(items1) + seq(1,length(items2) ) , 2 ] <- 1
+Q <- matrix( 0, nrow=ncol(dat), ncol=2 )
+Q[ seq(1,length(items1) ), 1 ] <- 1
+Q[ length(items1) + seq(1,length(items2) ), 2 ] <- 1
 
 # fit two-dimensional model
-mod1 <- TAM::tam.mml( dat , Q=Q )
+mod1 <- TAM::tam.mml( dat, Q=Q )
 # compute thresholds (specify a probability level of .625)
-tmod1 <- TAM::tam.threshold( mod1  , prob.lvl = .625 )
+tmod1 <- TAM::tam.threshold( mod1, prob.lvl=.625 )
 
 #############################################################################
 # EXAMPLE 3: Creating Wright maps with the WrightMap package
@@ -123,14 +123,14 @@ wlemod1 <- TAM::tam.wle(mod1)$theta
 # extract thresholds
 tmod1 <- TAM::tam.threshold(mod1)
 # create Wright map
-WrightMap::wrightMap( thetas = wlemod1 , thresholds= tmod1 , label.items.srt=-90)
+WrightMap::wrightMap( thetas=wlemod1, thresholds=tmod1, label.items.srt=-90)
 
 #--- B: creating a Wright Map with population distribution
 
 # extract ability distribution and replicate observations
-uni.proficiency <- rep( mod1$theta[,1] , round( mod1$pi.k * mod1$ic$n) )
+uni.proficiency <- rep( mod1$theta[,1], round( mod1$pi.k * mod1$ic$n) )
 # draw WrightMap
-WrightMap::wrightMap( thetas=uni.proficiency, thresholds= tmod1 , label.items.rows=3)
+WrightMap::wrightMap( thetas=uni.proficiency, thresholds=tmod1, label.items.rows=3)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

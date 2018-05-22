@@ -1,21 +1,21 @@
 ## File Name: tam_mml_3pl_distributionmoments.R
-## File Version: 9.07
+## File Version: 9.11
 
 #######################################################################
 # moments of distribution
-tam_mml_3pl_distributionmoments <- function( D , G , pi.k , theta.k )
+tam_mml_3pl_distributionmoments <- function( D, G, pi.k, theta.k )
 {
     D <- ncol(theta.k)
     if ( is.vector( theta.k) ){
         D <- 1
-        theta.k <- matrix( theta.k , ncol=1 )
+        theta.k <- matrix( theta.k, ncol=1 )
     }
-    mean.trait <- sd.trait <- skewness.trait <- matrix( 0 , nrow=D , ncol=G )
+    mean.trait <- sd.trait <- skewness.trait <- matrix( 0, nrow=D, ncol=G )
     for (dd in 1:D){
         for (gg in 1:G){
-            mean.trait[dd,gg] <- sum( theta.k[,dd] * pi.k[ , gg ] )
-            sd.trait[dd,gg] <- sqrt( sum( theta.k[,dd]^2 * pi.k[ , gg ] ) - mean.trait[dd,gg]^2 )
-            skewness.trait[dd,gg] <- sum( ( theta.k[,dd] - mean.trait[dd,gg] )^3 * pi.k[ , gg ] ) /
+            mean.trait[dd,gg] <- sum( theta.k[,dd] * pi.k[, gg ] )
+            sd.trait[dd,gg] <- sqrt( sum( theta.k[,dd]^2 * pi.k[, gg ] ) - mean.trait[dd,gg]^2 )
+            skewness.trait[dd,gg] <- sum( ( theta.k[,dd] - mean.trait[dd,gg] )^3 * pi.k[, gg ] ) /
                             sd.trait[dd,gg]^3
         }
     }
@@ -43,8 +43,8 @@ tam_mml_3pl_distributionmoments <- function( D , G , pi.k , theta.k )
         rownames(Sigma.gg) <- colnames(Sigma.gg) <- rownames(mean.trait)
         correlation.trait[[gg]] <- stats::cov2cor(Sigma.gg + diag(10^(-5),D) )
     }
-    res <- list( "mean.trait"=mean.trait , "sd.trait" = sd.trait ,
-                "skewness.trait" = skewness.trait , "correlation.trait"=correlation.trait)
+    res <- list( "mean.trait"=mean.trait, "sd.trait"=sd.trait,
+                "skewness.trait"=skewness.trait, "correlation.trait"=correlation.trait)
     return(res)
 }
 

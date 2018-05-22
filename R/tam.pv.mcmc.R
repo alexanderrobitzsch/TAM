@@ -1,12 +1,12 @@
 ## File Name: tam.pv.mcmc.R
-## File Version: 0.843
+## File Version: 0.847
 
-tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
-                nplausible=10, level = .95, n.iter = 1000 ,
-                n.burnin = 500, adj_MH = .5, adj_change_MH = .05 ,
-                refresh_MH = 50, accrate_bound_MH = c(.45, .55),
-                sample_integers = FALSE, theta_init = NULL, print_iter = 20 ,
-                verbose = TRUE, calc_ic = TRUE )
+tam.pv.mcmc <- function( tamobj, Y=NULL, group=NULL, beta_groups=TRUE,
+                nplausible=10, level=.95, n.iter=1000,
+                n.burnin=500, adj_MH=.5, adj_change_MH=.05,
+                refresh_MH=50, accrate_bound_MH=c(.45, .55),
+                sample_integers=FALSE, theta_init=NULL, print_iter=20,
+                verbose=TRUE, calc_ic=TRUE )
 {
     s1 <- Sys.time()
     CALL <- match.call()
@@ -45,7 +45,7 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
     Y <- tam_pv_mcmc_proc_regressors(Y=Y)
 
     #--- compute initial beta and variance parameters
-    res <- tam_pv_mcmc_sample_beta_variance( theta=theta , Y=Y, nstud=nstud,
+    res <- tam_pv_mcmc_sample_beta_variance( theta=theta, Y=Y, nstud=nstud,
                     pweights=pweights, samp.regr=FALSE, G=G, group_index=group_index,
                     beta_groups=beta_groups, sample_integers=sample_integers )
     beta <- res$beta
@@ -111,7 +111,7 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
         theta_acceptance_MH <- res$theta_acceptance_MH
 
         #--- evaluate acceptance rate
-        if ( ( iter <= n.burnin ) & ( iter %% refresh_MH == 0 ) ){
+        if ( ( iter <=n.burnin ) & ( iter %% refresh_MH==0 ) ){
             res <- tam_pv_mcmc_refresh_theta( theta_acceptance_MH=theta_acceptance_MH, adj_MH=adj_MH,
                         adj_change_MH=adj_change_MH, accrate_bound_MH=accrate_bound_MH,
                         verbose=verbose )
@@ -126,9 +126,9 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
         }
 
         #--- sample new regression parameters
-        res <- tam_pv_mcmc_sample_beta_variance( theta=theta , Y=Y, nstud=nstud,
+        res <- tam_pv_mcmc_sample_beta_variance( theta=theta, Y=Y, nstud=nstud,
                         pweights=pweights, samp.regr=TRUE,  G=G, group_index=group_index,
-                        beta_groups=beta_groups , sample_integers=sample_integers )
+                        beta_groups=beta_groups, sample_integers=sample_integers )
         beta <- res$beta
         variance <- res$variance
 
@@ -151,8 +151,8 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
         }
         #--- print progress
         if ( verbose ){
-            if (iter %% print_iter == 0 ){
-                cat("* Iteration ", iter-1 , "\n")
+            if (iter %% print_iter==0 ){
+                cat("* Iteration ", iter-1, "\n")
             }
             utils::flush.console()
         }
@@ -200,21 +200,21 @@ tam.pv.mcmc <- function( tamobj, Y=NULL , group=NULL, beta_groups = TRUE ,
     s2 <- Sys.time()
     #--- OUTPUT
     res <- list( pv=pv, group=group, groups=groups, G=G, parameter_samples=parameter_samples,
-                    ic=ic, theta_acf = theta_acf,
+                    ic=ic, theta_acf=theta_acf,
                     deviance_samples=deviance_samples,
                     theta_acceptance_MH=theta_acceptance_MH,
                     theta_samples_mean=theta_samples_mean,
-                    theta_samples_sd=theta_samples_sd, theta_last = theta ,
+                    theta_samples_sd=theta_samples_sd, theta_last=theta,
                     EAP_rel=EAP_rel,
                     beta=beta, variance=variance, correlation=correlation,
                     parameter_summary=parameter_summary,
                     nplausible=nplausible, ndim=D, pweights=pweights, pid=pid,
                     n.iter=n.iter, n.burnin=n.burnin, ndim=D,
-                    nplausible=nplausible, calc_ic = calc_ic,
-                    time = c(s1,s2,s2-s1), CALL=CALL )
+                    nplausible=nplausible, calc_ic=calc_ic,
+                    time=c(s1,s2,s2-s1), CALL=CALL )
     class(res) <- "tam.pv.mcmc"
     return(res)
 }
 
-# z0 <- tamcat( label = "theta acf", time0 = z0, active=active)
+# z0 <- tamcat( label="theta acf", time0=z0, active=active)
 

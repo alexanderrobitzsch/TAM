@@ -1,11 +1,11 @@
 ## File Name: IRT.likelihood.TAM.R
-## File Version: 9.05
+## File Version: 9.08
 
 
 ###########################################################
 # likelihood
 # object of class tam (and tam.mml)
-IRT.likelihood.tam <- function( object , ... )
+IRT.likelihood.tam <- function( object, ... )
 {
     ll <- object$like
     attr(ll,"theta") <- object$theta
@@ -23,13 +23,13 @@ IRT.likelihood.tam.latreg <- IRT.likelihood.tam
 
 ###########################################################
 # objects of class tamaan
-IRT.likelihood.tamaan <- function( object , ... )
+IRT.likelihood.tamaan <- function( object, ... )
 {
-    if (object$tamaanify$method %in% c( "tam.mml" , "tam.mml.2pl")  ){
-        res0 <- IRT.likelihood.tam( object , ... )
+    if (object$tamaanify$method %in% c( "tam.mml", "tam.mml.2pl")  ){
+        res0 <- IRT.likelihood.tam( object, ... )
     }
-    if (object$tamaanify$method == "tam.mml.3pl"){
-        res0 <- IRT.likelihood.tam.mml.3pl( object , ... )
+    if (object$tamaanify$method=="tam.mml.3pl"){
+        res0 <- IRT.likelihood.tam.mml.3pl( object, ... )
     }
     return(res0)
 }
@@ -38,7 +38,7 @@ IRT.likelihood.tamaan <- function( object , ... )
 ###########################################################
 # posterior
 # object of class tam (and tam.mml)
-IRT.posterior.tam <- function( object , ... )
+IRT.posterior.tam <- function( object, ... )
 {
     ll <- object$hwt
     attr(ll,"theta") <- object$theta
@@ -55,13 +55,13 @@ IRT.posterior.tam.latreg <- IRT.posterior.tam
 
 ###########################################################
 # objects of class tamaan
-IRT.posterior.tamaan <- function( object , ... )
+IRT.posterior.tamaan <- function( object, ... )
 {
-    if (object$tamaanify$method %in% c( "tam.mml" , "tam.mml.2pl")  ){
-        res0 <- IRT.posterior.tam( object , ... )
+    if (object$tamaanify$method %in% c( "tam.mml", "tam.mml.2pl")  ){
+        res0 <- IRT.posterior.tam( object, ... )
     }
-    if (object$tamaanify$method == "tam.mml.3pl"){
-        res0 <- IRT.posterior.tam.mml.3pl( object , ... )
+    if (object$tamaanify$method=="tam.mml.3pl"){
+        res0 <- IRT.posterior.tam.mml.3pl( object, ... )
     }
     return(res0)
 }

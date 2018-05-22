@@ -1,5 +1,5 @@
 ## File Name: tam_mml_inits_groups.R
-## File Version: 0.04
+## File Version: 0.07
 
 tam_mml_inits_groups <- function( group )
 {
@@ -8,10 +8,10 @@ tam_mml_inits_groups <- function( group )
     if ( ! is.null(group) ){
         groups <- sort(unique(group))
         G <- length(groups)
-        group <- match( group , groups )
+        group <- match( group, groups )
         var.indices <- rep(1,G)
         for (gg in 1:G){
-            var.indices[gg] <- which( group == gg )[1]
+            var.indices[gg] <- which( group==gg )[1]
         }
     } else {
         G <- 1

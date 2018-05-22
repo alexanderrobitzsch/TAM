@@ -1,5 +1,5 @@
 ## File Name: tamaan_3pl_lca_extract_lcaprobs.R
-## File Version: 0.06
+## File Version: 0.10
 
 
 ##########################################################
@@ -14,23 +14,23 @@ tamaan_3pl_lca_extract_lcaprobs <- function(res)
     TP <- rpdim[3]
     obji <- NULL
     for (hh in 1:ncat){
-        obji <- rbind( obji , rprobs[,hh,] )
+        obji <- rbind( obji, rprobs[,hh,] )
     }
     colnames(obji) <- class_labels <- paste0("Class", 1:TP )
-    obji <- data.frame( "item" = rep( colnames(resp) , ncat) ,
-                        "itemno" = rep( 1:I , ncat) , "Cat" =
-                        rep(1:ncat , each=I)-1 , obji )
-    obji <- obji[ order( obji$itemno ) , ]
+    obji <- data.frame( "item"=rep( colnames(resp), ncat),
+                        "itemno"=rep( 1:I, ncat), "Cat"=
+                        rep(1:ncat, each=I)-1, obji )
+    obji <- obji[ order( obji$itemno ), ]
     rownames(obji) <- NULL
 
     #--- average probabilities
-    a1 <- stats::aggregate( obji$Cat * obji[,class_labels] , list(obji$item) , sum , na.rm=TRUE)
-    a2 <- stats::aggregate( obji$itemno, list(obji$item) , mean , na.rm=TRUE)
-    lca_M <- data.frame( item = a1[,1] , itemno = a2[,2] , a1[,-1])
+    a1 <- stats::aggregate( obji$Cat * obji[,class_labels], list(obji$item), sum, na.rm=TRUE)
+    a2 <- stats::aggregate( obji$itemno, list(obji$item), mean, na.rm=TRUE)
+    lca_M <- data.frame( item=a1[,1], itemno=a2[,2], a1[,-1])
     colnames(lca_M)[-c(1,2)] <- class_labels
 
     #--- output
-    res0 <- list( lcaprobs = obji, lca_M = lca_M )
+    res0 <- list( lcaprobs=obji, lca_M=lca_M )
     return(res0)
 }
 #######################################################

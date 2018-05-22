@@ -1,5 +1,5 @@
 %% File Name: IRT.factor.scores.tam.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{IRT.factor.scores}
 
@@ -88,9 +88,9 @@ mod1 <- TAM::tam.mml(resp=data.sim.rasch)
 # EAP
 pmod1 <- IRT.factor.scores( mod1 )
 # WLE
-pmod1 <- IRT.factor.scores( mod1 , type="WLE" )
+pmod1 <- IRT.factor.scores( mod1, type="WLE" )
 # MLE
-pmod1 <- IRT.factor.scores( mod1 , type="MLE" )
+pmod1 <- IRT.factor.scores( mod1, type="MLE" )
 }
 }
 

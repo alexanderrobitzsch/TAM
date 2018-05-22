@@ -1,11 +1,11 @@
 ## File Name: summary.msq.itemfitWLE.R
-## File Version: 9.13
+## File Version: 9.16
 
 ###################################################
 # summary for objects of class msq.itemfitWLE
-summary.msq.itemfitWLE <- function( object , file=NULL, ... ){
+summary.msq.itemfitWLE <- function( object, file=NULL, ... ){
 
-    tam_osink( file = file )
+    tam_osink( file=file )
 
     cat("------------------------------------------------------------\n")
 
@@ -29,7 +29,7 @@ summary.msq.itemfitWLE <- function( object , file=NULL, ... ){
     rownames(obji) <- NULL
 
     for ( vv in seq(2,ncol(obji) ) ){
-        obji[,vv] <- round( obji[,vv] , 3 )
+        obji[,vv] <- round( obji[,vv], 3 )
     }
 
     print(obji)
@@ -46,7 +46,7 @@ summary.msq.itemfitWLE <- function( object , file=NULL, ... ){
     obji <- object
     rownames(obji) <- NULL
     for ( vv in seq(2,ncol(obji) ) ){
-        obji[,vv] <- round( obji[,vv] , 3 )
+        obji[,vv] <- round( obji[,vv], 3 )
     }
 
     print(obji)

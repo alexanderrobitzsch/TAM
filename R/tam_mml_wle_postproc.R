@@ -1,12 +1,12 @@
 ## File Name: tam_mml_wle_postproc.R
-## File Version: 0.21
+## File Version: 0.25
 
 tam_mml_wle_postproc <- function(ndim, err_inv, theta, pid, resp.ind,
     PersonScores, PersonMax, adj, WLE, rprobsWLE, output.prob, progress,
     pweights, CALL, B, score.resp)
 {
     #standard errors of theta estimates
-    if (ndim == 1) {
+    if (ndim==1) {
         error <- apply(err_inv,1,sqrt)
     } else {
         error <- aperm(apply(sqrt(err_inv),1,diag), c(2,1))
@@ -18,37 +18,37 @@ tam_mml_wle_postproc <- function(ndim, err_inv, theta, pid, resp.ind,
     #   WLE or MLE estimate, by dimension
     #   Standard errors of WLE/MLE estimates, by dimension
 
-    dimlabels <- substring( 100+1:ndim , 2)
+    dimlabels <- substring( 100+1:ndim, 2)
 
     if ( ndim> 1){
-        colnames(error) <- paste0("error.Dim" , dimlabels )
+        colnames(error) <- paste0("error.Dim", dimlabels )
     }
-    res <- data.frame( "pid" = pid ,
-                    "N.items" = rowSums(resp.ind) ,
-                    "PersonScores" = PersonScores,
-                    "PersonMax" = PersonMax, "theta" = theta , error )
+    res <- data.frame( "pid"=pid,
+                    "N.items"=rowSums(resp.ind),
+                    "PersonScores"=PersonScores,
+                    "PersonMax"=PersonMax, "theta"=theta, error )
 
     if (ndim==1){
-        colnames(res)[4:5] <- c("PersonMax" , "theta")
+        colnames(res)[4:5] <- c("PersonMax", "theta")
     }
     if (ndim>1){
-        colnames(res)[ 1:ndim + 2] <- paste0("PersonScores.Dim" , dimlabels )
-        ind <- grep( "theta" , colnames(res) )
-        colnames(res)[ind] <- paste0("theta.Dim" , dimlabels )
+        colnames(res)[ 1:ndim + 2] <- paste0("PersonScores.Dim", dimlabels )
+        ind <- grep( "theta", colnames(res) )
+        colnames(res)[ind] <- paste0("theta.Dim", dimlabels )
     }
     ####################
     # correct personMax set theta and standard error to missing
     # if there are no observations on one dimension
-    ind1 <- grep("PersonMax" , colnames(res))
-    check1 <- ( res[ , ind1 , drop=FALSE] == 2*adj )
-    ind2 <- grep("theta" , colnames(res))
+    ind1 <- grep("PersonMax", colnames(res))
+    check1 <- ( res[, ind1, drop=FALSE]==2*adj )
+    ind2 <- grep("theta", colnames(res))
     D <- length(ind1)
     for (ii in 1:D){
-        res[ check1[,ii] , ind2[ii] ] <- NA
+        res[ check1[,ii], ind2[ii] ] <- NA
     }
-    ind2 <- grep("error" , colnames(res))
+    ind2 <- grep("error", colnames(res))
     for (ii in 1:D){
-        res[ check1[,ii] , ind2[ii] ] <- NA
+        res[ check1[,ii], ind2[ii] ] <- NA
     }
     #--- WLE reliability and average error variance
     M_sq_error <- rep(NA,ndim)
@@ -63,10 +63,10 @@ tam_mml_wle_postproc <- function(ndim, err_inv, theta, pid, resp.ind,
         ind <- which( res$N.items > 0 )
         WLE.rel <- WLErel(theta=theta, error=error, w=pweights, select=ind)
         if (progress){
-            cat("----\n" , w1 ,"Reliability =" , round(WLE.rel,3) ,"\n" )
+            cat("----\n", w1,"Reliability=", round(WLE.rel,3),"\n" )
         }
-        res$WLE.rel <- rep( WLE.rel , nrow(res) )
-        M_sq_error[1] <- weighted_mean( error[ind]^2 , pweights[ind] )
+        res$WLE.rel <- rep( WLE.rel, nrow(res) )
+        M_sq_error[1] <- weighted_mean( error[ind]^2, pweights[ind] )
         WLEM[1] <- weighted_mean( theta[ind], pweights[ind] )
         WLEvar[1] <- weighted_var( theta[ind], pweights[ind] )
     }
@@ -74,15 +74,15 @@ tam_mml_wle_postproc <- function(ndim, err_inv, theta, pid, resp.ind,
         cat("\n-------\n")
         for (dd in 1:ndim){
             dimlabel_dd <- dimlabels[dd]
-            ind1 <- paste0("theta.Dim" , dimlabel_dd )
-            ind2 <- paste0("error.Dim" , dimlabel_dd )
-            h1 <- WLErel( theta=res[,ind1] , error=res[,ind2] , w = pweights )
-            res[ , paste0("WLE.rel.Dim" , dimlabel_dd ) ] <- h1
+            ind1 <- paste0("theta.Dim", dimlabel_dd )
+            ind2 <- paste0("error.Dim", dimlabel_dd )
+            h1 <- WLErel( theta=res[,ind1], error=res[,ind2], w=pweights )
+            res[, paste0("WLE.rel.Dim", dimlabel_dd ) ] <- h1
             if (progress){
-                cat(paste0(w1 , " Reliability (Dimension" , dd , ") = " , round(h1,3) ) , "\n" )
+                cat(paste0(w1, " Reliability (Dimension", dd, ")=", round(h1,3) ), "\n" )
             }
-            M_sq_error[dd] <- weighted_mean( res[,ind2]^2 , pweights)
-            WLEM[dd] <- weighted_mean( res[,ind1] , pweights)
+            M_sq_error[dd] <- weighted_mean( res[,ind2]^2, pweights)
+            WLEM[dd] <- weighted_mean( res[,ind1], pweights)
             WLEvar[dd] <- weighted_var( res[,ind1], pweights )
         }
     }
@@ -96,7 +96,7 @@ tam_mml_wle_postproc <- function(ndim, err_inv, theta, pid, resp.ind,
     attr(res,"WLEvar") <- WLEvar
     attr(res,"WLEM") <- WLEM
     #--- collect reliabilities
-    i1 <- grep( "WLE.rel" , colnames(res), fixed = TRUE )
+    i1 <- grep( "WLE.rel", colnames(res), fixed=TRUE )
     if (ndim==1){
         attr(res,"WLE.rel") <- res[[i1]][1]
     } else {

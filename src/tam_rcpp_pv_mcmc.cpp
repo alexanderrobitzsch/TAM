@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_pv_mcmc.cpp
-//// File Version: 0.30
+//// File Version: 0.34
 
 
 
@@ -54,10 +54,10 @@ Rcpp::List tam_rcpp_pv_mcmc_calc_probs_irf_3pl(
         for (int ii=0; ii<I; ii++){   // item ii
             if( resp_ind(nn,ii) == 1 ){   // resp(nn,ii) == 1
                 for (int kk=0; kk<maxK; kk++){  // category kk
-                    ind_temp =  ii + kk*I + nn*I*maxK ;
-                    Btheta[ ind_temp ] = AXsi( ii , kk ) ;
+                    ind_temp =  ii + kk*I + nn*I*maxK;
+                    Btheta[ ind_temp ] = AXsi( ii, kk );
                     for (int dd=0; dd<D; dd++){   // dimension dd
-                        B_temp = B[  ii + kk*I + dd*I*maxK ] ;
+                        B_temp = B[  ii + kk*I + dd*I*maxK ];
                         if ( B_temp != 0){
                             Btheta[ ind_temp ] = Btheta[ ind_temp ]  + B_temp * theta(nn,dd);
                         }  // end if B_temp
@@ -75,12 +75,12 @@ Rcpp::List tam_rcpp_pv_mcmc_calc_probs_irf_3pl(
             if( resp_ind(nn,ii) == 1 ){   // resp(nn,ii) == 1
                 sum_temp=0;
                 for (int kk=0; kk<maxK; kk++){  // category kk
-                    ind_temp =  ii + kk*I + nn*I*maxK ;
-                    sum_temp = sum_temp + Btheta[ ind_temp ]  ;
+                    ind_temp =  ii + kk*I + nn*I*maxK;
+                    sum_temp = sum_temp + Btheta[ ind_temp ];
                 }   // end kk
                 for (int kk=0; kk<maxK; kk++){  // category kk
-                    ind_temp =  ii + kk*I + nn*I*maxK ;
-                    rprobs[ind_temp] = Btheta[ ind_temp ] / sum_temp ;
+                    ind_temp =  ii + kk*I + nn*I*maxK;
+                    rprobs[ind_temp] = Btheta[ ind_temp ] / sum_temp;
                 }   // end kk
             }   // end resp(nn,ii) == 1
         }  // end ii
@@ -89,9 +89,9 @@ Rcpp::List tam_rcpp_pv_mcmc_calc_probs_irf_3pl(
     //*************************************************
     // OUTPUT
     return Rcpp::List::create(
-                Rcpp::Named("rr") = Btheta ,
+                Rcpp::Named("rr") = Btheta,
                 Rcpp::Named("rprobs") = rprobs
-            ) ;
+            );
 }
 ///********************************************************************
 
@@ -99,6 +99,6 @@ Rcpp::List tam_rcpp_pv_mcmc_calc_probs_irf_3pl(
 
 // if ( ! R_IsNA( resp(nn,ii) ) ){
 //                Rcpp::Rcout << "ii=" << ii << " " <<
-//                    ii+resp(nn,ii)*nitems << " " << std::flush << std::endl ;
+//                    ii+resp(nn,ii)*nitems << " " << std::flush << std::endl;
 
 

@@ -1,5 +1,5 @@
 %% File Name: tam.se.Rd
-%% File Version: 2.17
+%% File Version: 2.21
 
 \name{tam.se}
 
@@ -15,11 +15,11 @@ Standard error computation for objects of the classes \code{tam}
 and \code{tam.mml}.
 }
 \usage{
-tam.se(tamobj, item_pars = TRUE, ...)
+tam.se(tamobj, item_pars=TRUE, ...)
 
-tam_mml_se_quick(tamobj, numdiff.parm = 0.001, item_pars = TRUE )
+tam_mml_se_quick(tamobj, numdiff.parm=0.001, item_pars=TRUE )
 
-tam_latreg_se_quick(tamobj, numdiff.parm = 0.001 )
+tam_latreg_se_quick(tamobj, numdiff.parm=0.001 )
 }
 
 % tam.se(tamobj, SE.quick=TRUE, ...)
@@ -102,7 +102,7 @@ prop1 <- se1$xsi$se / mod1$xsi$se
 ##   > summary( prop1 )
 ##      Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 ##     1.030   1.034   1.035   1.036   1.039   1.042
-## => standard errors estimated by tam.se are a bit larger
+##=> standard errors estimated by tam.se are a bit larger
 
 \dontrun{
 #############################################################################
@@ -114,18 +114,18 @@ formulaA <- ~ item*female
 resp <- data.ex08[["resp"]]
 facets <- as.data.frame( data.ex08[["facets"]] )
 # investigate DIF
-mod <- TAM::tam.mml.mfr( resp= resp , facets= facets , formulaA = formulaA )
+mod <- TAM::tam.mml.mfr( resp=resp, facets=facets, formulaA=formulaA )
 summary(mod)
 # estimate standard errors
 semod <- TAM::tam.se(mod)
 prop1 <- semod$xsi$se / mod$xsi$se
 summary(prop1)
 # plot differences in standard errors
-plot( mod$xsi$se , semod$xsi$se , pch=16 , xlim=c(0,.15) , ylim=c(0,.15) ,
-    xlab="Standard error 'tam.mml'" , ylab="Standard error 'tam.se'" )
-lines( c(-6,6) , c(-6,6) , col="gray")
+plot( mod$xsi$se, semod$xsi$se, pch=16, xlim=c(0,.15), ylim=c(0,.15),
+    xlab="Standard error 'tam.mml'", ylab="Standard error 'tam.se'" )
+lines( c(-6,6), c(-6,6), col="gray")
 
-round( cbind( mod$xsi , semod$xsi[,-1] ) , 3 )
+round( cbind( mod$xsi, semod$xsi[,-1] ), 3 )
   ##                    xsi se.xsi   N    est    se
   ##   I0001         -1.956  0.092 500 -1.956 0.095
   ##   I0002         -1.669  0.085 500 -1.669 0.088
@@ -137,7 +137,7 @@ round( cbind( mod$xsi , semod$xsi[,-1] ) , 3 )
   ##   [...]
   ##   I0009:female1 -0.019  0.068 500 -0.019 0.068
   ##
-# => The largest discrepancy in standard errors is observed for the
+#=> The largest discrepancy in standard errors is observed for the
 #    main female effect (.041 in 'tam.se' instead of .025 in 'tam.mml')
 }
 }

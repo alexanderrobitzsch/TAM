@@ -1,5 +1,5 @@
 %% File Name: IRT.WrightMap.Rd
-%% File Version: 0.24
+%% File Version: 0.28
 
 \name{IRT.WrightMap}
 % \alias{IRT.WrightMap}
@@ -21,12 +21,12 @@ objects in \pkg{TAM}.
 
 
 \usage{
-\method{IRT.WrightMap}{tam.mml}(object, prob.lvl= .5, type="PV", \dots)
+\method{IRT.WrightMap}{tam.mml}(object, prob.lvl=.5, type="PV", \dots)
 
-\method{IRT.WrightMap}{tamaan}(object, prob.lvl= .5, type="PV", \dots)
+\method{IRT.WrightMap}{tamaan}(object, prob.lvl=.5, type="PV", \dots)
 }
 %- maybe also 'usage' for other objects documented here.
-% IRT.WrightMap(object, prob.lvl= .5, type="PV", \dots)
+% IRT.WrightMap(object, prob.lvl=.5, type="PV", \dots)
 
 \arguments{
   \item{object}{
@@ -96,70 +96,70 @@ mod1 <- TAM::tam.mml(resp=dat)
 # Wright map
 IRT.WrightMap( mod1 )
 # some customized plots
-IRT.WrightMap( mod1 , show.thr.lab = FALSE, label.items = c(1:40), label.items.rows = 3)
+IRT.WrightMap( mod1, show.thr.lab=FALSE, label.items=c(1:40), label.items.rows=3)
 
-IRT.WrightMap( mod1 ,  show.thr.sym = FALSE, thr.lab.text = paste0("I",1:ncol(dat)) ,
-     label.items = "", label.items.ticks = FALSE)
+IRT.WrightMap( mod1,  show.thr.sym=FALSE, thr.lab.text=paste0("I",1:ncol(dat)),
+     label.items="", label.items.ticks=FALSE)
 
 #--- direct specification with wrightMap function
 theta <- TAM::tam.wle(mod1)$theta
 thr <- TAM::tam.threshold(mod1)
 
 # default wrightMap plots
-WrightMap::wrightMap( theta , thr , label.items.srt = 90)
-WrightMap::wrightMap( theta , t(thr) , label.items = c("items") )
+WrightMap::wrightMap( theta, thr, label.items.srt=90)
+WrightMap::wrightMap( theta, t(thr), label.items=c("items") )
 
 # stack all items below each other
-thr.lab.text <- matrix( "" , 1 , ncol(dat) )
+thr.lab.text <- matrix( "", 1, ncol(dat) )
 thr.lab.text[1,] <- colnames(dat)
-WrightMap::wrightMap( theta , t(thr) , label.items = c("items") ,
-       thr.lab.text=thr.lab.text , show.thr.sym=FALSE )
+WrightMap::wrightMap( theta, t(thr), label.items=c("items"),
+       thr.lab.text=thr.lab.text, show.thr.sym=FALSE )
 
 #############################################################################
 # EXAMPLE 2: Unidimensional model polytomous data
 #############################################################################
 
-data( data.Students , package="CDM")
+data( data.Students, package="CDM")
 dat <- data.Students
 
 # fit generalized partial credit model using the tamaan function
 tammodel <- "
 LAVAAN MODEL:
-  SC =~ sc1__sc4
+  SC=~ sc1__sc4
   SC ~~ 1*SC
     "
-mod1 <- TAM::tamaan( tammodel , dat )
+mod1 <- TAM::tamaan( tammodel, dat )
 # create item level colors
 library(RColorBrewer)
 ncat <- 3               # number of category parameters
 I <- ncol(mod1$resp)    # number of items
 itemlevelcolors <- matrix(rep( RColorBrewer::brewer.pal(ncat, "Set1"), I),
-        byrow = TRUE, ncol = ncat)
+        byrow=TRUE, ncol=ncat)
 # Wright map
-IRT.WrightMap(mod1 , prob.lvl=.625 , thr.sym.col.fg = itemlevelcolors,
-     thr.sym.col.bg = itemlevelcolors , label.items = colnames( mod1$resp) )
+IRT.WrightMap(mod1, prob.lvl=.625, thr.sym.col.fg=itemlevelcolors,
+     thr.sym.col.bg=itemlevelcolors, label.items=colnames( mod1$resp) )
 
 #############################################################################
 # EXAMPLE 3: Multidimensional item response model
 #############################################################################
 
-data( data.read , package="sirt")
+data( data.read, package="sirt")
 dat <- data.read
 
 # fit three-dimensional Rasch model
-Q <- matrix( 0 , nrow=12 , ncol=3 )
+Q <- matrix( 0, nrow=12, ncol=3 )
 Q[1:4,1] <- Q[5:8,2] <- Q[9:12,3] <- 1
-mod1 <- TAM::tam.mml( dat , Q=Q , control=list(maxiter=20 , snodes=1000)  )
+mod1 <- TAM::tam.mml( dat, Q=Q, control=list(maxiter=20, snodes=1000)  )
 summary(mod1)
 # define matrix with colors for thresholds
-c1 <- matrix( c( rep(1,4) , rep(2,4) , rep(4,4)) , ncol=1 )
+c1 <- matrix( c( rep(1,4), rep(2,4), rep(4,4)), ncol=1 )
 # create Wright map using WLE
-IRT.WrightMap( mod1 , prob.lvl=.65 , type="WLE" , thr.lab.col=c1 , thr.sym.col.fg=c1 ,
-        thr.sym.col.bg=c1 , label.items = colnames(dat) )
+IRT.WrightMap( mod1, prob.lvl=.65, type="WLE", thr.lab.col=c1, thr.sym.col.fg=c1,
+        thr.sym.col.bg=c1, label.items=colnames(dat) )
 # Wright map using PV (the default)
-IRT.WrightMap( mod1 , prob.lvl=.65 , type="PV" )
+IRT.WrightMap( mod1, prob.lvl=.65, type="PV" )
 # Wright map using population distribution
-IRT.WrightMap( mod1 , prob.lvl=.65 , type="Pop" )
+IRT.WrightMap( mod1, prob.lvl=.65, type="Pop" )
 
 #############################################################################
 # EXAMPLE 4: Wright map for a multi-faceted Rasch model
@@ -173,11 +173,11 @@ data(data.ex10)
 dat <- data.ex10
 
 #--- fit multi-faceted Rasch model
-facets <- dat[, "rater", drop = FALSE]  # define facet (rater)
+facets <- dat[, "rater", drop=FALSE]  # define facet (rater)
 pid <- dat$pid  # define person identifier (a person occurs multiple times)
 resp <- dat[, -c(1:2)]  # item response data
 formulaA <- ~item * rater  # formula
-mod <- TAM::tam.mml.mfr(resp = resp, facets = facets, formulaA = formulaA, pid = dat$pid)
+mod <- TAM::tam.mml.mfr(resp=resp, facets=facets, formulaA=formulaA, pid=dat$pid)
 
 # person parameters
 persons.mod <- TAM::tam.wle(mod)
@@ -188,60 +188,60 @@ item.labs <- c("I0001", "I0002", "I0003", "I0004", "I0005")
 rater.labs <- c("rater1", "rater2", "rater3")
 
 #--- Plot 1: Item specific
-thr1 <- matrix(thr, nrow = 5, byrow = TRUE)
-WrightMap::wrightMap(theta, thr1, label.items = item.labs,
-   thr.lab.text = rep(rater.labs, each = 5))
+thr1 <- matrix(thr, nrow=5, byrow=TRUE)
+WrightMap::wrightMap(theta, thr1, label.items=item.labs,
+   thr.lab.text=rep(rater.labs, each=5))
 
 #--- Plot 2: Rater specific
-thr2 <- matrix(thr, nrow = 3)
-WrightMap::wrightMap(theta, thr2, label.items = rater.labs,
-   thr.lab.text = rep(item.labs,  each = 3), axis.items = "Raters")
+thr2 <- matrix(thr, nrow=3)
+WrightMap::wrightMap(theta, thr2, label.items=rater.labs,
+   thr.lab.text=rep(item.labs,  each=3), axis.items="Raters")
 
 #--- Plot 3a: item, rater and item*rater parameters
 pars <- mod$xsi.facets$xsi
 facet <- mod$xsi.facets$facet
 
-item.par <- pars[facet == "item"]
-rater.par <- pars[facet == "rater"]
-item_rat <- pars[facet == "item:rater"]
+item.par <- pars[facet=="item"]
+rater.par <- pars[facet=="rater"]
+item_rat <- pars[facet=="item:rater"]
 
 len <- length(item_rat)
 item.long <- c(item.par, rep(NA, len - length(item.par)))
 rater.long <- c(rater.par, rep(NA, len - length(rater.par)))
-ir.labs <- mod$xsi.facets$parameter[facet == "item:rater"]
+ir.labs <- mod$xsi.facets$parameter[facet=="item:rater"]
 
 WrightMap::wrightMap(theta, rbind(item.long, rater.long, item_rat),
-    label.items = c("Items",  "Raters", "Item*Raters"),
-    thr.lab.text = rbind(item.labs, rater.labs, ir.labs), axis.items = "")
+    label.items=c("Items",  "Raters", "Item*Raters"),
+    thr.lab.text=rbind(item.labs, rater.labs, ir.labs), axis.items="")
 
 #--- Plot 3b: item, rater and item*rater (separated by raters) parameters
 
 # parameters item*rater
-ir_rater <- matrix(item_rat, nrow = 3, byrow = TRUE)
+ir_rater <- matrix(item_rat, nrow=3, byrow=TRUE)
 # define matrix of thresholds
 thr <- rbind(item.par, c(rater.par, NA, NA), ir_rater)
 # matrix with threshold labels
 thr.lab.text <- rbind(item.labs, rater.labs,
-           matrix(item.labs, nrow = 3, ncol = 5, byrow = TRUE))
+           matrix(item.labs, nrow=3, ncol=5, byrow=TRUE))
 
-WrightMap::wrightMap(theta, thresholds= thr ,
-      label.items = c("Items", "Raters", "Item*Raters (R1)",
+WrightMap::wrightMap(theta, thresholds=thr,
+      label.items=c("Items", "Raters", "Item*Raters (R1)",
                            "Item*Raters (R2)", "Item*Raters (R3)"),
-      axis.items = "", thr.lab.text = thr.lab.text )
+      axis.items="", thr.lab.text=thr.lab.text )
 
 #--- Plot 3c: item, rater and item*rater (separated by items) parameters
 
 # thresholds
-ir_item <- matrix(item_rat, nrow = 5)
+ir_item <- matrix(item_rat, nrow=5)
 thr <- rbind(item.par, c(rater.par, NA, NA), cbind(ir_item, NA, NA))
 # labels
 label.items <- c("Items", "Raters", "Item*Raters\n (I1)", "Item*Raters \n(I2)",
      "Item*Raters \n(I3)", "Item*Raters \n (I4)", "Item*Raters \n(I5)")
 thr.lab.text <- rbind(item.labs,
-          matrix(c(rater.labs, NA, NA), nrow = 6, ncol = 5, byrow = TRUE))
+          matrix(c(rater.labs, NA, NA), nrow=6, ncol=5, byrow=TRUE))
 
-WrightMap::wrightMap(theta, thr,  label.items = label.items ,
-      axis.items = "", thr.lab.text = thr.lab.text  )
+WrightMap::wrightMap(theta, thr,  label.items=label.items,
+      axis.items="", thr.lab.text=thr.lab.text  )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9837
+%% File Version: 2.9842
 
 \name{tam.mml}
 
@@ -32,31 +32,31 @@ Modules for psychometric test analysis demonstrated
 
 
 \usage{
-tam(resp , irtmodel ="1PL" , formulaA=NULL, ...)
+tam(resp, irtmodel="1PL", formulaA=NULL, ...)
 
-tam.mml(resp, Y = NULL, group = NULL, irtmodel = "1PL", formulaY = NULL,
-    dataY = NULL, ndim = 1,  pid = NULL, xsi.fixed = NULL, xsi.inits = NULL,
-    beta.fixed = NULL, beta.inits = NULL, variance.fixed = NULL,
-    variance.inits = NULL, est.variance = TRUE, constraint="cases" , A = NULL,
-    B = NULL, B.fixed = NULL,  Q = NULL,  est.slopegroups = NULL, E = NULL,
-    pweights = NULL, userfct.variance = NULL ,
-    variance.Npars = NULL , item.elim = TRUE , verbose = TRUE, control = list() )
+tam.mml(resp, Y=NULL, group=NULL, irtmodel="1PL", formulaY=NULL,
+    dataY=NULL, ndim=1,  pid=NULL, xsi.fixed=NULL, xsi.inits=NULL,
+    beta.fixed=NULL, beta.inits=NULL, variance.fixed=NULL,
+    variance.inits=NULL, est.variance=TRUE, constraint="cases", A=NULL,
+    B=NULL, B.fixed=NULL,  Q=NULL,  est.slopegroups=NULL, E=NULL,
+    pweights=NULL, userfct.variance=NULL,
+    variance.Npars=NULL, item.elim=TRUE, verbose=TRUE, control=list() )
 
-tam.mml.2pl(resp, Y = NULL, group = NULL, irtmodel = "2PL", formulaY = NULL,
-    dataY = NULL, ndim = 1, pid = NULL, xsi.fixed = NULL, xsi.inits = NULL,
-    beta.fixed = NULL, beta.inits = NULL, variance.fixed = NULL,
-    variance.inits = NULL, est.variance = FALSE, A = NULL, B = NULL,
-    B.fixed = NULL, Q = NULL, est.slopegroups = NULL, E = NULL, gamma.init = NULL ,
-    pweights = NULL, userfct.variance = NULL , variance.Npars = NULL ,
-    item.elim = TRUE, verbose = TRUE, control = list() )
+tam.mml.2pl(resp, Y=NULL, group=NULL, irtmodel="2PL", formulaY=NULL,
+    dataY=NULL, ndim=1, pid=NULL, xsi.fixed=NULL, xsi.inits=NULL,
+    beta.fixed=NULL, beta.inits=NULL, variance.fixed=NULL,
+    variance.inits=NULL, est.variance=FALSE, A=NULL, B=NULL,
+    B.fixed=NULL, Q=NULL, est.slopegroups=NULL, E=NULL, gamma.init=NULL,
+    pweights=NULL, userfct.variance=NULL, variance.Npars=NULL,
+    item.elim=TRUE, verbose=TRUE, control=list() )
 
-tam.mml.mfr(resp, Y = NULL, group = NULL, irtmodel = "1PL", formulaY = NULL,
-    dataY = NULL, ndim = 1, pid = NULL, xsi.fixed = NULL, xsi.setnull = NULL,
-    xsi.inits = NULL, beta.fixed = NULL, beta.inits = NULL, variance.fixed = NULL ,
-    variance.inits = NULL , est.variance = TRUE , formulaA=~item+item:step,
-    constraint="cases", A=NULL , B=NULL ,  B.fixed = NULL , Q=NULL ,
-    facets=NULL, est.slopegroups=NULL , E = NULL ,
-    pweights = NULL , verbose = TRUE, control = list() , delete.red.items=TRUE )
+tam.mml.mfr(resp, Y=NULL, group=NULL, irtmodel="1PL", formulaY=NULL,
+    dataY=NULL, ndim=1, pid=NULL, xsi.fixed=NULL, xsi.setnull=NULL,
+    xsi.inits=NULL, beta.fixed=NULL, beta.inits=NULL, variance.fixed=NULL,
+    variance.inits=NULL, est.variance=TRUE, formulaA=~item+item:step,
+    constraint="cases", A=NULL, B=NULL,  B.fixed=NULL, Q=NULL,
+    facets=NULL, est.slopegroups=NULL, E=NULL,
+    pweights=NULL, verbose=TRUE, control=list(), delete.red.items=TRUE )
 
 \method{summary}{tam}(object, file=NULL, \dots)
 
@@ -69,17 +69,17 @@ tam.mml.mfr(resp, Y = NULL, group = NULL, irtmodel = "1PL", formulaY = NULL,
 }
 
 % ## specification of prior distributions
-% prior_list_include( prior_list , prior , index )
+% prior_list_include( prior_list, prior, index )
 
 
 %% USAGE
-%%tam.jml(resp, group = NULL, disattenuate = FALSE, bias = TRUE,
-%%    xsi.fixed = NULL, xsi.inits = NULL,  A = NULL, B = NULL, Q = NULL,
-%%    R = NULL, ndim = 1, pweights = NULL, control = list())
+%%tam.jml(resp, group=NULL, disattenuate=FALSE, bias=TRUE,
+%%    xsi.fixed=NULL, xsi.inits=NULL,  A=NULL, B=NULL, Q=NULL,
+%%    R=NULL, ndim=1, pweights=NULL, control=list())
 
-%%tam.jml2(resp, group = NULL, disattenuate = FALSE, bias = TRUE,
-%%    xsi.fixed = NULL, xsi.inits = NULL,  A = NULL, B = NULL,
-%%    Q = NULL, R = NULL, ndim = 1, pweights = NULL, control = list())
+%%tam.jml2(resp, group=NULL, disattenuate=FALSE, bias=TRUE,
+%%    xsi.fixed=NULL, xsi.inits=NULL,  A=NULL, B=NULL,
+%%    Q=NULL, R=NULL, ndim=1, pweights=NULL, control=list())
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ARGUMENTS
@@ -231,12 +231,12 @@ be printed during iterations. This argument replaces \code{control$progress}.
 }
 \item{control}{
   A list of control arguments for the algorithm: \cr\cr
-  \code{ list( nodes = seq(-6,6,len=21) , snodes = 0 , QMC=TRUE,}\cr
-    \code{        convD = .001 ,conv = .0001 , convM = .0001 , Msteps = 4 ,   }\cr
-    \code{        maxiter = 1000 , max.increment = 1 , }\cr
-    \code{        min.variance = .001 , progress = TRUE , ridge=0 ,    }\cr
-    \code{        seed = NULL , xsi.start0=0, , increment.factor=1 ,  }\cr
-    \code{        fac.oldxsi=0 , acceleration = "none", dev_crit = "absolute" )  }\cr
+  \code{ list( nodes=seq(-6,6,len=21), snodes=0, QMC=TRUE,}\cr
+    \code{        convD=.001,conv=.0001, convM=.0001, Msteps=4,   }\cr
+    \code{        maxiter=1000, max.increment=1, }\cr
+    \code{        min.variance=.001, progress=TRUE, ridge=0,    }\cr
+    \code{        seed=NULL, xsi.start0=0,, increment.factor=1,  }\cr
+    \code{        fac.oldxsi=0, acceleration="none", dev_crit="absolute" )  }\cr
     \code{        trim_increment="half" )  }\cr
 
 \code{nodes}: the discretized \eqn{\theta} nodes for numerical integration
@@ -300,7 +300,7 @@ are used.
 defines the weight of parameter values in previous iteration. If \eqn{\xi_t}
 denotes a parameter update in iteration \eqn{t}, \eqn{\xi_{t-1}} is the
 parameter value of iteration \eqn{t-1}, then the modified parameter value
-is defined as \eqn{ \xi_t^* = (1-f) \cdot \xi_t + f \cdot \xi_{t-1}}.
+is defined as \eqn{ \xi_t^*=(1-f) \cdot \xi_t + f \cdot \xi_{t-1}}.
 Especially in cases where the deviance increases, setting the parameter
 larger than 0 (maybe .4 or .5) is helpful in stabilizing the algorithm
 (see Example 15).
@@ -312,7 +312,7 @@ the default), the monotone overrelaxation method of \code{"Yu"} (Yu, 2012) and
 
 \code{dev_crit}: Criterion for convergence in deviance. \code{dev_crit="abolute"}
 refers to absolute differences in successive deviance values, while
-\code{dev_crit = "relative"} refers to relative differences.
+\code{dev_crit="relative"} refers to relative differences.
 
 \code{trim_increment}: Type of method for trimming parameter increments in
 algorithm. Possible types are \code{"half"} or "\code{"cut"}.
@@ -360,16 +360,16 @@ at \eqn{I} items (in columns), each item having at most
 The item response model has \eqn{D} dimensions of the \eqn{\theta} ability
 vector and can be written as
 \deqn{
-        P( X_{pi} = k | \theta_p )  \propto exp( b_{ik} \theta_p + a_{ik} \xi )
+        P( X_{pi}=k | \theta_p )  \propto exp( b_{ik} \theta_p + a_{ik} \xi )
         }
 The symbol \eqn{\propto } means that response probabilities are normalized such
-that \eqn{ \sum _k P( X_{pi} = k | \theta_p ) = 1 }.
+that \eqn{ \sum _k P( X_{pi}=k | \theta_p )=1 }.
 
 Item category thresholds for item \eqn{i} in category \eqn{k}
 are written as a linear combination
 \eqn{a_i \xi} where the vector \eqn{\xi} of length \eqn{N_\xi}
 contains generalized item parameters and
-\eqn{A= ( a_{ik} )_{ik} = ( a_i )_{i} } is
+\eqn{A=( a_{ik} )_{ik}=( a_i )_{i} } is
 a three-dimensional design array (specified in \code{A}).
 
 The scoring vector \eqn{b_{ik}} contains the fixed (in \code{tam.mml})
@@ -377,16 +377,16 @@ or estimated (in \code{tam.mml.2pl}) scores of item \eqn{i} in category \eqn{k}
 on dimension \eqn{d}.
 
 For \code{tam.mml.2pl} and \code{irtmodel="GPCM.design"}, item slopes \eqn{a_i}
-can be written as a linear combination \eqn{a_i = ( E \gamma)_i }
+can be written as a linear combination \eqn{a_i=( E \gamma)_i }
 of basis item slopes which is an analogue
 of the LLTM for item slopes (see Example 7; Embretson, 1999).
 
 The latent regression model regresses the latent trait \eqn{\theta_p}
 on covariates \eqn{Y} which results in
 \deqn{
-    \theta_p = Y \beta + \epsilon_p , \epsilon_p \sim N_D ( 0 , \Sigma )
+    \theta_p=Y \beta + \epsilon_p, \epsilon_p \sim N_D ( 0, \Sigma )
 }{%
-  \theta_p = Y \beta + \epsilon_p , \epsilon_p ~ N_D ( 0 , \Sigma )
+  \theta_p=Y \beta + \epsilon_p, \epsilon_p ~ N_D ( 0, \Sigma )
     }
 
 Where \eqn{\beta} is a \eqn{N_Y} times \eqn{D} matrix of regression
@@ -396,9 +396,9 @@ The multiple group model for groups
 \eqn{g=1,...,G} is implemented for unidimensional and multidimensional item
 response models. In this case, variance heterogeneity is allowed
 \deqn{
-    \theta_p = Y \beta + \epsilon_p , \epsilon_p \sim N ( 0 , \sigma_g^2 )
+    \theta_p=Y \beta + \epsilon_p, \epsilon_p \sim N ( 0, \sigma_g^2 )
 }{%
-  \theta_p = Y \beta + \epsilon_p , \epsilon_p ~ N( 0 , \sigma_g^2 )
+  \theta_p=Y \beta + \epsilon_p, \epsilon_p ~ N( 0, \sigma_g^2 )
     }
 
 \bold{Integration}: Uni- and multidimensional integrals are approximated by
@@ -408,7 +408,7 @@ IRT models, the \eqn{D}-dimensional cube consisting of the vector
 \code{control$nodes} in all dimensions is used. If the user specifies
 \code{control$snodes} with a value larger than zero, then Quasi-Monte Carlo
 integration (Pan & Thomas, 2007; Gonzales et al., 2006) with \code{control$snodes} is used
-(because \code{control$QMC = TRUE} is set by default). If
+(because \code{control$QMC=TRUE} is set by default). If
 \code{control$QMC=FALSE} is specified, then stochastic (Monte Carlo) integration
 is employed with \code{control$snodes} stochastic nodes.
 }
@@ -483,7 +483,7 @@ parameters (only applies to \code{tam.mml.2pl})}
 credit model (only applies to \code{tam.mml.2pl} in case of
 \code{irtmodel="GPCM.design"})}
 \item{basispar}{Vector of \eqn{\gamma} parameters of the linear combination
-\eqn{a_i = ( E \gamma)_i } for item slopes (only applies to
+\eqn{a_i=( E \gamma)_i } for item slopes (only applies to
 \code{tam.mml.2pl} in case of \code{irtmodel='GPCM.design'})}
 \item{formulaA}{Design formula (only applies to \code{tam.mml.mfr})}
 \item{facets}{Data frame with facet entries (only applies to
@@ -622,37 +622,37 @@ summary(mod1)
 #-- specification with tamaan
 tammodel <- "
  LAVAAN MODEL:
-   F =~ I1__I40;
+   F=~ I1__I40;
    F ~~ F
  ITEM TYPE:
    ALL(Rasch)
    "
-mod1t <- TAM::tamaan( tammodel , data.sim.rasch)
+mod1t <- TAM::tamaan( tammodel, data.sim.rasch)
 summary(mod1t)
 
 #************************************************************
 # Model 1a: Rasch model with fixed item difficulties from 'mod1'
 xsi0 <- mod1$xsi$xsi
-xsi.fixed <- cbind( 1:(length(xsi0)) , xsi0 )
+xsi.fixed <- cbind( 1:(length(xsi0)), xsi0 )
         # define vector with fixed item difficulties
-mod1a <- TAM::tam.mml( resp=data.sim.rasch , xsi.fixed=xsi.fixed )
+mod1a <- TAM::tam.mml( resp=data.sim.rasch, xsi.fixed=xsi.fixed )
 summary(mod1a)
 
 # Usage of the output value mod1$xsi.fixed.estimated has the right format
 # as the input of xsi.fixed
-mod1aa <- TAM::tam.mml( resp=data.sim.rasch , xsi.fixed= mod1$xsi.fixed.estimated )
+mod1aa <- TAM::tam.mml( resp=data.sim.rasch, xsi.fixed=mod1$xsi.fixed.estimated )
 summary(mod1b)
 
 #************************************************************
 # Model 1b: Rasch model with initial xsi parameters for items 2 (item difficulty b=-1.8),
 # item 4 (b=-1.6) and item 40 (b=2)
-xsi.inits <- cbind( c(2,4,40) , c(-1.8,-1.6,2))
-mod1b <- TAM::tam.mml( resp=data.sim.rasch , xsi.inits=xsi.inits )
+xsi.inits <- cbind( c(2,4,40), c(-1.8,-1.6,2))
+mod1b <- TAM::tam.mml( resp=data.sim.rasch, xsi.inits=xsi.inits )
 
 #-- tamaan specification
 tammodel <- "
  LAVAAN MODEL:
-   F =~ I1__I40
+   F=~ I1__I40
    F ~~ F
    # Fix item difficulties. Note that item intercepts instead of difficulties
    # must be specified.
@@ -661,7 +661,7 @@ tammodel <- "
  ITEM TYPE:
    ALL(Rasch)
    "
-mod1bt <- TAM::tamaan( tammodel , data.sim.rasch)
+mod1bt <- TAM::tamaan( tammodel, data.sim.rasch)
 summary(mod1bt)
 
 #************************************************************
@@ -669,25 +669,25 @@ summary(mod1bt)
 dat <- data.sim.rasch
 # modify A design matrix to include the sum constraint
 des <- TAM::designMatrices(resp=dat)
-A1 <- des$A[ , , - ncol(dat) ]
-A1[ ncol(dat) ,2 , ] <- 1
+A1 <- des$A[,, - ncol(dat) ]
+A1[ ncol(dat),2, ] <- 1
 A1[,2,]
 # estimate model
-mod1c <- TAM::tam.mml( resp=dat , A=A1 , beta.fixed=FALSE ,
+mod1c <- TAM::tam.mml( resp=dat, A=A1, beta.fixed=FALSE,
            control=list(fac.oldxsi=.1) )
 summary(mod1c)
 
 #************************************************************
 # Model 1d: estimate constraint='items' using tam.mml.mfr
-formulaA= ~ 0 + item
-mod1d <- TAM::tam.mml.mfr( resp=dat , formulaA=formulaA ,
-                     control=list(fac.oldxsi=.1) , constraint="items")
+formulaA=~ 0 + item
+mod1d <- TAM::tam.mml.mfr( resp=dat, formulaA=formulaA,
+                     control=list(fac.oldxsi=.1), constraint="items")
 summary(mod1d)
 
 #************************************************************
 # Model 1e: This sum constraint can also be obtained by using the argument
 # constraint="items" in tam.mml
-mod1e <- TAM::tam.mml( resp=data.sim.rasch , constraint="items" )
+mod1e <- TAM::tam.mml( resp=data.sim.rasch, constraint="items" )
 summary(mod1e)
 
 #************************************************************
@@ -705,8 +705,8 @@ itemnames <- paste0("I", sprintf(paste('\%0', max(nchar(1:ncol(dat))), 'i', sep=
 facets   <- data.frame( "item"=rep(itemnames, each=nrow(dat)) )
 
 mod1d2 <- TAM::tam.mml.mfr( resp=resp.long, formulaA=formulaA, control=list(fac.oldxsi=.1),
-                       constraint="items" , facets=facets , pid=pid)
-stopifnot( all(mod1d$xsi.facets$xsi == mod1d2$xsi.facets$xsi) )
+                       constraint="items", facets=facets, pid=pid)
+stopifnot( all(mod1d$xsi.facets$xsi==mod1d2$xsi.facets$xsi) )
 }
 
 
@@ -721,22 +721,22 @@ mod2$B      # item slopes
 #--- tamaan specification
 tammodel <- "
  LAVAAN MODEL:
-   F =~ I1__I40
+   F=~ I1__I40
    F ~~ 1*F
    # item type of 2PL is the default for dichotomous data
    "
 # estimate model
-mod2t <- TAM::tamaan( tammodel , data.sim.rasch)
+mod2t <- TAM::tamaan( tammodel, data.sim.rasch)
 summary(mod2t)
 
 \dontrun{
 #************************************************************
 # Model 2a: 2PL with fixed item difficulties and slopes from 'mod2'
 xsi0 <- mod2$xsi$xsi
-xsi.fixed <- cbind( 1:(length(xsi0)) , xsi0 )
+xsi.fixed <- cbind( 1:(length(xsi0)), xsi0 )
         # define vector with fixed item difficulties
-mod2a <- TAM::tam.mml( resp=data.sim.rasch , xsi.fixed=xsi.fixed ,
-                 B = mod2$B # fix slopes
+mod2a <- TAM::tam.mml( resp=data.sim.rasch, xsi.fixed=xsi.fixed,
+                 B=mod2$B # fix slopes
             )
 summary(mod2a)
 mod2a$B     # inspect used slope matrix
@@ -749,54 +749,54 @@ mod2a$B     # inspect used slope matrix
 est.slope <- rep(1,40)
 est.slope[ 11:20 ] <- 2
 est.slope[ 31:40 ] <- 3
-mod3 <- TAM::tam.mml.2pl( resp=data.sim.rasch , irtmodel="2PL.groups" ,
-               est.slopegroups = est.slope )
+mod3 <- TAM::tam.mml.2pl( resp=data.sim.rasch, irtmodel="2PL.groups",
+               est.slopegroups=est.slope )
 mod3$B
 summary(mod3)
 
 #--- tamaan specification (A)
 tammodel <- "
  LAVAAN MODEL:
-   F =~ lam1*I1__I10 + lam2*I11__I20 + lam1*I21__I30 + lam3*I31__I40;
+   F=~ lam1*I1__I10 + lam2*I11__I20 + lam1*I21__I30 + lam3*I31__I40;
    F ~~ 1*F
    "
 # estimate model
-mod3tA <- TAM::tamaan( tammodel , data.sim.rasch)
+mod3tA <- TAM::tamaan( tammodel, data.sim.rasch)
 summary(mod3tA)
 
 #--- tamaan specification (alternative B)
 tammodel <- "
  LAVAAN MODEL:
-   F =~ a1__a40*I1__I40;
+   F=~ a1__a40*I1__I40;
    F ~~ 1*F
  MODEL CONSTRAINT:
-   a1__a10  == lam1
-   a11__a20 == lam2
-   a21__a30 == lam1
-   a31__a40 == lam3
+   a1__a10==lam1
+   a11__a20==lam2
+   a21__a30==lam1
+   a31__a40==lam3
    "
-mod3tB <- TAM::tamaan( tammodel , data.sim.rasch)
+mod3tB <- TAM::tamaan( tammodel, data.sim.rasch)
 summary(mod3tB)
 
 #--- tamaan specification (alternative C using DO operator)
 tammodel <- "
  LAVAAN MODEL:
  DO(1,10,1)
-   F =~ lam1*I\%
+   F=~ lam1*I\%
  DOEND
  DO(11,20,1)
-   F =~ lam2*I\%
+   F=~ lam2*I\%
  DOEND
  DO(21,30,1)
-   F =~ lam1*I\%
+   F=~ lam1*I\%
  DOEND
  DO(31,40,1)
-   F =~ lam3*I\%
+   F=~ lam3*I\%
  DOEND
    F ~~ 1*F
    "
 # estimate model
-mod3tC <- TAM::tamaan( tammodel , data.sim.rasch)
+mod3tC <- TAM::tamaan( tammodel, data.sim.rasch)
 summary(mod3tC)
 
 #############################################################################
@@ -807,41 +807,41 @@ summary(mod3tC)
 set.seed(6778)     # set simulation seed
 N <- 2000          # number of persons
 # latent regressors Y
-Y <- cbind( stats::rnorm( N , sd = 1.5) , stats::rnorm(N , sd = .3 ) )
+Y <- cbind( stats::rnorm( N, sd=1.5), stats::rnorm(N, sd=.3 ) )
 # simulate theta
 theta <- stats::rnorm( N ) + .4 * Y[,1] + .2 * Y[,2]  # latent regression model
 # number of items
 I <- 40
-p1 <- stats::plogis( outer( theta , seq( -2 , 2 , len=I ) , "-" ) )
+p1 <- stats::plogis( outer( theta, seq( -2, 2, len=I ), "-" ) )
 # simulate response matrix
-resp <- 1 * ( p1 > matrix( stats::runif( N*I ) , nrow=N , ncol=I ) )
-colnames(resp) <- paste("I" , 1:I, sep="")
+resp <- 1 * ( p1 > matrix( stats::runif( N*I ), nrow=N, ncol=I ) )
+colnames(resp) <- paste("I", 1:I, sep="")
 
 # (2) estimate model
-mod2_1 <- TAM::tam.mml(resp=resp , Y=Y)
+mod2_1 <- TAM::tam.mml(resp=resp, Y=Y)
 summary(mod2_1)
 
 # (3) setting initial values for beta coefficients
-#   beta_2 = .20 , beta_3 = .35 for dimension 1
-beta.inits <- cbind( c(2,3) , 1 , c(.2, .35 ) )
-mod2_2 <- TAM::tam.mml(resp=resp , Y=Y , beta.inits=beta.inits)
+#   beta_2=.20, beta_3=.35 for dimension 1
+beta.inits <- cbind( c(2,3), 1, c(.2, .35 ) )
+mod2_2 <- TAM::tam.mml(resp=resp, Y=Y, beta.inits=beta.inits)
 
 # (4) fix intercept to zero and third coefficient to .3
-beta.fixed <- cbind( c(1,3) , 1 , c(0, .3 ) )
-mod2_3 <- TAM::tam.mml(resp=resp , Y=Y , beta.fixed=beta.fixed )
+beta.fixed <- cbind( c(1,3), 1, c(0, .3 ) )
+mod2_3 <- TAM::tam.mml(resp=resp, Y=Y, beta.fixed=beta.fixed )
 
 # (5) same model but with R regression formula for Y
 dataY <- data.frame(Y)
 colnames(dataY) <- c("Y1","Y2")
-mod2_4 <- TAM::tam.mml(resp=resp , dataY=dataY , formulaY = ~ Y1+Y2 )
+mod2_4 <- TAM::tam.mml(resp=resp, dataY=dataY, formulaY=~ Y1+Y2 )
 summary(mod2_4)
 
 # (6) model with interaction of regressors
-mod2_5 <- TAM::tam.mml(resp=resp , dataY=dataY , formulaY = ~ Y1*Y2 )
+mod2_5 <- TAM::tam.mml(resp=resp, dataY=dataY, formulaY=~ Y1*Y2 )
 summary(mod2_5)
 
 # (7) no constraint on regressors (removing constraint from intercept)
-mod2_6 <- TAM::tam.mml(resp=resp , Y=Y , beta.fixed=FALSE )
+mod2_6 <- TAM::tam.mml(resp=resp, Y=Y, beta.fixed=FALSE )
 
 #############################################################################
 # EXAMPLE 3: Multiple group estimation
@@ -850,15 +850,15 @@ mod2_6 <- TAM::tam.mml(resp=resp , Y=Y , beta.fixed=FALSE )
 # (1) simulate data
 set.seed(6778)
 N <- 3000
-theta <- c( stats::rnorm(N/2,mean=0,sd = 1.5) , stats::rnorm(N/2,mean=.5,sd = 1)  )
+theta <- c( stats::rnorm(N/2,mean=0,sd=1.5), stats::rnorm(N/2,mean=.5,sd=1)  )
 I <- 20
-p1 <- stats::plogis( outer( theta , seq( -2 , 2 , len=I ) , "-" ) )
-resp <- 1 * ( p1 > matrix( stats::runif( N*I ) , nrow=N , ncol=I ) )
-colnames(resp) <- paste("I" , 1:I, sep="")
-group <- rep(1:2 , each=N/2 )
+p1 <- stats::plogis( outer( theta, seq( -2, 2, len=I ), "-" ) )
+resp <- 1 * ( p1 > matrix( stats::runif( N*I ), nrow=N, ncol=I ) )
+colnames(resp) <- paste("I", 1:I, sep="")
+group <- rep(1:2, each=N/2 )
 
 # (2) estimate model
-mod3_1 <- TAM::tam.mml( resp ,  group = group )
+mod3_1 <- TAM::tam.mml( resp,  group=group )
 summary(mod3_1)
 
 #############################################################################
@@ -873,85 +873,85 @@ summary(mod3_1)
 set.seed(6778)
 library(mvtnorm)
 N <- 1000
-Y <- cbind( stats::rnorm( N ) , stats::rnorm(N) )
-theta <- mvtnorm::rmvnorm( N,mean=c(0,0), sigma=matrix( c(1,.5,.5,1) , 2 , 2 ))
+Y <- cbind( stats::rnorm( N ), stats::rnorm(N) )
+theta <- mvtnorm::rmvnorm( N,mean=c(0,0), sigma=matrix( c(1,.5,.5,1), 2, 2 ))
 theta[,1] <- theta[,1] + .4 * Y[,1] + .2 * Y[,2]  # latent regression model
 theta[,2] <- theta[,2] + .8 * Y[,1] + .5 * Y[,2]  # latent regression model
 I <- 20
-p1 <- stats::plogis( outer( theta[,1] , seq( -2 , 2 , len=I ) , "-" ) )
-resp1 <- 1 * ( p1 > matrix( stats::runif( N*I ) , nrow=N , ncol=I ) )
-p1 <- stats::plogis( outer( theta[,2] , seq( -2 , 2 , len=I ) , "-" ) )
-resp2 <- 1 * ( p1 > matrix( stats::runif( N*I ) , nrow=N , ncol=I ) )
+p1 <- stats::plogis( outer( theta[,1], seq( -2, 2, len=I ), "-" ) )
+resp1 <- 1 * ( p1 > matrix( stats::runif( N*I ), nrow=N, ncol=I ) )
+p1 <- stats::plogis( outer( theta[,2], seq( -2, 2, len=I ), "-" ) )
+resp2 <- 1 * ( p1 > matrix( stats::runif( N*I ), nrow=N, ncol=I ) )
 resp <- cbind(resp1,resp2)
-colnames(resp) <- paste("I" , 1:(2*I), sep="")
+colnames(resp) <- paste("I", 1:(2*I), sep="")
 
 # (2) define loading Matrix
-Q <- array( 0 , dim = c( 2*I , 2 ))
-Q[cbind(1:(2*I), c( rep(1,I) , rep(2,I) ))] <- 1
+Q <- array( 0, dim=c( 2*I, 2 ))
+Q[cbind(1:(2*I), c( rep(1,I), rep(2,I) ))] <- 1
 
 # (3) estimate models
 
 #************************************************************
 # Model 4.1: Rasch model: without regressors
-mod4_1 <- TAM::tam.mml( resp=resp , Q=Q )
+mod4_1 <- TAM::tam.mml( resp=resp, Q=Q )
 
 #--- tamaan specification
 tammodel <- "
   LAVAAN MODEL:
-    F1 =~ 1*I1__I20
-    F2 =~ 1*I21__I40
+    F1=~ 1*I1__I20
+    F2=~ 1*I21__I40
     # Alternatively to the factor 1 one can use the item type Rasch
     F1 ~~ F1
     F2 ~~ F2
     F1 ~~ F2
     "
-mod4_1t <- TAM::tamaan( tammodel , resp , control=list(maxiter=100))
+mod4_1t <- TAM::tamaan( tammodel, resp, control=list(maxiter=100))
 summary(mod4_1t)
 
 #************************************************************
 # Model 4.1b: estimate model with sum constraint of items for each dimension
-mod4_1b <- TAM::tam.mml( resp=resp, Q=Q ,constraint="items")
+mod4_1b <- TAM::tam.mml( resp=resp, Q=Q,constraint="items")
 
 #************************************************************
 # Model 4.2: Rasch model: set covariance between dimensions to zero
-variance_fixed <- cbind( 1 , 2 , 0 )
-mod4_2 <- TAM::tam.mml( resp=resp , Q=Q , variance.fixed = variance_fixed )
+variance_fixed <- cbind( 1, 2, 0 )
+mod4_2 <- TAM::tam.mml( resp=resp, Q=Q, variance.fixed=variance_fixed )
 summary(mod4_2)
 
 #--- tamaan specification
 tammodel <- "
   LAVAAN MODEL:
-    F1 =~ I1__I20
-    F2 =~ I21__I40
+    F1=~ I1__I20
+    F2=~ I21__I40
     F1 ~~ F1
     F2 ~~ F2
     F1 ~~ 0*F2
   ITEM TYPE:
     ALL(Rasch)
     "
-mod4_2t <- TAM::tamaan( tammodel , resp)
+mod4_2t <- TAM::tamaan( tammodel, resp)
 summary(mod4_2t)
 
 #************************************************************
 # Model 4.3: 2PL model
-mod4_3 <- TAM::tam.mml.2pl( resp=resp , Q=Q , irtmodel="2PL" )
+mod4_3 <- TAM::tam.mml.2pl( resp=resp, Q=Q, irtmodel="2PL" )
 
 #--- tamaan specification
 tammodel <- "
   LAVAAN MODEL:
-    F1 =~ I1__I20
-    F2 =~ I21__I40
+    F1=~ I1__I20
+    F2=~ I21__I40
     F1 ~~ F1
     F2 ~~ F2
     F1 ~~ F2
     "
-mod4_3t <- TAM::tamaan( tammodel , resp )
+mod4_3t <- TAM::tamaan( tammodel, resp )
 summary(mod4_3t)
 
 #************************************************************
 # Model 4.4: Rasch model with 2000 quasi monte carlo nodes
 # -> nodes are useful for more than 3 or 4 dimensions
-mod4_4 <- TAM::tam.mml( resp=resp , Q=Q , control=list(snodes=2000) )
+mod4_4 <- TAM::tam.mml( resp=resp, Q=Q, control=list(snodes=2000) )
 
 #************************************************************
 # Model 4.5: Rasch model with 2000 stochastic nodes
@@ -959,20 +959,20 @@ mod4_5 <- TAM::tam.mml( resp=resp, Q=Q,control=list(snodes=2000,QMC=FALSE))
 
 #************************************************************
 # Model 4.6: estimate two dimensional Rasch model with regressors
-mod4_6 <- TAM::tam.mml( resp=resp , Y=Y , Q=Q )
+mod4_6 <- TAM::tam.mml( resp=resp, Y=Y, Q=Q )
 
 #--- tamaan specification
 tammodel <- "
   LAVAAN MODEL:
-    F1 =~ I1__I20
-    F2 =~ I21__I40
+    F1=~ I1__I20
+    F2=~ I21__I40
     F1 ~~ F1
     F2 ~~ F2
     F1 ~~ F2
   ITEM TYPE:
     ALL(Rasch)
     "
-mod4_6t <- TAM::tamaan( tammodel , resp , Y=Y )
+mod4_6t <- TAM::tamaan( tammodel, resp, Y=Y )
 summary(mod4_6t)
 
 #############################################################################
@@ -983,20 +983,20 @@ library(mvtnorm)
 set.seed(4762)
 N <- 2000 # 2000 persons
 Y <- stats::rnorm( N )
-theta <- mvtnorm::rmvnorm( N,mean=c(0,0), sigma=matrix( c(1,.5,.5,1) , 2 , 2 ))
+theta <- mvtnorm::rmvnorm( N,mean=c(0,0), sigma=matrix( c(1,.5,.5,1), 2, 2 ))
 I <- 10
 # 10 items load on the first dimension
-p1 <- stats::plogis( outer( theta[,1] , seq( -2 , 2 , len=I ) , "-" ) )
-resp1 <- 1 * ( p1 > matrix( stats::runif( N*I ) , nrow=N , ncol=I ) )
+p1 <- stats::plogis( outer( theta[,1], seq( -2, 2, len=I ), "-" ) )
+resp1 <- 1 * ( p1 > matrix( stats::runif( N*I ), nrow=N, ncol=I ) )
 # 10 items load on the second dimension
-p1 <- stats::plogis( outer( theta[,2] , seq( -2 , 2 , len=I ) , "-" ) )
-resp2 <- 1 * ( p1 > matrix( stats::runif( N*I ) , nrow=N , ncol=I ) )
+p1 <- stats::plogis( outer( theta[,2], seq( -2, 2, len=I ), "-" ) )
+resp2 <- 1 * ( p1 > matrix( stats::runif( N*I ), nrow=N, ncol=I ) )
 # 20 items load on both dimensions
-p1 <- stats::plogis( outer( 0.5*theta[,1] + 1.5*theta[,2], seq(-2,2,len=2*I ) , "-" ))
-resp3 <- 1 * ( p1 > matrix( stats::runif( N*2*I ) , nrow=N , ncol=2*I ) )
+p1 <- stats::plogis( outer( 0.5*theta[,1] + 1.5*theta[,2], seq(-2,2,len=2*I ), "-" ))
+resp3 <- 1 * ( p1 > matrix( stats::runif( N*2*I ), nrow=N, ncol=2*I ) )
 #Combine the two sets of items into one response matrix
 resp <- cbind(resp1, resp2, resp3 )
-colnames(resp) <- paste("I" , 1:(4*I), sep="")
+colnames(resp) <- paste("I", 1:(4*I), sep="")
 
 # (2) define loading matrix
 Q <- cbind(c(rep(1,10),rep(0,10),rep(1,20)), c(rep(0,10),rep(1,10),rep(1,20)))
@@ -1013,13 +1013,13 @@ mod5$B
 #--- tamaan specification
 tammodel <- "
   LAVAAN MODEL:
-    F1 =~ I1__I10 + I21__I40
-    F2 =~ I11__I20 + I21__I40
+    F1=~ I1__I10 + I21__I40
+    F2=~ I11__I20 + I21__I40
     F1 ~~ 1*F1
     F1 ~~ F2
     F2 ~~ 1*F2
     "
-mod5t <- TAM::tamaan( tammodel , resp ,  control=list(maxiter=10))
+mod5t <- TAM::tamaan( tammodel, resp,  control=list(maxiter=10))
 summary(mod5t)
 
 #############################################################################
@@ -1029,21 +1029,21 @@ data(data.gpcm, package="TAM")
 
 #************************************************************
 # Ex6.1: Nominal response model (irtmodel="2PL")
-mod6_1 <- TAM::tam.mml.2pl( resp=data.gpcm , irtmodel="2PL", control=list(maxiter=200) )
+mod6_1 <- TAM::tam.mml.2pl( resp=data.gpcm, irtmodel="2PL", control=list(maxiter=200) )
 mod6_1$item # item intercepts
 mod6_1$B    # for every category a separate slope parameter is estimated
 
 # reestimate the model with fixed item parameters
-mod6_1a <- TAM::tam.mml.2pl( resp=data.gpcm , irtmodel="2PL" ,
-       xsi.fixed = mod6_1$xsi.fixed.estimated,  B.fixed = mod6_1$B.fixed.estimated )
+mod6_1a <- TAM::tam.mml.2pl( resp=data.gpcm, irtmodel="2PL",
+       xsi.fixed=mod6_1$xsi.fixed.estimated,  B.fixed=mod6_1$B.fixed.estimated )
 
 # estimate the model with initial item parameters from mod6_1
-mod6_1b <- TAM::tam.mml.2pl( resp=data.gpcm , irtmodel="2PL" ,
-       xsi.inits = mod6_1$xsi.fixed.estimated,  B = mod6_1$B )
+mod6_1b <- TAM::tam.mml.2pl( resp=data.gpcm, irtmodel="2PL",
+       xsi.inits=mod6_1$xsi.fixed.estimated,  B=mod6_1$B )
 
 #************************************************************
 # Ex6.2: Generalized partial credit model
-mod6_2 <- TAM::tam.mml.2pl( resp= data.gpcm, irtmodel="GPCM", control=list(maxiter=200))
+mod6_2 <- TAM::tam.mml.2pl( resp=data.gpcm, irtmodel="GPCM", control=list(maxiter=200))
 mod6_2$B[,2,]    # joint slope parameter for all categories
 
 #************************************************************
@@ -1051,31 +1051,31 @@ mod6_2$B[,2,]    # joint slope parameter for all categories
 # B: nitems x maxK x ndim
 #   ( number of items x maximum number of categories x number of dimensions)
 # set two constraints
-B.fixed <- matrix( 0 , 2 , 4 )
+B.fixed <- matrix( 0, 2, 4 )
 # set second item, score of 2 (category 3), at first dimension to 2.3
 B.fixed[1,] <- c(2,3,1,2.3)
 # set third item, score of 1 (category 2), at first dimension to 1.4
 B.fixed[2,] <- c(3,2,1,1.4)
 
 # estimate item parameter with variance fixed (by default)
-mod6_3 <- TAM::tam.mml.2pl( resp=data.gpcm , irtmodel="2PL" , B.fixed = B.fixed ,
+mod6_3 <- TAM::tam.mml.2pl( resp=data.gpcm, irtmodel="2PL", B.fixed=B.fixed,
                  control=list( maxiter=200) )
 mod6_3$B
 
 #************************************************************
 # Ex 6.4: estimate the same model, but estimate variance
-mod6_4 <- TAM::tam.mml.2pl( resp=data.gpcm , irtmodel="2PL" , B.fixed = B.fixed ,
-               est.variance = TRUE , control=list( maxiter=350) )
+mod6_4 <- TAM::tam.mml.2pl( resp=data.gpcm, irtmodel="2PL", B.fixed=B.fixed,
+               est.variance=TRUE, control=list( maxiter=350) )
 mod6_4$B
 
 #************************************************************
 # Ex 6.5: partial credit model
-mod6_5 <- TAM::tam.mml( resp=data.gpcm ,control=list( maxiter=200) )
+mod6_5 <- TAM::tam.mml( resp=data.gpcm,control=list( maxiter=200) )
 mod6_5$B
 
 #************************************************************
 # Ex 6.6: partial credit model: Conquest parametrization 'item+item*step'
-mod6_6 <- TAM::tam.mml( resp=data.gpcm , irtmodel="PCM2" )
+mod6_6 <- TAM::tam.mml( resp=data.gpcm, irtmodel="PCM2" )
 summary(mod6_6)
 
 # estimate mod6_6 applying the sum constraint of item difficulties
@@ -1083,22 +1083,22 @@ summary(mod6_6)
 A1 <- TAM::.A.PCM2(resp=data.gpcm )
 A1[3,2:4,"Comfort"] <- 1:3
 A1[3,2:4,"Work"] <- 1:3
-A1 <- A1[ , , -3] # remove Benefit xsi item parameter
+A1 <- A1[,, -3] # remove Benefit xsi item parameter
 # estimate model
-mod6_6b <- TAM::tam.mml( resp=data.gpcm , A=A1 , beta.fixed=FALSE )
+mod6_6b <- TAM::tam.mml( resp=data.gpcm, A=A1, beta.fixed=FALSE )
 summary(mod6_6b)
 
 # estimate model with argument constraint="items"
-mod6_6c <- TAM::tam.mml( resp=data.gpcm , irtmodel="PCM2" , constraint="items")
+mod6_6c <- TAM::tam.mml( resp=data.gpcm, irtmodel="PCM2", constraint="items")
 
 # estimate mod6_6 using tam.mml.mfr
-mod6_6d <- TAM::tam.mml.mfr( resp=data.gpcm , formulaA= ~ 0 + item + item:step ,
-    control=list(fac.oldxsi=.1)  , constraint="items" )
+mod6_6d <- TAM::tam.mml.mfr( resp=data.gpcm, formulaA=~ 0 + item + item:step,
+    control=list(fac.oldxsi=.1), constraint="items" )
 summary(mod6_6d)
 
 #************************************************************
 # Ex 6.7: Rating scale model: Conquest parametrization 'item+step'
-mod6_7 <- TAM::tam.mml( resp=data.gpcm , irtmodel="RSM" )
+mod6_7 <- TAM::tam.mml( resp=data.gpcm, irtmodel="RSM" )
 summary(mod6_7)
 
 #************************************************************
@@ -1120,10 +1120,10 @@ A1 <- TAM::.A.PCM2( resp=dat )
 # with opposing margin it had been loaded on its own main item parameter
 A1["M032761",,setdiff(colnames(dat), "M032761")] <- -A1["M032761",,"M032761"]
 # remove main item parameter for constrained item
-A1 <- A1[ , , setdiff(dimnames(A1)[[3]],"M032761")]
+A1 <- A1[,, setdiff(dimnames(A1)[[3]],"M032761")]
 
 # estimate model
-mod6_8a <- TAM::tam.mml( resp=dat , A=A1 , beta.fixed=FALSE )
+mod6_8a <- TAM::tam.mml( resp=dat, A=A1, beta.fixed=FALSE )
 summary(mod6_8a)
 # extract fixed item parameter for item M032761
 ## - sum(mod6_8a$xsi[setdiff(colnames(dat), "M032761"),"xsi"])
@@ -1132,7 +1132,7 @@ summary(mod6_8a)
 ## fixed a bug in 'tam.mml.mfr' for differing number of categories
 ## per item -> now a xsi vector with parameter fixings to values
 ## of 99 is used
-mod6_8b <- TAM::tam.mml.mfr( resp=dat , formulaA= ~ 0 + item + item:step ,
+mod6_8b <- TAM::tam.mml.mfr( resp=dat, formulaA=~ 0 + item + item:step,
                         control=list(fac.oldxsi=.1), constraint="items" )
 summary(mod6_8b)
 
@@ -1141,21 +1141,21 @@ summary(mod6_8b)
 
 data(data.timssAusTwn.scored)
 dat <- data.timssAusTwn.scored[,2:11]
-dat[ dat == 9 ] <- NA
+dat[ dat==9 ] <- NA
 
 # obtain the design matrix for the PCM parametrization and
 # the number of categories for each item
-maxKi <- apply(dat, 2, max, na.rm = TRUE)
-des <- TAM::designMatrices(resp = dat)
+maxKi <- apply(dat, 2, max, na.rm=TRUE)
+des <- TAM::designMatrices(resp=dat)
 A1 <- des$A
 
 # define the constrained item category and remove the respective parameter
-(par <- unlist( strsplit(dimnames(A1)[[3]][dim(A1)[3]], split = "_") ))
+(par <- unlist( strsplit(dimnames(A1)[[3]][dim(A1)[3]], split="_") ))
 A1 <- A1[,,-dim(A1)[3]]
 
 # the item category loads on every other item category parameter with
 # opposing margin, balancing the number of categories for each item
-item.id <- which(colnames(dat) == par[1])
+item.id <- which(colnames(dat)==par[1])
 cat.id <- maxKi[par[1]]+1
 loading <- 1/rep(maxKi, maxKi)
 loading <- loading [-which(names(loading)==par[1])[1]]
@@ -1163,7 +1163,7 @@ A1[item.id, cat.id, ] <- loading
 A1[item.id,,]
 
 # estimate model
-mod6_9 <- TAM::tam.mml( resp=dat , A=A1 , beta.fixed=FALSE )
+mod6_9 <- TAM::tam.mml( resp=dat, A=A1, beta.fixed=FALSE )
 summary(mod6_9)
 
 ## extract fixed item category parameter
@@ -1182,16 +1182,16 @@ data(data.gpcm)
 dat <- data.gpcm
 
 # Ex 6.10a: set all slopes of three items equal to each other
-E <- matrix( 1 , nrow=3 , ncol=1 )
-mod6_10a <- TAM::tam.mml.2pl( dat , irtmodel="GPCM.design" , E=E  )
+E <- matrix( 1, nrow=3, ncol=1 )
+mod6_10a <- TAM::tam.mml.2pl( dat, irtmodel="GPCM.design", E=E  )
 summary(mod6_10a)
 mod6_10a$B[,,]
 
 # Ex 6.10b: equal slope for first and third item
-E <- matrix( 0 , nrow=3 , ncol=2 )
+E <- matrix( 0, nrow=3, ncol=2 )
 E[c(1,3),1] <- 1
 E[ 2, 2 ] <- 1
-mod6_10b <- TAM::tam.mml.2pl( dat , irtmodel="GPCM.design" , E=E  )
+mod6_10b <- TAM::tam.mml.2pl( dat, irtmodel="GPCM.design", E=E  )
 summary(mod6_10b)
 mod6_10b$B[,,]
 
@@ -1202,38 +1202,38 @@ mod6_10b$B[,,]
 # (1) simulate data from a model with a (item slope) design matrix E
 set.seed(789)
 I <- 42
-b <- seq( -2 , 2 , len=I)
+b <- seq( -2, 2, len=I)
 # create design matrix for loadings
-E <- matrix( 0 , I , 5 )
-E[ seq(1,I,3) , 1 ] <- 1
-E[ seq(2,I,3) , 2 ] <- 1
-E[ seq(3,I,3) , 3 ] <- 1
-ind <- seq( 1, I , 2 ) ; E[ ind , 4 ] <- rep( c( .3 , -.2 ) , I )[ 1:length(ind) ]
-ind <- seq( 2, I , 4 ) ; E[ ind , 5 ] <- rep( .15 , I )[ 1:length(ind) ]
+E <- matrix( 0, I, 5 )
+E[ seq(1,I,3), 1 ] <- 1
+E[ seq(2,I,3), 2 ] <- 1
+E[ seq(3,I,3), 3 ] <- 1
+ind <- seq( 1, I, 2 ) ; E[ ind, 4 ] <- rep( c( .3, -.2 ), I )[ 1:length(ind) ]
+ind <- seq( 2, I, 4 ) ; E[ ind, 5 ] <- rep( .15, I )[ 1:length(ind) ]
 E
 
 # true basis slope parameters
-lambda <- c( 1 , 1.2 , 0.8 , 1 , 1.1 )
+lambda <- c( 1, 1.2, 0.8, 1, 1.1 )
 # calculate item slopes
 a <- E \%*\% lambda
 
 # simulate
 N <- 4000
 theta <- stats::rnorm( N )
-aM <- outer( rep(1,N) , a[,1] )
-bM <- outer( rep(1,N) , b )
-pM <- stats::plogis( aM * ( matrix( theta , nrow=N , ncol=I  ) - bM ) )
+aM <- outer( rep(1,N), a[,1] )
+bM <- outer( rep(1,N), b )
+pM <- stats::plogis( aM * ( matrix( theta, nrow=N, ncol=I  ) - bM ) )
 dat <- 1 * ( pM > stats::runif( N*I ) )
-colnames(dat) <- paste("I" , 1:I , sep="")
+colnames(dat) <- paste("I", 1:I, sep="")
 
 # estimate model
-mod7 <- TAM::tam.mml.2pl( resp = dat , irtmodel="GPCM.design" , E=E )
+mod7 <- TAM::tam.mml.2pl( resp=dat, irtmodel="GPCM.design", E=E )
 mod7$B
 
 # recalculate estimated basis parameters
 stats::lm( mod7$B[,2,1] ~ 0+ as.matrix(E ) )
   ##   Call:
-  ##   lm(formula = mod7$B[, 2, 1] ~ 0 + as.matrix(E))
+  ##   lm(formula=mod7$B[, 2, 1] ~ 0 + as.matrix(E))
   ##   Coefficients:
   ##   as.matrix(E)1  as.matrix(E)2  as.matrix(E)3  as.matrix(E)4  as.matrix(E)5
   ##          0.9904         1.1896         0.7817         0.9601         1.2132
@@ -1252,7 +1252,7 @@ facets <- as.data.frame( data.ex08[["facets"]] )
 
 #***
 # Model 8a: investigate gender DIF on all items
-mod8a <- TAM::tam.mml.mfr( resp= resp , facets= facets , formulaA = formulaA )
+mod8a <- TAM::tam.mml.mfr( resp=resp, facets=facets, formulaA=formulaA )
 summary(mod8a)
 
 #***
@@ -1274,13 +1274,13 @@ stopifnot( all(mod8a$xsi.facets$xsi==mod8a_2$xsi.facets$xsi) )
 
 # modify pre-specified design matrix to define 'appropriate' DBF effects
 formulaA <- ~ item*female
-des <- TAM::designMatrices.mfr( resp=resp , facets=facets , formulaA=formulaA)
+des <- TAM::designMatrices.mfr( resp=resp, facets=facets, formulaA=formulaA)
 A1 <- des$A$A.3d
 # item group A: items 1-5
 # item group B: items 6-8
 # item group C: items 9-10
 A1 <- A1[,,1:13]
-dimnames(A1)[[3]][ c(12,13) ] <- c("A:female1" , "B:female1")
+dimnames(A1)[[3]][ c(12,13) ] <- c("A:female1", "B:female1")
 # item group A
 A1[,2,12] <- 0
 A1[c(1,5,7,9,11),2,12] <- -1
@@ -1294,7 +1294,7 @@ A1[c(19,3),2,c(12,13)] <- 1
 A1[c(19,3)+1,2,c(12,13)] <- -1
 #   A1[,2,]   # look at modified design matrix
 # estimate model
-mod8b <- TAM::tam.mml( resp= des$gresp$gresp.noStep , A=A1 )
+mod8b <- TAM::tam.mml( resp=des$gresp$gresp.noStep, A=A1 )
 summary(mod8b)
 
 #############################################################################
@@ -1330,12 +1330,12 @@ head(dat)
   ## 452   2     2     1     1     1     0     1
   ## 902   2     3     1     1     0     1     1
 
-facets <- dat[ , "rater" , drop=FALSE ] # define facet (rater)
+facets <- dat[, "rater", drop=FALSE ] # define facet (rater)
 pid <- dat$pid      # define person identifier (a person occurs multiple times)
-resp <- dat[ , -c(1:2) ]        # item response data
+resp <- dat[, -c(1:2) ]        # item response data
 formulaA <- ~ item * rater      # formula
 
-mod10 <- TAM::tam.mml.mfr( resp=resp , facets=facets , formulaA = formulaA , pid=dat$pid )
+mod10 <- TAM::tam.mml.mfr( resp=resp, facets=facets, formulaA=formulaA, pid=dat$pid )
 summary(mod10)
 
 # estimate person parameter with WLE
@@ -1345,19 +1345,19 @@ wmod10 <- TAM::tam.wle( mod10 )
 # compare model containing only item
 formulaA <- ~ item + rater      # pseudo formula for item
 xsi.setnull <- "rater"          # set all rater effects to zero
-mod10a <- TAM::tam.mml.mfr( resp=resp , facets=facets , formulaA = formulaA ,
-            xsi.setnull=xsi.setnull , pid=dat$pid , beta.fixed = cbind(1,1,0))
+mod10a <- TAM::tam.mml.mfr( resp=resp, facets=facets, formulaA=formulaA,
+            xsi.setnull=xsi.setnull, pid=dat$pid, beta.fixed=cbind(1,1,0))
 summary(mod10a)
 
 # A shorter way for specifying this example is
 formulaA <- ~ item + 0*rater        # set all rater effects to zero
-mod10a1 <- TAM::tam.mml.mfr( resp=resp, facets=facets, formulaA = formulaA, pid=dat$pid )
+mod10a1 <- TAM::tam.mml.mfr( resp=resp, facets=facets, formulaA=formulaA, pid=dat$pid )
 summary(mod10a1)
 
 # tam.mml.mfr also appropriately extends the facets data frame with pseudo facets
 # if necessary
 formulaA <- ~ item     # omitting the rater term
-mod10a2 <- TAM::tam.mml.mfr( resp=resp, facets=facets, formulaA = formulaA, pid=dat$pid )
+mod10a2 <- TAM::tam.mml.mfr( resp=resp, facets=facets, formulaA=formulaA, pid=dat$pid )
   ##   Item Parameters Xsi
   ##              xsi se.xsi
   ##   I0001   -1.931  0.111
@@ -1370,18 +1370,18 @@ mod10a2 <- TAM::tam.mml.mfr( resp=resp, facets=facets, formulaA = formulaA, pid=
 
 #***
 # Model 10_2: specification with long format response data
-resp.long <- c(unlist( dat[ , -c(1:2) ] ))
+resp.long <- c(unlist( dat[, -c(1:2) ] ))
 
-pid <- rep( dat$pid, ncol(dat[ , -c(1:2) ]) )
-itemnames <- rep(colnames(dat[ , -c(1:2) ]), each=nrow(dat[ , -c(1:2) ]))
+pid <- rep( dat$pid, ncol(dat[, -c(1:2) ]) )
+itemnames <- rep(colnames(dat[, -c(1:2) ]), each=nrow(dat[, -c(1:2) ]))
 
 # quick note: the 'trick' to use pid as the row index of the facet  (cf., used in Ex 8a_2)
 # is not working here, since pid already occures multiple times in the original response data
 facets <- cbind( data.frame("item"=itemnames),
-                 dat[ rep(1:nrow(dat), ncol(dat[,-c(1:2)])), "rater" ,drop=F]
+                 dat[ rep(1:nrow(dat), ncol(dat[,-c(1:2)])), "rater",drop=F]
 )
 
-mod10_2 <- TAM::tam.mml.mfr( resp=resp.long, facets=facets, formulaA= formulaA, pid= pid)
+mod10_2 <- TAM::tam.mml.mfr( resp=resp.long, facets=facets, formulaA=formulaA, pid=pid)
 
 stopifnot( all(mod10$xsi.facets$xsi==mod10_2$xsi.facets$xsi) )
 
@@ -1394,9 +1394,9 @@ data(data.ex11) ; dat <- data.ex11
 # Model 11a: Calibration (item parameter estimating) in which omitted
 #            responses (code 9) are set to missing
 dat1 <- dat[,-1]
-dat1[ dat1 == 9 ] <- NA
+dat1[ dat1==9 ] <- NA
 # estimate Rasch model
-mod11a <- TAM::tam.mml( resp= dat1 )
+mod11a <- TAM::tam.mml( resp=dat1 )
 summary(mod11a)
 # compute person parameters
 wmod11a <- TAM::tam.wle( mod11a )
@@ -1408,12 +1408,12 @@ wmod11a <- TAM::tam.wle( mod11a )
 
 # set matrix with fixed item difficulties as the input
 xsi1 <- mod11a$xsi    # xsi output from Model 11a
-xsi.fixed <- cbind( seq(1,nrow(xsi1) ) , xsi1$xsi )
+xsi.fixed <- cbind( seq(1,nrow(xsi1) ), xsi1$xsi )
 # recode 9 to 0
 dat2 <- dat[,-1]
-dat2[ dat2 == 9 ] <- 0
+dat2[ dat2==9 ] <- 0
 # run Rasch model with fixed item difficulties
-mod11b <- TAM::tam.mml( resp= dat2 , xsi.fixed=xsi.fixed )
+mod11b <- TAM::tam.mml( resp=dat2, xsi.fixed=xsi.fixed )
 summary(mod11b)
 # WLE estimation
 wmod11b <- TAM::tam.wle( mod11b )
@@ -1425,11 +1425,11 @@ data(data.ex12)
 dat <- data.ex12
 
 # non-convergence without increment.factor
-mod1 <- TAM::tam.mml.2pl( resp=data.ex12 , control=list( maxiter=1000) )
+mod1 <- TAM::tam.mml.2pl( resp=data.ex12, control=list( maxiter=1000) )
 
 # avoiding non-convergence with increment.factor=1.02
-mod2 <- TAM::tam.mml.2pl( resp=data.ex12 ,
-            control=list( maxiter=1000 , increment.factor=1.02) )
+mod2 <- TAM::tam.mml.2pl( resp=data.ex12,
+            control=list( maxiter=1000, increment.factor=1.02) )
 summary(mod1)
 summary(mod2)
 
@@ -1465,10 +1465,10 @@ dimnames(A)[[1]] <- colnames(data.long)[-1]
   ##     ..$ : chr [1:12] "Item01" "Item02" "Item03" "Item04" ...
   ##     ..$ : chr [1:2] "Category0" "Category1"
   ##     ..$ : chr [1:12] "I1T1" "I2T1" "I3T1" "I4T1" ...
-A1 <- A[  ,  , c(1:6 , 11:12 ) ]
+A1 <- A[,, c(1:6, 11:12 ) ]
 dimnames(A1)[[3]] <- substring( dimnames(A1)[[3]],1,2)
-A1[7,2,3] <- -1     # difficulty(I3T1) = difficulty(I3T2)
-A1[8,2,4] <- -1     # I4T1 = I4T2
+A1[7,2,3] <- -1     # difficulty(I3T1)=difficulty(I3T2)
+A1[8,2,4] <- -1     # I4T1=I4T2
 A1[9,2,5] <- A1[10,2,6] <- -1
   ##   > A1[,2,]
   ##        I1 I2 I3 I4 I5 I6 I7 I8
@@ -1487,15 +1487,15 @@ A1[9,2,5] <- A1[10,2,6] <- -1
 
 # estimate model
 # set intercept of second dimension (T2) to zero
-beta.fixed <- cbind( 1 , 2 , 0 )
-mod13a <- TAM::tam.mml( resp=data.long[,-1] , Q=Q , A=A1 , beta.fixed=beta.fixed)
+beta.fixed <- cbind( 1, 2, 0 )
+mod13a <- TAM::tam.mml( resp=data.long[,-1], Q=Q, A=A1, beta.fixed=beta.fixed)
 summary(mod13a)
 
 #--- tamaan specification
 tammodel <- "
   LAVAAN MODEL:
-    T1 =~ 1*I1T1__I6T1
-    T2 =~ 1*I3T2__I8T2
+    T1=~ 1*I1T1__I6T1
+    T2=~ 1*I3T2__I8T2
     T1 ~~ T1
     T2 ~~ T2
     T1 ~~ T2
@@ -1510,7 +1510,7 @@ tammodel <- "
   ##         I\%T1 + I\%T2 | b\%*t1
   ##       DOEND
 # estimate model
-mod13at <- TAM::tamaan( tammodel , resp = data.long ,  beta.fixed=beta.fixed )
+mod13at <- TAM::tamaan( tammodel, resp=data.long,  beta.fixed=beta.fixed )
 summary(mod13at)
 
 #***
@@ -1519,10 +1519,10 @@ summary(mod13at)
 
 A <- TAM::designMatrices(resp=data.long[,-1])$A
 dimnames(A)[[1]] <- colnames(data.long)[-1]
-A1 <- A[  ,  , c(1:5 , 11:12 ) ]
+A1 <- A[,, c(1:5, 11:12 ) ]
 dimnames(A1)[[3]] <- substring( dimnames(A1)[[3]],1,2)
-A1[7,2,3] <- -1     # difficulty(I3T1) = difficulty(I3T2)
-A1[8,2,4] <- -1     # I4T1 = I4T2
+A1[7,2,3] <- -1     # difficulty(I3T1)=difficulty(I3T2)
+A1[8,2,4] <- -1     # I4T1=I4T2
 A1[9,2,5] <- -1
 A1[6,2,3] <- A1[6,2,4] <- A1[6,2,5] <- 1     # I6T1=-(I3T1+I4T1+I5T1)
 A1[10,2,3] <- A1[10,2,4] <- A1[10,2,5] <- 1  # I6T2=-(I3T2+I4T2+I5T2)
@@ -1541,7 +1541,7 @@ A1[,2,]
   ## I7T2  0  0  0  0  0 -1  0
   ## I8T2  0  0  0  0  0  0 -1
 
-mod13b <- TAM::tam.mml( resp=data.long[,-1] , Q=Q , A=A1 , beta.fixed=FALSE)
+mod13b <- TAM::tam.mml( resp=data.long[,-1], Q=Q, A=A1, beta.fixed=FALSE)
 summary(mod13b)
 
 #***
@@ -1551,9 +1551,9 @@ summary(mod13b)
 # modifiy Items I1T1, I4T1, I4T2 in order to be trichotomous (codes: 0,1,2)
 set.seed(42)
 dat <- data.long
-dat[(1:50),2] <- sample(c(0,1,2), 50, replace = TRUE)
-dat[(1:50),5] <- sample(c(0,1,2), 50, replace = TRUE)
-dat[(1:50),9] <- sample(c(0,1,2), 50, replace = TRUE)
+dat[(1:50),2] <- sample(c(0,1,2), 50, replace=TRUE)
+dat[(1:50),5] <- sample(c(0,1,2), 50, replace=TRUE)
+dat[(1:50),9] <- sample(c(0,1,2), 50, replace=TRUE)
   ##   > colnames(dat)
   ##    [1] "idstud" "I1T1"   "I2T1"   "I3T1"   "I4T1"   "I5T1"   "I6T1"
   ##    [8] "I3T2"   "I4T2"   "I5T2"   "I6T2"   "I7T2"   "I8T2"
@@ -1582,7 +1582,7 @@ dimnames(A)[[1]] <- colnames(dat)[-1]
 # Items 1 to 3 administered at T1, Items 3 to 6 are anchor items
 # Item 7 to 8 administered at T2
 # Item I1T1, I4T1, I4T2 are trichotomous (codes: 0,1,2)
-A1 <- A[  ,  , c(1:8, 14:15) ]
+A1 <- A[,, c(1:8, 14:15) ]
 dimnames(A1)[[3]] <- gsub("T1|T2", "",  dimnames(A1)[[3]])
 
 # Modifications are shortened compared to Model 13 a, but are still valid
@@ -1599,9 +1599,9 @@ A1[10,,] <- A1[6,,] # same for item 10 and item 6
 
 # (3) estimate model
 #     set intercept of second dimension (T2) to zero
-beta.fixed <- cbind( 1 , 2 , 0 )
-mod13c <- TAM::tam.mml( resp=dat[,-1] , Q=Q , A=A1 , beta.fixed=beta.fixed,
-                   irtmodel = "PCM")
+beta.fixed <- cbind( 1, 2, 0 )
+mod13c <- TAM::tam.mml( resp=dat[,-1], Q=Q, A=A1, beta.fixed=beta.fixed,
+                   irtmodel="PCM")
 summary(mod13c)
 wle.mod13c <- TAM::tam.wle(mod13c) # WLEs of dimension T1 and T2
 
@@ -1613,10 +1613,10 @@ dat <- data.ex14
 
 #***
 # Model 14a: facet model
-resp <- dat[ , paste0("crit",1:7,sep="") ]    # item data
-facets <- data.frame( "rater" = dat$rater )     # define facets
+resp <- dat[, paste0("crit",1:7,sep="") ]    # item data
+facets <- data.frame( "rater"=dat$rater )     # define facets
 formulaA <- ~item+item*step + rater
-mod14a <- TAM::tam.mml.mfr( resp , facets=facets , formulaA=formulaA , pid=dat$pid )
+mod14a <- TAM::tam.mml.mfr( resp, facets=facets, formulaA=formulaA, pid=dat$pid )
 summary(mod14a)
 
 #***
@@ -1624,10 +1624,10 @@ summary(mod14a)
 #   Note that dataY must correspond to rows in resp and facets which means
 #   that there must be the same rows in Y for a person with multiple rows
 #   in resp
-dataY <- dat[ , c("X1","X2") ]        # latent regressors
+dataY <- dat[, c("X1","X2") ]        # latent regressors
 formulaY <- ~ X1+X2            # latent regression formula
-mod14b <- TAM::tam.mml.mfr( resp , facets=facets , formulaA= formulaA ,
-            dataY=dataY , formulaY=formulaY , pid=dat$pid)
+mod14b <- TAM::tam.mml.mfr( resp, facets=facets, formulaA=formulaA,
+            dataY=dataY, formulaY=formulaY, pid=dat$pid)
 summary(mod14b)
 
 #***
@@ -1640,12 +1640,12 @@ A <- mod14a$A             # extract design matrix for item intercepts
 colnames(resp1)
 
 # define design matrix for slopes
-E <- matrix( 0 , nrow= ncol(resp1) , ncol=7 )
+E <- matrix( 0, nrow=ncol(resp1), ncol=7 )
 colnames(E) <- paste0("crit",1:7)
 rownames(E) <- colnames(resp1)
-E[ cbind( 1:(7*7) , rep(1:7,each=7) ) ] <- 1
+E[ cbind( 1:(7*7), rep(1:7,each=7) ) ] <- 1
 
-mod14c <- TAM::tam.mml.2pl( resp=resp1 , A=A , irtmodel="GPCM.design" , E=E ,
+mod14c <- TAM::tam.mml.2pl( resp=resp1, A=A, irtmodel="GPCM.design", E=E,
         control=list(maxiter=100) )
 summary(mod14c)
 
@@ -1659,14 +1659,14 @@ data <- data.ex15
 
 #***
 # Model 15a:
-mod15a <- TAM::tam.mml.mfr(resp = data[,-c(1:2)],facets=data[,"group",drop=FALSE],
-    formulaA = ~ item + group*item , pid = data$pid )
+mod15a <- TAM::tam.mml.mfr(resp=data[,-c(1:2)],facets=data[,"group",drop=FALSE],
+    formulaA=~ item + group*item, pid=data$pid )
 # See output:
   ##
   ##   Iteration 47     2013-09-10 16:51:39
   ##   E Step
   ##   M Step Intercepts   |----
-  ##     Deviance = 75510.2868 | Deviance change: -595.0609
+  ##     Deviance=75510.2868 | Deviance change: -595.0609
   ##   !!! Deviance increases!                                        !!!!
   ##   !!! Choose maybe fac.oldxsi > 0 and/or increment.factor > 1    !!!!
   ##     Maximum intercept parameter change: 0.925045
@@ -1676,15 +1676,15 @@ mod15a <- TAM::tam.mml.mfr(resp = data[,-c(1:2)],facets=data[,"group",drop=FALSE
 #***
 # Model 15b: Follow the suggestions of changing the default of fac.oldxsi and
 #            increment.factor
-mod15b <- TAM::tam.mml.mfr(resp = data[,-c(1:2)],facets=data[,"group",drop=FALSE],
-            formulaA = ~ group*item , pid = data$pid ,
-            control=list( increment.factor=1.03 , fac.oldxsi=.4 ) )
+mod15b <- TAM::tam.mml.mfr(resp=data[,-c(1:2)],facets=data[,"group",drop=FALSE],
+            formulaA=~ group*item, pid=data$pid,
+            control=list( increment.factor=1.03, fac.oldxsi=.4 ) )
 
 #***
 # Model 15c: Alternatively, just choose more iterations in M-step by "Msteps=10"
-mod15c <- TAM::tam.mml.mfr(resp = data[,-c(1:2)],facets=data[,"group",drop=FALSE],
-    formulaA = ~ item + group*item, pid = data$pid ,
-    control=list(maxiter=250 , Msteps=10))
+mod15c <- TAM::tam.mml.mfr(resp=data[,-c(1:2)],facets=data[,"group",drop=FALSE],
+    formulaA=~ item + group*item, pid=data$pid,
+    control=list(maxiter=250, Msteps=10))
 
 #############################################################################
 # EXAMPLE 16: Differential item function for polytomous items and
@@ -1694,31 +1694,31 @@ mod15c <- TAM::tam.mml.mfr(resp = data[,-c(1:2)],facets=data[,"group",drop=FALSE
 data(data.timssAusTwn.scored)
 dat <- data.timssAusTwn.scored
 # extract item response data
-resp <- dat[ , sort(grep("M" , colnames(data.timssAusTwn.scored) , value=TRUE)) ]
+resp <- dat[, sort(grep("M", colnames(data.timssAusTwn.scored), value=TRUE)) ]
 # some descriptives
 psych::describe(resp)
 # define facets: 'cnt' is group identifier
-facets <- data.frame( "cnt" = dat$IDCNTRY)
+facets <- data.frame( "cnt"=dat$IDCNTRY)
 # create design matrices
-des2 <- TAM::designMatrices.mfr2( resp=resp , facets=facets ,
-                   formulaA = ~item*step + item*cnt)
-# restructured data set: pseudoitem = item x country
+des2 <- TAM::designMatrices.mfr2( resp=resp, facets=facets,
+                   formulaA=~item*step + item*cnt)
+# restructured data set: pseudoitem=item x country
 resp2 <- des2$gresp$gresp.noStep
 # A design matrix
 A <- des2$A$A.3d
     # redundant xsi parameters must be eliminated from design matrix
 xsi.elim <- des2$xsi.elim
-A <- A[ , , - xsi.elim[,2] ]
+A <- A[,, - xsi.elim[,2] ]
 # extract loading matrix B
 B <- des2$B$B.3d
 # estimate model
-mod1 <- TAM::tam.mml( resp=resp2 , A = A , B= B , control=list(maxiter=100) )
+mod1 <- TAM::tam.mml( resp=resp2, A=A, B=B, control=list(maxiter=100) )
 summary(mod1)
 # The sum of all DIF parameters is set to zero. The DIF parameter for the last
 # item is therefore obtained
 xsi1 <- mod1$xsi
 difxsi <- xsi1[ intersect( grep("cnt",rownames(xsi1)),
-              grep("M03" ,rownames(xsi1))) , ]   - colSums(difxsi)
+              grep("M03",rownames(xsi1))), ]   - colSums(difxsi)
     # this is the DIF effect of the remaining item
 
 #############################################################################
@@ -1730,9 +1730,9 @@ library(mirt)
 set.seed(9897)
 # simulate data according to the four-dimensional Rasch model
 # variances
-variances <- c( 1.45 , 1.74 , .86 , 1.48  )
+variances <- c( 1.45, 1.74, .86, 1.48  )
 # correlations
-corrs <- matrix( 1 , 4 , 4 )
+corrs <- matrix( 1, 4, 4 )
 dd1 <- 1 ; dd2 <- 2 ; corrs[dd1,dd2] <- corrs[dd2,dd1] <- .88
 dd1 <- 1 ; dd2 <- 3 ; corrs[dd1,dd2] <- corrs[dd2,dd1] <- .85
 dd1 <- 1 ; dd2 <- 4 ; corrs[dd1,dd2] <- corrs[dd2,dd1] <- .87
@@ -1740,16 +1740,16 @@ dd1 <- 2 ; dd2 <- 3 ; corrs[dd1,dd2] <- corrs[dd2,dd1] <- .84
 dd1 <- 2 ; dd2 <- 4 ; corrs[dd1,dd2] <- corrs[dd2,dd1] <- .90
 dd1 <- 3 ; dd2 <- 4 ; corrs[dd1,dd2] <- corrs[dd2,dd1] <- .90
 # covariance matrix
-covar <- outer( sqrt( variances) , sqrt(variances) )*corrs
+covar <- outer( sqrt( variances), sqrt(variances) )*corrs
 # item thresholds and item discriminations
-d <- matrix( stats::runif(40, -2 , 2 ) , ncol=1 )
-a <- matrix(NA , nrow=40,ncol=4)
+d <- matrix( stats::runif(40, -2, 2 ), ncol=1 )
+a <- matrix(NA, nrow=40,ncol=4)
 a[1:10,1] <- a[11:20,2] <- a[21:30,3] <- a[31:40,4] <- 1
 # simulate data
-dat <- mirt::simdata(a=a, d=d, N=1000, itemtype="dich", sigma = covar )
+dat <- mirt::simdata(a=a, d=d, N=1000, itemtype="dich", sigma=covar )
 # define Q-matrix for testlet and subdimension models estimated below
-Q <- matrix( 0 , nrow=40 , ncol=5 )
-colnames(Q) <- c("g" , paste0( "subd"  , 1:4) )
+Q <- matrix( 0, nrow=40, ncol=5 )
+colnames(Q) <- c("g", paste0( "subd", 1:4) )
 Q[,1] <- 1
 Q[1:10,2] <- Q[11:20,3] <- Q[21:30,4] <- Q[31:40,5] <- 1
 
@@ -1765,7 +1765,7 @@ maxit <- 200 ; snodes <- 1500
 # Rasch testlet model
 variance.fct1 <- function( variance ){
             ndim <- ncol(variance)
-            variance.new <- matrix( 0 , ndim , ndim )
+            variance.new <- matrix( 0, ndim, ndim )
             diag(variance.new) <- diag(variance)
             variance <- variance.new
             return(variance)
@@ -1773,7 +1773,7 @@ variance.fct1 <- function( variance ){
 variance.Npars <- 5    # number of estimated parameters in variance matrix
 # estimation using tam.mml
 mod1 <- TAM::tam.mml( dat, Q=Q, userfct.variance=variance.fct1,
-             variance.Npars=variance.Npars, control=list(maxiter=maxit , QMC=TRUE,
+             variance.Npars=variance.Npars, control=list(maxiter=maxit, QMC=TRUE,
                           snodes=snodes))
 summary(mod1)
 
@@ -1783,21 +1783,21 @@ summary(mod1)
 
 # specify a testlet model with general factor g and testlet effects
 # u_1,u_2,u_3 and u_4. Assume that Cov(g,u_t)=0 for all t=1,2,3,4.
-# Additionally, assume that \sum_t,t' Cov( u_t , u_t') = 0, i.e.
+# Additionally, assume that \sum_t,t' Cov( u_t, u_t')=0, i.e.
 # the sum of all testlet covariances is equal to zero
-# => testlet effects are uncorrelated on average.
+#=> testlet effects are uncorrelated on average.
 
 # set Cov(g,u_t)=0 and sum of all testlet covariances equals to zero
 variance.fct2 <- function( variance ){
             ndim <- ncol(variance)
-            variance.new <- matrix( 0 , ndim , ndim )
+            variance.new <- matrix( 0, ndim, ndim )
             diag(variance.new) <- diag(variance)
             variance.new[1,2:ndim] <- variance.new[2:ndim,1] <- 0
             # calculate average covariance between testlets
-            v1 <- variance[ -1 , -1] - variance.new[-1,-1]
+            v1 <- variance[ -1, -1] - variance.new[-1,-1]
             M1 <- sum(v1) / ( ( ndim-1)^2 - ( ndim - 1))
             v1 <- v1 - M1
-            variance.new[ -1 , -1 ] <- v1
+            variance.new[ -1, -1 ] <- v1
             diag(variance.new) <- diag(variance)
             variance <- variance.new
             return(variance)
@@ -1806,7 +1806,7 @@ variance.Npars <- 1 + 4 + (4*3)/2 - 1
 # estimate model in TAM
 mod2 <- TAM::tam.mml( dat, Q=Q, userfct.variance=variance.fct2,
                 variance.Npars=variance.Npars,
-                control=list(maxiter=maxit , QMC=TRUE , snodes=snodes) )
+                control=list(maxiter=maxit, QMC=TRUE, snodes=snodes) )
 summary(mod2)
 
 #*****************
@@ -1814,18 +1814,18 @@ summary(mod2)
 #*****************
 
 # Testlet model like in Model 2. But now the constraint is
-# \sum _t,t' Cov(u_t , u_t') + \sum_t Var(u_t) = 0 , i.e.
+# \sum _t,t' Cov(u_t, u_t') + \sum_t Var(u_t)=0, i.e.
 # the sum of all testlet covariances and variances is equal to zero.
 variance.fct3 <- function( variance ){
             ndim <- ncol(variance)
-            variance.new <- matrix( 0 , ndim , ndim )
+            variance.new <- matrix( 0, ndim, ndim )
             diag(variance.new) <- diag(variance)
             variance.new[1,2:ndim] <- variance.new[2:ndim,1] <- 0
             # calculate average covariance and variance between testlets
-            v1 <- variance[ -1 , -1]
+            v1 <- variance[ -1, -1]
             M1 <- mean(v1)
             v1 <- v1 - M1
-            variance.new[ -1 , -1 ] <- v1
+            variance.new[ -1, -1 ] <- v1
             # ensure positive definiteness of covariance matrix
             eps <- 10^(-2)
             diag(variance.new) <- diag( variance.new) + eps
@@ -1835,9 +1835,9 @@ variance.fct3 <- function( variance ){
                     }
 variance.Npars <- 1 + 4 + (4*3)/2 - 1
 # estimate model in TAM
-mod3 <- TAM::tam.mml( dat , Q=Q , userfct.variance=variance.fct3,
-                variance.Npars=variance.Npars ,
-                control=list(maxiter=maxit , QMC=TRUE , snodes=snodes) )
+mod3 <- TAM::tam.mml( dat, Q=Q, userfct.variance=variance.fct3,
+                variance.Npars=variance.Npars,
+                control=list(maxiter=maxit, QMC=TRUE, snodes=snodes) )
 summary(mod3)
 
 #*****************
@@ -1845,16 +1845,16 @@ summary(mod3)
 #*****************
 
 # The Rasch subdimension model is specified according to Brandt (2008).
-# The fourth testlet effect is defined as u4 = - (u1+u2+u3)
+# The fourth testlet effect is defined as u4=- (u1+u2+u3)
 # specify an alternative Q-matrix with 4 dimensions
 Q2 <- Q[,-5]
 Q2[31:40,2:4] <- -1
 
 # set Cov(g,u1)=Cov(g,u2)=Cov(g,u3)=0
-variance.fixed <- rbind( c(1,2,0) , c(1,3,0) , c(1,4,0) )
+variance.fixed <- rbind( c(1,2,0), c(1,3,0), c(1,4,0) )
 # estimate model in TAM
-mod4 <- TAM::tam.mml( dat , Q=Q2 ,variance.fixed=variance.fixed ,
-                control=list(maxiter=maxit , QMC=TRUE , snodes=snodes) )
+mod4 <- TAM::tam.mml( dat, Q=Q2,variance.fixed=variance.fixed,
+                control=list(maxiter=maxit, QMC=TRUE, snodes=snodes) )
 summary(mod4)
 
 #*****************
@@ -1862,7 +1862,7 @@ summary(mod4)
 #*****************
 
 # A four-dimensional model with a higher-order factor is specified.
-# F_t = a_t g + eps_g
+# F_t=a_t g + eps_g
 Q3 <- Q[,-1]
 # define fitting function using the lavaan package and ULS estimation
 N0 <- nrow(dat)         # sample size of dataset
@@ -1871,22 +1871,22 @@ variance.fct5 <- function( variance ){
     ndim <- ncol(variance)
     rownames(variance) <- colnames(variance) <- paste0("F",1:ndim)
     lavmodel <- paste0(
-        "FHO =~" , paste0( paste0( "F" , 1:ndim ) , collapse="+" ) )
-    lavres <- lavaan::cfa( model=lavmodel , sample.cov=variance , estimator = "ULS" ,
-                       std.lv=TRUE , sample.nobs=N0)
+        "FHO=~", paste0( paste0( "F", 1:ndim ), collapse="+" ) )
+    lavres <- lavaan::cfa( model=lavmodel, sample.cov=variance, estimator="ULS",
+                       std.lv=TRUE, sample.nobs=N0)
     variance.new <- fitted(lavres)$cov
     variance <- variance.new
     # print coefficients
-    cat( paste0( "\n **** Higher order loadings: " ,
-            paste0( paste0( round( coef(lavres)[ 1:ndim ] , 3 )) , collapse=" ")
-                        ) , "\n")
+    cat( paste0( "\n **** Higher order loadings: ",
+            paste0( paste0( round( coef(lavres)[ 1:ndim ], 3 )), collapse=" ")
+                        ), "\n")
     return(variance)
                     }
 variance.Npars <- 4+4
 # estimate model in TAM
-mod5 <- TAM::tam.mml( dat , Q=Q3 , userfct.variance=variance.fct5 ,
-                variance.Npars=variance.Npars ,
-                control=list(maxiter=maxit , QMC=TRUE , snodes=snodes) )
+mod5 <- TAM::tam.mml( dat, Q=Q3, userfct.variance=variance.fct5,
+                variance.Npars=variance.Npars,
+                control=list(maxiter=maxit, QMC=TRUE, snodes=snodes) )
 summary(mod5)
 
 #*****************
@@ -1896,15 +1896,15 @@ summary(mod5)
 Q2 <- Q[,-5]
 Q2[31:40,2:4] <- -1
 # fixed covariances
-variance.fixed2 <- rbind( c(1,2,0) , c(1,3,0) , c(1,4,0)  )
+variance.fixed2 <- rbind( c(1,2,0), c(1,3,0), c(1,4,0)  )
 # design matrix for item loading parameters
 #      items x category x dimension x xsi parameter
-E <- array( 0 , dim = c( 40 , 2 , 4 , 4 ) )
-E[ 1:10 , 2 , c(1,2) , 1 ] <- 1
-E[ 11:20 , 2 , c(1,3) , 2 ] <- 1
-E[ 21:30 , 2 , c(1,4) , 3 ] <- 1
-E[ 31:40 , 2 , 1 , 4 ] <- 1
-E[ 31:40 , 2 , 2:4 , 4 ] <- -1
+E <- array( 0, dim=c( 40, 2, 4, 4 ) )
+E[ 1:10, 2, c(1,2), 1 ] <- 1
+E[ 11:20, 2, c(1,3), 2 ] <- 1
+E[ 21:30, 2, c(1,4), 3 ] <- 1
+E[ 31:40, 2, 1, 4 ] <- 1
+E[ 31:40, 2, 2:4, 4 ] <- -1
 
 # constraint on slope parameters, see Brandt (2012)
 gammaconstr <- function( gammaslope ){
@@ -1915,8 +1915,8 @@ gammaconstr <- function( gammaslope ){
                     }
 # estimate model
 mod6 <- TAM::tam.mml.3pl( dat, E=E, Q=Q2, variance.fixed=variance.fixed2,
-           skillspace="normal", userfct.gammaslope = gammaconstr, gammaslope.constr.Npars=1,
-           control=list(maxiter=maxit , QMC=TRUE , snodes=snodes ) )
+           skillspace="normal", userfct.gammaslope=gammaconstr, gammaslope.constr.Npars=1,
+           control=list(maxiter=maxit, QMC=TRUE, snodes=snodes ) )
 summary(mod6)
 
 #############################################################################
@@ -1925,12 +1925,12 @@ summary(mod6)
 #############################################################################
 
 data(data.Students, package="CDM")
-dat <- data.Students[ , c( paste0("sc",1:4) , paste0("mj",1:4) ) ]
+dat <- data.Students[, c( paste0("sc",1:4), paste0("mj",1:4) ) ]
 # specify dimensions in Q-matrix
-Q <- matrix( 0 ,  nrow=8 , ncol=2 )
+Q <- matrix( 0,  nrow=8, ncol=2 )
 Q[1:4,1] <- Q[5:8,2] <- 1
 # partial credit model with some constraint on item parameters
-mod1 <- TAM::tam.mml( dat , Q=Q , irtmodel="PCM2" , constraint="items")
+mod1 <- TAM::tam.mml( dat, Q=Q, irtmodel="PCM2", constraint="items")
 summary(mod1)
 
 #############################################################################
@@ -1941,14 +1941,14 @@ summary(mod1)
 data(data.timssAusTwn.scored)
 dat <- data.timssAusTwn.scored
 # extrcat item response data
-dat <- dat[ , grep("M03" , colnames(dat) ) ]
+dat <- dat[, grep("M03", colnames(dat) ) ]
 
 # select items with do have maximum score of 2 (polytomous items)
-ind <- which( apply( dat ,  2, max , na.rm=TRUE ) == 2 )
+ind <- which( apply( dat,  2, max, na.rm=TRUE )==2 )
 I <- ncol(dat)
 # define Q-matrix with scoring variant
-Q <- matrix( 1 , nrow=I , ncol=1 )
-Q[ ind , 1 ] <- .5    # score of 0.5 for polyomous items
+Q <- matrix( 1, nrow=I, ncol=1 )
+Q[ ind, 1 ] <- .5    # score of 0.5 for polyomous items
 
 # estimate model
 mod1 <- TAM::tam.mml( dat, Q=Q, irtmodel="PCM2", control=list(nodes=seq(-10,10,len=21)))
@@ -1968,11 +1968,11 @@ I <- 3  # 3 items
 D <- 3  # 3 dimensions
 # define loading matrix B
 # 4 categories for each item (0,1,2,3)
-B <- array( 0 , dim=c(I,4,D) )
+B <- array( 0, dim=c(I,4,D) )
 for (ii in 1:I){
-    B[ ii , 1:4  , 1 ] <- 0:3
-    B[ ii , 1 ,2 ] <- 1
-    B[ ii , 4 ,3 ] <- 1
+    B[ ii, 1:4, 1 ] <- 0:3
+    B[ ii, 1,2 ] <- 1
+    B[ ii, 4,3 ] <- 1
             }
 dimnames(B)[[1]] <- colnames(resp)
 B[1,,]
@@ -1983,26 +1983,26 @@ B[1,,]
   ##   [3,]    2    0    0
   ##   [4,]    3    0    1
 #-- test run
-mod1 <- TAM::tam.mml( resp , B = B , control=list( snodes=1000 , maxiter=5)  )
+mod1 <- TAM::tam.mml( resp, B=B, control=list( snodes=1000, maxiter=5)  )
 summary(mod1)
 
 # Same model with TAM::tam.mml.3pl instead
 
-dim4 <- sum(apply(B, c(1, 3), function(x) any(!(x == 0))))
-E1 <- array(0, dim = c(dim(B), dim4))
+dim4 <- sum(apply(B, c(1, 3), function(x) any(!(x==0))))
+E1 <- array(0, dim=c(dim(B), dim4))
 
 kkk <- 0
 for (iii in seq_len(dim(E1)[1])) {
     for (jjj in seq_len(dim(E1)[3])) {
-        if (any(B[iii, , jjj] != 0)) {
+        if (any(B[iii,, jjj] !=0)) {
             kkk <- kkk + 1
-            E1[iii, , jjj, kkk] <- B[iii, , jjj]
+            E1[iii,, jjj, kkk] <- B[iii,, jjj]
         }
     }
 }
-if (kkk != dim4) stop("Something went wrong in the loop, because 'kkk != dim4'.")
+if (kkk !=dim4) stop("Something went wrong in the loop, because 'kkk !=dim4'.")
 
-mod2 <- TAM::tam.mml.3pl(resp, E = E1, est.some.slopes = FALSE, control = list(maxiter = 50))
+mod2 <- TAM::tam.mml.3pl(resp, E=E1, est.some.slopes=FALSE, control=list(maxiter=50))
 summary(mod2)
 
 cor(mod1$person$EAP.Dim3, mod2$person$EAP.Dim3)
@@ -2018,11 +2018,11 @@ N <- 1000      # number of persons
 I <- 100       # number of items
 set.seed(987)
 # simulate data according to the Rasch model
-dat <- sirt::sim.raschtype( rnorm(N)  , b = seq(-2,2,len=I)  )
+dat <- sirt::sim.raschtype( rnorm(N), b=seq(-2,2,len=I)  )
 # estimate models
-mod1n <- TAM::tam.mml( resp=dat , control=list( acceleration="none") )  # no acceler.
-mod1y <- TAM::tam.mml( resp=dat , control=list( acceleration="Yu") )  # Yu acceler.
-mod1r <- TAM::tam.mml( resp=dat , control=list( acceleration="Ramsay") )  # Ramsay acceler.
+mod1n <- TAM::tam.mml( resp=dat, control=list( acceleration="none") )  # no acceler.
+mod1y <- TAM::tam.mml( resp=dat, control=list( acceleration="Yu") )  # Yu acceler.
+mod1r <- TAM::tam.mml( resp=dat, control=list( acceleration="Ramsay") )  # Ramsay acceler.
 # compare number of iterations
 mod1n$iter ; mod1y$iter ; mod1r$iter
 # log-likelihood values
@@ -2036,14 +2036,14 @@ data(data.gpcm)
 dat <- data.gpcm
 
 # no acceleration
-mod1n <- TAM::tam.mml.2pl( resp= dat , irtmodel="GPCM" ,
-                control=list( conv=1E-4 , acceleration="none") )
+mod1n <- TAM::tam.mml.2pl( resp=dat, irtmodel="GPCM",
+                control=list( conv=1E-4, acceleration="none") )
 # Yu acceleration
-mod1y <- TAM::tam.mml.2pl( resp= dat , irtmodel="GPCM" ,
-                control=list( conv=1E-4 , acceleration="Yu") )
+mod1y <- TAM::tam.mml.2pl( resp=dat, irtmodel="GPCM",
+                control=list( conv=1E-4, acceleration="Yu") )
 # Ramsay acceleration
-mod1r <- TAM::tam.mml.2pl( resp= dat , irtmodel="GPCM" ,
-                control=list( conv=1E-4 , acceleration="Ramsay") )
+mod1r <- TAM::tam.mml.2pl( resp=dat, irtmodel="GPCM",
+                control=list( conv=1E-4, acceleration="Ramsay") )
 # number of iterations
 mod1n$iter ; mod1y$iter ; mod1r$iter
 
@@ -2053,7 +2053,7 @@ mod1n$iter ; mod1y$iter ; mod1r$iter
 #############################################################################
 
 data(data.Students, package="CDM")
-dat <- data.Students[ , grep( "act" , colnames(data.Students) ) ]
+dat <- data.Students[, grep( "act", colnames(data.Students) ) ]
 
 # define multidimensional model in which categories of item define dimensions
 
@@ -2066,29 +2066,29 @@ res <- TAM::designMatrices( resp=dat )
 A <- res$A
 B0 <- 0*res$B
 # create design matrix B
-B <- array( 0 , dim = c( dim(B0)[c(1,2) ] , 2  ) )
+B <- array( 0, dim=c( dim(B0)[c(1,2) ], 2  ) )
 dimnames(B)[[1]] <- dimnames(B0)[[1]]
 dimnames(B)[[2]] <- dimnames(B0)[[2]]
-dimnames(B)[[3]] <- c( "Dim0" , "Dim2" )
+dimnames(B)[[3]] <- c( "Dim0", "Dim2" )
 B[,1,1]  <- 1
 B[,3,2]  <- 1
 
 # estimate multdimensional Rasch model
-mod1 <- TAM::tam.mml( resp=dat , A=A , B=B , control= list( maxiter=100) )
+mod1 <- TAM::tam.mml( resp=dat, A=A, B=B, control=list( maxiter=100) )
 summary(mod1)
 
 # alternative definition of B
 # * Category 1: negative loading on Dimension 1 and Dimension 2
-B <- array( 0 , dim = c( dim(B0)[c(1,2) ] , 2  ) )
+B <- array( 0, dim=c( dim(B0)[c(1,2) ], 2  ) )
 dimnames(B)[[1]] <- dimnames(B0)[[1]]
 dimnames(B)[[2]] <- dimnames(B0)[[2]]
-dimnames(B)[[3]] <- c( "Dim0" , "Dim2" )
-B[ ,1 , 1]  <- 1
-B[ ,3 , 2]  <- 1
-B[ ,2 , c(1,2)]  <- -1
+dimnames(B)[[3]] <- c( "Dim0", "Dim2" )
+B[,1, 1]  <- 1
+B[,3, 2]  <- 1
+B[,2, c(1,2)]  <- -1
 
 # estimate model
-mod2 <- TAM::tam.mml( resp=dat , A=A , B=B , control= list( maxiter=100) )
+mod2 <- TAM::tam.mml( resp=dat, A=A, B=B, control=list( maxiter=100) )
 summary(mod2)
 
 #############################################################################
@@ -2108,7 +2108,7 @@ summary(mod1, file="mod1")
 #--- fit with constraint on sum of categories
 #** redefine design matrix
 A1 <- 0*mod1$A
-A1 <- A1[ ,, - dim(A1)[[3]]]
+A1 <- A1[,, - dim(A1)[[3]]]
 str(A1)
 NP <- dim(A1)[[3]]
 # define item category parameters
@@ -2122,8 +2122,8 @@ A1[2,,]
 A1[3,,]
 
 #** estimate model
-mod2 <- TAM::tam.mml( dat , A = A1 , beta.fixed=FALSE)
-summary(mod2 , file="mod2")
+mod2 <- TAM::tam.mml( dat, A=A1, beta.fixed=FALSE)
+summary(mod2, file="mod2")
 
 #--- compare model fit
 IRT.compareModels(mod1, mod2 )  # -> equivalent model fit
@@ -2144,8 +2144,8 @@ mod1 <- TAM::tam.mml.2pl(dat, irtmodel="GPCM")
 #*** mirt
 mod2 <- mirt::mirt(dat, 1, itemtype="gpcm", verbose=TRUE)
 #*** ltm
-mod3 <- ltm::gpcm( dat , control=list(verbose=TRUE) )
-mod3b <- ltm::gpcm( dat , control=list(verbose=TRUE), IRT.param=FALSE)
+mod3 <- ltm::gpcm( dat, control=list(verbose=TRUE) )
+mod3b <- ltm::gpcm( dat, control=list(verbose=TRUE), IRT.param=FALSE)
 
 #-- comparison log likelihood
 logLik(mod1)
@@ -2161,7 +2161,7 @@ mod1$AXsi      # intercepts
 # mirt
 coef(mod2)
 # ltm
-coef(mod3b, IRT.param=FALSE)[ , c(4,1:3)]
+coef(mod3b, IRT.param=FALSE)[, c(4,1:3)]
 
 #*** IRT parametrization
 
@@ -2170,7 +2170,7 @@ mod1$AXsi / mod1$B[,2,1]
 # mirt
 coef(mod2, IRTpars=TRUE)
 # ltm
-coef(mod3)[ , c(4,1:3)]
+coef(mod3)[, c(4,1:3)]
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

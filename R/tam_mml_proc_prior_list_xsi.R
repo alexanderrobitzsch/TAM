@@ -1,7 +1,7 @@
 ## File Name: tam_mml_proc_prior_list_xsi.R
-## File Version: 0.03
+## File Version: 0.04
 
-tam_mml_proc_prior_list_xsi <- function( prior_list_xsi , xsi )
+tam_mml_proc_prior_list_xsi <- function( prior_list_xsi, xsi )
 {
     NX <- length(xsi)
     #-- some prior distributions
@@ -20,10 +20,10 @@ tam_mml_proc_prior_list_xsi <- function( prior_list_xsi , xsi )
         }
     }
     #--- set some attributes
-    attr( prior_list_xsi , "dim_parameter" ) <- NX
-    attr( prior_list_xsi , "is_prior" ) <- is_prior
-    attr( prior_list_xsi , "prior_entries" ) <- prior_entries
-    attr( prior_list_xsi , "length_prior_entries" ) <- length(prior_entries)
+    attr( prior_list_xsi, "dim_parameter" ) <- NX
+    attr( prior_list_xsi, "is_prior" ) <- is_prior
+    attr( prior_list_xsi, "prior_entries" ) <- prior_entries
+    attr( prior_list_xsi, "length_prior_entries" ) <- length(prior_entries)
     #--- output
     return(prior_list_xsi)
 }

@@ -1,5 +1,5 @@
 ## File Name: tamaanify.variance.fixed.R
-## File Version: 9.03
+## File Version: 9.07
 
 
 
@@ -14,16 +14,16 @@ tamaanify.variance.fixed <- function( res )
     facs <- colnames(Q)
     ind1 <- which( paste(lavpartable$lhs) %in% facs )
     ind2 <- which( paste(lavpartable$rhs) %in% facs )
-    ind3 <- which( paste(lavpartable$op) == "~~" )
-    ind4 <- which( lavpartable$free == 0 )
-    ind <- intersect( intersect( intersect(ind1,ind2) , ind3 ) , ind4 )
+    ind3 <- which( paste(lavpartable$op)=="~~" )
+    ind4 <- which( lavpartable$free==0 )
+    ind <- intersect( intersect( intersect(ind1,ind2), ind3 ), ind4 )
     lv1 <- lavpartable[ind,]
     LI <- length(ind)
     if (LI>0){
         for ( ii in 1:LI ){
-            v1 <- cbind( match( lv1[ii,"lhs"] , facs ) , match( lv1[ii,"rhs"] , facs ) ,
+            v1 <- cbind( match( lv1[ii,"lhs"], facs ), match( lv1[ii,"rhs"], facs ),
                                 lv1[ii,"ustart"] )
-            variance.fixed <- rbind( variance.fixed , v1 )
+            variance.fixed <- rbind( variance.fixed, v1 )
         }
     }
     res$variance.fixed <- variance.fixed

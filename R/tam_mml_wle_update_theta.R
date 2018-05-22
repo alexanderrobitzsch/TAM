@@ -1,5 +1,5 @@
 ## File Name: tam_mml_wle_update_theta.R
-## File Version: 0.03
+## File Version: 0.07
 
 tam_mml_wle_update_theta <- function( theta, PersonScores, err_inv, nstud, ndim,
         B2_B, B_Cube, BBB_bari, expected, WLE, Miter, progress, convM,
@@ -29,9 +29,9 @@ tam_mml_wle_update_theta <- function( theta, PersonScores, err_inv, nstud, ndim,
     }
     # dampening the increment
     for ( d1 in 1:ndim){
-        increment[,d1] <- tam_trim_increment(increment = increment[,d1] ,
-                                max.increment = abs(old_increment[,d1]),
-                                trim_increment = "half", avoid_na = TRUE )
+        increment[,d1] <- tam_trim_increment(increment=increment[,d1],
+                                max.increment=abs(old_increment[,d1]),
+                                trim_increment="half", avoid_na=TRUE )
         old_increment[,d1] <- 0.95*increment[,d1]
     }
     theta <- theta + increment
@@ -41,12 +41,12 @@ tam_mml_wle_update_theta <- function( theta, PersonScores, err_inv, nstud, ndim,
     Miter <- Miter + 1
     if (progress){
         cat( paste( "Iteration in WLE/MLE estimation ", Miter,
-                "  | Maximal change " , round( max(abs(increment)) , 4) , "\n" )  )
+                "  | Maximal change ", round( max(abs(increment)), 4), "\n" )  )
         utils::flush.console()
     }
     #-----------
     # OUTPUT
     res <- list( theta=theta, increment=increment, scores=scores, converge=converge,
-                    old_increment=old_increment, err_inv=err_inv, Miter = Miter)
+                    old_increment=old_increment, err_inv=err_inv, Miter=Miter)
     return(res)
 }

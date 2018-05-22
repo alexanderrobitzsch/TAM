@@ -1,6 +1,6 @@
 ## File Name: tam.se.R
-## File Version: 9.12
-tam.se <- function( tamobj , item_pars=TRUE, ...)
+## File Version: 9.15
+tam.se <- function( tamobj, item_pars=TRUE, ...)
 {
     SE.quick <- TRUE
     #-------------------------------
@@ -13,7 +13,7 @@ tam.se <- function( tamobj , item_pars=TRUE, ...)
             res <- tam_latreg_se_quick( tamobj=tamobj, ...)
         }
 
-        if(class(tamobj) == "tam.jml"){
+        if(class(tamobj)=="tam.jml"){
             # res <- tam.jml.se( tamobj, ...)
             ## include standard errors here!!
         }

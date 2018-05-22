@@ -1,5 +1,5 @@
 ## File Name: tam_pv_mcmc_postproc_ic.R
-## File Version: 0.10
+## File Version: 0.12
 
 tam_pv_mcmc_postproc_ic <- function(parameter_samples, deviance_samples,
         theta_samples_mean, AXsi, B, guess, beta, variance, group_index, G, Y,
@@ -43,4 +43,4 @@ tam_pv_mcmc_postproc_ic <- function(parameter_samples, deviance_samples,
     return(ic)
 }
 
-# z0 <- tamcat( label = " * rest", time0 = z0, active=active)
+# z0 <- tamcat( label=" * rest", time0=z0, active=active)

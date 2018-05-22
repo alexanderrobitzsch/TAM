@@ -1,5 +1,5 @@
 ## File Name: tam_pv_mcmc_theta_MH_ratio_accept.R
-## File Version: 0.10
+## File Version: 0.11
 
 tam_pv_mcmc_theta_MH_ratio_accept <- function(loglike, log_dens_theta,
     loglike_new, log_dens_theta_new, theta_acceptance_MH, theta, theta_new)
@@ -12,7 +12,7 @@ tam_pv_mcmc_theta_MH_ratio_accept <- function(loglike, log_dens_theta,
     loglike[ accept_MH ] <- loglike_new[ accept_MH ]
     theta_acceptance_MH$n_samples <- theta_acceptance_MH$n_samples + 1
     theta_acceptance_MH$accepted <- theta_acceptance_MH$accepted + accept_MH
-    theta[ accept_MH , ] <- theta_new[ accept_MH , ]
+    theta[ accept_MH, ] <- theta_new[ accept_MH, ]
     deviance <- - 2 * sum(log(loglike))
     #--- OUTPUT
     res <- list(loglike=loglike, theta=theta, deviance=deviance,

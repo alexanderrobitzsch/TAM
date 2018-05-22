@@ -1,5 +1,5 @@
 %% File Name: tampv2datalist.Rd
-%% File Version: 0.19
+%% File Version: 0.21
 
 \name{tampv2datalist}
 \alias{tampv2datalist}
@@ -17,8 +17,8 @@ or \pkg{BIFIEsurvey}.
 }
 
 \usage{
-tampv2datalist(tam.pv.object, pvnames = NULL, Y = NULL, Y.pid = "pid",
-      as_mids=FALSE, stringsAsFactors = FALSE)
+tampv2datalist(tam.pv.object, pvnames=NULL, Y=NULL, Y.pid="pid",
+      as_mids=FALSE, stringsAsFactors=FALSE)
 }
 
 %- maybe also 'usage' for other objects documented here.

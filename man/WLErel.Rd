@@ -1,5 +1,5 @@
 %% File Name: WLErel.Rd
-%% File Version: 0.17
+%% File Version: 0.20
 
 \name{WLErel}
 \alias{WLErel}
@@ -16,9 +16,9 @@ Functions for computing reliability estimates.
 }
 
 \usage{
-WLErel(theta, error, w = rep(1, length(theta)), select=NULL)
+WLErel(theta, error, w=rep(1, length(theta)), select=NULL)
 
-EAPrel(theta, error, w = rep(1, length(theta)), select=NULL)
+EAPrel(theta, error, w=rep(1, length(theta)), select=NULL)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -40,7 +40,7 @@ The reliability formulas follow Adams (2005). Let \eqn{v} denote
 the variance of \code{theta} estimates and let \eqn{s} denote
 the average of the squared \code{error}. Then, the WLE reliability is
 defined as \eqn{1-s/v=(v-s)/v} while the EAP reliability is defined as
-\eqn{1 - s/(s+v) = v/(s+v)}.
+\eqn{1 - s/(s+v)=v/(s+v)}.
 }
 
 
@@ -75,7 +75,7 @@ set.seed(9897)
 N <- 100
 # simulate theta and error SDs
 x <- stats::rnorm(N,sd=2)
-error <- stats::runif(N, .7 , 1.3)
+error <- stats::runif(N, .7, 1.3)
 # compute WLE reliability
 WLErel(x,error)
 # compute EAP reliaility

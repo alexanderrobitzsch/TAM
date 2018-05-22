@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_mml_2pl.cpp
-//// File Version: 0.513
+//// File Version: 0.515
 
 
 #include <Rcpp.h>
@@ -17,7 +17,7 @@ Rcpp::List tam_rcpp_mml_2pl_mstep_item_slopes_suffstat( Rcpp::NumericVector rpro
         Rcpp::CharacterVector irtmodel, Rcpp::NumericMatrix xtemp_,
         Rcpp::IntegerVector items_conv)
 {
-    // rprobs.k <- matrix( rprobs[,k,] , nrow=LIT , ncol=TP )
+    // rprobs.k <- matrix( rprobs[,k,], nrow=LIT, ncol=TP )
     // rpr.it <- t( rprobs.k ) * itemwt[,items.temp]
     // int I=nitems;
     // int kk=0;
@@ -87,7 +87,7 @@ Rcpp::List tam_rcpp_mml_2pl_mstep_item_slopes_suffstat( Rcpp::NumericVector rpro
                 //----- GPCM --------
                 if ( ( irtmodel[0] == "GPCM" ) | ( irtmodel[0] == "GPCM.design" ) ){
                     // xxf[items.temp,k] <- xxf[items.temp,k] * (k-1)^2
-                    xxf( item_ii, kk) = xxf( item_ii, kk) * kk2 ;
+                    xxf( item_ii, kk) = xxf( item_ii, kk) * kk2;
                 }
             }
         }
@@ -98,6 +98,6 @@ Rcpp::List tam_rcpp_mml_2pl_mstep_item_slopes_suffstat( Rcpp::NumericVector rpro
             Rcpp::Named("xbar") = xbar,
             Rcpp::Named("xbar2") = xbar2,
             Rcpp::Named("xtemp") = xtemp
-        ) ;
+        );
 }
 ///********************************************************************

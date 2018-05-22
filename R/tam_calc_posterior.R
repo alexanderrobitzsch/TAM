@@ -1,20 +1,20 @@
 ## File Name: tam_calc_posterior.R
-## File Version: 9.16
+## File Version: 9.20
 
 
 
 ###########################################################
-tam_calc_posterior <- function(rprobs , gwt , resp , nitems ,
-            resp.ind.list , normalization = TRUE ,
-            thetasamp.density = NULL , snodes = 0 , resp.ind=NULL,
-            avoid.zerosum=FALSE , logprobs=FALSE )
+tam_calc_posterior <- function(rprobs, gwt, resp, nitems,
+            resp.ind.list, normalization=TRUE,
+            thetasamp.density=NULL, snodes=0, resp.ind=NULL,
+            avoid.zerosum=FALSE, logprobs=FALSE )
 {
     fx <- gwt
     tsd <- NULL
     # calculate individual 'sampling weight'
     if ( snodes > 0 ){
         nstud <- nrow(gwt)
-        tsd <- matrix( thetasamp.density , nrow=nstud , ncol= ncol(gwt) , byrow=TRUE)
+        tsd <- matrix( thetasamp.density, nrow=nstud, ncol=ncol(gwt), byrow=TRUE)
         gwt <- gwt / tsd
         gwt <- gwt / ncol(gwt)
         swt <- fx <- gwt
@@ -23,17 +23,17 @@ tam_calc_posterior <- function(rprobs , gwt , resp , nitems ,
     nstud <- nrow(fx)
     storage.mode(resp) <- "integer"
     fx0 <- fx
-    fx <- .Call('_TAM_calcfx', PACKAGE = 'TAM', fx, rprobs, resp.ind.list, resp)
+    fx <- .Call('_TAM_calcfx', PACKAGE='TAM', fx, rprobs, resp.ind.list, resp)
 # cat("nach calcfx") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
 
     if (avoid.zerosum ){
         fxs <- rowSums( fx )
-        m1 <- max( min( fxs[ fxs > 0 ] , na.rm=TRUE) , 1E-200 ) / 1E3 / ncol(fx)
-        ind <- which( fxs == 0 )
+        m1 <- max( min( fxs[ fxs > 0 ], na.rm=TRUE), 1E-200 ) / 1E3 / ncol(fx)
+        ind <- which( fxs==0 )
         if ( length(ind) > 0 ){
-            fx[ (fxs == 0) , ] <- m1
+            fx[ (fxs==0), ] <- m1
         }
-        fx[ is.na(fxs) , ] <- m1
+        fx[ is.na(fxs), ] <- m1
     }
 # cat("nach calcfx (2)") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
     rfx <- rowSums(fx)
@@ -42,7 +42,7 @@ tam_calc_posterior <- function(rprobs , gwt , resp , nitems ,
     } else {
         hwt <- fx
     }
-    res <-  list("hwt" = hwt , "rfx" = rfx  )
+    res <-  list("hwt"=hwt, "rfx"=rfx  )
     res$fx1 <- fx / gwt
     if ( snodes > 0 ){
         res[["swt" ]] <- fx

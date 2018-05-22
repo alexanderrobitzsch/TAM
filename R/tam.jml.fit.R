@@ -1,5 +1,5 @@
 ## File Name: tam.jml.fit.R
-## File Version: 9.12
+## File Version: 9.16
 
 
 tam.jml.fit <- function( tamobj )
@@ -36,20 +36,20 @@ tam.jml.fit <- function( tamobj )
     NU <- length(theta.unique)
     B_bari <- array(0,dim=c(NU, nitems))
     BB_bari <- array(0, dim=c(NU, nitems))
-    res <- tam_mml_calc_prob(iIndex = 1:nitems , A , AXsi ,
-                        B , xsi , theta= matrix( theta.unique , nrow=NU , ncol=1) ,
-                        NU, maxK , recalc=FALSE )
+    res <- tam_mml_calc_prob(iIndex=1:nitems, A, AXsi,
+                        B, xsi, theta=matrix( theta.unique, nrow=NU, ncol=1),
+                        NU, maxK, recalc=FALSE )
     rprobs <- res$rprobs
     rprobs[ is.na( rprobs) ] <- 0
 
     for (kk in 1:maxK){
         B_bari <- B_bari + t( B1[,kk]*rprobs[,kk,] )
-        BB_bari <- BB_bari + t( BB[,kk] * rprobs[ , kk , ] )
+        BB_bari <- BB_bari + t( BB[,kk] * rprobs[, kk, ] )
     }
-    ind.theta <- match( theta , theta.unique)
-    rprobs <- rprobs[ , ,  ind.theta ]
-    B_bari <- B_bari[ ind.theta , ]
-    BB_bari <- BB_bari[ ind.theta , ]
+    ind.theta <- match( theta, theta.unique)
+    rprobs <- rprobs[,,  ind.theta ]
+    B_bari <- B_bari[ ind.theta, ]
+    BB_bari <- BB_bari[ ind.theta, ]
     B_bari <- B_bari * resp.ind
     BB_bari <- BB_bari  * resp.ind
     B_var <- BB_bari - (B_bari^2)
@@ -63,9 +63,9 @@ tam.jml.fit <- function( tamobj )
     }
 
     C4 <- t(C4) * resp.ind
-    #  outfitPerson <- apply(z_sq, 1, mean, na.rm = TRUE)
-    outfitPerson <- rowMeans( z_sq , na.rm=TRUE )
-    outfitItem <- colMeans(z_sq * pweightsM, na.rm = TRUE)
+    #  outfitPerson <- apply(z_sq, 1, mean, na.rm=TRUE)
+    outfitPerson <- rowMeans( z_sq, na.rm=TRUE )
+    outfitItem <- colMeans(z_sq * pweightsM, na.rm=TRUE)
 
     infitPerson <- rowSums((resp - B_bari)^2, na.rm=TRUE) / rowSums(B_var, na.rm=TRUE)
     infitItem <- colSums((resp - B_bari)^2 * pweightsM, na.rm=TRUE) / colSums(B_var * pweightsM, na.rm=TRUE)
@@ -84,13 +84,13 @@ tam.jml.fit <- function( tamobj )
     infitItem_t <- (infitItem^(1/3) - 1) * (3/sqrt(var_infit)) + sqrt(var_infit)/3
 
     #--- collect item statistics
-    fit.item <- data.frame(item = colnames(tamobj$resp) , outfitItem = outfitItem ,
-                    outfitItem_t = outfitItem_t, infitItem = infitItem ,
-                    infitItem_t = infitItem_t)
+    fit.item <- data.frame(item=colnames(tamobj$resp), outfitItem=outfitItem,
+                    outfitItem_t=outfitItem_t, infitItem=infitItem,
+                    infitItem_t=infitItem_t)
 
-    fit.person <- data.frame(outfitPerson = outfitPerson ,
-                    outfitPerson_t = outfitPerson_t, infitPerson = infitPerson ,
-                    infitPerson_t = infitPerson_t)
+    fit.person <- data.frame(outfitPerson=outfitPerson,
+                    outfitPerson_t=outfitPerson_t, infitPerson=infitPerson,
+                    infitPerson_t=infitPerson_t)
 
     res <- list(fit.item=fit.item, fit.person=fit.person)
     return(res)

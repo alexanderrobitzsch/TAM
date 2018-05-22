@@ -1,10 +1,10 @@
 ## File Name: tam_mml_proc_unidim_simplify.R
-## File Version: 0.03
+## File Version: 0.04
 
 tam_mml_proc_unidim_simplify <- function(Y, A, G, beta.fixed)
 {
     eps <- 1E-15
-    YSD <- max( apply( Y , 2 , stats::sd ) )
+    YSD <- max( apply( Y, 2, stats::sd ) )
     if (YSD > eps ){
         YSD <- TRUE
     } else {

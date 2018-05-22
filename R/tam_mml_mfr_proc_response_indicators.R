@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mfr_proc_response_indicators.R
-## File Version: 0.04
+## File Version: 0.06
 
 tam_mml_mfr_proc_response_indicators <- function(nitems, gresp, gresp.noStep)
 {
@@ -7,12 +7,12 @@ tam_mml_mfr_proc_response_indicators <- function(nitems, gresp, gresp.noStep)
     gresp.ind <- 1 - is.na( gresp )
     gresp.noStep.ind <- 1 - is.na( gresp.noStep )
     resp.ind <- gresp.noStep.ind
-    nomiss <- mean( gresp.noStep.ind ) == 1
+    nomiss <- mean( gresp.noStep.ind )==1
     #***
     miss.items <- rep(0,nitems)
     for (ii in 1:nitems){
-        resp.ind.list[[ii]] <- which( gresp.noStep.ind[,ii] == 1)
-        miss.items[ii] <- ii * ( length(resp.ind.list[[ii]]) == 0 )
+        resp.ind.list[[ii]] <- which( gresp.noStep.ind[,ii]==1)
+        miss.items[ii] <- ii * ( length(resp.ind.list[[ii]])==0 )
     }
     gresp0.noStep <- gresp.noStep
     gresp[ is.na( gresp) ] <- 0

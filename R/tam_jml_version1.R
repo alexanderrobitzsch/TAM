@@ -1,20 +1,20 @@
 ## File Name: tam_jml_version1.R
-## File Version: 9.29
+## File Version: 9.34
 
-tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALSE ,
-                     bias = TRUE, xsi.fixed=NULL ,  xsi.inits = NULL ,
-                     theta.fixed=NULL ,
-                     A=NULL , B=NULL , Q=NULL , ndim=1 ,
-                     pweights = NULL , control = list()
+tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
+                     bias=TRUE, xsi.fixed=NULL,  xsi.inits=NULL,
+                     theta.fixed=NULL,
+                     A=NULL, B=NULL, Q=NULL, ndim=1,
+                     pweights=NULL, control=list()
                      # control can be specified by the user
 ){
 
   #------------------------------------
   # INPUT:
   # control:
-  #      control = list( nodes = seq(-6,6,len=15) ,
-  #                              convD = .001 ,conv = .0001 , convM = .0001 , Msteps = 30 ,
-  #                   maxiter = 1000 , progress = TRUE)
+  #      control=list( nodes=seq(-6,6,len=15),
+  #                              convD=.001,conv=.0001, convM=.0001, Msteps=30,
+  #                   maxiter=1000, progress=TRUE)
   # progress ... if TRUE, then display progress
   #-------------------------------------
 
@@ -25,21 +25,21 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
   s1 <- Sys.time()
   # attach control elements
   e1 <- environment()
-  con <- list( nodes = seq(-6,6,len=21) , snodes = 0 ,
-               convD = .001 ,conv = .0001 , convM = .0001 , Msteps = 10 ,
-               maxiter = 1000 , progress = TRUE )
+  con <- list( nodes=seq(-6,6,len=21), snodes=0,
+               convD=.001,conv=.0001, convM=.0001, Msteps=10,
+               maxiter=1000, progress=TRUE )
   con[ names(control) ] <- control
   Lcon <- length(con)
   con1a <- con1 <- con ;
   names(con1) <- NULL
   for (cc in 1:Lcon ){
-    assign( names(con)[cc] , con1[[cc]] , envir = e1 )
+    assign( names(con)[cc], con1[[cc]], envir=e1 )
   }
 
   resp <- add.colnames.resp(resp)
 
   # maximum no. of categories per item.
-  maxK <- max( resp , na.rm=TRUE ) + 1
+  maxK <- max( resp, na.rm=TRUE ) + 1
 
 
   resp <- as.matrix(resp)
@@ -51,8 +51,8 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
   ################################
   # create design matrices
 
-  design <- designMatrices( modeltype = "PCM" , maxKi = NULL , resp = resp ,
-                            A = A , B = B , Q = Q , R = R, ndim = ndim )
+  design <- designMatrices( modeltype="PCM", maxKi=NULL, resp=resp,
+                            A=A, B=B, Q=Q, R=R, ndim=ndim )
   A <- design$A
   B <- design$B
   cA <- design$flatA
@@ -71,7 +71,7 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
   # normalize person weights to sum up to nstud
   pweights <- nstud * pweights / sum(pweights)
   # a matrix version of person weights
-  pweightsM <- outer( pweights , rep(1,nitems) )
+  pweightsM <- outer( pweights, rep(1,nitems) )
 
   # xsi inits
   if ( ! is.null(xsi.inits) ){
@@ -79,7 +79,7 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
   } else { xsi <- rep(0,np)   }
   if ( ! is.null( xsi.fixed ) ){
     xsi[ xsi.fixed[,1] ] <- xsi.fixed[,2]
-    est.xsi.index <- setdiff( 1:np , xsi.fixed[,1] )
+    est.xsi.index <- setdiff( 1:np, xsi.fixed[,1] )
   } else { est.xsi.index <- 1:np }
 
 
@@ -87,8 +87,8 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
   if ( ! is.null(group) ){
     groups <- sort(unique(group))
     G <- length(groups)
-    # user must label groups from 1, ... , G
-    if ( length( setdiff( 1:G , groups)  ) > 0 ){
+    # user must label groups from 1, ..., G
+    if ( length( setdiff( 1:G, groups)  ) > 0 ){
       stop("Label groups from 1, ...,G\n")
     }
   } else { G <- 1 }
@@ -96,11 +96,11 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
   # define response indicator matrix for missings
   resp.ind <- 1 - is.na(resp)
   resp.ind.list <- list( 1:nitems )
-  for (i in 1:nitems){ resp.ind.list[[i]] <- which( resp.ind[,i] == 1)  }
+  for (i in 1:nitems){ resp.ind.list[[i]] <- which( resp.ind[,i]==1)  }
   resp[ is.na(resp) ] <- 0     # set all missings to zero
 
   # Create an index linking items and parameters
-  indexIP <- colSums(aperm(A, c(2,1,3)) != 0, na.rm = TRUE)
+  indexIP <- colSums(aperm(A, c(2,1,3)) !=0, na.rm=TRUE)
   # define list of elements for item parameters
   indexIP.list <- list( 1:np )
   for ( kk in 1:np ){
@@ -111,30 +111,30 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
   # to make it more general
   # First extension:  pweights and dependent on A; needs to be further extended (e.g., different number of categories)
   # Second extension: multiple category option       -> resp \in 0:maxKi (see method definition calc_posterior_TK)
-  #                                                  -> length(ItemScore) = np (see diff computation in M Step)
+  #                                                  -> length(ItemScore)=np (see diff computation in M Step)
   #                   multiple category option Bugfix
-  #                                                  -> dim(cResp) = (nstud, nitems*maxK)
+  #                                                  -> dim(cResp)=(nstud, nitems*maxK)
   #                                                  -> adapt dim(A) to dim(cResp) for sufficient statistic (cf. print.designMatrices)
 
-  col.index <- rep( 1:nitems , each = maxK )
-  cResp <- resp[ , col.index  ]*resp.ind[ , col.index ]
+  col.index <- rep( 1:nitems, each=maxK )
+  cResp <- resp[, col.index  ]*resp.ind[, col.index ]
   # This line does not take missings into account
-  cResp <- 1 * t( t(cResp) == rep(0:(maxK-1), nitems) )
+  cResp <- 1 * t( t(cResp)==rep(0:(maxK-1), nitems) )
   ##@@@##
   # ARb: I added this line
-  cResp <- cResp * resp.ind[ , col.index ]
-  cB <- t( matrix( aperm( B , c(2,1,3) ) , nrow = dim(B)[3] , byrow = TRUE ) )
+  cResp <- cResp * resp.ind[, col.index ]
+  cB <- t( matrix( aperm( B, c(2,1,3) ), nrow=dim(B)[3], byrow=TRUE ) )
   cB[is.na(cB)] <- 0
 
   # Item sufficient statistics
   # ItemScore <- (cResp %*% cA) %t*% pweights
-  ItemScore <- crossprod(cResp %*% cA , pweights )
+  ItemScore <- crossprod(cResp %*% cA, pweights )
 
   # Computer possible maximum parameter score for each person
-  maxAi <-  - (apply(-(A) , 3 , tam_rowMaxs , na.rm=TRUE))
+  maxAi <-  - (apply(-(A), 3, tam_rowMaxs, na.rm=TRUE))
   personMaxA <- resp.ind %*% maxAi
   # ItemMax <- personMaxA %t*% pweights
-  ItemMax <- crossprod( personMaxA , pweights )
+  ItemMax <- crossprod( personMaxA, pweights )
 
   #Adjust perfect and zero scores for the parameters
   ItemScore[ItemScore==ItemMax] <- ItemScore[ItemScore==ItemMax] + adj #..."+" sign, because ItemScore is -ve)
@@ -147,12 +147,12 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
   PersonScores <- cResp %*% cB
 
   #Compute possible maximum score for each item on each dimension
-  maxBi <- apply(B , 3 , rowMaxs , na.rm = TRUE)
+  maxBi <- apply(B, 3, rowMaxs, na.rm=TRUE)
 
   #Compute possible maximum score for each person on each dimension
   PersonMaxB <- resp.ind %*% maxBi
 
-    if ( any(PersonMaxB == 0) ){
+    if ( any(PersonMaxB==0) ){
         stop("Remove persons with only missing item responses!")
     }
 
@@ -170,8 +170,8 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
 
 
   deviance <- 0
-  deviance.history <- matrix( 0 , nrow=maxiter , ncol = 2)
-  colnames(deviance.history) <- c("iter" , "deviance")
+  deviance.history <- matrix( 0, nrow=maxiter, ncol=2)
+  colnames(deviance.history) <- c("iter", "deviance")
   deviance.history[,1] <- 1:maxiter
 
   iter <- 0
@@ -187,7 +187,7 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
     iter <- iter + 1
     if (progress){
       cat(disp)
-      cat("Iteration" , iter , "   " , paste( Sys.time() ) )
+      cat("Iteration", iter, "   ", paste( Sys.time() ) )
       cat( "\n" )
       flush.console()
     }
@@ -196,8 +196,8 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
     #**********************
     #update theta, ability estimates
 
-    jmlAbility <- tam_jml_wle( tamobj, resp , resp.ind, A, B, nstud, nitems, maxK, convM,
-                 PersonScores, theta, xsi, Msteps, WLE=FALSE ,
+    jmlAbility <- tam_jml_wle( tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
+                 PersonScores, theta, xsi, Msteps, WLE=FALSE,
                  theta.fixed=theta.fixed)
 
     theta <- jmlAbility$theta
@@ -208,7 +208,7 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
     errorMLE <- jmlAbility$errorWLE
 
     #update xsi, item parameters
-    jmlxsi <- tam_jml_version1_calc_xsi( resp , resp.ind, A, B, nstud, nitems, maxK, convM,
+    jmlxsi <- tam_jml_version1_calc_xsi( resp, resp.ind, A, B, nstud, nitems, maxK, convM,
                             ItemScore, theta, xsi, Msteps, pweightsM,
                             est.xsi.index)
     xsi[est.xsi.index] <- jmlxsi$xsi[est.xsi.index]
@@ -222,10 +222,10 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
         AXsi[i,k] <- ( A[i,k,] %*% xsi )
       }
     }
-    res <- tam_mml_calc_prob(iIndex = 1:nitems , A , AXsi ,
-                        B , xsi , theta , nstud, maxK , recalc=FALSE )
+    res <- tam_mml_calc_prob(iIndex=1:nitems, A, AXsi,
+                        B, xsi, theta, nstud, maxK, recalc=FALSE )
     rprobs <- res[["rprobs"]]
-    crprobs <- t( matrix( aperm( rprobs , c(2,1,3) ) , nrow = dim(rprobs)[3] , byrow = TRUE ) )
+    crprobs <- t( matrix( aperm( rprobs, c(2,1,3) ), nrow=dim(rprobs)[3], byrow=TRUE ) )
     cr <- crprobs * t(cResp)
     cr <- cr[cr>0]
     deviance <- -2 * sum(log(cr), na.rm=TRUE)
@@ -233,10 +233,10 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
 
     # progress bar
     if (progress){
-      cat( paste( "\n  Deviance =" , round( deviance , 4 ) ))
-      if (iter>1){ cat( " | Deviance change:", -round( deviance-olddeviance , 4 ) ) }
-      cat( "\n  Mean WLE change:" , round( meanChangeWLE , 6 ) )
-      cat( "\n  Maximum parameter change:" , round( maxChangeP , 6 ) )
+      cat( paste( "\n  Deviance=", round( deviance, 4 ) ))
+      if (iter>1){ cat( " | Deviance change:", -round( deviance-olddeviance, 4 ) ) }
+      cat( "\n  Mean WLE change:", round( meanChangeWLE, 6 ) )
+      cat( "\n  Maximum parameter change:", round( maxChangeP, 6 ) )
       cat( "\n" )
       flush.console()
     }
@@ -247,8 +247,8 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
 
   #After convergence, compute final WLE (WLE set to TRUE)
 
-  jmlWLE <- tam_jml_wle( tamobj , resp , resp.ind, A, B, nstud, nitems, maxK, convM,
-                          PersonScores, theta, xsi, Msteps, WLE=TRUE ,
+  jmlWLE <- tam_jml_wle( tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
+                          PersonScores, theta, xsi, Msteps, WLE=TRUE,
                           theta.fixed=theta.fixed )
 
   thetaWLE <- jmlWLE$theta[,1]
@@ -273,9 +273,9 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
 
 
   # collect item statistics
-  item <- data.frame( "xsi.label" = dimnames(A)[[3]] ,
-        "xsi.index" = 1:( length(xsi) ) , "xsi" = xsi ,
-        "se.xsi" = errorP
+  item <- data.frame( "xsi.label"=dimnames(A)[[3]],
+        "xsi.index"=1:( length(xsi) ), "xsi"=xsi,
+        "se.xsi"=errorP
     )
 
 
@@ -284,27 +284,27 @@ tam_jml_version1 <- function( resp , group = NULL , adj=.3 , disattenuate = FALS
   s2 <- Sys.time()
   if (progress){
     cat(disp)
-    cat( "\nStart: " , paste(s1))
-    cat( "\nEnd: " , paste(s2),"\n")
+    cat( "\nStart: ", paste(s1))
+    cat( "\nEnd: ", paste(s2),"\n")
     print(s2-s1)
     cat( "\n" )
   }
 
   # Output list
-  deviance.history <- deviance.history[ 1:iter , ]
-  res <- list( "item"=item , "xsi" = xsi ,  "errorP" = errorP ,
-               "theta" = theta[,1] , "errorWLE" = errorWLE ,  "WLE" = thetaWLE ,
-               "WLEreliability" = WLEreliability ,
-               "PersonScores" = PersonScores , "ItemScore" = ItemScore ,
-               "PersonMax" = PersonMaxB , "ItemMax" = ItemMax ,
-               "deviance" = deviance, "deviance.history" = deviance.history,
-               "resp" = resp , "resp.ind" = resp.ind , "group" = group ,
-               "pweights" = pweights , "A" = A , "B" = B  ,
-               "nitems" = nitems , "maxK" = maxK ,
-               "nstud" = nstud , "resp.ind.list" = resp.ind.list ,
-               "xsi.fixed" = xsi.fixed , "deviance" = deviance ,
-               "deviance.history" = deviance.history ,
-               "control" = con1a , "iter"=iter)
+  deviance.history <- deviance.history[ 1:iter, ]
+  res <- list( "item"=item, "xsi"=xsi,  "errorP"=errorP,
+               "theta"=theta[,1], "errorWLE"=errorWLE,  "WLE"=thetaWLE,
+               "WLEreliability"=WLEreliability,
+               "PersonScores"=PersonScores, "ItemScore"=ItemScore,
+               "PersonMax"=PersonMaxB, "ItemMax"=ItemMax,
+               "deviance"=deviance, "deviance.history"=deviance.history,
+               "resp"=resp, "resp.ind"=resp.ind, "group"=group,
+               "pweights"=pweights, "A"=A, "B"=B,
+               "nitems"=nitems, "maxK"=maxK,
+               "nstud"=nstud, "resp.ind.list"=resp.ind.list,
+               "xsi.fixed"=xsi.fixed, "deviance"=deviance,
+               "deviance.history"=deviance.history,
+               "control"=con1a, "iter"=iter)
   res$time <-  c(s1,s2,s2-s1)
   class(res) <- "tam.jml"
   return(res)

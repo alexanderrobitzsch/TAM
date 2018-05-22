@@ -1,5 +1,5 @@
 %% File Name: plot.tam.Rd
-%% File Version: 3.34
+%% File Version: 3.38
 
 \name{plot.tam}
 \alias{plot.tam}
@@ -18,19 +18,19 @@ or \code{tam.mml}.
 
 \usage{
 \method{plot}{tam}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6,
-                   groups_by_item = FALSE, wle=NULL, export=TRUE, export.type="png",
-                   export.args=list(), observed=TRUE, overlay=FALSE ,
-                   ask=FALSE, package="lattice" , fix.devices=TRUE , ...)
+                   groups_by_item=FALSE, wle=NULL, export=TRUE, export.type="png",
+                   export.args=list(), observed=TRUE, overlay=FALSE,
+                   ask=FALSE, package="lattice", fix.devices=TRUE, ...)
 
 \method{plot}{tam.mml}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6,
-                       groups_by_item = FALSE, wle=NULL, export=TRUE, export.type="png",
-                       export.args=list(), observed=TRUE, overlay=FALSE ,
-                       ask=FALSE,  package="lattice" ,  fix.devices=TRUE , ...)
+                       groups_by_item=FALSE, wle=NULL, export=TRUE, export.type="png",
+                       export.args=list(), observed=TRUE, overlay=FALSE,
+                       ask=FALSE,  package="lattice",  fix.devices=TRUE, ...)
 
 \method{plot}{tam.jml}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6,
-                       groups_by_item = FALSE, wle=NULL, export=TRUE, export.type="png",
-                       export.args=list(), observed=TRUE, overlay=FALSE ,
-                       ask=FALSE,  package="lattice" , fix.devices=TRUE , ...)
+                       groups_by_item=FALSE, wle=NULL, export=TRUE, export.type="png",
+                       export.args=list(), observed=TRUE, overlay=FALSE,
+                       ask=FALSE,  package="lattice", fix.devices=TRUE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 
@@ -137,18 +137,18 @@ mod <- TAM::tam.mml(data.sim.rasch)
 # expected response curves
 plot(mod, items=1:5, export=FALSE)
 # item response curves
-plot(mod, items=1:5, type="items" , export=FALSE)
+plot(mod, items=1:5, type="items", export=FALSE)
 # plot with graphics package
-plot(mod, items=1:5, type="items" , export=FALSE , ask=TRUE , package="graphics")
+plot(mod, items=1:5, type="items", export=FALSE, ask=TRUE, package="graphics")
 
 #############################################################################
 # EXAMPLE 2: Polytomous data
 #############################################################################
 
 data(data.Students, package="CDM")
-dat <- data.Students[ , c("sc3","sc4" , "mj1" , "mj2" )]
+dat <- data.Students[, c("sc3","sc4", "mj1", "mj2" )]
 dat <- na.omit(dat)
-dat[ dat[,1] == 3 , 1 ] <- 2   # modify data
+dat[ dat[,1]==3, 1 ] <- 2   # modify data
 dat[ 1:20, 2 ] <- 4
 
 # estimate model

@@ -1,8 +1,8 @@
 ## File Name: tam_mml_compute_deviance.R
-## File Version: 0.11
+## File Version: 0.15
 
-tam_mml_compute_deviance <- function( loglike_num , loglike_sto , snodes,
-    thetawidth , pweights, deviance=NA, deviance.history=NULL , iter=NULL,
+tam_mml_compute_deviance <- function( loglike_num, loglike_sto, snodes,
+    thetawidth, pweights, deviance=NA, deviance.history=NULL, iter=NULL,
     logprior_xsi=NULL )
 {
     olddeviance <- deviance
@@ -15,7 +15,7 @@ tam_mml_compute_deviance <- function( loglike_num , loglike_sto , snodes,
         deviance <- deviance + penalty_xsi
     }
     # calculate deviance
-    if ( snodes == 0 ){
+    if ( snodes==0 ){
         deviance <- deviance - 2 * sum( pweights * log( loglike_num * thetawidth ) )
     } else {
         deviance <- deviance - 2 * sum( pweights * log( loglike_sto ) )
@@ -31,7 +31,7 @@ tam_mml_compute_deviance <- function( loglike_num , loglike_sto , snodes,
     }
 
     #----- OUTPUT
-    res <- list( deviance = deviance, deviance_change=deviance_change ,
+    res <- list( deviance=deviance, deviance_change=deviance_change,
                 rel_deviance_change=rel_deviance_change,
                 deviance.history=deviance.history, penalty_xsi=penalty_xsi,
                 deviance_change_signed=deviance_change_signed)

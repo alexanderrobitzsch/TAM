@@ -1,8 +1,8 @@
 ## File Name: tam.pv.R
-## File Version: 9.462
-tam.pv <- function( tamobj , nplausible = 10 ,
-            ntheta = 2000 , normal.approx = FALSE , samp.regr = FALSE ,
-            theta.model = FALSE , np.adj = 8 , na.grid = 5, verbose=TRUE)
+## File Version: 9.466
+tam.pv <- function( tamobj, nplausible=10,
+            ntheta=2000, normal.approx=FALSE, samp.regr=FALSE,
+            theta.model=FALSE, np.adj=8, na.grid=5, verbose=TRUE)
 {
     #####################################################
     # INPUT:
@@ -26,14 +26,14 @@ tam.pv <- function( tamobj , nplausible = 10 ,
     #-- check for recommendation of tam.pv.mcmc
     res <- tam_pv_recommend_tam_pv_mcmc(tamobj=tamobj)
 
-    if ( class(tamobj) == "tam.latreg" ){
+    if ( class(tamobj)=="tam.latreg" ){
         theta.model <- TRUE
         latreg <- TRUE
         like <- tamobj$like
     }
     if ( ! latreg ){
-        if (class(tamobj)!= "tam.mml.3pl"){
-            guess <- rep( 0 , dim(tamobj$B)[1] )
+        if (class(tamobj)!="tam.mml.3pl"){
+            guess <- rep( 0, dim(tamobj$B)[1] )
         } else {
             guess <- tamobj$guess
         }
@@ -56,41 +56,41 @@ tam.pv <- function( tamobj , nplausible = 10 ,
         ntheta <- nrow(tamobj$theta)
     }
 
-    nthetal <- rep( 1 , ntheta )
+    nthetal <- rep( 1, ntheta )
     nnodes <- ntheta
     ndim <- tamobj$ndim
     pweights <- tamobj$pweights
 
     #***************************
     # define theta grid
-    #--- dim = 1
+    #--- dim=1
     mu1 <- NULL
     Sigma1 <- NULL
-    if ( ndim == 1 ){
+    if ( ndim==1 ){
         MEAP <- mean( tamobj$person$EAP )
         SDEAP <- sqrt( stats::var( tamobj$person$EAP ) + mean( tamobj$person$SD.EAP^2 ) )
     }
     #--- dim > 1
     if ( ndim > 1 ){
         tp1 <- tamobj$person
-        ind <- grep("EAP\\.Dim" , colnames(tp1) )
-        ind <- ind[ seq( 1 , length(ind) , 2 ) ]
-        dat1 <- tp1[ ,  ind ]
+        ind <- grep("EAP\\.Dim", colnames(tp1) )
+        ind <- ind[ seq( 1, length(ind), 2 ) ]
+        dat1 <- tp1[,  ind ]
         mu1 <- as.vector( colMeans( dat1 ) )
-        var1 <- apply( dat1 , 2 , stats::var ) / tamobj$EAP.rel
+        var1 <- apply( dat1, 2, stats::var ) / tamobj$EAP.rel
         Sigma1 <- stats::cov2cor(variance)
         Sigma1 <- np.adj * diag( sqrt( var1) ) %*% Sigma1 %*% diag( sqrt( var1 ))
     }
 
     # create pv matrix (uni- and multidimensional case)
-    pv <- matrix( 0 , nrow=nstud , ncol= nplausible*ndim)
+    pv <- matrix( 0, nrow=nstud, ncol=nplausible*ndim)
     NPV <- nplausible
     pp <- 1
     iter <- 1
     iterate <- TRUE
     if ( verbose ){
         cat("|")
-        cat( paste( rep("*" , nplausible ) , collapse="") )
+        cat( paste( rep("*", nplausible ), collapse="") )
         cat("|\n|")
         utils::flush.console()
     }
@@ -106,26 +106,26 @@ tam.pv <- function( tamobj , nplausible = 10 ,
 
         #--- compute item response probabilities
         if ( ! latreg ){
-            res <- tam_mml_3pl_calc_prob( iIndex=1:nitems , A=A , AXsi=AXsi , B=B , xsi=xsi , theta=theta ,
-                            nnodes=nnodes, maxK=maxK , recalc=TRUE , guess=guess)
+            res <- tam_mml_3pl_calc_prob( iIndex=1:nitems, A=A, AXsi=AXsi, B=B, xsi=xsi, theta=theta,
+                            nnodes=nnodes, maxK=maxK, recalc=TRUE, guess=guess)
             rprobs <- res$rprobs
             AXsi <- res$AXsi
         }
 
         #--- calculate student prior distribution
-        gwt <- tam_stud_prior( theta=theta , Y=Y , beta=beta , variance=variance , nstud=nstud ,
-                        nnodes=nnodes , ndim=ndim , YSD=YSD , unidim_simplify=FALSE,
-                        snodes = snodes )
-        ind0 <- which( rowSums(gwt) == 0 )
+        gwt <- tam_stud_prior( theta=theta, Y=Y, beta=beta, variance=variance, nstud=nstud,
+                        nnodes=nnodes, ndim=ndim, YSD=YSD, unidim_simplify=FALSE,
+                        snodes=snodes )
+        ind0 <- which( rowSums(gwt)==0 )
         if ( length(ind0) > 0 ){
             gwt[ind0,] <- 1
         }
 
         #--- posterior distribution
         if ( ! latreg ){
-            hwt <- tam_calc_posterior( rprobs=rprobs , gwt=gwt , resp=tamobj$resp , nitems=nitems ,
-                            resp.ind.list=tamobj$resp.ind.list , normalization=TRUE ,
-                            thetasamp.density=NULL , snodes=0 )$hwt
+            hwt <- tam_calc_posterior( rprobs=rprobs, gwt=gwt, resp=tamobj$resp, nitems=nitems,
+                            resp.ind.list=tamobj$resp.ind.list, normalization=TRUE,
+                            thetasamp.density=NULL, snodes=0 )$hwt
         }
 
         if (latreg){
@@ -146,7 +146,7 @@ tam.pv <- function( tamobj , nplausible = 10 ,
                             ndim=ndim, pp=pp )
             }
             #-- normal approximation in unidimensional case
-            if ( normal.approx & ( ndim == 1 ) ){
+            if ( normal.approx & ( ndim==1 ) ){
                 res <- tam_pv_draw_pv_normal_approximation_1dim( theta=theta, nstud=nstud,
                             ntheta=ntheta, pv=pv, hwt=hwt, pp=pp )
             }
@@ -159,7 +159,7 @@ tam.pv <- function( tamobj , nplausible = 10 ,
             theta1 <- res$theta1
 
             pp <- pp + 1
-            if (iter == 1){
+            if (iter==1){
                 pp <- pp - 1
             }
             iter <- iter + 1
@@ -188,7 +188,7 @@ tam.pv <- function( tamobj , nplausible = 10 ,
                                 ndim=ndim, pp=pp )
                 }
                 #-- normal approximation
-                if ( normal.approx & ( ndim == 1) ){
+                if ( normal.approx & ( ndim==1) ){
                     res <- tam_pv_draw_pv_normal_approximation_1dim( theta=theta, nstud=nstud,
                             ntheta=ntheta, pv=pv, hwt=hwt, pp=pp )
                 }
@@ -211,12 +211,12 @@ tam.pv <- function( tamobj , nplausible = 10 ,
     ##################################################
     if (verbose){ cat("|\n") }
     #-- label the pv matrix
-    colnames(pv) <- paste("PV" , rep(1:nplausible,each=ndim) ,
-                    ".Dim" , rep(1:ndim,nplausible) , sep="")
-    pv <- data.frame( "pid" =tamobj$pid , pv )
-    res <- list( pv = pv , hwt = hwt , hwt1 = hwt1 ,
-                theta = theta , ndim = ndim , nplausible = nplausible ,
-                pid = tamobj$pid , pweights = tamobj$pweights )
+    colnames(pv) <- paste("PV", rep(1:nplausible,each=ndim),
+                    ".Dim", rep(1:ndim,nplausible), sep="")
+    pv <- data.frame( "pid"=tamobj$pid, pv )
+    res <- list( pv=pv, hwt=hwt, hwt1=hwt1,
+                theta=theta, ndim=ndim, nplausible=nplausible,
+                pid=tamobj$pid, pweights=tamobj$pweights )
     class(res) <- "tam.pv"
     return(res)
 }

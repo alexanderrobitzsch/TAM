@@ -1,15 +1,15 @@
 ## File Name: tam.q3.aux.R
-## File Version: 9.04
+## File Version: 9.08
 
 ############################################################
 # computation of Q3 statistic from residuals
 .tam.q3.q3sub <- function( residM )
 {
-    corM <- stats::cor(residM  , use="pairwise.complete.obs")
+    corM <- stats::cor(residM, use="pairwise.complete.obs")
     I <- ncol(residM)
-    dfr <- matrix( corM , ncol=1 )
-    dfr <- data.frame( "index1" = rep(1:I,each=I) , "index2"= rep(1:I,I)  , "Q3" = dfr )
-    dfr <- dfr[ dfr$index1 < dfr$index2 , ]
+    dfr <- matrix( corM, ncol=1 )
+    dfr <- data.frame( "index1"=rep(1:I,each=I), "index2"=rep(1:I,I), "Q3"=dfr )
+    dfr <- dfr[ dfr$index1 < dfr$index2, ]
     dfr$aQ3 <- dfr$Q3 - mean( dfr$Q3)
     return(dfr)
 }
@@ -17,10 +17,10 @@
 
 #############################################################
 # Jackknife estimation with bias correction
-.tam.q3.jackknife2 <- function( ms1 , ms.jack )
+.tam.q3.jackknife2 <- function( ms1, ms.jack )
 {
     # pseudo values
-    ms <- data.frame("val" = ms1 )
+    ms <- data.frame("val"=ms1 )
     JJ <- ncol(ms.jack)
     psx <- ms1 + ( JJ-1 ) * ( ms1 - ms.jack )
     # jackknife estimate

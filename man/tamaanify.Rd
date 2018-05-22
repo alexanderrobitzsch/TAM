@@ -1,5 +1,5 @@
 %% File Name: tamaanify.Rd
-%% File Version: 0.50
+%% File Version: 0.53
 
 \name{tamaanify}
 \alias{tamaanify}
@@ -18,7 +18,7 @@ at the extension \code{\link{lavaanify.IRT}}.
 
 
 \usage{
-tamaanify(tammodel, resp, tam.method = NULL, doparse=TRUE )
+tamaanify(tammodel, resp, tam.method=NULL, doparse=TRUE )
 }
 %- maybe also 'usage' for other objects documented here.
 
@@ -204,11 +204,11 @@ dat <- data.read
 #             equality constraints
 tammodel <- "
 LAVAAN MODEL:
-  F2 =~ C1__C2 + 1.3*C3 + C4
-  F1 =~ A1__B1
+  F2=~ C1__C2 + 1.3*C3 + C4
+  F1=~ A1__B1
   # fixed loading of 1.4 for item B2
-  F1 =~ 1.4*B2
-  F1 =~ B3
+  F1=~ 1.4*B2
+  F1=~ B3
   F1 ~~ F1
   F2 ~~ F2
   F1 ~~ F2
@@ -221,7 +221,7 @@ ITEM TYPE:
   B1__C4 (Rasch) ;
     "
 # process model
-out <- TAM::tamaanify( tammodel , resp=dat)
+out <- TAM::tamaanify( tammodel, resp=dat)
 # inspect some output
 out$method          # used TAM function
 out$lavpartable     # lavaan parameter table
@@ -234,10 +234,10 @@ ANALYSIS:
   NCLASSES(3);   # 3 classes
   NSTARTS(5,20); # 5 random starts with 20 iterations
 LAVAAN MODEL:
-  F =~ A1__C4
+  F=~ A1__C4
     "
 # process syntax
-out <- TAM::tamaanify( tammodel , resp=dat)
+out <- TAM::tamaanify( tammodel, resp=dat)
 str(out$E)     # E design matrix for estimation with tam.mml.3pl function
 
 \dontrun{
@@ -245,7 +245,7 @@ str(out$E)     # E design matrix for estimation with tam.mml.3pl function
 #*** Model 3: Linear constraints for item intercepts and item loadings
 tammodel <- "
 LAVAAN MODEL:
-  F =~ lam1__lam10*A1__C2
+  F=~ lam1__lam10*A1__C2
   F ~~ F
   A1 | a1*t1
   A2 | a2*t1
@@ -258,19 +258,19 @@ LAVAAN MODEL:
 MODEL CONSTRAINT:
   # defined parameters
   # only linear combinations are permitted
-  b2 == 1.3*b1 + (-0.6)*b3
-  a1 == q1
-  a2 == q2 + t
-  a3 == q1 + 2*t
-  a4 == q2 + 3*t
+  b2==1.3*b1 + (-0.6)*b3
+  a1==q1
+  a2==q2 + t
+  a3==q1 + 2*t
+  a4==q2 + 3*t
   # linear constraints for loadings
-  lam2 == 1.1*lam1
-  lam3 == 0.9*lam1 + (-.1)*lam0
-  lam8 == lam0
-  lam9 == lam0
+  lam2==1.1*lam1
+  lam3==0.9*lam1 + (-.1)*lam0
+  lam8==lam0
+  lam9==lam0
     "
 # parse syntax
-mod1 <- TAM::tamaanify( tammodel , resp=dat)
+mod1 <- TAM::tamaanify( tammodel, resp=dat)
 mod1$A          # design matrix A for intercepts
 mod1$L[,1,]     # design matrix L for loadings
 }
@@ -280,22 +280,22 @@ mod1$L[,1,]     # design matrix L for loadings
 #############################################################################
 
 library(CDM)
-data( data.Students , package="CDM")
+data( data.Students, package="CDM")
 dat <- data.Students[,3:13]
 
 #*********************************************************************
 #*** Model 1: Two-dimensional generalized partial credit model
 tammodel <- "
 LAVAAN MODEL:
-  FA =~ act1__act5
-  FS =~ sc1__sc4
+  FA=~ act1__act5
+  FS=~ sc1__sc4
   FA ~~ 1*FA
   FS ~~ 1*FS
   FA ~~ FS
   act1__act3 | t1
   sc2 | t2
     "
-out <- TAM::tamaanify( tammodel , resp=dat)
+out <- TAM::tamaanify( tammodel, resp=dat)
 out$A    # design matrix for item intercepts
 out$Q    # loading matrix for items
 
@@ -306,19 +306,19 @@ out$Q    # loading matrix for items
 # are arranged over multiple lines.
 tammodel <- "
   LAVAAN MODEL:
-    F =~ a1__a5*act1__act5
+    F=~ a1__a5*act1__act5
     F ~~ F
   MODEL CONSTRAINT:
-      a1 == delta +
+      a1==delta +
                 tau1
-      a2 == delta
-      a3 == delta + z1
-      a4 == 1.1*delta +
+      a2==delta
+      a3==delta + z1
+      a4==1.1*delta +
               2*tau1
                 + (-0.2)*z1
   "
 # tamaanify model
-res <- TAM::tamaanify( tammodel , dat )
+res <- TAM::tamaanify( tammodel, dat )
 res$MODELCONSTRAINT.dfr
 res$modelconstraint.loading
 }

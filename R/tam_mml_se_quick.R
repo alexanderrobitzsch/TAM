@@ -1,8 +1,8 @@
 ## File Name: tam_mml_se_quick.R
-## File Version: 0.38
+## File Version: 0.43
 
 
-tam_mml_se_quick <- function( tamobj , numdiff.parm = .001, item_pars = TRUE )
+tam_mml_se_quick <- function( tamobj, numdiff.parm=.001, item_pars=TRUE )
 {
     h <- numdiff.parm
     B <- tamobj$B
@@ -39,18 +39,18 @@ tam_mml_se_quick <- function( tamobj , numdiff.parm = .001, item_pars = TRUE )
     ##############################################
     ip <- length(xsi)
     # create result object for item parameters
-    se.xsi <- rep( 0 , ip )
+    se.xsi <- rep( 0, ip )
     if (item_pars){
         cat("Item parameters\n|")
         disp_progress <- tam_compute_disp_progress(ip=ip)
     }
 
     # prior distribution for each student (normal density)
-    gwt0a <- tam_stud_prior( theta=theta , Y=Y , beta=beta , variance=variance ,
-                            nstud=nstud , nnodes=nnodes , ndim=ndim , YSD=YSD ,
+    gwt0a <- tam_stud_prior( theta=theta, Y=Y, beta=beta, variance=variance,
+                            nstud=nstud, nnodes=nnodes, ndim=ndim, YSD=YSD,
                             unidim_simplify=FALSE )
 
-    ll <- matrix( 0, nrow=nstud , ncol=3 )
+    ll <- matrix( 0, nrow=nstud, ncol=3 )
     vv <- 1
 
     if ( ! item_pars ){
@@ -102,13 +102,13 @@ tam_mml_se_quick <- function( tamobj , numdiff.parm = .001, item_pars = TRUE )
         # create result object for item parameters
         disp_progress <- tam_compute_disp_progress(ip=ip)
 
-        ll <- matrix( 0 , nrow=nstud , ncol=3 )
+        ll <- matrix( 0, nrow=nstud, ncol=3 )
         vv <- 1
         for (pp in 1:ip){
             vec <- tam_mml_se_quick_modify_parameter_vec(pp=pp)
             pp.ind <- switch(irtmodel,
-                        "2PL.groups"= which(est.slopegroups == sort(unique(est.slopegroups))[pp]),
-                        #"GPCM.design"= pair.ind[pp,,drop=FALSE],
+                        "2PL.groups"=which(est.slopegroups==sort(unique(est.slopegroups))[pp]),
+                        #"GPCM.design"=pair.ind[pp,,drop=FALSE],
                         pp # default)
                         )
             for (mm in vec){
@@ -159,10 +159,10 @@ tam_mml_se_quick <- function( tamobj , numdiff.parm = .001, item_pars = TRUE )
         for (dd in 1:ndim){
             for (mm in 2:3){
                 beta0 <- beta
-                beta0[ pp ,dd] <- beta0[pp,dd] + mult[mm] * h
+                beta0[ pp,dd] <- beta0[pp,dd] + mult[mm] * h
                 #--- prior distribution for each student (normal density)
-                gwt0a <- tam_stud_prior( theta=theta , Y=Y , beta=beta0 , variance=variance ,
-                                nstud=nstud , nnodes=nnodes , ndim=ndim, YSD=YSD, unidim_simplify=FALSE )
+                gwt0a <- tam_stud_prior( theta=theta, Y=Y, beta=beta0, variance=variance,
+                                nstud=nstud, nnodes=nnodes, ndim=ndim, YSD=YSD, unidim_simplify=FALSE )
                 #-- compute likelihood
                 ll[,mm] <- tam_mml_se_quick_likelihood( nitems=nitems, A=A, AXsi=AXsi, B=B, xsi=xsi,
                             theta=theta, nnodes=nnodes, maxK=maxK, gwt=gwt0a, resp=resp,
@@ -199,27 +199,27 @@ tam_mml_se_quick <- function( tamobj , numdiff.parm = .001, item_pars = TRUE )
 
     #***
     N1 <- nrow(tamobj$item)
-    if (N1 != length(xsi) ){
-        xsi <- data.frame( "item" = rownames(tamobj$xsi) , "N"=NA ,
-                    "est" = xsi , "se" = se.xsi )
+    if (N1 !=length(xsi) ){
+        xsi <- data.frame( "item"=rownames(tamobj$xsi), "N"=NA,
+                    "est"=xsi, "se"=se.xsi )
     } else {
-        xsi <- data.frame( "item" = rownames(tamobj$xsi)  ,
-                    "est" = xsi , "se" = se.xsi )
+        xsi <- data.frame( "item"=rownames(tamobj$xsi),
+                    "est"=xsi, "se"=se.xsi )
     }
 
-    beta <- data.frame( "beta" = beta , "se" = se.beta )
-    colnames(beta) <- c( paste("est.Dim" , 1:ndim , sep="")    , paste("se.Dim" , 1:ndim , sep="")    )
+    beta <- data.frame( "beta"=beta, "se"=se.beta )
+    colnames(beta) <- c( paste("est.Dim", 1:ndim, sep="")    , paste("se.Dim", 1:ndim, sep="")    )
 
-    B.out <- data.frame( "item" = dimnames(B)[[1]] )
+    B.out <- data.frame( "item"=dimnames(B)[[1]] )
     for (kk in 1:(maxK-1)){ # kk <- 1
         for (dd in 1:ndim){
-            B.out[ , paste0("B.Cat" , kk,".Dim",dd) ] <- B[,kk+1,dd]
-            B.out[ , paste0("se.B.Cat" , kk,".Dim",dd) ] <- se.B[,kk+1,dd]
+            B.out[, paste0("B.Cat", kk,".Dim",dd) ] <- B[,kk+1,dd]
+            B.out[, paste0("se.B.Cat", kk,".Dim",dd) ] <- se.B[,kk+1,dd]
         }
     }
 
     utils::flush.console()
-    res <- list( "xsi" = xsi , "beta" = beta, "B"=B.out )
+    res <- list( "xsi"=xsi, "beta"=beta, "B"=B.out )
     if(irtmodel=="GPCM.design"){
         basispar.res <- data.frame("basispar"=1:length(basispar),
                 "gamma"=basispar, "se"=sqrt(var.basispar) )

@@ -1,7 +1,7 @@
 ## File Name: prior_list_include.R
-## File Version: 0.02
+## File Version: 0.03
 
-prior_list_include <- function( prior_list , prior , index )
+prior_list_include <- function( prior_list, prior, index )
 {
     if ( missing(prior_list) ){
         prior_list <- list()

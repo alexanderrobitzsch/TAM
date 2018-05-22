@@ -1,14 +1,14 @@
 ## File Name: tam_theta_sq1.R
-## File Version: 0.04
+## File Version: 0.07
 
 
 tam_theta_sq1 <- function(theta)
 {
-    theta2 <- array(,dim = c(nrow(theta), ncol(theta) , ncol(theta) ) )
+    theta2 <- array(,dim=c(nrow(theta), ncol(theta), ncol(theta) ) )
     for( qq in 1:nrow(theta) ){
         theta2[qq,,] <- tcrossprod( theta[qq,] )
     }
-    return(theta2 = theta2)
+    return(theta2=theta2)
 }
 
 theta.sq <- tam_theta_sq1

@@ -1,5 +1,5 @@
 %% File Name: tam.modelfit.Rd
-%% File Version: 2.32
+%% File Version: 2.36
 
 \name{tam.modelfit}
 \alias{tam.modelfit}
@@ -44,7 +44,7 @@ weighted likelihood estimates (see \code{\link{tam.wle}}).
 
 
 \usage{
-tam.modelfit(tamobj, progress = TRUE)
+tam.modelfit(tamobj, progress=TRUE)
 
 \method{summary}{tam.modelfit}(object,...)
 
@@ -56,11 +56,11 @@ tam.modelfit(tamobj, progress = TRUE)
 \method{summary}{IRT.modelfit.tam.mml.3pl}(object, \dots)
 \method{summary}{IRT.modelfit.tamaan}(object, \dots)
 
-tam.modelfit.IRT( object , progress=TRUE )
+tam.modelfit.IRT( object, progress=TRUE )
 
-tam.modelfit.args( resp , probs , theta , post , progress=TRUE )
+tam.modelfit.args( resp, probs, theta, post, progress=TRUE )
 
-tam.Q3(tamobj , ... )
+tam.Q3(tamobj, ... )
 
 \method{summary}{tam.Q3}(object,...)
 }
@@ -92,7 +92,7 @@ value \eqn{E(X_{ni})} is obtained by integrating the individual
 posterior distribution.
 
 The Q3 statistic of item pairs \eqn{i} and \eqn{j} is defined as the
-correlation \eqn{Q3_{ij} = Cor( e_{ni} , e_{nj} )}. The residuals in
+correlation \eqn{Q3_{ij}=Cor( e_{ni}, e_{nj} )}. The residuals in
 \code{tam.modelfit} are
 calculated by integrating values of the individual posterior distribution.
 Residuals in \code{tam.Q3} are calculated by using weighted likelihood
@@ -115,15 +115,15 @@ Xu, Yel & Svetina, 2015).
 The SRMSR (standardized root mean square root of squared residuals,
 Maydeu-Olivaras, 2013) is based on comparing residual correlations
 of item pairs
-\deqn{ SRMSR = \sqrt{ \frac{1}{ J(J-1)/2 } \sum_{i < j}
+\deqn{ SRMSR=\sqrt{ \frac{1}{ J(J-1)/2 } \sum_{i < j}
     ( r_{ij} - \hat{r}_{ij} )^2 } }
 Additionally, the SRMR is computed as
-\deqn{ SRMR = \frac{1}{ J(J-1)/2 } \sum_{i < j}
+\deqn{ SRMR=\frac{1}{ J(J-1)/2 } \sum_{i < j}
      | r_{ij} - \hat{r}_{ij} | }
 
 The \eqn{MADRESIDCOV} statistic (McDonald & Mok, 1995) is based on comparing
 residual covariances of item pairs
-\deqn{ MADRESIDCOV = \frac{1}{ J(J-1)/2 } \sum_{i < j}
+\deqn{ MADRESIDCOV=\frac{1}{ J(J-1)/2 } \sum_{i < j}
     | c_{ij} - \hat{c}_{ij} |  }
 This statistic is just multiplied by 100 in the output of this function.
 }
@@ -151,9 +151,9 @@ A list with following entries
 
 %  \item{chisquare.itemfit}{Item-wise \eqn{\chi ^2} local independence statistics}
 
-%    res <- list( "stat.MADaQ3"=stat.MADaQ3 , "chi2.stat"=chi2.stat ,
-%           "fitstat" = fitstat , "modelfit.test"= modelfit.test ,
-%           "stat.itempair"=dfr , "residuals" = residM )
+%    res <- list( "stat.MADaQ3"=stat.MADaQ3, "chi2.stat"=chi2.stat,
+%           "fitstat"=fitstat, "modelfit.test"=modelfit.test,
+%           "stat.itempair"=dfr, "residuals"=residM )
 
 
 
@@ -209,7 +209,7 @@ dat <- data.cqc01
 #*** Model 1: Rasch model
 mod1 <- TAM::tam.mml( dat )
 # assess model fit
-res1 <- TAM::tam.modelfit( tamobj = mod1 )
+res1 <- TAM::tam.modelfit( tamobj=mod1 )
 summary(res1)
 # display item pairs with five largest adjusted Q3 statistics
 res1$stat.itempair[1:5,c("item1","item2","aQ3","p","p.holm")]
@@ -227,7 +227,7 @@ fmod2 <- IRT.modelfit(mod2)
 summary(fmod2)
 
 # model comparison
-IRT.compareModels(fmod1 , fmod2 )
+IRT.compareModels(fmod1, fmod2 )
 
 #############################################################################
 # SIMULATED EXAMPLE 2: Rasch model
@@ -238,12 +238,12 @@ N <- 1000    # number of persons
 I <- 20      # number of items
 # simulate responses
 library(sirt)
-dat <- sirt::sim.raschtype( rnorm(N) , b=seq(-1.5,1.5,len=I) )
+dat <- sirt::sim.raschtype( rnorm(N), b=seq(-1.5,1.5,len=I) )
 #*** estimation
 mod1 <- TAM::tam.mml( dat )
 summary(dat)
 #*** model fit
-res1 <- TAM::tam.modelfit( tamobj = mod1)
+res1 <- TAM::tam.modelfit( tamobj=mod1)
 summary(res1)
 
 #############################################################################

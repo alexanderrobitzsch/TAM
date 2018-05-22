@@ -1,7 +1,7 @@
 ## File Name: tam_mml_inits_variance.R
-## File Version: 0.04
+## File Version: 0.06
 
-tam_mml_inits_variance <- function( variance.inits, ndim , variance.fixed )
+tam_mml_inits_variance <- function( variance.inits, ndim, variance.fixed )
 {
     # variance inits
     # initialise conditional variance
@@ -11,8 +11,8 @@ tam_mml_inits_variance <- function( variance.inits, ndim , variance.fixed )
         variance <- diag( ndim )
     }
     if ( !is.null(variance.fixed) ){
-        variance[ variance.fixed[,1:2 ,drop=FALSE] ] <- variance.fixed[,3]
-        variance[ variance.fixed[,c(2,1) ,drop=FALSE] ] <- variance.fixed[,3]
+        variance[ variance.fixed[,1:2,drop=FALSE] ] <- variance.fixed[,3]
+        variance[ variance.fixed[,c(2,1),drop=FALSE] ] <- variance.fixed[,3]
     }
     #--- OUTPUT
     res <- list( variance=variance )

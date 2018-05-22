@@ -1,11 +1,11 @@
 ## File Name: tam_mml_sufficient_statistics.R
-## File Version: 0.21
+## File Version: 0.25
 
-tam_mml_sufficient_statistics <- function( nitems , maxK, resp, resp.ind ,
-        pweights , cA, progress, use_rcpp=TRUE )
+tam_mml_sufficient_statistics <- function( nitems, maxK, resp, resp.ind,
+        pweights, cA, progress, use_rcpp=TRUE )
 {
     cA[is.na(cA)] <- 0
-    col.index <- rep( 1:nitems , each = maxK )
+    col.index <- rep( 1:nitems, each=maxK )
 
     #-- apply function for calculating sufficient statistics
     if ( ! use_rcpp ){
@@ -19,7 +19,7 @@ tam_mml_sufficient_statistics <- function( nitems , maxK, resp, resp.ind ,
     ItemScore <- res$ItemScore
     if (progress){
         cat("    * Calculated Sufficient Statistics   (",
-        paste(Sys.time()) , ")\n")
+        paste(Sys.time()), ")\n")
         utils::flush.console()
     }
     #--- OUTPUT

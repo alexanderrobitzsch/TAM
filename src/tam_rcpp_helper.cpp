@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_helper.cpp
-//// File Version: 3.20
+//// File Version: 3.22
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
@@ -17,23 +17,23 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 Rcpp::NumericMatrix tam_rcpp_theta_sq( Rcpp::NumericMatrix theta )
 {
-    int N = theta.nrow() ;
-    int D = theta.ncol() ;
+    int N = theta.nrow();
+    int D = theta.ncol();
     int D2 = D*D;
-    Rcpp::NumericMatrix thetasq(N,D2) ;
+    Rcpp::NumericMatrix thetasq(N,D2);
 
     //----- calculation of squared theta matrix
     for (int nn=0;nn<N;nn++){
         for (int dd1=0;dd1<D;dd1++){
-            thetasq(nn, dd1*D + dd1 ) = pow( theta(nn,dd1) , 2 ) ;
+            thetasq(nn, dd1*D + dd1 ) = pow( theta(nn,dd1), 2 );
             for (int dd2=dd1+1;dd2<D;dd2++){
-                thetasq(nn,dd1*D + dd2 ) = theta(nn,dd1) * theta(nn,dd2 ) ;
-                thetasq(nn,dd2*D + dd1 ) = thetasq(nn,dd1*D + dd2) ;
+                thetasq(nn,dd1*D + dd2 ) = theta(nn,dd1) * theta(nn,dd2 );
+                thetasq(nn,dd2*D + dd1 ) = thetasq(nn,dd1*D + dd2);
             }
         }
     }
     //// OUTPUT
-    return thetasq ;
+    return thetasq;
 }
 
 ///********************************************************************
@@ -48,10 +48,10 @@ Rcpp::NumericVector tam_rcpp_interval_index( Rcpp::NumericMatrix MATR,
     Rcpp::NumericVector IND(NR);
     IND.fill(0);
     for (int nn=0;nn<NR;++nn){
-        for (int cc=0 ; cc < NC ; ++cc ){
+        for (int cc=0; cc < NC; ++cc ){
             if ( MATR(nn,cc) > RN[nn] ){
-                IND(nn) = cc + 1 ;
-                break ;
+                IND(nn) = cc + 1;
+                break;
             }
         }
     }

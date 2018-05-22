@@ -1,5 +1,5 @@
 ## File Name: IRT.simulate.R
-## File Version: 9.10
+## File Version: 9.13
 
 #####################################################
 # S3 method
@@ -10,7 +10,7 @@ IRT.simulate <- function (object, ...) {
 
 
 ######################################################
-simulate_mml <- function(object, iIndex = NULL, theta = NULL, nobs = NULL, ...){
+simulate_mml <- function(object, iIndex=NULL, theta=NULL, nobs=NULL, ...){
 
   nnodes <- nobs
   A <- object$A
@@ -32,39 +32,39 @@ simulate_mml <- function(object, iIndex = NULL, theta = NULL, nobs = NULL, ...){
 
     t.mean <- object$beta
     t.sigma <- object$variance
-    if(ndim == 1){
-      theta <- stats::rnorm(nnodes, mean = t.mean, sd = sqrt(t.sigma))
+    if(ndim==1){
+      theta <- stats::rnorm(nnodes, mean=t.mean, sd=sqrt(t.sigma))
     } else {
-      theta <- CDM::CDM_rmvnorm(nnodes, mean = t.mean, sigma = t.sigma)
+      theta <- CDM::CDM_rmvnorm(nnodes, mean=t.mean, sigma=t.sigma)
     }
-    theta <-  matrix(theta, ncol = ndim)
+    theta <-  matrix(theta, ncol=ndim)
   }
 
-  if(is.null(dim(theta)) & ndim == 1){
+  if(is.null(dim(theta)) & ndim==1){
     warning("Theta points should be either NULL or a matrix of same dimensionality as the trait distribution.")
-    theta <- matrix(theta, ncol = ndim)
+    theta <- matrix(theta, ncol=ndim)
 
   }
-  if(ncol(theta) != ndim){
+  if(ncol(theta) !=ndim){
     warning("Theta points should be either NULL or a matrix of same dimensionality as the trait distribution.")
-    theta <- matrix(theta, ncol = ndim)
+    theta <- matrix(theta, ncol=ndim)
   }
   nnodes <- nrow(theta)
 
   #****
   # calculate probs
-  p <- IRT.irfprob(object = class(object), A = A, B = B, xsi = xsi, theta = theta,
-                   guess = guess, nnodes = nnodes, iIndex = iIndex, maxK = maxK, ... )
+  p <- IRT.irfprob(object=class(object), A=A, B=B, xsi=xsi, theta=theta,
+                   guess=guess, nnodes=nnodes, iIndex=iIndex, maxK=maxK, ... )
 
   #****
   # simulate data
-  res <- matrix( stats::runif(nnodes * nI), nrow = nnodes, ncol = nI)
+  res <- matrix( stats::runif(nnodes * nI), nrow=nnodes, ncol=nI)
   for(ii in 1:nI){
-    cat.success.ii <- (res[, ii] > t(apply(p[ii, , ], 2, cumsum)))
+    cat.success.ii <- (res[, ii] > t(apply(p[ii,, ], 2, cumsum)))
     res[, ii] <-  c(cat.success.ii %*% rep(1, maxK))
   }
 
-  if ( nrow(object$resp) == nnodes ){
+  if ( nrow(object$resp)==nnodes ){
         res[ is.na(object$resp) ] <- NA
   }
 

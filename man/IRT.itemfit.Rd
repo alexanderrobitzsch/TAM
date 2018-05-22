@@ -1,5 +1,5 @@
 %% File Name: IRT.itemfit.Rd
-%% File Version: 0.19
+%% File Version: 0.22
 
 \name{IRT.itemfit.tam}
 
@@ -122,9 +122,9 @@ I <- 10      # 10 items
 # define item difficulties and item slopes
 b <- seq(-2,2,len=I)
 a <- rep(1,I)
-a[c(3,8)] <- c( 1.7 , .4 )
+a[c(3,8)] <- c( 1.7, .4 )
 # simulate 2PL data
-dat <- sirt::sim.raschtype( theta=rnorm(N) , b = b , fixed.a = a)
+dat <- sirt::sim.raschtype( theta=rnorm(N), b=b, fixed.a=a)
 
 # fit 1PL model
 mod <- TAM::tam.mml( dat )

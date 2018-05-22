@@ -1,5 +1,5 @@
 ## File Name: tam_mml_calc_prob.R
-## File Version: 9.385
+## File Version: 9.387
 
 #####################################################################
 # calc_prob: Calculation of probabilities
@@ -25,7 +25,7 @@ tam_mml_calc_prob <- function(iIndex, A, AXsi, B, xsi, theta,
         AXsi <- res$AXsi
     }
     #---- output
-    res <- list("rprobs" = rprobs, "AXsi" = AXsi)
+    res <- list("rprobs"=rprobs, "AXsi"=AXsi)
     return(res)
 }
 ########################################################################

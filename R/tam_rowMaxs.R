@@ -1,10 +1,10 @@
 ## File Name: tam_rowMaxs.R
-## File Version: 0.03
+## File Version: 0.06
 
 
 #############################################################
 # search the maximum in each matrix row
-tam_rowMaxs <- function(mat, na.rm = FALSE)
+tam_rowMaxs <- function(mat, na.rm=FALSE)
 {
     # Call: from designMatrix()
     # Input:
@@ -14,8 +14,8 @@ tam_rowMaxs <- function(mat, na.rm = FALSE)
     n <- nrow(mat)
     p <- ncol(mat)
     x <- as.vector(mat)
-    x <- matrix(x[order(rep(1:n, p), x, na.last = !na.rm)], p, n)
-    x[p , ]
+    x <- matrix(x[order(rep(1:n, p), x, na.last=!na.rm)], p, n)
+    x[p, ]
 }
 
 rowMaxs <- tam_rowMaxs

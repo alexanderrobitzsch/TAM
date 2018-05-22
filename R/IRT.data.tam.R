@@ -1,9 +1,9 @@
 ## File Name: IRT.data.tam.R
-## File Version: 9.05
+## File Version: 9.06
 
 ##############################################
 # IRT.data functions
-IRT.data.tam.mml <- function( object , ... )
+IRT.data.tam.mml <- function( object, ... )
 {
     dat <- object$resp
     attr(dat,"weights") <- object$pweights

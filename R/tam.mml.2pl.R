@@ -1,20 +1,20 @@
 ## File Name: tam.mml.2pl.R
-## File Version: 9.553
+## File Version: 9.558
 
-tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
-                 formulaY = NULL , dataY = NULL ,
-                 ndim = 1 , pid = NULL ,
-                 xsi.fixed=NULL ,  xsi.inits = NULL ,
-                 beta.fixed = NULL , beta.inits = NULL ,
-                 variance.fixed = NULL , variance.inits = NULL ,
-                 est.variance = FALSE ,
-                 A=NULL , B=NULL , B.fixed = NULL ,
-                 Q=NULL , est.slopegroups=NULL , E = NULL ,
-                 gamma.init = NULL ,
-                 pweights = NULL ,
-                 userfct.variance = NULL , variance.Npars = NULL ,
-                 item.elim=TRUE  ,     verbose = TRUE ,
-                 control = list()
+tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
+                 formulaY=NULL, dataY=NULL,
+                 ndim=1, pid=NULL,
+                 xsi.fixed=NULL,  xsi.inits=NULL,
+                 beta.fixed=NULL, beta.inits=NULL,
+                 variance.fixed=NULL, variance.inits=NULL,
+                 est.variance=FALSE,
+                 A=NULL, B=NULL, B.fixed=NULL,
+                 Q=NULL, est.slopegroups=NULL, E=NULL,
+                 gamma.init=NULL,
+                 pweights=NULL,
+                 userfct.variance=NULL, variance.Npars=NULL,
+                 item.elim=TRUE,     verbose=TRUE,
+                 control=list()
                  # control can be specified by the user
                  )
 {
@@ -50,7 +50,7 @@ tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
 
     if (progress){
         cat(disp)
-        cat("Processing Data     ", paste(Sys.time()) , "\n") ; utils::flush.console()
+        cat("Processing Data     ", paste(Sys.time()), "\n") ; utils::flush.console()
     }
     if ( ! is.null(group) ){
         con1a$QMC <- QMC <- FALSE
@@ -81,8 +81,8 @@ tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
     }
 
     if (progress){
-        cat("    * Response Data:" , nstud , "Persons and " ,
-                nitems , "Items \n" )  ;
+        cat("    * Response Data:", nstud, "Persons and ",
+                nitems, "Items \n" )  ;
         utils::flush.console()
     }
 
@@ -94,7 +94,7 @@ tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
   pweights0 <- pweights
   pweights <- nstud * pweights / sum(pweights)
   # a matrix version of person weights
-  pweightsM <- outer( pweights , rep(1,nitems) )
+  pweightsM <- outer( pweights, rep(1,nitems) )
 
   # calculate ndim if only B or Q are supplied
   if ( ! is.null(B) ){ ndim <- dim(B)[3] }
@@ -110,26 +110,26 @@ tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
                     skillspace="normal", QMC=QMC)
 
     # maximum no. of categories per item. Assuming dichotomous
-    maxK <- max( resp , na.rm=TRUE ) + 1
+    maxK <- max( resp, na.rm=TRUE ) + 1
 
     #****
     # ARb 2015-12-08
     maxKi <- NULL
     if ( ! (item.elim ) ){
-        maxKi <- rep( maxK - 1 , ncol(resp) )
+        maxKi <- rep( maxK - 1, ncol(resp) )
                 }
     #***
 
   # create design matrices
-  design <- designMatrices( modeltype="PCM" , maxKi=maxKi , resp=resp ,
-                            A=A , B=B , Q=Q , R=R, ndim=ndim )
+  design <- designMatrices( modeltype="PCM", maxKi=maxKi, resp=resp,
+                            A=A, B=B, Q=Q, R=R, ndim=ndim )
   A <- design$A
   B <- design$B
   cA <- design$flatA
   cA[is.na(cA)] <- 0
   if (progress){
       cat("    * Created Design Matrices   (",
-            paste(Sys.time()) , ")\n") ; utils::flush.console()
+            paste(Sys.time()), ")\n") ; utils::flush.console()
                 }
   design <- NULL
 
@@ -225,9 +225,9 @@ tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
         basispar <- NULL
 #        } else{  a4 <- 0 }
 
-  if (irtmodel == "GPCM.design" ){
+  if (irtmodel=="GPCM.design" ){
         ES <- ncol(E)
-        basispar <- matrix( 1 , ES , ndim )
+        basispar <- matrix( 1, ES, ndim )
         basispar1 <- solve( t(E) %*% E    , t(E) %*% rep(1,nitems))
         if ( ! is.null(gamma.init) ){
             basispar1 <- gamma.init
@@ -239,7 +239,7 @@ tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
                }
 
 
-   if ( irtmodel %in% c("2PL","GPCM" , "GPCM.design","2PL.groups") ){
+   if ( irtmodel %in% c("2PL","GPCM", "GPCM.design","2PL.groups") ){
     if ( ! is.null(B.fixed) ){
             B[ B.fixed[,1:3,drop=FALSE] ] <- B.fixed[,4]
             B_orig[ B.fixed[,1:3,drop=FALSE] ] <- 0
@@ -257,7 +257,7 @@ tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
 
     #--- acceleration
     res <- tam_acceleration_inits(acceleration=acceleration, G=G, xsi=xsi,
-                variance=variance, B=B , irtmodel=irtmodel )
+                variance=variance, B=B, irtmodel=irtmodel )
     xsi_acceleration <- res$xsi_acceleration
     variance_acceleration <- res$variance_acceleration
     B_acceleration <- res$B_acceleration
@@ -286,7 +286,7 @@ tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
   # display
   disp <- "....................................................\n"
   # define progress bar for M step
-  mpr <- round( seq( 1 , np , len = 10 ) )
+  mpr <- round( seq( 1, np, len=10 ) )
 
   ##############################################################
   #Start EM loop here
@@ -401,7 +401,7 @@ tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
         a01 <- rel_deviance_change <- res$rel_deviance_change
         a02 <- deviance_change <- res$deviance_change
 
-    if (con$dev_crit == "relative" ){ a02 <- a01 }
+    if (con$dev_crit=="relative" ){ a02 <- a01 }
 
 
     if( deviance < deviance.min ){
@@ -446,7 +446,7 @@ tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
 
     #******
     # generate input for fixed parameters
-    xsi.fixed.estimated <- generate.xsi.fixed.estimated( xsi , A )
+    xsi.fixed.estimated <- generate.xsi.fixed.estimated( xsi, A )
     B.fixed.estimated <- generate.B.fixed.estimated(B)
 
     #**** standard errors AXsi
@@ -482,54 +482,54 @@ tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
   s2 <- Sys.time()
 
   if ( is.null( dimnames(A)[[3]] ) ){
-        dimnames(A)[[3]] <- paste0("Xsi" , 1:dim(A)[3] )
+        dimnames(A)[[3]] <- paste0("Xsi", 1:dim(A)[3] )
                         }
-  item <- data.frame( "xsi.index" = 1:np ,
-                "xsi.label" = dimnames(A)[[3]] ,
-                "est" = xsi )
+  item <- data.frame( "xsi.index"=1:np,
+                "xsi.label"=dimnames(A)[[3]],
+                "est"=xsi )
   if (progress){
     cat(disp)
     cat("Item Parameters\n")
     item2 <- item
-    item2[,"est"] <- round( item2[,"est"] , 4 )
+    item2[,"est"] <- round( item2[,"est"], 4 )
     print(item2)
     cat("...................................\n")
     cat("Regression Coefficients\n")
-    print( beta , 4  )
-    cat("\nVariance:\n" ) # , round( varianceM , 4 ))
+    print( beta, 4  )
+    cat("\nVariance:\n" ) #, round( varianceM, 4 ))
     if (G==1 ){
-      varianceM <- matrix( variance , nrow=ndim , ncol=ndim )
-      print( varianceM , 4 )
+      varianceM <- matrix( variance, nrow=ndim, ncol=ndim )
+      print( varianceM, 4 )
     } else {
-      print( variance[ var.indices] , 4 )    }
+      print( variance[ var.indices], 4 )    }
     if ( ndim > 1){
-      cat("\nCorrelation Matrix:\n" ) # , round( varianceM , 4 ))
-      print( stats::cov2cor(varianceM) , 4 )
+      cat("\nCorrelation Matrix:\n" ) #, round( varianceM, 4 ))
+      print( stats::cov2cor(varianceM), 4 )
     }
     cat("\n\nEAP Reliability:\n")
     print( round (EAP.rel,3) )
     cat("\n-----------------------------")
     devmin <- which.min( deviance.history[,2] )
     if ( devmin < iter ){
-        cat(paste("\n\nMinimal deviance at iteration " , devmin ,
-          " with deviance " , round(deviance.history[ devmin , 2 ],3) , sep="") , "\n")
+        cat(paste("\n\nMinimal deviance at iteration ", devmin,
+          " with deviance ", round(deviance.history[ devmin, 2 ],3), sep=""), "\n")
         cat("The corresponding estimates are\n")
         cat("  xsi.min.deviance\n  beta.min.deviance \n  variance.min.deviance\n\n")
                     }
-    cat( "\nStart: " , paste(s1))
-    cat( "\nEnd: " , paste(s2),"\n")
+    cat( "\nStart: ", paste(s1))
+    cat( "\nEnd: ", paste(s2),"\n")
     print(s2-s1)
     cat( "\n" )
   }
 
     # collect xsi parameters
-     obji <- data.frame( "xsi"=xsi , "se.xsi"=se.xsi )
+     obji <- data.frame( "xsi"=xsi, "se.xsi"=se.xsi )
     rownames(obji) <- dimnames(A)[[3]]
     xsi <- obji
 
-     res.hwt <- tam_calc_posterior(rprobs=rprobs , gwt=1+0*gwt , resp=resp , nitems=nitems ,
-                                   resp.ind.list=resp.ind.list , normalization=FALSE ,
-                                   thetasamp.density=thetasamp.density , snodes=snodes ,
+     res.hwt <- tam_calc_posterior(rprobs=rprobs, gwt=1+0*gwt, resp=resp, nitems=nitems,
+                                   resp.ind.list=resp.ind.list, normalization=FALSE,
+                                   thetasamp.density=thetasamp.density, snodes=snodes,
                                    resp.ind=resp.ind )
       res.like <- res.hwt[["hwt"]]
 
@@ -537,41 +537,41 @@ tam.mml.2pl <- function( resp , Y=NULL , group = NULL ,  irtmodel ="2PL" ,
     latreg_stand <- tam_latent_regression_standardized_solution(variance=variance, beta=beta, Y=Y)
 
   # Output list
-  deviance.history <- deviance.history[ 1:iter , ]
-  res <- list( "xsi" = xsi ,
-               "beta" = beta , "variance" = variance ,
-               "item" = item1 ,
-               "person" = person , pid = pid , "EAP.rel" = EAP.rel ,
-               "post" = hwt ,  "rprobs" = rprobs , "itemweight" = itemwt ,
-               "theta" = theta ,
-               "n.ik" = n.ik , "pi.k" = pi.k ,
-               "Y" = Y , "resp" = resp0 ,
-               "resp.ind" = resp.ind , "group" = group ,
-               "G" = if ( is.null(group)){1} else { length(unique( group ) )} ,
-               "groups" = if ( is.null(group)){1} else { groups } ,
-               "formulaY" = formulaY , "dataY" = dataY ,
-               "pweights" = pweights0 ,
-               "time" = c(s1,s2,s2-s1) , "A" = A , "B" = B  ,
-               "se.B" = se.B ,
-               "nitems" = nitems , "maxK" = maxK , "AXsi" = AXsi ,
-               "AXsi_" = - AXsi ,
-               "se.AXsi" = se.AXsi ,
-               "nstud" = nstud , "resp.ind.list" = resp.ind.list ,
-               "hwt" = hwt , "like" = res.like ,
-               "ndim" = ndim ,
-               "xsi.fixed" = xsi.fixed ,
-                 "xsi.fixed.estimated" = xsi.fixed.estimated ,
-               "beta.fixed" = beta.fixed, "Q" = Q,
-               "B.fixed" = B.fixed ,
-                   "B.fixed.estimated" = B.fixed.estimated ,
-               "est.slopegroups" = est.slopegroups , "E" = E , "basispar" = basispar,
-               "variance.fixed" = variance.fixed ,
-               "nnodes" = nnodes , "deviance" = deviance ,
-               "ic" = ic , thetasamp.density=thetasamp.density,
-               "deviance.history" = deviance.history ,
-               "control" = con1a , "irtmodel" = irtmodel ,
-               "iter" = iter ,
-                "printxsi"=printxsi     , "YSD"=YSD        , CALL =CALL ,
+  deviance.history <- deviance.history[ 1:iter, ]
+  res <- list( "xsi"=xsi,
+               "beta"=beta, "variance"=variance,
+               "item"=item1,
+               "person"=person, pid=pid, "EAP.rel"=EAP.rel,
+               "post"=hwt,  "rprobs"=rprobs, "itemweight"=itemwt,
+               "theta"=theta,
+               "n.ik"=n.ik, "pi.k"=pi.k,
+               "Y"=Y, "resp"=resp0,
+               "resp.ind"=resp.ind, "group"=group,
+               "G"=if ( is.null(group)){1} else { length(unique( group ) )},
+               "groups"=if ( is.null(group)){1} else { groups },
+               "formulaY"=formulaY, "dataY"=dataY,
+               "pweights"=pweights0,
+               "time"=c(s1,s2,s2-s1), "A"=A, "B"=B,
+               "se.B"=se.B,
+               "nitems"=nitems, "maxK"=maxK, "AXsi"=AXsi,
+               "AXsi_"=- AXsi,
+               "se.AXsi"=se.AXsi,
+               "nstud"=nstud, "resp.ind.list"=resp.ind.list,
+               "hwt"=hwt, "like"=res.like,
+               "ndim"=ndim,
+               "xsi.fixed"=xsi.fixed,
+                 "xsi.fixed.estimated"=xsi.fixed.estimated,
+               "beta.fixed"=beta.fixed, "Q"=Q,
+               "B.fixed"=B.fixed,
+                   "B.fixed.estimated"=B.fixed.estimated,
+               "est.slopegroups"=est.slopegroups, "E"=E, "basispar"=basispar,
+               "variance.fixed"=variance.fixed,
+               "nnodes"=nnodes, "deviance"=deviance,
+               "ic"=ic, thetasamp.density=thetasamp.density,
+               "deviance.history"=deviance.history,
+               "control"=con1a, "irtmodel"=irtmodel,
+               "iter"=iter,
+                "printxsi"=printxsi     , "YSD"=YSD        , CALL=CALL,
                 latreg_stand=latreg_stand        )
   class(res) <- "tam.mml"
   return(res)

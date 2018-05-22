@@ -1,19 +1,19 @@
 ## File Name: tam_accelerate_parameters.R
-## File Version: 9.15
+## File Version: 9.18
 
 ##############################################################################
 # acceleration
-tam_accelerate_parameters <- function( xsi_acceleration , xsi , iter , itermin=2 , ind=NULL)
+tam_accelerate_parameters <- function( xsi_acceleration, xsi, iter, itermin=2, ind=NULL)
 {
     eps <- 1E-70
     parm_history <- xsi_acceleration$parm_history
     if ( is.null(ind) ){
-        ind <- seq( 1 , nrow(parm_history) )
+        ind <- seq( 1, nrow(parm_history) )
     }
 
     #*********************************************************
     # overrelaxation method according to Yu (2012)
-    if ( xsi_acceleration$acceleration == "Yu"){
+    if ( xsi_acceleration$acceleration=="Yu"){
         w_accel <- xsi_acceleration$w
         if ( w_accel < 0 ){
             w_accel <- .01
@@ -22,7 +22,7 @@ tam_accelerate_parameters <- function( xsi_acceleration , xsi , iter , itermin=2
         xsi <- xsi + w_accel *(xsi - parm_history[,3] )
         parm_history[,1:2] <- parm_history[,2:3]
         parm_history[,3] <- xsi
-        xsi_change <- cbind( parm_history[,2] - parm_history[,1] , parm_history[,3] - parm_history[,2] )
+        xsi_change <- cbind( parm_history[,2] - parm_history[,1], parm_history[,3] - parm_history[,2] )
         lam <- eucl_norm( xsi_change[ind,2] )/ ( eucl_norm( xsi_change[ind,1] ) + eps )
         if ( iter > itermin ){
             w_accel <- lam / ( 2 - lam )
@@ -34,7 +34,7 @@ tam_accelerate_parameters <- function( xsi_acceleration , xsi , iter , itermin=2
     }
     #*****************************************************
     # acceleration method of Ramsay (1975)
-    if ( xsi_acceleration$acceleration == "Ramsay"){
+    if ( xsi_acceleration$acceleration=="Ramsay"){
         thre1 <- -5
         # use code from mirt package (author Phil Chalmers)
         dX2 <- parm_history[ind,3] - parm_history[ind,2]
@@ -71,7 +71,7 @@ eucl_norm <- function(x)
 }
 ######################################################################
 # Euclidean distance of two vectors
-eucl_distance <- function( x , y=NULL )
+eucl_distance <- function( x, y=NULL )
 {
     if ( is.matrix(x) ){
         y <- x[,2]

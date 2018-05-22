@@ -1,16 +1,16 @@
 ## File Name: tam_mml_inits_xsi.R
-## File Version: 0.07
+## File Version: 0.11
 
-tam_mml_inits_xsi <- function(A, resp.ind, ItemScore, xsi.inits, xsi.fixed ,
-        est.xsi.index, pweights, xsi.start0, xsi, resp, addnumb = .5 )
+tam_mml_inits_xsi <- function(A, resp.ind, ItemScore, xsi.inits, xsi.fixed,
+        est.xsi.index, pweights, xsi.start0, xsi, resp, addnumb=.5 )
 {
     # starting values for xsi
-    maxAi <-  - apply(-(A) , 3, tam_rowMaxs, na.rm=TRUE)
+    maxAi <-  - apply(-(A), 3, tam_rowMaxs, na.rm=TRUE)
     personMaxA <- resp.ind %*% maxAi
-    ItemMax <- crossprod( personMaxA , pweights )
+    ItemMax <- crossprod( personMaxA, pweights )
 
     #-- needed for 2PL estimation maximum score in resp, equal categories?
-    maxscore.resp <- apply( resp , 2 , max )
+    maxscore.resp <- apply( resp, 2, max )
     if ( ncol(resp)>1){
         sd.maxscore.resp <- stats::sd(maxscore.resp)
     } else {

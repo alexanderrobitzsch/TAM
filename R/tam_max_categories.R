@@ -1,5 +1,5 @@
 ## File Name: tam_max_categories.R
-## File Version: 0.05
+## File Version: 0.06
 
 tam_max_categories <- function(resp)
 {
@@ -8,7 +8,7 @@ tam_max_categories <- function(resp)
     }
     I <- ncol(resp)
     if (I>1){
-        res <- apply( resp , 2 , max , na.rm=TRUE )
+        res <- apply( resp, 2, max, na.rm=TRUE )
     } else {
         res <- max(resp[,1], na.rm=TRUE)
     }

@@ -1,5 +1,5 @@
 ## File Name: tam_acceleration_inits.R
-## File Version: 0.06
+## File Version: 0.08
 
 
 tam_acceleration_inits <- function(acceleration, G, xsi, variance, B=NULL,
@@ -23,7 +23,7 @@ tam_acceleration_inits <- function(acceleration, G, xsi, variance, B=NULL,
     #--- B
     if (! is.null(B) ){
         acceleration1 <- acceleration
-        if (irtmodel == "GPCM.design" ){
+        if (irtmodel=="GPCM.design" ){
             acceleration1 <- "none"
         }
         B_acceleration <- tam_acceleration_inits_create_list(acceleration=acceleration1,

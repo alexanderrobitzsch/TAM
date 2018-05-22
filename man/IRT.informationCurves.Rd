@@ -1,5 +1,5 @@
 %% File Name: IRT.informationCurves.Rd
-%% File Version: 0.14
+%% File Version: 0.18
 
 \name{IRT.informationCurves}
 \alias{IRT.informationCurves}
@@ -21,23 +21,23 @@ An S3 method which computes item and test information curves, see Muraki (1993).
 \usage{
 IRT.informationCurves(object, ...)
 
-\method{IRT.informationCurves}{tam.mml}( object , h=.0001 , iIndex = NULL ,
-          theta = NULL , ... )
+\method{IRT.informationCurves}{tam.mml}( object, h=.0001, iIndex=NULL,
+          theta=NULL, ... )
 
-\method{IRT.informationCurves}{tam.mml.2pl}( object , h=.0001 , iIndex = NULL ,
-          theta = NULL , ... )
+\method{IRT.informationCurves}{tam.mml.2pl}( object, h=.0001, iIndex=NULL,
+          theta=NULL, ... )
 
-\method{IRT.informationCurves}{tam.mml.mfr}( object , h=.0001 , iIndex = NULL ,
-          theta = NULL , ... )
+\method{IRT.informationCurves}{tam.mml.mfr}( object, h=.0001, iIndex=NULL,
+          theta=NULL, ... )
 
-\method{IRT.informationCurves}{tam.mml.3pl}( object , h=.0001 , iIndex = NULL ,
-          theta = NULL , ... )
+\method{IRT.informationCurves}{tam.mml.3pl}( object, h=.0001, iIndex=NULL,
+          theta=NULL, ... )
 
-\method{plot}{IRT.informationCurves}(x , curve_type="test" , \dots)
+\method{plot}{IRT.informationCurves}(x, curve_type="test", \dots)
 }
 
-% informationCurves_mml <- function( object , h=.0001 ,
-%    iIndex = NULL , theta = NULL , ... )
+% informationCurves_mml <- function( object, h=.0001,
+%    iIndex=NULL, theta=NULL, ... )
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -99,7 +99,7 @@ model. \emph{Applied Psychological Measurement, 17}(4), 351-363.
 # EXAMPLE 1: Dichotomous data | data.read
 #############################################################################
 
-data(data.read , package="sirt")
+data(data.read, package="sirt")
 dat <- data.read
 
 # fit 2PL model
@@ -107,14 +107,14 @@ mod1 <- TAM::tam.mml.2pl( dat )
 summary(mod1)
 
 # compute information curves at grid seq(-5,5,length=100)
-imod1 <- TAM::IRT.informationCurves( mod1 , theta= seq(-5,5,len=100)  )
+imod1 <- TAM::IRT.informationCurves( mod1, theta=seq(-5,5,len=100)  )
 str(imod1)
 # plot test information
 plot( imod1 )
 # plot standard error curve
-plot( imod1 , curve_type = "se" , xlim=c(-3,2) )
+plot( imod1, curve_type="se", xlim=c(-3,2) )
 # cutomized plot
-plot( imod1 , curve_type = "se" , xlim=c(-3,2) , ylim = c(0,2) , lwd=2 , lty=3)
+plot( imod1, curve_type="se", xlim=c(-3,2), ylim=c(0,2), lwd=2, lty=3)
 
 #############################################################################
 # EXAMPLE 2: Mixed dichotomous and polytomous data
@@ -123,37 +123,37 @@ plot( imod1 , curve_type = "se" , xlim=c(-3,2) , ylim = c(0,2) , lwd=2 , lty=3)
 data(data.timssAusTwn.scored, package="TAM")
 dat <- data.timssAusTwn.scored
 # select item response data
-items <- grep( "M0" , colnames(dat) , value=TRUE )
+items <- grep( "M0", colnames(dat), value=TRUE )
 resp <- dat[, items ]
 
 #*** Model 1: Partial credit model
 mod1 <- TAM::tam.mml( resp )
 summary(mod1)
 # information curves
-imod1 <- TAM::IRT.informationCurves( mod1 , theta= seq(-3,3,len=20)  )
+imod1 <- TAM::IRT.informationCurves( mod1, theta=seq(-3,3,len=20)  )
 
 #*** Model 2: Generalized partial credit model
-mod2 <- TAM::tam.mml.2pl( resp , irtmodel="GPCM")
+mod2 <- TAM::tam.mml.2pl( resp, irtmodel="GPCM")
 summary(mod2)
 imod2 <- TAM::IRT.informationCurves( mod2 )
 
 #*** Model 3: Mixed 3PL and generalized partial credit model
 psych::describe(resp)
-maxK <- apply( resp , 2 , max , na.rm=TRUE )
+maxK <- apply( resp, 2, max, na.rm=TRUE )
 I <- ncol(resp)
 # specify guessing parameters, including a prior distribution
 est.guess <- 1:I
 est.guess[ maxK > 1 ] <- 0
 guess <- .2*(est.guess >0)
-guess.prior <- matrix( 0 , nrow=I , ncol=2 )
-guess.prior[ est.guess  > 0 , 1] <- 5
-guess.prior[ est.guess  > 0 , 2] <- 17
+guess.prior <- matrix( 0, nrow=I, ncol=2 )
+guess.prior[ est.guess  > 0, 1] <- 5
+guess.prior[ est.guess  > 0, 2] <- 17
 
 # fit model
-mod3 <- TAM::tam.mml.3pl( resp , gammaslope.des = "2PL" , est.guess=est.guess , guess=guess ,
-           guess.prior = guess.prior ,
-           control=list( maxiter=100 , Msteps=10 , fac.oldxsi=0.1 ,
-                        nodes = seq(-8,8,len=41) ) ,  est.variance=FALSE )
+mod3 <- TAM::tam.mml.3pl( resp, gammaslope.des="2PL", est.guess=est.guess, guess=guess,
+           guess.prior=guess.prior,
+           control=list( maxiter=100, Msteps=10, fac.oldxsi=0.1,
+                        nodes=seq(-8,8,len=41) ),  est.variance=FALSE )
 summary(mod3)
 
 # information curves
@@ -162,9 +162,9 @@ imod3
 
 #*** estimate model in mirt package
 library(mirt)
-itemtype <- rep("gpcm" , I)
+itemtype <- rep("gpcm", I)
 itemtype[ maxK==1] <- "3PL"
-mod3b <- mirt::mirt(resp , 1 , itemtype=itemtype , verbose=TRUE )
+mod3b <- mirt::mirt(resp, 1, itemtype=itemtype, verbose=TRUE )
 print(mod3b)
 }
 }

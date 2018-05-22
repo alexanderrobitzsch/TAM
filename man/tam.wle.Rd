@@ -1,5 +1,5 @@
 %% File Name: tam.wle.Rd
-%% File Version: 2.38
+%% File Version: 2.41
 
 \name{tam.wle}
 
@@ -25,10 +25,10 @@ respectively.
 tam.wle(tamobj, ...)
 
 tam.mml.wle2(tamobj, score.resp=NULL, WLE=TRUE, adj=0.3, Msteps=20, convM=1e-04,
-        progress=TRUE , output.prob=FALSE, pid = NULL )
+        progress=TRUE, output.prob=FALSE, pid=NULL )
 
 tam.jml.WLE(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
-    PersonScores, theta, xsi, Msteps, WLE=FALSE, theta.fixed = NULL)
+    PersonScores, theta, xsi, Msteps, WLE=FALSE, theta.fixed=NULL)
 
 \method{summary}{tam.wle}(object, file=NULL, digits=3, \dots)
 
@@ -157,18 +157,18 @@ data(data.sim.rasch)
 mod1 <- TAM::tam.mml(resp=data.sim.rasch)
 # WLE estimation
 wle1 <- TAM::tam.wle( mod1 )
-  ## WLE Reliability = 0.894
+  ## WLE Reliability=0.894
 
 print(wle1)
 summary(wle1)
 
 # scoring for a different dataset containing same items (first 10 persons in sim.rasch)
-wle2 <- TAM::tam.wle( mod1 , score.resp=data.sim.rasch[1:10,])
+wle2 <- TAM::tam.wle( mod1, score.resp=data.sim.rasch[1:10,])
 
 #--- WLE estimation without using a TAM object
 
 #* create an input list
-input <- list( resp = data.sim.rasch, AXsi = mod1$AXsi, B = mod1$B )
+input <- list( resp=data.sim.rasch, AXsi=mod1$AXsi, B=mod1$B )
 #* estimation
 wle2b <- TAM::tam.mml.wle2( input )
 
@@ -177,13 +177,13 @@ wle2b <- TAM::tam.mml.wle2( input )
 # EXAMPLE 2: 3-dimensional Rasch model | data.read from sirt package
 #############################################################################
 
-data(data.read , package="sirt")
+data(data.read, package="sirt")
 # define Q-matrix
 Q <- matrix(0,12,3)
-Q[ cbind( 1:12 , rep(1:3,each=4) ) ] <- 1
+Q[ cbind( 1:12, rep(1:3,each=4) ) ] <- 1
 # redefine data: create some missings for first three cases
 resp <- data.read
-resp[1:2 , 5:12] <- NA
+resp[1:2, 5:12] <- NA
 resp[3,1:4] <- NA
   ##   > head(resp)
   ##      A1 A2 A3 A4 B1 B2 B3 B4 C1 C2 C3 C4
@@ -195,11 +195,11 @@ resp[3,1:4] <- NA
   ##   63  1  1  0  0  1  0  1  1  1  1  1  1
 
 # estimate 3-dimensional Rasch model
-mod <- TAM::tam.mml( resp=resp , Q=Q , control=list(snodes=1000,maxiter=50) )
+mod <- TAM::tam.mml( resp=resp, Q=Q, control=list(snodes=1000,maxiter=50) )
 summary(mod)
 
 # WLE estimates
-wmod <- TAM::tam.wle(mod , Msteps=3)
+wmod <- TAM::tam.wle(mod, Msteps=3)
 summary(wmod)
   ##   head(round(wmod,2))
   ##      pid N.items PersonScores.Dim01 PersonScores.Dim02 PersonScores.Dim03
@@ -255,10 +255,10 @@ for (cc in 2:K){
     b[,cc] <- AXsi0[,cc] - AXsi0[,cc-1]
                 }
 # WLE estimation in PP
-ppw1 <- PP::PP_gpcm( respm = as.matrix(dat) ,  thres = t(b) , slopes = rep(1,I) )
+ppw1 <- PP::PP_gpcm( respm=as.matrix(dat),  thres=t(b), slopes=rep(1,I) )
 
 #-- compare results
-dfr <- cbind( tamw1[ , c("theta","error") ] , ppw1$resPP)
+dfr <- cbind( tamw1[, c("theta","error") ], ppw1$resPP)
 head( round(dfr,3))
   ##      theta error resPP.estimate resPP.SE nsteps
   ##   1 -1.006 0.973         -1.006    0.973      8
@@ -267,14 +267,14 @@ head( round(dfr,3))
   ##   4  0.640 0.836          0.640    0.836      8
   ##   5  0.640 0.836          0.640    0.836      8
   ##   6 -1.941 1.106         -1.941    1.106      8
-plot( dfr$resPP.estimate , dfr$theta , pch=16 , xlab="PP" , ylab="TAM")
-lines( c(-10,10) , c(-10,10) )
+plot( dfr$resPP.estimate, dfr$theta, pch=16, xlab="PP", ylab="TAM")
+lines( c(-10,10), c(-10,10) )
 
 #****************************************
 #*** Model 2: Generalized partial Credit Model
 
 # estimation in TAM
-mod2 <- TAM::tam.mml.2pl( dat , irtmodel="GPCM" )
+mod2 <- TAM::tam.mml.2pl( dat, irtmodel="GPCM" )
 summary(mod2)
 
 #-- WLE estimation in TAM
@@ -285,17 +285,17 @@ tamw2 <- TAM::tam.wle( mod2 )
 AXsi0 <- - mod2$AXsi[,-1]
 slopes <- mod2$B[,2,1]
 K <- ncol(AXsi0)
-slopesM <- matrix( slopes , I , ncol=K )
+slopesM <- matrix( slopes, I, ncol=K )
 AXsi0 <- AXsi0 / slopesM
 b <- AXsi0
 for (cc in 2:K){
     b[,cc] <- AXsi0[,cc] - AXsi0[,cc-1]
                 }
 # estimation in PP
-ppw2 <- PP::PP_gpcm( respm = as.matrix(dat) ,  thres = t(b) , slopes = slopes )
+ppw2 <- PP::PP_gpcm( respm=as.matrix(dat),  thres=t(b), slopes=slopes )
 
 #-- compare results
-dfr <- cbind( tamw2[ , c("theta","error") ] , ppw2$resPP)
+dfr <- cbind( tamw2[, c("theta","error") ], ppw2$resPP)
 head( round(dfr,3))
   ##      theta error resPP.estimate resPP.SE nsteps
   ##   1 -0.476 0.971         -0.476    0.971     13

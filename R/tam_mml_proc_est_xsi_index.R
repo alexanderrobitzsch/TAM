@@ -1,5 +1,5 @@
 ## File Name: tam_mml_proc_est_xsi_index.R
-## File Version: 0.03
+## File Version: 0.04
 
 tam_mml_proc_est_xsi_index <- function(A, xsi.inits, xsi.fixed)
 {
@@ -14,7 +14,7 @@ tam_mml_proc_est_xsi_index <- function(A, xsi.inits, xsi.fixed)
     }
     if ( ! is.null( xsi.fixed ) ){
         xsi[ xsi.fixed[,1] ] <- xsi.fixed[,2]
-        est.xsi.index <- setdiff( 1:np , xsi.fixed[,1] )
+        est.xsi.index <- setdiff( 1:np, xsi.fixed[,1] )
     } else {
         est.xsi.index <- 1:np
     }

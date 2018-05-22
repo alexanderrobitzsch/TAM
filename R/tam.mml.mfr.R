@@ -1,17 +1,17 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.897
+## File Version: 9.902
 tam.mml.mfr <-
-  function( resp , Y=NULL , group = NULL ,  irtmodel ="1PL" ,
-            formulaY = NULL , dataY = NULL ,
-            ndim = 1 , pid = NULL ,
-            xsi.fixed=NULL ,  xsi.setnull = NULL ,
-            xsi.inits = NULL ,
-            beta.fixed = NULL , beta.inits = NULL ,
-            variance.fixed = NULL , variance.inits = NULL ,
-            est.variance = TRUE , formulaA=~item+item:step, constraint="cases",
-            A=NULL , B=NULL , B.fixed = NULL ,
-            Q=NULL , facets=NULL, est.slopegroups=NULL , E = NULL ,
-            pweights = NULL , verbose = TRUE , control = list() ,
+  function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
+            formulaY=NULL, dataY=NULL,
+            ndim=1, pid=NULL,
+            xsi.fixed=NULL,  xsi.setnull=NULL,
+            xsi.inits=NULL,
+            beta.fixed=NULL, beta.inits=NULL,
+            variance.fixed=NULL, variance.inits=NULL,
+            est.variance=TRUE, formulaA=~item+item:step, constraint="cases",
+            A=NULL, B=NULL, B.fixed=NULL,
+            Q=NULL, facets=NULL, est.slopegroups=NULL, E=NULL,
+            pweights=NULL, verbose=TRUE, control=list(),
             delete.red.items=TRUE
             # control can be specified by the user
   ){
@@ -20,7 +20,7 @@ tam.mml.mfr <-
     a0 <- Sys.time()
     s1 <- Sys.time()
 
-    prior_list_xsi = NULL
+    prior_list_xsi=NULL
     mstep_intercept_method <- "R"
 
     # display
@@ -50,14 +50,14 @@ tam.mml.mfr <-
     userfct.variance <- NULL
 
     #***
-    fac.oldxsi <- max( 0 , min( c( fac.oldxsi , .95 ) ) )
+    fac.oldxsi <- max( 0, min( c( fac.oldxsi, .95 ) ) )
 
     if ( constraint=="items" ){ beta.fixed <- FALSE }
 
     pid0 <- pid <- unname(c(unlist(pid)))
     if (progress){
       cat(disp)
-      cat("Processing Data     ", paste(Sys.time()) , "\n") ; utils::flush.console()
+      cat("Processing Data     ", paste(Sys.time()), "\n") ; utils::flush.console()
     }
     if ( ! is.null(group) ){
       con1a$QMC <- QMC <- FALSE
@@ -137,8 +137,8 @@ tam.mml.mfr <-
     }
 
     if (progress){
-        cat("    * Response Data:" , nstud , "Persons and " ,
-            ncol(gresp.noStep) , "Generalized Items (" , paste(Sys.time()) ,")\n" )  ;
+        cat("    * Response Data:", nstud, "Persons and ",
+            ncol(gresp.noStep), "Generalized Items (", paste(Sys.time()),")\n" )  ;
         utils::flush.console()
     }
     if ( is.null(pid) ){
@@ -148,7 +148,7 @@ tam.mml.mfr <-
     # normalize person weights to sum up to nstud
     pweights <- nstud * pweights / sum(pweights)
     # a matrix version of person weights
-    pweightsM <- outer( pweights , rep(1,nitems) )
+    pweightsM <- outer( pweights, rep(1,nitems) )
 
     # calculate ndim if only B or Q are supplied
     if ( ! is.null(B) ){ ndim <- dim(B)[3] }
@@ -164,7 +164,7 @@ tam.mml.mfr <-
                     skillspace="normal", QMC=QMC)
 
     #--- maximum no. of categories per item. Assuming dichotomous
-    maxK <- max( resp , na.rm=TRUE ) + 1
+    maxK <- max( resp, na.rm=TRUE ) + 1
 
     #--- number of parameters
     np <- dim(A)[[3]]
@@ -242,7 +242,7 @@ tam.mml.mfr <-
     indexIP.no <- res$indexIP.no
 
     #--- sufficient statistics for item parameters
-    cA <- t( matrix( aperm( A , c(2,1,3) ) , nrow = dim(A)[3] , byrow = TRUE ) )
+    cA <- t( matrix( aperm( A, c(2,1,3) ), nrow=dim(A)[3], byrow=TRUE ) )
     res <- tam_mml_sufficient_statistics( nitems=nitems, maxK=maxK, resp=gresp.noStep,
                     resp.ind=gresp.noStep.ind,     pweights=pweights, cA=cA, progress=progress )
     ItemScore <- res$ItemScore
@@ -257,7 +257,7 @@ tam.mml.mfr <-
     ItemMax <- res$ItemMax
 
     #--- prior distribution xsi
-    prior_list_xsi <- tam_mml_proc_prior_list_xsi( prior_list_xsi=prior_list_xsi , xsi=xsi )
+    prior_list_xsi <- tam_mml_proc_prior_list_xsi( prior_list_xsi=prior_list_xsi, xsi=xsi )
 
     xsi.min.deviance <- xsi
     beta.min.deviance <- beta
@@ -403,7 +403,7 @@ tam.mml.mfr <-
         deviance.history <- res$deviance.history
         a01 <- rel_deviance_change <- res$rel_deviance_change
         a02 <- deviance_change <- res$deviance_change
-        if (con$dev_crit == "relative" ){ a02 <- a01 }
+        if (con$dev_crit=="relative" ){ a02 <- a01 }
         penalty_xsi <- res$penalty_xsi
         deviance_change_signed <- res$deviance_change_signed
 
@@ -451,11 +451,11 @@ tam.mml.mfr <-
 
     #****
     # look for non-estimable xsi parameters
-#    xsi[ xsi == 99 ] <- NA
+#    xsi[ xsi==99 ] <- NA
 
     #******
     # generate input for fixed parameters
-    xsi.fixed.estimated <- generate.xsi.fixed.estimated( xsi , A )
+    xsi.fixed.estimated <- generate.xsi.fixed.estimated( xsi, A )
     B.fixed.estimated <- generate.B.fixed.estimated(B)
 
     #**** standard errors AXsi
@@ -476,7 +476,7 @@ tam.mml.mfr <-
     pi.k <- res$pi.k
 
     #--- collect item parameters
-    item1 <- tam_itempartable( resp=gresp.noStep , maxK=maxK , AXsi=AXsi, B=B,
+    item1 <- tam_itempartable( resp=gresp.noStep, maxK=maxK, AXsi=AXsi, B=B,
                     ndim=ndim, resp.ind=gresp.noStep.ind,
                     rprobs=rprobs, n.ik=n.ik, pi.k=pi.k, order=TRUE )
 
@@ -490,42 +490,42 @@ tam.mml.mfr <-
     #******
     s2 <- Sys.time()
 
-    item <- data.frame( "xsi.index" = 1:np ,
-                        "xsi.label" = dimnames(A)[[3]] ,
-                        "est" = xsi )
+    item <- data.frame( "xsi.index"=1:np,
+                        "xsi.label"=dimnames(A)[[3]],
+                        "est"=xsi )
 
     if (progress){
         cat(disp)
         cat("Item Parameters\n")
         item2 <- item
-        item2[,"est"] <- round( item2[,"est"] , 4 )
+        item2[,"est"] <- round( item2[,"est"], 4 )
         print(item2)
         cat("...................................\n")
         cat("Regression Coefficients\n")
-        print( beta , 4  )
-        cat("\nVariance:\n" ) # , round( varianceM , 4 ))
+        print( beta, 4  )
+        cat("\nVariance:\n" ) #, round( varianceM, 4 ))
         if (G==1 ){
-            varianceM <- matrix( variance , nrow=ndim , ncol=ndim )
-            print( varianceM , 4 )
+            varianceM <- matrix( variance, nrow=ndim, ncol=ndim )
+            print( varianceM, 4 )
         } else {
-            print( variance[ var.indices] , 4 )
+            print( variance[ var.indices], 4 )
         }
         if ( ndim > 1){
-                cat("\nCorrelation Matrix:\n" ) # , round( varianceM , 4 ))
-            print( stats::cov2cor(varianceM) , 4 )
+                cat("\nCorrelation Matrix:\n" ) #, round( varianceM, 4 ))
+            print( stats::cov2cor(varianceM), 4 )
         }
         cat("\n\nEAP Reliability:\n")
         print( round (EAP.rel,3) )
         cat("\n-----------------------------")
         devmin <- which.min( deviance.history[,2] )
         if ( devmin < iter ){
-            cat(paste("\n\nMinimal deviance at iteration " , devmin ,
-                  " with deviance " , round(deviance.history[ devmin , 2 ],3) , sep="") , "\n")
+            cat(paste("\n\nMinimal deviance at iteration ", devmin,
+                  " with deviance ", round(deviance.history[ devmin, 2 ],3), sep=""), "\n")
             cat("The corresponding estimates are\n")
             cat("  xsi.min.deviance\n  beta.min.deviance \n  variance.min.deviance\n\n")
         }
-        cat( "\nStart: " , paste(s1))
-        cat( "\nEnd: " , paste(s2),"\n")
+        cat( "\nStart: ", paste(s1))
+        cat( "\nEnd: ", paste(s2),"\n")
         print(s2-s1)
         cat( "\n" )
     }
@@ -548,41 +548,41 @@ tam.mml.mfr <-
     latreg_stand <- tam_latent_regression_standardized_solution(variance=variance, beta=beta, Y=Y)
 
     #--- OUTPUT LIST
-    deviance.history <- deviance.history[ 1:iter , ]
-    res <- list( "xsi" = xsi , "xsi.facets" = xsi.facets ,
-                 "beta" = beta , "variance" = variance ,
-                 "item" = item1 ,
-                 "person" = person , pid = pid , "EAP.rel" = EAP.rel ,
-                 "post" = hwt ,  "rprobs" = rprobs , "itemweight" = itemwt ,
-                 "theta" = theta ,
-                 "n.ik" = n.ik , "pi.k" = pi.k ,
-                 "Y" = Y , "resp" = resp ,
-                 "resp.ind" = resp.ind , "group" = group ,
-                 "G" = if ( is.null(group)){1} else { length(unique( group ) )} ,
-                 "groups" = if ( is.null(group)){1} else { groups } ,
-                 "formulaY" = formulaY , "dataY" = dataY ,
-                 "pweights" = pweights ,
-                 "time" = c(s1,s2,s2-s1) , "A" = A , "B" = B  ,
-                 "se.B" = se.B ,
-                 "nitems" = nitems , "maxK" = maxK , "AXsi" = AXsi ,
-                 "AXsi_" = - AXsi ,
-                 "se.AXsi" = se.AXsi ,
-                 "nstud" = nstud , "resp.ind.list" = resp.ind.list ,
-                 "hwt" = hwt , "like" = res.like , "ndim" = ndim ,
-                 "xsi.fixed" = xsi.fixed ,
-                 "xsi.fixed.estimated" = xsi.fixed.estimated ,
-                 "B.fixed.estimated" = B.fixed.estimated ,
-                 "beta.fixed" = beta.fixed , "Q"=Q,
-                 "formulaA"=formulaA , "facets"=facets ,
-                 "xsi.constr" = xsi.constr ,
-                 "variance.fixed" = variance.fixed ,
-                 "nnodes" = nnodes , "deviance" = ic$deviance ,
-                 "ic" = ic , thetasamp.density=thetasamp.density,
-                 "deviance.history" = deviance.history ,
-                 "control" = con1a , "irtmodel" = irtmodel ,
-                 "iter" = iter , "resp_orig" = resp_orig ,
-                 "printxsi"=TRUE , "YSD"=YSD , "PSF" = PSF ,
-                 CALL = CALL , latreg_stand=latreg_stand,
+    deviance.history <- deviance.history[ 1:iter, ]
+    res <- list( "xsi"=xsi, "xsi.facets"=xsi.facets,
+                 "beta"=beta, "variance"=variance,
+                 "item"=item1,
+                 "person"=person, pid=pid, "EAP.rel"=EAP.rel,
+                 "post"=hwt,  "rprobs"=rprobs, "itemweight"=itemwt,
+                 "theta"=theta,
+                 "n.ik"=n.ik, "pi.k"=pi.k,
+                 "Y"=Y, "resp"=resp,
+                 "resp.ind"=resp.ind, "group"=group,
+                 "G"=if ( is.null(group)){1} else { length(unique( group ) )},
+                 "groups"=if ( is.null(group)){1} else { groups },
+                 "formulaY"=formulaY, "dataY"=dataY,
+                 "pweights"=pweights,
+                 "time"=c(s1,s2,s2-s1), "A"=A, "B"=B,
+                 "se.B"=se.B,
+                 "nitems"=nitems, "maxK"=maxK, "AXsi"=AXsi,
+                 "AXsi_"=- AXsi,
+                 "se.AXsi"=se.AXsi,
+                 "nstud"=nstud, "resp.ind.list"=resp.ind.list,
+                 "hwt"=hwt, "like"=res.like, "ndim"=ndim,
+                 "xsi.fixed"=xsi.fixed,
+                 "xsi.fixed.estimated"=xsi.fixed.estimated,
+                 "B.fixed.estimated"=B.fixed.estimated,
+                 "beta.fixed"=beta.fixed, "Q"=Q,
+                 "formulaA"=formulaA, "facets"=facets,
+                 "xsi.constr"=xsi.constr,
+                 "variance.fixed"=variance.fixed,
+                 "nnodes"=nnodes, "deviance"=ic$deviance,
+                 "ic"=ic, thetasamp.density=thetasamp.density,
+                 "deviance.history"=deviance.history,
+                 "control"=con1a, "irtmodel"=irtmodel,
+                 "iter"=iter, "resp_orig"=resp_orig,
+                 "printxsi"=TRUE, "YSD"=YSD, "PSF"=PSF,
+                 CALL=CALL, latreg_stand=latreg_stand,
                   prior_list_xsi=prior_list_xsi, penalty_xsi=penalty_xsi
     )
     class(res) <- "tam.mml"

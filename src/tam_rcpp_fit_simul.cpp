@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_fit_simul.cpp
-//// File Version: 1.17
+//// File Version: 1.20
 
 
 #include <Rcpp.h>
@@ -40,32 +40,32 @@ Rcpp::List tam_rcpp_fit_simul( Rcpp::NumericMatrix rn1M,
     double eps = 1E-10;
     int jj=0;
     double vf=0;
-    double ot= 1/3.0 ;
+    double ot= 1/3.0;
     double sqrt_vf=0;
 
-    for (int hh=0 ;hh<Nsimul;hh++){
+    for (int hh=0;hh<Nsimul;hh++){
         // draws for every person n
         for (int nn=0;nn<N;nn++){
             jj=0;
             rn = rn1M(nn,hh);
             for (int tt=0;tt<TP;tt++){
                 if ( rn < c_hwt(nn,tt) ){
-                    j[nn] = jj ;
-                    break ;
-                } else { jj ++ ; }
+                    j[nn] = jj;
+                    break;
+                } else { jj ++; }
             }
         }
 
         //*** Ax and xbar
         for (int nn=0;nn<N;nn++){
             tmp1 = Ax(nn,j[nn]) - xbar(nn,j[nn] );
-            wt_numer[nn] = tmp1 * tmp1 ;
-            wt_denom[nn] = var1(nn,j[nn]) ;
-            z2[nn] = wt_numer[nn] / ( wt_denom[nn] + eps ) ;
+            wt_numer[nn] = tmp1 * tmp1;
+            wt_denom[nn] = var1(nn,j[nn]);
+            z2[nn] = wt_numer[nn] / ( wt_denom[nn] + eps );
             //    varz2 <- Uz2[s]
             //    wt_var <- Vz2[s]
-            varz2[nn] = Uz2(nn,j[nn]) ;
-            wt_var[nn] = Vz2(nn,j[nn]) ;
+            varz2[nn] = Uz2(nn,j[nn]);
+            wt_var[nn] = Vz2(nn,j[nn]);
         }
 
         //*** calculation of fit statistics
@@ -80,35 +80,35 @@ Rcpp::List tam_rcpp_fit_simul( Rcpp::NumericMatrix rn1M,
         tmp4=0;
         for (int nn=0; nn <N;nn++){
             if ( ! R_IsNA(z2[nn] ) ){
-                tmp2 += z2[nn] * pweights[nn] ;
-                tmp3a += wt_numer[nn] * pweights[nn] ;
-                tmp3b += wt_denom[nn] * pweights[nn] ;
-                tmp3c += wt_var[nn] * pweights[nn] ;
-                tmp4 += varz2[nn] * pweights[nn] ;
+                tmp2 += z2[nn] * pweights[nn];
+                tmp3a += wt_numer[nn] * pweights[nn];
+                tmp3b += wt_denom[nn] * pweights[nn];
+                tmp3c += wt_var[nn] * pweights[nn];
+                tmp4 += varz2[nn] * pweights[nn];
             }
         }
-        Outfit_SIM[hh] = tmp2 / nstud_ip[0] ;
-        Infit_SIM[hh] = tmp3a / tmp3b ;
+        Outfit_SIM[hh] = tmp2 / nstud_ip[0];
+        Infit_SIM[hh] = tmp3a / tmp3b;
 
         // #Infit t
         // vf <- sum(wt_var*pweights,na.rm = TRUE )/(sum(wt_denom*pweights,na.rm = TRUE)^2 )
         // Infit_t[p] <- (Infit[p]^(1/3)-1) * 3/sqrt(vf) + sqrt(vf)/3
         vf = tmp3c / ( tmp3b*tmp3b );
         sqrt_vf = std::sqrt(vf);
-        Infit_t_SIM[hh] = ( std::pow( Infit_SIM[hh] , ot ) - 1 ) * 3/sqrt_vf  + sqrt_vf/3;
+        Infit_t_SIM[hh] = ( std::pow( Infit_SIM[hh], ot ) - 1 ) * 3/sqrt_vf  + sqrt_vf/3;
 
         // #Outfit t
         //  vf2 <- sum(varz2*pweights,na.rm = TRUE )/(nstud.ip^2)
         //  Outfit_t[p] <- (Outfit[p]^(1/3)-1) * 3/sqrt(vf2) + sqrt(vf2)/3
-        vf = tmp4 / ( nstud_ip[0] * nstud_ip[0] ) ;
-        Outfit_t_SIM[hh] = ( std::pow( Outfit_SIM[hh] , ot ) - 1 ) * 3/sqrt_vf  + sqrt_vf/3;
+        vf = tmp4 / ( nstud_ip[0] * nstud_ip[0] );
+        Outfit_t_SIM[hh] = ( std::pow( Outfit_SIM[hh], ot ) - 1 ) * 3/sqrt_vf  + sqrt_vf/3;
     }
 
     //--- OUTPUT
     return Rcpp::List::create(
-            Rcpp::Named("Outfit_SIM") = Outfit_SIM ,
-            Rcpp::Named("Infit_SIM") = Infit_SIM ,
-            Rcpp::Named("Infit_t_SIM") = Infit_t_SIM ,
+            Rcpp::Named("Outfit_SIM") = Outfit_SIM,
+            Rcpp::Named("Infit_SIM") = Infit_SIM,
+            Rcpp::Named("Infit_t_SIM") = Infit_t_SIM,
             Rcpp::Named("Outfit_t_SIM") = Outfit_t_SIM
-        ) ;
+        );
 }

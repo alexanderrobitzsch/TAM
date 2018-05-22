@@ -1,5 +1,5 @@
 %% File Name: IRT.linearCFA.Rd
-%% File Version: 0.13
+%% File Version: 0.17
 
 \name{IRT.linearCFA}
 
@@ -14,19 +14,19 @@ Linear Approximation of a Confirmatory Factor Analysis
 \description{
 This function approximates a fitted item response model by a linear
 confirmatory factor analysis. I.e., given item response functions, the
-expectation \eqn{E(X_i | \theta_1 , \ldots , \theta_D)} is
+expectation \eqn{E(X_i | \theta_1, \ldots, \theta_D)} is
 linearly approximated by \eqn{a_{i1} \theta _1 + \ldots + a_{iD} \theta_D}.
 See Vermunt and Magidson (2005) for details.
 }
 
 
 \usage{
-IRT.linearCFA( object , group=1)
+IRT.linearCFA( object, group=1)
 
 \method{summary}{IRT.linearCFA}(object,  \dots)
 }
 %- maybe also 'usage' for other objects documented here.
-% IRT.WrightMap(object, prob.lvl= .5, type="PV", \dots)
+% IRT.WrightMap(object, prob.lvl=.5, type="PV", \dots)
 
 
 \arguments{
@@ -87,16 +87,16 @@ library(lavaan)
 
 data(data.Students, package="CDM")
 # select variables
-vars <- scan(nlines=1 , what="character")
+vars <- scan(nlines=1, what="character")
     sc1 sc2 sc3 sc4 mj1 mj2 mj3 mj4
-dat <- data.Students[ , vars]
+dat <- data.Students[, vars]
 
 # define Q-matrix
-Q <- matrix( 0 , nrow=8 , ncol=2 )
+Q <- matrix( 0, nrow=8, ncol=2 )
 Q[1:4,1] <- Q[5:8,2] <- 1
 
 #*** Model 1: Two-dimensional 2PL model
-mod1 <- TAM::tam.mml.2pl( dat , Q=Q  , control=list( nodes=seq(-4,4,len=12) ) )
+mod1 <- TAM::tam.mml.2pl( dat, Q=Q, control=list( nodes=seq(-4,4,len=12) ) )
 summary(mod1)
 
 # linear approximation CFA
@@ -105,13 +105,13 @@ summary(cfa1)
 
 # linear CFA in lavaan package
 lavmodel <- "
-    sc =~ sc1+sc2+sc3+sc4
-    mj =~ mj1+mj2+mj3+mj4
+    sc=~ sc1+sc2+sc3+sc4
+    mj=~ mj1+mj2+mj3+mj4
     sc1 ~ 1
     sc ~~ mj
     "
-mod1b <- lavaan::sem( lavmodel , data = dat , missing="fiml" , std.lv=TRUE)
-summary(mod1b , standardized=TRUE , fit.measures=TRUE )
+mod1b <- lavaan::sem( lavmodel, data=dat, missing="fiml", std.lv=TRUE)
+summary(mod1b, standardized=TRUE, fit.measures=TRUE )
 
 #############################################################################
 # EXAMPLE 2: Unidimensional confirmatory factor analysis data.Students
@@ -119,9 +119,9 @@ summary(mod1b , standardized=TRUE , fit.measures=TRUE )
 
 data(data.Students, package="CDM")
 # select variables
-vars <- scan(nlines=1 , what="character")
+vars <- scan(nlines=1, what="character")
     sc1 sc2 sc3 sc4
-dat <- data.Students[ , vars]
+dat <- data.Students[, vars]
 
 #*** Model 1: 2PL model
 mod1 <- TAM::tam.mml.2pl( dat )
@@ -133,10 +133,10 @@ summary(cfa1)
 
 # linear CFA
 lavmodel <- "
-    sc =~ sc1+sc2+sc3+sc4
+    sc=~ sc1+sc2+sc3+sc4
     "
-mod1b <- lavaan::sem( lavmodel , data = dat , missing="fiml" , std.lv=TRUE)
-summary(mod1b , standardized=TRUE , fit.measures=TRUE )
+mod1b <- lavaan::sem( lavmodel, data=dat, missing="fiml", std.lv=TRUE)
+summary(mod1b, standardized=TRUE, fit.measures=TRUE )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

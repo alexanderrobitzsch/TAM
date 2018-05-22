@@ -1,5 +1,5 @@
 %% File Name: msq.itemfit.Rd
-%% File Version: 0.34
+%% File Version: 0.38
 
 \name{msq.itemfit}
 
@@ -27,11 +27,11 @@ but these are based on weighted likelihood estimates obtained from
 
 
 \usage{
-msq.itemfit( object , fitindices=NULL)
+msq.itemfit( object, fitindices=NULL)
 
 \method{summary}{msq.itemfit}(object, file=NULL, ... )
 
-msq.itemfitWLE( tamobj , fitindices=NULL , ... )
+msq.itemfitWLE( tamobj, fitindices=NULL, ... )
 
 \method{summary}{msq.itemfitWLE}(object, file=NULL, ... )
 }
@@ -94,12 +94,12 @@ library(sirt)
 set.seed(9875)
 N <- 2000
 I <- 20
-b <- sample( seq( -2 , 2 , length=I ) )
+b <- sample( seq( -2, 2, length=I ) )
 a <- rep( 1, I )
 # create some misfitting items
-a[c(1,3)] <- c(.5 , 1.5 )
+a[c(1,3)] <- c(.5, 1.5 )
 # simulate data
-dat <- sirt::sim.raschtype( rnorm(N) , b=b , fixed.a=a )
+dat <- sirt::sim.raschtype( rnorm(N), b=b, fixed.a=a )
 #*** estimate Rasch model
 mod1 <- TAM::tam.mml(resp=dat)
 # compute WLEs
@@ -120,12 +120,12 @@ summary(fit2a)
 
 #++ fit assessment in mirt package
 library(mirt)
-mod1b <- mirt::mirt( dat , model=1 , itemtype="Rasch" , verbose=TRUE )
+mod1b <- mirt::mirt( dat, model=1, itemtype="Rasch", verbose=TRUE )
 print(mod1b)
 sirt::mirt.wrapper.coef(mod1b)
-fmod1b <- mirt::itemfit(mod1b , Theta= as.matrix(wmod1,ncol=1) ,
-                 Zh = TRUE, X2 = FALSE, S_X2 = FALSE )
-cbind( fit2a$fit_data , fmod1b )
+fmod1b <- mirt::itemfit(mod1b, Theta=as.matrix(wmod1,ncol=1),
+                 Zh=TRUE, X2=FALSE, S_X2=FALSE )
+cbind( fit2a$fit_data, fmod1b )
 
 #++ fit assessment in eRm package
 library(eRm)
@@ -140,12 +140,12 @@ plot(fmod1c)
 #--- define some item groups for fit assessment
 
 # bases on evaluating the posterior
-fitindices <- rep( paste0("IG",c(1,2)) , each=10)
-fit2 <- TAM::msq.itemfit( mod1 , fitindices )
+fitindices <- rep( paste0("IG",c(1,2)), each=10)
+fit2 <- TAM::msq.itemfit( mod1, fitindices )
 summary(fit2)
 
 # using WLEs
-fit2b <- TAM::msq.itemfitWLE( mod1 , fitindices )
+fit2b <- TAM::msq.itemfitWLE( mod1, fitindices )
 summary(fit2b)
 }
 
@@ -170,12 +170,12 @@ summary(res2)
 
 #***** item fit for item groups
 # define item groups
-fitindices <- substring( colnames(dat) , 1 , 1 )
+fitindices <- substring( colnames(dat), 1, 1 )
 # based on posterior
-res1 <- TAM::msq.itemfit( mod , fitindices )
+res1 <- TAM::msq.itemfit( mod, fitindices )
 summary(res1)
 # based on WLEs
-res2 <- TAM::msq.itemfitWLE( mod , fitindices )
+res2 <- TAM::msq.itemfitWLE( mod, fitindices )
 summary(res2)
 
 \dontrun{
@@ -188,9 +188,9 @@ data(data.ratings2, package="sirt")
 dat <- data.ratings2
 
 # fit rater model "~ item*step + rater"
-mod <- TAM::tam.mml.mfr( resp= dat[ , paste0( "k",1:5) ] ,
-            facets= dat[ , "rater" , drop=FALSE] ,
-            pid= dat$pid , formulaA = ~ item*step + rater )
+mod <- TAM::tam.mml.mfr( resp=dat[, paste0( "k",1:5) ],
+            facets=dat[, "rater", drop=FALSE],
+            pid=dat$pid, formulaA=~ item*step + rater )
 
 # fit for parameter with "tam.fit" function
 fmod1a <- TAM::tam.fit( mod )
@@ -200,19 +200,19 @@ summary(fmod1b)
 
 # define item groups using pseudo items from object "mod"
 pseudo_items <- colnames(mod$resp)
-pss <- strsplit( pseudo_items , split="-" )
-item_parm <- unlist( lapply( pss , FUN = function(ll){ ll[1] } ) )
-rater_parm <- unlist( lapply( pss , FUN = function(ll){ ll[2] } ) )
+pss <- strsplit( pseudo_items, split="-" )
+item_parm <- unlist( lapply( pss, FUN=function(ll){ ll[1] } ) )
+rater_parm <- unlist( lapply( pss, FUN=function(ll){ ll[2] } ) )
 
 # fit for items with "msq.itemfit" functions
-res2a <- TAM::msq.itemfit( mod , item_parm )
-res2b <- TAM::msq.itemfitWLE( mod , item_parm )
+res2a <- TAM::msq.itemfit( mod, item_parm )
+res2b <- TAM::msq.itemfitWLE( mod, item_parm )
 summary(res2a)
 summary(res2b)
 
 # fit for raters
-res3a <- TAM::msq.itemfit( mod , rater_parm )
-res3b <- TAM::msq.itemfitWLE( mod , rater_parm )
+res3a <- TAM::msq.itemfit( mod, rater_parm )
+res3b <- TAM::msq.itemfitWLE( mod, rater_parm )
 summary(res3a)
 summary(res3b)
 }

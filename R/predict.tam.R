@@ -1,11 +1,11 @@
 ## File Name: predict.tam.R
-## File Version: 9.05
+## File Version: 9.06
 
 ##################################################
 # predict methods in TAM
-predict.tam.mml <- function( object , ... )
+predict.tam.mml <- function( object, ... )
 {
-    res <- IRT.predict( object , object$resp )
+    res <- IRT.predict( object, object$resp )
     return(res)
 }
 ##################################################

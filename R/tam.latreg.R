@@ -1,15 +1,15 @@
 ## File Name: tam.latreg.R
-## File Version: 9.332
+## File Version: 9.336
 
 ###################################################################
 # latent regression
-tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
-                formulaY = NULL , dataY = NULL ,
-                beta.fixed = FALSE , beta.inits = NULL ,
-                variance.fixed = NULL , variance.inits = NULL ,
-                est.variance = TRUE , pweights = NULL , pid=NULL ,
-                userfct.variance = NULL , variance.Npars = NULL ,
-                verbose = TRUE , control = list()
+tam.latreg <- function( like, theta=NULL, Y=NULL, group=NULL,
+                formulaY=NULL, dataY=NULL,
+                beta.fixed=FALSE, beta.inits=NULL,
+                variance.fixed=NULL, variance.inits=NULL,
+                est.variance=TRUE, pweights=NULL, pid=NULL,
+                userfct.variance=NULL, variance.Npars=NULL,
+                verbose=TRUE, control=list()
   ){
 
     s1 <- Sys.time()
@@ -23,8 +23,8 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
     #**** handle verbose argument
     args_CALL <- as.list( sys.call() )
     if ( ! tam_in_names_list( list=control, variable="progress" )     ){
-        control$progress <- tam_args_CALL_search( args_CALL=args_CALL , variable="verbose" ,
-                                default_value = TRUE )
+        control$progress <- tam_args_CALL_search( args_CALL=args_CALL, variable="verbose",
+                                default_value=TRUE )
     }
     #*******
       #--- attach control elements
@@ -35,7 +35,7 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
     con1a <- res$con1a
 
     if ( is.null(theta) ){
-       theta <- attr( like , "theta" )
+       theta <- attr( like, "theta" )
     }
 
     nodes <- theta
@@ -43,7 +43,7 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
 
     if (progress){
       cat(disp)
-      cat("Processing Data     ", paste(Sys.time()) , "\n") ;
+      cat("Processing Data     ", paste(Sys.time()), "\n") ;
       utils::flush.console()
     }
 
@@ -60,7 +60,7 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
       pweights <- rep(1,nstud) # weights of response pattern
     }
     if (progress){
-      cat("    * Response Data:" , nstud , "Persons \n" )  ;
+      cat("    * Response Data:", nstud, "Persons \n" )  ;
       utils::flush.console()
     }
 
@@ -136,7 +136,7 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
     YSD <- res$YSD
 
     # define progress bar for M step
-#    mpr <- round( seq( 1 , np , len = 10 ) )
+#    mpr <- round( seq( 1, np, len=10 ) )
 
     #--- warning multiple group estimation
     res <- tam_mml_warning_message_multiple_group_models( ndim=ndim, G=G)
@@ -167,8 +167,8 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
         olddeviance <- deviance
 
         # calculate student's prior distribution
-        gwt <- tam_stud_prior(theta=theta , Y=Y , beta=beta , variance=variance , nstud=nstud ,
-                           nnodes=nnodes , ndim=ndim,YSD=YSD, unidim_simplify=FALSE)
+        gwt <- tam_stud_prior(theta=theta, Y=Y, beta=beta, variance=variance, nstud=nstud,
+                           nnodes=nnodes, ndim=ndim,YSD=YSD, unidim_simplify=FALSE)
         hwt <- like * gwt
         res.hwt$rfx <- rowSums(hwt)
         hwt <- hwt / rowSums(hwt)
@@ -254,29 +254,29 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
     if (progress){
       cat(disp)
       cat("Regression Coefficients\n")
-      print( beta , 4  )
-      cat("\nVariance:\n" ) # , round( varianceM , 4 ))
+      print( beta, 4  )
+      cat("\nVariance:\n" ) #, round( varianceM, 4 ))
       if (G==1 ){
-        varianceM <- matrix( variance , nrow=ndim , ncol=ndim )
-        print( varianceM , 4 )
+        varianceM <- matrix( variance, nrow=ndim, ncol=ndim )
+        print( varianceM, 4 )
       } else {
-        print( variance[ var.indices] , 4 )    }
+        print( variance[ var.indices], 4 )    }
       if ( ndim > 1){
-        cat("\nCorrelation Matrix:\n" ) # , round( varianceM , 4 ))
-        print( cov2cor(varianceM) , 4 )
+        cat("\nCorrelation Matrix:\n" ) #, round( varianceM, 4 ))
+        print( cov2cor(varianceM), 4 )
       }
       cat("\n\nEAP Reliability:\n")
       print( round (EAP.rel,3) )
       cat("\n-----------------------------")
       devmin <- which.min( deviance.history[,2] )
       if ( devmin < iter ){
-        cat(paste("\n\nMinimal deviance at iteration " , devmin ,
-                  " with deviance " , round(deviance.history[ devmin , 2 ],3) , sep="") , "\n")
+        cat(paste("\n\nMinimal deviance at iteration ", devmin,
+                  " with deviance ", round(deviance.history[ devmin, 2 ],3), sep=""), "\n")
         cat("The corresponding estimates are\n")
         cat("  xsi.min.deviance\n  beta.min.deviance \n  variance.min.deviance\n\n")
       }
-      cat( "\nStart: " , paste(s1))
-      cat( "\nEnd: " , paste(s2),"\n")
+      cat( "\nStart: ", paste(s1))
+      cat( "\nEnd: ", paste(s2),"\n")
       print(s2-s1)
       cat( "\n" )
     }
@@ -285,26 +285,26 @@ tam.latreg <- function( like , theta=NULL , Y=NULL , group=NULL ,
     latreg_stand <- tam_latent_regression_standardized_solution(variance=variance, beta=beta, Y=Y)
 
     #---- Output list
-    deviance.history <- deviance.history[ 1:iter , ]
-    res <- list( "beta" = beta , "variance" = variance ,
-                 "person" = person , pid = pid , "EAP.rel" = EAP.rel ,
-                 "post" = hwt , "theta" = theta ,
-                 "Y" = Y ,  "group" = group ,
-                 "G" = if ( is.null(group)){1} else { length(unique( group ) )} ,
-                 "groups" = if ( is.null(group)){1} else { groups } ,
-                 "formulaY" = formulaY , "dataY" = dataY ,
-                 "pweights" = pweights ,
-                 "time" = c(s1,s2,s2-s1) ,
-                 "nstud" = nstud ,
-                 "hwt" = hwt ,  "like" = like ,
-                 "ndim" = ndim ,
-                 "beta.fixed" = beta.fixed ,
-                 "variance.fixed" = variance.fixed ,
-                 "nnodes" = nnodes , "deviance" = deviance ,
-                 "ic" = ic , thetasamp.density=thetasamp.density,
-                 "deviance.history" = deviance.history ,
-                 "control" = con1a ,    "iter" = iter ,
-                 "YSD"=YSD , CALL = CALL , latreg_stand=latreg_stand     )
+    deviance.history <- deviance.history[ 1:iter, ]
+    res <- list( "beta"=beta, "variance"=variance,
+                 "person"=person, pid=pid, "EAP.rel"=EAP.rel,
+                 "post"=hwt, "theta"=theta,
+                 "Y"=Y,  "group"=group,
+                 "G"=if ( is.null(group)){1} else { length(unique( group ) )},
+                 "groups"=if ( is.null(group)){1} else { groups },
+                 "formulaY"=formulaY, "dataY"=dataY,
+                 "pweights"=pweights,
+                 "time"=c(s1,s2,s2-s1),
+                 "nstud"=nstud,
+                 "hwt"=hwt,  "like"=like,
+                 "ndim"=ndim,
+                 "beta.fixed"=beta.fixed,
+                 "variance.fixed"=variance.fixed,
+                 "nnodes"=nnodes, "deviance"=deviance,
+                 "ic"=ic, thetasamp.density=thetasamp.density,
+                 "deviance.history"=deviance.history,
+                 "control"=con1a,    "iter"=iter,
+                 "YSD"=YSD, CALL=CALL, latreg_stand=latreg_stand     )
     class(res) <- "tam.latreg"
     return(res)
   }

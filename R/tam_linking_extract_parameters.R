@@ -1,5 +1,5 @@
 ## File Name: tam_linking_extract_parameters.R
-## File Version: 0.08
+## File Version: 0.09
 
 tam_linking_extract_parameters <- function( tamobj )
 {
@@ -23,7 +23,7 @@ tam_linking_extract_parameters <- function( tamobj )
     G <- res$G
     class_tamobj <- res$class_tamobj
     #--- OUTPUT
-    res <- list(A=A, xsi=xsi, guess=guess, AXsi=AXsi, B=B, ndim=ndim, items=items, M=M, SD=SD ,
+    res <- list(A=A, xsi=xsi, guess=guess, AXsi=AXsi, B=B, ndim=ndim, items=items, M=M, SD=SD,
                     class_tamobj=class_tamobj, G=G)
     return(res)
 }

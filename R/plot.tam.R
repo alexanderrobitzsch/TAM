@@ -1,15 +1,15 @@
 ## File Name: plot.tam.R
-## File Version: 9.23
+## File Version: 9.27
 
 ###########################################################
 # plotting tam expected scores curves
 #..........................................................
-plot.tam <- function(x, items=1:x$nitems, type="expected" ,
-                    low=-3, high=3, ngroups=6, groups_by_item = FALSE,
+plot.tam <- function(x, items=1:x$nitems, type="expected",
+                    low=-3, high=3, ngroups=6, groups_by_item=FALSE,
                     wle=NULL, export=TRUE, export.type="png",
-                    export.args=list(), observed=TRUE, overlay=FALSE ,
-                    ask=FALSE, package="lattice" ,
-                    fix.devices=TRUE , ...)
+                    export.args=list(), observed=TRUE, overlay=FALSE,
+                    ask=FALSE, package="lattice",
+                    fix.devices=TRUE, ...)
 {
     if ( package=="lattice"){
         require_namespace_msg("lattice")
@@ -49,13 +49,13 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
     nitems <- tamobj$nitems
     nnodes <- 100
 
-    if (ndim == 1 ){
+    if (ndim==1 ){
         theta <- matrix(seq(low, high, length=nnodes), nrow=nnodes, ncol=ndim)
     } else {
         #    theta <- tamobj$theta
         nnodes <- 40
         nodes <- seq(low, high, length=nnodes)
-        theta <- as.matrix( expand.grid( as.data.frame( matrix( rep(nodes, ndim) , ncol = ndim ) ) ) )
+        theta <- as.matrix( expand.grid( as.data.frame( matrix( rep(nodes, ndim), ncol=ndim ) ) ) )
         nnodes <- nrow(theta)
         B <- tamobj$B
     }
@@ -63,7 +63,7 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
     iIndex <- 1:nitems
     A <- tamobj$A
     B <- tamobj$B
-    if (tammodel == "mml") {
+    if (tammodel=="mml") {
         xsi <- tamobj$xsi$xsi
     }  else {
         xsi <- tamobj$xsi
@@ -73,14 +73,14 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
     resp.ind <- tamobj$resp.ind
     resp[resp.ind==0] <- NA
     AXsi <- matrix(0,nrow=nitems,ncol=maxK )
-    res <- tam_mml_calc_prob(iIndex=iIndex , A=A , AXsi=AXsi , B=B , xsi=xsi , theta=theta ,
-                    nnodes=nnodes , maxK=maxK , recalc=TRUE )
+    res <- tam_mml_calc_prob(iIndex=iIndex, A=A, AXsi=AXsi, B=B, xsi=xsi, theta=theta,
+                    nnodes=nnodes, maxK=maxK, recalc=TRUE )
     rprobs <- res[["rprobs"]]
     AXsi <- res[["AXsi"]]
     cat <- 1:maxK - 1
 
-    #**** type = 'expected'
-    if ( type == "expected" ){
+    #**** type='expected'
+    if ( type=="expected" ){
         expScore <- sapply(1:nitems, function(i) colSums(cat*rprobs[i,,], na.rm=TRUE))
         #-- compute WLE score groups
         res <- plot_tam_grouped_wle( tamobj=tamobj, tammodel=tammodel,
@@ -100,7 +100,7 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
 
     #----------------------------------------------------
     # adds observed score for type="items"
-    if (type == "items") {
+    if (type=="items") {
         require_namespace_msg("plyr")
         #-- compute WLE score groups
         res <- plot_tam_grouped_wle( tamobj=tamobj, tammodel=tammodel,
@@ -114,15 +114,15 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
         ngroups <- res$ngroups
 
         obScore <- lapply(d2, function(item) {
-                    comp_case = stats::complete.cases(item)
-                    item = item[comp_case]
-                    uniq_cats = sort(unique(item))
-                    plyr::ldply(split(item, groupnumber[comp_case]), .id = "group",
+                    comp_case=stats::complete.cases(item)
+                    item=item[comp_case]
+                    uniq_cats=sort(unique(item))
+                    plyr::ldply(split(item, groupnumber[comp_case]), .id="group",
                             function (group) {
-                                ngroup = length(group)
-                                cat_freq = list()
+                                ngroup=length(group)
+                                cat_freq=list()
                                 for (catt in uniq_cats) {
-                                    cat_freq[[paste0("cat_", catt)]] = sum(group == catt)/ngroup
+                                    cat_freq[[paste0("cat_", catt)]]=sum(group==catt)/ngroup
                             }
                     data.frame(cat_freq)
                 })
@@ -137,10 +137,10 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
         #** expected item response curves
         if ( type=="expected"){
             if (i==1 || !overlay) {
-                ylim2 <- c(0,max( tamobj$resp[,i] , na.rm=TRUE ) )
-                graphics::plot(theta, expScore[,i], ,col=12, type="l", lwd=3, las=1, ylab="Score", xlab="Ability",
-                        main=paste("Expected Scores Curve - Item ", colnames(tamobj$resp)[i] )     ,
-                        ylim=ylim2 , ... )
+                ylim2 <- c(0,max( tamobj$resp[,i], na.rm=TRUE ) )
+                graphics::plot(theta, expScore[,i],,col=12, type="l", lwd=3, las=1, ylab="Score", xlab="Ability",
+                        main=paste("Expected Scores Curve - Item ", colnames(tamobj$resp)[i] )    ,
+                        ylim=ylim2, ... )
             } else {
                 graphics::lines(theta, expScore[,i],type="l", col=i, lwd=3, pch=1)
             }
@@ -165,30 +165,30 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
     if ( type=="items"){
 
       rprobs.ii <- rprobs[i,,]
-      rprobs.ii <- rprobs.ii[ rowMeans( is.na(rprobs.ii) ) < 1 , ]
+      rprobs.ii <- rprobs.ii[ rowMeans( is.na(rprobs.ii) ) < 1, ]
       K <- nrow(rprobs.ii)
-      if ( ndim == 1 ){ theta0 <- theta }
+      if ( ndim==1 ){ theta0 <- theta }
       dat2 <- NULL
       #************
       if ( ndim > 1 ){
         B.ii <- B[i,,]
         ind.ii <- which( colSums( B.ii ) > 0 )[1]
         rprobs0.ii <- rprobs.ii
-        rprobs0.ii <- stats::aggregate( t(rprobs0.ii) , list( theta[,ind.ii] ) , mean )
+        rprobs0.ii <- stats::aggregate( t(rprobs0.ii), list( theta[,ind.ii] ), mean )
         theta0 <- rprobs0.ii[,1,drop=FALSE]
         rprobs.ii <- t( rprobs0.ii[,-1] )
       }
       #**************
       for (kk in 1:K){
-        dat2a <- data.frame( "Theta" = theta0[,1] , "cat" = kk , "P" = rprobs.ii[kk,] )
-        dat2 <- rbind(dat2 , dat2a)
+        dat2a <- data.frame( "Theta"=theta0[,1], "cat"=kk, "P"=rprobs.ii[kk,] )
+        dat2 <- rbind(dat2, dat2a)
       }
       main <- paste("Item", colnames(x$resp)[i] )
       auto.key <- NULL
-      simple.key <- paste0("Cat" , 1:K -  1)
+      simple.key <- paste0("Cat", 1:K -  1)
       auto.key <- simple.key
       dat2$time <- dat2$cat
-      dat2$time1 <- paste0("Cat" , dat2$time )
+      dat2$time1 <- paste0("Cat", dat2$time )
 
       simple.key <- FALSE
       Kpercol <- K
@@ -196,59 +196,59 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
       #**************************************
       # package lattice
       if ( package=="lattice"){
-        auto.key <- list(  lines=TRUE , points=FALSE , rows=2)
-        h1 <- lattice::xyplot(P ~ Theta, dat2, group = time1, type = 'l', auto.key = auto.key,
-                              main = main, ylim = c(-0.1,1.1), simple.key = simple.key ,
-                              xlim=c(low,high) ,
-                              ylab = expression(P(theta)), xlab = expression(theta), ... )
+        auto.key <- list(  lines=TRUE, points=FALSE, rows=2)
+        h1 <- lattice::xyplot(P ~ Theta, dat2, group=time1, type='l', auto.key=auto.key,
+                              main=main, ylim=c(-0.1,1.1), simple.key=simple.key,
+                              xlim=c(low,high),
+                              ylab=expression(P(theta)), xlab=expression(theta), ... )
         graphics::plot(h1)
       }
       #**************************************
       # package graphics
-      if ( package == "graphics" ){
+      if ( package=="graphics" ){
         kk <- 1
         dfr <- dat2
-        dfr1a <- dfr[ dfr$cat == kk , ]
+        dfr1a <- dfr[ dfr$cat==kk, ]
         # setting larger margins on the right to fit the legend
         if(graphics::par("mar")[4] < 6.1) {
-          graphics::par("mar" = c(old.par.mar[1:3], 6.1))
+          graphics::par("mar"=c(old.par.mar[1:3], 6.1))
         }
 
-        graphics::plot( dfr1a$Theta , dfr1a$P , ylim=c(-.1,1.1) ,
-              ylab = expression(P(theta)), xlab = expression(theta) ,
-              col=kk+1 , type="l" , main=main, xpd = TRUE, ...
+        graphics::plot( dfr1a$Theta, dfr1a$P, ylim=c(-.1,1.1),
+              ylab=expression(P(theta)), xlab=expression(theta),
+              col=kk+1, type="l", main=main, xpd=TRUE, ...
         )
         for (kk in seq(2,K) ){
-          dfr1a <- dfr[ dfr$cat == kk , ]
-          graphics::lines( dfr1a$Theta , dfr1a$P , col=kk+1 )
-          # graphics::points( dfr1a$Theta , dfr1a$P , pch=kk , col=kk+1 )
+          dfr1a <- dfr[ dfr$cat==kk, ]
+          graphics::lines( dfr1a$Theta, dfr1a$P, col=kk+1 )
+          # graphics::points( dfr1a$Theta, dfr1a$P, pch=kk, col=kk+1 )
 
         }
         if(observed) {
-          obScore_it = obScore[[i]]
+          obScore_it=obScore[[i]]
           for(kk in seq(1:K)) {
-            graphics::lines(theta2, obScore_it[, kk + 1], col = kk + 1, lty = 2)
-            graphics::points(theta2, obScore_it[, kk + 1], col = kk + 1)
+            graphics::lines(theta2, obScore_it[, kk + 1], col=kk + 1, lty=2)
+            graphics::points(theta2, obScore_it[, kk + 1], col=kk + 1)
           }
         }
         # puts legend outside the plot region
         # only expected
-        legend_entry = paste0("Cat" , seq(0,K-1), "(exp.)")
-        pch = NA_integer_
-        col = 1 + 1:K
-        lty = 1
+        legend_entry=paste0("Cat", seq(0,K-1), "(exp.)")
+        pch=NA_integer_
+        col=1 + 1:K
+        lty=1
         # adds observed
         if (observed) {
-          legend_entry = c(legend_entry, paste0("Cat" , seq(0,K-1), "(obs.)"))
-          legend_entry = sort(legend_entry)
-          col = rep(1 + 1:K, each = 2)
-          pch = c(NA_integer_, 1)
-          lty = c(1, 2)
+          legend_entry=c(legend_entry, paste0("Cat", seq(0,K-1), "(obs.)"))
+          legend_entry=sort(legend_entry)
+          col=rep(1 + 1:K, each=2)
+          pch=c(NA_integer_, 1)
+          lty=c(1, 2)
         }
         graphics::legend(high + 0.3, 1.1, legend_entry,
-               cex = 0.7,
-               pch = pch, col= col,
-               horiz = FALSE, lty= lty, bty = "n", xpd = TRUE)
+               cex=0.7,
+               pch=pch, col=col,
+               horiz=FALSE, lty=lty, bty="n", xpd=TRUE)
       }
 
 
@@ -267,8 +267,8 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
     if(!file.exists("Plots")) dir.create( "Plots" )
     export.type.dev <- switch(export.type,
                               "ps"="postscript",
-                              "emf"=if (.Platform$OS.type == "windows") "win.metafile" else "x11",
-                              "wmf"=if (.Platform$OS.type == "windows") "win.metafile" else "x11",
+                              "emf"=if (.Platform$OS.type=="windows") "win.metafile" else "x11",
+                              "wmf"=if (.Platform$OS.type=="windows") "win.metafile" else "x11",
                               export.type)
     export.type.ff <- switch(export.type,
                              "postscript"="ps",
@@ -277,7 +277,7 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
                              export.type)
 
 
-    options(show.error.messages = FALSE)
+    options(show.error.messages=FALSE)
     options("device"=export.type.dev)
 
     for (i in (1:nitems)[items]) {
@@ -297,10 +297,10 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
         #***************************************************
         # expected response functions
         if (type=="expected"){
-          ylim2 <- c(0,max( tamobj$resp[,i] , na.rm=TRUE ) )
-          graphics::plot(theta, expScore[,i], ,col=12, type="l", lwd=3, las=1, ylab="Score", xlab="Ability",
-               main=paste("Expected Scores Curve - Item ", colnames(tamobj$resp)[i] ) ,
-               ylim=ylim2 , ... )
+          ylim2 <- c(0,max( tamobj$resp[,i], na.rm=TRUE ) )
+          graphics::plot(theta, expScore[,i],,col=12, type="l", lwd=3, las=1, ylab="Score", xlab="Ability",
+               main=paste("Expected Scores Curve - Item ", colnames(tamobj$resp)[i] ),
+               ylim=ylim2, ... )
           if (observed ) {
             graphics::lines(theta2,obScore[[i]]$x, type="o", lwd=2, pch=1)
           }
@@ -308,89 +308,89 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
         if ( type=="items" ){
 
           rprobs.ii <- rprobs[i,,]
-          rprobs.ii <- rprobs.ii[ rowMeans( is.na(rprobs.ii) ) < 1 , ]
+          rprobs.ii <- rprobs.ii[ rowMeans( is.na(rprobs.ii) ) < 1, ]
           K <- nrow(rprobs.ii)
-          if ( ndim == 1 ){ theta0 <- theta }
+          if ( ndim==1 ){ theta0 <- theta }
           dat2 <- NULL
           #************
           if ( ndim > 1 ){
             B.ii <- B[i,,]
             ind.ii <- which( colSums( B.ii ) > 0 )[1]
             rprobs0.ii <- rprobs.ii
-            rprobs0.ii <- stats::aggregate( t(rprobs0.ii) , list( theta[,ind.ii] ) , mean )
+            rprobs0.ii <- stats::aggregate( t(rprobs0.ii), list( theta[,ind.ii] ), mean )
             theta0 <- rprobs0.ii[,1,drop=FALSE]
             rprobs.ii <- t( rprobs0.ii[,-1] )
           }
           #**************
           for (kk in 1:K){
             # kk <- 1
-            dat2a <- data.frame( "Theta" = theta0[,1] , "cat" = kk , "P" = rprobs.ii[kk,] )
-            dat2 <- rbind(dat2 , dat2a)
+            dat2a <- data.frame( "Theta"=theta0[,1], "cat"=kk, "P"=rprobs.ii[kk,] )
+            dat2 <- rbind(dat2, dat2a)
           }
           main <- paste("Item", colnames(x$resp)[i] )
           auto.key <- NULL
-          simple.key <- paste0("Cat" , 1:K -  1)
+          simple.key <- paste0("Cat", 1:K -  1)
           auto.key <- simple.key
           dat2$time <- dat2$cat
-          dat2$time1 <- paste0("Cat" , dat2$time )
+          dat2$time1 <- paste0("Cat", dat2$time )
 
           simple.key <- FALSE
           Kpercol <- K
           # floor(K/Kpercol)+1
           if ( package=="lattice"){
-            auto.key <- list(  lines=TRUE , points=FALSE , rows=2)
-            h1 <- lattice::xyplot(P ~ Theta, dat2, group = time1, type = 'l', auto.key = auto.key,
-                                  main = main, ylim = c(-0.1,1.1), simple.key = simple.key ,
-                                  xlim=c(low,high) ,
-                                  ylab = expression(P(theta)), xlab = expression(theta), ... )
+            auto.key <- list(  lines=TRUE, points=FALSE, rows=2)
+            h1 <- lattice::xyplot(P ~ Theta, dat2, group=time1, type='l', auto.key=auto.key,
+                                  main=main, ylim=c(-0.1,1.1), simple.key=simple.key,
+                                  xlim=c(low,high),
+                                  ylab=expression(P(theta)), xlab=expression(theta), ... )
             graphics::plot(h1)
           }
           #**************************************
           # package graphics
-          if ( package == "graphics" ){
+          if ( package=="graphics" ){
             kk <- 1
             dfr <- dat2
-            dfr1a <- dfr[ dfr$cat == kk , ]
+            dfr1a <- dfr[ dfr$cat==kk, ]
             # setting larger margins on the right to fit the legend
             if(graphics::par("mar")[4] < 6.1) {
-              graphics::par("mar" = c(old.par.mar[1:3], 6.1))
+              graphics::par("mar"=c(old.par.mar[1:3], 6.1))
             }
 
-            graphics::plot( dfr1a$Theta , dfr1a$P , ylim=c(-.1,1.1) ,
-                  ylab = expression(P(theta)), xlab = expression(theta) ,
-                  col=kk+1 , type="l" , main=main, xpd = TRUE, ...
+            graphics::plot( dfr1a$Theta, dfr1a$P, ylim=c(-.1,1.1),
+                  ylab=expression(P(theta)), xlab=expression(theta),
+                  col=kk+1, type="l", main=main, xpd=TRUE, ...
             )
             for (kk in seq(2,K) ){
-              dfr1a <- dfr[ dfr$cat == kk , ]
-              graphics::lines( dfr1a$Theta , dfr1a$P , col=kk+1 )
-              # graphics::points( dfr1a$Theta , dfr1a$P , pch=kk , col=kk+1 )
+              dfr1a <- dfr[ dfr$cat==kk, ]
+              graphics::lines( dfr1a$Theta, dfr1a$P, col=kk+1 )
+              # graphics::points( dfr1a$Theta, dfr1a$P, pch=kk, col=kk+1 )
 
             }
             if(observed) {
-              obScore_it = obScore[[i]]
+              obScore_it=obScore[[i]]
               for(kk in seq(1:K)) {
-                graphics::lines(theta2, obScore_it[, kk + 1], col = kk + 1, lty = 2)
-                graphics::points(theta2, obScore_it[, kk + 1], col = kk + 1)
+                graphics::lines(theta2, obScore_it[, kk + 1], col=kk + 1, lty=2)
+                graphics::points(theta2, obScore_it[, kk + 1], col=kk + 1)
               }
             }
             # puts legend outside the plot region
             # only expected
-            legend_entry = paste0("Cat" , seq(0,K-1), "(exp.)")
-            pch = NA_integer_
-            col = 1 + 1:K
-            lty = 1
+            legend_entry=paste0("Cat", seq(0,K-1), "(exp.)")
+            pch=NA_integer_
+            col=1 + 1:K
+            lty=1
             # adds observed
             if (observed) {
-              legend_entry = c(legend_entry, paste0("Cat" , seq(0,K-1), "(obs.)"))
-              legend_entry = sort(legend_entry)
-              col = rep(1 + 1:K, each = 2)
-              pch = c(NA_integer_, 1)
-              lty = c(1, 2)
+              legend_entry=c(legend_entry, paste0("Cat", seq(0,K-1), "(obs.)"))
+              legend_entry=sort(legend_entry)
+              col=rep(1 + 1:K, each=2)
+              pch=c(NA_integer_, 1)
+              lty=c(1, 2)
             }
             graphics::legend(high + 0.3, 1.1, legend_entry,
-                   cex = 0.7,
-                   pch = pch, col= col,
-                   horiz = FALSE, lty= lty, bty = "n", xpd = TRUE)
+                   cex=0.7,
+                   pch=pch, col=col,
+                   horiz=FALSE, lty=lty, bty="n", xpd=TRUE)
           }
         }
 
@@ -399,10 +399,10 @@ plot.tam <- function(x, items=1:x$nitems, type="expected" ,
       }
 
              options("device"=old.opt.dev)
-             options(show.error.messages = as.character(old.opt.err))
+             options(show.error.messages=as.character(old.opt.err))
     }
 
-    # options(device = device.Option)
+    # options(device=device.Option)
 
     #*****
     # Print path

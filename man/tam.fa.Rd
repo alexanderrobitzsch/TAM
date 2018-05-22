@@ -1,5 +1,5 @@
 %% File Name: tam.fa.Rd
-%% File Version: 2.17
+%% File Version: 2.20
 
 \name{tam.fa}
 \alias{tam.fa}
@@ -21,8 +21,8 @@ This function is simply a wrapper to \code{\link{tam.mml}} or
 
 
 \usage{
-tam.fa(resp, irtmodel, dims = NULL, nfactors = NULL, pid = NULL,
-    pweights = NULL, verbose = TRUE, control = list())
+tam.fa(resp, irtmodel, dims=NULL, nfactors=NULL, pid=NULL,
+    pweights=NULL, verbose=TRUE, control=list())
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,7 +82,7 @@ is employed.
 
 The bifactor model (\code{irtmodel="bifactor2"}; Reise 2012)
 for dichotomous responses is defined as
-\deqn{logit P(X_{pi}=1 | \theta_{pg} , u_{p1} , \ldots , u_{pD} ) =
+\deqn{logit P(X_{pi}=1 | \theta_{pg}, u_{p1}, \ldots, u_{pD} )=
     a_{i0} \theta_{pg} + a_{i1} u_{pd(i) } }
 Items load on the general factor \eqn{\theta_{pg}} and a specific (nested)
 factor \eqn{u_{pd(i) }}. All factors are assumed to be uncorrelated.
@@ -186,7 +186,7 @@ resp <- data.read
 
 #***
 # Model 1a: Exploratory factor analysis with 2 factors
-mod1a <- TAM::tam.fa( resp=resp , irtmodel="efa" , nfactors= 2  )
+mod1a <- TAM::tam.fa( resp=resp, irtmodel="efa", nfactors=2  )
 summary(mod1a)
 # varimax rotation
 stats::varimax(mod1a$B.stand)
@@ -202,12 +202,12 @@ GPArotation::quartimin( mod1a$B.stand )
 #***
 # Model 1b: Rasch testlet model with 3 testlets
 dims <- substring( colnames(resp),1,1 )     # define dimensions
-mod1b <- TAM::tam.fa( resp=resp , irtmodel="bifactor1" , dims=dims )
+mod1b <- TAM::tam.fa( resp=resp, irtmodel="bifactor1", dims=dims )
 summary(mod1b)
 
 #***
 # Model 1c: Bifactor model
-mod1c <- TAM::tam.fa( resp=resp , irtmodel="bifactor2" , dims=dims )
+mod1c <- TAM::tam.fa( resp=resp, irtmodel="bifactor2", dims=dims )
 summary(mod1c)
 
 #***
@@ -215,7 +215,7 @@ summary(mod1c)
 #           specific factors
 dims1 <- dims
 dims1[c(3,5)] <- NA
-mod1d <- TAM::tam.fa( resp=resp , irtmodel="bifactor2" , dims=dims1 )
+mod1d <- TAM::tam.fa( resp=resp, irtmodel="bifactor2", dims=dims1 )
 summary(mod1d)
 }
 }

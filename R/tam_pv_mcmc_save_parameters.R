@@ -1,5 +1,5 @@
 ## File Name: tam_pv_mcmc_save_parameters.R
-## File Version: 0.03
+## File Version: 0.04
 
 tam_pv_mcmc_save_parameters <- function( beta, beta_samples,
         variance, variance_samples, deviance, deviance_samples,
@@ -10,12 +10,12 @@ tam_pv_mcmc_save_parameters <- function( beta, beta_samples,
     beta_groups <- attr(beta_samples, "beta_groups")
     index <- attr(beta_samples,"last_sample") + 1
     if ( ! beta_groups ){
-        beta_samples[ index , ] <- as.vector(beta)
+        beta_samples[ index, ] <- as.vector(beta)
     }
     if ( beta_groups ){
-        beta_index <- attr(beta_samples , "beta_index")
+        beta_index <- attr(beta_samples, "beta_index")
         for (gg in 1:G){
-            beta_samples[ index , beta_index[[gg]] ] <- as.vector(beta[[gg]])
+            beta_samples[ index, beta_index[[gg]] ] <- as.vector(beta[[gg]])
         }
     }
     attr(beta_samples,"last_sample") <- index

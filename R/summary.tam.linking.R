@@ -1,17 +1,17 @@
 ## File Name: summary.tam.linking.R
-## File Version: 0.09
+## File Version: 0.12
 
-summary.tam.linking <- function( object , file = NULL , ...)
+summary.tam.linking <- function( object, file=NULL, ...)
 {
 
-    tam_osink( file = file)
+    tam_osink( file=file)
 
     cat("------------------------------------------------------------\n")
 
     #- package and R session
     tam_print_package_rsession(pack="TAM")
 
-    cat( paste0("Linking of " , object$NS , " Studies") )
+    cat( paste0("Linking of ", object$NS, " Studies") )
     tam_print_call(object$CALL)
 
     type <- object$type

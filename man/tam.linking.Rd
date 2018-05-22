@@ -1,5 +1,5 @@
 %% File Name: tam.linking.Rd
-%% File Version: 0.46
+%% File Version: 0.49
 
 \name{tam.linking}
 \alias{tam.linking}
@@ -24,8 +24,8 @@ of two studies is implemented in the \code{tam_linking_2studies} function.
 }
 
 \usage{
-tam.linking(tamobj_list, type = "SL", theta = NULL, wgt = NULL, fix.slope = FALSE,
-   verbose = TRUE)
+tam.linking(tamobj_list, type="SL", theta=NULL, wgt=NULL, fix.slope=FALSE,
+   verbose=TRUE)
 
 \method{summary}{tam.linking}(object, file=NULL, \dots)
 
@@ -52,7 +52,7 @@ Grid of \eqn{\theta} points. The default is \code{seq(-6,6,len=101)}.
 }
   \item{wgt}{
 Weights defined for the \code{theta} grid. The default is \cr
-\code{tam_normalize_vector( stats::dnorm( theta , sd = 2 ))}.
+\code{tam_normalize_vector( stats::dnorm( theta, sd=2 ))}.
 }
   \item{fix.slope}{
 Logical indicating whether the slope transformation constant is fixed to 1.
@@ -137,22 +137,22 @@ dat <- data.ex16
 items <- colnames(dat)[-c(1,2)]
 
 # fit grade 1
-rdat1 <- TAM::tam_remove_missings( dat[ dat$grade == 1 , ], items=items )
-mod1 <- TAM::tam.mml.2pl( resp= rdat1$resp[, rdat1$items] , pid = rdat1$dat$idstud )
+rdat1 <- TAM::tam_remove_missings( dat[ dat$grade==1, ], items=items )
+mod1 <- TAM::tam.mml.2pl( resp=rdat1$resp[, rdat1$items], pid=rdat1$dat$idstud )
 summary(mod1)
 
 # fit grade 2
-rdat2 <- TAM::tam_remove_missings( dat[ dat$grade == 2 , ], items=items )
-mod2 <- TAM::tam.mml.2pl( resp= rdat2$resp[, rdat2$items] , pid = rdat2$dat$idstud )
+rdat2 <- TAM::tam_remove_missings( dat[ dat$grade==2, ], items=items )
+mod2 <- TAM::tam.mml.2pl( resp=rdat2$resp[, rdat2$items], pid=rdat2$dat$idstud )
 summary(mod2)
 
 # fit grade 3
-rdat3 <- TAM::tam_remove_missings( dat[ dat$grade == 3 , ], items=items )
-mod3 <- TAM::tam.mml.2pl( resp= rdat3$resp[, rdat3$items] , pid = rdat3$dat$idstud )
+rdat3 <- TAM::tam_remove_missings( dat[ dat$grade==3, ], items=items )
+mod3 <- TAM::tam.mml.2pl( resp=rdat3$resp[, rdat3$items], pid=rdat3$dat$idstud )
 summary(mod3)
 
 # define list of fitted models
-tamobj_list <- list( mod1, mod2 , mod3 )
+tamobj_list <- list( mod1, mod2, mod3 )
 
 #-- link item response models
 lmod <- TAM::tam.linking( tamobj_list)
@@ -162,15 +162,15 @@ summary(lmod)
 parm_list <- lmod$parameters_list
 
 # WLE grade 1
-arglist <- list( resp = mod1$resp, B = parm_list[[1]]$B, AXsi = parm_list[[1]]$AXsi )
+arglist <- list( resp=mod1$resp, B=parm_list[[1]]$B, AXsi=parm_list[[1]]$AXsi )
 wle1 <- TAM::tam.mml.wle(tamobj=arglist)
 
 # WLE grade 2
-arglist <- list( resp = mod2$resp, B = parm_list[[2]]$B, AXsi = parm_list[[2]]$AXsi )
+arglist <- list( resp=mod2$resp, B=parm_list[[2]]$B, AXsi=parm_list[[2]]$AXsi )
 wle2 <- TAM::tam.mml.wle(tamobj=arglist)
 
 # WLE grade 3
-arglist <- list( resp = mod3$resp, B = parm_list[[3]]$B, AXsi = parm_list[[3]]$AXsi )
+arglist <- list( resp=mod3$resp, B=parm_list[[3]]$B, AXsi=parm_list[[3]]$AXsi )
 wle3 <- TAM::tam.mml.wle(tamobj=arglist)
 
 #############################################################################
@@ -183,22 +183,22 @@ dat <- data.ex17
 items <- colnames(dat)[-c(1,2)]
 
 # fit grade 1
-rdat1 <- TAM::tam_remove_missings( dat[ dat$grade == 1 , ], items=items )
-mod1 <- TAM::tam.mml.2pl( resp= rdat1$resp[, rdat1$items] , pid = rdat1$dat$idstud )
+rdat1 <- TAM::tam_remove_missings( dat[ dat$grade==1, ], items=items )
+mod1 <- TAM::tam.mml.2pl( resp=rdat1$resp[, rdat1$items], pid=rdat1$dat$idstud )
 summary(mod1)
 
 # fit grade 2
-rdat2 <- TAM::tam_remove_missings( dat[ dat$grade == 2 , ], items=items )
-mod2 <- TAM::tam.mml.2pl( resp= rdat2$resp[, rdat2$items] , pid = rdat2$dat$idstud )
+rdat2 <- TAM::tam_remove_missings( dat[ dat$grade==2, ], items=items )
+mod2 <- TAM::tam.mml.2pl( resp=rdat2$resp[, rdat2$items], pid=rdat2$dat$idstud )
 summary(mod2)
 
 # fit grade 3
-rdat3 <- TAM::tam_remove_missings( dat[ dat$grade == 3 , ], items=items )
-mod3 <- TAM::tam.mml.2pl( resp= rdat3$resp[, rdat3$items] , pid = rdat3$dat$idstud )
+rdat3 <- TAM::tam_remove_missings( dat[ dat$grade==3, ], items=items )
+mod3 <- TAM::tam.mml.2pl( resp=rdat3$resp[, rdat3$items], pid=rdat3$dat$idstud )
 summary(mod3)
 
 # list of fitted TAM models
-tamobj_list <- list( mod1, mod2 , mod3 )
+tamobj_list <- list( mod1, mod2, mod3 )
 
 #-- linking: fix slope because partial credit model is fitted
 lmod <- TAM::tam.linking( tamobj_list, fix.slope=TRUE)
@@ -215,25 +215,25 @@ dat <- data.ex16
 items <- colnames(dat)[-c(1,2)]
 
 # fit grade 1
-rdat1 <- TAM::tam_remove_missings( dat[ dat$grade == 1 , ], items=items )
+rdat1 <- TAM::tam_remove_missings( dat[ dat$grade==1, ], items=items )
 # create some grouping variable
-group <- ( seq( 1 , nrow( rdat1$dat ) ) \%\%\ 3 ) + 1
-mod1 <- TAM::tam.mml.2pl( resp= rdat1$resp[, rdat1$items] , pid = rdat1$dat$idstud, group=group)
+group <- ( seq( 1, nrow( rdat1$dat ) ) \%\%\ 3 ) + 1
+mod1 <- TAM::tam.mml.2pl( resp=rdat1$resp[, rdat1$items], pid=rdat1$dat$idstud, group=group)
 summary(mod1)
 
 # fit grade 2
-rdat2 <- TAM::tam_remove_missings( dat[ dat$grade == 2 , ], items=items )
+rdat2 <- TAM::tam_remove_missings( dat[ dat$grade==2, ], items=items )
 group <- 1*(rdat2$dat$dat$idstud > 500)
 mod2 <- TAM::tam.mml.2pl( resp=rdat2$resp[, rdat2$items], pid=rdat2$dat$dat$idstud, group=group)
 summary(mod2)
 
 # fit grade 3
-rdat3 <- TAM::tam_remove_missings( dat[ dat$grade == 3, ], items=items )
-mod3 <- TAM::tam.mml.2pl( resp= rdat3$resp[, rdat3$items], pid = rdat3$dat$idstud )
+rdat3 <- TAM::tam_remove_missings( dat[ dat$grade==3, ], items=items )
+mod3 <- TAM::tam.mml.2pl( resp=rdat3$resp[, rdat3$items], pid=rdat3$dat$idstud )
 summary(mod3)
 
 # define list of fitted models
-tamobj_list <- list( mod1, mod2 , mod3 )
+tamobj_list <- list( mod1, mod2, mod3 )
 
 #-- link item response models
 lmod <- TAM::tam.linking( tamobj_list)

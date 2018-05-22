@@ -1,5 +1,5 @@
 %% File Name: IRTLikelihood.ctt.Rd
-%% File Version: 0.15
+%% File Version: 0.18
 
 \name{IRTLikelihood.ctt}
 \alias{IRTLikelihood.ctt}
@@ -13,7 +13,7 @@ Computes individual likelihood from classical test theory estimates
 under a unidimensional normal distribution of measurement errors.
 }
 \usage{
-IRTLikelihood.ctt(y, errvar, theta = NULL)
+IRTLikelihood.ctt(y, errvar, theta=NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -65,33 +65,33 @@ N <- 2000
 x1 <- stats::rnorm(N)
 x2 <- .7 * x1 + stats::runif(N)
 # simulate true score
-theta <- 1.2 + .6*x1 + .3 *x2 + stats::rnorm(N, sd = sqrt(.50) )
+theta <- 1.2 + .6*x1 + .3 *x2 + stats::rnorm(N, sd=sqrt(.50) )
 var(theta)
 # simulate measurement error variances
-errvar <- stats::runif( N , min = .6 , max = .9 )
+errvar <- stats::runif( N, min=.6, max=.9 )
 # simulate observed scores
-y <- theta + stats::rnorm( N , sd = sqrt( errvar) )
+y <- theta + stats::rnorm( N, sd=sqrt( errvar) )
 
 #--- create likelihood object
-like1 <- TAM::IRTLikelihood.ctt( y=y , errvar=errvar , theta = NULL )
+like1 <- TAM::IRTLikelihood.ctt( y=y, errvar=errvar, theta=NULL )
 
 #--- estimate latent regression
 X <- data.frame(x1,x2)
-mod1 <- TAM::tam.latreg( like=like1 , Y = X )
+mod1 <- TAM::tam.latreg( like=like1, Y=X )
 
 \dontrun{
 #--- draw plausible values
-pv1 <- TAM::tam.pv( mod1 , normal.approx = TRUE )
+pv1 <- TAM::tam.pv( mod1, normal.approx=TRUE )
 
 #--- create datalist
-datlist1 <- TAM::tampv2datalist( pv1 , pvnames = "thetaPV" , Y=X )
+datlist1 <- TAM::tampv2datalist( pv1, pvnames="thetaPV", Y=X )
 
 #--- statistical inference on plausible values using mitools package
 library(mitools)
 datlist1a <- mitools::imputationList(datlist1)
 
 # fit linear regression and apply Rubin formulas
-mod2 <- with( datlist1a , stats::lm( thetaPV ~ x1 + x2 ) )
+mod2 <- with( datlist1a, stats::lm( thetaPV ~ x1 + x2 ) )
 summary( mitools::MIcombine(mod2) )
 }
 }

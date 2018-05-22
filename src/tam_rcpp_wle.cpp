@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_wle.cpp
-//// File Version: 3.27
+//// File Version: 3.28
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
@@ -35,22 +35,22 @@ Rcpp::List tam_rcpp_wle_suffstat( Rcpp::NumericMatrix RPROBS, Rcpp::NumericMatri
         for(int jj=0; jj<cnstud; jj++){// student loop
             if (resp_ind_bool(jj,ii) ){
                 for(int dd1=0; dd1<cndim; dd1++){// dimension loop 1
-                    B_bari( cnstud*ii+jj , dd1 ) = 0;
-                    BBB_bari( cnstud*ii+jj , dd1 ) = 0;
+                    B_bari( cnstud*ii+jj, dd1 ) = 0;
+                    BBB_bari( cnstud*ii+jj, dd1 ) = 0;
                     for(int cc=0; cc<cmaxK; cc++){// category loop
-                        B_bari( cnstud*ii+jj , dd1 ) += CBL( cnitems*cc+ii , dd1 )*RPROBS( cnitems*cc+ii , jj );
-                        BBB_bari( cnstud*ii+jj , dd1 ) += CBBB( cnitems*cc+ii , dd1 )*RPROBS( cnitems*cc+ii , jj );
+                        B_bari( cnstud*ii+jj, dd1 ) += CBL( cnitems*cc+ii, dd1 )*RPROBS( cnitems*cc+ii, jj );
+                        BBB_bari( cnstud*ii+jj, dd1 ) += CBBB( cnitems*cc+ii, dd1 )*RPROBS( cnitems*cc+ii, jj );
                     }
-                    B2_B( cnstud*ii+jj , dd1 ) = 0;
-                    B_Cube( cnstud*ii+jj , dd1 ) = 0;
+                    B2_B( cnstud*ii+jj, dd1 ) = 0;
+                    B_Cube( cnstud*ii+jj, dd1 ) = 0;
                     for(int dd2=0; dd2<cndim; dd2++){// category loop
-                        BB_bari(cnstud*ii+jj , cndim*dd1+dd2 )=0;
+                        BB_bari(cnstud*ii+jj, cndim*dd1+dd2 )=0;
                         for(int cc=0; cc<cmaxK; cc++){// category loop
-                            BB_bari( cnstud*ii+jj , cndim*dd2+dd1 ) += CBB( cnitems*cc+ii , cndim*dd2+dd1 )*RPROBS( cnitems*cc+ii , jj );
+                            BB_bari( cnstud*ii+jj, cndim*dd2+dd1 ) += CBB( cnitems*cc+ii, cndim*dd2+dd1 )*RPROBS( cnitems*cc+ii, jj );
                         }
-                        B_Sq( cnstud*ii+jj , cndim*dd2+dd1 ) = B_bari( cnstud*ii+jj , dd1 )*B_bari( cnstud*ii+jj , dd2 );
-                        B2_B( cnstud*ii+jj , dd1 ) += BB_bari( cnstud*ii+jj , cndim*dd2+dd1 )*B_bari( cnstud*ii+jj , dd2 );
-                        B_Cube( cnstud*ii+jj , dd1 ) += B_Sq( cnstud*ii+jj , cndim*dd2+dd1 )*B_bari( cnstud*ii+jj , dd2 );
+                        B_Sq( cnstud*ii+jj, cndim*dd2+dd1 ) = B_bari( cnstud*ii+jj, dd1 )*B_bari( cnstud*ii+jj, dd2 );
+                        B2_B( cnstud*ii+jj, dd1 ) += BB_bari( cnstud*ii+jj, cndim*dd2+dd1 )*B_bari( cnstud*ii+jj, dd2 );
+                        B_Cube( cnstud*ii+jj, dd1 ) += B_Sq( cnstud*ii+jj, cndim*dd2+dd1 )*B_bari( cnstud*ii+jj, dd2 );
                     }  // end dd2
                 }  // end dd 1
             }  // end resp_ind_bool(jj,ii)

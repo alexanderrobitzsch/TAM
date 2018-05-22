@@ -1,13 +1,13 @@
 ## File Name: tam_mml_3pl_deviance.R
-## File Version: 0.07
+## File Version: 0.11
 
-tam_mml_3pl_deviance <- function( hwt0 , rfx , res.hwt , pweights , snodes,
-        deviance=NA, deviance.history=NULL , iter=NULL )
+tam_mml_3pl_deviance <- function( hwt0, rfx, res.hwt, pweights, snodes,
+        deviance=NA, deviance.history=NULL, iter=NULL )
 {
     rfx <- NULL
     olddeviance <- deviance
     #---- calculate deviance
-    if ( snodes == 0 ){
+    if ( snodes==0 ){
         rfx <- rowSums( hwt0 )
         deviance <- - 2 * sum( pweights * log( rfx ) )
     } else {
@@ -21,7 +21,7 @@ tam_mml_3pl_deviance <- function( hwt0 , rfx , res.hwt , pweights , snodes,
         deviance.history[iter,2] <- deviance
     }
     #----- OUTPUT
-    res <- list( rfx = rfx, deviance = deviance, deviance_change=deviance_change ,
+    res <- list( rfx=rfx, deviance=deviance, deviance_change=deviance_change,
                 rel_deviance_change=rel_deviance_change,
                 deviance.history=deviance.history)
     return(res)

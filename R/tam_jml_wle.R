@@ -1,12 +1,12 @@
 ## File Name: tam_jml_wle.R
-## File Version: 9.22
+## File Version: 9.26
 
 
 ################################################################
 ################################################################
 ################################################################
-tam_jml_wle <- function ( tamobj, resp , resp.ind, A, B, nstud, nitems, maxK, convM,
-             PersonScores, theta, xsi, Msteps, WLE=FALSE ,
+tam_jml_wle <- function ( tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
+             PersonScores, theta, xsi, Msteps, WLE=FALSE,
              theta.fixed=NULL)
 {
 
@@ -35,8 +35,8 @@ tam_jml_wle <- function ( tamobj, resp , resp.ind, A, B, nstud, nitems, maxK, co
     iterWLE <- 0
     BB <- B1^2
     BBB <- BB * B1
-    # BB    [ nitems , maxK ]
-    # BBB    [ nitems , maxK ]
+    # BB    [ nitems, maxK ]
+    # BBB    [ nitems, maxK ]
     maxChangeWLE <- 0
     theta <- matrix( as.matrix(theta), ncol=1 )
     thetaOld <- theta
@@ -45,28 +45,28 @@ tam_jml_wle <- function ( tamobj, resp , resp.ind, A, B, nstud, nitems, maxK, co
 a0 <- Sys.time()
 
 
-    while (!convergeWLE & ( iterWLE <= Msteps ) ) {
-      resWLE <- tam_mml_calc_prob(iIndex = 1:nitems , A , AXsi ,
-                             B , xsi , theta , nstud, maxK , recalc=FALSE )
+    while (!convergeWLE & ( iterWLE <=Msteps ) ) {
+      resWLE <- tam_mml_calc_prob(iIndex=1:nitems, A, AXsi,
+                             B, xsi, theta, nstud, maxK, recalc=FALSE )
       rprobsWLE <- resWLE[["rprobs"]]
       rprobsWLE[ is.na( rprobsWLE ) ] <- 0
 # cat("one iteration WLE -- calc prob") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
 
-      B_bari <- B1[,1] * rprobsWLE[ , 1 , ]
-      BB_bari <- BB[,1] * rprobsWLE[ , 1 , ]
+      B_bari <- B1[,1] * rprobsWLE[, 1, ]
+      BB_bari <- BB[,1] * rprobsWLE[, 1, ]
       for (kk in 2:maxK){
         B_bari <- B_bari + B1[,kk]*rprobsWLE[,kk,]
-        BB_bari <- BB_bari + BB[,kk] * rprobsWLE[ , kk , ]
+        BB_bari <- BB_bari + BB[,kk] * rprobsWLE[, kk, ]
       }
       B_bari <- t(B_bari) * resp.ind
 
-      # B_bari.OLD <- sapply(1:nitems, function(i) colSums(B1[i,] * rprobsWLE[i,,] , na.rm = TRUE)) * resp.ind
-      # B1        [ nitems , maxK ]
-      # rprobsWLE [ nitems , maxK , nstud ]
-      # resp.ind  [ nstud , nitems ]
-      # colSums(B1[i,] * rprobsWLE[i,,] , na.rm = TRUE))
-      #    -> colSums( [ maxK , nstud ] ) = [nstud]
-      # B_bari    [ nstud , nitems ]
+      # B_bari.OLD <- sapply(1:nitems, function(i) colSums(B1[i,] * rprobsWLE[i,,], na.rm=TRUE)) * resp.ind
+      # B1        [ nitems, maxK ]
+      # rprobsWLE [ nitems, maxK, nstud ]
+      # resp.ind  [ nstud, nitems ]
+      # colSums(B1[i,] * rprobsWLE[i,,], na.rm=TRUE))
+      #    -> colSums( [ maxK, nstud ] )=[nstud]
+      # B_bari    [ nstud, nitems ]
 
       BB_bari <- t(BB_bari ) * resp.ind
       B_Sq <- B_bari^2
@@ -76,9 +76,9 @@ a0 <- Sys.time()
       scores <- PersonScores - expected
 
       if (WLE) {
-        BBB_bari <- BBB[,1] * rprobsWLE[ , 1 , ]
+        BBB_bari <- BBB[,1] * rprobsWLE[, 1, ]
         for (kk in 2:maxK){
-          BBB_bari <- BBB_bari + BBB[,kk] * rprobsWLE[ , kk , ]
+          BBB_bari <- BBB_bari + BBB[,kk] * rprobsWLE[, kk, ]
         }
         BBB_bari <- t(BBB_bari ) * resp.ind
         B2_B <- BB_bari*B_bari
@@ -119,7 +119,7 @@ a0 <- Sys.time()
         errorWLE[ theta.fixed[,1] ] <- 0
     }
 
-    res <- list( "theta" = theta , "errorWLE" = errorWLE, "meanChangeWLE" = meanChangeWLE)
+    res <- list( "theta"=theta, "errorWLE"=errorWLE, "meanChangeWLE"=meanChangeWLE)
     return (res)
 }
 

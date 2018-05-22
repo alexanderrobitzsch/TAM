@@ -1,5 +1,5 @@
 ## File Name: tam_linking_transform_item_parameters.R
-## File Version: 0.03
+## File Version: 0.06
 
 tam_linking_transform_item_parameters <- function( B, AXsi, A, trafo_items )
 {
@@ -11,8 +11,8 @@ tam_linking_transform_item_parameters <- function( B, AXsi, A, trafo_items )
         AXsi_trans[,kk] <- B[,kk,] * trafo_items["b"] + AXsi[,kk]
     }
     #--- determine transformed xsi parameter
-    xsi_trans <- tam_AXsi_fit( AXsi = AXsi_trans , A = A )
+    xsi_trans <- tam_AXsi_fit( AXsi=AXsi_trans, A=A )
     #--- OUTPUT
-    res <- list( B = B_trans, AXsi = AXsi_trans, xsi = xsi_trans )
+    res <- list( B=B_trans, AXsi=AXsi_trans, xsi=xsi_trans )
     return(res)
 }

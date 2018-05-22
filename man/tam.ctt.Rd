@@ -1,5 +1,5 @@
 %% File Name: tam.ctt.Rd
-%% File Version: 3.08
+%% File Version: 3.12
 
 \name{tam.ctt}
 \alias{tam.ctt}
@@ -16,12 +16,12 @@ This function computes some item statistics based on classical test
 theory.
 }
 \usage{
-tam.ctt(resp, wlescore=NULL, pvscores=NULL, group=NULL , progress=TRUE)
-tam.ctt2(resp, wlescore=NULL, group=NULL , allocate=30 , progress=TRUE)
-tam.ctt3(resp, wlescore=NULL, group=NULL , allocate=30 , progress=TRUE)
+tam.ctt(resp, wlescore=NULL, pvscores=NULL, group=NULL, progress=TRUE)
+tam.ctt2(resp, wlescore=NULL, group=NULL, allocate=30, progress=TRUE)
+tam.ctt3(resp, wlescore=NULL, group=NULL, allocate=30, progress=TRUE)
 
-plotctt( resp , theta , Ncuts = NULL , ask = FALSE , col.list=NULL ,
-       package="lattice" , ... )
+plotctt( resp, theta, Ncuts=NULL, ask=FALSE, col.list=NULL,
+       package="lattice", ... )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -115,32 +115,32 @@ mod <- TAM::tam.mml( resp=data.mc$scored )
 w1 <- TAM::tam.wle( mod )
 # estimate plausible values
 set.seed(789)
-p1 <- TAM::tam.pv( mod , ntheta=500 , normal.approx=TRUE )$pv
+p1 <- TAM::tam.pv( mod, ntheta=500, normal.approx=TRUE )$pv
 
 # CTT results for raw data
-stat1 <- TAM::tam.ctt( resp=data.mc$raw , wlescore=w1$theta , pvscores=p1[,-1] )
-stat1a <- TAM::tam.ctt2( resp=data.mc$raw , wlescore=w1$theta )  # faster
+stat1 <- TAM::tam.ctt( resp=data.mc$raw, wlescore=w1$theta, pvscores=p1[,-1] )
+stat1a <- TAM::tam.ctt2( resp=data.mc$raw, wlescore=w1$theta )  # faster
 stat1b <- TAM::tam.ctt2( resp=data.mc$raw )  # only frequencies
-stat1c <- TAM::tam.ctt3( resp=data.mc$raw , wlescore=w1$theta )  # faster
+stat1c <- TAM::tam.ctt3( resp=data.mc$raw, wlescore=w1$theta )  # faster
 
 # plot empirical item response curves
-plotctt( resp=data.mc$raw , theta = w1$theta , Ncuts =5 , ask=TRUE)
+plotctt( resp=data.mc$raw, theta=w1$theta, Ncuts=5, ask=TRUE)
 # use graphics for plot
-plotctt( resp=data.mc$raw , theta = w1$theta , Ncuts =5 , ask=TRUE , package="graphics")
+plotctt( resp=data.mc$raw, theta=w1$theta, Ncuts=5, ask=TRUE, package="graphics")
 # change colors
-col.list <- c( "darkred" ,  "darkslateblue" , "springgreen4" , "darkorange" ,
-                "hotpink4" , "navy" )
-plotctt( resp=data.mc$raw , theta = w1$theta , Ncuts =5 , ask=TRUE ,
-        package="graphics" , col.list = col.list )
+col.list <- c( "darkred",  "darkslateblue", "springgreen4", "darkorange",
+                "hotpink4", "navy" )
+plotctt( resp=data.mc$raw, theta=w1$theta, Ncuts=5, ask=TRUE,
+        package="graphics", col.list=col.list )
 
 # CTT results for scored data
-stat2 <- TAM::tam.ctt( resp=data.mc$scored , wlescore=w1$theta , pvscores=p1[,-1] )
+stat2 <- TAM::tam.ctt( resp=data.mc$scored, wlescore=w1$theta, pvscores=p1[,-1] )
 
 # descriptive statistics for different groups
 # define group identifier
-group <- c( rep(1,70) , rep(2,73) )
-stat3 <- TAM::tam.ctt( resp=data.mc$raw , wlescore=w1$theta , pvscores=p1[,-1] , group=group)
-stat3a <- TAM::tam.ctt2( resp=data.mc$raw , wlescore=w1$theta ,  group=group)
+group <- c( rep(1,70), rep(2,73) )
+stat3 <- TAM::tam.ctt( resp=data.mc$raw, wlescore=w1$theta, pvscores=p1[,-1], group=group)
+stat3a <- TAM::tam.ctt2( resp=data.mc$raw, wlescore=w1$theta,  group=group)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
