@@ -1,5 +1,5 @@
 ## File Name: tam_mml_wle_proc_input_data.R
-## File Version: 0.04
+## File Version: 0.07
 
 tam_mml_wle_proc_input_data <- function(tamobj, score.resp)
 {
@@ -43,6 +43,6 @@ tam_mml_wle_proc_input_data <- function(tamobj, score.resp)
     #--- OUTPUT
     res <- list(AXsi=AXsi, B=B, A=A, resp=resp, resp.ind=resp.ind,
                 nitems=nitems, xsi=xsi, nstud=nstud, ndim=ndim, maxK=maxK,
-                pweights=pweights, pid=pid)
+                pweights=pweights, pid=pid)        
     return(res)
 }

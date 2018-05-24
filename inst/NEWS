@@ -41,18 +41,20 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.12  |  2018-05-22  |  Last: TAM 2.12-11
+VERSIONS TAM 2.12  |  2018-05-24  |  Last: TAM 2.12-13
 -------------------------------------------------------------
 
 ADDED * added "quick" standard error computation method for
         fitted TAM models of class 'tam.latreg' in tam.se()
         using helper function tam_latreg_se_quick()
         (thanks to Yuan-Ling Linda Liaw)
+FIXED * fixed a bug in tam.wle() which was introduced due to
+        changes in TAM 2.11 (thanks to Anna Scharl)
+NOTE  * added utility functions tam_max_list() and
+        tam_max_abs_list()
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
-
-
 
 -------------------------------------------------------------
 VERSIONS TAM 2.11  |  2018-05-02  |  Last: TAM 2.11-93

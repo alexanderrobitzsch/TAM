@@ -1,5 +1,5 @@
 ## File Name: tam.mml.wle2.R
-## File Version: 0.71
+## File Version: 0.835
 
 ################################################################
 tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
@@ -84,22 +84,18 @@ tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
     increment <- array(0, dim=c(nstud,ndim))
     old_increment <- 3 + increment
 
-
     # Begin iterations
     while (!converge & ( Miter <=Msteps ) ) {
 
-        # tam_mml_calc_prob <- function(iIndex, A, AXsi, B, xsi, theta,
-        #           nnodes, maxK, recalc=TRUE)
-
         resWLE <- tam_mml_calc_prob( iIndex=1:nitems, A=A, AXsi=AXsi, B=B,
-                    xsi=xsi, theta=theta, nnodes=nstud, maxK=maxK, recalc=FALSE )
+                    xsi=xsi, theta=theta, nnodes=nstud, maxK=maxK, recalc=FALSE,
+                    use_rcpp=FALSE, maxcat=max(maxK) )
       rprobsWLE <- resWLE$rprobs
       rprobsWLEL <- matrix(rprobsWLE, nitems*maxK, nstud )
-
       rprobsWLEL[is.na(rprobsWLEL)] <- 0
         resB <- tam_rcpp_wle_suffstat( RPROBS=rprobsWLEL, CBL=BL, CBB=BBL,
                     CBBB=BBBL, cndim=ndim, cnitems=nitems, cmaxK=maxK, cnstud=nstud,
-                    resp_ind_bool=resp_ind_bool )
+                    resp_ind=resp.ind )
       B_bari <- array(resB$B_bari, dim=c(nstud, nitems,ndim))
       BB_bari <- array(resB$BB_bari, dim=c(nstud, nitems, ndim, ndim))
       BBB_bari <- array(resB$BBB_bari, dim=c(nstud, nitems, ndim))
@@ -107,7 +103,6 @@ tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
       B_Sq <- array(resB$B_Sq,dim=c(nstud, nitems, ndim, ndim))
       B2_B <- array(resB$B2_B,dim=c(nstud, nitems, ndim))
       B_Cube <- array(resB$B_Cube,dim=c(nstud, nitems, ndim))
-
       expected <- colSums(aperm(B_bari,c(2,1,3)))
       err <- colSums(aperm(BB_bari,c(2,1,3,4))) - colSums(aperm(B_Sq, c(2,1,3,4)))  #sum over the items
 
@@ -178,7 +173,5 @@ tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
                 resp.ind=resp.ind, PersonScores=PersonScores, PersonMax=PersonMax,
                 adj=adj, WLE=WLE, rprobsWLE=rprobsWLE, output.prob=output.prob, progress=progress,
                 pweights=pweights, CALL=CALL, B=B, score.resp=score.resp )
-
-    #  res <- list( "PersonScores"=PersonScores, "PersonMax"=PersonMax, "theta"=theta, "error"=error )
     return(res)
-  }
+}

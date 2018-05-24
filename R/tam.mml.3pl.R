@@ -1,5 +1,5 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.839
+## File Version: 9.842
 tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
             formulaY=NULL, dataY=NULL,
             ndim=1, pid=NULL,
