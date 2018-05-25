@@ -1,5 +1,5 @@
 %% File Name: IRT.WrightMap.Rd
-%% File Version: 0.28
+%% File Version: 0.29
 
 \name{IRT.WrightMap}
 % \alias{IRT.WrightMap}
@@ -74,10 +74,10 @@ in the \pkg{\link[WrightMap:WrightMap]{WrightMap}} package.
 \seealso{
 See the \code{\link[WrightMap:wrightMap]{WrightMap::wrightMap}} function in
 the \pkg{WrightMap} package.
-
-See \url{http://wrightmap.org/WrightMap} fur tutorials
-of the \pkg{WrightMap} package.
 }
+
+% See \url{http://wrightmap.org/WrightMap} fur tutorials
+% of the \pkg{WrightMap} package.
 
 \examples{
 \dontrun{

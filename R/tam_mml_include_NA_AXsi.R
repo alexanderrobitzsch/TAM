@@ -1,5 +1,5 @@
 ## File Name: tam_mml_include_NA_AXsi.R
-## File Version: 0.01
+## File Version: 0.02
 
 
 tam_mml_include_NA_AXsi <- function(AXsi, maxcat=NULL)
@@ -18,7 +18,7 @@ tam_mml_include_NA_AXsi <- function(AXsi, maxcat=NULL)
             if (maxcat[ii]<maxK){
                 AXsi[ii, seq(maxcat[ii]+1,maxK) ] <- NA
             }
-        }    
+        }
     }
     return(AXsi)
 }

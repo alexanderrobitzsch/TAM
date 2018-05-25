@@ -40,8 +40,20 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 
+
 -------------------------------------------------------------
-VERSIONS TAM 2.12  |  2018-05-24  |  Last: TAM 2.12-13
+VERSIONS TAM 2.13  |  2018-05-25  |  Last: TAM 2.13-1
+-------------------------------------------------------------
+
+xxx   * ...
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+-------------------------------------------------------------
+VERSIONS TAM 2.12  |  2018-05-25  |  Last: TAM 2.12-18
 -------------------------------------------------------------
 
 ADDED * added "quick" standard error computation method for
@@ -50,7 +62,7 @@ ADDED * added "quick" standard error computation method for
         (thanks to Yuan-Ling Linda Liaw)
 FIXED * fixed a bug in tam.wle() which was introduced due to
         changes in TAM 2.11 (thanks to Anna Scharl)
-NOTE  * added utility functions tam_max_list() and
+NOTE  * added utility functions tam_max_abs() and
         tam_max_abs_list()
 
 DATA  * included/modified datasets: ---

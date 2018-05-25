@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.776
+## File Version: 9.777
 tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
             ndim=1, pid=NULL,
@@ -394,7 +394,7 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     se.B.min -> se.B
 
     #*** include NAs in AXsi
-    AXsi <- tam_mml_include_NA_AXsi(AXsi=AXsi, maxcat=maxcat)    
+    AXsi <- tam_mml_include_NA_AXsi(AXsi=AXsi, maxcat=maxcat)
 
     #******
     # generate input for fixed parameters

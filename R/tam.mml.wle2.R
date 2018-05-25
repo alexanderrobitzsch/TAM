@@ -1,5 +1,5 @@
 ## File Name: tam.mml.wle2.R
-## File Version: 0.835
+## File Version: 0.842
 
 ################################################################
 tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,

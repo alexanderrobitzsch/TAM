@@ -1,5 +1,5 @@
 %% File Name: IRT.threshold.Rd
-%% File Version: 1.39
+%% File Version: 1.42
 
 \name{IRT.threshold}
 \alias{IRT.threshold}
@@ -92,20 +92,20 @@ The \code{IRT.WrightMap} function is based on the
 in the \pkg{\link[WrightMap:WrightMap]{WrightMap}} package.
 }
 
-\note{
-See \url{http://wrightmap.org/post/107431190622/wrightmap-multifaceted-models}
-for creating Wright maps for multi-faceted models.
-}
+%\note{
+%See \url{http://wrightmap.org/post/107431190622/wrightmap-multifaceted-models}
+%for creating Wright maps for multi-faceted models.
+%}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 See the \code{\link[WrightMap:wrightMap]{WrightMap::wrightMap}} function in
 the \pkg{WrightMap} package.
-
-See \url{http://wrightmap.org/WrightMap} fur tutorials
-of the \pkg{WrightMap} package.
 }
+
+%See \url{http://wrightmap.org/WrightMap} fur tutorials
+%of the \pkg{WrightMap} package.
 
 \examples{
 \dontrun{

@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_ctt.cpp
-//// File Version: 3.19
+//// File Version: 3.20
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -124,7 +124,7 @@ Rcpp::List tam_rcpp_ctt2( Rcpp::CharacterMatrix TDAT,
      // OUTPUT:
      return Rcpp::List::create(
               Rcpp::Named("des") = des,
-              Rcpp::Named("desV") = desV ,
+              Rcpp::Named("desV") = desV,
               Rcpp::Named("LP") = LP
                     );
 }
@@ -249,7 +249,7 @@ Rcpp::List tam_rcpp_ctt3( Rcpp::CharacterMatrix TDAT,
     // OUTPUT:
     return Rcpp::List::create(
             Rcpp::Named("des") = des,
-            Rcpp::Named("desV") = desV ,
+            Rcpp::Named("desV") = desV,
             Rcpp::Named("LP") = LP
         );
 }
