@@ -1,5 +1,5 @@
 ## File Name: tam_latent_regression_standardized_solution.R
-## File Version: 0.15
+## File Version: 0.16
 
 tam_latent_regression_standardized_solution <- function(variance, beta, Y)
 {
@@ -41,11 +41,12 @@ tam_latent_regression_standardized_solution <- function(variance, beta, Y)
         for (dd in 1:ND){
             ind_dd <- NY*(dd-1) + 1:NY
             beta_stand[ ind_dd, "dim"] <- dd
+            sd_theta_dd <- sd_theta[dd]
             beta_dd <- beta[,dd]
             beta_stand[ ind_dd, "est"] <- beta_dd
             beta_stand[ ind_dd, "StdX"] <- beta_dd * sd_x0
-            beta_stand[ ind_dd, "StdY"] <- beta_dd / sd_theta *  ( sd_x0 > -10 )
-            beta_stand[ ind_dd, "StdYX"] <- beta_dd / sd_theta * sd_x0
+            beta_stand[ ind_dd, "StdY"] <- beta_dd / sd_theta_dd *  ( sd_x0 > -10 )
+            beta_stand[ ind_dd, "StdYX"] <- beta_dd / sd_theta_dd * sd_x0
         }
         #--- output
         res <- list( beta_stand=beta_stand, R2_theta=R2_theta, sd_theta=sd_theta, sd_x=sd_x,

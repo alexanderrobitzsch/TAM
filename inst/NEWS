@@ -42,10 +42,12 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.13  |  2018-05-25  |  Last: TAM 2.13-1
+VERSIONS TAM 2.13  |  2018-06-14  |  Last: TAM 2.13-3
 -------------------------------------------------------------
 
-xxx   * ...
+NOTE  * fixed a bug in output of standardized coefficients for
+        multidimensional IRT models
+
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
