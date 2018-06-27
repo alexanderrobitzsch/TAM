@@ -1,5 +1,5 @@
 ## File Name: IRT.likelihood.TAM.R
-## File Version: 9.08
+## File Version: 9.09
 
 
 ###########################################################
@@ -18,6 +18,7 @@ IRT.likelihood.tam <- function( object, ... )
 IRT.likelihood.tam.mml <- IRT.likelihood.tam
 IRT.likelihood.tam.mml.3pl <- IRT.likelihood.tam.mml
 IRT.likelihood.tam.latreg <- IRT.likelihood.tam
+IRT.likelihood.tam.np <- IRT.likelihood.tam
 ###########################################################
 
 
@@ -51,6 +52,7 @@ IRT.posterior.tam <- function( object, ... )
 IRT.posterior.tam.mml <- IRT.posterior.tam
 IRT.posterior.tam.mml.3pl <- IRT.posterior.tam.mml
 IRT.posterior.tam.latreg <- IRT.posterior.tam
+IRT.posterior.tam.np <- IRT.posterior.tam
 ###########################################################
 
 ###########################################################

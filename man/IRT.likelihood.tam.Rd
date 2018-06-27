@@ -1,5 +1,5 @@
 %% File Name: IRT.likelihood.tam.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{IRT.likelihood}
 
@@ -8,12 +8,14 @@
 \alias{IRT.likelihood.tam.mml.3pl}
 \alias{IRT.likelihood.tamaan}
 \alias{IRT.likelihood.tam.latreg}
+\alias{IRT.likelihood.tam.np}
 
 \alias{IRT.posterior.tam}
 \alias{IRT.posterior.tam.mml}
 \alias{IRT.posterior.tam.mml.3pl}
 \alias{IRT.posterior.tamaan}
 \alias{IRT.posterior.tam.latreg}
+\alias{IRT.posterior.tam.np}
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
@@ -43,6 +45,9 @@ for more details.
 
 \method{IRT.likelihood}{tam.latreg}(object, \dots)
 \method{IRT.posterior}{tam.latreg}(object, \dots)
+
+\method{IRT.likelihood}{tam.np}(object, \dots)
+\method{IRT.posterior}{tam.np}(object, \dots)
 }
 
 
@@ -50,7 +55,7 @@ for more details.
 \arguments{
   \item{object}{
 Object of class \code{\link{tam}}, \code{\link{tam.mml}},
-\code{\link{tam.mml.3pl}}, \code{\link{tamaan}}
+\code{\link{tam.mml.3pl}}, \code{\link{tamaan}}, \code{\link{tam.np}} 
 or \code{\link{tam.latreg}}.
 }
 \item{\dots}{Further arguments to be passed}

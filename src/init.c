@@ -1,5 +1,5 @@
 //// File Name: init.c
-//// File Version: 2.013003
+//// File Version: 2.013006
 #include <R.h>
 #include <Rinternals.h>
 #include <stdlib.h> // for NULL
@@ -39,6 +39,7 @@ extern SEXP _TAM_tam_rcpp_pv_mcmc_likelihood(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP)
 extern SEXP _TAM_tam_rcpp_pv_mcmc_calc_probs_irf_3pl(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_pv_sample_theta_multidim(SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_rowCumsums(SEXP);
+extern SEXP _TAM_tam_rcpp_tam_np_posterior(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_wle_suffstat(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_wle_errinv(SEXP, SEXP, SEXP);
 
@@ -77,6 +78,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_TAM_tam_rcpp_pv_mcmc_calc_probs_irf_3pl", (DL_FUNC) &_TAM_tam_rcpp_pv_mcmc_calc_probs_irf_3pl, 6},
     {"_TAM_tam_rcpp_pv_sample_theta_multidim", (DL_FUNC) &_TAM_tam_rcpp_pv_sample_theta_multidim, 2},
     {"_TAM_tam_rcpp_rowCumsums", (DL_FUNC) &_TAM_tam_rcpp_rowCumsums, 1},
+    {"_TAM_tam_rcpp_tam_np_posterior", (DL_FUNC) &_TAM_tam_rcpp_tam_np_posterior, 6},
     {"_TAM_tam_rcpp_wle_suffstat", (DL_FUNC) &_TAM_tam_rcpp_wle_suffstat, 9},
     {"_TAM_tam_rcpp_wle_errinv", (DL_FUNC) &_TAM_tam_rcpp_wle_errinv, 3},
     {NULL, NULL, 0}

@@ -1,5 +1,5 @@
 ## File Name: IRT.expectedCounts.tam.R
-## File Version: 9.08
+## File Version: 9.14
 
 ###########################################################
 ###########################################################
@@ -22,8 +22,19 @@ IRT.expectedCounts.tam <- function( object, ... )
 IRT.expectedCounts.tam.mml <- IRT.expectedCounts.tam
 ###########################################################
 
+IRT.expectedCounts.tam.np <- function( object, ... )
+{
+    ll <- aperm( object$n.ik, c(3,1,2,4) )    
+    attr(ll,"theta") <- object$theta
+    attr(ll,"prob.theta") <- object$pi.k
+    attr(ll,"G") <- object$G
+    dimnames(ll)[[1]] <- colnames(object$resp)
+    return(ll)
+    return(ll)
+}
+
 ###########################################################
-# object of class tam.mml
+# object of class tam.mml.3pl
 IRT.expectedCounts.tam.mml.3pl <- function( object, ... ){
     ll <- aperm( object$n.ik, c(2,3,1,4) )
     dimnames(ll)[[1]] <- colnames(object$resp)

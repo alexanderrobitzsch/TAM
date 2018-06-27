@@ -1,5 +1,5 @@
 %% File Name: IRT.expectedCounts.tam.Rd
-%% File Version: 0.13
+%% File Version: 0.15
 
 \name{IRT.expectedCounts}
 
@@ -7,6 +7,7 @@
 \alias{IRT.expectedCounts.tam.mml}
 \alias{IRT.expectedCounts.tam.mml.3pl}
 \alias{IRT.expectedCounts.tamaan}
+\alias{IRT.expectedCounts.tam.np}
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
@@ -29,6 +30,8 @@ for more details.
 \method{IRT.expectedCounts}{tam.mml.3pl}(object, \dots)
 
 \method{IRT.expectedCounts}{tamaan}(object, \dots)
+
+\method{IRT.expectedCounts}{tam.np}(object, \dots)
 }
 
 
@@ -36,7 +39,7 @@ for more details.
 \arguments{
   \item{object}{
 Object of class \code{\link{tam}}, \code{\link{tam.mml}},
-\code{\link{tam.mml.3pl}} or \code{\link{tamaan}}.
+\code{\link{tam.mml.3pl}}, \code{\link{tam.np}} or \code{\link{tamaan}}.
 }
 \item{\dots}{Further arguments to be passed}
 }

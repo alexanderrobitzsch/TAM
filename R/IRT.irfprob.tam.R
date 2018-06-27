@@ -1,5 +1,5 @@
 ## File Name: IRT.irfprob.tam.R
-## File Version: 9.09
+## File Version: 9.11
 ###########################################################
 # object of class character (=estimation method)
 IRT.irfprob.character <- function(object, A, B,
@@ -35,6 +35,7 @@ IRT.irfprob.tam <- function( object, ... ){
   return(ll)
 }
 IRT.irfprob.tam.mml <- IRT.irfprob.tam
+IRT.irfprob.tam.np <- IRT.irfprob.tam
 # IRT.irfprob.tam.mfr <- IRT.irfprob.tam
 ###########################################################
 

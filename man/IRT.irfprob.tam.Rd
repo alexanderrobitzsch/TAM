@@ -1,5 +1,5 @@
 %% File Name: IRT.irfprob.tam.Rd
-%% File Version: 0.16
+%% File Version: 0.18
 
 \name{IRT.irfprob}
 
@@ -7,6 +7,7 @@
 \alias{IRT.irfprob.tam.mml}
 \alias{IRT.irfprob.tam.mml.3pl}
 \alias{IRT.irfprob.tamaan}
+\alias{IRT.irfprob.tam.np}
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
@@ -29,6 +30,8 @@ fitted in \pkg{TAM}. See \code{\link[CDM:IRT.irfprob]{CDM::IRT.irfprob}}
 \method{IRT.irfprob}{tam.mml.3pl}(object, \dots)
 
 \method{IRT.irfprob}{tamaan}(object, \dots)
+
+\method{IRT.irfprob}{tam.np}(object, \dots)
 }
 
 
@@ -36,7 +39,7 @@ fitted in \pkg{TAM}. See \code{\link[CDM:IRT.irfprob]{CDM::IRT.irfprob}}
 \arguments{
   \item{object}{
 Object of class \code{\link{tam}}, \code{\link{tam.mml}},
-\code{\link{tam.mml.3pl}} or \code{\link{tamaan}}.
+\code{\link{tam.mml.3pl}}, \code{\link{tam.np}} or \code{\link{tamaan}}.
 }
 \item{\dots}{Further arguments to be passed}
 }

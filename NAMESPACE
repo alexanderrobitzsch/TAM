@@ -149,6 +149,7 @@ export(tam.mml.wle2)
 export(tam.modelfit)
 export(tam.modelfit.args)
 export(tam.modelfit.IRT)
+export(tam.np)
 export(tam.personfit)
 export(tam.pv)
 export(tam.pv.mcmc)
@@ -203,13 +204,6 @@ export(weighted_var)
 export(WLErel)
 
 
-# internal functions; not intended to be visible to users
-# export(calc_exp_TK, calc_posterior.v2, calc_prob.v5, 
-#        mstep.regression, Mstep_slope, Mstep_slope.v2,
-#        print.designMatrices, resp.pattern3, rowcumsums, rowMaxs,
-#        stud_prior.v2, tam.jml.xsi, tam.jml.xsi2, theta.sq)
-
-
 ###########################################
 ############ S3 methods ###################
 
@@ -224,6 +218,7 @@ S3method(IRT.data, tamaan)
 S3method(IRT.expectedCounts, tam)
 S3method(IRT.expectedCounts, tam.mml)
 S3method(IRT.expectedCounts, tam.mml.3pl)
+S3method(IRT.expectedCounts, tam.np)
 S3method(IRT.expectedCounts, tamaan)
 S3method(IRT.factor.scores, tam)
 S3method(IRT.factor.scores, tam.mml)
@@ -239,6 +234,7 @@ S3method(IRT.informationCurves, tam.mml.mfr)
 S3method(IRT.irfprob, tam)
 S3method(IRT.irfprob, tam.mml)
 S3method(IRT.irfprob, tam.mml.3pl)
+S3method(IRT.irfprob, tam.np)
 S3method(IRT.irfprob, tamaan)
 S3method(IRT.itemfit, tam.mml)
 S3method(IRT.itemfit, tam.mml.2pl)
@@ -248,6 +244,7 @@ S3method(IRT.likelihood, tam)
 S3method(IRT.likelihood, tam.latreg)
 S3method(IRT.likelihood, tam.mml)
 S3method(IRT.likelihood, tam.mml.3pl)
+S3method(IRT.likelihood, tam.np)
 S3method(IRT.likelihood, tamaan)
 S3method(IRT.modelfit, tam.mml)
 S3method(IRT.modelfit, tam.mml.3pl)
@@ -256,6 +253,7 @@ S3method(IRT.posterior, tam)
 S3method(IRT.posterior, tam.latreg)
 S3method(IRT.posterior, tam.mml)
 S3method(IRT.posterior, tam.mml.3pl)
+S3method(IRT.posterior, tam.np)
 S3method(IRT.posterior, tamaan)
 S3method(IRT.residuals, tam.mml)
 S3method(IRT.residuals, tam.mml.2pl)

@@ -1,8 +1,8 @@
 Package: TAM
 Type: Package
 Title: Test Analysis Modules
-Version: 2.13-3
-Date: 2018-06-14 20:00:43
+Version: 2.13-6
+Date: 2018-06-27 11:26:09
 Author:
     Alexander Robitzsch [aut, cre], Thomas Kiefer [aut], Margaret Wu [aut]
 Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
@@ -20,7 +20,7 @@ Description:
     Formann, 1982 <doi:10.1002/bimj.4710240209>,
     Formann, 1992 <doi:10.1080/01621459.1992.10475229>.
 Depends: 
-    R (>= 2.15.1), CDM (>= 5.8-5)
+    R (>= 2.15.1), CDM (>= 6.4-19)
 Imports: 
     coda, graphics, grDevices, MASS, methods, mvtnorm, Rcpp, 
     sfsmisc, stats, utils
