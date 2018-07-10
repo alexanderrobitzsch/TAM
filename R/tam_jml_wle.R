@@ -1,5 +1,5 @@
 ## File Name: tam_jml_wle.R
-## File Version: 9.26
+## File Version: 9.27
 
 
 ################################################################
@@ -7,7 +7,7 @@
 ################################################################
 tam_jml_wle <- function ( tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
              PersonScores, theta, xsi, Msteps, WLE=FALSE,
-             theta.fixed=NULL)
+             theta.fixed=NULL, progress=FALSE, output.prob=TRUE )
 {
 
     AXsi <- matrix(0, nrow=nitems, ncol=maxK)

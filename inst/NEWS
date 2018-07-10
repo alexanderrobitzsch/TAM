@@ -42,13 +42,15 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.13  |  2018-06-27  |  Last: TAM 2.13-6
+VERSIONS TAM 2.13  |  2018-07-10  |  Last: TAM 2.13-8
 -------------------------------------------------------------
 
 NOTE  * fixed a bug in output of standardized coefficients for
         multidimensional IRT models
 ADDED * included function tam.np() for nonparametric estimation
         of unidimensional item response models
+NOTE  * added S3 method IRT.residuals() for objects of class
+        'tam.jml' (suggested by Matthew Courtney)
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: tam.np (1)

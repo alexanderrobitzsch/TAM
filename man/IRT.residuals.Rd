@@ -1,11 +1,13 @@
 %% File Name: IRT.residuals.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{IRT.residuals}
 \alias{IRT.residuals}
+\alias{IRT.residuals.tam.jml}
 \alias{IRT.residuals.tam.mml}
 \alias{IRT.residuals.tam.mml.2pl}
 \alias{IRT.residuals.tam.mml.mfr}
+\alias{residuals.tam.jml}
 \alias{residuals.tam.mml}
 \alias{residuals.tam.mml.2pl}
 \alias{residuals.tam.mml.mfr}
@@ -35,6 +37,9 @@ IRT.residuals(object, ...)
 
 \method{IRT.residuals}{tam.mml.mfr}(object, ...)
 \method{residuals}{tam.mml.mfr}(object, ...)
+
+\method{IRT.residuals}{tam.jml}(object, ...)
+\method{residuals}{tam.jml}(object, ...)
 }
 
 %- maybe also 'usage' for other objects documented here.

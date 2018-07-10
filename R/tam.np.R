@@ -1,5 +1,5 @@
 ## File Name: tam.np.R
-## File Version: 0.22
+## File Version: 0.23
 
 
 tam.np <- function( dat, probs_init=NULL, pweights=NULL, control=list() )
@@ -59,14 +59,6 @@ tam.np <- function( dat, probs_init=NULL, pweights=NULL, control=list() )
         n.ik <- array(res$nik, dim=prob_dim )
         N.ik <- array(res$Nik, dim=c(I, TP) )        
         probs <- array(res$probs, dim=prob_dim )
-
-if (FALSE){        
-    ii <- 3
-    Revalpr_round("N.ik[ii,]",4)
-    Revalpr_round("n.ik[ii,,]",4)
-    Revalpr_round("probs[ii,,]",4)
-}                
-        
         ll <- res$ll
         dev <- -2*ll
         #-- parameter change
