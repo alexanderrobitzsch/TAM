@@ -1,5 +1,5 @@
 %% File Name: tam.np.Rd
-%% File Version: 0.09
+%% File Version: 0.12
 
 \name{tam.np}
 \alias{tam.np}
@@ -12,12 +12,12 @@ Unidimensional Nonparametric Item Response Model
 
 \description{
 Conducts nonparametric estimation of a unidimensional item response model
-for a single group allowing polytomous item responses (Rossi, Wang & Ramsay, 2002). 
+for a single group allowing polytomous item responses (Rossi, Wang & Ramsay, 2002).
 }
 
 
 \usage{
-tam.np(dat, probs_init = NULL, pweights = NULL, control = list())
+tam.np(dat, probs_init=NULL, pweights=NULL, control=list())
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -48,8 +48,8 @@ List containing several entries
 }
 
 \references{
-Rossi, N., Wang, X., & Ramsay, J. O. (2002). Nonparametric item response function 
-estimates with the EM algorithm. 
+Rossi, N., Wang, X., & Ramsay, J. O. (2002). Nonparametric item response function
+estimates with the EM algorithm.
 \emph{Journal of Educational and Behavioral Statistics, 27}(3), 291-317.
 }
 %\author{
@@ -65,9 +65,9 @@ estimates with the EM algorithm.
 Nonparametric item response models can also be estimated with the
 \code{mirt::itemGAM} function in the \pkg{mirt} package and the
 \code{KernSmoothIRT::ksIRT} in the \pkg{KernSmoothIRT} package.
- 
+
 See \code{\link{tam.mml}} and \code{\link{tam.mml.2pl}} for parametric item response
-models.  
+models.
 }
 
 
@@ -80,7 +80,7 @@ models.
 data(data.cqc02, package="TAM")
 dat <- data.cqc02
 
-#** nonparametric estimation            
+#** nonparametric estimation
 mod <- TAM::tam.np( dat )
 
 #** extractor functions for objects of class 'tam.np'

@@ -1,18 +1,18 @@
 ## File Name: tam_np_inits.R
-## File Version: 0.06
+## File Version: 0.08
 
 
 tam_np_inits <- function(dat, nodes, pweights, probs_init)
 {
-    maxK <- apply(dat, 2 , max, na.rm=TRUE)
+    maxK <- apply(dat, 2, max, na.rm=TRUE)
     K <- max(maxK)
     K1 <- K + 1
     TP <- length(nodes)
     theta <- nodes
-    I <- ncol(dat)    
+    I <- ncol(dat)
     #-- initial probabilities
     if ( is.null(probs_init) ){
-        probs_cum <- probs <- array(0, dim=c(I,K+1,TP) )    
+        probs_cum <- probs <- array(0, dim=c(I,K+1,TP) )
         for (ii in 1:I){
             K_ii <- maxK[ii]
             K_ii2 <- K_ii+2
@@ -36,7 +36,7 @@ tam_np_inits <- function(dat, nodes, pweights, probs_init)
     #--- data matrices
     dat_resp <- ! is.na(dat)
     dat2 <- dat
-    dat2[ ! dat_resp ] <- 0    
+    dat2[ ! dat_resp ] <- 0
     dat2 <- as.matrix(dat2)
     N <- nrow(dat)
     if (is.null(pweights)){
@@ -44,7 +44,7 @@ tam_np_inits <- function(dat, nodes, pweights, probs_init)
     }
     # normalize weights
     pweights <- N * pweights / sum(pweights)
-    
+
     #-- output
     res <- list(maxK=maxK, K=K, K1=K1, TP=TP, I=I, probs=probs, pi.k=pi.k,
                 dat_resp=dat_resp, dat2=dat2, N=N, pweights=pweights, theta=theta )

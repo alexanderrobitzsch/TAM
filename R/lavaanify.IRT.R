@@ -1,26 +1,25 @@
 ## File Name: lavaanify.IRT.R
-## File Version: 9.10
+## File Version: 9.21
 
 ########################################################################
 # lavaanify extension
 lavaanify.IRT <- function( lavmodel, items=NULL, data=NULL, include.residuals=TRUE,
-          doparse=TRUE ){
- a0 <- Sys.time()
-
+            doparse=TRUE )
+{
+    a0 <- Sys.time()
     #*** check for input errors of data
     ind <- is.matrix( items ) | is.data.frame( items )
     if ( ind ){
         items <- colnames(items)
-                }
+    }
 
     #***
     if ( doparse ){
-       lavmodel <- doparse( lavmodel )
-                    }
-
+        lavmodel <- doparse( lavmodel )
+    }
     if ( is.null(items) ){
-             items <- colnames(data)
-                    }
+        items <- colnames(data)
+    }
     # grep for MEASERR
     lavmodel <- lavaanify.grep.MEASERR( lavmodel )
     # grep for nonlinear terms
@@ -35,19 +34,17 @@ lavaanify.IRT <- function( lavmodel, items=NULL, data=NULL, include.residuals=TR
 
     if ( length(ind) > 0 ){
         res <- lavpartable.grep.underbrace( lavpartable=res$lavpartable, items )
-
-         res <- remove.duplicated.variances.lavsyn(res, items)
+        res <- remove.duplicated.variances.lavsyn(res, items)
         res <- tam_lavaanify( lavmodel=res)
         lavpar <- res$lavpartable
         lavsyn <- res$lavaan.syntax
-
         lavpar0 <- lavpar
         ind1 <- which( paste(lavpar$op)=="?="  )
         ind2 <- which( !( paste(lavpar$rhs) %in% c("g1","s1")  ) )
         ind <- intersect( ind1, ind2 )
         if ( length(ind) > 0 ){
-          lavpar0 <- lavpar0[ - ind, ]
-                        }
+            lavpar0 <- lavpar0[ - ind, ]
+        }
         res$lavpartable <- lavpar0
         lavsyn1 <- unlist( strsplit( lavsyn, "\n") )
         cn <- items
@@ -56,11 +53,9 @@ lavaanify.IRT <- function( lavmodel, items=NULL, data=NULL, include.residuals=TR
         lavsyn1 <- lavsyn1[ ! (lavsyn1 %in% v2 ) ]
         lavsyn1 <- paste0( lavsyn1, collapse="\n" )
         res$lavaan.syntax <- lavsyn1
-                }
+    }
 
-
-    #****************
-    # estimate residual variances
+    #*** estimate residual variances
     if (include.residuals){
         lavpartable <- res$lavpartable
         ind <- which( ( paste(lavpartable$lhs)==paste(lavpartable$rhs) ) &
@@ -71,13 +66,12 @@ lavaanify.IRT <- function( lavmodel, items=NULL, data=NULL, include.residuals=TR
             LI <- length(ind)
             lavpartable[ind, "ustart"] <- NA
             lavpartable[ind, "free"] <- 1:LI  + 1000
-                            }
+        }
         lavsyn1 <- lavpartable2lavsyntax( lavpartable )
         res$lavpartable <- lavpartable
         lavsyn1 <- paste0( lavsyn1, collapse="\n" )
         res$lavaan.syntax <- lavsyn1
-
-                }
+    }
     # eliminate some entries of "?=" from parameter table
     # e.g. I1 ?=1*I1
     lavpar0 <- res$lavpartable
@@ -86,6 +80,9 @@ lavaanify.IRT <- function( lavmodel, items=NULL, data=NULL, include.residuals=TR
     res$lavpartable <- lavpar0
     res$nonlin_factors <- nonlin_factors
     res$nonlin_syntable <- nonlin_syntable
+    if ( length(grep("_", paste(res$lavpartable$rhs)) ) > 0 ){
+        stop("Please do not use _ in variable names in tamaan() function!\n")
+    }
     return(res)
 }
 

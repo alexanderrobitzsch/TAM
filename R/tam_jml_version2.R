@@ -1,5 +1,5 @@
 ## File Name: tam_jml_version2.R
-## File Version: 9.472
+## File Version: 9.476
 
 ##################################################################
 ##################################################################
@@ -248,10 +248,10 @@ tam_jml_version2 <-
       nstud1 <- length( theta.unique )
       res <- tam_mml_calc_prob(iIndex=1:nitems, A, AXsi,
                           B, xsi, theta.unique, nstud1, maxK, recalc=FALSE )
-      rprobs <- res[["rprobs"]]     
+      rprobs <- res[["rprobs"]]
       crprobs <- t( matrix( aperm( rprobs, c(2,1,3) ), nrow=dim(rprobs)[3], byrow=TRUE ) )
       crprobs <- crprobs[, match( theta, theta.unique) ]
-      
+
       #    cr <- log(crprobs + 10^(-80)) * t(cResp)
       cr <- log(crprobs ) * t(cResp)
       deviance <- -2 * sum(cr, na.rm=TRUE)
@@ -307,8 +307,8 @@ tam_jml_version2 <-
     )
 
     #** response probabilities
-    rprobs <- rprobs[ ,, match( theta, theta.unique)]
-    
+    rprobs <- rprobs[,, match( theta, theta.unique)]
+
     ############################################################
     s2 <- Sys.time()
     if (progress){
@@ -329,7 +329,7 @@ tam_jml_version2 <-
                  deviance=deviance, deviance.history=deviance.history,
                  resp=resp, resp.ind=resp.ind, group=group,
                  pweights=pweights, A=A, B=B,
-                 nitems=nitems, maxK=maxK, rprobs = rprobs, 
+                 nitems=nitems, maxK=maxK, rprobs=rprobs,
                  nstud=nstud, resp.ind.list=resp.ind.list,
                  xsi.fixed=xsi.fixed, deviance=deviance,
                  deviance.history=deviance.history,

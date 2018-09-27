@@ -1,5 +1,5 @@
 ## File Name: tam_mml_progress_em.R
-## File Version: 0.16
+## File Version: 0.17
 
 tam_mml_progress_em <- function(progress, deviance, deviance_change, iter,
         rel_deviance_change, xsi_change, beta_change, variance_change, B_change,
@@ -32,7 +32,7 @@ tam_mml_progress_em <- function(progress, deviance, deviance_change, iter,
         }
         if ( is_np ){
             cat( "\n  Maximum item parameter change:", round( np_change, digits_pars ) )
-        }        
+        }
         #--- display distribution parameters
         if ( skillspace=="normal"){
             cat( "\n  Maximum regression parameter change:", round( beta_change, digits_pars ) )

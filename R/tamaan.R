@@ -1,13 +1,12 @@
 ## File Name: tamaan.R
-## File Version: 9.12
+## File Version: 9.19
 
 ##########################################################
 # tamaan function
 tamaan <- function( tammodel, resp, tam.method=NULL,
-             control=list(), doparse=TRUE, ... )
+                control=list(), doparse=TRUE, ... )
 {
-    #******************************
-    # process syntax with tamaanify
+    #*** process syntax with tamaanify
     cl <- match.call()
     cl1 <- paste(cl)
     incr.fac <- FALSE
@@ -25,10 +24,10 @@ tamaan <- function( tammodel, resp, tam.method=NULL,
     #---- attach control elements
     e1 <- environment()
     con <- list( nodes=seq(-6,6,len=21), snodes=0, QMC=TRUE,
-                 convD=.001,conv=.0001, convM=.0001, Msteps=4,
-                 maxiter=1000, max.increment=1,
-                 min.variance=.001, progress=TRUE, ridge=0,
-                 seed=NULL, xsi.start0=FALSE, increment.factor=1, fac.oldxsi=0)
+                    convD=.001,conv=.0001, convM=.0001, Msteps=4,
+                    maxiter=1000, max.increment=1,
+                    min.variance=.001, progress=TRUE, ridge=0,
+                    seed=NULL, xsi.start0=FALSE, increment.factor=1, fac.oldxsi=0)
     if ( anal.list$type %in% c("LCA","OLCA") ){
         con$increment.factor <- 1.01
     }
@@ -45,7 +44,6 @@ tamaan <- function( tammodel, resp, tam.method=NULL,
         con$increment.factor <- control$increment.factor
     }
 
-    #a0 <- Sys.time()
     con[ names(control) ] <- control
     Lcon <- length(con)
     con1a <- con1 <- con ;
@@ -122,5 +120,4 @@ tamaan <- function( tammodel, resp, tam.method=NULL,
     return(res)
 }
 ###########################################################
-
 

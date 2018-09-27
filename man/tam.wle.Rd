@@ -1,11 +1,11 @@
 %% File Name: tam.wle.Rd
-%% File Version: 2.41
+%% File Version: 2.44
 
 \name{tam.wle}
 
 \alias{tam.wle}
 \alias{tam.mml.wle2}
-\alias{tam.jml.WLE}
+\alias{tam_jml_wle}
 \alias{print.tam.wle}
 \alias{summary.tam.wle}
 
@@ -27,8 +27,9 @@ tam.wle(tamobj, ...)
 tam.mml.wle2(tamobj, score.resp=NULL, WLE=TRUE, adj=0.3, Msteps=20, convM=1e-04,
         progress=TRUE, output.prob=FALSE, pid=NULL )
 
-tam.jml.WLE(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
-    PersonScores, theta, xsi, Msteps, WLE=FALSE, theta.fixed=NULL)
+tam_jml_wle(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
+    PersonScores, theta, xsi, Msteps, WLE=FALSE, theta.fixed=NULL, progress=FALSE,
+    output.prob=TRUE)
 
 \method{summary}{tam.wle}(object, file=NULL, digits=3, \dots)
 

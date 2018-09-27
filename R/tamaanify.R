@@ -1,5 +1,5 @@
 ## File Name: tamaanify.R
-## File Version: 9.11
+## File Version: 9.19
 
 ######################################################
 # tamaanify
@@ -8,18 +8,19 @@ tamaanify <- function( tammodel, resp, tam.method=NULL, doparse=TRUE )
     dat <- resp
     if ( doparse ){
         tammodel <- doparse( tammodel )
-                    }
+    }
     tammodel <- gsub( " ", "", tammodel )
     # tammodel <- tammodel[ substring( tammodel, 1,1) !="#"  ]
     tammodel <- gsub( ";", "\n", tammodel  )
-    #****
-    # split syntax into parts
+
+    #*** split syntax into parts
     # tam1 <- strsplit( tammodel, split="\n")[[1]]
     tam1 <- unlist( strsplit( tammodel, split="\n") )
     tam1 <- tam1[ tam1 !="" ]
     tam1 <- tam1[ substring( tam1, 1, 1 ) !="#" ]
     # tam1 <- paste0( tam1, collapse="\n")
     tam1 <- data.frame( "index"=seq(1,length(tam1)),"syn"=tam1  )
+
     #***
     # identify markers
     markers <- c("LAVAANMODEL:", "ITEMTYPE:", "PRIOR:", "ANALYSIS:",
@@ -38,24 +39,19 @@ tamaanify <- function( tammodel, resp, tam.method=NULL, doparse=TRUE )
     res$tammodel.dfr <- tam1
     res$gammaslope.fixed <- NULL
 
-    #***************************
-    # process analysis
+    #*** process analysis
     res <- tamaanify.proc.analysis( res )
 
-    #***************************
-    #***** extract lavaan model
+    #*** extract lavaan model
     res <- tamaanify.proc.lavaanmodel(res, resp )
 
-    #*****************************
-    # item characteristics
+    #*** item characteristics
     res <- tamaanify.proc.items( res, resp)
 
-    #****************************
-    # item type
+    #*** item type
     res <- tamaanify.proc.itemtype( res )
 
-    #*******************************************
-    # include model constraints
+    #*** include model constraints
     res <- tamaanify.proc.modelconstraint( res )
 
     #******
@@ -94,7 +90,6 @@ tamaanify <- function( tammodel, resp, tam.method=NULL, doparse=TRUE )
 
     #**** model prior
     res <- tamaanify.modelprior( res )
-
 
     #*** define method
     res <- tamaanify.define.method(res, tam.method )

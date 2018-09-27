@@ -1,5 +1,5 @@
 %% File Name: IRT.likelihood.tam.Rd
-%% File Version: 0.18
+%% File Version: 0.19
 
 \name{IRT.likelihood}
 
@@ -55,7 +55,7 @@ for more details.
 \arguments{
   \item{object}{
 Object of class \code{\link{tam}}, \code{\link{tam.mml}},
-\code{\link{tam.mml.3pl}}, \code{\link{tamaan}}, \code{\link{tam.np}} 
+\code{\link{tam.mml.3pl}}, \code{\link{tamaan}}, \code{\link{tam.np}}
 or \code{\link{tam.latreg}}.
 }
 \item{\dots}{Further arguments to be passed}

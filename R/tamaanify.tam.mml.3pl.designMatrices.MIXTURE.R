@@ -1,10 +1,11 @@
 ## File Name: tamaanify.tam.mml.3pl.designMatrices.MIXTURE.R
-## File Version: 9.08
+## File Version: 9.16
 
 
 ######################################
 # MIXTURE
-tamaanify.tam.mml.3pl.designMatrices.MIXTURE <- function( res ){
+tamaanify.tam.mml.3pl.designMatrices.MIXTURE <- function( res )
+{
     anlist <- res$ANALYSIS.list
     items <- colnames(res$resp)
     I <- length(items)
@@ -94,8 +95,7 @@ tamaanify.tam.mml.3pl.designMatrices.MIXTURE <- function( res ){
         dfr1$val <- rep( lav1$ustart, ncl )
         dfr1$Aindex <- NA
         dfr <- rbind( dfr, dfr1 )
-        dfr$item <- lapply( strsplit( paste(dfr1$parm), split="_" ), FUN=function(pp){
-                        pp[1] } )
+        dfr$item <- lapply( strsplit( paste(dfr1$parm), split="_" ), FUN=function(pp){ pp[1] } )
         dfr$index <- 1:(nrow(dfr))
         itempartable <- res$items
         item1 <- itempartable[ itempartable$itemtype %in% c("Rasch","PCM"), ]
@@ -137,16 +137,11 @@ tamaanify.tam.mml.3pl.designMatrices.MIXTURE <- function( res ){
                                         }
                                     }
                         }
-
         #-- slopes
-
        dfr11 <- dfr[ dfr$slo==1, ]
        for (cl in 1:ncl){
-    #            cl <- 2
-               # cl_temp <- paste0( "_Cl", cl )
             dfr11c <- dfr11[ dfr11$Class==cl, ]
             NC <- nrow(dfr11c)
-
             for (nn in 1:NC){
             for (hh in 1:maxK){
             dd <- paste( dfr11c$dim[nn] )
@@ -167,7 +162,6 @@ tamaanify.tam.mml.3pl.designMatrices.MIXTURE <- function( res ){
             gammaslope.fixed <- rbind( gammaslope.fixed, p1 )
 
             #*** constraints intercepts
-
             # zero sum constraint on item difficulties
             dimE4 <- dim(E)[4]
 

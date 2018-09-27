@@ -1,5 +1,5 @@
 ## File Name: IRT.residuals.R
-## File Version: 9.14
+## File Version: 9.15
 
 
 #####################################################
@@ -16,14 +16,14 @@ tam.residuals <- function( object, ... )
 {
     tamobj <- object
     if (class(tamobj)!="tam.jml"){
-        res <- tam.wle( tamobj, progress=FALSE, output.prob=TRUE, ... )            
+        res <- tam.wle( tamobj, progress=FALSE, output.prob=TRUE, ... )
         probs <- res$probs
         probs[ is.na(probs) ] <- 0
-        theta <- res$theta        
+        theta <- res$theta
     } else {
         probs <- tamobj$rprobs
         theta <- tamobj$theta
-    }    
+    }
     resp <- tamobj$resp
     B <- tamobj$B
     if ( dim(B)[3] > 1 ){

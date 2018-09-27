@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.13  |  2018-07-10  |  Last: TAM 2.13-8
+VERSIONS TAM 2.13  |  2018-09-27  |  Last: TAM 2.13-13
 -------------------------------------------------------------
 
 NOTE  * fixed a bug in output of standardized coefficients for
@@ -51,6 +51,10 @@ ADDED * included function tam.np() for nonparametric estimation
         of unidimensional item response models
 NOTE  * added S3 method IRT.residuals() for objects of class
         'tam.jml' (suggested by Matthew Courtney)
+NOTE  * tamaan() cannot process item names with underscore "_"
+        included. This is now included as an error message for
+        the user (reported by Boris Girnat).
+NOTE  * renamed tam.jml.WLE() into tam_jml_wle()
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: tam.np (1)

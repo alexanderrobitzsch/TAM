@@ -1,5 +1,5 @@
 %% File Name: tamaan.Rd
-%% File Version: 0.54
+%% File Version: 0.55
 
 \name{tamaan}
 \alias{tamaan}
@@ -336,8 +336,8 @@ MODEL CONSTRAINT:
   a1==q0
   a2==q0
   a3==q0    + q1
-  a4== q2
-  a5== q2 + q1
+  a4==q2
+  a5==q2 + q1
     "
 # estimate
 mod3 <- TAM::tamaan( tammodel, dat, control=list(maxiter=300 )  )

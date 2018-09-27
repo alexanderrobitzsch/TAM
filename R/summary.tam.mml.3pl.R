@@ -1,5 +1,5 @@
 ## File Name: summary.tam.mml.3pl.R
-## File Version: 9.29
+## File Version: 9.30
 
 #*******************************************************
 # Summary for tam.mml.3pl object                 *
@@ -54,12 +54,12 @@ summary.tam.mml.3pl <- function( object, file=NULL, ...)
 
     cat( "Number of estimated parameters=", object$ic$Npars, "\n" )
     cat( "    Item threshold parameters=", object$ic$Nparsxsi, "\n" )
-    cat( "    Item slope parameters   =", object$ic$NparsB, "\n" )
+    cat( "    Item slope parameters  =", object$ic$NparsB, "\n" )
     cat( "      Non-active item slopes=", object$ic$Ngamma.nonactive, "\n" )
     cat( "    Item guessing parameters=", object$ic$Nguess, "\n" )
-    cat( "    Regression parameters   =", object$ic$Nparsbeta, "\n" )
-    cat( "    (Co)Variance parameters =", object$ic$Nparscov, "\n" )
-    cat( "    Delta parameters        =", object$ic$Ndelta, "\n\n" )
+    cat( "    Regression parameters  =", object$ic$Nparsbeta, "\n" )
+    cat( "    (Co)Variance parameters=", object$ic$Nparscov, "\n" )
+    cat( "    Delta parameters       =", object$ic$Ndelta, "\n\n" )
 
     #--- print information criteria
     res <- tam_summary_print_ic( object=object )
