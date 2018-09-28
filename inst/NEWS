@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 2.13  |  2018-09-27  |  Last: TAM 2.13-13
+VERSIONS TAM 2.13  |  2018-09-28  |  Last: TAM 2.13-14
 -------------------------------------------------------------
 
 NOTE  * fixed a bug in output of standardized coefficients for
@@ -55,9 +55,12 @@ NOTE  * tamaan() cannot process item names with underscore "_"
         included. This is now included as an error message for
         the user (reported by Boris Girnat).
 NOTE  * renamed tam.jml.WLE() into tam_jml_wle()
+NOTE  * now (again) export tam.mml.wle() (used in ?tam.linking)
+        (thanks to Boris Girnat)
+
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: tam.np (1)
+EXAMP * included/modified examples: tam.np (1), tam.linking (3,4)
 
 
 

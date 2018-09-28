@@ -1,5 +1,5 @@
 %% File Name: tam.linking.Rd
-%% File Version: 0.49
+%% File Version: 0.53
 
 \name{tam.linking}
 \alias{tam.linking}
@@ -217,7 +217,7 @@ items <- colnames(dat)[-c(1,2)]
 # fit grade 1
 rdat1 <- TAM::tam_remove_missings( dat[ dat$grade==1, ], items=items )
 # create some grouping variable
-group <- ( seq( 1, nrow( rdat1$dat ) ) \%\%\ 3 ) + 1
+group <- ( seq( 1, nrow( rdat1$dat ) ) \%\% 3 ) + 1
 mod1 <- TAM::tam.mml.2pl( resp=rdat1$resp[, rdat1$items], pid=rdat1$dat$idstud, group=group)
 summary(mod1)
 
@@ -237,6 +237,55 @@ tamobj_list <- list( mod1, mod2, mod3 )
 
 #-- link item response models
 lmod <- TAM::tam.linking( tamobj_list)
+
+#############################################################################
+# EXAMPLE 4: Linking simulated dichotomous data with two groups
+#############################################################################
+
+library(sirt)
+
+#*** simulate data
+N <- 3000  # number of persons
+I <- 30    # number of items
+b <- seq(-2,2, length=I)
+# data for group 1
+dat1 <- sirt::sim.raschtype( rnorm(N, mean=0, sd=1), b=b )
+# data for group 2
+dat2 <- sirt::sim.raschtype( rnorm(N, mean=1, sd=.6), b=b )
+
+# fit group 1
+mod1 <- TAM::tam.mml.2pl( resp=dat1 )
+summary(mod1)
+
+# fit group 2
+mod2 <- TAM::tam.mml.2pl( resp=dat2 )
+summary(mod2)
+
+# define list of fitted models
+tamobj_list <- list( mod1, mod2 )
+
+#-- link item response models
+lmod <- TAM::tam.linking( tamobj_list)
+summary(lmod)
+
+# estimate WLEs based on transformed item parameters
+parm_list <- lmod$parameters_list
+
+# WLE grade 1
+arglist <- list( resp=mod1$resp, B=parm_list[[1]]$B, AXsi=parm_list[[1]]$AXsi )
+wle1 <- TAM::tam.mml.wle(tamobj=arglist)
+
+# WLE grade 2
+arglist <- list( resp=mod2$resp, B=parm_list[[2]]$B, AXsi=parm_list[[2]]$AXsi )
+wle2 <- TAM::tam.mml.wle(tamobj=arglist)
+summary(wle1)
+summary(wle2)
+
+# estimation with linked and fixed item parameters for group 2
+B <- parm_list[[2]]$B
+xsi.fixed <- cbind( 1:I, -parm_list[[2]]$AXsi[,2] )
+mod2f <- TAM::tam.mml( resp=dat2, B=B, xsi.fixed=xsi.fixed )
+summary(mod2f)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

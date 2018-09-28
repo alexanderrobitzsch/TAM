@@ -1,10 +1,9 @@
 ## File Name: tam.mml.wle.R
-## File Version: 0.25
+## File Version: 0.26
 
 
 tam.mml.wle <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
-            convM=.0001, progress=TRUE,
-            output.prob=FALSE )
+            convM=.0001, progress=TRUE,    output.prob=FALSE )
 {
     CALL <- match.call()
 
