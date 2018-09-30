@@ -40,9 +40,20 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 
+-------------------------------------------------------------
+VERSIONS TAM 3.0  |  2018-09-30  |  Last: TAM 3.0-2
+-------------------------------------------------------------
+
+xxx   * ...
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
 
 -------------------------------------------------------------
-VERSIONS TAM 2.13  |  2018-09-28  |  Last: TAM 2.13-14
+VERSIONS TAM 2.13  |  2018-09-30  |  Last: TAM 2.13-15
 -------------------------------------------------------------
 
 NOTE  * fixed a bug in output of standardized coefficients for
@@ -58,11 +69,9 @@ NOTE  * renamed tam.jml.WLE() into tam_jml_wle()
 NOTE  * now (again) export tam.mml.wle() (used in ?tam.linking)
         (thanks to Boris Girnat)
 
-
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: tam.np (1), tam.linking (3,4)
-
-
+EXAMP * included/modified examples: tam.np (1), 
+        tam.linking (3,4)
 
 -------------------------------------------------------------
 VERSIONS TAM 2.12  |  2018-05-25  |  Last: TAM 2.12-18
