@@ -1,5 +1,5 @@
 ## File Name: IRT.RISE.R
-## File Version: 0.04
+## File Version: 0.05
 
 ## RISE item fit statistic for comparing the fit of
 ## a parametric and a nonparametric model

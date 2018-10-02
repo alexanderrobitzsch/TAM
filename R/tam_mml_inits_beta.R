@@ -1,5 +1,5 @@
 ## File Name: tam_mml_inits_beta.R
-## File Version: 0.15
+## File Version: 0.22
 
 tam_mml_inits_beta <- function(Y, formulaY, dataY, G, group, groups, nstud,
         pweights, ridge, beta.fixed, xsi.fixed, constraint, ndim, beta.inits)
@@ -40,8 +40,10 @@ tam_mml_inits_beta <- function(Y, formulaY, dataY, G, group, groups, nstud,
     if (ridge > 0){
         diag(W) <- diag(W) + ridge
     }
+
     # YYinv <- solve( W )
-    YYinv <- MASS::ginv( W )
+    # YYinv <- MASS::ginv( W )
+    YYinv <- tam_ginv_scaled(x=W)
 
     #initialise regressors
     if ( is.null(beta.fixed) & (  is.null(xsi.fixed) ) & ( constraint=="cases") ){

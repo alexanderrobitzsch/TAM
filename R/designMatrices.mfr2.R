@@ -1,5 +1,5 @@
 ## File Name: designMatrices.mfr2.R
-## File Version: 9.27
+## File Version: 9.29
 
 
 #########################################################################
@@ -202,7 +202,7 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
                             dimnames=list( paste("_step",0:maxK, sep=""),
                                             unique(gsub("-step([[:digit:]])*", "", rownames(x))),
                                             colnames(x) ) )
-             , c(2,1,3)
+           , c(2,1,3)
       ) )
     }
     # generate B

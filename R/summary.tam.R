@@ -1,5 +1,5 @@
 ## File Name: summary.tam.R
-## File Version: 9.52
+## File Version: 9.53
 
 #****** summary for tam object
 summary.tam <- function( object, file=NULL, ...)
@@ -60,9 +60,9 @@ summary.tam <- function( object, file=NULL, ...)
     cat( "Number of estimated parameters=", object$ic$Npars, "\n" )
     if (! latreg ){
         cat( "    Item threshold parameters=", object$ic$Nparsxsi, "\n" )
-        cat( "    Item slope parameters  =", object$ic$NparsB, "\n" )
+        cat( "    Item slope parameters =", object$ic$NparsB, "\n" )
     }
-    cat( "    Regression parameters  =", object$ic$Nparsbeta, "\n" )
+    cat( "    Regression parameters =", object$ic$Nparsbeta, "\n" )
     cat( "    (Co)Variance parameters=", object$ic$Nparscov, "\n\n" )
 
     #--- print information criteria

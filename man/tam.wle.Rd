@@ -1,5 +1,5 @@
 %% File Name: tam.wle.Rd
-%% File Version: 2.47
+%% File Version: 2.48
 
 \name{tam.wle}
 
@@ -26,7 +26,7 @@ respectively.
 tam.wle(tamobj, ...)
 
 tam.mml.wle( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
-       convM=.0001, progress=TRUE,    output.prob=FALSE )                 
+       convM=.0001, progress=TRUE,    output.prob=FALSE )
 
 tam.mml.wle2(tamobj, score.resp=NULL, WLE=TRUE, adj=0.3, Msteps=20, convM=1e-04,
         progress=TRUE, output.prob=FALSE, pid=NULL )

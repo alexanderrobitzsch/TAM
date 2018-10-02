@@ -1,5 +1,5 @@
 ## File Name: summary.tam.jml.R
-## File Version: 9.16
+## File Version: 9.17
 #*******************************************************
 # Summary for tam object                 *
 summary.tam.jml <- function( object, file=NULL, ...)
@@ -38,8 +38,8 @@ summary.tam.jml <- function( object, file=NULL, ...)
 
     #    cat( "Number of estimated parameters=", object$ic$Npars, "\n" )
     #    cat( "    Item threshold parameters=", object$ic$Nparsxsi, "\n" )
-    #    cat( "    Item slope parameters  =", object$ic$NparsB, "\n" )
-    #    cat( "    Regression parameters  =", object$ic$Nparsbeta, "\n" )
+    #    cat( "    Item slope parameters =", object$ic$NparsB, "\n" )
+    #    cat( "    Regression parameters =", object$ic$Nparsbeta, "\n" )
     #    cat( "    (Co)Variance parameters=", object$ic$Nparscov, "\n\n" )
 
     #    cat( "AIC=", round( object$ic$AIC, 2 ), " | penalty=", round( object$ic$AIC - object$ic$deviance,2 ),

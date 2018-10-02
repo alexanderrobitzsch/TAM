@@ -1,5 +1,5 @@
 %% File Name: TAM-utilities.Rd
-%% File Version: 0.58
+%% File Version: 0.63
 
 \name{TAM-utilities}
 \alias{TAM-utilities}
@@ -31,6 +31,7 @@
 \alias{tam_osink}
 \alias{tam_csink}
 \alias{tam_ginv}
+\alias{tam_ginv_scaled}
 \alias{tam_max_abs}
 \alias{tam_max_abs_list}
 
@@ -87,6 +88,8 @@ tam_cov_wt(x, wt=NULL, method="ML")
 tam_cor_wt(x, wt=NULL, method="ML")
 ## generalized inverse
 tam_ginv(x, eps=.05)
+## generalized inverse with scaled matrix using MASS::ginv
+tam_ginv_scaled(x, use_MASS=TRUE)
 
 ## remove items or persons with complete missing entries
 tam_remove_missings( dat, items, elim_items=TRUE, elim_persons=TRUE )
@@ -154,6 +157,7 @@ should be sampled in bootstrap}
 \item{trim_increment}{One of the methods \code{"half"} or \code{"cut"}}
 \item{trim_incr_factor}{Factor of trimming in method \code{"half"}}
 \item{eps}{Small number preventing from division by zero}
+\item{use_MASS}{Logical indicating whether \pkg{MASS} package should be used.}
 \item{avoid_na}{Logical indicating whether missing values should be set to zero.}
 \item{d0}{Vector}
 \item{d0p}{Vector}

@@ -1,5 +1,5 @@
 ## File Name: tam.latreg.R
-## File Version: 9.336
+## File Version: 9.339
 
 ###################################################################
 # latent regression

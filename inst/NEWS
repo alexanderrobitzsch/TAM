@@ -41,10 +41,15 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.0  |  2018-09-30  |  Last: TAM 3.0-2
+VERSIONS TAM 3.0  |  2018-10-02  |  Last: TAM 3.0-4
 -------------------------------------------------------------
 
-xxx   * ...
+FIXED * fixed numerical instabilities in latent regression 
+        models caused by variables with very different
+        standard deviations. Replaced MASS::ginv() by the
+        internal function tam_ginv_scaled() which is now
+        exported (thanks to Simon Grund).
+       
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
