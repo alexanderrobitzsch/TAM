@@ -41,7 +41,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.0  |  2018-10-02  |  Last: TAM 3.0-4
+VERSIONS TAM 3.0  |  2018-10-04  |  Last: TAM 3.0-6
 -------------------------------------------------------------
 
 FIXED * fixed numerical instabilities in latent regression 
@@ -49,10 +49,10 @@ FIXED * fixed numerical instabilities in latent regression
         standard deviations. Replaced MASS::ginv() by the
         internal function tam_ginv_scaled() which is now
         exported (thanks to Simon Grund).
-       
+NOTE  * renamed weighted_curtosis() into weighted_kurtosis()       
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: weighted_Stats (1,2)
 
 
 

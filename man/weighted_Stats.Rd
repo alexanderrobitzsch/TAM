@@ -1,5 +1,5 @@
 %% File Name: weighted_Stats.Rd
-%% File Version: 1.21
+%% File Version: 1.23
 
 \name{weighted_Stats}
 \alias{weighted_Stats}
@@ -7,7 +7,7 @@
 \alias{weighted_sd}
 \alias{weighted_mean}
 \alias{weighted_skewness}
-\alias{weighted_curtosis}
+\alias{weighted_kurtosis}
 \alias{weighted_quantile}
 \alias{weighted_table}
 
@@ -17,7 +17,7 @@ Descriptive Statistics for Weighted Data
 }
 \description{
 Some descriptive statistics for weighted data: variance,
-standard deviation, means, skewness, excess curtosis, quantiles and
+standard deviation, means, skewness, excess kurtosis, quantiles and
 frequency tables. Missing values are automatically removed from
 the data.
 }
@@ -30,7 +30,7 @@ weighted_sd(x, w=rep(1, length(x)), method="unbiased", select=NULL )
 
 weighted_skewness( x, w=rep(1,length(x)), select=NULL  )
 
-weighted_curtosis( x, w=rep(1,length(x)), select=NULL  )
+weighted_kurtosis( x, w=rep(1,length(x)), select=NULL  )
 
 weighted_quantile( x, w=rep(1,length(x)), probs=seq(0,1,.25), type=NULL, select=NULL )
 
@@ -134,9 +134,9 @@ pvec <- c(.23, .53, .78, .99 )  # probabilities
 weighted_quantile( x, w=w, probs=pvec)
 Hmisc::wtd.quantile(x, weights=w, probs=pvec)
 
-#--- weighted skewness and curtosis
+#--- weighted skewness and kurtosis
 weighted_skewness(x=x, w=w)
-weighted_curtosis(x=x, w=w)
+weighted_kurtosis(x=x, w=w)
 
 #############################################################################
 # EXAMPLE 2: Descriptive statistics normally distributed data
@@ -149,7 +149,7 @@ x <- stats::rnorm( 10000, mean=1.7, sd=1.2)
 weighted_mean(x=x)
 weighted_sd(x=x)
 weighted_skewness(x=x)
-weighted_curtosis(x=x)
+weighted_kurtosis(x=x)
 
 #############################################################################
 # EXAMPLE 3: Frequency tables

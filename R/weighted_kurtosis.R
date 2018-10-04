@@ -1,9 +1,9 @@
-## File Name: weighted_curtosis.R
-## File Version: 0.07
+## File Name: weighted_kurtosis.R
+## File Version: 0.08
 
 #######################################################
-# curtosis
-weighted_curtosis <- function( x, w=rep(1,length(x)), select=NULL )
+# kurtosis
+weighted_kurtosis <- function( x, w=rep(1,length(x)), select=NULL )
 {
     res <- tam_weighted_stats_select(x=x, w=w, select=select)
     x <- res$x
