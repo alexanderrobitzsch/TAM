@@ -1,5 +1,5 @@
 //// File Name: init.c
-//// File Version: 3.000007
+//// File Version: 3.000012
 #include <R.h>
 #include <Rinternals.h>
 #include <stdlib.h> // for NULL
@@ -9,7 +9,10 @@ extern SEXP _TAM_calcfx(SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_calc_exp(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_calc_exp_redefine_vector_na(SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_calc_prob_subtract_max(SEXP, SEXP, SEXP, SEXP);
+extern SEXP _TAM_tam_rcpp_calc_prob_subtract_max_exp(SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_calc_prob(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _TAM_tam_rcpp_tam_mml_calc_prob_R_outer_Btheta(SEXP, SEXP, SEXP, SEXP);
+extern SEXP _TAM_tam_rcpp_tam_mml_calc_prob_R_normalize_rprobs(SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_calc_suff_stat(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_ctt2(SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_ctt3(SEXP, SEXP, SEXP, SEXP, SEXP);
@@ -48,7 +51,10 @@ static const R_CallMethodDef CallEntries[] = {
     {"_TAM_tam_rcpp_calc_exp", (DL_FUNC) &_TAM_tam_rcpp_calc_exp, 10},
     {"_TAM_tam_rcpp_calc_exp_redefine_vector_na", (DL_FUNC) &_TAM_tam_rcpp_calc_exp_redefine_vector_na, 2},
     {"_TAM_tam_rcpp_calc_prob_subtract_max", (DL_FUNC) &_TAM_tam_rcpp_calc_prob_subtract_max, 4},
+    {"_TAM_tam_rcpp_calc_prob_subtract_max_exp", (DL_FUNC) &_TAM_tam_rcpp_calc_prob_subtract_max_exp, 2},
     {"_TAM_tam_rcpp_calc_prob", (DL_FUNC) &_TAM_tam_rcpp_calc_prob, 8},
+    {"_TAM_tam_rcpp_tam_mml_calc_prob_R_outer_Btheta", (DL_FUNC) &_TAM_tam_rcpp_tam_mml_calc_prob_R_outer_Btheta, 4},
+    {"_TAM_tam_rcpp_tam_mml_calc_prob_R_normalize_rprobs", (DL_FUNC) &_TAM_tam_rcpp_tam_mml_calc_prob_R_normalize_rprobs, 2},
     {"_TAM_tam_rcpp_calc_suff_stat", (DL_FUNC) &_TAM_tam_rcpp_calc_suff_stat, 6},
     {"_TAM_tam_rcpp_ctt2", (DL_FUNC) &_TAM_tam_rcpp_ctt2, 5},
     {"_TAM_tam_rcpp_ctt3", (DL_FUNC) &_TAM_tam_rcpp_ctt3, 5},

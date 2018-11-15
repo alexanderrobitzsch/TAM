@@ -1,12 +1,12 @@
 ## File Name: tam_mml_mfr_collect_xsi_parameters.R
-## File Version: 0.07
+## File Version: 0.09
 
 tam_mml_mfr_collect_xsi_parameters <- function( xsi.constr, resp, A, xsi, se.xsi,
         delete.red.items, itemnames, miss.items )
 {
     xsiFacet <- as.data.frame( (xsi.constr$xsi.table)[,1:2]    )
     obji <- data.frame( "parameter"=dimnames(A)[[3]],
-                        "xsi"=xsi, "se.xsi"=se.xsi )
+                    "xsi"=xsi, "se.xsi"=se.xsi )
     rownames(obji) <- paste(obji$parameter)
     rownames(xsiFacet) <- paste( xsi.constr$xsi.table[,1] )
 
@@ -22,7 +22,7 @@ tam_mml_mfr_collect_xsi_parameters <- function( xsi.constr, resp, A, xsi, se.xsi
     i1 <- grep( "Intercept", xsi.facets$parameter)
 
     if ( length(i1) > 0 ){
-      xsi.facets <-  xsi.facets[ - i1, ]
+        xsi.facets <-  xsi.facets[ - i1, ]
     }
 
     XX <- xsi.constr$xsi.constraint

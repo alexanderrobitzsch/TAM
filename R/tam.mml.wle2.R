@@ -1,5 +1,5 @@
 ## File Name: tam.mml.wle2.R
-## File Version: 0.842
+## File Version: 0.851
 
 ################################################################
 tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
@@ -84,21 +84,22 @@ tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
     increment <- array(0, dim=c(nstud,ndim))
     old_increment <- 3 + increment
 
-    # Begin iterations
+    #******** Begin iterations
     while (!converge & ( Miter <=Msteps ) ) {
 
         resWLE <- tam_mml_calc_prob( iIndex=1:nitems, A=A, AXsi=AXsi, B=B,
                     xsi=xsi, theta=theta, nnodes=nstud, maxK=maxK, recalc=FALSE,
-                    use_rcpp=FALSE, maxcat=max(maxK) )
-      rprobsWLE <- resWLE$rprobs
-      rprobsWLEL <- matrix(rprobsWLE, nitems*maxK, nstud )
-      rprobsWLEL[is.na(rprobsWLEL)] <- 0
+                    use_rcpp=TRUE, maxcat=max(maxK), avoid_outer=TRUE )
+        rprobsWLE <- resWLE$rprobs
+        rprobsWLEL <- matrix(rprobsWLE, nrow=nitems*maxK, ncol=nstud )
+        rprobsWLEL[is.na(rprobsWLEL)] <- 0
+
         resB <- tam_rcpp_wle_suffstat( RPROBS=rprobsWLEL, CBL=BL, CBB=BBL,
                     CBBB=BBBL, cndim=ndim, cnitems=nitems, cmaxK=maxK, cnstud=nstud,
                     resp_ind=resp.ind )
-      B_bari <- array(resB$B_bari, dim=c(nstud, nitems,ndim))
-      BB_bari <- array(resB$BB_bari, dim=c(nstud, nitems, ndim, ndim))
-      BBB_bari <- array(resB$BBB_bari, dim=c(nstud, nitems, ndim))
+        B_bari <- array(resB$B_bari, dim=c(nstud, nitems,ndim))
+        BB_bari <- array(resB$BB_bari, dim=c(nstud, nitems, ndim, ndim))
+        BBB_bari <- array(resB$BBB_bari, dim=c(nstud, nitems, ndim))
 
       B_Sq <- array(resB$B_Sq,dim=c(nstud, nitems, ndim, ndim))
       B2_B <- array(resB$B2_B,dim=c(nstud, nitems, ndim))

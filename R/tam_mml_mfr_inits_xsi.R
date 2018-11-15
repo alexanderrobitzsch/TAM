@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mfr_inits_xsi.R
-## File Version: 0.07
+## File Version: 0.09
 
 tam_mml_mfr_inits_xsi <- function( gresp.noStep.ind, col.index, cA, pweights,
         xsi, xsi.start0, resp, A, xsi.inits, xsi.fixed, ItemScore, est.xsi.index, addnumb=.5 )
@@ -10,7 +10,7 @@ tam_mml_mfr_inits_xsi <- function( gresp.noStep.ind, col.index, cA, pweights,
     ItemMax <- as.vector( t( colSums( gresp.ind.tmp * pweights ) ) %*% cA )
 
     xsi[est.xsi.index] <- - log(abs(( ItemScore[est.xsi.index]+addnumb)/
-                                      (ItemMax[est.xsi.index]-ItemScore[est.xsi.index]+addnumb) ) )
+                        (ItemMax[est.xsi.index]-ItemScore[est.xsi.index]+addnumb) ) )
     # starting values of zero
     if( xsi.start0==1){
         xsi <- 0*xsi

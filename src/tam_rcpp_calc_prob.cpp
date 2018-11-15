@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_calc_prob.cpp
-//// File Version: 1.607
+//// File Version: 1.627
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
@@ -47,6 +47,51 @@ Rcpp::NumericMatrix tam_rcpp_calc_prob_subtract_max( Rcpp::NumericMatrix rr0M,
     return rr1M;
 }
 ///********************************************************************
+
+///********************************************************************
+///** tam_rcpp_calc_prob_subtract_max_exp
+// [[Rcpp::export]]
+Rcpp::NumericVector tam_rcpp_calc_prob_subtract_max_exp( Rcpp::NumericVector rr0,
+        Rcpp::IntegerVector dim_rr )
+{
+
+    int NI = dim_rr[0];
+    int NK = dim_rr[1];
+    int TP = dim_rr[2];
+    int NR = NI*NK*TP;
+    Rcpp::NumericVector rr1(NR);
+    double val=0;
+    double Mval=0;
+    int ind1=0;
+    //*** loop over items and categories
+    for (int ii=0; ii<NI; ii++){
+        for (int tt=0; tt<TP; tt++){
+            Mval = rr0[ ii + tt*NI*NK ];
+            for (int hh=1; hh<NK; hh++){
+                val = rr0[ ii + hh*NI + tt*NI*NK ];
+                if ( ! R_IsNA(val) ){
+                    if ( val > Mval ){
+                        Mval = val;
+                    }
+                }
+            }
+            for (int hh=0; hh<NK; hh++){
+                ind1 = ii + hh*NI + tt*NI*NK;
+                val = rr0[ ind1 ];
+                if ( ! R_IsNA( val ) ){
+                    rr1[ind1] = rr0[ ind1 ] - Mval;
+                    rr1[ind1] = std::exp( rr1[ind1] );
+                } else {
+                    rr1[ind1] = NA_REAL;
+                }
+            }
+        }
+    }
+    /// OUTPUT
+    return rr1;
+}
+///********************************************************************
+
 
 ///********************************************************************
 ///** tam_rcpp_calc_prob
@@ -122,5 +167,76 @@ Rcpp::List tam_rcpp_calc_prob( Rcpp::NumericVector A, Rcpp::IntegerVector dimA,
             Rcpp::Named("AXsi")= AXsi,
             Rcpp::Named("rprobs")= rprobs
             );
+}
+///********************************************************************
+
+
+///********************************************************************
+///** tam_rcpp_tam_mml_calc_prob_R_outer_Btheta
+// [[Rcpp::export]]
+Rcpp::NumericVector tam_rcpp_tam_mml_calc_prob_R_outer_Btheta(
+        Rcpp::NumericVector Btheta, Rcpp::NumericVector B_dd,
+        Rcpp::NumericVector theta_dd, Rcpp::IntegerVector dim_Btheta )
+{
+    // dim_Btheta = c(length(iIndex), maxK, nnodes)
+    int LI = dim_Btheta[0];
+    int maxK = dim_Btheta[1];
+    int nnodes = dim_Btheta[2];
+    int NM = LI*maxK*nnodes;
+    Rcpp::NumericVector Btheta_add(NM);
+    Btheta_add.fill(0);
+    int ind_hh = 0;
+
+    for (int ii=0; ii<LI; ii++){
+        for (int cc=0; cc<maxK; cc++){
+            ind_hh = ii+cc*LI;
+            if (B_dd[ind_hh] != 0){
+                for (int tt=0; tt<nnodes; tt++){
+                    Btheta_add[ii+cc*LI+tt*LI*maxK] = B_dd[ind_hh]*theta_dd[tt];
+                }
+            }
+        }
+    }
+
+    //--- output
+    return Btheta_add;
+}
+///********************************************************************
+
+
+
+///********************************************************************
+///** tam_rcpp_tam_mml_calc_prob_R_normalize_rprobs
+// [[Rcpp::export]]
+Rcpp::NumericVector tam_rcpp_tam_mml_calc_prob_R_normalize_rprobs(
+        Rcpp::NumericVector rr, Rcpp::IntegerVector dim_rr)
+{
+    int I = dim_rr[0];
+    int K = dim_rr[1];
+    int TP = dim_rr[2];
+    int NM = I*K*TP;
+    Rcpp::NumericVector rprobs(NM);
+    double tempval=0;
+    int ind=0;
+    for (int ii=0; ii<I; ii++){
+        for (int tt=0; tt<TP; tt++){
+            tempval=0;
+            for (int cc=0; cc<K; cc++){
+                ind = ii+cc*I+tt*I*K;
+                rprobs[ind] = rr[ind];
+                if ( ! R_IsNA( rr[ind] )){
+                    tempval += rr[ind];
+                }
+            }
+            for (int cc=0; cc<K; cc++){
+                if ( ! R_IsNA( rr[ii+cc*I+tt*I*K] )){
+                    ind = ii+cc*I+tt*I*K;
+                    rprobs[ind] = rr[ind] / tempval;
+                }
+            }
+        }
+    }
+    //--- output
+    return rprobs;
 }
 ///********************************************************************

@@ -1,5 +1,5 @@
 ## File Name: designMatrices.mfr.R
-## File Version: 9.28
+## File Version: 9.32
 
 
 #########################################################################
@@ -192,7 +192,7 @@ z0 <- tamcat( " ---  col sums (gresp noStep) in X (Rcpp)", z0, tamcat_active )
                             dimnames=list( paste("_step",0:maxK, sep=""),
                                             unique(gsub("-step([[:digit:]])*", "", rownames(x))),
                                             colnames(x) ) )
-           , c(2,1,3)
+       , c(2,1,3)
       ) )
     }
 
