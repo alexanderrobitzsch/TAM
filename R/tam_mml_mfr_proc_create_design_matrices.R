@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mfr_proc_create_design_matrices.R
-## File Version: 0.09
+## File Version: 0.11
 
 tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
     facets, constraint, ndim, Q, A, B, progress, xsi.fixed, resp00, B00,
@@ -14,8 +14,7 @@ tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
     if ( var_ki > 1E-3 ){
         diffKi <- TRUE
         design <- designMatrices.mfr2(resp=resp, formulaA=formulaA, facets=facets,
-                        constraint=constraint, ndim=ndim,
-                        Q=Q, A=A, B=B, progress=progress)
+                        constraint=constraint, ndim=ndim, Q=Q, A=A, B=B, progress=progress)
         xsi.elim <- design$xsi.elim
         if ( ! is.null(xsi.elim) ){
             if ( nrow(xsi.elim) > 0 ){
@@ -60,12 +59,11 @@ tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
         }
     }   # end is.null()
     if ( is.null( pid ) ){
-        pid <- 1:(nrow(gresp) )
+        pid <- seq_len( nrow(gresp) )
     }
     design <- NULL
     if (progress){
-        cat("    * Created Design Matrices   (",
-            paste(Sys.time()), ")\n")
+        cat("    * Created Design Matrices   (", paste(Sys.time()), ")\n")
         utils::flush.console()
     }
     #--- OUTPUT

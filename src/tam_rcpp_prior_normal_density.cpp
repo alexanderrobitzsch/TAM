@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_prior_normal_density.cpp
-//// File Version: 3.14
+//// File Version: 3.15
 
 #include <Rcpp.h>
 
@@ -33,7 +33,7 @@ Rcpp::NumericMatrix tam_rcpp_prior_normal_density_unequal_means(
                     gwt(nn,qq) += 2*x1[dd1]*x1[dd2] * varInverse(dd1,dd2);
                 }   // end dd2
             }  // end dd1
-            gwt(nn,qq) = coeff * exp( -0.5*gwt(nn,qq) );
+            gwt(nn,qq) = coeff * std::exp( -0.5*gwt(nn,qq) );
         } // end qq
     } // end nn
 
@@ -69,7 +69,7 @@ Rcpp::NumericVector tam_rcpp_prior_normal_density_equal_means(
                 gwt[qq] += 2*x1[dd1]*x1[dd2] * varInverse(dd1,dd2);
             }   // end dd2
         }  // end dd1
-        gwt[qq] = coeff * exp( -0.5*gwt[qq] );
+        gwt[qq] = coeff * std::exp( -0.5*gwt[qq] );
     } // end qq
 
     //// OUTPUT

@@ -1,5 +1,5 @@
 ## File Name: zzz.R
-## File Version: 9.08
+## File Version: 9.09
 #  zzz.R
 #
 # This function is simply copied from mice package.
@@ -24,3 +24,10 @@ version <- function(pkg="TAM"){
             paste0("* ", d$Package," ", d$Version," (",d$Date,")" ) )
 }
 
+xx <- function(f1=1, f2=1)
+{
+    v1 <- paste0( rep(" ",f1), collapse="" )
+    v2 <- paste0( rep(" ",f2), collapse="" )
+    res <- paste0( v1, "=", v2)
+    return(res)
+}

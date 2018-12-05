@@ -1,5 +1,5 @@
 %% File Name: tam.linking.Rd
-%% File Version: 0.53
+%% File Version: 0.58
 
 \name{tam.linking}
 \alias{tam.linking}
@@ -120,10 +120,13 @@ using IRT-based methods. \emph{Journal of Statistical Software, 35}(12), 1-33.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-Linking of item response models can be also conducted with \pkg{plink}
-(Weeks, 2010) or \pkg{equateIRT} (Battauz, 2015) packages. See also the
-\code{\link[sirt:linking.haberman]{sirt::linking.haberman}} in the \pkg{sirt}
-package.
+Linking or equating of item response models can be also conducted with \pkg{plink}
+(Weeks, 2010), \pkg{equate}, \pkg{equateIRT} (Battauz, 2015), \pkg{equateMultiple},
+\pkg{kequate} and \pkg{irteQ} packages.
+
+See also the \code{\link[sirt:linking.haberman]{sirt::linking.haberman}} and
+\code{\link[sirt:invariance.alignment]{sirt::invariance.alignment}} functions
+in the \pkg{sirt} package.
 }
 
 \examples{

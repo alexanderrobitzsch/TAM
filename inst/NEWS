@@ -41,7 +41,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.0  |  2018-11-15  |  Last: TAM 3.0-12
+VERSIONS TAM 3.0  |  2018-12-05  |  Last: TAM 3.0-18
 -------------------------------------------------------------
 
 FIXED * fixed numerical instabilities in latent regression 
@@ -51,11 +51,10 @@ FIXED * fixed numerical instabilities in latent regression
         exported (thanks to Simon Grund).
 NOTE  * renamed weighted_curtosis() into weighted_kurtosis()       
 
+
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: weighted_Stats (1,2)
-
-
-
+EXAMP * included/modified examples: weighted_Stats (1,2),
+        tam.mml (26)
 
 -------------------------------------------------------------
 VERSIONS TAM 2.13  |  2018-09-30  |  Last: TAM 2.13-15

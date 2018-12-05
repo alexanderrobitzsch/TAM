@@ -1,5 +1,5 @@
 %% File Name: tam.fit.Rd
-%% File Version: 2.52
+%% File Version: 2.54
 
 \name{tam.fit}
 
@@ -26,7 +26,7 @@ tam.mml.fit(tamobj, FitMatrix=NULL, Nsimul=NULL,progress=TRUE,
 
 tam.jml.fit(tamobj)
 
-\method{summary}{tam.fit}(object, \dots)
+\method{summary}{tam.fit}(object, file=NULL, \dots)
 }
 
 %% tam.jml.fit(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, ItemScore,
@@ -55,6 +55,7 @@ The latter is consistent with \pkg{TAM} (<=1.1).}
 \item{fit.facets}{An optional logical indicating whether
 fit for all facet parameters should be computed.}
 \item{object}{Object of class \code{tam.fit}}
+\item{file}{Optional file name for summary output}
 \item{\dots}{Further arguments to be passed}
 }
 

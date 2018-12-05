@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_pv_mcmc.cpp
-//// File Version: 0.34
+//// File Version: 0.35
 
 
 
@@ -62,7 +62,7 @@ Rcpp::List tam_rcpp_pv_mcmc_calc_probs_irf_3pl(
                             Btheta[ ind_temp ] = Btheta[ ind_temp ]  + B_temp * theta(nn,dd);
                         }  // end if B_temp
                     }    // end dd
-                    Btheta[ ind_temp ] = exp( Btheta[ ind_temp ] );
+                    Btheta[ ind_temp ] = std::exp( Btheta[ ind_temp ] );
                 }   // end kk
             }   // end resp(nn,ii) == 1
         }  // end ii

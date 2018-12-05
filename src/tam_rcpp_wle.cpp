@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_wle.cpp
-//// File Version: 3.452
+//// File Version: 3.453
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
@@ -15,12 +15,10 @@ Rcpp::List tam_rcpp_wle_suffstat( Rcpp::NumericMatrix RPROBS, Rcpp::NumericMatri
     Rcpp::NumericMatrix CBB, Rcpp::NumericMatrix CBBB, int cndim, int cnitems, int cmaxK, int cnstud,
     Rcpp::IntegerMatrix resp_ind )
 {
-    ///////////////////////////////////////////////////////////
-    // INPUT indices
+    //--- INPUT indices
     int citstud = cnitems*cnstud;
 
-    ////////////////////////////////////////////////////////////
-    // define output vectors
+    //--- define output vectors
     Rcpp::NumericMatrix B_bari (citstud, cndim);
     Rcpp::NumericMatrix BB_bari (citstud, cndim*cndim);
     Rcpp::NumericMatrix BBB_bari (citstud, cndim);
@@ -28,9 +26,7 @@ Rcpp::List tam_rcpp_wle_suffstat( Rcpp::NumericMatrix RPROBS, Rcpp::NumericMatri
     Rcpp::NumericMatrix B2_B (citstud, cndim);
     Rcpp::NumericMatrix B_Cube (citstud, cndim);
 
-    /////////////////////////////////////////////////////////
-    // CALCULATIONS
-
+    //--- CALCULATIONS
     for(int ii=0; ii<cnitems; ii++){// item loop
         for(int jj=0; jj<cnstud; jj++){// student loop
             if (resp_ind(jj,ii)==1 ){
@@ -57,8 +53,7 @@ Rcpp::List tam_rcpp_wle_suffstat( Rcpp::NumericMatrix RPROBS, Rcpp::NumericMatri
         } // end jj
     }  // end ii
 
-    ///////////////////////////////////////////////////////
-    ///////////// O U T P U T   ///////////////////////////
+    ///---   O U T P U T
     return Rcpp::List::create(
             Rcpp::Named("B_bari")=B_bari,
             Rcpp::Named("BB_bari")=BB_bari,
@@ -75,14 +70,12 @@ Rcpp::List tam_rcpp_wle_suffstat( Rcpp::NumericMatrix RPROBS, Rcpp::NumericMatri
 Rcpp::NumericMatrix tam_rcpp_wle_errinv( Rcpp::NumericMatrix myERR,
     int cndim, int cnstud )
 {
-    ////////////////////////////////////////////////////////////
-    // define output vectors
+    //--- define output vectors
     arma::mat ERR_j = arma::zeros(cndim, cndim);
     arma::mat ERR_j_inv;
     Rcpp::NumericMatrix ERR_inv (cnstud, cndim*cndim);
 
-    /////////////////////////////////////////////////////////
-    // CALCULATIONS
+    //--- CALCULATIONS
     for(int jj=0; jj<cnstud; jj++){// item loop
         for(int dd1=0; dd1<cndim; dd1++){// dimension loop 1
             for(int dd2=0; dd2<cndim; dd2++){// dimension loop 2
@@ -97,8 +90,7 @@ Rcpp::NumericMatrix tam_rcpp_wle_errinv( Rcpp::NumericMatrix myERR,
         }
     }
 
-    ///////////////////////////////////////////////////////
-    ///////////// O U T P U T   ///////////////////////////
+    ///--- output
     return ERR_inv;
 }
 ///********************************************************************

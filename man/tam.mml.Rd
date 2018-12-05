@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9842
+%% File Version: 2.9846
 
 \name{tam.mml}
 
@@ -2171,6 +2171,58 @@ mod1$AXsi / mod1$B[,2,1]
 coef(mod2, IRTpars=TRUE)
 # ltm
 coef(mod3)[, c(4,1:3)]
+
+#############################################################################
+# EXAMPLE 26: Differential item functioning in multdimensional models
+#############################################################################
+
+data(data.ex08, package="TAM")
+formulaA <- ~ item+female+item*female
+resp <- data.ex08[["resp"]]
+facets <- as.data.frame(data.ex08[["facets"]])
+
+#***  Model 8a: investigate gender DIF in undimensional model
+mod8a <- TAM::tam.mml.mfr(resp=resp, facets=facets, formulaA=formulaA)
+summary(mod8a)
+
+#*** multidimensional 2PL Model
+I <- 10
+Q <- array(0, dim=c(I, 3))
+Q[cbind(1:I, c(rep(1, 3), rep(2, 3), rep(3, 4)))] <- 1
+rownames(Q) <- colnames(resp)
+mod3dim2pl <- TAM::tam.mml.2pl(resp=resp, Q=Q, irtmodel="2PL",
+                          control=list(snodes=2000))
+
+#*** Combine both approaches
+thisRows <- gsub("-.*", "", colnames(mod8a$resp)) #select item names
+
+#*** uniform DIF (note irtmodel="2PL.groups" & est.slopegroups)
+mod3dim2pl_udiff <- TAM::tam.mml.2pl(resp=mod8a$resp, A=mod8a$A, Q=Q[thisRows, ],
+                               irtmodel="2PL.groups",
+                               est.slopegroups=as.numeric(as.factor(thisRows)),
+                               control=list(snodes=2000))
+
+#*** non-uniform DIF (?); different slope parameters for each item administered to each group
+mod3dim2pl_nudiff <- TAM::tam.mml.2pl(resp=mod8a$resp, A=mod8a$A, Q=Q[thisRows, ],
+                                irtmodel="2PL", control=list(snodes=2000))
+
+#*** check results
+print(mod8a$xsi)
+print(mod3dim2pl_udiff$xsi)
+summary(mod3dim2pl_nudiff)
+
+#*** within item dimensionality (one item loads on two dimensions)
+Q2 <- Q
+Q2[4,1] <- 1
+
+# uniform DIF (note irtmodel="2PL.groups" & est.slopegroups)
+mod3dim2pl_udiff2 <- TAM::tam.mml.2pl(resp=mod8a$resp, A=mod8a$A, Q=Q2[thisRows, ],
+                                irtmodel="2PL.groups",
+                                est.slopegroups=as.numeric(as.factor(thisRows)),
+                                control=list(snodes=2000))
+print(mod8a$xsi)
+print(mod3dim2pl_udiff2$xsi)
+print(mod3dim2pl_udiff2$xsi)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

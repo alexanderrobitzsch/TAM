@@ -1,5 +1,5 @@
 ## File Name: tam.jml.fit.R
-## File Version: 9.16
+## File Version: 9.18
 
 
 tam.jml.fit <- function( tamobj )
@@ -8,7 +8,7 @@ tam.jml.fit <- function( tamobj )
     # INPUT:
     # tamobj ... result from tam.jml analysis
     ####################################################
-
+    s1 <- Sys.time()
     resp <- tamobj$resp
     resp.ind <- tamobj$resp.ind
     A <- tamobj$A
@@ -92,6 +92,8 @@ tam.jml.fit <- function( tamobj )
                     outfitPerson_t=outfitPerson_t, infitPerson=infitPerson,
                     infitPerson_t=infitPerson_t)
 
-    res <- list(fit.item=fit.item, fit.person=fit.person)
+    s2 <- Sys.time()
+    v1 <- c(s1, s2)
+    res <- list(fit.item=fit.item, fit.person=fit.person, time=v1)
     return(res)
 }

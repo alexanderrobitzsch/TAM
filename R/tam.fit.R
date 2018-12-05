@@ -1,19 +1,23 @@
 ## File Name: tam.fit.R
-## File Version: 9.12
-tam.fit <- function( tamobj, ... ){
-  if(class(tamobj)=="tam.mml"){
-    res <- tam.mml.fit( tamobj, ...)
-  }
-  if(class(tamobj)=="tam.jml"){
-    res <- tam.jml.fit( tamobj, ...)
-  }
-  class(res) <- "tam.fit"
-  return(res)
+## File Version: 9.16
+tam.fit <- function( tamobj, ... )
+{
+    CALL <- match.call()
+    if(class(tamobj)=="tam.mml"){
+        res <- tam.mml.fit( tamobj, ...)
+    }
+    if(class(tamobj)=="tam.jml"){
+        res <- tam.jml.fit( tamobj, ...)
+    }
+    res$CALL <- CALL
+    class(res) <- 'tam.fit'
+    return(res)
 }
 
-tam.mml.fit <-
-  function( tamobj, FitMatrix=NULL, Nsimul=NULL, progress=TRUE,
-     useRcpp=TRUE, seed=NA, fit.facets=TRUE ){
+tam.mml.fit <- function( tamobj, FitMatrix=NULL, Nsimul=NULL, progress=TRUE,
+     useRcpp=TRUE, seed=NA, fit.facets=TRUE )
+{
+    s1 <- Sys.time()
     #####################################################
     # INPUT:
     # tamobj ... result from tam analysis
@@ -239,12 +243,16 @@ tam.mml.fit <-
     #            envir=parent.env(this_envir) )
     # assign(".Random.seed", old_seed, envir=globalenv())
 
-
     #data.frame( "Outfit"=round(Outfit,2), "Outfit_t"=round(Outfit_t,1), "Infit"=round(Infit,2), Infit_t=round(Infit_t,1) )
-    res <- list( "itemfit"=res )
+
+    s2 <- Sys.time()
+    v1 <- c(s1, s2 )
+
+    #--- output
+    res <- list( "itemfit"=res, time=v1 )
     class(res) <- "tam.fit"
     return(res)
-  }
+}
 
 
 ########################################

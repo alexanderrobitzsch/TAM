@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_mml_3pl.cpp
-//// File Version: 3.38
+//// File Version: 3.39
 
 
 #include <Rcpp.h>
@@ -142,7 +142,7 @@ Rcpp::List tam_rcpp_mml_3pl_slca_deriv( Rcpp::NumericMatrix XdesM,
         }  // end if guess[ii] = 0
         if ( guess[ii] >= eps10 ){
             if (hh==1){
-                d2b[ll] += std::pow(XdesM(rr,4),2.0) * probs0[ ii + I*hh + I*maxK*tt ] *
+                d2b[ll] += std::pow(XdesM(rr,4), 2.0) * probs0[ ii + I*hh + I*maxK*tt ] *
                             probs0[ ii + I*0 + I*maxK*tt ] * ( guess[ii] * nik[ii+I*hh+I*maxK*tt] /
                             std::pow( probs[ ii + I*hh + I*maxK*tt ], 2.0) - Nik[ii + I*tt ] );
             }

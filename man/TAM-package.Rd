@@ -1,36 +1,33 @@
 %% File Name: TAM-package.Rd
-%% File Version: 2.62
+%% File Version: 2.64
 
 \name{TAM-package}
 \alias{TAM-package}
 \alias{TAM}
 \docType{package}
+
 \title{
-Test Analysis Modules
+\packageTitle{TAM}
 }
+
 \description{
-    Includes marginal maximum likelihood estimation and joint maximum
-    likelihood estimation for unidimensional and multidimensional
-    item response models. The package functionality covers the
-    Rasch model, 2PL model, 3PL model, generalized partial credit model,
-    multi-faceted Rasch model, nominal item response model,
-    structured latent class model, mixture distribution IRT models,
-    and located latent class models. Latent regression models and
-    plausible value imputation are also supported. For details see
-    Adams, Wilson, and Wang, 1997, <doi:10.1177/0146621697211001>,
-    Adams, Wilson, and Wu, 1997, <doi:10.3102/10769986022001047>,
-    Formann, 1982, <doi:10.1002/bimj.4710240209>,
-    Formann, 1992, <doi:10.1080/01621459.1992.10475229>.
+\packageDescription{TAM}
 }
+
+\author{
+\packageAuthor{TAM}
+
+Maintainer: \packageMaintainer{TAM}
+}
+
+
+
+
 \details{
 See \url{http://www.edmeasurementsurveys.com/TAM/Tutorials/} for
 tutorials of the \pkg{TAM} package.
 }
-\author{
-Alexander Robitzsch [aut, cre], Thomas Kiefer [aut], Margaret Wu [aut]
 
-Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
-}
 \references{
 Adams, R. J., Wilson, M., & Wang, W. C. (1997). The multidimensional random coefficients
 multinomial logit model. \emph{Applied Psychological Measurement, 21}(1), 1-23.

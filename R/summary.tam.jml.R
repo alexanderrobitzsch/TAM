@@ -1,7 +1,8 @@
 ## File Name: summary.tam.jml.R
-## File Version: 9.18
-#*******************************************************
-# Summary for tam object                 *
+## File Version: 9.22
+
+
+#***** summary for tam object
 summary.tam.jml <- function( object, file=NULL, ...)
 {
     if ( ! is.null( file ) ){
@@ -23,9 +24,9 @@ summary.tam.jml <- function( object, file=NULL, ...)
     tam_print_call(object$CALL)
 
     cat("------------------------------------------------------------\n")
-    cat( "Number of iterations=", object$iter, "\n" )
+    cat( "Number of iterations=", object$iter, "\n\n" )
 
-    cat( "\nDeviance=", round( object$deviance, 2 ), " | " )
+    cat( "Deviance=", round( object$deviance, 2 ), " | " )
     cat( "Log Likelihood=", round( -object$deviance/2, 2 ), "\n" )
     cat( "Number of persons=", object$nstud, "\n" )
 
@@ -114,4 +115,3 @@ summary.tam.jml <- function( object, file=NULL, ...)
         sink()
     }
 }
-#*******************************************************
