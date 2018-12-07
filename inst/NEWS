@@ -41,7 +41,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.0  |  2018-12-05  |  Last: TAM 3.0-18
+VERSIONS TAM 3.0  |  2018-12-07  |  Last: TAM 3.0-19
 -------------------------------------------------------------
 
 FIXED * fixed numerical instabilities in latent regression 
@@ -50,6 +50,9 @@ FIXED * fixed numerical instabilities in latent regression
         internal function tam_ginv_scaled() which is now
         exported (thanks to Simon Grund).
 NOTE  * renamed weighted_curtosis() into weighted_kurtosis()       
+NOTE  * fixed a bug in plot.tam() when response data with 
+        completely missing observations for some persons is
+        used (thanks to Kow Kuroda)
 
 
 DATA  * included/modified datasets: ---

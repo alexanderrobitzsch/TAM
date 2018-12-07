@@ -1,5 +1,5 @@
 ## File Name: plot_tam_grouped_wle.R
-## File Version: 0.10
+## File Version: 0.11
 
 
 plot_tam_grouped_wle <- function( tamobj, tammodel, wle, ngroups, resp)
@@ -13,7 +13,7 @@ plot_tam_grouped_wle <- function( tamobj, tammodel, wle, ngroups, resp)
         }
     }
     q1 <- 1 / ngroups
-    quant <- unique( stats::quantile(wle, probs=seq(q1, 1 - q1, by=q1) ) )
+    quant <- unique( stats::quantile(wle, probs=seq(q1, 1 - q1, by=q1), na.rm=TRUE ) )
     groupnumber <- as.numeric( cut( wle, breaks=c( -Inf, quant, Inf) ) )
     aggr <- stats::aggregate(wle, list(groupnumber), mean, na.rm=TRUE)
     theta2 <- aggr$x
