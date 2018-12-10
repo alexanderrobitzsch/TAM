@@ -1,16 +1,13 @@
 ## File Name: tam_mml_mfr_inits_beta.R
-## File Version: 0.05
+## File Version: 0.07
 
 
 tam_mml_mfr_inits_beta <- function(Y, formulaY, dataY, G, group, groups, nstud,
         pweights, ridge, beta.fixed, xsi.fixed, constraint, ndim, beta.inits,
         tp, gresp, pid0)
 {
-
-   nullY <- is.null(Y)
-
+    nullY <- is.null(Y)
     # beta inits
-    # (Y'Y)
     if ( ! is.null( formulaY ) ){
         formulaY <- stats::as.formula( formulaY )
         Y <- stats::model.matrix( formulaY, dataY )[,-1]   # remove intercept
@@ -54,7 +51,7 @@ tam_mml_mfr_inits_beta <- function(Y, formulaY, dataY, G, group, groups, nstud,
     if (ridge > 0){
         diag(W) <- diag(W) + ridge
     }
-    YYinv <- solve( W )
+    YYinv <- solve(W)
 
     #initialise regressors
     if ( is.null(beta.fixed) & (  is.null(xsi.fixed) ) ){
@@ -71,7 +68,7 @@ tam_mml_mfr_inits_beta <- function(Y, formulaY, dataY, G, group, groups, nstud,
             if ( ! beta.fixed ){
                 beta.fixed <- NULL
             }
-      }
+        }
     }
     #*****
     beta <- matrix(0, nrow=nreg+1, ncol=ndim)

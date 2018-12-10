@@ -1,5 +1,5 @@
 ## File Name: summary.tam.pv.mcmc.R
-## File Version: 0.25
+## File Version: 0.28
 
 #*******************************************************
 # summary
@@ -23,18 +23,18 @@ summary.tam.pv.mcmc <- function( object, file=NULL, ...)
     tam_print_call(object$CALL)
 
     cat("------------------------------------------------------------\n")
-    cat( "Number of iterations=", object$n.iter, "\n" )
-    cat( "Number of burnin iterations=", object$n.burnin, "\n" )
+    cat( "Number of iterations", "=", object$n.iter, "\n" )
+    cat( "Number of burnin iterations", "=", object$n.burnin, "\n" )
 
     cat("------------------------------------------------------------\n")
 
     if (calc_ic){
         cat("\nCriteria based on Marginal Likelihood\n")
-        cat( "\nDeviance=", round( object$ic$deviance, 2 ), " | " )
-        cat( "Log Likelihood=", round( -object$ic$deviance/2, 2 ), "\n" )
+        cat( "\nDeviance", "=", round( object$ic$deviance, 2 ), " | " )
+        cat( "Log Likelihood", "=", round( -object$ic$deviance/2, 2 ), "\n" )
     }
-    cat( "Number of persons=", object$ic$n, "\n" )
-    cat( "Number of estimated parameters=", object$ic$Npars, "\n\n" )
+    cat( "Number of persons", "=", object$ic$n, "\n" )
+    cat( "Number of estimated parameters", "=", object$ic$Npars, "\n\n" )
 
     #--- print information criteria
     tam_summary_print_ic( object=object, bayes_crit=TRUE )
@@ -43,11 +43,11 @@ summary.tam.pv.mcmc <- function( object, file=NULL, ...)
     cat("------------------------------------------------------------\n")
     cat("Plausible Values\n\n")
 
-    cat( "Number of plausible values=", attr(object$pv, "nplausible"), "\n" )
-    cat( "Iterations between PVs=", attr(object$pv, "pv_lag"), "\n" )
-    cat( "Average acceptance rate=",
+    cat( "Number of plausible values", "=", attr(object$pv, "nplausible"), "\n" )
+    cat( "Iterations between PVs", "=", attr(object$pv, "pv_lag"), "\n" )
+    cat( "Average acceptance rate", "=",
                 round( attr(object$theta_acceptance_MH, "M_accrate"),3), "\n" )
-    cat( "Average MH adjustment factor=",
+    cat( "Average MH adjustment factor", "=",
                 round( attr(object$theta_acceptance_MH, "M_adj_MH"),3), "\n" )
 
     cat("\nAutocorrelation of Drawn Plausible Values\n")

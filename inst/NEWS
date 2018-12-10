@@ -41,7 +41,20 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.0  |  2018-12-07  |  Last: TAM 3.0-19
+VERSIONS TAM 3.1  |  2018-12-10  |  Last: TAM 3.1-2
+-------------------------------------------------------------
+
+xxx   * ...
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
+
+-------------------------------------------------------------
+VERSIONS TAM 3.0  |  2018-12-10  |  Last: TAM 3.0-21
 -------------------------------------------------------------
 
 FIXED * fixed numerical instabilities in latent regression 
@@ -53,7 +66,6 @@ NOTE  * renamed weighted_curtosis() into weighted_kurtosis()
 NOTE  * fixed a bug in plot.tam() when response data with 
         completely missing observations for some persons is
         used (thanks to Kow Kuroda)
-
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: weighted_Stats (1,2),
