@@ -1,5 +1,5 @@
 %% File Name: IRT.WrightMap.Rd
-%% File Version: 0.29
+%% File Version: 0.30
 
 \name{IRT.WrightMap}
 % \alias{IRT.WrightMap}
@@ -246,5 +246,5 @@ WrightMap::wrightMap(theta, thr,  label.items=label.items,
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Wright map}
+%% \keyword{Wright map}
 % \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

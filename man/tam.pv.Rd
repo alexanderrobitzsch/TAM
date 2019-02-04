@@ -1,5 +1,5 @@
 %% File Name: tam.pv.Rd
-%% File Version: 2.63
+%% File Version: 2.64
 
 \name{tam.pv}
 \alias{tam.pv}
@@ -566,5 +566,5 @@ summary( mice::pool(mod4a) )
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Plausible value imputation}
+%% \keyword{Plausible value imputation}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

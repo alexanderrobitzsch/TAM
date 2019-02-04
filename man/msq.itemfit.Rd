@@ -1,5 +1,5 @@
 %% File Name: msq.itemfit.Rd
-%% File Version: 0.38
+%% File Version: 0.39
 
 \name{msq.itemfit}
 
@@ -221,6 +221,6 @@ summary(res3b)
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Item fit}
+%% \keyword{Item fit}
 % \keyword{Individual posterior}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

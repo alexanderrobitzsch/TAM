@@ -1,5 +1,5 @@
 %% File Name: tam.modelfit.Rd
-%% File Version: 2.36
+%% File Version: 2.37
 
 \name{tam.modelfit}
 \alias{tam.modelfit}
@@ -294,7 +294,7 @@ summary(q3_mod2)
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Q3 statistic}
-\keyword{Model fit}
-\keyword{summary}
+%% \keyword{Q3 statistic}
+%% \keyword{Model fit}
+%% \keyword{summary}
 % \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

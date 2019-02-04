@@ -1,5 +1,5 @@
 %% File Name: tam.fa.Rd
-%% File Version: 2.20
+%% File Version: 2.21
 
 \name{tam.fa}
 \alias{tam.fa}
@@ -221,6 +221,6 @@ summary(mod1d)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Exploratory factor analysis}
-\keyword{Testlet model}
-\keyword{Bifactor model}
+%% \keyword{Exploratory factor analysis}
+%% \keyword{Testlet model}
+%% \keyword{Bifactor model}

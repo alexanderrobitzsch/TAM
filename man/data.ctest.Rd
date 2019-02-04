@@ -1,5 +1,5 @@
 %% File Name: data.ctest.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{data.ctest}
 \alias{data.ctest}
@@ -96,4 +96,4 @@ a data frame \code{$ITEM} with item informations.
 %\examples{
 %data(data.ctest1)
 %}
-\keyword{datasets}
+%% \keyword{datasets}

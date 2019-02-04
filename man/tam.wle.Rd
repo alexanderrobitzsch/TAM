@@ -1,5 +1,5 @@
 %% File Name: tam.wle.Rd
-%% File Version: 2.48
+%% File Version: 2.49
 
 \name{tam.wle}
 
@@ -314,8 +314,8 @@ head( round(dfr,3))
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{WLE}
-\keyword{MLE}
-\keyword{Person parameter estimation}
-\keyword{print}
+%% \keyword{WLE}
+%% \keyword{MLE}
+%% \keyword{Person parameter estimation}
+%% \keyword{print}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

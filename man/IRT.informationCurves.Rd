@@ -1,5 +1,5 @@
 %% File Name: IRT.informationCurves.Rd
-%% File Version: 0.18
+%% File Version: 0.19
 
 \name{IRT.informationCurves}
 \alias{IRT.informationCurves}
@@ -170,5 +170,5 @@ print(mod3b)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Information curves}
+%% \keyword{Information curves}
 % \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

@@ -1,5 +1,5 @@
 %% File Name: tam.latreg.Rd
-%% File Version: 0.30
+%% File Version: 0.31
 
 \name{tam.latreg}
 \alias{tam.latreg}
@@ -273,6 +273,6 @@ str(datlist)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Latent regression model}
-\keyword{summary}
+%% \keyword{Latent regression model}
+%% \keyword{summary}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

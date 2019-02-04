@@ -1,5 +1,5 @@
 %% File Name: tam.fit.Rd
-%% File Version: 2.54
+%% File Version: 2.55
 
 \name{tam.fit}
 
@@ -254,8 +254,8 @@ round(sx2comp, 3 )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Item fit}
-\keyword{Infit}
-\keyword{Outfit}
-\keyword{Fit statistics}
+%% \keyword{Item fit}
+%% \keyword{Infit}
+%% \keyword{Outfit}
+%% \keyword{Fit statistics}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

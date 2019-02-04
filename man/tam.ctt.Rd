@@ -1,5 +1,5 @@
 %% File Name: tam.ctt.Rd
-%% File Version: 3.12
+%% File Version: 3.13
 
 \name{tam.ctt}
 \alias{tam.ctt}
@@ -145,6 +145,6 @@ stat3a <- TAM::tam.ctt2( resp=data.mc$raw, wlescore=w1$theta,  group=group)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Classical test theory statistics}
-\keyword{plot}
+%% \keyword{Classical test theory statistics}
+%% \keyword{plot}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

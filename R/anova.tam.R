@@ -1,8 +1,9 @@
 ## File Name: anova.tam.R
-## File Version: 9.11
-##############################################################
-# Likelihood ratio test for tam objects
-# Function is copied from the CDM package
+## File Version: 9.12
+
+
+#-- Likelihood ratio test for tam objects
+#-- Function is copied from the CDM package
 anova.tam <- function( object, ... )
 {
     cl2 <- paste(match.call())[-1]
@@ -47,9 +48,9 @@ anova.tam <- function( object, ... )
     tam_round_data_frame_print(obji=dfr, from=2, digits=digits, rownames_null=TRUE)
     invisible(dfr)
 }
-##############################################################
 
 anova.tam.mml <- anova.tam
 anova.tam.mml.3pl <- anova.tam.mml
 anova.tamaan <- anova.tam.mml
 anova.tam.latreg <- anova.tam
+anova.tam.np <- anova.tam

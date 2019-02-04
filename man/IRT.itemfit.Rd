@@ -1,5 +1,5 @@
 %% File Name: IRT.itemfit.Rd
-%% File Version: 0.22
+%% File Version: 0.23
 
 \name{IRT.itemfit.tam}
 
@@ -137,5 +137,5 @@ round( fmod, 3 )
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 % \keyword{Wright map}
-\keyword{Thurstonian thresholds}
+%% \keyword{Thurstonian thresholds}
 % \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

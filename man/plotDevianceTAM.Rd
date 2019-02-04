@@ -1,5 +1,5 @@
 %% File Name: plotDevianceTAM.Rd
-%% File Version: 2.16
+%% File Version: 2.17
 
 \name{plotDevianceTAM}
 \alias{plotDevianceTAM}
@@ -71,5 +71,5 @@ plotDevianceTAM( mod1, change=FALSE)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{plot}
+%% \keyword{plot}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

@@ -1,5 +1,5 @@
 %% File Name: predict.Rd
-%% File Version: 0.20
+%% File Version: 0.21
 
 \name{predict}
 
@@ -87,6 +87,6 @@ str(prmod1)
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Expected counts}
+%% \keyword{Expected counts}
 % \keyword{Individual posterior}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

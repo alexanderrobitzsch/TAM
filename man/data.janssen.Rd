@@ -1,5 +1,5 @@
 %% File Name: data.janssen.Rd
-%% File Version: 0.20
+%% File Version: 0.21
 
 \name{data.janssen}
 \alias{data.janssen}
@@ -120,4 +120,4 @@ legend( 1, .3, paste0("Class",1:ncl), lty=1:ncl, col=1:ncl, pch=1:ncl )
 AIC(mod1); AIC(mod2)
 }
 }
-\keyword{datasets}
+%% \keyword{datasets}

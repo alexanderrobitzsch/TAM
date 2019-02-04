@@ -1,5 +1,5 @@
 %% File Name: data.sim.rasch.Rd
-%% File Version: 2.16
+%% File Version: 2.17
 
 \name{data.sim.rasch}
 
@@ -99,4 +99,4 @@ mod1_3 <- TAM::tam.mml( data.sim.rasch.pweights, control=list(conv=.001),
   }
 }
 
-\keyword{datasets}
+%% \keyword{datasets}

@@ -1,5 +1,5 @@
 %% File Name: IRT.linearCFA.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{IRT.linearCFA}
 
@@ -141,5 +141,5 @@ summary(mod1b, standardized=TRUE, fit.measures=TRUE )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Confirmatory factor analysis}
+%% \keyword{Confirmatory factor analysis}
 % \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

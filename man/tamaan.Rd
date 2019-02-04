@@ -1,5 +1,5 @@
 %% File Name: tamaan.Rd
-%% File Version: 0.55
+%% File Version: 0.56
 
 \name{tamaan}
 \alias{tamaan}
@@ -509,5 +509,5 @@ round( rowSums( post2[, 1:15] ), 3 )
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Model specification}
-\keyword{TAM language}% __ONLY ONE__ keyword per line
+%% \keyword{Model specification}
+%% \keyword{TAM language}% __ONLY ONE__ keyword per line

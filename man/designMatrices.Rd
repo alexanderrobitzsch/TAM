@@ -1,5 +1,5 @@
 %% File Name: designMatrices.Rd
-%% File Version: 2.18
+%% File Version: 2.19
 
 \name{designMatrices}
 
@@ -160,5 +160,5 @@ A4 <- TAM::designMatrices( resp=resp, modeltype="RSM" )$A
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Design matrices}
+%% \keyword{Design matrices}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

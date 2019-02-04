@@ -1,5 +1,5 @@
 %% File Name: data.examples.Rd
-%% File Version: 2.17
+%% File Version: 2.18
 
 \name{data.examples}
 
@@ -217,4 +217,4 @@ These examples are used in the \code{\link{tam.mml}} Examples.
 %data(data.gpcm)
 %summary(data.gpcm)
 %}
-\keyword{datasets}
+%% \keyword{datasets}

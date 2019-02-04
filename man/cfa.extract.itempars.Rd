@@ -1,5 +1,5 @@
 %% File Name: cfa.extract.itempars.Rd
-%% File Version: 0.21
+%% File Version: 0.22
 
 \name{cfa.extract.itempars}
 \alias{cfa.extract.itempars}
@@ -131,5 +131,5 @@ res4 <- TAM::cfa.extract.itempars( mod4 )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Confirmatory factor analysis}
+%% \keyword{Confirmatory factor analysis}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

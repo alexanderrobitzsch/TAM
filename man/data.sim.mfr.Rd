@@ -1,5 +1,5 @@
 %% File Name: data.sim.mfr.Rd
-%% File Version: 2.15
+%% File Version: 2.16
 
 \name{data.sim.mfr}
 
@@ -120,6 +120,6 @@ data(data.sim.facets)
             facets=data.sim.facets, constraint="cases" )}
 }
 
-\keyword{datasets}
+%% \keyword{datasets}
 
 

@@ -1,5 +1,5 @@
 %% File Name: IRT.drawPV.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{IRT.drawPV}
 \alias{IRT.drawPV}
@@ -73,5 +73,5 @@ pv1 <- TAM::IRT.drawPV(mod, NPV=10)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Plausible value imputation}
+%% \keyword{Plausible value imputation}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

@@ -1,5 +1,5 @@
 %% File Name: data.mc.Rd
-%% File Version: 2.08
+%% File Version: 2.09
 
 \name{data.mc}
 \alias{data.mc}
@@ -45,4 +45,4 @@ data(data.mc)
 %%data(data.mc)
 %%## maybe str(data.mc) ; plot(data.mc) ...
 %%}
-\keyword{datasets}
+%% \keyword{datasets}

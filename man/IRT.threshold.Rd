@@ -1,5 +1,5 @@
 %% File Name: IRT.threshold.Rd
-%% File Version: 1.42
+%% File Version: 1.43
 
 \name{IRT.threshold}
 \alias{IRT.threshold}
@@ -174,5 +174,5 @@ t3mod
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 % \keyword{Wright map}
-\keyword{Thurstonian thresholds}
+%% \keyword{Thurstonian thresholds}
 % \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

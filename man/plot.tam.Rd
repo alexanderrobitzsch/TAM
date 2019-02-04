@@ -1,5 +1,5 @@
 %% File Name: plot.tam.Rd
-%% File Version: 3.38
+%% File Version: 3.39
 
 \name{plot.tam}
 \alias{plot.tam}
@@ -160,5 +160,5 @@ plot(mod1, type="expected", export=FALSE )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{plot}
+%% \keyword{plot}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

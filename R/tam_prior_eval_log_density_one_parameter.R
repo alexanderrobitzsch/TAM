@@ -1,5 +1,5 @@
 ## File Name: tam_prior_eval_log_density_one_parameter.R
-## File Version: 0.06
+## File Version: 0.07
 
 tam_prior_eval_log_density_one_parameter <- function( density_pp, args_pp, parameter_pp, deriv=0)
 {
@@ -9,7 +9,7 @@ tam_prior_eval_log_density_one_parameter <- function( density_pp, args_pp, param
     x <- args_pp$x
     if (density_pp=="norm"){
         if (deriv==0){
-            res <- - 1/2*log( 2*pi ) - log( scale ) - ( x - loc  )^2 / 2 / scale^2
+            res <- - 1/2*log( 2*pi ) - log( scale ) - ( x - loc )^2 / 2 / scale^2
         }
         if (deriv==1){
             res <- - ( x -  loc ) / scale^2

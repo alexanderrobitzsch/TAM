@@ -1,8 +1,8 @@
 ## File Name: extend.label.group.R
-## File Version: 9.09
+## File Version: 9.11
 
-#######################################################
-# extend labels arranged in a group
+
+#--- extend labels arranged in a group
 extend.label.group <- function( label.group )
 {
     str1 <- unlist( strsplit( label.group, split="__" ) )
@@ -30,7 +30,5 @@ extend.label.group <- function( label.group )
     l1 <- as.numeric( substring( str1, ii+1 )    )
     str2 <- seq( l1[1], l1[2] )
     str2 <- paste0( substring( str1, 1, ii  )[1], str2 )
-    return( str2 )
+    return(str2)
 }
-#######################################################
-

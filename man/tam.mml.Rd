@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9846
+%% File Version: 2.9847
 
 \name{tam.mml}
 
@@ -2227,6 +2227,6 @@ print(mod3dim2pl_udiff2$xsi)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Marginal maximum likelihood estimation (MML)}
-\keyword{Multidimensional item response model}
-\keyword{summary}
+%% \keyword{Marginal maximum likelihood estimation (MML)}
+%% \keyword{Multidimensional item response model}
+%% \keyword{summary}

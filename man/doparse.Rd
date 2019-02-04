@@ -1,5 +1,5 @@
 %% File Name: doparse.Rd
-%% File Version: 0.19
+%% File Version: 0.20
 
 \name{doparse}
 \alias{doparse}
@@ -150,5 +150,5 @@ cat(out)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{DO statements}
+%% \keyword{DO statements}
 % \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

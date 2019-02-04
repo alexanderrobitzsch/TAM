@@ -1,5 +1,5 @@
 %% File Name: data.gpcm.Rd
-%% File Version: 2.08
+%% File Version: 2.09
 
 \name{data.gpcm}
 \alias{data.gpcm}
@@ -32,4 +32,4 @@ The dataset is copied from the \pkg{ltm} package.
 data(data.gpcm)
 summary(data.gpcm)
 }
-\keyword{datasets}
+%% \keyword{datasets}

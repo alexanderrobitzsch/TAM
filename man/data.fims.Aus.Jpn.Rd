@@ -1,5 +1,5 @@
 %% File Name: data.fims.Aus.Jpn.Rd
-%% File Version: 2.12
+%% File Version: 2.13
 
 \name{data.fims.Aus.Jpn.scored}
 \alias{data.fims.Aus.Jpn.raw}
@@ -97,4 +97,4 @@ summary(mod2)
 }
 
 
-\keyword{datasets}
+%% \keyword{datasets}

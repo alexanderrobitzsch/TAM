@@ -1,5 +1,5 @@
 %% File Name: IRT.likelihood.tam.Rd
-%% File Version: 0.19
+%% File Version: 0.20
 
 \name{IRT.likelihood}
 
@@ -106,6 +106,6 @@ str(pmod1)
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Individual likelihood}
-\keyword{Individual posterior}
+%% \keyword{Individual likelihood}
+%% \keyword{Individual posterior}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

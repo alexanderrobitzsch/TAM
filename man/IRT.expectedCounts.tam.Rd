@@ -1,5 +1,5 @@
 %% File Name: IRT.expectedCounts.tam.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{IRT.expectedCounts}
 
@@ -89,6 +89,6 @@ IRT.expectedCounts(mod1)
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Expected counts}
+%% \keyword{Expected counts}
 % \keyword{Individual posterior}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

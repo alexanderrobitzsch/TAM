@@ -1,5 +1,5 @@
 %% File Name: tam.threshold.Rd
-%% File Version: 2.21
+%% File Version: 2.22
 
 \name{tam.threshold}
 \alias{tam.threshold}
@@ -135,5 +135,5 @@ WrightMap::wrightMap( thetas=uni.proficiency, thresholds=tmod1, label.items.rows
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Thurstonian thresholds}
+%% \keyword{Thurstonian thresholds}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

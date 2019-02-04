@@ -1,5 +1,5 @@
 %% File Name: TAM-utilities.Rd
-%% File Version: 0.63
+%% File Version: 0.663
 
 \name{TAM-utilities}
 \alias{TAM-utilities}
@@ -34,6 +34,7 @@
 \alias{tam_ginv_scaled}
 \alias{tam_max_abs}
 \alias{tam_max_abs_list}
+\alias{IRT.RISE}
 
 
 \title{Utility Functions in \pkg{TAM}}
@@ -43,6 +44,9 @@ Utility functions in \pkg{TAM}.
 }
 
 \usage{
+## RISE item fit statistic of two models
+IRT.RISE( mod_p, mod_np, use_probs=TRUE )
+
 ## information about used package version
 tam_packageinfo(pack)
 ## call statement in a string format
@@ -112,6 +116,9 @@ tam_assign_list_elements(x, envir)
 }
 
 \arguments{
+\item{mod_p}{Fitted model}
+\item{mod_np}{Fitted model}
+\item{use_probs}{Logical}
 \item{pack}{An \R package}
 \item{CALL}{An \R call}
 \item{args_CALL}{Arguments obtained from \code{as.list( sys.call() )}}

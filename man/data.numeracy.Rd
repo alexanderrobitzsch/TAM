@@ -1,5 +1,5 @@
 %% File Name: data.numeracy.Rd
-%% File Version: 2.13
+%% File Version: 2.14
 
 \name{data.numeracy}
 \alias{data.numeracy}
@@ -124,4 +124,4 @@ plot( mod1, ask=TRUE )
 
 
 
-\keyword{datasets}
+%% \keyword{datasets}

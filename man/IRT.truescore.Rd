@@ -1,5 +1,5 @@
 %% File Name: IRT.truescore.Rd
-%% File Version: 0.20
+%% File Version: 0.21
 
 \name{IRT.truescore}
 \alias{IRT.truescore}
@@ -107,5 +107,5 @@ tmod2 <- TAM::IRT.truescore(mod1, Q=Q)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{True scores}
+%% \keyword{True scores}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

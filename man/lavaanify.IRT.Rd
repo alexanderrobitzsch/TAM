@@ -1,5 +1,5 @@
 %% File Name: lavaanify.IRT.Rd
-%% File Version: 1.39
+%% File Version: 1.40
 
 \name{lavaanify.IRT}
 \alias{lavaanify.IRT}
@@ -293,5 +293,5 @@ cat(res$lavaan.syntax)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{lavaan}
+%% \keyword{lavaan}
 % \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

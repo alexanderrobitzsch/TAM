@@ -1,5 +1,5 @@
 ## File Name: summary_tamaan_3pl_intro.R
-## File Version: 9.26
+## File Version: 9.27
 
 
 ################################################
@@ -55,7 +55,7 @@ summary_tamaan_3pl_intro <- function(object){
     cat( "    Item guessing parameters=", object$ic$Nguess, "\n" )
     cat( "    Regression parameters=", object$ic$Nparsbeta, "\n" )
     cat( "    (Co)Variance parameters=", object$ic$Nparscov, "\n" )
-    cat( "    Delta parameters =", object$ic$Ndelta, "\n\n" )
+    cat( "    Delta parameters=", object$ic$Ndelta, "\n\n" )
 
     #--- print information criteria
     tam_summary_print_ic( object=object )

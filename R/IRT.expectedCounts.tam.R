@@ -1,5 +1,5 @@
 ## File Name: IRT.expectedCounts.tam.R
-## File Version: 9.15
+## File Version: 9.17
 
 ###########################################################
 ###########################################################
@@ -24,7 +24,7 @@ IRT.expectedCounts.tam.mml <- IRT.expectedCounts.tam
 
 IRT.expectedCounts.tam.np <- function( object, ... )
 {
-    ll <- aperm( object$n.ik, c(3,1,2,4) )
+    ll <- object$n.ik
     attr(ll,"theta") <- object$theta
     attr(ll,"prob.theta") <- object$pi.k
     attr(ll,"G") <- object$G

@@ -41,15 +41,18 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.1  |  2018-12-10  |  Last: TAM 3.1-2
+VERSIONS TAM 3.1  |  2019-02-04  |  Last: TAM 3.1-26
 -------------------------------------------------------------
 
-xxx   * ...
+ADDED * included lasso and ridge penalties in basis expansion
+        approach for semiparametric item response modeling in
+        tam.np()
+NOTE  * exported utility function IRT.RISE()
+NOTE  * included S3 methods anova() and logLik() for tam.np()
+
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
-
-
+EXAMP * included/modified examples: tam.np (2,3)
 
 
 

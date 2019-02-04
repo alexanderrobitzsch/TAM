@@ -1,5 +1,5 @@
 %% File Name: anova.tam.Rd
-%% File Version: 2.28
+%% File Version: 2.33
 
 \name{anova-logLik}
 \alias{anova.tam}
@@ -7,12 +7,14 @@
 \alias{anova.tam.mml.3pl}
 \alias{anova.tamaan}
 \alias{anova.tam.latreg}
+\alias{anova.tam.np}
 
 \alias{logLik.tam}
 \alias{logLik.tam.mml}
 \alias{logLik.tam.mml.3pl}
 \alias{logLik.tamaan}
 \alias{logLik.tam.latreg}
+\alias{logLik.tam.np}
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
@@ -46,6 +48,9 @@ The function can be applied for values of \code{\link{tam.mml}},
 
 \method{anova}{tam.latreg}(object, \dots)
 \method{logLik}{tam.latreg}(object, \dots)
+
+\method{anova}{tam.np}(object, \dots)
+\method{logLik}{tam.np}(object, \dots)
 }
 
 
@@ -53,7 +58,7 @@ The function can be applied for values of \code{\link{tam.mml}},
 \arguments{
   \item{object}{
 Object of class \code{\link{tam}}, \code{\link{tam.mml}},
-\code{\link{tam.mml.3pl}}, \code{\link{tam.latreg}}
+\code{\link{tam.mml.3pl}}, \code{\link{tam.latreg}}, \code{\link{tam.np}},
 or \code{\link{tamaan}}. Note that for \code{anova} two objects
 (fitted models) must be provided.
 }
@@ -129,7 +134,7 @@ anova( mod1, mod2 )
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Likelihood ratio test}
-\keyword{anova}
-\keyword{logLik}
+%% \keyword{Likelihood ratio test}
+%% \keyword{anova}
+%% \keyword{logLik}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

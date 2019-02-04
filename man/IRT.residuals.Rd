@@ -1,5 +1,5 @@
 %% File Name: IRT.residuals.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{IRT.residuals}
 \alias{IRT.residuals}
@@ -108,5 +108,5 @@ str(res)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Residuals}
+%% \keyword{Residuals}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

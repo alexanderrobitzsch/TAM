@@ -1,5 +1,5 @@
 %% File Name: data.geiser.Rd
-%% File Version: 0.22
+%% File Version: 0.23
 
 \name{data.geiser}
 \alias{data.geiser}
@@ -213,4 +213,4 @@ points( 1:6, ipars[,5],  col=3, pch=17)
 IRT.compareModels( mod1, mod2, mod3 )
 }
 }
-\keyword{datasets}
+%% \keyword{datasets}

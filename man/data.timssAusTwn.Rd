@@ -1,5 +1,5 @@
 %% File Name: data.timssAusTwn.Rd
-%% File Version: 2.14
+%% File Version: 2.15
 
 \name{data.timssAusTwn}
 \alias{data.timssAusTwn}
@@ -138,4 +138,4 @@ wle3 <- TAM::tam.wle(mod3)
 }
 
 
-\keyword{datasets}
+%% \keyword{datasets}

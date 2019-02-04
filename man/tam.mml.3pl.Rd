@@ -1,5 +1,5 @@
 %% File Name: tam.mml.3pl.Rd
-%% File Version: 2.682
+%% File Version: 2.683
 
 \name{tam.mml.3pl}
 \alias{tam.mml.3pl}
@@ -1059,6 +1059,6 @@ IRT.compareModels(mod0,mod1,mod2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{3PL model}
-\keyword{Structured item response model}
+%% \keyword{3PL model}
+%% \keyword{Structured item response model}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

@@ -1,8 +1,8 @@
 Package: TAM
 Type: Package
 Title: Test Analysis Modules
-Version: 3.1-2
-Date: 2018-12-10 18:31:22
+Version: 3.1-26
+Date: 2019-02-04 15:58:53
 Author:
     Alexander Robitzsch [aut, cre], Thomas Kiefer [aut], Margaret Wu [aut]
 Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
@@ -25,8 +25,8 @@ Imports:
     coda, graphics, grDevices, MASS, methods, mvtnorm, Rcpp, 
     sfsmisc, stats, utils
 Suggests: 
-    GPArotation, lattice, lavaan, LSAmitR, miceadds, plyr, 
-    psych, sirt, WrightMap
+    GPArotation, lattice, lavaan, LSAmitR, miceadds, 
+    plyr, psych, sirt, splines, WrightMap
 LinkingTo: 
     Rcpp, RcppArmadillo
 License: GPL (>= 2)

@@ -1,5 +1,5 @@
 %% File Name: IRT.factor.scores.tam.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{IRT.factor.scores}
 
@@ -97,6 +97,6 @@ pmod1 <- IRT.factor.scores( mod1, type="MLE" )
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Factor scores}
+%% \keyword{Factor scores}
 % \keyword{Individual posterior}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

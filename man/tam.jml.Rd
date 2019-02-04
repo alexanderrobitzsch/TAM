@@ -1,5 +1,5 @@
 %% File Name: tam.jml.Rd
-%% File Version: 2.37
+%% File Version: 2.38
 
 \name{tam.jml}
 
@@ -331,6 +331,6 @@ cbind( mod2$WLE, mod2$errorWLE )
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Joint maximum likelihood estimation (JML)}
-\keyword{summary}
+%% \keyword{Joint maximum likelihood estimation (JML)}
+%% \keyword{summary}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

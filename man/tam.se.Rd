@@ -1,5 +1,5 @@
 %% File Name: tam.se.Rd
-%% File Version: 2.21
+%% File Version: 2.22
 
 \name{tam.se}
 
@@ -143,5 +143,5 @@ round( cbind( mod$xsi, semod$xsi[,-1] ), 3 )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Standard errors}
+%% \keyword{Standard errors}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

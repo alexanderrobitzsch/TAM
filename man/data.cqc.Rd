@@ -1,5 +1,5 @@
 %% File Name: data.cqc.Rd
-%% File Version: 2.28
+%% File Version: 2.29
 
 \name{data.cqc}
 
@@ -327,4 +327,4 @@ pvmod05b <- TAM::tam.pv( mod05b )
 }
 }
 
-\keyword{datasets}
+%% \keyword{datasets}
