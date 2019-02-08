@@ -1,7 +1,6 @@
 ## File Name: weighted_kurtosis.R
-## File Version: 0.08
+## File Version: 0.09
 
-#######################################################
 # kurtosis
 weighted_kurtosis <- function( x, w=rep(1,length(x)), select=NULL )
 {
@@ -14,4 +13,3 @@ weighted_kurtosis <- function( x, w=rep(1,length(x)), select=NULL )
     res <- weighted_mean(x=y, w=w) / v^2 - 3
     return(res)
 }
-###########################################################

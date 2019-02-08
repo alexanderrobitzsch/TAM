@@ -1,7 +1,6 @@
 ## File Name: weighted_quantile.R
-## File Version: 9.09
+## File Version: 9.11
 
-#####################################################
 # weighted_quantile
 weighted_quantile <- function( x, w=rep(1,length(x)), probs=seq(0,1,.25),
             type=NULL, select=NULL)
@@ -42,5 +41,4 @@ weighted_quantile <- function( x, w=rep(1,length(x)), probs=seq(0,1,.25),
     }
     return(res)
 }
-
 

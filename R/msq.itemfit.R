@@ -1,8 +1,7 @@
 ## File Name: msq.itemfit.R
-## File Version: 9.36
+## File Version: 9.37
 
-#######################################
-# Item fit mean squares statistics
+#--- Item fit mean squares statistics
 msq.itemfit <- function( object, fitindices=NULL)
 {
     s1 <- Sys.time()
@@ -72,11 +71,10 @@ msq.itemfit <- function( object, fitindices=NULL)
     dfr2 <- data.frame( "fit"=vars, "M"=colMeans(dfr[,vars]),
                     "SD"=apply( dfr[,vars], 2, stats::sd ) )
     s2 <- Sys.time()
-    v1 <- c(s1, s2 )
-    res <- list( "itemfit"=dfr, "summary_itemfit"=dfr2,    time=v1, CALL=CALL )
+    v1 <- c(s1, s2)
+    res <- list( itemfit=dfr, summary_itemfit=dfr2,    time=v1, CALL=CALL )
     class(res) <- "msq.itemfit"
     return(res)
 }
-######################################################
 
 # cat("predict function\n"); a1 <- Sys.time() ; print(a1-a0); a0 <- a1

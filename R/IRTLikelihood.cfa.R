@@ -1,14 +1,13 @@
 ## File Name: IRTLikelihood.cfa.R
-## File Version: 9.16
+## File Version: 9.18
 
-#########################################
-# IRTLikelihood for fitted CFA model
+#---- IRTLikelihood for fitted CFA model
 IRTLikelihood.cfa <- function( data, cfaobj=NULL,
         theta=NULL, L=NULL, nu=NULL, psi=NULL,
         snodes=NULL, snodes.adj=2, version=1)
 {
     if ( ! is.null(cfaobj) ){
-        cfaobj <- cfa.extract.itempars(cfaobj)
+        cfaobj <- cfa.extract.itempars(object=cfaobj)
         L <- cfaobj$L
         nu <- cfaobj$nu
         psi <- cfaobj$psi
@@ -40,7 +39,6 @@ IRTLikelihood.cfa <- function( data, cfaobj=NULL,
         }
     }
 
-    #*************************************************
     #**** R version
     if (version==0){
         TP <- nrow(theta)
@@ -60,7 +58,6 @@ IRTLikelihood.cfa <- function( data, cfaobj=NULL,
             hwt[ind,] <- hwt[ind,] * h1[ind,]
         }
     }
-    #********************************************************
     #***** Rcpp version
     if (version==1){
         data <- as.matrix(data)
@@ -77,4 +74,3 @@ IRTLikelihood.cfa <- function( data, cfaobj=NULL,
     attr(res,"G") <- 1
     return(res)
 }
-##################################################

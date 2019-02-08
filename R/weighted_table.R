@@ -1,7 +1,7 @@
 ## File Name: weighted_table.R
-## File Version: 9.07
+## File Version: 9.08
 
-#############################################
+
 # weighted frequency table
 weighted_table <- function( x, w=NULL, props=FALSE ){
 
@@ -32,11 +32,11 @@ weighted_table <- function( x, w=NULL, props=FALSE ){
             }
         }
     }
-    #**** calculate proportions?
+    #**** calculate proportions
     if (props){
         res0 <- res0 / sum(res0)
     }
     #---- output
     return(res0)
 }
-##############################################
+

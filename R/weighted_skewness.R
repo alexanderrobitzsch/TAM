@@ -1,8 +1,8 @@
 ## File Name: weighted_skewness.R
-## File Version: 9.09
+## File Version: 9.11
 
-#####################################################
-# skewness
+
+# weighted skewness
 weighted_skewness <- function( x, w=rep(1,length(x)), select=NULL )
 {
     res <- tam_weighted_stats_select(x=x, w=w, select=select)

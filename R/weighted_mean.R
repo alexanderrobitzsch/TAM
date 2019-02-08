@@ -1,6 +1,7 @@
 ## File Name: weighted_mean.R
-## File Version: 9.14
-############################################
+## File Version: 9.15
+
+
 # weighted mean
 weighted_mean <- function( x, w=rep(1,length(x)), select=NULL )
 {
@@ -10,4 +11,3 @@ weighted_mean <- function( x, w=rep(1,length(x)), select=NULL )
     res <- sum( x * w ) / sum(w)
     return(res)
 }
-###############################################

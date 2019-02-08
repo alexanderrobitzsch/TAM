@@ -1,5 +1,5 @@
 %% File Name: tam.np.Rd
-%% File Version: 0.316
+%% File Version: 0.317
 
 
 \name{tam.np}
@@ -88,6 +88,8 @@ List containing several entries
 \item{hwt}{Individual posterior}
 \item{item}{Summary item parameter table}
 \item{pars}{Estimated parameters}
+\item{regularized}{Logical indicating which items are regularized}
+\item{ic}{List containing }
 \item{\dots}{Further values}
 }
 
@@ -169,7 +171,7 @@ dat[,ii] <- 1*(stats::runif(N) < l + (u-l)*stats::plogis( a[ii]*(theta-b[ii] ) )
 
 #* second misfitting item with non-monotonic item response function
 ii <- 3
-dat[,ii] <- (stats::runif(N) < stats::plogis( theta-b[ii] + .6*theta^2))
+dat[,ii] <- (stats::runif(N) < stats::plogis( theta-b[ii]+.6*theta^2))
 
 #- 2PL model
 mod0 <- TAM::tam.mml.2pl(dat)

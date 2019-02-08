@@ -1,8 +1,8 @@
 ## File Name: weighted_var.R
-## File Version: 9.11
+## File Version: 9.12
 
-#####################################################################
-# weighted variance.
+
+# weighted variance
 # This function is a wrapper to cov.wt
 weighted_var <- function( x, w=rep(1,length(x) ), method="unbiased",
     select=NULL )

@@ -1,8 +1,8 @@
 ## File Name: weighted_quantile_type_selection.R
-## File Version: 0.08
+## File Version: 0.09
 
 
-#####################################################
+
 # selection of parameters for weighted data
 weighted_quantile_type_selection <- function( type, pp, N, dfr, weights_NULL)
 {

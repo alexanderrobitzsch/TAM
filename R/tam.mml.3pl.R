@@ -1,5 +1,5 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.842
+## File Version: 9.843
 tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
             formulaY=NULL, dataY=NULL,
             ndim=1, pid=NULL,
@@ -574,8 +574,8 @@ tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
 
         #******
         # generate input for fixed parameters
-        xsi.fixed.estimated <- generate.xsi.fixed.estimated( xsi, A )
-        B.fixed.estimated <- generate.B.fixed.estimated(B)
+    xsi.fixed.estimated <- tam_generate_xsi_fixed_estimated( xsi=xsi, A=A )
+    B.fixed.estimated <- tam_generate_B_fixed_estimated(B=B)
 
         ######################################
         # calculation of expected counts

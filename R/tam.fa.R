@@ -1,7 +1,8 @@
 ## File Name: tam.fa.R
-## File Version: 9.23
-#################################################################
-# Exploratory Factor Analysis and Bifactor Models
+## File Version: 9.24
+
+
+#---- Exploratory Factor Analysis and Bifactor Models
 tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
             pid=NULL,pweights=NULL, verbose=TRUE, control=list() )
 {

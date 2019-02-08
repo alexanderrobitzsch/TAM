@@ -1,5 +1,6 @@
 ## File Name: tam_mml_mfr_proc_multiple_person_ids.R
-## File Version: 0.09
+## File Version: 0.12
+
 
 tam_mml_mfr_proc_multiple_person_ids <- function(pid,tp, gresp, gresp.noStep,
         progress )
@@ -12,14 +13,13 @@ tam_mml_mfr_proc_multiple_person_ids <- function(pid,tp, gresp, gresp.noStep,
     for (pos in 1:tp){
         PP[,pos] <- unlist( lapply( person.ids, FUN=function(vv){ vv[pos] } ) )
     }
-#     cat("*** multiple persons lapply function" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
+
     gresp0 <- matrix( NA, nrow=NP, ncol=ncol(gresp) )
     colnames(gresp0) <- colnames(gresp)
     gresp0.noStep <- matrix( NA, nrow=NP, ncol=ncol(gresp.noStep) )
     colnames(gresp0.noStep) <- colnames(gresp.noStep)
     grespNA <- ( ! is.na( gresp ) )
     grespnoStepNA <- ( ! is.na( gresp.noStep ) )
-#  cat("*** multiple persons start pos" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
 
     #-- check multiple rows
     m1 <- rowsum( 1-is.na(gresp.noStep), pid )
@@ -46,7 +46,7 @@ tam_mml_mfr_proc_multiple_person_ids <- function(pid,tp, gresp, gresp.noStep,
         g0[ ig1 ] <- g1[ ig1 ]
         gresp0.noStep[ ind.pos, ] <- g0
     }
-# cat("*** multiple persons loop over pos" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
+
     gresp0 -> gresp
     gresp0.noStep -> gresp.noStep
     pid <- persons
@@ -59,3 +59,6 @@ tam_mml_mfr_proc_multiple_person_ids <- function(pid,tp, gresp, gresp.noStep,
     res <- list(pid=pid, gresp=gresp, gresp.noStep=gresp.noStep)
     return(res)
 }
+
+
+#     cat("*** multiple persons lapply function" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1

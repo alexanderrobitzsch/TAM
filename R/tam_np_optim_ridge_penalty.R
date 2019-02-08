@@ -1,5 +1,5 @@
 ## File Name: tam_np_optim_ridge_penalty.R
-## File Version: 0.13
+## File Version: 0.16
 
 tam_np_optim_ridge_penalty <- function(par0, penalty_type, target_fct, lambda,
     index, deriv=0)

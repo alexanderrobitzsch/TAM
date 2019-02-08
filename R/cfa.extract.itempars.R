@@ -1,9 +1,9 @@
 ## File Name: cfa.extract.itempars.R
-## File Version: 9.11
+## File Version: 9.15
 
-######################################################################
-# extract item parameters from fitted cfa object (in lavaan)
-cfa.extract.itempars <- function( object )
+
+#---- extract item parameters from fitted cfa object (in lavaan)
+cfa.extract.itempars <- function(object)
 {
     require_namespace_msg("lavaan")
     if ( object@Options$model.type !="cfa" ){
@@ -75,11 +75,8 @@ cfa.extract.itempars <- function( object )
     }
 
     #**** output
-    res <- list( L=L, nu=nu, psi=psi,
-            Sigma=Sigma, mu=mu,
-            obs.means=means, obs.cov=covs,
-            obs.vars=obs.vars, lat.vars=lat.vars,
-            NOV=NOV, NLV=NLV )
+    res <- list( L=L, nu=nu, psi=psi, Sigma=Sigma, mu=mu, obs.means=means,
+                    obs.cov=covs, obs.vars=obs.vars, lat.vars=lat.vars,
+                    NOV=NOV, NLV=NLV )
     return(res)
 }
-######################################################

@@ -1,5 +1,5 @@
 ## File Name: tam_np_mstep_items.R
-## File Version: 0.254
+## File Version: 0.263
 
 
 tam_np_mstep_items <- function(I, n.ik, desmat, Msteps, spline_optim,
@@ -20,10 +20,10 @@ tam_np_mstep_items <- function(I, n.ik, desmat, Msteps, spline_optim,
         args <- list(start=par0[index], objective=tam_np_2pl_optim_fn,
                             gradient=tam_np_2pl_grad_fn, nik_ii=nik_ii, index=index,
                             desmat=desmat, par0=par0, control=list(maxit=Msteps),
-                            penalty_type=penalty_type, target_fct=target_fct,
-                            lambda=lambda[ii] )
+                            target_fct=target_fct)
         res <- do.call( what=stats::nlminb, args=args)
         par0[index] <- res$par
+
         #- update spline functions
         index <- index_basis
         par_old <- par0[index]
@@ -33,14 +33,13 @@ tam_np_mstep_items <- function(I, n.ik, desmat, Msteps, spline_optim,
             par_old <- res1$par
         }
         args <- list(x=par_old, nik_ii=nik_ii, par0=par0, index=index, desmat=desmat,
-                        penalty_type=penalty_type, target_fct=target_fct,
-                        lambda=lambda[ii] )
+                        target_fct=target_fct )
         res <- do.call(what=tam_np_2pl_optim_fn_grad_hess, args=args)
         fn0 <- res$fn0
         grad <- res$grad
         hess <- res$hess
         hess_max <- res$hess_max
-        res <- tam_group_lasso_update(par_old=par_old, grad=grad,
+        res <- tam_np_group_lasso_update(par_old=par_old, grad=grad,
                         hess_max=hess_max, lambda=lambda[ii], penalty_type=penalty_type,
                         n_ii=n_ii)
         par_reg <- res$par_reg
@@ -49,7 +48,7 @@ tam_np_mstep_items <- function(I, n.ik, desmat, Msteps, spline_optim,
         n_reg[ii] <- res$n_reg
         par0[index] <- par_reg
         pars[ii,] <- par0
-    }
+    } #--- end item ii
 
     #- update item response functions
     probs <- tam_np_2pl_calc_probs(pars=pars, desmat=desmat)

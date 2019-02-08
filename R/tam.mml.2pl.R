@@ -1,5 +1,5 @@
 ## File Name: tam.mml.2pl.R
-## File Version: 9.560
+## File Version: 9.563
 
 tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
                  formulaY=NULL, dataY=NULL,
@@ -449,8 +449,8 @@ tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
 
     #******
     # generate input for fixed parameters
-    xsi.fixed.estimated <- generate.xsi.fixed.estimated( xsi, A )
-    B.fixed.estimated <- generate.B.fixed.estimated(B)
+    xsi.fixed.estimated <- tam_generate_xsi_fixed_estimated( xsi=xsi, A=A )
+    B.fixed.estimated <- tam_generate_B_fixed_estimated(B=B)
 
     #**** standard errors AXsi
     se.AXsi <- tam_mml_se_AXsi( AXsi=AXsi, A=A, se.xsi=se.xsi, maxK=maxK )

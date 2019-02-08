@@ -41,7 +41,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.1  |  2019-02-04  |  Last: TAM 3.1-26
+VERSIONS TAM 3.1  |  2019-02-08  |  Last: TAM 3.1-34
 -------------------------------------------------------------
 
 ADDED * included lasso and ridge penalties in basis expansion
@@ -49,6 +49,10 @@ ADDED * included lasso and ridge penalties in basis expansion
         tam.np()
 NOTE  * exported utility function IRT.RISE()
 NOTE  * included S3 methods anova() and logLik() for tam.np()
+NOTE  * included additional check of 'constraint' argument in 
+        tam.mml() and tam.mml.mfr() which now also allows 
+        inputs 'case' and 'item' 
+        (due to a discussion with Fabian Fuentealba Munoz)   
 
 
 DATA  * included/modified datasets: ---

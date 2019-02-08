@@ -1,7 +1,7 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.904
-tam.mml.mfr <-
-  function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
+## File Version: 9.908
+
+tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
             ndim=1, pid=NULL,
             xsi.fixed=NULL,  xsi.setnull=NULL,
@@ -45,6 +45,9 @@ tam.mml.mfr <-
                 prior_list_xsi=prior_list_xsi)
     con <- res$con
     con1a <- res$con1a
+
+    #- check constraint
+    constraint <- tam_mml_constraint_check(constraint=constraint)
 
     # userfct.variance is not allowed in tam.mml.mfr
     userfct.variance <- NULL
@@ -458,8 +461,8 @@ tam.mml.mfr <-
 
     #******
     # generate input for fixed parameters
-    xsi.fixed.estimated <- generate.xsi.fixed.estimated( xsi, A )
-    B.fixed.estimated <- generate.B.fixed.estimated(B)
+    xsi.fixed.estimated <- tam_generate_xsi_fixed_estimated( xsi=xsi, A=A )
+    B.fixed.estimated <- tam_generate_B_fixed_estimated(B=B)
 
     #**** standard errors AXsi
     se.AXsi <- tam_mml_se_AXsi( AXsi=AXsi, A=A, se.xsi=se.xsi, maxK=maxK )
