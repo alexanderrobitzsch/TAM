@@ -1,9 +1,7 @@
 ## File Name: tam_mml_3pl_calc_prob.R
-## File Version: 1.31
+## File Version: 1.32
 
-#####################################################################
-# calc_prob
-# Calculation of probabilities
+#--- Calculation of probabilities
 tam_mml_3pl_calc_prob <- function(iIndex, A, AXsi, B, xsi, theta,
             nnodes, maxK, recalc=TRUE, guess, subtract_max=TRUE )
 {
@@ -51,6 +49,5 @@ tam_mml_3pl_calc_prob <- function(iIndex, A, AXsi, B, xsi, theta,
 
     return(list("rprobs"=rprobs, "AXsi"=AXsi, "rprobs0"=rprobs0 ))
 }
-##############################################################################
 
 .mml.3pl.calc_prob.v5 <- tam_mml_3pl_calc_prob

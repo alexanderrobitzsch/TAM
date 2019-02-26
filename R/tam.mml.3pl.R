@@ -1,5 +1,5 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.843
+## File Version: 9.853
 tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
             formulaY=NULL, dataY=NULL,
             ndim=1, pid=NULL,
@@ -540,7 +540,7 @@ tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
                         snodes=snodes, thetasamp.density=thetasamp.density, nomiss=nomiss,
                         iter=iter, group_indices=group_indices,
                         variance_acceleration=variance_acceleration, beta=beta )
-    # cat("m step regression") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
+#     cat("m step regression") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
             beta <- resr$beta
             variance <- resr$variance
             itemwt <- resr$itemwt
@@ -737,6 +737,10 @@ tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
     item1 <- tam_mml_3pl_itempartable( resp=resp, maxK=maxK, AXsi=AXsi,
                     B=B, ndim=ndim, resp.ind=resp.ind, rprobs=rprobs,
                     n.ik=n.ik, pi.k=pi.k, guess=guess, est.guess=est.guess )
+    #*** IRT parameterization
+    item_irt <- tam_irt_parameterization(resp=resp, maxK=maxK, B=B, AXsi=AXsi,
+                    irtmodel=irtmodel, tam_function="tam.mml.3pl",
+                    skillspace=skillspace)
 
     # distribution moments
     if ( skillspace !="normal" ){
@@ -820,7 +824,7 @@ tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
     res <- list( "xsi"=xsi,
                  "beta"=beta, "variance"=variance,
                  "moments"=moments,
-                 "item"=item1,
+                 "item"=item1, item_irt=item_irt,
                  "person"=person, pid=pid, "EAP.rel"=EAP.rel,
                  "post"=hwt,  "rprobs"=rprobs, "itemweight"=itemwt,
                  "theta"=theta,

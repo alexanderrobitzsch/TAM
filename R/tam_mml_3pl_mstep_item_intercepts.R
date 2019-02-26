@@ -1,15 +1,13 @@
 ## File Name: tam_mml_3pl_mstep_item_intercepts.R
-## File Version: 9.50
+## File Version: 9.543
 
 
-##########################################################################
-# estimation of item intercepts
-tam_mml_3pl_mstep_item_intercepts <-
-    function( max.increment, np, est.xsi.index0,
+#--- estimation of item intercepts
+tam_mml_3pl_mstep_item_intercepts <- function( max.increment, np, est.xsi.index0,
         Msteps, nitems, A, AXsi, B, xsi, guess, theta, nnodes, maxK,
         progress, itemwt, indexIP.no, indexIP.list2,
         ItemScore, fac.oldxsi, rprobs, xsi.fixed, convM, rprobs0,
-        n.ik, N.ik, xsi.prior, indexIP.list, xsi_acceleration, iter)
+        n.ik, N.ik, xsi.prior, indexIP.list, xsi_acceleration, iter, h=1E-4)
 {
     converge <- FALSE
     Miter <- 1
@@ -26,12 +24,9 @@ tam_mml_3pl_mstep_item_intercepts <-
     #***************************************************
     while ( !converge & ( Miter <=Msteps ) ) {
         #      xbar2 <- xxf <- xbar <- rep(0,np)
-        # numerical differentiation parameter
-        h <- 1E-4
 
         #----- switch with respect to existence of guessing parameter
         guess_exists <- max( guess ) > eps
-
         if ( ! guess_exists ){
             # Only compute probabilities for items contributing to param p
             if (Miter > 1){
@@ -58,20 +53,33 @@ tam_mml_3pl_mstep_item_intercepts <-
             ll0 <- rep( NA, NX )
             ll1m <- ll1p <- NA*ll0
             iIndex <- 1:nitems
+            probs_na <- NULL
             for (xx in 1:NX){
                 # xx <- 1
-                # iIndex <- indexIP.list[[xx]]
-                ll0[xx] <- tam_mml_3pl_calc_total_ll( iIndex=iIndex, A=A, B=B,
-                                xsi=xsi, theta=theta,    nnodes=nnodes, guess=guess,
-                                n.ik=n.ik, eps=eps )
+                iIndex <- indexIP.list[[xx]]
+                return_probs_na <- FALSE
+                if (xx==1){
+                    return_probs_na <- TRUE
+                }
+                res <- tam_mml_3pl_calc_total_ll( iIndex=iIndex, A=A, B=B,
+                                xsi=xsi, theta=theta, nnodes=nnodes, guess=guess,
+                                n.ik=n.ik, eps=eps, return_probs_na=return_probs_na,
+                                probs_na=probs_na)
+                if (return_probs_na){
+                    ll0[xx] <- res$ll0
+                    probs_na <- res$probs_na
+                    probs_na <- NULL
+                } else {
+                    ll0[xx] <- res
+                }
                 xsi1 <- tam_mml_3pl_vec_add_increment( vec=xsi, h=h, index=xx )
                 ll1p[xx] <- tam_mml_3pl_calc_total_ll( iIndex=iIndex, A=A, B=B,
                                 xsi=xsi1, theta=theta, nnodes=nnodes, guess=guess,
-                                n.ik=n.ik, eps=eps )
+                                n.ik=n.ik, eps=eps, probs_na=probs_na )
                 xsi2 <- tam_mml_3pl_vec_add_increment( vec=xsi, h=-h, index=xx )
                 ll1m[xx] <- tam_mml_3pl_calc_total_ll( iIndex=iIndex, A=A, B=B,
                                 xsi=xsi2, theta=theta, nnodes=nnodes, guess=guess,
-                                n.ik=n.ik, eps=eps )
+                                n.ik=n.ik, eps=eps, probs_na=probs_na )
             }
             res <- tam_difference_quotient( d0=ll0, d0p=ll1p, d0m=ll1m, h=h)
             diff <- res$d1

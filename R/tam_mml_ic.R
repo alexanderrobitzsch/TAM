@@ -1,5 +1,5 @@
 ## File Name: tam_mml_ic.R
-## File Version: 9.15
+## File Version: 9.182
 
 
 ##################################
@@ -44,7 +44,11 @@ tam_mml_ic <- function( nstud, deviance, xsi, xsi.fixed,
         # categories
     }
     if ( ! is.null( B.fixed ) ){
-        ic$NparsB <- ic$NparsB - nrow(B.fixed )
+        nB <- nrow(B.fixed)
+        if ( irtmodel=="GPCM" ){
+            nB <- length(B.fixed[ B.fixed[,2]==2,1])
+        }
+        ic$NparsB <- ic$NparsB - nB
     }
 
     # beta regression parameters

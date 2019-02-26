@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.786
+## File Version: 9.789
 
 tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
@@ -421,10 +421,13 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     n.ik <- res$n.ik
     pi.k <- res$pi.k
 
-    #****
-    # collect item parameters
+    #*** collect item parameters
     item1 <- tam_itempartable( resp=resp, maxK=maxK, AXsi=AXsi, B=B, ndim=ndim,
                     resp.ind=resp.ind, rprobs=rprobs, n.ik=n.ik, pi.k=pi.k )
+
+    #*** IRT parameterization
+    item_irt <- tam_irt_parameterization(resp=resp, maxK=maxK, B=B, AXsi=AXsi,
+                    irtmodel=irtmodel, tam_function="tam.mml")
 
     #**** collect all person statistics
     res <- tam_mml_person_posterior( pid=pid, nstud=nstud, pweights=pweights,
@@ -495,7 +498,7 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     deviance.history <- deviance.history[ 1:iter, ]
     res <- list( "xsi"=xsi,
                  "beta"=beta, "variance"=variance,
-                 "item"=item1,
+                 "item"=item1, item_irt=item_irt,
                  "person"=person, pid=pid, "EAP.rel"=EAP.rel,
                  "post"=hwt,  "rprobs"=rprobs, "itemweight"=itemwt,
                  "theta"=theta,

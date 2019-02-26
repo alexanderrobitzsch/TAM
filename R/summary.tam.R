@@ -1,5 +1,5 @@
 ## File Name: summary.tam.R
-## File Version: 9.582
+## File Version: 9.585
 
 #****** summary for tam object
 summary.tam <- function( object, file=NULL, ...)
@@ -135,6 +135,13 @@ summary.tam <- function( object, file=NULL, ...)
             obji <- object$xsi
             tam_round_data_frame_print(obji=obji, from=1, digits=3)
         }
+        if ( ! is.null(object$item_irt) ){
+            cat("\nItem Parameters in IRT parameterization\n")
+            obji <- object$item_irt
+            tam_round_data_frame_print(obji=obji, from=2, digits=3)
+        }
+
+
         #*******************
         # output efa
         if ( object$irtmodel %in% c("efa") ){

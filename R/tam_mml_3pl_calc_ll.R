@@ -1,5 +1,5 @@
 ## File Name: tam_mml_3pl_calc_ll.R
-## File Version: 0.04
+## File Version: 0.08
 
 
 tam_mml_3pl_calc_ll <- function( n.ik, probs, eps )

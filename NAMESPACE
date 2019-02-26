@@ -93,6 +93,7 @@ importFrom(sfsmisc, QUnif)
 # importFrom(miceadds, datalist2mids)
 # importFrom(plyr, ldply)
 # importFrom(psych, schmid)
+# importFrom(splines, bs)
 # importFrom(WrightMap, wrightMap)
 
 
