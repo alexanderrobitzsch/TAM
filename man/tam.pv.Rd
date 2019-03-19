@@ -1,5 +1,5 @@
 %% File Name: tam.pv.Rd
-%% File Version: 2.64
+%% File Version: 2.661
 
 \name{tam.pv}
 \alias{tam.pv}
@@ -540,13 +540,12 @@ predictorMatrix <- 1 - diag(V)
 rownames(predictorMatrix) <- colnames(predictorMatrix) <- vars
 imputationMethod <- rep("norm", V )
 names(imputationMethod) <- vars
-imputationMethod[c("PVA","X2")] <- "2l.plausible.values"
+imputationMethod[c("PVA","X2")] <- "plausible.values"
 
 #-- create argument lists for plausible value imputation
 # likelihood and theta grid of plausible value derived from IRT model
 like <- list( "PVA"=likePV, "X2"=likeX2 )
-theta <- list( "PVA"=attr(likePV,"theta"),
-                "X2"=attr(likeX2, "theta") )
+theta <- list( "PVA"=attr(likePV,"theta"), "X2"=attr(likeX2, "theta") )
 #-- initial imputations
 data.init <- data
 data.init$PVA <- mod11$person$EAP
@@ -554,7 +553,7 @@ data.init$X2 <- X.err[,"X2"]
 
 #-- imputation using the mice and miceadds package
 imp1 <- mice::mice( as.matrix(data), predictorMatrix=predictorMatrix, m=4, maxit=6,
-             imputationMethod=imputationMethod,  allow.na=TRUE,
+             method=imputationMethod,  allow.na=TRUE,
              theta=theta, like=like, data.init=data.init )
 summary(imp1)
 

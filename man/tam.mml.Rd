@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9856
+%% File Version: 2.9858
 
 \name{tam.mml}
 
@@ -2019,7 +2019,7 @@ N <- 1000      # number of persons
 I <- 100       # number of items
 set.seed(987)
 # simulate data according to the Rasch model
-dat <- sirt::sim.raschtype( rnorm(N), b=seq(-2,2,len=I)  )
+dat <- sirt::sim.raschtype( stats::rnorm(N), b=seq(-2,2,len=I)  )
 # estimate models
 mod1n <- TAM::tam.mml( resp=dat, control=list( acceleration="none") )  # no acceler.
 mod1y <- TAM::tam.mml( resp=dat, control=list( acceleration="Yu") )  # Yu acceler.
@@ -2266,7 +2266,7 @@ sim_gpcm_irt_param <- function(alpha, beta, tau, N, mu=0, sigma=1)
 }
 
 #-- simulate data
-N <- 20000
+N <- 20000     # number of persons
 set.seed(98)
 dat1 <- sim_gpcm_irt_param(alpha=alpha, beta=beta, tau=tau, N=N, mu=0, sigma=1)
 head(dat1)
@@ -2275,7 +2275,6 @@ head(dat1)
 A1 <- TAM::.A.PCM2( resp=dat1)
 
 #- estimate GPCM model
-A1 <- TAM::.A.PCM2( resp=dat1)
 mod1 <- TAM::tam.mml.2pl( resp=dat1, irtmodel="GPCM", A=A1)
 summary(mod1)
 

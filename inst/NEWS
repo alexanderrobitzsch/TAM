@@ -41,7 +41,18 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.1  |  2019-02-26  |  Last: TAM 3.1-40
+VERSIONS TAM 3.2  |  2019-03-19  |  Last: TAM 3.2-1
+-------------------------------------------------------------
+
+xxx   * ...
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+-------------------------------------------------------------
+VERSIONS TAM 3.1  |  2019-03-18  |  Last: TAM 3.1-45
 -------------------------------------------------------------
 
 ADDED * included lasso and ridge penalties in basis expansion
@@ -52,7 +63,8 @@ NOTE  * included S3 methods anova() and logLik() for tam.np()
 NOTE  * included additional check of 'constraint' argument in 
         tam.mml() and tam.mml.mfr() which now also allows 
         inputs 'case' and 'item' 
-        (due to a discussion with Fabian Fuentealba Munoz)   
+        (due to a discussion with Fabian Fuentealba Munoz and
+        Eng Yeoh)   
 NOTE  * included IRT parameterization of item parameters in 
         summary output and in output value list ('item_irt')
         (requested by Markus Buehner)
@@ -64,12 +76,8 @@ NOTE  * corrected number of estimated parameters in GPCM when
 FIXED * fixed a bug in tam.mml.3pl() when number of categories
         differ between items (thanks to Boris Girnat)
 
-
-
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: tam.np (2,3), tam.mml (27)
-
-
 
 -------------------------------------------------------------
 VERSIONS TAM 3.0  |  2018-12-10  |  Last: TAM 3.0-21
