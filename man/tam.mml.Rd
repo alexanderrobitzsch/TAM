@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9858
+%% File Version: 2.9861
 
 \name{tam.mml}
 
@@ -703,7 +703,8 @@ resp.long <- c(dat)
 pid <- rep(1:nrow(dat), ncol(dat))
 itemnames <- paste0("I", sprintf(paste('\%0', max(nchar(1:ncol(dat))), 'i', sep='' ),
                     c(1:ncol(dat)) ) )
-facets   <- data.frame( "item"=rep(itemnames, each=nrow(dat)) )
+facets   <- data.frame( "item_"=rep(itemnames, each=nrow(dat)) )
+formulaA=~ 0 + item_
 
 mod1d2 <- TAM::tam.mml.mfr( resp=resp.long, formulaA=formulaA, control=list(fac.oldxsi=.1),
                        constraint="items", facets=facets, pid=pid)

@@ -1,5 +1,5 @@
 ## File Name: tam.jml.R
-## File Version: 9.32
+## File Version: 9.353
 
 
 tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
@@ -17,22 +17,18 @@ tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
         version <- 1
     }
 
-
     #**** version=1
     if (version==1){
         res <- tam_jml_version1( resp=resp, group=group, adj=adj,
-                disattenuate=disattenuate,
-                bias=bias, xsi.fixed=xsi.fixed,  xsi.inits=xsi.inits,
-                A=A, B=B, Q=Q, ndim=ndim, theta.fixed=theta.fixed,
-                pweights=pweights, control=control  )
+                    disattenuate=disattenuate, bias=bias, xsi.fixed=xsi.fixed,
+                    xsi.inits=xsi.inits, A=A, B=B, Q=Q, ndim=ndim, theta.fixed=theta.fixed,
+                    pweights=pweights, control=control )
     }
     #**** version=2
     if (version==2){
         res <- tam_jml_version2( resp=resp, group=group, adj=adj,
-                disattenuate=disattenuate,
-                bias=bias, xsi.fixed=xsi.fixed,  xsi.inits=xsi.inits,
-                A=A, B=B, Q=Q, ndim=ndim,
-                pweights=pweights, control=control  )
+                    disattenuate=disattenuate, bias=bias, xsi.fixed=xsi.fixed,  xsi.inits=xsi.inits,
+                    A=A, B=B, Q=Q, ndim=ndim, pweights=pweights, control=control  )
     }
     res$CALL <- CALL
     return(res)

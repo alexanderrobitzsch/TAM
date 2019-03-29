@@ -1,10 +1,11 @@
 %% File Name: tam.np.Rd
-%% File Version: 0.317
+%% File Version: 0.321
 
 
 \name{tam.np}
 \alias{tam.np}
 \alias{summary.tam.np}
+\alias{IRT.cv.tam.np}
 %- Also NEED an '\alias' for EACH other topic documented here.
 
 \title{
@@ -31,6 +32,8 @@ tam.np( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=list(),
     pars_init=NULL, orthonormalize=TRUE)
 
 \method{summary}{tam.np}(object, file=NULL, \dots)
+
+\method{IRT.cv}{tam.np}(object, kfold=10, \dots)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -58,6 +61,7 @@ penalty (\code{"ridge"})
 be orthonormalized}
 \item{object}{Object of class \code{tam.np}}
 \item{file}{Optional file name for summary output}
+\item{kfold}{Number of folds in \eqn{k}-fold cross-validation}
 \item{\dots}{Further arguments to be passed}
 }
 
@@ -181,9 +185,11 @@ mod1 <- TAM::tam.np(dat, n_basis=4, lambda=.05)
 
 #- lambda value of .03 using starting value of previous model
 mod2 <- TAM::tam.np(dat, n_basis=4, lambda=.03, pars_init=mod1$pars)
+cmod2 <- TAM::IRT.cv(mod2)  # cross-validated deviance
 
 #- lambda=.015
 mod3 <- TAM::tam.np(dat, n_basis=4, lambda=.015, pars_init=mod2$pars)
+cmod3 <- TAM::IRT.cv(mod3)
 
 #- lambda=.007
 mod4 <- TAM::tam.np(dat, n_basis=4, lambda=.007, pars_init=mod3$pars)

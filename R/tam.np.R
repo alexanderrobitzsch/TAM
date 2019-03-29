@@ -1,5 +1,5 @@
 ## File Name: tam.np.R
-## File Version: 0.404
+## File Version: 0.412
 
 
 tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=list(),
@@ -18,7 +18,7 @@ tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=li
     tam_fct <- "tam.np"
     res <- tam_mml_control_list_define(control=control, envir=e1, tam_fct=tam_fct,
                 prior_list_xsi=NULL)
-    con <- res$con
+    control <- con <- res$con
     con1a <- res$con1a
 
     #--- initial values
@@ -87,6 +87,7 @@ tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=li
         N.ik <- array(res$Nik, dim=c(I,TP) )
         probs <- array(res$probs, dim=prob_dim )
         ll <- res$ll
+        ll_individual <- res$ll_individual
         dev <- -2*ll
 
         #- M-step trait distribution
@@ -174,7 +175,8 @@ tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=li
                 n_reg=n_reg, regularized=regularized, basis_type=basis_type,
                 n_basis=n_basis, desmat=desmat, ic=ic, pid=NULL,
                 orthonormalize=orthonormalize, penalty_type=penalty_type,
-                pen_val=pen_val, use_basis=use_basis, model=model, sigma=sigma)
+                pen_val=pen_val, use_basis=use_basis, model=model, sigma=sigma,
+                ll_individual=ll_individual, control=control)
     class(res) <- "tam.np"
     return(res)
 }

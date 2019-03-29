@@ -1,8 +1,8 @@
 ## File Name: tam_mml_calc_prob.R
-## File Version: 9.403
+## File Version: 9.404
 
-#####################################################################
-# calc_prob: Calculation of probabilities
+
+#--- calc_prob: Calculation of probabilities
 tam_mml_calc_prob <- function(iIndex, A, AXsi, B, xsi, theta,
             nnodes, maxK, recalc=TRUE, use_rcpp=FALSE, maxcat=NULL,
             avoid_outer=FALSE)
@@ -30,8 +30,6 @@ tam_mml_calc_prob <- function(iIndex, A, AXsi, B, xsi, theta,
     res <- list("rprobs"=rprobs, "AXsi"=AXsi)
     return(res)
 }
-########################################################################
-
 
 calc_prob.v5 <- tam_mml_calc_prob
 tam_calc_prob <- tam_mml_calc_prob

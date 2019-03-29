@@ -41,13 +41,25 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.2  |  2019-03-19  |  Last: TAM 3.2-1
+VERSIONS TAM 3.2  |  2019-03-29  |  Last: TAM 3.2-13
 -------------------------------------------------------------
 
-xxx   * ...
+ADDED * added S3 method IRT.cv() for cross-validation.
+        This method can be applied for objects of class 'tam.np'.
+FIXED * fixed a bug in tam.jml() when all item parameters are
+        fixed (thanks to Mario Moreno)
+FIXED * fixed a bug in tam.mml.mfr() when 'item' is the only
+        facet (thanks to Ulrich Keller; see Example 1, 
+        Model 1d2 in ?tam.mml)
+ADDED * included robust Haebara linking (type="RobHae") in
+        tam.linking()
+ADDED * allowed elimination of items from linking in
+        tam.linking() (requested by Rikkert van der Lans)
+
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: tam.np (2), 
+        tam.mml (1, Model 1d2), tam.linking (1)
 
 
 

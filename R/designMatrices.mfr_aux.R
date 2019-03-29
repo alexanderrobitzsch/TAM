@@ -1,7 +1,8 @@
 ## File Name: designMatrices.mfr_aux.R
-## File Version: 9.20
+## File Version: 9.255
 
-.generate.interactions <- function(X, facets, formulaA, mm ){
+.generate.interactions <- function(X, facets, formulaA, mm )
+{
     d1 <- d0 <- X
     h1 <- sapply( colnames(d1), FUN=function(vv){
                 length(grep( vv, paste(formulaA) )) } )
@@ -227,12 +228,14 @@ if (!vers){
     return(matr)
         }
 #############################################################
-.rename.items2 <- function( vec, itemren ){
+.rename.items2 <- function( vec, itemren )
+{
     cM <- vec
     I <- nrow(itemren)
-
-vers <- TRUE
-#vers <- FALSE
+    vers <- TRUE
+    if (is.null(cM)){
+        vers <- FALSE
+    }
 if (vers){
 v0 <- Sys.time()
     cM0 <- cM

@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mfr_proc_create_design_matrices.R
-## File Version: 0.11
+## File Version: 0.144
 
 tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
     facets, constraint, ndim, Q, A, B, progress, xsi.fixed, resp00, B00,
@@ -7,7 +7,7 @@ tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
 {
     diffKi <- FALSE
     xsi.elim <- NULL
-    var_ki <- stats::var( maxKi )
+    var_ki <- stats::var(maxKi)
     if ( is.na(var_ki) ){
         var_ki <- 0
     }
@@ -29,8 +29,7 @@ tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
         }
     } else {
         design <- designMatrices.mfr(resp, formulaA=formulaA, facets=facets,
-                        constraint=constraint, ndim=ndim,
-                        Q=Q, A=A, B=B, progress=progress)
+                        constraint=constraint, ndim=ndim, Q=Q, A=A, B=B, progress=progress)
     }
     A <- design$A$A.3d.0
     cA <- design$A$A.flat.0
@@ -41,8 +40,7 @@ tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
     gresp <- design$gresp$gresp
     gresp.noStep <- design$gresp$gresp.noStep
     xsi.constr <- design$xsi.constr
-
-    #****************************
+    #*** ...
     items00 <- colnames(resp00)
     I00 <- length(items00)
     D <- dim(B00)[3]

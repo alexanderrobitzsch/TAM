@@ -1,11 +1,11 @@
 ## File Name: tam_mml_mfr_dataprep.R
-## File Version: 9.17
+## File Version: 9.185
 
-############################################################
+#- MFR data preparation
 tam_mml_mfr_dataprep <- function( formulaA, xsi.setnull, B, Q,
         resp, pid, facets, beta.fixed )
 {
-    tA <- stats::terms( formulaA )
+    tA <- stats::terms(formulaA)
     tlab <- attr(tA, "factors")
     # redefine formula
     stlab <- apply( tlab, 1, sum )
@@ -16,8 +16,7 @@ tam_mml_mfr_dataprep <- function( formulaA, xsi.setnull, B, Q,
         cat("--- Created person identifiers.\n")
     }
 
-    #********************
-    # data restructuring for non-identifiable combinations
+    #---- data restructuring for non-identifiable combinations
     facets_labs <- setdiff( rownames(tlab), c("item", "step") )
     # create combination of pid and facets
     FF <- length(facets_labs)
@@ -51,14 +50,15 @@ tam_mml_mfr_dataprep <- function( formulaA, xsi.setnull, B, Q,
     #**** end duplications of identifiers
     # new formula
     formula_update <- paste( c( attr( tA, "term.labels"), nullfacets ), collapse=" + ")
-    formula_update <- stats::as.formula( paste0( "~ ", formula_update ) )
+    inc <- ""
+    if ( attr(tA, "intercept") %in% c(0,-1)){ inc <- " 0 + "}
+    formula_update <- stats::as.formula( paste0( "~ ", inc, formula_update ) )
     xsi.setnull <- unique( c( xsi.setnull, nullfacets ) )
     if ( length(xsi.setnull)==0 ){
         xsi.setnull <- NULL
     }
 
-    #********************
-    # dimensions for beta fixed
+    #-- define dimensions for beta fixed
     D <- 1
     if ( ! is.null(B) ){
         D <- dim(B)[[3]]
@@ -76,7 +76,5 @@ tam_mml_mfr_dataprep <- function( formulaA, xsi.setnull, B, Q,
                 "facets"=facets, "PSF"=PSF, "pid"=pid  )
     return(res)
 }
-############################################################
-
 
 mfr.dataprep <- tam_mml_mfr_dataprep

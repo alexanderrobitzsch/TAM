@@ -1,7 +1,7 @@
 ## File Name: tam_linking_extract_parameters.R
-## File Version: 0.09
+## File Version: 0.14
 
-tam_linking_extract_parameters <- function( tamobj )
+tam_linking_extract_parameters <- function( tamobj, elim_items=NULL )
 {
 
     #--- item parameters
@@ -22,8 +22,11 @@ tam_linking_extract_parameters <- function( tamobj )
     SD <- res$SD
     G <- res$G
     class_tamobj <- res$class_tamobj
+    #--- linking items
+    linking_items <- setdiff(items, elim_items)
     #--- OUTPUT
-    res <- list(A=A, xsi=xsi, guess=guess, AXsi=AXsi, B=B, ndim=ndim, items=items, M=M, SD=SD,
-                    class_tamobj=class_tamobj, G=G)
+    res <- list(A=A, xsi=xsi, guess=guess, AXsi=AXsi, B=B, ndim=ndim, items=items,
+                    elim_items=elim_items, linking_items=linking_items,
+                    M=M, SD=SD, class_tamobj=class_tamobj, G=G)
     return(res)
 }

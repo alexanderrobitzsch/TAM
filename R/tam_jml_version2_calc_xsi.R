@@ -1,5 +1,5 @@
 ## File Name: tam_jml_version2_calc_xsi.R
-## File Version: 9.55
+## File Version: 9.573
 
 tam_jml_version2_calc_xsi <- function ( resp, resp.ind, A, A.0, B, nstud, nitems,
             maxK, convM, ItemScore, theta, xsi, Msteps, pweightsM,
@@ -13,7 +13,15 @@ tam_jml_version2_calc_xsi <- function ( resp, resp.ind, A, A.0, B, nstud, nitems
     AA <- array (0, dim=c(nitems,maxK,maxK))
     eps <- 1E-10
     maxChangeP <- 0
-    errorP <- rep(0, max(est.xsi.index))
+    if ( length(est.xsi.index) > 0 ){
+        lxi <- max(est.xsi.index)
+        est_xsi <- TRUE
+    } else {
+        lxi <- 0
+        est_xsi <- FALSE
+    }
+
+    errorP <- rep(0, lxi)
     convergeAllP <- FALSE
     p_loop <- est.xsi.index
 
@@ -28,7 +36,7 @@ tam_jml_version2_calc_xsi <- function ( resp, resp.ind, A, A.0, B, nstud, nitems
     iterP <- 1
     old_increment <- rep(5,PP1)
     cat(" Item parameter estimation |")
-    while (!convergeAllP & ( iterP <=Msteps ) ) {
+    while (!convergeAllP & ( iterP <=Msteps ) & est_xsi ) {
         res.p <- tam_mml_calc_prob( iIndex=1:nitems, A=A, AXsi=AXsi,
                                 B=B, xsi=xsi, theta=theta[ rp3.sel$caseid,,drop=FALSE ],
                                 nnodes=nrow(rp3.sel), maxK=maxK, recalc=TRUE )
@@ -65,7 +73,6 @@ tam_jml_version2_calc_xsi <- function ( resp, resp.ind, A, A.0, B, nstud, nitems
 
         expected <- rowSums(A_bari, na.rm=TRUE) # sum over items
         err <- rowSums(AA_bari - A_Sq, na.rm=TRUE)   #sum over the items
-
         err_inv <- abs (1/( abs(err) + eps ))
         scores <- ItemScore * ( ! convergeP ) - expected
         increment <-  err_inv*scores

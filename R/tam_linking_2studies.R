@@ -1,8 +1,8 @@
 ## File Name: tam_linking_2studies.R
-## File Version: 0.20
+## File Version: 0.218
 
-tam_linking_2studies <- function( B1, AXsi1, guess1, B2, AXsi2, guess2, theta, wgt, type,
-    M1=0, SD1=1, M2=0, SD2=1, fix.slope=FALSE)
+tam_linking_2studies <- function( B1, AXsi1, guess1, B2, AXsi2, guess2, theta,
+    wgt, type, M1=0, SD1=1, M2=0, SD2=1, fix.slope=FALSE, pow_rob_hae=1)
 {
     CALL <- match.call()
     #--- preliminaries
@@ -10,7 +10,7 @@ tam_linking_2studies <- function( B1, AXsi1, guess1, B2, AXsi2, guess2, theta, w
     K <- ncol(AXsi1)
     I <- nrow(AXsi1)
     #--- define linking function
-    linking_criterion <- function(x){
+    linking_criterion_2studies <- function(x){
         #-- study 1
         probs1 <- tam_irf_3pl(theta=theta, AXsi=AXsi1, B=B1, guess=guess1)
         probs1[ is.na(probs1) ] <- 0
@@ -24,9 +24,12 @@ tam_linking_2studies <- function( B1, AXsi1, guess1, B2, AXsi2, guess2, theta, w
         K <- dim(probs1)[3]
         crit <- 0
         #-- define Haebara criterion function
-        if (type=="Hae"){
+        if (type %in% c("Hae","RobHae") ){
             for (kk in 1:K){
-                crit <- crit + sum( ( probs1[,,kk,drop=FALSE] - probs2[,,kk,drop=FALSE] )^2 * wgt )
+                irf_diff <- probs1[,,kk,drop=FALSE] - probs2[,,kk,drop=FALSE]
+                irf_loss <- tam_linking_function_haebara_loss(x=irf_diff, type=type,
+                                pow_rob_hae=pow_rob_hae)
+                crit <- crit + sum( irf_loss * wgt )
             }
         }
         #-- define Stocking-Lord criterion function
@@ -48,7 +51,7 @@ tam_linking_2studies <- function( B1, AXsi1, guess1, B2, AXsi2, guess2, theta, w
         lower[1] <- 1 - eps
         upper[1] <- 1 + eps
     }
-    optim_result <- stats::optim( par=c(1,0), fn=linking_criterion, method="L-BFGS", lower=lower, upper=upper)
+    optim_result <- stats::optim( par=c(1,0), fn=linking_criterion_2studies, method="L-BFGS", lower=lower, upper=upper)
     #--- transformations
     trafo_items <- optim_result$par
     names(trafo_items) <- c("a","b")

@@ -1,8 +1,8 @@
 ## File Name: designMatrices.mfr.R
-## File Version: 9.39
+## File Version: 9.418
 
 
-#########################################################################
+
 designMatrices.mfr <- function( resp, formulaA=~ item + item:step, facets=NULL,
             constraint=c("cases", "items"), ndim=1,
             Q=NULL, A=NULL, B=NULL, progress=FALSE )
@@ -15,16 +15,16 @@ z0 <- Sys.time()
     ### Basic Information and Initializations
     constraint <- match.arg(constraint)
     ## restructure formulaA
-    t1 <- attr( stats::terms( formulaA ), "term.labels" )
+    t1 <- attr( stats::terms(formulaA), "term.labels" )
     t2 <- intersect( c("item", "step", "item:step"), t1 )
-
-z0 <- tamcat( " ---  z20", z0, tamcat_active )
+    t0 <- attr( stats::terms(formulaA), "intercept" )
+    inc <- ""
+    if ( t0 %in% c(0,-1) ){ inc <- "0 + "}
 
     formulaA <- paste(  paste( c(t2, setdiff(t1, t2 ) ), collapse=" + " ) )
-    formulaA <- stats::as.formula( paste( " ~ ", formulaA ) )
+    formulaA <- stats::as.formula( paste( " ~ ", inc, formulaA ) )
 
-    #********************************
-    # change formate in facets
+    #--- change formate in facets
     FF <- ncol(facets)
     NFF <- nrow(facets)
     if (progress){
@@ -273,7 +273,6 @@ z0 <- tamcat( " --- .rename.items (gresp.noStep)", z0, tamcat_active )
     gresp.noStep <- t( .rename.items3a( matr=t(gresp.noStep), facet.list, I, cols=FALSE,
                                         xsi.table )    )
 z0 <- tamcat( " --- .rename.items (gresp.noStep) facet list", z0, tamcat_active )
-
 
     Q <- .rename.items( matr=Q, itemren, cols=FALSE)
     dimnames(Q)[[1]] <- dimnames(A)[[1]]

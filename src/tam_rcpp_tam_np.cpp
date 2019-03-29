@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_tam_np.cpp
-//// File Version: 0.18
+//// File Version: 0.252
 
 
 
@@ -25,6 +25,7 @@ Rcpp::List tam_rcpp_tam_np_posterior( Rcpp::IntegerMatrix dat2,
     Rcpp::NumericMatrix fqkyi(N,TP);
     fyiqk.fill(1);
     Rcpp::NumericVector nik(I*K1*TP);
+    Rcpp::NumericVector ll_individual(N);
     Rcpp::NumericVector probs(I*K1*TP);
     Rcpp::NumericVector Nik(I*TP);
     nik.fill(0);
@@ -33,6 +34,7 @@ Rcpp::List tam_rcpp_tam_np_posterior( Rcpp::IntegerMatrix dat2,
     double ll = 0;
     double temp = 0;
     double eps0 = 1e-100;
+    double temp1 = 0;
 
     for (int nn=0; nn<N; nn++){
         // likelihood
@@ -49,7 +51,9 @@ Rcpp::List tam_rcpp_tam_np_posterior( Rcpp::IntegerMatrix dat2,
             fqkyi(nn,tt) = fyiqk(nn,tt)*pi_k[tt];
             val += fqkyi(nn,tt);
         }
-        ll += pweights[nn] * std::log( val + eps0 );
+        temp1 = std::log( val + eps0 );
+        ll_individual[nn] = temp1;
+        ll += pweights[nn] * temp1;
         for (int tt=0; tt<TP; tt++){
             fqkyi(nn,tt) /= val;
         }
@@ -57,7 +61,7 @@ Rcpp::List tam_rcpp_tam_np_posterior( Rcpp::IntegerMatrix dat2,
         for (int ii=0; ii<I; ii++){
             if ( dat_resp(nn,ii) ){
                 for (int tt=0; tt<TP; tt++){
-                    temp = pweights[tt]*fqkyi(nn,tt);
+                    temp = pweights[nn]*fqkyi(nn,tt);
                     nik[ ii + dat2(nn,ii)*I + tt*I*K1 ] += temp;
                     Nik[ ii + tt*I ] += temp;
                 }
@@ -86,7 +90,8 @@ Rcpp::List tam_rcpp_tam_np_posterior( Rcpp::IntegerMatrix dat2,
                 Rcpp::Named("ll") = ll,
                 Rcpp::Named("nik") = nik,
                 Rcpp::Named("Nik") = Nik,
-                Rcpp::Named("probs") = probs
+                Rcpp::Named("probs") = probs,
+                Rcpp::Named("ll_individual") = ll_individual
             );
 }
 ///********************************************************************

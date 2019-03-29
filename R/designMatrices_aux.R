@@ -1,5 +1,5 @@
 ## File Name: designMatrices_aux.R
-## File Version: 9.09
+## File Version: 9.103
 
 #############################################################
 print.designMatrices <-
@@ -41,10 +41,10 @@ rownames.design2 <- function(X){
 
 ###########################################################
 ## function .A.matrix
-.A.matrix <-
-  function( resp, formulaA=~ item + item*step, facets=NULL,
+.A.matrix <- function( resp, formulaA=~ item + item*step, facets=NULL,
             constraint=c("cases", "items"), progress=FALSE,
-            maxKi=NULL ){
+            maxKi=NULL )
+{
     z0 <- Sys.time()
     ### redefine facets matrix
     facets0 <- facets
@@ -90,28 +90,6 @@ rownames.design2 <- function(X){
     # no contrasts for items
     nitems <- ncol(resp)
     #    contr.list[["item"]] <- diag(1,nitems)
-    #******
-    ### prepare data-Object for model.matrix()
-    # expand.list <-
-    #   as.vector( c( list( if( "item" %in% fvars ) factor(1:nI),
-    #                       if( "step" %in% fvars ) factor(1:maxK) ),
-    #                 if( length( otherFacets )==1){
-    #                   list( factor( 1:max(facets[, otherFacets]) ) )
-    #                   #                    list( factor( unique( facets[, otherFacets] ) ) )
-    #                 } else if( length( otherFacets ) > 1 ){
-    #                   #                      apply( as.matrix( facets[, otherFacets] ), 2,
-    #                   #                            function(ff){ as.factor(1:max(ff)) }
-    #                   #                                    )
-    #                   # Bug for equal numbers of levels within facets
-    #                   # Correction 2013-09-03
-    #                   sapply( otherFacets, FUN=function(ff){
-    #                     fff <- facets[, ff]
-    #                     as.factor(1:max(fff))
-    #                   }, simplify=FALSE )
-    #                 }
-    #   ) )
-    # TK: 2014-03-12
-    # Consider long vector response matrix and "item" in facets input
     expand.list <- vector(mode="list", length=0)
     if( "item" %in% fvars )         expand.list <- c(expand.list, if("item" %in% names(facet.list)) list(as.factor(sort(unique(facets[,"item"])))) else list(factor(1:nI)) )
     if( "step" %in% fvars )         expand.list <- c(expand.list, if("step" %in% names(facet.list)) list(as.factor(sort(unique(facets[,"step"])))) else list(factor(1:maxK)) )
@@ -142,9 +120,9 @@ rownames.design2 <- function(X){
     if( constraint=="items" ) mm <- mm[,-1]
 
     ############################################################
-    ###*** ARb 2013-03-28
     ### generate all interactions
     xsi.constr <- .generate.interactions(X, facets, formulaA, mm )
+
     ###############################################################
 # cat(" +++  v130" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
     ### Postprocessing

@@ -1,5 +1,5 @@
 ## File Name: summary.tam.linking.R
-## File Version: 0.12
+## File Version: 0.156
 
 summary.tam.linking <- function( object, file=NULL, ...)
 {
@@ -11,14 +11,23 @@ summary.tam.linking <- function( object, file=NULL, ...)
     #- package and R session
     tam_print_package_rsession(pack="TAM")
 
-    cat( paste0("Linking of ", object$NS, " Studies") )
+    cat( paste0("Linking of ", object$NS, " Studies\n") )
     tam_print_call(object$CALL)
 
+    #- computation time
+    tam_print_computation_time(object=object)
+
     type <- object$type
+    cat("method","=", object$method, "\n")
+    cat("type","=", type, " | ")
     if (type=="Hae"){ cat("Haebara Linking Method\n")}
+    if (type=="RobHae"){
+        cat("Robust Haebara Linking Method:")
+        cat(" pow_rob_hae","=", object$pow_rob_hae, "\n")
+    }
     if (type=="SL"){ cat("Stocking Lord Linking Method\n")}
 
-    cat("------------------------------------------------------------\n")
+    cat("\n------------------------------------------------------------\n")
     cat( "Number of Linking Items\n" )
     obji <- object$N_common
     print(obji)

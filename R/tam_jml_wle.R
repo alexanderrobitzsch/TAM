@@ -1,10 +1,8 @@
 ## File Name: tam_jml_wle.R
-## File Version: 9.27
+## File Version: 9.281
 
 
-################################################################
-################################################################
-################################################################
+#-- WLE in JML estimation
 tam_jml_wle <- function ( tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
              PersonScores, theta, xsi, Msteps, WLE=FALSE,
              theta.fixed=NULL, progress=FALSE, output.prob=TRUE )

@@ -1,5 +1,5 @@
 %% File Name: tam.linking.Rd
-%% File Version: 0.58
+%% File Version: 0.614
 
 \name{tam.linking}
 \alias{tam.linking}
@@ -19,20 +19,20 @@ Linking of Fitted Unidimensional Item Response Models in \pkg{TAM}
 Performs linking of fitted unidimensional item response models in \pkg{TAM}
 according to the Stocking-Lord and the Haebara method (Kolen & Brennan, 2014;
 Gonzales & Wiberg, 2017).
-Several studies are linking by a chain of linkings of two studies. The linking
+Several studies are linked by a chain of linkings of two studies. The linking
 of two studies is implemented in the \code{tam_linking_2studies} function.
 }
 
 \usage{
-tam.linking(tamobj_list, type="SL", theta=NULL, wgt=NULL, fix.slope=FALSE,
-   verbose=TRUE)
+tam.linking(tamobj_list, type="Hae", method="chain", pow_rob_hae=1, theta=NULL,
+   wgt=NULL, wgt_sd=2, fix.slope=FALSE, elim_items=NULL, verbose=TRUE)
 
 \method{summary}{tam.linking}(object, file=NULL, \dots)
 
 \method{print}{tam.linking}(x, \dots)
 
 tam_linking_2studies( B1, AXsi1, guess1, B2, AXsi2, guess2, theta, wgt, type,
-    M1=0, SD1=1, M2=0, SD2=1, fix.slope=FALSE)
+    M1=0, SD1=1, M2=0, SD2=1, fix.slope=FALSE, pow_rob_hae=1)
 
 \method{summary}{tam_linking_2studies}(object, file=NULL, \dots)
 
@@ -44,9 +44,12 @@ tam_linking_2studies( B1, AXsi1, guess1, B2, AXsi2, guess2, theta, wgt, type,
 List of fitted objects in \pkg{TAM}
 }
   \item{type}{
-Type of linking method: \code{"SL"} (Stocking-Lord) or \code{"Hae"} (Haebara).
-The default is the Stocking-Lord method.
+Type of linking method: \code{"SL"} (Stocking-Lord), \code{"Hae"} (Haebara) or
+\code{"RobHae"} (robust Haebara). See Details for more information.
+The default is the Haebara linking method.
 }
+\item{method}{Chain linking (\code{"chain"})}
+\item{pow_rob_hae}{Power for robust Heabara linking}
   \item{theta}{
 Grid of \eqn{\theta} points. The default is \code{seq(-6,6,len=101)}.
 }
@@ -54,9 +57,13 @@ Grid of \eqn{\theta} points. The default is \code{seq(-6,6,len=101)}.
 Weights defined for the \code{theta} grid. The default is \cr
 \code{tam_normalize_vector( stats::dnorm( theta, sd=2 ))}.
 }
+\item{wgt_sd}{Standard deviation for \eqn{\theta} grid used for
+linking function}
   \item{fix.slope}{
 Logical indicating whether the slope transformation constant is fixed to 1.
 }
+\item{elim_items}{List of vectors refering to items which should be removed
+from linking (see Model 'lmod2' in Example 1)}
 \item{verbose}{
 Logical indicating progress of linking computation
 }
@@ -77,9 +84,14 @@ Logical indicating progress of linking computation
 }
 
 
-%\details{
-%%  ~~ If necessary, more details than the description above ~~
-%}
+\details{
+The Haebara linking is defined by minimizing the loss function
+\deqn{\sum_i \sum_k \int \left ( P_{ik} ( \theta ) - P_{ik}^\ast ( \theta ) \right )^2  }
+A robustification of Haebara linking minimizes the loss function
+\deqn{\sum_i \sum_k \int \left ( P_{ik} ( \theta ) - P_{ik}^\ast ( \theta ) \right )^p  }
+with a power \eqn{p} (defined in \code{pow_rob_hae}) smaller than 2. He, Cui and
+Osterlind (2015) consider \eqn{p=1}.
+}
 
 
 \value{
@@ -100,6 +112,10 @@ Battauz, M. (2015). \pkg{equateIRT}: An \R package for IRT test equating.
 
 Gonzalez, J., & Wiberg, M. (2017).
 \emph{Applying test equating methods: Using \R}. New York, Springer.
+
+He, Y., Cui, Z., & Osterlind, S. J. (2015). New robust scale transformation methods in the
+presence of outlying common items.
+\emph{Applied Psychological Measurement, 39}(8), 613-626.
 
 Kolen, M. J., & Brennan, R. L. (2014). \emph{Test equating, scaling, and linking:
 Methods and practices}. New York, Springer.
@@ -124,8 +140,9 @@ Linking or equating of item response models can be also conducted with \pkg{plin
 (Weeks, 2010), \pkg{equate}, \pkg{equateIRT} (Battauz, 2015), \pkg{equateMultiple},
 \pkg{kequate} and \pkg{irteQ} packages.
 
-See also the \code{\link[sirt:linking.haberman]{sirt::linking.haberman}} and
-\code{\link[sirt:invariance.alignment]{sirt::invariance.alignment}} functions
+See also the \code{\link[sirt:linking.haberman]{sirt::linking.haberman}},
+\code{\link[sirt:invariance.alignment]{sirt::invariance.alignment}} and 
+\code{\link[sirt:linking.haebara]{sirt::linking.haebara}} functions
 in the \pkg{sirt} package.
 }
 
@@ -175,6 +192,17 @@ wle2 <- TAM::tam.mml.wle(tamobj=arglist)
 # WLE grade 3
 arglist <- list( resp=mod3$resp, B=parm_list[[3]]$B, AXsi=parm_list[[3]]$AXsi )
 wle3 <- TAM::tam.mml.wle(tamobj=arglist)
+
+#-- linking with some eliminated items
+
+# remove three items from first group and two items from third group
+elim_items <- list( c("A1", "E2","F1"), NULL,  c("F1","F2") )
+lmod2 <- TAM::tam.linking(tamobj_list, elim.items=elim.items)
+summary(lmod2)
+
+#-- Robust Haabara linking
+lmod3 <- TAM::tam.linking(tamobj_list, type="RobHae", pow_rob_hae=1)
+summary(lmod3)
 
 #############################################################################
 # EXAMPLE 2: Linking polytomous data with the partial credit model
