@@ -1,5 +1,5 @@
 %% File Name: tam.linking.Rd
-%% File Version: 0.614
+%% File Version: 0.621
 
 \name{tam.linking}
 \alias{tam.linking}
@@ -19,12 +19,15 @@ Linking of Fitted Unidimensional Item Response Models in \pkg{TAM}
 Performs linking of fitted unidimensional item response models in \pkg{TAM}
 according to the Stocking-Lord and the Haebara method (Kolen & Brennan, 2014;
 Gonzales & Wiberg, 2017).
-Several studies are linked by a chain of linkings of two studies. The linking
-of two studies is implemented in the \code{tam_linking_2studies} function.
+Several studies can either be linked by a chain of linkings of two studies
+(\code{method="chain"}) or a joint linking approach (\code{method="joint"})
+comprising all pairwise linkings.
+
+The linking of two studies is implemented in the \code{tam_linking_2studies} function.
 }
 
 \usage{
-tam.linking(tamobj_list, type="Hae", method="chain", pow_rob_hae=1, theta=NULL,
+tam.linking(tamobj_list, type="Hae", method="joint", pow_rob_hae=1, theta=NULL,
    wgt=NULL, wgt_sd=2, fix.slope=FALSE, elim_items=NULL, verbose=TRUE)
 
 \method{summary}{tam.linking}(object, file=NULL, \dots)
@@ -48,7 +51,7 @@ Type of linking method: \code{"SL"} (Stocking-Lord), \code{"Hae"} (Haebara) or
 \code{"RobHae"} (robust Haebara). See Details for more information.
 The default is the Haebara linking method.
 }
-\item{method}{Chain linking (\code{"chain"})}
+\item{method}{Chain linking (\code{"chain"}) or joint linking (\code{"joint"})}
 \item{pow_rob_hae}{Power for robust Heabara linking}
   \item{theta}{
 Grid of \eqn{\theta} points. The default is \code{seq(-6,6,len=101)}.
@@ -141,7 +144,7 @@ Linking or equating of item response models can be also conducted with \pkg{plin
 \pkg{kequate} and \pkg{irteQ} packages.
 
 See also the \code{\link[sirt:linking.haberman]{sirt::linking.haberman}},
-\code{\link[sirt:invariance.alignment]{sirt::invariance.alignment}} and 
+\code{\link[sirt:invariance.alignment]{sirt::invariance.alignment}} and
 \code{\link[sirt:linking.haebara]{sirt::linking.haebara}} functions
 in the \pkg{sirt} package.
 }
@@ -192,6 +195,10 @@ wle2 <- TAM::tam.mml.wle(tamobj=arglist)
 # WLE grade 3
 arglist <- list( resp=mod3$resp, B=parm_list[[3]]$B, AXsi=parm_list[[3]]$AXsi )
 wle3 <- TAM::tam.mml.wle(tamobj=arglist)
+
+# compare result with chain linking
+lmod1b <- TAM::tam.linking(tamobj_list)
+summary(lmod1b)
 
 #-- linking with some eliminated items
 

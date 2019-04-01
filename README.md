@@ -18,9 +18,9 @@ The CRAN version can be installed from within R using:
 utils::install.packages("TAM")
 ```
 
-#### GitHub version `TAM` 3.2-13 (2019-03-29)
+#### GitHub version `TAM` 3.2-16 (2019-04-01)
 
-[![](https://img.shields.io/badge/github%20version-3.2--13-orange.svg)](https://github.com/alexanderrobitzsch/TAM)&#160;&#160;
+[![](https://img.shields.io/badge/github%20version-3.2--16-orange.svg)](https://github.com/alexanderrobitzsch/TAM)&#160;&#160;
 
 The version hosted [here](https://github.com/alexanderrobitzsch/TAM) is the development version of `TAM`. 
 The GitHub version can be installed using `devtools` as:

@@ -1,9 +1,9 @@
 ## File Name: tam_jml_version2.R
-## File Version: 9.501
+## File Version: 9.502
 
 tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
-            bias=TRUE, xsi.fixed=NULL,  xsi.inits=NULL,
-            A=NULL, B=NULL, Q=NULL, ndim=1, pweights=NULL, control=list())
+            bias=TRUE, xsi.fixed=NULL,  xsi.inits=NULL, A=NULL, B=NULL, Q=NULL, 
+            ndim=1, pweights=NULL, control=list())
 {
 
     maxiter <- conv <- progress <- tamobj <- convM <- Msteps <- NULL

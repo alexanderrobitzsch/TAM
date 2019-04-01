@@ -1,7 +1,7 @@
 ## File Name: tam.linking.R
-## File Version: 0.287
+## File Version: 0.333
 
-tam.linking <- function( tamobj_list, type="Hae", method="chain",
+tam.linking <- function( tamobj_list, type="Hae", method="joint",
     pow_rob_hae=1, theta=NULL, wgt=NULL, wgt_sd=2, fix.slope=FALSE,
     elim_items=NULL, verbose=TRUE)
 {
@@ -34,13 +34,20 @@ tam.linking <- function( tamobj_list, type="Hae", method="chain",
         res <- tam_linking_chain( NM=NM, parameters_list=parameters_list,
                     entries=entries, verbose=verbose, linking_args=linking_args,
                     linking_list=linking_list)
-        M_SD <- res$M_SD
-        trafo_persons <- res$trafo_persons
-        trafo_items <- res$trafo_items
-        N_common <- res$N_common
-        linking_list <- res$linking_list
-        parameters_list <- res$parameters_list
     }
+
+    #--- subfunction joint linking
+    if (method=="joint"){
+        res <- tam_linking_joint(NM=NM, parameters_list=parameters_list,
+                    linking_args=linking_args)
+    }
+    # extract output values
+    M_SD <- res$M_SD
+    trafo_persons <- res$trafo_persons
+    trafo_items <- res$trafo_items
+    N_common <- res$N_common
+    linking_list <- res$linking_list
+    parameters_list <- res$parameters_list
 
     #--- OUTPUT
     s2 <- Sys.time()

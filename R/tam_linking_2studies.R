@@ -1,5 +1,5 @@
 ## File Name: tam_linking_2studies.R
-## File Version: 0.218
+## File Version: 0.224
 
 tam_linking_2studies <- function( B1, AXsi1, guess1, B2, AXsi2, guess2, theta,
     wgt, type, M1=0, SD1=1, M2=0, SD2=1, fix.slope=FALSE, pow_rob_hae=1)
@@ -21,26 +21,9 @@ tam_linking_2studies <- function( B1, AXsi1, guess1, B2, AXsi2, guess2, theta,
         theta2[,1] <- a*theta[,1] + b
         probs2 <- tam_irf_3pl(theta=theta2, AXsi=AXsi2, B=B2, guess=guess2)
         probs2[ is.na(probs2) ] <- 0
-        K <- dim(probs1)[3]
-        crit <- 0
-        #-- define Haebara criterion function
-        if (type %in% c("Hae","RobHae") ){
-            for (kk in 1:K){
-                irf_diff <- probs1[,,kk,drop=FALSE] - probs2[,,kk,drop=FALSE]
-                irf_loss <- tam_linking_function_haebara_loss(x=irf_diff, type=type,
-                                pow_rob_hae=pow_rob_hae)
-                crit <- crit + sum( irf_loss * wgt )
-            }
-        }
-        #-- define Stocking-Lord criterion function
-        if (type=="SL"){
-            vcrit <- 0
-            for (kk in 1:K){
-                vcrit <- vcrit + (kk-1)*( probs1[,,kk,drop=FALSE] - probs2[,,kk,drop=FALSE] )
-            }
-            vcrit <- rowSums( vcrit )
-            crit <- sum( vcrit^2 * wgt )
-        }
+        #-- discrepancy function
+        crit <- tam_linking_irf_discrepancy(probs1=probs1, probs2=probs2, wgt=wgt,
+                        type=type, pow_rob_hae=pow_rob_hae)
         return(crit)
     }
     #--- optimization
@@ -51,7 +34,8 @@ tam_linking_2studies <- function( B1, AXsi1, guess1, B2, AXsi2, guess2, theta,
         lower[1] <- 1 - eps
         upper[1] <- 1 + eps
     }
-    optim_result <- stats::optim( par=c(1,0), fn=linking_criterion_2studies, method="L-BFGS", lower=lower, upper=upper)
+    optim_result <- stats::optim( par=c(1,0), fn=linking_criterion_2studies,
+                        method="L-BFGS", lower=lower, upper=upper)
     #--- transformations
     trafo_items <- optim_result$par
     names(trafo_items) <- c("a","b")
