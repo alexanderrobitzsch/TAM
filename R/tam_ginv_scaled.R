@@ -1,5 +1,5 @@
 ## File Name: tam_ginv_scaled.R
-## File Version: 0.04
+## File Version: 0.07
 
 tam_ginv_scaled <- function(x, use_MASS=TRUE)
 {
@@ -7,7 +7,7 @@ tam_ginv_scaled <- function(x, use_MASS=TRUE)
     X1 <- tam_outer(x_diag, x_diag)
     x <- x / X1
     if (use_MASS){
-        xinv <- MASS::ginv( X=x )
+        xinv <- tam_import_MASS_ginv( X=x )
     } else {
         xinv <- tam_ginv(x=x)
     }

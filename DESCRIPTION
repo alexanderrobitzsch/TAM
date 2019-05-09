@@ -1,8 +1,8 @@
 Package: TAM
 Type: Package
 Title: Test Analysis Modules
-Version: 3.2-16
-Date: 2019-04-01 11:22:56
+Version: 3.2-18
+Date: 2019-05-09 17:16:43
 Author:
     Alexander Robitzsch [aut, cre], Thomas Kiefer [aut], Margaret Wu [aut]
 Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
@@ -22,15 +22,18 @@ Description:
 Depends: 
     R (>= 2.15.1), CDM (>= 6.4-19)
 Imports: 
-    coda, graphics, grDevices, MASS, methods, mvtnorm, Rcpp, 
-    sfsmisc, stats, utils
+    graphics, methods, Rcpp, stats, utils
 Suggests: 
-    GPArotation, lattice, lavaan, LSAmitR, miceadds, 
-    plyr, psych, sirt, splines, WrightMap
+    coda, GPArotation, grDevices, lattice, lavaan, MASS, 
+    miceadds, mvtnorm, plyr, psych, sfsmisc, sirt, splines, 
+    WrightMap
 LinkingTo: 
     Rcpp, RcppArmadillo
+Enhances:
+    LSAmitR
 License: GPL (>= 2)
 URL: 
     http://www.edmeasurementsurveys.com/TAM/Tutorials/, 
     https://github.com/alexanderrobitzsch/TAM,
     https://sites.google.com/site/alexanderrobitzsch2/software
+RoxygenNote: 6.1.1

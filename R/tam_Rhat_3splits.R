@@ -1,8 +1,9 @@
 ## File Name: tam_Rhat_3splits.R
-## File Version: 0.03
+## File Version: 0.04
 
 tam_Rhat_3splits <- function(parameter_samples)
 {
+    require_namespace_msg("coda")
     pss <- parameter_samples
     n <- nrow(pss)
     n0 <- floor( n/3 )

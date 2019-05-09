@@ -1,8 +1,9 @@
 ## File Name: tam_pv_mcmc_parameter_summary.R
-## File Version: 0.13
+## File Version: 0.14
 
 tam_pv_mcmc_parameter_summary <- function(parameter_samples, level)
 {
+    require_namespace_msg("coda")
     NP <- ncol(parameter_samples)
     parnames <- colnames(parameter_samples)
     dfr <- data.frame("parm"=parnames,

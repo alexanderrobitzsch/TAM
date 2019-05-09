@@ -1,9 +1,7 @@
 ## File Name: plot.tam.R
-## File Version: 9.27
+## File Version: 9.283
 
-###########################################################
-# plotting tam expected scores curves
-#..........................................................
+#--- plotting tam expected scores curves
 plot.tam <- function(x, items=1:x$nitems, type="expected",
                     low=-3, high=3, ngroups=6, groups_by_item=FALSE,
                     wle=NULL, export=TRUE, export.type="png",
@@ -11,6 +9,7 @@ plot.tam <- function(x, items=1:x$nitems, type="expected",
                     ask=FALSE, package="lattice",
                     fix.devices=TRUE, ...)
 {
+    require_namespace_msg("grDevices")
     if ( package=="lattice"){
         require_namespace_msg("lattice")
     }
@@ -394,7 +393,7 @@ plot.tam <- function(x, items=1:x$nitems, type="expected",
           }
         }
 
-        grDevices::dev.off(dev.cur())
+        grDevices::dev.off(grDevices::dev.cur())
 
       }
 

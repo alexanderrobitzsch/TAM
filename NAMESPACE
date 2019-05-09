@@ -17,8 +17,6 @@ importFrom(graphics, plot)
 importFrom(graphics, points)
 importFrom(graphics, legend)
 importFrom(graphics, lines)
-importFrom(grDevices, dev.off)
-importFrom(grDevices, dev.cur)
 importFrom(methods, is)
 importFrom(Rcpp, evalCpp)
 importFrom(stats, aggregate)
@@ -70,15 +68,8 @@ import(CDM)
 #***************************************************
 #************** Imports ****************************
 
-importFrom(coda, effectiveSize)
-importFrom(coda, gelman.diag)
-importFrom(coda, mcmc)
-importFrom(coda, mcmc.list)
-importFrom(MASS, ginv)
-importFrom(mvtnorm, dmvnorm)
-importFrom(mvtnorm, pmvnorm)
-# importFrom(mvtnorm, rmvnorm)  # replaced by CDM::CDM_rmvnorm
-importFrom(sfsmisc, QUnif)
+
+
 
 
 #***************************************************
@@ -87,13 +78,25 @@ importFrom(sfsmisc, QUnif)
 # TAM::require_namespace_msg("another_package")
 # CDM::CDM_require_namespace("another_package")
 
+
+# importFrom(coda, effectiveSize)
+# importFrom(coda, gelman.diag)
+# importFrom(coda, mcmc)
+# importFrom(coda, mcmc.list)
 # importFrom(GPArotation, oblimin)
+# importFrom(grDevices, dev.off)
+# importFrom(grDevices, dev.cur)
 # importFrom(lavaan, lavaanify)
 # importFrom(lavaan, parameterTable)
 # importFrom(lattice, xyplot)
+# importFrom(MASS, ginv)
 # importFrom(miceadds, datalist2mids)
+# importFrom(mvtnorm, dmvnorm)
+# importFrom(mvtnorm, pmvnorm)
+# importFrom(mvtnorm, rmvnorm)  # replaced by CDM::CDM_rmvnorm
 # importFrom(plyr, ldply)
 # importFrom(psych, schmid)
+# importFrom(sfsmisc, QUnif)
 # importFrom(splines, bs)
 # importFrom(WrightMap, wrightMap)
 

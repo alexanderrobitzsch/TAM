@@ -1,5 +1,5 @@
 ## File Name: tam_mml_update_stochastic_nodes.R
-## File Version: 0.09
+## File Version: 0.11
 
 tam_mml_update_stochastic_nodes <- function(theta0.samp, variance, snodes, beta,
         theta)
@@ -15,7 +15,8 @@ tam_mml_update_stochastic_nodes <- function(theta0.samp, variance, snodes, beta,
     #-- compute new mean for each person
     theta <- beta[ rep(1,snodes), ] + theta0.samp %*% chol(variance)
     # calculate density for all nodes
-    thetasamp.density <- mvtnorm::dmvnorm( theta, mean=as.vector(beta[1,]),    sigma=variance )
+    thetasamp.density <- tam_import_mvtnorm_dmvnorm( theta, mean=as.vector(beta[1,]),
+                                sigma=variance )
     # recalculate theta^2
     theta2 <- tam_theta_sq(theta=theta, is_matrix=TRUE)
     #--- OUTPUT

@@ -1,7 +1,8 @@
 ## File Name: tam_ginv.R
-## File Version: 0.04
+## File Version: 0.05
 
-# covariance stabilization in TAM using generalized inverse, see also MASS::ginv
+# covariance stabilization in TAM using generalized inverse, 
+# see also ginv function from MASS package
 tam_ginv <- function(x, eps=.05)
 {
     svd_var <- svd(x)

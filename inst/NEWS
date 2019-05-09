@@ -41,7 +41,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.2  |  2019-04-01  |  Last: TAM 3.2-16
+VERSIONS TAM 3.2  |  2019-05-09  |  Last: TAM 3.2-18
 -------------------------------------------------------------
 
 ADDED * added S3 method IRT.cv() for cross-validation.

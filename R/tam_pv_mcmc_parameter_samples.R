@@ -1,8 +1,9 @@
 ## File Name: tam_pv_mcmc_parameter_samples.R
-## File Version: 0.18
+## File Version: 0.19
 
 tam_pv_mcmc_parameter_samples <- function(beta_samples, variance_samples)
 {
+    require_namespace_msg("coda")
     #--- parameter_samples
     parameter_samples <- data.frame( beta_samples, variance_samples )
     saved_iter <- attr( beta_samples, "saved_iter")

@@ -1,5 +1,5 @@
 ## File Name: tam_fa_reliability_nonlinearSEM.R
-## File Version: 9.12
+## File Version: 9.13
 
 
 #---- Function calculates reliability from nonlinear SEM
@@ -27,13 +27,14 @@ tam_fa_reliability_nonlinearSEM <- function( facloadings, thresh, cor.factors=NU
                                             matrix( as.vector(facloadings[ii2,]), ncol=1 )
             rho.exp[ii2,ii1] <- rho.exp[ii1,ii2]
             r1 <- rho.exp[ii1,ii2]
-            rel.matrix2[ii1,ii2] <- rel.matrix[ii1,ii2] <- mvtnorm::pmvnorm( c(-Inf,-Inf), pthresh[c(ii1,ii2)],
+            rel.matrix2[ii1,ii2] <- rel.matrix[ii1,ii2] <- tam_import_mvtnorm_pmvnorm( 
+                                c(-Inf,-Inf), pthresh[c(ii1,ii2)],
                                         corr=matrix( c( 1, r1, r1, 1),2,2 ) ) -
                                             stats::pnorm( pthresh[ii1] ) * stats::pnorm( pthresh[ii2] )
             rel.matrix2[ii2,ii1] <- rel.matrix[ii2,ii1] <- rel.matrix[ii1,ii2]
             if (ii1==ii2){
                 r1 <- 1
-                rel.matrix2[ii1,ii2] <- mvtnorm::pmvnorm( c(-Inf,-Inf), pthresh[c(ii1,ii2)],
+                rel.matrix2[ii1,ii2] <- tam_import_mvtnorm_pmvnorm( c(-Inf,-Inf), pthresh[c(ii1,ii2)],
                                     corr=matrix( c( 1, r1, r1, 1),2,2 ) ) -
                                                 stats::pnorm( pthresh[ii1] ) * stats::pnorm( pthresh[ii2] )
                 rel.matrix2[ii2,ii1] <- rel.matrix2[ii1,ii2]

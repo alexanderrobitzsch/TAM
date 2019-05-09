@@ -1,10 +1,10 @@
 ## File Name: tam_dmvnorm.R
-## File Version: 9.16
+## File Version: 9.18
 
-##########################################################################
+# density multivariate normal distribution
 tam_dmvnorm <- function( x, mean, sigma, log=FALSE )
 {
-    # copied and slightly extended from the mvtnorm::dmvnorm function
+    # copied and slightly extended from the dmvnorm function (mvtnorm package)
     mu <- mean
     dec <- chol(sigma)
     muM <- mu
@@ -23,6 +23,5 @@ tam_dmvnorm <- function( x, mean, sigma, log=FALSE )
     if (! log){    logretval <- exp(logretval )}
     return(logretval)
 }
-##########################################################################
 
 dmvnorm_TAM <- tam_dmvnorm

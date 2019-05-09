@@ -1,5 +1,5 @@
 ## File Name: IRTLikelihood.cfa.R
-## File Version: 9.18
+## File Version: 9.19
 
 #---- IRTLikelihood for fitted CFA model
 IRTLikelihood.cfa <- function( data, cfaobj=NULL,
@@ -25,7 +25,7 @@ IRTLikelihood.cfa <- function( data, cfaobj=NULL,
         }
         theta0 <- snodes.adj * seq(-3,3,len=21)
         if (D>2){
-            r1 <- sfsmisc::QUnif(n=snodes, min=0, max=1, n.min=1, p=D, leap=409)
+            r1 <- sirt_import_sfsmisc_QUnif(n=snodes, min=0, max=1, n.min=1, p=D, leap=409)
             theta <- stats::qnorm( r1 )
             for ( dd in 1:D){
                 theta[,dd] <- snodes.adj*theta[,dd]
