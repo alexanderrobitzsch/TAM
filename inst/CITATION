@@ -23,6 +23,7 @@ person_list2 <- "Robitzsch, A., Kiefer, T., & Wu, M."
 citHeader( paste0( "To cite the '", pkg , "' package in publications use:") )
 
 citEntry(entry="Manual",
+         key = tolower(pkg),
          title = paste0( pkg , ": " , pkg_title ) ,
          author = personList( person_list1 ),
          year = year,
