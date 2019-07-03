@@ -1,5 +1,5 @@
 ## File Name: tam_mml_3pl_ic.R
-## File Version: 9.23
+## File Version: 9.24
 
 
 ##################################
@@ -19,18 +19,18 @@ tam_mml_3pl_ic <- function( nstud, deviance, xsi, xsi.fixed,
     # xsi parameters
     ic$Nparsxsi <- length(xsi)
     if ( ! is.null( xsi.fixed) ){
-            ic$Nparsxsi <- ic$Nparsxsi - nrow(xsi.fixed )
+            ic$Nparsxsi <- ic$Nparsxsi - nrow(xsi.fixed)
     }
     # B slopes
     ic$NparsB <- 0
     if ( est.some.slopes ){
         ic$NparsB <- length(gammaslope)
         if ( ! is.null(gammaslope.constr.V) ){
-            ic$NparsB <- ic$NparsB - ncol(gammaslope.constr.V)
+            ic$NparsB <- max(0, ic$NparsB - ncol(gammaslope.constr.V))
         }
     }
     if ( ! is.null( gammaslope.fixed ) ){
-        ic$NparsB <- ic$NparsB - nrow(gammaslope.fixed )
+        ic$NparsB <- max(0,ic$NparsB - nrow(gammaslope.fixed ))
     }
     ic$NparsB <- ic$NparsB - gammaslope.constr.Npars
     if ( ! is.null(gammaslope.center.index ) ){

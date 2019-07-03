@@ -1,5 +1,5 @@
 ## File Name: summary.msq.itemfit.R
-## File Version: 9.25
+## File Version: 9.261
 
 #**** summary for msq.itemfit
 summary.msq.itemfit <- function( object, file=NULL,  ... )
@@ -15,7 +15,7 @@ summary.msq.itemfit <- function( object, file=NULL,  ... )
     #- computation time
     tam_print_computation_time(object=object)
 
-    cat("MSQ item fit statitics (Function 'msq.itemfit')")
+    cat("MSQ item fit statitics (Function 'msq.itemfit')\n")
 
     #--- print call
     tam_print_call(object$CALL)

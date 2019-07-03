@@ -41,7 +41,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.2  |  2019-05-09  |  Last: TAM 3.2-18
+VERSIONS TAM 3.2  |  2019-07-03  |  Last: TAM 3.2-21
 -------------------------------------------------------------
 
 ADDED * added S3 method IRT.cv() for cross-validation.
@@ -58,7 +58,10 @@ ADDED * allowed elimination of items from linking in
 ADDED * included joint linking approach in tam.linking()
         in addition to chain linking approach (see argument
         method="joint"). Changed default to method="joint".
-      
+FIXED * fixed a bug in counting number of estimated parameters
+        in case of constraints for gamma parameters in
+        tam.mml.3pl() function (thanks to Mirka Henniger)
+
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: tam.np (2), 
