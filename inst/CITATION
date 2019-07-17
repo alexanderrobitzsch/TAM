@@ -5,7 +5,7 @@ vers <- paste("R package version", meta$Version)
 pkg <- meta$Package
 
 #*** package and its name
-pkg_title <- "Test analysis modules"
+pkg_title <- meta$Title
 
 #*** list of authors
 person_list1 <- c(

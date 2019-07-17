@@ -42,10 +42,13 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.3  |  2019-07-04  |  Last: TAM 3.3-1
+VERSIONS TAM 3.3  |  2019-07-17  |  Last: TAM 3.3-4
 -------------------------------------------------------------
 
-xxx   * ...
+FIXED * fixed bug in processing of design matrices 
+        (thank to Andrea Cantieni; issue #6)
+FIXED * fixed bug in OCLA application caused by 
+        TAM:::tam_dtnorm() (thank to Andrea Cantieni; issue #7)
 
 
 DATA  * included/modified datasets: ---

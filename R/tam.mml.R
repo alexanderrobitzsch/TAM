@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.789
+## File Version: 9.795
 
 tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
@@ -72,7 +72,6 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
         irtmodel <- "PCM2"
     }
 
-
     if (( irtmodel=="PCM2" ) & ( is.null(A)) ){
       A <- .A.PCM2( resp, constraint=constraint, Q=Q  )
     }
@@ -87,7 +86,7 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     #*****
     nstud1 <- sum(1*( rowSums( 1 - is.na(resp) ) > 0 ))
 
-    if ( is.null( pweights) ){
+    if ( is.null(pweights) ){
       pweights <- rep(1,nstud) # weights of response pattern
     }
     if (progress){
@@ -134,7 +133,7 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     maxKi <- NULL
     if ( ! (item.elim ) ){
         maxKi <- rep( maxK - 1, ncol(resp) )
-                }
+    }
     #***
     design <- designMatrices( modeltype=modeltype, maxKi=maxKi, resp=resp,
                               A=A, B=B, Q=Q, R=R, ndim=ndim, constraint=constraint )
@@ -154,7 +153,7 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     #   #---end 2PL---
 
     #--- xsi parameter index
-    res <- tam_mml_proc_est_xsi_index(A, xsi.inits, xsi.fixed)
+    res <- tam_mml_proc_est_xsi_index(A=A, xsi.inits=xsi.inits, xsi.fixed=xsi.fixed)
     np <- res$np
     xsi <- res$xsi
     est.xsi.index0 <- est.xsi.index <- res$est.xsi.index

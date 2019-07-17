@@ -1,17 +1,17 @@
 ## File Name: designMatrices.R
-## File Version: 9.17
-designMatrices <-
-  function( modeltype=c( "PCM", "RSM" ),
-            maxKi=NULL, resp=resp, ndim=1,
-            A=NULL, B=NULL, Q=NULL, R=NULL,
-            constraint="cases", ... ){
+## File Version: 9.188
 
+designMatrices <- function( modeltype=c( "PCM", "RSM" ),
+            maxKi=NULL, resp=resp, ndim=1, A=NULL, B=NULL, Q=NULL, R=NULL,
+            constraint="cases", ... )
+{
+
+    A0 <- A
     modeltype <- match.arg(modeltype)
-#a0 <- Sys.time();
     I <- ncol(resp)
     if ( ! is.null(A) ){
         constraint <- "cases"
-                    }
+    }
 
     A.draft <- A    # if ! is.null(A), it is necessary
 
@@ -20,7 +20,7 @@ designMatrices <-
         resp[is.na(resp)] <- 0
         maxKi <- apply( resp, 2, max, na.rm=TRUE )
       } else
-        #... TK: 24.07.2012 -- check
+
         if( !is.null(A) ){
           np <- ncol(A)
           maxKi <- -colSums(A)
@@ -106,7 +106,6 @@ designMatrices <-
         A.draft[ ind.0 ] <- 0
         A.draft[ ind.1 ] <- -1
 
-
         # item labels for Partial Credit Model
         l0 <- unlist(sapply( maxKi, FUN=function(cc){ seq( 1, cc)  } ))
         l1 <- paste( rep( colnames(resp), maxKi), "_Cat", l0, sep="" )
@@ -118,7 +117,6 @@ designMatrices <-
         }
 
       }
-
     }
 
     #*****************************
@@ -127,8 +125,8 @@ designMatrices <-
     if ( constraint=="items"){
         unidim <- is.null(Q)
         if ( ! is.null(Q) ){
-              unidim <- ncol(Q)==1
-                            }
+            unidim <- ncol(Q)==1
+        }
         #***** dichotomous items unidimensionality
         if ( ( maxK==1 ) & (unidim ) ){
             I <- dim(A.draft)[3]
@@ -151,38 +149,35 @@ designMatrices <-
                 }
 
 #cat("g300"); a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
+
     if(modeltype=="RSM"){
-      if( is.null(A) )
-#        return( warning("Not enough information to generate design matrices") )
-#          nP <- sum(maxKi) + length(rater)
-    Nxsi <- I + maxK - 1
-    Kitem <- maxKi+1
-    A <- array( 0, dim=c( I, maxK+1, Nxsi ) )
-    vv <- 1
-    for (ii in 1:I){
-        A[ ii, 2:Kitem[ii], vv ] <- - ( 2:Kitem[ii] - 1 )
-        if ( Kitem[ii] <=maxK ){
-            A[ ii, ( Kitem[ii] + 1 ):(maxK+1),  ] <- NA
-                            }
-        vv <- vv+1
-                    }
-    Kitem2 <- maxK+1 + 0*Kitem
-    for (ii in 1:I){
-      if ( Kitem2[ii] > 2 ){
-        for (kk in 1:(Kitem2[ii] - 2) ){
-            A[ ii, 1 + ( kk:(Kitem2[ii]-2) ), I+kk ] <- - 1
-                        }
-                    }
+        Nxsi <- I + maxK - 1
+        Kitem <- maxKi+1
+        A <- array( 0, dim=c( I, maxK+1, Nxsi ) )
+        vv <- 1
+        for (ii in 1:I){
+            A[ ii, 2:Kitem[ii], vv ] <- - ( 2:Kitem[ii] - 1 )
+            if ( Kitem[ii] <=maxK ){
+                A[ ii, ( Kitem[ii] + 1 ):(maxK+1),  ] <- NA
+            }
+            vv <- vv+1
+        }
+        Kitem2 <- maxK+1 + 0*Kitem
+        for (ii in 1:I){
+            if ( Kitem2[ii] > 2 ){
+                for (kk in 1:(Kitem2[ii] - 2) ){
+                    A[ ii, 1 + ( kk:(Kitem2[ii]-2) ), I+kk ] <- - 1
                 }
-
-    dimnames(A)[[1]] <- colnames(resp)
-    vars <- colnames(resp)
-    vars <- c(vars, paste0( "Cat", 1:(maxK-1) ) )
-    dimnames(A)[[3]] <- vars
-    A.draft <- A
-
-
-
+            }
+        }
+        dimnames(A)[[1]] <- colnames(resp)
+        vars <- colnames(resp)
+        vars <- c(vars, paste0( "Cat", 1:(maxK-1) ) )
+        dimnames(A)[[3]] <- vars
+        A.draft <- A
+    }
+    if ( ! is.null(A0)){
+        A.draft <- A
     }
 
     flatA <- t( matrix( aperm( A.draft, c(2,1,3) ), nrow=dim(A.draft)[3], byrow=TRUE ) )
