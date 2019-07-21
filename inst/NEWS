@@ -42,13 +42,16 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.3  |  2019-07-17  |  Last: TAM 3.3-4
+VERSIONS TAM 3.3  |  2019-07-21  |  Last: TAM 3.3-6
 -------------------------------------------------------------
 
 FIXED * fixed bug in processing of design matrices 
         (thank to Andrea Cantieni; issue #6)
 FIXED * fixed bug in OCLA application caused by 
         TAM:::tam_dtnorm() (thank to Andrea Cantieni; issue #7)
+FIXED * fixed a bug in tam.se() for Quasi Monte Carlo Integration
+        (thanks to Hansjoerg Plieninger, issue #8; also
+        reported by Mirka Henninger and Markus Schreiner)
 
 
 DATA  * included/modified datasets: ---

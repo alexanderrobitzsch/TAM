@@ -1,5 +1,5 @@
 ## File Name: tam_mml_se_quick.R
-## File Version: 0.43
+## File Version: 0.45
 
 
 tam_mml_se_quick <- function( tamobj, numdiff.parm=.001, item_pars=TRUE )
@@ -64,7 +64,8 @@ tam_mml_se_quick <- function( tamobj, numdiff.parm=.001, item_pars=TRUE )
                 #-- compute likelihood
                 ll[,mm] <- tam_mml_se_quick_likelihood( nitems=nitems, A=A, AXsi=AXsi, B=B, xsi=xsi0,
                             theta=theta, nnodes=nnodes, maxK=maxK, gwt=gwt0a, resp=resp,
-                            resp.ind.list=resp.ind.list, snodes=snodes, thetawidth=thetawidth )
+                            resp.ind.list=resp.ind.list, snodes=snodes, thetawidth=thetawidth,
+                            thetasamp.density=tamobj$thetasamp.density )
             }
             info_pp <- tam_mml_se_quick_difference_quotient(ll=ll, h=h, pweights=pweights )
             se.xsi[pp] <- sqrt( - 1 / info_pp )
@@ -124,7 +125,8 @@ tam_mml_se_quick <- function( tamobj, numdiff.parm=.001, item_pars=TRUE )
                 #-- compute likelihood
                 ll[,mm] <- tam_mml_se_quick_likelihood( nitems=nitems, A=A, AXsi=AXsi, B=B0, xsi=xsi,
                             theta=theta, nnodes=nnodes, maxK=maxK, gwt=gwt0a, resp=resp,
-                            resp.ind.list=resp.ind.list, snodes=snodes, thetawidth=thetawidth )
+                            resp.ind.list=resp.ind.list, snodes=snodes, thetawidth=thetawidth,
+                            thetasamp.density=tamobj$thetasamp.density  )
             }
             info_pp <- tam_mml_se_quick_difference_quotient(ll=ll, h=h, pweights=pweights )
             if(irtmodel %in% c("2PL", "GPCM", "2PL.groups")){
