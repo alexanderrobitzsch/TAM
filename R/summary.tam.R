@@ -1,5 +1,5 @@
 ## File Name: summary.tam.R
-## File Version: 9.585
+## File Version: 9.586
 
 #****** summary for tam object
 summary.tam <- function( object, file=NULL, ...)
@@ -113,7 +113,7 @@ summary.tam <- function( object, file=NULL, ...)
         cat(sdisplay)
         cat("Item Parameters -A*Xsi\n")
         obji <- object$item
-        tam_round_data_frame_print(obji=obji, from=2, to=ncol(obji), digits=3, rownames_null=FALSE)
+        tam_round_data_frame_print(obji=obji, from=2, to=ncol(obji), digits=3, rownames_null=TRUE)
 
         # print xsi parameters if
         if( ! is.null( object$formulaA)  ){

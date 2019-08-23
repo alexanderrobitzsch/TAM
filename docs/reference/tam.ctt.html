@@ -64,7 +64,7 @@ theory." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.3-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.4-vv</span>
       </span>
     </div>
 
@@ -114,7 +114,7 @@ theory.</p>
 
     <pre class="usage"><span class='fu'>tam.ctt</span>(<span class='no'>resp</span>, <span class='kw'>wlescore</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>pvscores</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>group</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 <span class='fu'>tam.ctt2</span>(<span class='no'>resp</span>, <span class='kw'>wlescore</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>group</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>allocate</span><span class='kw'>=</span><span class='fl'>30</span>, <span class='kw'>progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
-<span class='fu'>tam.ctt3</span>(<span class='no'>resp</span>, <span class='kw'>wlescore</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>group</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>allocate</span><span class='kw'>=</span><span class='fl'>30</span>, <span class='kw'>progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
+<span class='fu'>tam.ctt3</span>(<span class='no'>resp</span>, <span class='kw'>wlescore</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>group</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>allocate</span><span class='kw'>=</span><span class='fl'>30</span>, <span class='kw'>progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>max_ncat</span><span class='kw'>=</span><span class='fl'>30</span>)
 
 <span class='fu'>plotctt</span>( <span class='no'>resp</span>, <span class='no'>theta</span>, <span class='kw'>Ncuts</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>ask</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>col.list</span><span class='kw'>=</span><span class='kw'>NULL</span>,
        <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"lattice"</span>, <span class='no'>...</span> )</pre>
@@ -152,6 +152,11 @@ should be displayed.</p></td>
       <td><p>Average number of categories per item. This argument is just
     used for matrix size allocations. If an error is produced, use
     a sufficiently higher number.</p></td>
+    </tr>
+    <tr>
+      <th>max_ncat</th>
+      <td><p>Maximum number of categories of variables for which
+   frequency tables should be computed</p></td>
     </tr>
     <tr>
       <th>theta</th>

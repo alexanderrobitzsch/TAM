@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_ctt.cpp
-//// File Version: 3.20
+//// File Version: 3.21
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -221,20 +221,19 @@ Rcpp::List tam_rcpp_ctt3( Rcpp::CharacterMatrix TDAT,
                 // calculate WLE mean total
                 mw[cc] = ( wles1[cc] + wles3[cc] ) / des( cc1,1);
                 // calculate SD total
-                des(cc1,8) = std::sqrt( ( wles2[cc] + wles4[cc] - des(cc1,1)*pow( mw[cc], 2.0 )  )/ ( des(cc1,1) - 1 + eps)  );
+                des(cc1,8) = std::sqrt( ( wles2[cc] + wles4[cc] - des(cc1,1)*std::pow( mw[cc], 2.0))/(des(cc1,1) - 1 + eps));
                 // calculate WLE means
                 des(cc1,4) = des(cc1,4) / des(cc1,3);  // M at category cc1
                 des(cc1,5) = des(cc1,5) / des(cc1,2);  // M not at category cc1
                 // calculate SD of WLE
-                des(cc1,6) = std::sqrt( ( des(cc1,6) - des(cc1,3)*std::pow( des(cc1,4), 2.0 )  ) / ( des(cc1,3) - 1 +eps ) );
+                des(cc1,6) = std::sqrt( ( des(cc1,6) - des(cc1,3)*std::pow( des(cc1,4), 2.0 ))/( des(cc1,3) - 1 +eps ) );
                 // calculate point-biserial correlation
-                des(cc1,7) =  ( des(cc1,4) - des(cc1,5) )/des(cc1,8) * std::sqrt( des(cc1,2)*des(cc1,3) /
+                des(cc1,7) = ( des(cc1,4) - des(cc1,5) )/des(cc1,8) * std::sqrt( des(cc1,2)*des(cc1,3) /
                                 ( des(cc1,1) * ( des(cc1,1)-1 + eps ) ) );
             }
         }
         // increment start index
         start_cc = start_cc + NC_ii;
-
         // print progress
         if ( ( LP>1) & ( pp<LP) ){
             if ( ii == prg[pp] ){
