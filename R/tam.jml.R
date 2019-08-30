@@ -1,5 +1,5 @@
 ## File Name: tam.jml.R
-## File Version: 9.353
+## File Version: 9.355
 
 
 tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
@@ -16,7 +16,6 @@ tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
     if ( ! is.null(theta.fixed) ){
         version <- 1
     }
-
     #**** version=1
     if (version==1){
         res <- tam_jml_version1( resp=resp, group=group, adj=adj,
@@ -31,5 +30,6 @@ tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
                     A=A, B=B, Q=Q, ndim=ndim, pweights=pweights, control=control  )
     }
     res$CALL <- CALL
+    res$resp <- resp
     return(res)
 }

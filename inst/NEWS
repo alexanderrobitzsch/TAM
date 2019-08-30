@@ -42,10 +42,11 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.4  |  2019-08-23  |  Last: TAM 3.4-1
+VERSIONS TAM 3.4  |  2019-08-30  |  Last: TAM 3.4-2
 -------------------------------------------------------------
 
-xxx   * ...
+NOTE  * corrected output 'resp' in tam.jml() in case of missing
+        values (thanks to William Auty)
 
 
 DATA  * included/modified datasets: ---
