@@ -1,5 +1,5 @@
 ## File Name: tam.fa.R
-## File Version: 9.24
+## File Version: 9.254
 
 
 #---- Exploratory Factor Analysis and Bifactor Models
@@ -37,8 +37,7 @@ tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
     if ( !is.null(con$seed)){ set.seed( con$seed )     }
     maxK <- max(resp,na.rm=TRUE)
 
-    #************************************************************
-    # irtmodel=bifactor 1 or bifactor2
+    #--- irtmodel=bifactor 1 or bifactor2
     if (irtmodel %in% c("bifactor1","bifactor2")){
         dim.names <- sort( unique(paste(dims) ))
         dim.names <- dim.names[ dim.names!="NA" ]
@@ -63,10 +62,8 @@ tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
             variance.fixed <- rbind( variance.fixed, v1 )
         }
     }
-    #************************************
 
-    #************************************************************
-    # irtmodel=efa
+    #--- irtmodel=efa
     # exploratory factor analysis
     if (irtmodel %in% c("efa")){
         D <- nfactors
@@ -86,15 +83,12 @@ tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
             variance.fixed <- rbind( variance.fixed, v1 )
         }
     }
-    #************************************
 
-    #*****************************
-    # define item response model
+    #--- define item response model
     irtmodel2 <- if (maxK==1){"2PL" } else {"GPCM" }
 
 
-    #*****************************************************
-    # estimate model
+    #--- estimate model
     if ( irtmodel %in% c("bifactor2","efa") ){
         res <- tam.mml.2pl( resp=resp, Q=Q, irtmodel=irtmodel2,
                     variance.fixed=variance.fixed, pid=pid,

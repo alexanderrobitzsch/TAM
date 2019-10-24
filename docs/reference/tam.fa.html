@@ -275,6 +275,25 @@ a wrapper for <code><a href='tam.mml.html'>tam.mml.2pl</a></code> and <code><a h
 <span class='no'>dims1</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>5</span>)] <span class='kw'>&lt;-</span> <span class='fl'>NA</span>
 <span class='no'>mod1d</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tam.fa'>tam.fa</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor2"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims1</span> )
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod1d</span>)
+
+<span class='co'>#############################################################################</span>
+<span class='co'># EXAMPLE 2: Polytomous data</span>
+<span class='co'>#############################################################################</span>
+
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>data.timssAusTwn.scored</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"TAM"</span>)
+<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.timssAusTwn.scored</span>
+<span class='no'>resp</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>[, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/grep'>grep</a></span>(<span class='st'>"M0"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>dat</span>))]
+
+<span class='co'>#***</span>
+<span class='co'># Model 1a: Rasch testlet model with 2 testlets</span>
+<span class='no'>dims</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>( <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>1</span>,<span class='fl'>5</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>2</span>,<span class='fl'>6</span>))
+<span class='no'>mod1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tam.fa'>tam.fa</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor1"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims</span> )
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod1a</span>)
+
+<span class='co'>#***</span>
+<span class='co'># Model 1b: Bifactor model</span>
+<span class='no'>mod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tam.fa'>tam.fa</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor2"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims</span> )
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod1b</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

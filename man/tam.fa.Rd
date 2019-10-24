@@ -1,5 +1,5 @@
 %% File Name: tam.fa.Rd
-%% File Version: 2.21
+%% File Version: 2.232
 
 \name{tam.fa}
 \alias{tam.fa}
@@ -217,6 +217,25 @@ dims1 <- dims
 dims1[c(3,5)] <- NA
 mod1d <- TAM::tam.fa( resp=resp, irtmodel="bifactor2", dims=dims1 )
 summary(mod1d)
+
+#############################################################################
+# EXAMPLE 2: Polytomous data
+#############################################################################
+
+data(data.timssAusTwn.scored, package="TAM")
+dat <- data.timssAusTwn.scored
+resp <- dat[, grep("M0", colnames(dat))]
+
+#***
+# Model 1a: Rasch testlet model with 2 testlets
+dims <- c( rep(1,5), rep(2,6))
+mod1a <- TAM::tam.fa( resp=resp, irtmodel="bifactor1", dims=dims )
+summary(mod1a)
+
+#***
+# Model 1b: Bifactor model
+mod1b <- TAM::tam.fa( resp=resp, irtmodel="bifactor2", dims=dims )
+summary(mod1b)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

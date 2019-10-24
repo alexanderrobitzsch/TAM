@@ -24,7 +24,7 @@ A. Robitzsch, T. Kiefer, & M. Wu
 mailto:
 -------
 Alexander Robitzsch
-robitzsch@ipn.uni-kiel.de
+robitzsch@leibniz-ipn.de
 
 For reporting a bug, please always provide a reproducible R script 
 and (if necessary) a corresponding dataset.
@@ -42,15 +42,18 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.4  |  2019-08-30  |  Last: TAM 3.4-2
+VERSIONS TAM 3.4  |  2019-10-24  |  Last: TAM 3.4-5
 -------------------------------------------------------------
 
 NOTE  * corrected output 'resp' in tam.jml() in case of missing
         values (thanks to William Auty)
+FIXED * fixed incorrect number of estimated parameters for 
+        multidimensional polytomous data in tam.fa() and
+        tam.mml.2pl() (thanks to Kuan-Yu Jin)
 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: tam.fa (2)
 
 
 

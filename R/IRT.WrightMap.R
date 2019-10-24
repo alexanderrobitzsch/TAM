@@ -1,5 +1,5 @@
 ## File Name: IRT.WrightMap.R
-## File Version: 9.13
+## File Version: 9.14
 
 
 
@@ -8,15 +8,14 @@
 # IRT.WrightMap <- function(object, prob.lvl=.5, type="PV", ...) {
 IRT.WrightMap <- function(object, ...) {
     UseMethod("IRT.WrightMap")
- }
+}
 
 
 
 IRT.WrightMap.IRT.threshold <- function( object, label.items=NULL, ... )
 {
     require_namespace_msg("WrightMap")
-    #----------------------
-    # create trait distribution
+    #--- create trait distribution
     N1 <- 20000
     thresh1 <- object
     theta <- attr(thresh1, "theta")
@@ -24,8 +23,7 @@ IRT.WrightMap.IRT.threshold <- function( object, label.items=NULL, ... )
     TP <- nrow(theta)
     ind <- round( ind[,1] )
     theta <- theta[ rep( 1:TP, ind ), ]
-    #--------------------------
-    # input for WrightMap function
+    #--- input for WrightMap function
     thresh0 <- as.matrix(thresh1)
     class(thresh0) <- NULL
     attr(thresh0,"prob.theta") <- attr(thresh0,"theta") <- NULL
