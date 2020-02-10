@@ -35,7 +35,7 @@ tam_mml_mstep_intercept <- function( A, xsi, AXsi, B, theta, nnodes, maxK,
                     indexIP.list2=indexIP.list2, Avector=Avector, ItemScore=ItemScore, xsi.fixed=xsi.fixed,
                     eps=eps, old_increment=old_increment, convM=convM, fac.oldxsi=fac.oldxsi,
                     oldxsi=oldxsi, trim_increment=trim_increment, progress=progress, np=np,
-                    increments_msteps=increments_msteps, maxcat=maxcat, use_rcpp=TRUE )
+                    increments_msteps=increments_msteps, maxcat=maxcat, use_rcpp=F )
     }
     xsi <- res$xsi
     Miter <- res$Miter

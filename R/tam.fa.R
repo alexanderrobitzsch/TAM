@@ -4,7 +4,7 @@
 
 #---- Exploratory Factor Analysis and Bifactor Models
 tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
-            pid=NULL,pweights=NULL, verbose=TRUE, control=list() )
+            pid=NULL,pweights=NULL, verbose=TRUE, control=list(), constraint="cases" )
 {
     require_namespace_msg("GPArotation")
     require_namespace_msg("psych")
@@ -96,7 +96,7 @@ tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
     }
     if ( irtmodel=="bifactor1"){
         res <- tam.mml( resp=resp, Q=Q, variance.fixed=variance.fixed, pid=pid,
-                    pweights=pweights, control=con )
+                    pweights=pweights, control=con , constraint=constraint)
     }
     #****
     # calculate standardized loadings
