@@ -1,11 +1,11 @@
 Package: TAM
 Type: Package
 Title: Test Analysis Modules
-Version: 3.4-5
-Date: 2019-10-24 15:51:29
+Version: 3.4-15
+Date: 2020-02-14 17:10:51
 Author:
     Alexander Robitzsch [aut, cre], Thomas Kiefer [aut], Margaret Wu [aut]
-Maintainer: Alexander Robitzsch <robitzsch@leibniz-ipn.de>
+Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
 Description: 
     Includes marginal maximum likelihood estimation and joint maximum
     likelihood estimation for unidimensional and multidimensional 
@@ -36,4 +36,3 @@ URL:
     http://www.edmeasurementsurveys.com/TAM/Tutorials/, 
     https://github.com/alexanderrobitzsch/TAM,
     https://sites.google.com/site/alexanderrobitzsch2/software
-RoxygenNote: 6.1.1

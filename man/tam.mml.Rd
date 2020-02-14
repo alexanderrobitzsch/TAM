@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9861
+%% File Version: 2.9862
 
 \name{tam.mml}
 
@@ -1037,7 +1037,8 @@ mod6_1$B    # for every category a separate slope parameter is estimated
 
 # reestimate the model with fixed item parameters
 mod6_1a <- TAM::tam.mml.2pl( resp=data.gpcm, irtmodel="2PL",
-       xsi.fixed=mod6_1$xsi.fixed.estimated,  B.fixed=mod6_1$B.fixed.estimated )
+       xsi.fixed=mod6_1$xsi.fixed.estimated,  B.fixed=mod6_1$B.fixed.estimated,
+       est.variance=TRUE )
 
 # estimate the model with initial item parameters from mod6_1
 mod6_1b <- TAM::tam.mml.2pl( resp=data.gpcm, irtmodel="2PL",

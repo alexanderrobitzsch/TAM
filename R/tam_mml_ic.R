@@ -1,5 +1,5 @@
 ## File Name: tam_mml_ic.R
-## File Version: 9.194
+## File Version: 9.196
 
 
 #--- information criteria
@@ -57,7 +57,7 @@ tam_mml_ic <- function( nstud, deviance, xsi, xsi.fixed,
         if ( irtmodel=="GPCM" ){
             nB <- length(B.fixed[ B.fixed[,2]==2,1])
         }
-        ic$NparsB <- ic$NparsB - nB
+        ic$NparsB <- max(ic$NparsB - nB, 0)
     }
 
     # beta regression parameters
@@ -70,7 +70,7 @@ tam_mml_ic <- function( nstud, deviance, xsi, xsi.fixed,
     if ( ! est.variance ){
         ic$Nparscov <- ic$Nparscov - ndim
     }
-    if ( ! is.null( variance.fixed) ){
+    if ( ! is.null(variance.fixed) ){
         ic$Nparscov <- max(0, ic$Nparscov - nrow(variance.fixed ) )
     }
 

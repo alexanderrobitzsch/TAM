@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Expected Values and Predicted Probabilities for Fitted <span class="pkg">TAM</span> Models — predict • TAM</title>
+<title>Downcoding an Item Response Dataset — tam_downcode • TAM</title>
 
 
 <!-- jquery -->
@@ -35,11 +35,9 @@
 
 
 
-<meta property="og:title" content="Expected Values and Predicted Probabilities for Fitted <span class="pkg">TAM</span> Models — predict" />
-<meta property="og:description" content="Extracts predicted values from the posterior distribution for models
-fitted in TAM.
-See CDM::predict
-for more details." />
+<meta property="og:title" content="Downcoding an Item Response Dataset — tam_downcode" />
+<meta property="og:description" content="Recodes item categories in a data frame such that each item has values
+\(0,1,\ldots,K_i\)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,58 +106,55 @@ for more details." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Expected Values and Predicted Probabilities for Fitted <span class="pkg">TAM</span> Models</h1>
+    <h1>Downcoding an Item Response Dataset</h1>
     
-    <div class="hidden name"><code>predict.Rd</code></div>
+    <div class="hidden name"><code>tam_downcode.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Extracts predicted values from the posterior distribution for models
-fitted in <span class="pkg">TAM</span>.</p>
-<p>See <code>CDM::predict</code>
-for more details.</p>
+    <p>Recodes item categories in a data frame such that each item has values
+\(0,1,\ldots,K_i\).</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for tam.mml</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for tam.mml.3pl</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for tamaan</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>tam_downcode</span>(<span class='no'>dat</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>object</th>
-      <td><p>Object of class <code><a href='tam.mml.html'>tam</a></code>, <code><a href='tam.mml.html'>tam.mml</a></code>,
-<code><a href='tam.mml.3pl.html'>tam.mml.3pl</a></code> or <code><a href='tamaan.html'>tamaan</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Further arguments to be passed</p></td>
+      <th>dat</th>
+      <td><p>Data frame containing item responses</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>List with entries for predicted values (expectations and probabilities)
-for each person and each item.</p>
-<p>See <code>predict</code> (<span class="pkg">CDM</span>).</p>
+    <p>List with following entries</p>
+<dt>dat</dt><dd><p>Recoded dataset</p></dd>
+<dt>rec</dt><dd><p>Recoding table</p></dd>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'>#############################################################################</span>
-<span class='co'># EXAMPLE 1: Dichotomous data sim.rasch - predict method</span>
+<span class='co'># EXAMPLE 1: Downcoding in a toy example</span>
 <span class='co'>#############################################################################</span>
 
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.sim.rasch</span>)
-<span class='co'># 1PL estimation</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>)
-<span class='co'># predict method</span>
-<span class='no'>prmod1</span> <span class='kw'>&lt;-</span> <span class='fu'>IRT.predict</span>(<span class='no'>mod1</span>, <span class='no'>data.sim.rasch</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>prmod1</span>)</pre>
+<span class='co'>#-- simulate some toy data</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>989</span>)
+<span class='co'># values to be sampled</span>
+<span class='no'>vals</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>0</span>:<span class='fl'>6</span>)
+<span class='co'># number of persons and items</span>
+<span class='no'>N</span> <span class='kw'>&lt;-</span> <span class='fl'>10</span>; <span class='no'>I</span> <span class='kw'>&lt;-</span> <span class='fl'>5</span>
+<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fl'>NA</span>, <span class='kw'>nrow</span><span class='kw'>=</span><span class='no'>N</span>, <span class='kw'>ncol</span><span class='kw'>=</span><span class='no'>I</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>dat</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"I"</span>,<span class='fl'>1</span>:<span class='no'>I</span>)
+<span class='kw'>for</span> (<span class='no'>ii</span> <span class='kw'>in</span> <span class='fl'>1L</span>:<span class='no'>I</span>){
+    <span class='no'>dat</span>[,<span class='no'>ii</span>] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='no'>vals</span>, <span class='kw'>size</span><span class='kw'>=</span><span class='no'>N</span>, <span class='kw'>replace</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
+}
+
+<span class='co'>#-- apply downcoding</span>
+<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam_downcode.html'>tam_downcode</a></span>(<span class='no'>dat</span>)
+<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>res</span>$<span class='no'>dat</span>   <span class='co'># extract downcoded dataset</span>
+<span class='no'>rec</span> <span class='kw'>&lt;-</span> <span class='no'>res</span>$<span class='no'>rec</span>   <span class='co'># extract recoded table</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

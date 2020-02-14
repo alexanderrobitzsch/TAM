@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.795
+## File Version: 9.797
 
 tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,

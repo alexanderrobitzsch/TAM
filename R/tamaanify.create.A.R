@@ -1,11 +1,9 @@
 ## File Name: tamaanify.create.A.R
-## File Version: 9.09
+## File Version: 9.11
 
 
-
-#########################################################
-# create A matrix
-tamaanify.create.A <- function( res )
+#-- create A matrix
+tamaanify.create.A <- function(res)
 {
     resp <- res$resp
     lavpartable <- res$lavpartable

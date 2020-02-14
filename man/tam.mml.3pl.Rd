@@ -1,5 +1,5 @@
 %% File Name: tam.mml.3pl.Rd
-%% File Version: 2.683
+%% File Version: 2.684
 
 \name{tam.mml.3pl}
 \alias{tam.mml.3pl}
@@ -180,7 +180,7 @@ Fixed or initial guessing parameters
 }
   \item{guess.prior}{
      Item-specific prior distribution for guessing parameters \eqn{c_i}. It is
-     assumed that \eqn{c_i \sim N( a_i, b_i)}. The first column
+     assumed that \eqn{c_i \sim Beta(a_i, b_i)}. The first column
      in \code{gammaslope.prior} is \eqn{a_i}, the second is \eqn{b_i}.
 }
 \item{max.guess}{Upper bound for guessing parameters}

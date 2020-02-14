@@ -1,11 +1,11 @@
-## File Name: tamaanify.create.Q.R
-## File Version: 9.06
+## File Name: tamaanify_create_Q.R
+## File Version: 9.12
 
 
 
-#############################################################
-# create Q matrix
-tamaanify.create.Q <- function( res ){
+#--- create Q matrix
+tamaanify_create_Q <- function( res )
+{
     lavpartable <- res$lavpartable
     resp <- res$resp
     ind <- which( lavpartable$op=="=~" )
@@ -22,14 +22,12 @@ tamaanify.create.Q <- function( res ){
     rownames(Q) <- items
     colnames(Q) <- facs
     for (ff in 1:NF){
-        # ff <- 1
-        ind.ff <- intersect(   which( paste(lavpartable$lhs)==facs[ff] ), ind )
+        ind.ff <- intersect( which( paste(lavpartable$lhs)==facs[ff] ), ind )
         lff <- lavpartable[ ind.ff, ]
         Q[ rownames(Q) %in% paste(lff$rhs), ff ] <- lff$ustart
-                    }
+    }
     res$Q <- Q
     res$lavpartable <- lavpartable
-    # res <- list( "Q"=Q, "lavpartable"=lavpartable )
     return(res)
-        }
-#############################################################
+}
+

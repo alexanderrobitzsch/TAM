@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mstep_regression.R
-## File Version: 9.48
+## File Version: 9.497
 
 
 # mstep.regression
@@ -50,28 +50,26 @@ tam_mml_mstep_regression <- function( resp, hwt,  resp.ind,
         sumbeta <- crossprod( Y,  thetabar*pweights )
         sumsig2 <- as.vector( crossprod( colSums( pweights * hwt ), theta2 ) )
     }
-    #----------------------------------------
-    # calculation of variance and regression coefficients
+
+    #--- calculation of variance and regression coefficients
     beta <- YYinv %*% sumbeta     # updated beta
     sumsig2 <- matrix(sumsig2, nrow=ndim, ncol=ndim)
     if (G==1){
         variance <- (sumsig2- crossprod( sumbeta, beta ) )/nstud  #new variance
     }
-    #----------------------------------------
-    # fixed beta coefficients
+
+    #--- fixed beta coefficients
     if ( ! is.null( beta.fixed )){
         beta[ beta.fixed[,1:2,drop=FALSE] ] <- beta.fixed[,3]
         beta <- as.matrix( beta, ncol=ndim )
     }
-    #----------------------------------------
-    # fixed covariance matrix entries
+
+    #--- fixed covariance matrix entries
     if ( ! is.null(variance.fixed) ){
         variance[ variance.fixed[,1:2,drop=FALSE] ] <- variance.fixed[,3]
         variance[ variance.fixed[,c(2,1),drop=FALSE] ] <- variance.fixed[,3]
     }
-    #----------------------------------------
 
-    #****************************************
     ###### Multiple Groups ##############
     if ( G > 1){    # begin multiple groups
         if ( snodes > 0 ){
@@ -142,6 +140,4 @@ tam_mml_mstep_regression <- function( resp, hwt,  resp.ind,
 #-----------------------------------------------------
 
 mstep.regression <- tam_mml_mstep_regression
-
-
 
