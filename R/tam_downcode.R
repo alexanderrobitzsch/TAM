@@ -1,12 +1,11 @@
 ## File Name: tam_downcode.R
-## File Version: 0.03
+## File Version: 0.04
 
 tam_downcode <- function(dat)
 {
-    res <- NULL
+    rec <- NULL
     dat1 <- NA*dat
     I <- ncol(dat)
-    
     for (ii in 1L:I){
         v1 <- dat[,ii]
         vals_ii <- sort(unique(v1))

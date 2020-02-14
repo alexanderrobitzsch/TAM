@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.4  |  2020-02-14  |  Last: TAM 3.4-15
+VERSIONS TAM 3.4  |  2020-02-14  |  Last: TAM 3.4-17
 -------------------------------------------------------------
 
 NOTE  * corrected output 'resp' in tam.jml() in case of missing
@@ -52,15 +52,14 @@ FIXED * fixed incorrect number of estimated parameters for
         tam.mml.2pl() (thanks to Kuan-Yu Jin)
 FIXED * fixed incorrect number of estimated parameters if
         a fixed B matrix is used (thanks to Timo Gnmabs)
-ADDED * include output in plot.tam() function 
+ADDED * included output in plot.tam() function 
         (requested by Anne Pinot de Moira)
 ADDED * included function tam_downcode()
         (suggested by Marcus Kubsch)
 
-
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: tam.fa (2), tam.mml (6),
-        plot.tam (1), tam_downcode()
+        plot.tam (1), tam_downcode(1)
 
 
 
