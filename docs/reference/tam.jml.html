@@ -120,7 +120,7 @@ item response models with joint maximum likelihood (JML,
 
     <pre class="usage"><span class='fu'>tam.jml</span>(<span class='no'>resp</span>, <span class='kw'>group</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>adj</span><span class='kw'>=</span><span class='fl'>.3</span>, <span class='kw'>disattenuate</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>bias</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
     <span class='kw'>xsi.fixed</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>xsi.inits</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>theta.fixed</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>B</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='kw'>NULL</span>,
-    <span class='kw'>ndim</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>pweights</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>version</span><span class='kw'>=</span><span class='fl'>2</span>)
+    <span class='kw'>ndim</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>pweights</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"cases"</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>version</span><span class='kw'>=</span><span class='fl'>2</span>)
 
 <span class='co'># S3 method for tam.jml</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>object</span>, <span class='kw'>file</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='no'>...</span>)
@@ -201,6 +201,12 @@ the fixed value. This argument can only be applied for <code>version=1</code>.</
       <td><p>An optional vector of person weights.</p></td>
     </tr>
     <tr>
+      <th>constraint</th>
+      <td><p>Type of constraint for means. Either <code>"cases"</code> 
+(set mean of person parameters to zero)
+or <code>"items"</code> (set mean of item parameters to zero).</p></td>
+    </tr>
+    <tr>
       <th>verbose</th>
       <td><p>Logical indicating whether output should
 be printed during iterations. This argument replaces <code>control$progress</code>.</p></td>
@@ -259,6 +265,8 @@ function)</p></td>
 <dt>resp.ind.list</dt><dd><p>Like <code>resp.ind</code>, only in the format of a list</p></dd>
 <dt>xsi.fixed</dt><dd><p>Fixed \(\xi\) item parameters</p></dd>
 <dt>control</dt><dd><p>Control list</p></dd>
+<dt>item1</dt><dd><p>Extended data frame of item parameters</p></dd>
+<dt>theta_summary</dt><dd><p>Summary of person parameters</p></dd>
 <dt>...</dt><dd><p></p></dd>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -288,6 +296,9 @@ maximum likelihood estimation see <code><a href='tam.mml.html'>tam.mml</a></code
 
 <span class='co'># compare results with Rasch model estimated by MML</span>
 <span class='no'>mod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span> )
+
+<span class='co'># constrain item difficulties to zero</span>
+<span class='no'>mod1c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.jml.html'>tam.jml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span>)
 
 <span class='co'># plot estimated parameters</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>( <span class='no'>mod1a</span>$<span class='no'>xsi</span>, <span class='no'>mod1b</span>$<span class='no'>xsi</span>$<span class='no'>xsi</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>,

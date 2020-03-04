@@ -1,22 +1,13 @@
 ## File Name: tam_jml_version1.R
-## File Version: 9.34
+## File Version: 9.356
 
 tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
                      bias=TRUE, xsi.fixed=NULL,  xsi.inits=NULL,
                      theta.fixed=NULL,
                      A=NULL, B=NULL, Q=NULL, ndim=1,
-                     pweights=NULL, control=list()
-                     # control can be specified by the user
-){
+                     pweights=NULL, control=list() )
+{
 
-  #------------------------------------
-  # INPUT:
-  # control:
-  #      control=list( nodes=seq(-6,6,len=15),
-  #                              convD=.001,conv=.0001, convM=.0001, Msteps=30,
-  #                   maxiter=1000, progress=TRUE)
-  # progress ... if TRUE, then display progress
-  #-------------------------------------
 
   maxiter <- conv <- progress <- tamobj <- convM <- Msteps <- NULL
   R <- NULL
@@ -107,14 +98,6 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
     indexIP.list[[kk]] <- which( indexIP[,kk] > 0 )
   }
 
-  # These sufficient statistics must be changed
-  # to make it more general
-  # First extension:  pweights and dependent on A; needs to be further extended (e.g., different number of categories)
-  # Second extension: multiple category option       -> resp \in 0:maxKi (see method definition calc_posterior_TK)
-  #                                                  -> length(ItemScore)=np (see diff computation in M Step)
-  #                   multiple category option Bugfix
-  #                                                  -> dim(cResp)=(nstud, nitems*maxK)
-  #                                                  -> adapt dim(A) to dim(cResp) for sufficient statistic (cf. print.designMatrices)
 
   col.index <- rep( 1:nitems, each=maxK )
   cResp <- resp[, col.index  ]*resp.ind[, col.index ]
@@ -127,7 +110,6 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
   cB[is.na(cB)] <- 0
 
   # Item sufficient statistics
-  # ItemScore <- (cResp %*% cA) %t*% pweights
   ItemScore <- crossprod(cResp %*% cA, pweights )
 
   # Computer possible maximum parameter score for each person
@@ -193,15 +175,13 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
     }
     olddeviance <- deviance
 
-    #**********************
-    #update theta, ability estimates
-
+    #-- update theta (ability estimates)
     jmlAbility <- tam_jml_wle( tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
-                 PersonScores, theta, xsi, Msteps, WLE=FALSE,
-                 theta.fixed=theta.fixed)
+                    PersonScores, theta, xsi, Msteps, WLE=FALSE,
+                    theta.fixed=theta.fixed)
 
     theta <- jmlAbility$theta
-    if (is.null( xsi.fixed)){
+    if (is.null(xsi.fixed)){
         theta <- theta - mean(theta)
     }
     meanChangeWLE <- jmlAbility$meanChangeWLE
@@ -299,7 +279,7 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
                "PersonMax"=PersonMaxB, "ItemMax"=ItemMax,
                "deviance"=deviance, "deviance.history"=deviance.history,
                "resp"=resp, "resp.ind"=resp.ind, "group"=group,
-               "pweights"=pweights, "A"=A, "B"=B,
+               "pweights"=pweights, "A"=A, "B"=B, AXsi=AXsi, 
                "nitems"=nitems, "maxK"=maxK,
                "nstud"=nstud, "resp.ind.list"=resp.ind.list,
                "xsi.fixed"=xsi.fixed, "deviance"=deviance,

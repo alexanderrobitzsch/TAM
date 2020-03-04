@@ -1,9 +1,9 @@
 ## File Name: tam_jml_version2_calc_xsi.R
-## File Version: 9.573
+## File Version: 9.576
 
 tam_jml_version2_calc_xsi <- function ( resp, resp.ind, A, A.0, B, nstud, nitems,
             maxK, convM, ItemScore, theta, xsi, Msteps, pweightsM,
-            est.xsi.index, rp3, rp3.sel, rp3.pweightsM )
+            est.xsi.index, rp3, rp3.sel, rp3.pweightsM, damp=0 )
 {
 
     #Update item parameters
@@ -89,6 +89,9 @@ tam_jml_version2_calc_xsi <- function ( resp, resp.ind, A, A.0, B, nstud, nitems
         convergeAllP <- (sum(convergeP[est.xsi.index])==length(est.xsi.index))
         cat("-")
     } # end of all parameters convergence
+
+    # dampening increments
+    xsi <- (1-damp)*xsi + damp*old_xsi
 
     #--- OUTPUT
     res <- list( xsi=xsi, errorP=errorP, maxChangeP=max(abs(xsi-old_xsi)))

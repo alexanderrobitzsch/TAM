@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.797
+## File Version: 9.8002
 
 tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
@@ -76,7 +76,9 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
       A <- .A.PCM2( resp, constraint=constraint, Q=Q  )
     }
 
-    if ( !is.null(con$seed)){ set.seed( con$seed )     }
+    if ( !is.null(con$seed)){
+        set.seed( con$seed )
+    }
 
     nitems <- ncol(resp)       # number of items
     if (is.null(colnames(resp))){
