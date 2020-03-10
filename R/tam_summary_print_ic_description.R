@@ -1,5 +1,5 @@
 ## File Name: tam_summary_print_ic_description.R
-## File Version: 0.05
+## File Version: 0.061
 
 tam_summary_print_ic_description <- function(crit)
 {
@@ -22,6 +22,9 @@ tam_summary_print_ic_description <- function(crit)
     }
     if ( crit=="CAIC"){
         crit_desc <- "CAIC=-2*LL + [log(n)+1]*p  (consistent AIC)"
+    }
+    if ( crit=="GHP"){
+        crit_desc <- "GHP=( -LL + p ) / (#Persons * #Items)  (Gilula-Haberman log penalty)"
     }
     #--- output
     return(crit_desc)

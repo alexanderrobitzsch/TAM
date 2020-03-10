@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.8002
+## File Version: 9.8005
 
 tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
@@ -413,10 +413,10 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
                 beta=beta, beta.fixed=beta.fixed, ndim=ndim, variance.fixed=variance.fixed,
                 G=G, irtmodel=irtmodel, B_orig=NULL, B.fixed=B.fixed, E=E,
                 est.variance=TRUE, resp=resp, est.slopegroups=NULL,
-                variance.Npars=variance.Npars, group=group, penalty_xsi=penalty_xsi )
+                variance.Npars=variance.Npars, group=group, penalty_xsi=penalty_xsi,
+                pweights=pweights, resp.ind=resp.ind)
 
-    #***
-    # calculate counts
+    #*** calculate counts
     res <- tam_calc_counts( resp=resp, theta=theta, resp.ind=resp.ind, group=group,
                 maxK=maxK, pweights=pweights, hwt=hwt )
     n.ik <- res$n.ik

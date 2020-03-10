@@ -1,5 +1,5 @@
 ## File Name: tam_jml_version1.R
-## File Version: 9.356
+## File Version: 9.357
 
 tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
                      bias=TRUE, xsi.fixed=NULL,  xsi.inits=NULL,
@@ -279,7 +279,7 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
                "PersonMax"=PersonMaxB, "ItemMax"=ItemMax,
                "deviance"=deviance, "deviance.history"=deviance.history,
                "resp"=resp, "resp.ind"=resp.ind, "group"=group,
-               "pweights"=pweights, "A"=A, "B"=B, AXsi=AXsi, 
+               "pweights"=pweights, "A"=A, "B"=B, AXsi=AXsi,
                "nitems"=nitems, "maxK"=maxK,
                "nstud"=nstud, "resp.ind.list"=resp.ind.list,
                "xsi.fixed"=xsi.fixed, "deviance"=deviance,

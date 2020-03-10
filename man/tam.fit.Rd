@@ -1,5 +1,5 @@
 %% File Name: tam.fit.Rd
-%% File Version: 2.55
+%% File Version: 2.561
 
 \name{tam.fit}
 
@@ -81,9 +81,10 @@ adjusted for multiple testing according to the Holm procedure}
 
 \references{
 Adams, R. J., & Wu, M. L. (2007). The mixed-coefficients multinomial logit model.
-A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.).
+A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.),
 \emph{Multivariate and mixture distribution Rasch models: Extensions and applications}
 (pp. 55-76). New York: Springer.
+\doi{10.1007/978-0-387-49839-3_4}
 }
 
 %\author{

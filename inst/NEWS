@@ -42,7 +42,18 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.4  |  2020-03-04  |  Last: TAM 3.4-20
+VERSIONS TAM 3.5  |  2020-03-10  |  Last: TAM 3.5-1
+-------------------------------------------------------------
+
+xxx   * ...
+
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+-------------------------------------------------------------
+VERSIONS TAM 3.4  |  2020-03-10  |  Last: TAM 3.4-26
 -------------------------------------------------------------
 
 NOTE  * corrected output 'resp' in tam.jml() in case of missing
@@ -59,15 +70,12 @@ ADDED * included function tam_downcode()
 NOTE  * included argument 'constraint' in tam.jml() for 
         constraining item difficulties to zero 
         (suggested by Andreas Viberg)
-
+NOTE  * included Gilula-Haberman log penalty statistic that
+        is labeled as 'GHP' in mod$ic and summary output
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: tam.fa (2), tam.mml (6),
         plot.tam (1), tam_downcode(1), tam.jml (1)
-
-
-
-
 
 -------------------------------------------------------------
 VERSIONS TAM 3.3  |  2019-08-23  |  Last: TAM 3.3-10

@@ -1,5 +1,5 @@
 %% File Name: tam.jml.Rd
-%% File Version: 2.394
+%% File Version: 2.397
 
 \name{tam.jml}
 
@@ -87,7 +87,7 @@ the fixed value. This argument can only be applied for \code{version=1}.}
   \item{pweights}{
    An optional vector of person weights.
 }
-\item{constraint}{Type of constraint for means. Either \code{"cases"} 
+\item{constraint}{Type of constraint for means. Either \code{"cases"}
 (set mean of person parameters to zero)
 or \code{"items"} (set mean of item parameters to zero).
 }

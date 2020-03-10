@@ -1,5 +1,5 @@
 %% File Name: tam.linking.Rd
-%% File Version: 0.621
+%% File Version: 0.623
 
 \name{tam.linking}
 \alias{tam.linking}
@@ -112,19 +112,24 @@ List containing entries
 \references{
 Battauz, M. (2015). \pkg{equateIRT}: An \R package for IRT test equating.
 \emph{Journal of Statistical Software, 68}(7), 1-22.
+\doi{10.18637/jss.v068.i07}
 
 Gonzalez, J., & Wiberg, M. (2017).
 \emph{Applying test equating methods: Using \R}. New York, Springer.
+\doi{10.1007/978-3-319-51824-4}
 
 He, Y., Cui, Z., & Osterlind, S. J. (2015). New robust scale transformation methods in the
 presence of outlying common items.
 \emph{Applied Psychological Measurement, 39}(8), 613-626.
+\doi{10.1177/0146621615587003}
 
 Kolen, M. J., & Brennan, R. L. (2014). \emph{Test equating, scaling, and linking:
 Methods and practices}. New York, Springer.
+\doi{10.1007/978-1-4939-0317-7}
 
 Weeks, J. P. (2010). \pkg{plink}: An \R package for linking mixed-format tests
 using IRT-based methods. \emph{Journal of Statistical Software, 35}(12), 1-33.
+\doi{10.18637/jss.v035.i12}
 }
 
 %\author{

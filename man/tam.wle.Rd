@@ -1,5 +1,5 @@
 %% File Name: tam.wle.Rd
-%% File Version: 2.49
+%% File Version: 2.503
 
 \name{tam.wle}
 
@@ -33,7 +33,7 @@ tam.mml.wle2(tamobj, score.resp=NULL, WLE=TRUE, adj=0.3, Msteps=20, convM=1e-04,
 
 tam_jml_wle(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
     PersonScores, theta, xsi, Msteps, WLE=FALSE, theta.fixed=NULL, progress=FALSE,
-    output.prob=TRUE)
+    output.prob=TRUE, damp=0)
 
 \method{summary}{tam.wle}(object, file=NULL, digits=3, \dots)
 
@@ -97,6 +97,8 @@ be included in the list of outputs.}
 \item{theta.fixed}{Matrix for fixed person parameters \eqn{\theta}. The first
     column includes the index whereas the second column includes
 the fixed value.}
+\item{damp}{Numeric value between 0 and 1 indicating amount of dampening
+increments in \eqn{\theta} estimates during iterations}
 \item{\dots}{Further arguments to be passed}
 \item{object}{Object of class \code{tam.wle}}
 \item{x}{Object of class \code{tam.wle}}
@@ -132,7 +134,10 @@ likelihood latent trait estimator to the generalized partial credit model.
 
 Warm, T. A. (1989). Weighted likelihood estimation of ability in item
 response theory. \emph{Psychometrika, 54}, 427-450.
+\doi{10.1007/BF02294627}
 }
+
+%% doi Penfield (2005): \doi{10.1177%2F0146621604270412} 
 
 %\author{
 %%  ~~who you are~~

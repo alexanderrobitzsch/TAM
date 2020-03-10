@@ -1,5 +1,5 @@
 %% File Name: IRT.informationCurves.Rd
-%% File Version: 0.19
+%% File Version: 0.211
 
 \name{IRT.informationCurves}
 \alias{IRT.informationCurves}
@@ -79,6 +79,7 @@ List with following entries
 \references{
 Muraki, E. (1993). Information functions of the generalized partial credit
 model. \emph{Applied Psychological Measurement, 17}(4), 351-363.
+\doi{10.1177/014662169301700403}
 }
 %\author{
 %Alexander Robitzsch

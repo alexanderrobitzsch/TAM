@@ -1,5 +1,5 @@
 %% File Name: tam.pv.Rd
-%% File Version: 2.661
+%% File Version: 2.662
 
 \name{tam.pv}
 \alias{tam.pv}
@@ -166,6 +166,7 @@ Adams, R. J., & Wu, M. L. (2007). The mixed-coefficients multinomial logit model
 A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.):
 \emph{Multivariate and mixture distribution Rasch models: Extensions and applications}
 (pp. 55-76). New York: Springer.
+\doi{10.1007/978-0-387-49839-3_4}
 
 Rubin, D. B. (1981). The Bayesian bootstrap. \emph{The Annals of Statistics, 9}(1),
 130-134.

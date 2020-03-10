@@ -1,5 +1,5 @@
 %% File Name: data.janssen.Rd
-%% File Version: 0.21
+%% File Version: 0.22
 
 \name{data.janssen}
 \alias{data.janssen}
@@ -58,6 +58,7 @@ items of the following format
 Janssen, A. B., & Geiser, C. (2010). On the relationship between solution
 strategies in two mental rotation tasks.
 \emph{Learning and Individual Differences, 20}(5), 473-478.
+\doi{10.1016/j.lindif.2010.03.002}
 }
 
 

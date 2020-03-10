@@ -1,5 +1,5 @@
 %% File Name: WLErel.Rd
-%% File Version: 0.20
+%% File Version: 0.212
 
 \name{WLErel}
 \alias{WLErel}
@@ -51,6 +51,7 @@ Numeric value
 \references{
 Adams, R. J. (2005). Reliability as a measurement design effect.
 \emph{Studies in Educational Evaluation, 31}(2), 162-172.
+\doi{10.1016/j.stueduc.2005.05.008}
 }
 %\author{
 %%  ~~who you are~~

@@ -73,7 +73,7 @@ respectively." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.4-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.5-vv</span>
       </span>
     </div>
 
@@ -131,7 +131,7 @@ respectively.</p>
 
 <span class='fu'>tam_jml_wle</span>(<span class='no'>tamobj</span>, <span class='no'>resp</span>, <span class='no'>resp.ind</span>, <span class='no'>A</span>, <span class='no'>B</span>, <span class='no'>nstud</span>, <span class='no'>nitems</span>, <span class='no'>maxK</span>, <span class='no'>convM</span>,
     <span class='no'>PersonScores</span>, <span class='no'>theta</span>, <span class='no'>xsi</span>, <span class='no'>Msteps</span>, <span class='kw'>WLE</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>theta.fixed</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>progress</span><span class='kw'>=</span><span class='fl'>FALSE</span>,
-    <span class='kw'>output.prob</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
+    <span class='kw'>output.prob</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>damp</span><span class='kw'>=</span><span class='fl'>0</span>)
 
 <span class='co'># S3 method for tam.wle</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>object</span>, <span class='kw'>file</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>digits</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='no'>...</span>)
@@ -238,6 +238,11 @@ be included in the list of outputs.</p></td>
 the fixed value.</p></td>
     </tr>
     <tr>
+      <th>damp</th>
+      <td><p>Numeric value between 0 and 1 indicating amount of dampening
+increments in \(\theta\) estimates during iterations</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>Further arguments to be passed</p></td>
     </tr>
@@ -282,7 +287,8 @@ For tam.jml.WLE, it is a list with following entries:
 likelihood latent trait estimator to the generalized partial credit model.
 <em>Applied Psychological Measurement, 29</em>, 218-233.</p>
 <p>Warm, T. A. (1989). Weighted likelihood estimation of ability in item
-response theory. <em>Psychometrika, 54</em>, 427-450.</p>
+response theory. <em>Psychometrika, 54</em>, 427-450.
+doi: <a href='https://doi.org/10.1007/BF02294627'>10.1007/BF02294627</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>See the <code>PP::PP_gpcm</code> function

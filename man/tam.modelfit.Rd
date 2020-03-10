@@ -1,5 +1,5 @@
 %% File Name: tam.modelfit.Rd
-%% File Version: 2.37
+%% File Version: 2.384
 
 \name{tam.modelfit}
 \alias{tam.modelfit}
@@ -161,6 +161,7 @@ A list with following entries
 Chen, J., de la Torre, J., & Zhang, Z. (2013).
 Relative and absolute fit evaluation in cognitive diagnosis modeling.
 \emph{Journal of Educational Measurement, 50}, 123-140.
+\doi{10.1111/j.1745-3984.2012.00185.x}
 
 Chen, W., & Thissen, D. (1997). Local dependence indexes for item pairs
 using item response theory. \emph{Journal of Educational and Behavioral Statistics,
@@ -170,19 +171,25 @@ Levy, R., Xu, Y., Yel, N., & Svetina, D. (2015). A standardized
 generalized dimensionality discrepancy measure and a standardized model-based
 covariance for dimensionality assessment for multidimensional models.
 \emph{Journal of Educational Measurement, 52}(2), 144--158.
+\doi{10.1111/jedm.12070}
 
 Maydeu-Olivares, A. (2013). Goodness-of-fit assessment of item response
 theory models (with discussion).
 \emph{Measurement: Interdisciplinary Research and Perspectives,
 11}, 71-137.
+\doi{10.1080/15366367.2013.831680}
 
 McDonald, R. P., & Mok, M. M.-C. (1995). Goodness of fit in item response models.
 \emph{Multivariate Behavioral Research, 30}, 23-40.
+\doi{10.1207/s15327906mbr3001_2}
 
 Yen, W. M. (1984). Effects of local item dependence on the fit and equating
 performance of the three-parameter logistic model.
 \emph{Applied Psychological Measurement, 8}, 125-145.
+\doi{10.1177/014662168400800201}
 }
+
+%% doi of Chen (1997): %% \doi{10.3102%2F10769986022003265}
 
 %\author{
 %%  ~~who you are~~
