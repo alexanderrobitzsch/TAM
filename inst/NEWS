@@ -42,10 +42,11 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.5  |  2020-03-10  |  Last: TAM 3.5-1
+VERSIONS TAM 3.5  |  2020-03-17  |  Last: TAM 3.5-2
 -------------------------------------------------------------
 
-xxx   * ...
+FIXED * fixed a bug in plot.tam() function that was introduced
+        in TAM 3.4 (thanks to @sda030; issue #12)
 
 
 DATA  * included/modified datasets: ---
