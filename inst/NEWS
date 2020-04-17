@@ -42,15 +42,20 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.5  |  2020-03-17  |  Last: TAM 3.5-2
+VERSIONS TAM 3.5  |  2020-04-17  |  Last: TAM 3.5-6
 -------------------------------------------------------------
 
 FIXED * fixed a bug in plot.tam() function that was introduced
         in TAM 3.4 (thanks to @sda030; issue #12)
+NOTE  * included arguments 'eps_rob_hae' and 'par_init' 
+        in tam.linking()
+FIXED * fixed a bug in tam.jml.fit()
+        (thanks to Jess Mazengarb)
 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: tam.linking (1)
+
 
 
 -------------------------------------------------------------

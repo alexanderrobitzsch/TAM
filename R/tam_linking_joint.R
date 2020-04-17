@@ -1,13 +1,21 @@
 ## File Name: tam_linking_joint.R
-## File Version: 0.04
+## File Version: 0.077
 
-tam_linking_joint <- function(NM, parameters_list, linking_args)
+tam_linking_joint <- function(NM, parameters_list, linking_args, verbose=TRUE)
 {
     wgt <- linking_args$wgt
     theta <- linking_args$theta
     type <- linking_args$type
     pow_rob_hae <- linking_args$pow_rob_hae
+    eps_rob_hae <- linking_args$eps_rob_hae
     fix.slope <- linking_args$fix.slope
+    par_init <- linking_args$par_init
+    
+    #- control arguments
+    control <- list()
+    if (verbose){
+        control <- list(trace=2)
+    }
 
     combis <- t(utils::combn(x=1:NM, m=2))
     NP <- nrow(combis)
@@ -33,6 +41,10 @@ tam_linking_joint <- function(NM, parameters_list, linking_args)
 
     #--- define linking function
     par <- c( rep(0,NM-1), rep(1, NM-1) )
+    if (!is.null(par_init)){
+        par <- par_init
+    }
+
     linking_criterion_multiple_studies <- function(x){
         bvec <- c(0, x[1:(NM-1)])
         avec <- c(1, x[NM-1 + 1:(NM-1)])
@@ -52,7 +64,8 @@ tam_linking_joint <- function(NM, parameters_list, linking_args)
                 probs_pp1 <- probs_pp1[,joint_items_indices_pp[[1]],,drop=FALSE ]
                 probs_pp2 <- probs_pp2[,joint_items_indices_pp[[2]],,drop=FALSE ]
                 crit_pp <- tam_linking_irf_discrepancy(probs1=probs_pp1, probs2=probs_pp2,
-                                wgt=wgt, type=type, pow_rob_hae=pow_rob_hae)
+                                wgt=wgt, type=type, pow_rob_hae=pow_rob_hae,
+                                eps_rob_hae=eps_rob_hae)
                 crit <- crit + crit_pp
             }
         }
@@ -67,7 +80,8 @@ tam_linking_joint <- function(NM, parameters_list, linking_args)
         upper[NM-1+c(1,NM-1)] <- 1 + eps
     }
     optim_result <- stats::optim( par=par, fn=linking_criterion_multiple_studies,
-                        method="L-BFGS", lower=lower, upper=upper)
+                        method="L-BFGS", lower=lower, upper=upper,
+                        control=control)
     par_optim <- optim_result$par
 
     #--- transformation item parameters
@@ -105,6 +119,7 @@ tam_linking_joint <- function(NM, parameters_list, linking_args)
 
     #--- output
     res <- list(M_SD=M_SD, N_common=N_common, trafo_persons=trafo_persons,
-                trafo_items=trafo_items, parameters_list=parameters_list)
+                trafo_items=trafo_items, parameters_list=parameters_list,
+                par_optim=par_optim)
     return(res)
 }

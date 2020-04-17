@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9863
+%% File Version: 2.9864
 
 \name{tam.mml}
 
@@ -235,7 +235,7 @@ be printed during iterations. This argument replaces \code{control$progress}.
     \code{        convD=.001,conv=.0001, convM=.0001, Msteps=4,   }\cr
     \code{        maxiter=1000, max.increment=1, }\cr
     \code{        min.variance=.001, progress=TRUE, ridge=0,    }\cr
-    \code{        seed=NULL, xsi.start0=0,, increment.factor=1,  }\cr
+    \code{        seed=NULL, xsi.start0=0, increment.factor=1,  }\cr
     \code{        fac.oldxsi=0, acceleration="none", dev_crit="absolute" )  }\cr
     \code{        trim_increment="half" )  }\cr
 
@@ -310,7 +310,7 @@ the EM algorithm should be employed. Options are \code{"none"} (no acceleration,
 the default), the monotone overrelaxation method of \code{"Yu"} (Yu, 2012) and
 \code{"Ramsay"} for the Ramsay (1975) acceleration method.
 
-\code{dev_crit}: Criterion for convergence in deviance. \code{dev_crit="abolute"}
+\code{dev_crit}: Criterion for convergence in deviance. \code{dev_crit="absolute"}
 refers to absolute differences in successive deviance values, while
 \code{dev_crit="relative"} refers to relative differences.
 

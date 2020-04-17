@@ -126,8 +126,9 @@ comprising all pairwise linkings.</p>
 <p>The linking of two studies is implemented in the <code>tam_linking_2studies</code> function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tam.linking</span>(<span class='no'>tamobj_list</span>, <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"Hae"</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"joint"</span>, <span class='kw'>pow_rob_hae</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>theta</span><span class='kw'>=</span><span class='kw'>NULL</span>,
-   <span class='kw'>wgt</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>wgt_sd</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>fix.slope</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>elim_items</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>tam.linking</span>(<span class='no'>tamobj_list</span>, <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"Hae"</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"joint"</span>, <span class='kw'>pow_rob_hae</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>eps_rob_hae</span><span class='kw'>=</span><span class='fl'>1e-4</span>,
+   <span class='kw'>theta</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>wgt</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>wgt_sd</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>fix.slope</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>elim_items</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+   <span class='kw'>par_init</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 
 <span class='co'># S3 method for tam.linking</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>object</span>, <span class='kw'>file</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='no'>...</span>)
@@ -166,6 +167,11 @@ The default is the Haebara linking method.</p></td>
       <td><p>Power for robust Heabara linking</p></td>
     </tr>
     <tr>
+      <th>eps_rob_hae</th>
+      <td><p>Value \(\varepsilon\) for numerical approximation of
+loss function \(|x|^p\) in robust Haebara linking</p></td>
+    </tr>
+    <tr>
       <th>theta</th>
       <td><p>Grid of \(\theta\) points. The default is <code><a href='https://rdrr.io/r/base/seq.html'>seq(-6,6,len=101)</a></code>.</p></td>
     </tr>
@@ -187,6 +193,10 @@ linking function</p></td>
       <th>elim_items</th>
       <td><p>List of vectors refering to items which should be removed
 from linking (see Model 'lmod2' in Example 1)</p></td>
+    </tr>
+    <tr>
+      <th>par_init</th>
+      <td><p>Optional vector with initial parameter values</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -351,12 +361,18 @@ in the <span class="pkg">sirt</span> package.</p></div>
 
 <span class='co'># remove three items from first group and two items from third group</span>
 <span class='no'>elim_items</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A1"</span>, <span class='st'>"E2"</span>,<span class='st'>"F1"</span>), <span class='kw'>NULL</span>,  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"F1"</span>,<span class='st'>"F2"</span>) )
-<span class='no'>lmod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.linking.html'>tam.linking</a></span>(<span class='no'>tamobj_list</span>, <span class='kw'>elim.items</span><span class='kw'>=</span><span class='no'>elim.items</span>)
+<span class='no'>lmod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.linking.html'>tam.linking</a></span>(<span class='no'>tamobj_list</span>, <span class='kw'>elim_items</span><span class='kw'>=</span><span class='no'>elim_items</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>lmod2</span>)
 
-<span class='co'>#-- Robust Haabara linking</span>
-<span class='no'>lmod3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.linking.html'>tam.linking</a></span>(<span class='no'>tamobj_list</span>, <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"RobHae"</span>, <span class='kw'>pow_rob_hae</span><span class='kw'>=</span><span class='fl'>1</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>lmod3</span>)
+<span class='co'>#-- Robust Haebara linking with p=1</span>
+<span class='no'>lmod3a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.linking.html'>tam.linking</a></span>(<span class='no'>tamobj_list</span>, <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"RobHae"</span>, <span class='kw'>pow_rob_hae</span><span class='kw'>=</span><span class='fl'>1</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>lmod3a</span>)
+
+<span class='co'>#-- Robust Haeabara linking with initial parameters and prespecified epsilon value </span>
+<span class='no'>par_init</span> <span class='kw'>&lt;-</span> <span class='no'>lmod3a</span>$<span class='no'>par</span>
+<span class='no'>lmod3b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.linking.html'>tam.linking</a></span>(<span class='no'>tamobj_list</span>, <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"RobHae"</span>, <span class='kw'>pow_rob_hae</span><span class='kw'>=</span><span class='fl'>.1</span>,
+                <span class='kw'>eps_rob_hae</span><span class='kw'>=</span><span class='fl'>1e-3</span>, <span class='kw'>par_init</span><span class='kw'>=</span><span class='no'>par_init</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>lmod3b</span>)
 
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 2: Linking polytomous data with the partial credit model</span>

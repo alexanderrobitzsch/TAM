@@ -1,13 +1,9 @@
 ## File Name: tam.jml.fit.R
-## File Version: 9.18
+## File Version: 9.1991
 
 
 tam.jml.fit <- function( tamobj )
 {
-    #####################################################
-    # INPUT:
-    # tamobj ... result from tam.jml analysis
-    ####################################################
     s1 <- Sys.time()
     resp <- tamobj$resp
     resp.ind <- tamobj$resp.ind
@@ -36,12 +32,12 @@ tam.jml.fit <- function( tamobj )
     NU <- length(theta.unique)
     B_bari <- array(0,dim=c(NU, nitems))
     BB_bari <- array(0, dim=c(NU, nitems))
-    res <- tam_mml_calc_prob(iIndex=1:nitems, A, AXsi,
-                        B, xsi, theta=matrix( theta.unique, nrow=NU, ncol=1),
-                        NU, maxK, recalc=FALSE )
+    use_rcpp <- FALSE
+    res <- tam_mml_calc_prob(iIndex=1:nitems, A=A, AXsi=AXsi,
+                        B=B, xsi=xsi, theta=matrix( theta.unique, nrow=NU, ncol=1),
+                        nnodes=NU, maxK=maxK, recalc=FALSE, use_rcpp=use_rcpp )
     rprobs <- res$rprobs
     rprobs[ is.na( rprobs) ] <- 0
-
     for (kk in 1:maxK){
         B_bari <- B_bari + t( B1[,kk]*rprobs[,kk,] )
         BB_bari <- BB_bari + t( BB[,kk] * rprobs[, kk, ] )
@@ -54,14 +50,13 @@ tam.jml.fit <- function( tamobj )
     BB_bari <- BB_bari  * resp.ind
     B_var <- BB_bari - (B_bari^2)
     z_sq <- (resp - B_bari)^2/B_var
-    zsd <- sd(as.numeric(z_sq),na.rm=TRUE)
+    zsd <- sd(as.matrix(z_sq),na.rm=TRUE)
     z_sq[z_sq > 10*zsd] <-  10*zsd   #Trim extreme values
     B_bariM <- aperm(outer(B_bari,rep(1,maxK)),c(2,3,1))
     B1M <- outer(B1,rep(1,nstud))
     for (kk in 1:maxK){
         C4 <- C4 + ( B1M[,kk,] - B_bariM[,kk,] )^4 * rprobs[,kk,]
     }
-
     C4 <- t(C4) * resp.ind
     #  outfitPerson <- apply(z_sq, 1, mean, na.rm=TRUE)
     outfitPerson <- rowMeans( z_sq, na.rm=TRUE )

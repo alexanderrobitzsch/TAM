@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.8005
+## File Version: 9.8008
 
 tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
@@ -397,6 +397,7 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     itemwt.min -> itemwt
     se.xsi.min -> se.xsi
     se.B.min -> se.B
+
 
     #*** include NAs in AXsi
     AXsi <- tam_mml_include_NA_AXsi(AXsi=AXsi, maxcat=maxcat)

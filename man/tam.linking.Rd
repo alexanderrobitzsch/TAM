@@ -1,5 +1,5 @@
 %% File Name: tam.linking.Rd
-%% File Version: 0.623
+%% File Version: 0.6247
 
 \name{tam.linking}
 \alias{tam.linking}
@@ -27,8 +27,9 @@ The linking of two studies is implemented in the \code{tam_linking_2studies} fun
 }
 
 \usage{
-tam.linking(tamobj_list, type="Hae", method="joint", pow_rob_hae=1, theta=NULL,
-   wgt=NULL, wgt_sd=2, fix.slope=FALSE, elim_items=NULL, verbose=TRUE)
+tam.linking(tamobj_list, type="Hae", method="joint", pow_rob_hae=1, eps_rob_hae=1e-4,
+   theta=NULL, wgt=NULL, wgt_sd=2, fix.slope=FALSE, elim_items=NULL, 
+   par_init=NULL, verbose=TRUE)
 
 \method{summary}{tam.linking}(object, file=NULL, \dots)
 
@@ -53,6 +54,8 @@ The default is the Haebara linking method.
 }
 \item{method}{Chain linking (\code{"chain"}) or joint linking (\code{"joint"})}
 \item{pow_rob_hae}{Power for robust Heabara linking}
+\item{eps_rob_hae}{Value \eqn{\varepsilon} for numerical approximation of
+loss function \eqn{|x|^p} in robust Haebara linking}  
   \item{theta}{
 Grid of \eqn{\theta} points. The default is \code{seq(-6,6,len=101)}.
 }
@@ -66,7 +69,9 @@ linking function}
 Logical indicating whether the slope transformation constant is fixed to 1.
 }
 \item{elim_items}{List of vectors refering to items which should be removed
-from linking (see Model 'lmod2' in Example 1)}
+from linking (see Model 'lmod2' in Example 1)
+}
+\item{par_init}{Optional vector with initial parameter values}
 \item{verbose}{
 Logical indicating progress of linking computation
 }
@@ -209,12 +214,18 @@ summary(lmod1b)
 
 # remove three items from first group and two items from third group
 elim_items <- list( c("A1", "E2","F1"), NULL,  c("F1","F2") )
-lmod2 <- TAM::tam.linking(tamobj_list, elim.items=elim.items)
+lmod2 <- TAM::tam.linking(tamobj_list, elim_items=elim_items)
 summary(lmod2)
 
-#-- Robust Haabara linking
-lmod3 <- TAM::tam.linking(tamobj_list, type="RobHae", pow_rob_hae=1)
-summary(lmod3)
+#-- Robust Haebara linking with p=1
+lmod3a <- TAM::tam.linking(tamobj_list, type="RobHae", pow_rob_hae=1)
+summary(lmod3a)
+
+#-- Robust Haeabara linking with initial parameters and prespecified epsilon value 
+par_init <- lmod3a$par
+lmod3b <- TAM::tam.linking(tamobj_list, type="RobHae", pow_rob_hae=.1,
+                eps_rob_hae=1e-3, par_init=par_init)
+summary(lmod3b)
 
 #############################################################################
 # EXAMPLE 2: Linking polytomous data with the partial credit model

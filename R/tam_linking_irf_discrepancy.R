@@ -1,7 +1,8 @@
 ## File Name: tam_linking_irf_discrepancy.R
-## File Version: 0.04
+## File Version: 0.053
 
-tam_linking_irf_discrepancy <- function(probs1, probs2, wgt, type, pow_rob_hae=1)
+tam_linking_irf_discrepancy <- function(probs1, probs2, wgt, type, 
+    pow_rob_hae=1, eps_rob_hae=1e-4)
 {
     K <- dim(probs1)[3]
     crit <- 0
@@ -10,7 +11,7 @@ tam_linking_irf_discrepancy <- function(probs1, probs2, wgt, type, pow_rob_hae=1
         for (kk in 1:K){
             irf_diff <- probs1[,,kk,drop=FALSE] - probs2[,,kk,drop=FALSE]
             irf_loss <- tam_linking_function_haebara_loss(x=irf_diff, type=type,
-                            pow_rob_hae=pow_rob_hae)
+                            pow_rob_hae=pow_rob_hae, eps=eps_rob_hae)
             crit <- crit + sum( irf_loss * wgt )
         }
     }

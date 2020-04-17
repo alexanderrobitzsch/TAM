@@ -1,5 +1,5 @@
 ## File Name: tam_mml_calc_prob_R.R
-## File Version: 0.167
+## File Version: 0.1684
 
 
 tam_mml_calc_prob_R <- function(iIndex, A, AXsi, B, xsi, theta,
@@ -19,7 +19,6 @@ tam_mml_calc_prob_R <- function(iIndex, A, AXsi, B, xsi, theta,
         # AXsi.tmp <- array( AXsi, dim=c( length(iIndex), maxK, nnodes ) )
         AXsi.tmp <- array( AXsi[ iIndex, ], dim=c( length(iIndex), maxK, nnodes ) )
     }
-
     dim_Btheta <- c(length(iIndex), maxK, nnodes)
     Btheta <- array(0, dim=dim_Btheta )
     for( dd in 1:D ){
@@ -34,7 +33,6 @@ tam_mml_calc_prob_R <- function(iIndex, A, AXsi, B, xsi, theta,
         }
         Btheta <- Btheta + Btheta_add
     }
-
     #*** subtract maximum in Rcpp to avoid numerical overflow
     rr0 <- Btheta + AXsi.tmp
     dim_rr <- dim(rr0)
@@ -43,6 +41,7 @@ tam_mml_calc_prob_R <- function(iIndex, A, AXsi, B, xsi, theta,
     # rr <- exp(rr1)
     rr <- tam_rcpp_calc_prob_subtract_max_exp( rr0=rr0, dim_rr=dim_rr )
 
+    
     #    rprobs <- rr / aperm( array( rep( colSums( aperm( rr, c(2,1,3) ),
     #                dims=1, na.rm=TRUE), maxK ), dim=dim(rr)[c(1,3,2)] ), c(1,3,2) )
     rprobs <- tam_rcpp_tam_mml_calc_prob_R_normalize_rprobs( rr=rr, dim_rr=dim_rr)

@@ -1,5 +1,5 @@
 %% File Name: tam.wle.Rd
-%% File Version: 2.503
+%% File Version: 2.504
 
 \name{tam.wle}
 
@@ -137,7 +137,7 @@ response theory. \emph{Psychometrika, 54}, 427-450.
 \doi{10.1007/BF02294627}
 }
 
-%% doi Penfield (2005): \doi{10.1177%2F0146621604270412} 
+%% doi Penfield (2005): \doi{10.1177%2F0146621604270412}
 
 %\author{
 %%  ~~who you are~~

@@ -1,5 +1,5 @@
 ## File Name: plot.tam.R
-## File Version: 9.2874
+## File Version: 9.2875
 
 #--- plotting tam expected scores curves
 plot.tam <- function(x, items=1:x$nitems, type="expected",
@@ -166,7 +166,7 @@ plot.tam <- function(x, items=1:x$nitems, type="expected",
         }
     #***********************************************************
 
-    if ( ndim==1 ){ theta0 <- theta }    
+    if ( ndim==1 ){ theta0 <- theta }
 
     if ( type=="items"){
       rprobs.ii <- rprobs[i,,]
