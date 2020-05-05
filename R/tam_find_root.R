@@ -1,9 +1,8 @@
 ## File Name: tam_find_root.R
-## File Version: 0.02
+## File Version: 0.03
 
 
-################################################################
-# root finding utility function
+#*** root finding utility function
 tam_find_root <- function( x1, y1, prob.lvl, theta )
 {
     N <- length(y1)
@@ -27,4 +26,3 @@ tam_find_root <- function( x1, y1, prob.lvl, theta )
     }
     return(thetasol)
 }
-################################################################

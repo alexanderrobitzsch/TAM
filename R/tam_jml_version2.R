@@ -1,5 +1,5 @@
 ## File Name: tam_jml_version2.R
-## File Version: 9.514
+## File Version: 9.515
 
 tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
             bias=TRUE, xsi.fixed=NULL,  xsi.inits=NULL, A=NULL, B=NULL, Q=NULL,
@@ -283,7 +283,7 @@ tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
                     A=A, B=B, nitems=nitems, maxK=maxK, rprobs=rprobs, nstud=nstud,
                     resp.ind.list=resp.ind.list, xsi.fixed=xsi.fixed, deviance=deviance,
                     deviance.history=deviance.history, control=con1a, iter=iter)
-    res$time <-  c(s11,s2,s2-s11)
+    res$time <-  c(s11,s2)
     class(res) <- "tam.jml"
     return(res)
 }

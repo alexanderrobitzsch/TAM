@@ -1,5 +1,5 @@
 ## File Name: tam_linking_joint.R
-## File Version: 0.077
+## File Version: 0.078
 
 tam_linking_joint <- function(NM, parameters_list, linking_args, verbose=TRUE)
 {
@@ -10,7 +10,7 @@ tam_linking_joint <- function(NM, parameters_list, linking_args, verbose=TRUE)
     eps_rob_hae <- linking_args$eps_rob_hae
     fix.slope <- linking_args$fix.slope
     par_init <- linking_args$par_init
-    
+
     #- control arguments
     control <- list()
     if (verbose){

@@ -1,5 +1,5 @@
 ## File Name: tam_mml_3pl_ic.R
-## File Version: 9.2522
+## File Version: 9.253
 
 
 #--- Information criteria tam.mml.3pl

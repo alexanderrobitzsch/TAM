@@ -1,5 +1,5 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.9134
+## File Version: 9.924
 
 tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
@@ -118,13 +118,15 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
 # cat(" --- design matrix ready" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
 
     #--- processing in case of multiple person IDs in a dataset
-    tp <- max( table( pid ))
+    tp <- max(table(pid))
     if ( tp > 1){
-        res <- tam_mml_mfr_proc_multiple_person_ids( pid=pid, tp=tp, gresp=gresp, gresp.noStep=gresp.noStep,
-                    progress=progress )
+        res <- tam_mml_mfr_proc_multiple_person_ids( pid=pid, tp=tp, gresp=gresp,
+                    gresp.noStep=gresp.noStep, progress=progress, group=group, Y=Y)
         pid <- res$pid
         gresp <- res$gresp
         gresp.noStep <- res$gresp.noStep
+        group <- res$group
+        Y <- res$Y
     }
 # cat("process data in case of multiple persons" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
 
@@ -133,9 +135,9 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     xsi.fixed <- res$xsi.fixed
     xsi0 <- res$xsi0
 
-    nitems <- nrow( X.red )
+    nitems <- nrow(X.red)
     nstud <- nrow(gresp)        # number of students
-    if ( is.null( pweights) ){
+    if ( is.null(pweights) ){
         pweights <- rep(1,nstud) # weights of response pattern
     }
 
@@ -565,7 +567,7 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
                  "groups"=if ( is.null(group)){1} else { groups },
                  "formulaY"=formulaY, "dataY"=dataY,
                  "pweights"=pweights,
-                 "time"=c(s1,s2,s2-s1), "A"=A, "B"=B,
+                 "time"=c(s1,s2), "A"=A, "B"=B,
                  "se.B"=se.B,
                  "nitems"=nitems, "maxK"=maxK, "AXsi"=AXsi,
                  "AXsi_"=- AXsi,

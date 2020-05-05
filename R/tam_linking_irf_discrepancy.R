@@ -1,7 +1,7 @@
 ## File Name: tam_linking_irf_discrepancy.R
-## File Version: 0.053
+## File Version: 0.054
 
-tam_linking_irf_discrepancy <- function(probs1, probs2, wgt, type, 
+tam_linking_irf_discrepancy <- function(probs1, probs2, wgt, type,
     pow_rob_hae=1, eps_rob_hae=1e-4)
 {
     K <- dim(probs1)[3]

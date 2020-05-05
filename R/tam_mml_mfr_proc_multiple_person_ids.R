@@ -1,19 +1,24 @@
 ## File Name: tam_mml_mfr_proc_multiple_person_ids.R
-## File Version: 0.12
+## File Version: 0.23
 
 
 tam_mml_mfr_proc_multiple_person_ids <- function(pid,tp, gresp, gresp.noStep,
-        progress )
+        progress=TRUE, group=NULL, Y=NULL )
 {
     persons <- sort( unique( pid ) )
     NP <- length( persons )
-    person.ids <- sapply( persons, FUN=function( pp){ which( pid==pp ) },
+    person.ids <- sapply( persons, FUN=function(pp){ which( pid==pp ) },
                             simplify=FALSE)
     PP <- matrix( NA, nrow=NP, ncol=tp)
     for (pos in 1:tp){
         PP[,pos] <- unlist( lapply( person.ids, FUN=function(vv){ vv[pos] } ) )
     }
-
+    if (! is.null(group)){
+        group <- group[ PP[,1] ]
+    }
+    if (! is.null(Y)){
+        Y <- Y[ PP[,1],, drop=FALSE ]
+    }
     gresp0 <- matrix( NA, nrow=NP, ncol=ncol(gresp) )
     colnames(gresp0) <- colnames(gresp)
     gresp0.noStep <- matrix( NA, nrow=NP, ncol=ncol(gresp.noStep) )
@@ -56,7 +61,8 @@ tam_mml_mfr_proc_multiple_person_ids <- function(pid,tp, gresp, gresp.noStep,
         utils::flush.console()
     }
     #--- OUTPUT
-    res <- list(pid=pid, gresp=gresp, gresp.noStep=gresp.noStep)
+    res <- list(pid=pid, gresp=gresp, gresp.noStep=gresp.noStep,
+                    group=group, Y=Y)
     return(res)
 }
 

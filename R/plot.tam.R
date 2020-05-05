@@ -1,5 +1,5 @@
 ## File Name: plot.tam.R
-## File Version: 9.2875
+## File Version: 9.289
 
 #--- plotting tam expected scores curves
 plot.tam <- function(x, items=1:x$nitems, type="expected",

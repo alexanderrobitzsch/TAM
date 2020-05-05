@@ -1,5 +1,5 @@
 ## File Name: tam.np.R
-## File Version: 0.412
+## File Version: 0.413
 
 
 tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=list(),
@@ -167,7 +167,7 @@ tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=li
 
     #--- output
     s2 <- Sys.time()
-    time <- c(s1, s2, s2-s1)
+    time <- c(s1, s2)
     res <- list( CALL=CALL, dat=dat, dat2=dat2, dat_resp=dat_resp, n.ik=n.ik, N.ik=N.ik,
                 item=item, rprobs=probs, pi.k=pi.k, nodes=nodes, pweights=pweights, like=f.yi.qk,
                 hwt=f.qk.yi, iter=iter, loglike=loglike, AIC=AIC, converged=converged,

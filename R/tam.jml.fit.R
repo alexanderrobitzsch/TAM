@@ -1,5 +1,5 @@
 ## File Name: tam.jml.fit.R
-## File Version: 9.1991
+## File Version: 9.201
 
 
 tam.jml.fit <- function( tamobj )
@@ -32,7 +32,7 @@ tam.jml.fit <- function( tamobj )
     NU <- length(theta.unique)
     B_bari <- array(0,dim=c(NU, nitems))
     BB_bari <- array(0, dim=c(NU, nitems))
-    use_rcpp <- FALSE
+    use_rcpp <- TRUE
     res <- tam_mml_calc_prob(iIndex=1:nitems, A=A, AXsi=AXsi,
                         B=B, xsi=xsi, theta=matrix( theta.unique, nrow=NU, ncol=1),
                         nnodes=NU, maxK=maxK, recalc=FALSE, use_rcpp=use_rcpp )

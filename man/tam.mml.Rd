@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9864
+%% File Version: 2.987
 
 \name{tam.mml}
 
@@ -568,7 +568,7 @@ Second, the absolute value of increments can be forced with increasing
 iterations (set a value higher than 1 to \code{max.increment}, maybe 1.05).
 Third, change in estimated parameters can be stabilized by \code{fac.oldxsi} for
 which a value of 0 (the default) and a value of 1 can be chosen. We recommend
-value between .5 and .8 if your model does not converge.
+values between .5 and .8 if your model does not converge.
 }
 
 %\section{Warning}{

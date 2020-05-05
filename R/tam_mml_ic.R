@@ -1,5 +1,5 @@
 ## File Name: tam_mml_ic.R
-## File Version: 9.1992
+## File Version: 9.201
 
 
 #--- information criteria

@@ -1,5 +1,5 @@
 ## File Name: tam.mml.2pl.R
-## File Version: 9.5772
+## File Version: 9.582
 
 tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
                  formulaY=NULL, dataY=NULL,
@@ -557,7 +557,7 @@ tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
                "groups"=if ( is.null(group)){1} else { groups },
                "formulaY"=formulaY, "dataY"=dataY,
                "pweights"=pweights0,
-               "time"=c(s1,s2,s2-s1), "A"=A, "B"=B,
+               "time"=c(s1,s2), "A"=A, "B"=B,
                "se.B"=se.B,
                "nitems"=nitems, "maxK"=maxK, "AXsi"=AXsi,
                "AXsi_"=- AXsi,

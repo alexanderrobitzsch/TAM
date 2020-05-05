@@ -1,5 +1,5 @@
 %% File Name: tam.linking.Rd
-%% File Version: 0.6247
+%% File Version: 0.625
 
 \name{tam.linking}
 \alias{tam.linking}
@@ -28,7 +28,7 @@ The linking of two studies is implemented in the \code{tam_linking_2studies} fun
 
 \usage{
 tam.linking(tamobj_list, type="Hae", method="joint", pow_rob_hae=1, eps_rob_hae=1e-4,
-   theta=NULL, wgt=NULL, wgt_sd=2, fix.slope=FALSE, elim_items=NULL, 
+   theta=NULL, wgt=NULL, wgt_sd=2, fix.slope=FALSE, elim_items=NULL,
    par_init=NULL, verbose=TRUE)
 
 \method{summary}{tam.linking}(object, file=NULL, \dots)
@@ -55,7 +55,7 @@ The default is the Haebara linking method.
 \item{method}{Chain linking (\code{"chain"}) or joint linking (\code{"joint"})}
 \item{pow_rob_hae}{Power for robust Heabara linking}
 \item{eps_rob_hae}{Value \eqn{\varepsilon} for numerical approximation of
-loss function \eqn{|x|^p} in robust Haebara linking}  
+loss function \eqn{|x|^p} in robust Haebara linking}
   \item{theta}{
 Grid of \eqn{\theta} points. The default is \code{seq(-6,6,len=101)}.
 }
@@ -221,7 +221,7 @@ summary(lmod2)
 lmod3a <- TAM::tam.linking(tamobj_list, type="RobHae", pow_rob_hae=1)
 summary(lmod3a)
 
-#-- Robust Haeabara linking with initial parameters and prespecified epsilon value 
+#-- Robust Haeabara linking with initial parameters and prespecified epsilon value
 par_init <- lmod3a$par
 lmod3b <- TAM::tam.linking(tamobj_list, type="RobHae", pow_rob_hae=.1,
                 eps_rob_hae=1e-3, par_init=par_init)

@@ -1,5 +1,5 @@
 ## File Name: summary.tam.linking.R
-## File Version: 0.1581
+## File Version: 0.159
 
 summary.tam.linking <- function( object, file=NULL, ...)
 {

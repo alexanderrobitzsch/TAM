@@ -1,5 +1,5 @@
 ## File Name: tam_summary_print_ic.R
-## File Version: 0.2722
+## File Version: 0.274
 
 tam_summary_print_ic <- function( object, digits_ic=0, digits_values=2, bayes_crit=FALSE )
 {

@@ -1,5 +1,5 @@
 ## File Name: tam_mml_calc_prob_R.R
-## File Version: 0.1684
+## File Version: 0.170
 
 
 tam_mml_calc_prob_R <- function(iIndex, A, AXsi, B, xsi, theta,
@@ -41,7 +41,7 @@ tam_mml_calc_prob_R <- function(iIndex, A, AXsi, B, xsi, theta,
     # rr <- exp(rr1)
     rr <- tam_rcpp_calc_prob_subtract_max_exp( rr0=rr0, dim_rr=dim_rr )
 
-    
+
     #    rprobs <- rr / aperm( array( rep( colSums( aperm( rr, c(2,1,3) ),
     #                dims=1, na.rm=TRUE), maxK ), dim=dim(rr)[c(1,3,2)] ), c(1,3,2) )
     rprobs <- tam_rcpp_tam_mml_calc_prob_R_normalize_rprobs( rr=rr, dim_rr=dim_rr)

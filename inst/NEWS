@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.5  |  2020-04-17  |  Last: TAM 3.5-6
+VERSIONS TAM 3.5  |  2020-05-05  |  Last: TAM 3.5-16
 -------------------------------------------------------------
 
 FIXED * fixed a bug in plot.tam() function that was introduced
@@ -51,6 +51,15 @@ NOTE  * included arguments 'eps_rob_hae' and 'par_init'
         in tam.linking()
 FIXED * fixed a bug in tam.jml.fit()
         (thanks to Jess Mazengarb)
+FIXED * now use Fisher z correlation for computation in
+        maximum residual correlation in tam.modelfit()
+        (thanks to Hyeon-Ah Kang)
+FIXED * fixed recently occuring error in CRAN checks with 
+        computation of computation times (since R 4.0; 
+        thanks to Kurt Hornik)
+FIXED * fixed a bug in tam.mml.mfr() with multiple rows by person
+        when group or Y arguments are provided
+        (thanks to Laura Helbling)
 
 
 DATA  * included/modified datasets: ---
