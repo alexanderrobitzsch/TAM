@@ -1,5 +1,5 @@
 ## File Name: tamaan.R
-## File Version: 9.214
+## File Version: 9.215
 
 
 #--- tamaan function
@@ -95,7 +95,7 @@ tamaan <- function( tammodel, resp, tam.method=NULL,
     }
 
     s1 <- Sys.time()
-    time1 <- c( s0, s1, s1-s0)
+    time1 <- c( s0, s1)
     res$time <- time1
 
     # add tamaanify object to output

@@ -42,7 +42,21 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.5  |  2020-05-05  |  Last: TAM 3.5-16
+VERSIONS TAM 3.6  |  2020-05-06  |  Last: TAM 3.6-2
+-------------------------------------------------------------
+
+xxx   * ...
+
+
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
+-------------------------------------------------------------
+VERSIONS TAM 3.5  |  2020-05-05  |  Last: TAM 3.5-19
 -------------------------------------------------------------
 
 FIXED * fixed a bug in plot.tam() function that was introduced
@@ -61,11 +75,8 @@ FIXED * fixed a bug in tam.mml.mfr() with multiple rows by person
         when group or Y arguments are provided
         (thanks to Laura Helbling)
 
-
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: tam.linking (1)
-
-
 
 -------------------------------------------------------------
 VERSIONS TAM 3.4  |  2020-03-10  |  Last: TAM 3.4-26
