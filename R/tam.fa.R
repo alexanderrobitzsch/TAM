@@ -92,12 +92,12 @@ tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
     if ( irtmodel %in% c("bifactor2","efa") ){
         res <- tam.mml.2pl( resp=resp, Q=Q, irtmodel=irtmodel2,
                     variance.fixed=variance.fixed,pid=pid,
-                    xsi.inits=xsi.inits,beta.inits=beta.inits,#variance.inits=variance.inits,
+                    xsi.inits=xsi.inits,beta.inits=beta.inits,variance.inits=variance.inits,
                     pweights=pweights, control=con )
     }
     if ( irtmodel=="bifactor1"){
         res <- tam.mml( resp=resp, Q=Q, variance.fixed=variance.fixed, pid=pid,
-                    xsi.inits=xsi.inits,beta.inits=beta.inits,#variance.inits=variance.inits,
+                    xsi.inits=xsi.inits,beta.inits=beta.inits,variance.inits=variance.inits,
                     pweights=pweights, control=con , constraint=constraint)
     }
     #****
