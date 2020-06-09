@@ -1,5 +1,5 @@
 ## File Name: tam.modelfit.R
-## File Version: 9.37
+## File Version: 9.38
 
 
 # Q3 statistic and model fit statistics for objects of class tam
@@ -47,7 +47,7 @@ tam.modelfit <- function( tamobj, progress=TRUE )
 
     #-- compute p value
     N <- nrow(resp)
-    se1 <- - abs( dfr2$aQ3 * sqrt( N -3 ) )
+    se1 <- - abs( tam_fisherz(dfr2$aQ3) * sqrt( N -3 ) )
     dfr2$p <- 2 * stats::pnorm( se1  )
     dfr <- dfr2
     dfr <- dfr[ order( dfr$aQ3, decreasing=TRUE), ]

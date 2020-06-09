@@ -1,9 +1,10 @@
 ## File Name: tam_jml_version2.R
-## File Version: 9.503
+## File Version: 9.515
 
 tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
             bias=TRUE, xsi.fixed=NULL,  xsi.inits=NULL, A=NULL, B=NULL, Q=NULL,
-            ndim=1, pweights=NULL, control=list())
+            ndim=1, pweights=NULL, control=list(), constraint="cases",
+            damp=.1)
 {
 
     maxiter <- conv <- progress <- tamobj <- convM <- Msteps <- NULL
@@ -34,7 +35,7 @@ tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
 
     #-- create design matrices
     design <- designMatrices( modeltype="PCM", maxKi=NULL, resp=resp,
-                        A=A, B=B, Q=Q, R=R, ndim=ndim )
+                        A=A, B=B, Q=Q, R=R, ndim=ndim, constraint=constraint )
     A <- design$A
     A.0 <- A
     A.0[ is.na(A.0) ] <- 0
@@ -43,7 +44,6 @@ tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
     B.0[ is.na(B.0) ] <- 0
     cA <- design$flatA
     cA[is.na(cA)] <- 0
-
     # number of parameters
     np <- dim(A)[[3]]
     errorP <- rep(0,np)
@@ -151,6 +151,9 @@ tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
     #Initialise theta (WLE) values for all students
     theta <- log(PersonScores/(PersonMaxB-PersonScores)) #log of odds ratio of raw score
 
+    # center theta?
+    center_theta <- is.null(xsi.fixed) & (constraint=="cases")
+
     deviance <- 0
     deviance.history <- matrix( 0, nrow=maxiter, ncol=2)
     colnames(deviance.history) <- c("iter", "deviance")
@@ -164,6 +167,7 @@ tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
     #-------------- start iterations -------------------------------
     while ( (( maxthetachange > conv) | (maxChangeP > conv))  & (iter < maxiter) ) {
 
+        xsi_old <- xsi
         iter <- iter + 1
         if (progress){
             cat(disp)
@@ -178,12 +182,13 @@ tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
                             A=A, B=B, nstud=nrow(rp3.sel), nitems=nitems, maxK=maxK,
                             convM=convM, PersonScores=PersonScores[ rp3.sel$caseid ],
                             theta=theta[ rp3.sel$caseid,, drop=FALSE],
-                            xsi=xsi, Msteps=Msteps, WLE=FALSE)
+                            xsi=xsi, Msteps=Msteps, WLE=FALSE, damp=damp)
         theta <- jmlAbility$theta
         theta <- theta[ rp3$theta.index,, drop=FALSE]
-
-        if (is.null( xsi.fixed)){
+        if (center_theta){
             theta <- theta - mean(theta)
+        } else {
+            damp <- 1 - (1-damp)*.99
         }
         meanChangeWLE <- jmlAbility$meanChangeWLE
         maxthetachange <- max( abs( theta - theta_old ) )
@@ -278,7 +283,7 @@ tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
                     A=A, B=B, nitems=nitems, maxK=maxK, rprobs=rprobs, nstud=nstud,
                     resp.ind.list=resp.ind.list, xsi.fixed=xsi.fixed, deviance=deviance,
                     deviance.history=deviance.history, control=con1a, iter=iter)
-    res$time <-  c(s11,s2,s2-s11)
+    res$time <-  c(s11,s2)
     class(res) <- "tam.jml"
     return(res)
 }

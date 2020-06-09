@@ -1,5 +1,5 @@
 %% File Name: tam.jml.Rd
-%% File Version: 2.38
+%% File Version: 2.397
 
 \name{tam.jml}
 
@@ -20,7 +20,7 @@ item response models with joint maximum likelihood (JML,
 \usage{
 tam.jml(resp, group=NULL, adj=.3, disattenuate=FALSE, bias=TRUE,
     xsi.fixed=NULL, xsi.inits=NULL, theta.fixed=NULL, A=NULL, B=NULL, Q=NULL,
-    ndim=1, pweights=NULL, verbose=TRUE, control=list(), version=2)
+    ndim=1, pweights=NULL, constraint="cases", verbose=TRUE, control=list(), version=2)
 
 \method{summary}{tam.jml}(object, file=NULL, \dots)
 
@@ -87,6 +87,10 @@ the fixed value. This argument can only be applied for \code{version=1}.}
   \item{pweights}{
    An optional vector of person weights.
 }
+\item{constraint}{Type of constraint for means. Either \code{"cases"}
+(set mean of person parameters to zero)
+or \code{"items"} (set mean of item parameters to zero).
+}
 \item{verbose}{Logical indicating whether output should
 be printed during iterations. This argument replaces \code{control$progress}.
 }
@@ -146,6 +150,8 @@ A list with following entries
 \item{resp.ind.list}{Like \code{resp.ind}, only in the format of a list}
 \item{xsi.fixed}{Fixed \eqn{\xi} item parameters}
 \item{control}{Control list}
+\item{item1}{Extended data frame of item parameters}
+\item{theta_summary}{Summary of person parameters}
 \item{\dots}{}
 }
 
@@ -202,6 +208,9 @@ itemfit <- TAM::tam.fit(mod1a)$fit.item
 
 # compare results with Rasch model estimated by MML
 mod1b <- TAM::tam.mml(resp=resp )
+
+# constrain item difficulties to zero
+mod1c <- TAM::tam.jml(resp=resp, constraint="items")
 
 # plot estimated parameters
 plot( mod1a$xsi, mod1b$xsi$xsi, pch=16,

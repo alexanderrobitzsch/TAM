@@ -8,21 +8,25 @@
 
 <title>Dataset from Geiser et al. (2006) — data.geiser • TAM</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,11 +34,12 @@
 
 
 
-<meta property="og:title" content="Dataset from Geiser et al. (2006) — data.geiser" />
 
+<meta property="og:title" content="Dataset from Geiser et al. (2006) — data.geiser" />
 <meta property="og:description" content="This is a subsample of the dataset used in Geiser et al. (2006) and
 Geiser and Eid (2010)." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -46,6 +51,7 @@ Geiser and Eid (2010)." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -64,7 +70,7 @@ Geiser and Eid (2010)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.4-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.6-vv</span>
       </span>
     </div>
 
@@ -72,7 +78,7 @@ Geiser and Eid (2010)." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -80,11 +86,10 @@ Geiser and Eid (2010)." />
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/alexanderrobitzsch/TAM">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -95,6 +100,7 @@ Geiser and Eid (2010)." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -106,14 +112,13 @@ Geiser and Eid (2010)." />
     </div>
 
     <div class="ref-description">
-    
     <p>This is a subsample of the dataset used in Geiser et al. (2006) and
 Geiser and Eid (2010).</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>data.geiser</span>)</pre>
-        
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.geiser</span>)</pre>
+
+
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>A data frame with 519 observations on the following 24 variables</p>
@@ -125,7 +130,6 @@ Geiser and Eid (2010).</p>
 <code>[...]</code> <br />
 <code> $ mrt23: num  0 0 0 0 0 0 0 1 0 0 ...</code> <br />
 <code> $ mrt24: num  0 0 0 0 0 0 0 0 0 0 ...</code> <br /></p>
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Geiser, C., &amp; Eid, M. (2010). Item-Response-Theorie.
@@ -133,16 +137,16 @@ In C. Wolf &amp; H. Best (Hrsg.). <em>Handbuch der sozialwissenschaftlichen
 Datenanalyse</em> (S. 311-332). VS Verlag fuer Sozialwissenschaften.</p>
 <p>Geiser, C., Lehmann, W., &amp; Eid, M. (2006). Separating rotators from
 nonrotators in the mental rotations test: A multigroup latent class analysis.
-<em>Multivariate Behavioral Research, 41</em>(3), 261-293.</p>
-    
+<em>Multivariate Behavioral Research, 41</em>(3), 261-293.
+doi: <a href='https://doi.org/10.1207/s15327906mbr4103_2'>10.1207/s15327906mbr4103_2</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
+    <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 1: Latent trait and latent class models (Geiser et al., 2006, MBR)</span>
 <span class='co'>#############################################################################</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>data.geiser</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.geiser</span>)
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.geiser</span>
 
 <span class='co'>#**********************************************</span>
@@ -154,8 +158,8 @@ nonrotators in the mental rotations test: A multigroup latent class analysis.
   ITEM TYPE:
     ALL(Rasch)
     "</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tamaan'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>dat</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod1</span>)
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>dat</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>)
 
 <span class='co'>#**********************************************</span>
 <span class='co'># Model 2: 2PL model</span>
@@ -164,11 +168,11 @@ nonrotators in the mental rotations test: A multigroup latent class analysis.
     F=~ mrt1__mrt12
     F ~~ 1*F
     "</span>
-<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tamaan'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>dat</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod2</span>)
+<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>dat</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2</span>)
 
 <span class='co'># model comparison Rasch vs. 2PL</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/anova'>anova</a></span>(<span class='no'>mod1</span>,<span class='no'>mod2</span>)
+<span class='fu'><a href='https://rdrr.io/r/stats/anova.html'>anova</a></span>(<span class='no'>mod1</span>,<span class='no'>mod2</span>)
 
 <span class='co'>#*********************************************************************</span>
 <span class='co'>#*** Model 3: Latent class analysis with four classes</span>
@@ -181,14 +185,14 @@ ANALYSIS:
 LAVAAN MODEL:
   F=~ mrt1__mrt12
     "</span>
-<span class='no'>mod3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tamaan'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>  )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod3</span>)
+<span class='no'>mod3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>  )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod3</span>)
 
 <span class='co'># extract item response functions</span>
 <span class='no'>imod2</span> <span class='kw'>&lt;-</span> <span class='fu'>IRT.irfprob</span>(<span class='no'>mod3</span>)[,<span class='fl'>2</span>,]
 <span class='co'># plot class specific probabilities</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/matplot'>matplot</a></span>( <span class='no'>imod2</span>, <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"o"</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>4</span>, <span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>"Item"</span>, <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>"Probability"</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/legend'>legend</a></span>( <span class='fl'>10</span>,<span class='fl'>1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(<span class='st'>"Class"</span>,<span class='fl'>1</span>:<span class='fl'>4</span>), <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>4</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>4</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>4</span> )
+<span class='fu'><a href='https://rdrr.io/r/graphics/matplot.html'>matplot</a></span>( <span class='no'>imod2</span>, <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"o"</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>4</span>, <span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>"Item"</span>, <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>"Probability"</span> )
+<span class='fu'><a href='https://rdrr.io/r/graphics/legend.html'>legend</a></span>( <span class='fl'>10</span>,<span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"Class"</span>,<span class='fl'>1</span>:<span class='fl'>4</span>), <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>4</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>4</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>4</span> )
 
 <span class='co'>#*********************************************************************</span>
 <span class='co'>#*** Model 4: Latent class analysis with five classes</span>
@@ -201,12 +205,12 @@ ANALYSIS:
 LAVAAN MODEL:
   F=~ mrt1__mrt12
     "</span>
-<span class='no'>mod4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tamaan'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod4</span>)
+<span class='no'>mod4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod4</span>)
 
 <span class='co'># compare different models</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>AIC</a></span>(<span class='no'>mod1</span>); <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>AIC</a></span>(<span class='no'>mod2</span>); <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>AIC</a></span>(<span class='no'>mod3</span>); <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>AIC</a></span>(<span class='no'>mod4</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>BIC</a></span>(<span class='no'>mod1</span>); <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>BIC</a></span>(<span class='no'>mod2</span>); <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>BIC</a></span>(<span class='no'>mod3</span>); <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/AIC'>BIC</a></span>(<span class='no'>mod4</span>)
+<span class='fu'><a href='https://rdrr.io/r/stats/AIC.html'>AIC</a></span>(<span class='no'>mod1</span>); <span class='fu'><a href='https://rdrr.io/r/stats/AIC.html'>AIC</a></span>(<span class='no'>mod2</span>); <span class='fu'><a href='https://rdrr.io/r/stats/AIC.html'>AIC</a></span>(<span class='no'>mod3</span>); <span class='fu'><a href='https://rdrr.io/r/stats/AIC.html'>AIC</a></span>(<span class='no'>mod4</span>)
+<span class='fu'><a href='https://rdrr.io/r/stats/AIC.html'>BIC</a></span>(<span class='no'>mod1</span>); <span class='fu'><a href='https://rdrr.io/r/stats/AIC.html'>BIC</a></span>(<span class='no'>mod2</span>); <span class='fu'><a href='https://rdrr.io/r/stats/AIC.html'>BIC</a></span>(<span class='no'>mod3</span>); <span class='fu'><a href='https://rdrr.io/r/stats/AIC.html'>BIC</a></span>(<span class='no'>mod4</span>)
 <span class='co'># more condensed form</span>
 <span class='fu'>IRT.compareModels</span>(<span class='no'>mod1</span>, <span class='no'>mod2</span>, <span class='no'>mod3</span>, <span class='no'>mod4</span>)
 
@@ -214,7 +218,7 @@ LAVAAN MODEL:
 <span class='co'># EXAMPLE 2: Rasch model and mixture Rasch model (Geiser &amp; Eid, 2010)</span>
 <span class='co'>#############################################################################</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>data.geiser</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.geiser</span>)
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.geiser</span>
 
 <span class='co'>#*********************************************************************</span>
@@ -226,8 +230,8 @@ LAVAAN MODEL:
 ITEM TYPE:
   ALL(Rasch);
     "</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tamaan'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>  )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod1</span>)
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>  )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>)
 
 <span class='co'>#*********************************************************************</span>
 <span class='co'>#*** Model 2: Mixed Rasch model with two classes</span>
@@ -242,19 +246,19 @@ LAVAAN MODEL:
 ITEM TYPE:
   ALL(Rasch);
     "</span>
-<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tamaan'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>  )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod2</span>)
+<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>  )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2</span>)
 
 <span class='co'># plot item parameters</span>
 <span class='no'>ipars</span> <span class='kw'>&lt;-</span> <span class='no'>mod2</span>$<span class='no'>itempartable_MIXTURE</span>[ <span class='fl'>1</span>:<span class='fl'>6</span>, ]
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>3</span>], <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"o"</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(-<span class='fl'>3</span>,<span class='fl'>2</span>), <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>,
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>3</span>], <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"o"</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>3</span>,<span class='fl'>2</span>), <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>,
         <span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>"Item"</span>, <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>"Item difficulty"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/lines'>lines</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>4</span>], <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>2</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/points'>points</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>4</span>],  <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>2</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>4</span>], <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>2</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/points.html'>points</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>4</span>],  <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>2</span>)
 
 <span class='co'># extract individual posterior distribution</span>
 <span class='no'>post2</span> <span class='kw'>&lt;-</span> <span class='fu'>IRT.posterior</span>(<span class='no'>mod2</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>post2</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>post2</span>)
 <span class='co'># num [1:519, 1:30] 0.000105 0.000105 0.000105 0.000105 0.000105 ...</span>
 <span class='co'># - attr(*, "theta")=num [1:30, 1:30] 1 0 0 0 0 0 0 0 0 0 ...</span>
 <span class='co'># - attr(*, "prob.theta")=num [1:30, 1] 1.21e-05 2.20e-04 2.29e-03 1.37e-02 4.68e-02 ...</span>
@@ -266,7 +270,7 @@ ITEM TYPE:
 <span class='no'>mod2</span>$<span class='no'>E</span>[<span class='fl'>1</span>,<span class='fl'>2</span>,,<span class='st'>"mrt1_F_load_Cl2"</span>]
 
 <span class='co'># compute individual posterior probability for class 1 (first 15 columns)</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Round'>round</a></span>( <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colSums'>rowSums</a></span>( <span class='no'>post2</span>[, <span class='fl'>1</span>:<span class='fl'>15</span>] ), <span class='fl'>3</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span>( <span class='no'>post2</span>[, <span class='fl'>1</span>:<span class='fl'>15</span>] ), <span class='fl'>3</span> )
 <span class='co'># columns 16 to 30 refer to class 2</span>
 
 <span class='co'>#*********************************************************************</span>
@@ -282,35 +286,33 @@ LAVAAN MODEL:
 ITEM TYPE:
   ALL(Rasch);
     "</span>
-<span class='no'>mod3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tamaan'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>  )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod3</span>)
+<span class='no'>mod3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>  )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod3</span>)
 
 <span class='co'># plot item parameters</span>
 <span class='no'>ipars</span> <span class='kw'>&lt;-</span> <span class='no'>mod3</span>$<span class='no'>itempartable_MIXTURE</span>[ <span class='fl'>1</span>:<span class='fl'>6</span>, ]
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>3</span>], <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"o"</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(-<span class='fl'>3.7</span>,<span class='fl'>2</span>), <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>,
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>3</span>], <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"o"</span>, <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>3.7</span>,<span class='fl'>2</span>), <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>,
         <span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>"Item"</span>, <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>"Item difficulty"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/lines'>lines</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>4</span>], <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>2</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/points'>points</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>4</span>],  <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>2</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/lines'>lines</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>5</span>], <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>3</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/points'>points</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>5</span>],  <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>17</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>4</span>], <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>2</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/points.html'>points</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>4</span>],  <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>2</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>5</span>], <span class='kw'>type</span><span class='kw'>=</span><span class='st'>"l"</span>, <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>lty</span><span class='kw'>=</span><span class='fl'>3</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/points.html'>points</a></span>( <span class='fl'>1</span>:<span class='fl'>6</span>, <span class='no'>ipars</span>[,<span class='fl'>5</span>],  <span class='kw'>col</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>17</span>)
 
 <span class='co'># model comparison</span>
 <span class='fu'>IRT.compareModels</span>( <span class='no'>mod1</span>, <span class='no'>mod2</span>, <span class='no'>mod3</span> )
-<span class='co'># }</span></pre>
+}</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      
       <li><a href="#format">Format</a></li>
-
       <li><a href="#references">References</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -318,13 +320,16 @@ ITEM TYPE:
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

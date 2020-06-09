@@ -1,5 +1,5 @@
 %% File Name: designMatrices.Rd
-%% File Version: 2.19
+%% File Version: 2.222
 
 \name{designMatrices}
 
@@ -118,8 +118,8 @@ design matrix in the dispersion model for ordered data (Andrich, 1982).
 
 \references{
 Andrich, D. (1982). An extension of the Rasch model for ratings providing
-both location and dispersion parameters. \emph{Psychometrika, 47},
-105-113.
+both location and dispersion parameters. \emph{Psychometrika, 47}(1),
+105-113. \doi{10.1007/BF02293856}
 }
 
 %\author{

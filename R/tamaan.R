@@ -1,8 +1,8 @@
 ## File Name: tamaan.R
-## File Version: 9.19
+## File Version: 9.215
 
-##########################################################
-# tamaan function
+
+#--- tamaan function
 tamaan <- function( tammodel, resp, tam.method=NULL,
                 control=list(), doparse=TRUE, ... )
 {
@@ -46,14 +46,13 @@ tamaan <- function( tammodel, resp, tam.method=NULL,
 
     con[ names(control) ] <- control
     Lcon <- length(con)
-    con1a <- con1 <- con ;
+    con1a <- con1 <- con
     names(con1) <- NULL
     for (cc in 1:Lcon ){
         assign( names(con)[cc], con1[[cc]], envir=e1 )
     }
 
-    #******************************
-    # tam.mml
+    #--- tam.mml
     if ( res0$method=="tam.mml" ){
         res <- tam.mml( resp=res0$resp, A=res0$A, xsi.fixed=res0$xsi.fixed,
                     Q=res0$Q, variance.fixed=res0$variance.fixed,
@@ -61,8 +60,7 @@ tamaan <- function( tammodel, resp, tam.method=NULL,
         res$tamaan.method <- "tam.mml"
     }
 
-    #******************************
-    # tam.mml.2pl
+    #--- tam.mml.2pl
     if ( res0$method=="tam.mml.2pl" ){
         res <- tam.mml.2pl( resp=res0$resp, A=res0$A, xsi.fixed=res0$xsi.fixed,
                     Q=res0$Q, variance.fixed=res0$variance.fixed,
@@ -70,43 +68,34 @@ tamaan <- function( tammodel, resp, tam.method=NULL,
                     control=con, ... )
         res$tamaan.method <- "tam.mml.2pl"
     }
-    #******************************
-    # 3PL: latent class analysis
+
+    #--- 3PL: latent class analysis
     if ( ( res0$method=="tam.mml.3pl" ) & ( anal.list$type=="LCA" ) ){
         res <- tamaan.3pl.lca( res0=res0, anal.list=anal.list, con=con, ... )
     }
-    #***********************************
 
-    #******************************
-    # 3PL: ordered latent class analysis
+    #--- 3PL: ordered latent class analysis
     if ( ( res0$method=="tam.mml.3pl" ) & ( anal.list$type=="OLCA" ) ){
         res <- tamaan.3pl.olca( res0=res0, anal.list=anal.list, con=con, ... )
     }
-    #***********************************
 
-    #******************************
-    # 3PL: trait model
+    #--- 3PL: trait model
     if ( ( res0$method=="tam.mml.3pl" ) & ( anal.list$type=="TRAIT" ) ){
         res <- tamaan.3pl.trait( res0=res0, anal.list=anal.list, con=con, ... )
     }
-    #***********************************
 
-    #******************************
-    # 3PL: located latent class analysis
+    #--- 3PL: located latent class analysis
     if ( ( res0$method=="tam.mml.3pl" ) & ( anal.list$type=="LOCLCA" ) ){
         res <- tamaan.3pl.loclca( res0=res0, anal.list=anal.list, con=con, ... )
     }
-    #***********************************
 
-    #******************************
-    # 3PL: mixture distribution models
+    #--- 3PL: mixture distribution models
     if ( ( res0$method=="tam.mml.3pl" ) & ( anal.list$type=="MIXTURE" ) ){
         res <- tamaan.3pl.mixture( res0=res0, anal.list=anal.list, con=con, ... )
     }
-    #***********************************
 
     s1 <- Sys.time()
-    time1 <- c( s0, s1, s1-s0)
+    time1 <- c( s0, s1)
     res$time <- time1
 
     # add tamaanify object to output
@@ -116,8 +105,5 @@ tamaan <- function( tammodel, resp, tam.method=NULL,
     res$anal.list <- anal.list
     class(res) <- "tamaan"
     res$CALL <- cl
-
     return(res)
 }
-###########################################################
-

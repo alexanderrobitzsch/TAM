@@ -1,5 +1,5 @@
 %% File Name: tamaanify.Rd
-%% File Version: 0.54
+%% File Version: 0.553
 
 \name{tamaanify}
 \alias{tamaanify}
@@ -148,14 +148,17 @@ be estimated (\code{\link{tam.mml.2pl}})
 Bartolucci, F. (2007). A class of multidimensional IRT models for testing
 unidimensionality and clustering items.
 \emph{Psychometrika, 72}, 141-157.
+\doi{10.1007/s11336-005-1376-9}
 
 Formann, A. K. (1989). Constrained latent class models: Some further
 applications. \emph{British Journal of Mathematical and Statistical
 Psychology, 42}, 37-54.
+\doi{10.1111/j.2044-8317.1989.tb01113.x}
 
 Hojtink, H., & Molenaar, I. W. (1997). A multidimensional item response model:
 Constrained latent class analysis using the Gibbs sampler and posterior
 predictive checks. \emph{Psychometrika, 62}(2), 171-189.
+\doi{10.1007/BF02295273}
 
 Thissen, D., Cai, L., & Bock, R. D. (2010).
 The nominal categories item response model.
@@ -169,6 +172,7 @@ DNC Research Note 07-12.
 
 von Davier, M. (2007). \emph{Mixture distribution diagnostic models}.
 ETS Research Report ETS RR-07-32. Princeton, ETS.
+\doi{10.1002/j.2333-8504.2007.tb02074.x}
 }
 
 %\author{

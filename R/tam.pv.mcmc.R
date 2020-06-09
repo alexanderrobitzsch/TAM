@@ -1,5 +1,5 @@
 ## File Name: tam.pv.mcmc.R
-## File Version: 0.847
+## File Version: 0.848
 
 tam.pv.mcmc <- function( tamobj, Y=NULL, group=NULL, beta_groups=TRUE,
                 nplausible=10, level=.95, n.iter=1000,
@@ -211,7 +211,7 @@ tam.pv.mcmc <- function( tamobj, Y=NULL, group=NULL, beta_groups=TRUE,
                     nplausible=nplausible, ndim=D, pweights=pweights, pid=pid,
                     n.iter=n.iter, n.burnin=n.burnin, ndim=D,
                     nplausible=nplausible, calc_ic=calc_ic,
-                    time=c(s1,s2,s2-s1), CALL=CALL )
+                    time=c(s1,s2), CALL=CALL )
     class(res) <- "tam.pv.mcmc"
     return(res)
 }

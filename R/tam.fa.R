@@ -1,5 +1,5 @@
 ## File Name: tam.fa.R
-## File Version: 9.254
+## File Version: 9.256
 
 
 #---- Exploratory Factor Analysis and Bifactor Models
@@ -86,7 +86,6 @@ tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
 
     #--- define item response model
     irtmodel2 <- if (maxK==1){"2PL" } else {"GPCM" }
-
 
     #--- estimate model
     if ( irtmodel %in% c("bifactor2","efa") ){

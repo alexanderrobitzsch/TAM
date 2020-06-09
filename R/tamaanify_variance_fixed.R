@@ -1,12 +1,10 @@
-## File Name: tamaanify.variance.fixed.R
-## File Version: 9.07
+## File Name: tamaanify_variance_fixed.R
+## File Version: 9.202
 
 
 
-
-##########################################################
-# variance constraints
-tamaanify.variance.fixed <- function( res )
+#--- variance constraints
+tamaanify_variance_fixed <- function( res )
 {
     lavpartable  <- res$lavpartable
     Q <- res$Q
@@ -29,4 +27,3 @@ tamaanify.variance.fixed <- function( res )
     res$variance.fixed <- variance.fixed
     return(res)
 }
-##########################################################

@@ -8,21 +8,25 @@
 
 <title>Utility Functions in <span class="pkg">TAM</span> — TAM-utilities • TAM</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +34,11 @@
 
 
 
-<meta property="og:title" content="Utility Functions in <span class="pkg">TAM</span> — TAM-utilities" />
 
+<meta property="og:title" content="Utility Functions in <span class="pkg">TAM</span> — TAM-utilities" />
 <meta property="og:description" content="Utility functions in TAM." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -45,6 +50,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -63,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.4-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.6-vv</span>
       </span>
     </div>
 
@@ -71,7 +77,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -79,11 +85,10 @@
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/alexanderrobitzsch/TAM">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -94,6 +99,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -105,9 +111,7 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Utility functions in <span class="pkg">TAM</span>.</p>
-    
     </div>
 
     <pre class="usage"><span class='co'>## RISE item fit statistic of two models</span>
@@ -124,11 +128,11 @@
 <span class='co'>## requireNamespace with message of needed installation</span>
 <span class='fu'>require_namespace_msg</span>(<span class='no'>pkg</span>)
 <span class='co'>## add leading zeroes</span>
-<span class='fu'>add.lead</span>(<span class='no'>x</span>, <span class='kw'>width</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Extremes'>max</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/nchar'>nchar</a></span>(<span class='no'>x</span>)))
+<span class='fu'>add.lead</span>(<span class='no'>x</span>, <span class='kw'>width</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nchar.html'>nchar</a></span>(<span class='no'>x</span>)))
 <span class='co'>## round some columns in a data frame</span>
-<span class='fu'>tam_round_data_frame</span>(<span class='no'>obji</span>, <span class='kw'>from</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>to</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/nrow'>ncol</a></span>(<span class='no'>obji</span>), <span class='kw'>digits</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>rownames_null</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+<span class='fu'>tam_round_data_frame</span>(<span class='no'>obji</span>, <span class='kw'>from</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>to</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>obji</span>), <span class='kw'>digits</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>rownames_null</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
 <span class='co'>## round some columns in a data frame and print this data frame</span>
-<span class='fu'>tam_round_data_frame_print</span>(<span class='no'>obji</span>, <span class='kw'>from</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>to</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/nrow'>ncol</a></span>(<span class='no'>obji</span>), <span class='kw'>digits</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>rownames_null</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+<span class='fu'>tam_round_data_frame_print</span>(<span class='no'>obji</span>, <span class='kw'>from</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>to</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>obji</span>), <span class='kw'>digits</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>rownames_null</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
 <span class='co'>## copy of CDM::osink</span>
 <span class='fu'>tam_osink</span>(<span class='no'>file</span>, <span class='kw'>suffix</span><span class='kw'>=</span><span class='st'>"__SUMMARY.Rout"</span>)
 <span class='co'>## copy of CDM::csink</span>
@@ -179,7 +183,7 @@
 <span class='fu'>tam_difference_quotient</span>(<span class='no'>d0</span>, <span class='no'>d0p</span>, <span class='no'>d0m</span>, <span class='no'>h</span>)
 <span class='co'>## assign elements of a list in an environment</span>
 <span class='fu'>tam_assign_list_elements</span>(<span class='no'>x</span>, <span class='no'>envir</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -205,7 +209,7 @@
     </tr>
     <tr>
       <th>args_CALL</th>
-      <td><p>Arguments obtained from <code><a href='https://www.rdocumentation.org/packages/base/topics/list'>as.list( sys.call() )</a></code></p></td>
+      <td><p>Arguments obtained from <code><a href='https://rdrr.io/r/base/list.html'>as.list( sys.call() )</a></code></p></td>
     </tr>
     <tr>
       <th>variable</th>
@@ -269,7 +273,7 @@
     </tr>
     <tr>
       <th>op</th>
-      <td><p>An operation <code>"*"</code>, <code>"+"</code> or <code>"-"</code></p></td>
+      <td><p>An operation <code><a href='https://rdrr.io/r/base/Arithmetic.html'>"*"</a></code>, <code><a href='https://rdrr.io/r/base/Arithmetic.html'>"+"</a></code> or <code><a href='https://rdrr.io/r/base/Arithmetic.html'>"-"</a></code></p></td>
     </tr>
     <tr>
       <th>group</th>
@@ -315,7 +319,7 @@ should be sampled in bootstrap</p></td>
     </tr>
     <tr>
       <th>method</th>
-      <td><p>Method, see <code><a href='https://www.rdocumentation.org/packages/stats/topics/cov.wt'>stats::cov.wt</a></code></p></td>
+      <td><p>Method, see <code><a href='https://rdrr.io/r/stats/cov.wt.html'>stats::cov.wt</a></code></p></td>
     </tr>
     <tr>
       <th>rn</th>
@@ -410,17 +414,18 @@ should be sampled in bootstrap</p></td>
       <td><p>Element of a list</p></td>
     </tr>
     </table>
-    
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+    </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -428,13 +433,16 @@ should be sampled in bootstrap</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

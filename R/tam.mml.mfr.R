@@ -1,5 +1,5 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.912
+## File Version: 9.924
 
 tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
@@ -118,13 +118,15 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
 # cat(" --- design matrix ready" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
 
     #--- processing in case of multiple person IDs in a dataset
-    tp <- max( table( pid ))
+    tp <- max(table(pid))
     if ( tp > 1){
-        res <- tam_mml_mfr_proc_multiple_person_ids( pid=pid, tp=tp, gresp=gresp, gresp.noStep=gresp.noStep,
-                    progress=progress )
+        res <- tam_mml_mfr_proc_multiple_person_ids( pid=pid, tp=tp, gresp=gresp,
+                    gresp.noStep=gresp.noStep, progress=progress, group=group, Y=Y)
         pid <- res$pid
         gresp <- res$gresp
         gresp.noStep <- res$gresp.noStep
+        group <- res$group
+        Y <- res$Y
     }
 # cat("process data in case of multiple persons" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
 
@@ -133,9 +135,9 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     xsi.fixed <- res$xsi.fixed
     xsi0 <- res$xsi0
 
-    nitems <- nrow( X.red )
+    nitems <- nrow(X.red)
     nstud <- nrow(gresp)        # number of students
-    if ( is.null( pweights) ){
+    if ( is.null(pweights) ){
         pweights <- rep(1,nstud) # weights of response pattern
     }
 
@@ -472,10 +474,11 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
                 beta=beta, beta.fixed=beta.fixed, ndim=ndim,
                 variance.fixed=variance.fixed, G=G, irtmodel=irtmodel, B_orig=NULL,
                 B.fixed=B.fixed, E=E, est.variance=TRUE, resp=resp,
-                est.slopegroups=NULL, variance.Npars=NULL, group=group, penalty_xsi=penalty_xsi )
+                est.slopegroups=NULL, variance.Npars=NULL, group=group,
+                penalty_xsi=penalty_xsi, pweights=pweights, resp.ind=resp.ind )
 
-    #***
-    # calculate counts
+
+    #*** calculate counts
     res <- tam_calc_counts( resp=gresp.noStep, theta=theta, resp.ind=gresp.noStep.ind,
                 group=group, maxK=maxK, pweights=pweights, hwt=hwt )
     n.ik <- res$n.ik
@@ -495,11 +498,7 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
 
     #******
     s2 <- Sys.time()
-
-    item <- data.frame( "xsi.index"=1:np,
-                        "xsi.label"=dimnames(A)[[3]],
-                        "est"=xsi )
-
+    item <- data.frame( "xsi.index"=1:np, "xsi.label"=dimnames(A)[[3]], "est"=xsi )
     if (progress){
         cat(disp)
         cat("Item Parameters\n")
@@ -568,7 +567,7 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
                  "groups"=if ( is.null(group)){1} else { groups },
                  "formulaY"=formulaY, "dataY"=dataY,
                  "pweights"=pweights,
-                 "time"=c(s1,s2,s2-s1), "A"=A, "B"=B,
+                 "time"=c(s1,s2), "A"=A, "B"=B,
                  "se.B"=se.B,
                  "nitems"=nitems, "maxK"=maxK, "AXsi"=AXsi,
                  "AXsi_"=- AXsi,

@@ -1,15 +1,16 @@
 ## File Name: tam_summary_print_ic.R
-## File Version: 0.26
+## File Version: 0.274
 
 tam_summary_print_ic <- function( object, digits_ic=0, digits_values=2, bayes_crit=FALSE )
 {
     ic <- object$ic
     calc_ic <- object$calc_ic
-    if ( is.null(calc_ic) ){ calc_ic <- TRUE }
-
+    if ( is.null(calc_ic) ){
+        calc_ic <- TRUE
+    }
     if ( calc_ic ){
         #-- extract available criteria
-        crits <- c("AIC", "AIC3", "AICc", "BIC", "aBIC", "CAIC")
+        crits <- c("AIC", "AIC3", "AICc", "BIC", "aBIC", "CAIC", "GHP")
         crits <- intersect( names(ic), crits )
         #-- print all criteria
         for (crit in crits){
@@ -17,7 +18,6 @@ tam_summary_print_ic <- function( object, digits_ic=0, digits_values=2, bayes_cr
                         digits_penalty=digits_values)
         }
         cat("\n")
-
         if (bayes_crit){
             #--- information criteria based on Bayesian inference
             cat("Criteria based on Fully Bayesian Inference\n")

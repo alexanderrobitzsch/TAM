@@ -1,5 +1,5 @@
 %% File Name: tam.np.Rd
-%% File Version: 0.321
+%% File Version: 0.323
 
 
 \name{tam.np}
@@ -101,16 +101,16 @@ List containing several entries
 Breheny, P., & Huang, J. (2015). Group descent algorithms for nonconvex penalized linear
 and logistic regression models with grouped predictors.
 \emph{Statistics and Computing, 25}(2), 173-187.
-http://dx.doi.org/10.1007/s11222-013-9424-2
+\doi{10.1007/s11222-013-9424-2}
 
 Rossi, N., Wang, X., & Ramsay, J. O. (2002). Nonparametric item response function
 estimates with the EM algorithm.
-\emph{Journal of Educational and Behavioral Statistics, 27}(3), 291-317. \cr
-http://dx.doi.org/10.3102/10769986027003291
+\emph{Journal of Educational and Behavioral Statistics, 27}(3), 291-317.
+\doi{10.3102/10769986027003291}
 
 Yang, Y., & Zou, H. (2015). A fast unified algorithm for solving group-lasso penalized
 learning problems. \emph{Statistics and Computing, 25}(6), 1129-1141.
-http://dx.doi.org/10.1007/s11222-014-9498-5
+\doi{10.1007/s11222-014-9498-5}
 }
 %\author{
 %%  ~~who you are~~

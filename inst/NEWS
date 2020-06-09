@@ -24,7 +24,7 @@ A. Robitzsch, T. Kiefer, & M. Wu
 mailto:
 -------
 Alexander Robitzsch
-robitzsch@leibniz-ipn.de
+robitzsch@ipn.uni-kiel.de>
 
 For reporting a bug, please always provide a reproducible R script 
 and (if necessary) a corresponding dataset.
@@ -42,7 +42,44 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.4  |  2019-10-24  |  Last: TAM 3.4-5
+VERSIONS TAM 3.6  |  2020-05-06  |  Last: TAM 3.6-2
+-------------------------------------------------------------
+
+xxx   * ...
+
+
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
+-------------------------------------------------------------
+VERSIONS TAM 3.5  |  2020-05-05  |  Last: TAM 3.5-19
+-------------------------------------------------------------
+
+FIXED * fixed a bug in plot.tam() function that was introduced
+        in TAM 3.4 (thanks to @sda030; issue #12)
+NOTE  * included arguments 'eps_rob_hae' and 'par_init' 
+        in tam.linking()
+FIXED * fixed a bug in tam.jml.fit()
+        (thanks to Jess Mazengarb)
+FIXED * now use Fisher z correlation for computation in
+        maximum residual correlation in tam.modelfit()
+        (thanks to Hyeon-Ah Kang)
+FIXED * fixed recently occuring error in CRAN checks with 
+        computation of computation times (since R 4.0; 
+        thanks to Kurt Hornik)
+FIXED * fixed a bug in tam.mml.mfr() with multiple rows by person
+        when group or Y arguments are provided
+        (thanks to Laura Helbling)
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: tam.linking (1)
+
+-------------------------------------------------------------
+VERSIONS TAM 3.4  |  2020-03-10  |  Last: TAM 3.4-26
 -------------------------------------------------------------
 
 NOTE  * corrected output 'resp' in tam.jml() in case of missing
@@ -50,14 +87,21 @@ NOTE  * corrected output 'resp' in tam.jml() in case of missing
 FIXED * fixed incorrect number of estimated parameters for 
         multidimensional polytomous data in tam.fa() and
         tam.mml.2pl() (thanks to Kuan-Yu Jin)
-
+FIXED * fixed incorrect number of estimated parameters if
+        a fixed B matrix is used (thanks to Timo Gnmabs)
+ADDED * included output in plot.tam() function 
+        (requested by Anne Pinot de Moira)
+ADDED * included function tam_downcode()
+        (suggested by Marcus Kubsch)
+NOTE  * included argument 'constraint' in tam.jml() for 
+        constraining item difficulties to zero 
+        (suggested by Andreas Viberg)
+NOTE  * included Gilula-Haberman log penalty statistic that
+        is labeled as 'GHP' in mod$ic and summary output
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: tam.fa (2)
-
-
-
-
+EXAMP * included/modified examples: tam.fa (2), tam.mml (6),
+        plot.tam (1), tam_downcode(1), tam.jml (1)
 
 -------------------------------------------------------------
 VERSIONS TAM 3.3  |  2019-08-23  |  Last: TAM 3.3-10

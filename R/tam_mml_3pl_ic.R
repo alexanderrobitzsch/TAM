@@ -1,16 +1,16 @@
 ## File Name: tam_mml_3pl_ic.R
-## File Version: 9.24
+## File Version: 9.253
 
 
-##################################
-# Information criteria
+#--- Information criteria tam.mml.3pl
 tam_mml_3pl_ic <- function( nstud, deviance, xsi, xsi.fixed,
     beta, beta.fixed, ndim, variance.fixed, G, irtmodel,
     B_orig=NULL, B.fixed, E, est.variance, resp,
     est.slopegroups=NULL, skillspace, delta, delta.fixed, est.guess, fulldesign,
     est.some.slopes, gammaslope, gammaslope.fixed, gammaslope.constr.V,
     gammaslope.constr.Npars, gammaslope.center.index,
-    gammaslope.prior, numdiff.parm, Ngamma.nonactive=0 )
+    gammaslope.prior, numdiff.parm, Ngamma.nonactive=0, pweights=NULL,
+    resp.ind=NULL)
 {
     #***Model parameters
     h <- numdiff.parm
@@ -77,6 +77,7 @@ tam_mml_3pl_ic <- function( nstud, deviance, xsi, xsi.fixed,
     #--- total number of parameters
     ic$Npars <- ic$np <- ic$Nparsxsi + ic$NparsB + ic$Nparsbeta + ic$Nparscov +
                     ic$Nguess + ic$Ndelta - ic$Ngamma.nonactive
+    ic$ghp_obs <- tam_ghp_number_informations(pweights=pweights, resp.ind=resp.ind)
     #---- include information criteria
     ic <- tam_mml_ic_criteria(ic=ic)
     return(ic)

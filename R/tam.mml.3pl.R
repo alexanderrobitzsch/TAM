@@ -1,5 +1,6 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.853
+## File Version: 9.857
+
 tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
             formulaY=NULL, dataY=NULL,
             ndim=1, pid=NULL,
@@ -721,7 +722,7 @@ tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
                 gammaslope=gammaslope, gammaslope.fixed=gammaslope.fixed,
                 gammaslope.constr.V=gammaslope.constr.V, gammaslope.constr.Npars=gammaslope.constr.Npars,
                 gammaslope.center.index=gammaslope.center.index, gammaslope.prior=gammaslope.prior,
-                numdiff.parm=5*1E-4)
+                numdiff.parm=5*1E-4, pweights=pweights, resp.ind=resp.ind)
 
     #***
     # calculate counts
@@ -835,7 +836,7 @@ tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
                  "groups"=if ( is.null(group)){1} else { groups },
                  "formulaY"=formulaY, "dataY"=dataY,
                  "pweights"=pweights0,
-                 "time"=c(s1,s2,s2-s1), "A"=A, "B"=B,
+                 "time"=c(s1,s2), "A"=A, "B"=B,
                  "se.B"=se.B,
                  "nitems"=nitems, "maxK"=maxK, "AXsi"=AXsi,
                  "AXsi_"=- AXsi,

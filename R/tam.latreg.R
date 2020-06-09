@@ -1,5 +1,5 @@
 ## File Name: tam.latreg.R
-## File Version: 9.339
+## File Version: 9.341
 
 ###################################################################
 # latent regression
@@ -294,7 +294,7 @@ tam.latreg <- function( like, theta=NULL, Y=NULL, group=NULL,
                  "groups"=if ( is.null(group)){1} else { groups },
                  "formulaY"=formulaY, "dataY"=dataY,
                  "pweights"=pweights,
-                 "time"=c(s1,s2,s2-s1),
+                 "time"=c(s1,s2),
                  "nstud"=nstud,
                  "hwt"=hwt,  "like"=like,
                  "ndim"=ndim,

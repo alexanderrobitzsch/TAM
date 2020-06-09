@@ -1,9 +1,9 @@
 ## File Name: tam.linking.R
-## File Version: 0.333
+## File Version: 0.345
 
 tam.linking <- function( tamobj_list, type="Hae", method="joint",
-    pow_rob_hae=1, theta=NULL, wgt=NULL, wgt_sd=2, fix.slope=FALSE,
-    elim_items=NULL, verbose=TRUE)
+    pow_rob_hae=1, eps_rob_hae=1e-4, theta=NULL, wgt=NULL, wgt_sd=2, fix.slope=FALSE,
+    elim_items=NULL, par_init=NULL, verbose=TRUE)
 {
     CALL <- match.call()
     s1 <- Sys.time()
@@ -27,7 +27,8 @@ tam.linking <- function( tamobj_list, type="Hae", method="joint",
     entries <- c("linking_items", "B", "A", "AXsi", "guess", "M", "SD")
     linking_list <- list()
     linking_args <- list( theta=theta, wgt=wgt, type=type, fix.slope=fix.slope,
-                            pow_rob_hae=pow_rob_hae)
+                            pow_rob_hae=pow_rob_hae, eps_rob_hae=eps_rob_hae,
+                            par_init=par_init)
 
     #--- subfunction chain linking
     if (method=="chain"){
@@ -48,6 +49,7 @@ tam.linking <- function( tamobj_list, type="Hae", method="joint",
     N_common <- res$N_common
     linking_list <- res$linking_list
     parameters_list <- res$parameters_list
+    par <- res$par_optim
 
     #--- OUTPUT
     s2 <- Sys.time()
@@ -55,7 +57,8 @@ tam.linking <- function( tamobj_list, type="Hae", method="joint",
     res <- list(parameters_list=parameters_list, linking_list=linking_list, M_SD=M_SD,
                     trafo_persons=trafo_persons, trafo_items=trafo_items, N_common=N_common,
                     theta=theta, wgt=wgt, NS=NM, type=type, method=method,
-                    pow_rob_hae=pow_rob_hae, CALL=CALL,    time=time)
+                    pow_rob_hae=pow_rob_hae, eps_rob_hae=eps_rob_hae, par=par,
+                    CALL=CALL,time=time)
     class(res) <- "tam.linking"
     return(res)
 }

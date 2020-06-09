@@ -1,5 +1,5 @@
 ## File Name: tam.mml.2pl.R
-## File Version: 9.576
+## File Version: 9.582
 
 tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
                  formulaY=NULL, dataY=NULL,
@@ -460,7 +460,8 @@ tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
                 beta=beta, beta.fixed=beta.fixed, ndim=ndim, variance.fixed=variance.fixed,
                 G=G, irtmodel=irtmodel, B_orig=B_orig, B.fixed=B.fixed, E=E,
                 est.variance=est.variance, resp=resp, est.slopegroups=est.slopegroups,
-                variance.Npars=variance.Npars, group=group, AXsi=AXsi )
+                variance.Npars=variance.Npars, group=group, AXsi=AXsi,
+                pweights=pweights, resp.ind=resp.ind)
 
     #*** calculate counts
     res <- tam_calc_counts( resp=resp, theta=theta, resp.ind=resp.ind, group=group,
@@ -556,7 +557,7 @@ tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
                "groups"=if ( is.null(group)){1} else { groups },
                "formulaY"=formulaY, "dataY"=dataY,
                "pweights"=pweights0,
-               "time"=c(s1,s2,s2-s1), "A"=A, "B"=B,
+               "time"=c(s1,s2), "A"=A, "B"=B,
                "se.B"=se.B,
                "nitems"=nitems, "maxK"=maxK, "AXsi"=AXsi,
                "AXsi_"=- AXsi,
@@ -576,8 +577,8 @@ tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
                "deviance.history"=deviance.history,
                "control"=con1a, "irtmodel"=irtmodel,
                "iter"=iter,
-                "printxsi"=printxsi     , "YSD"=YSD        , CALL=CALL,
-                latreg_stand=latreg_stand        )
+                "printxsi"=printxsi, "YSD"=YSD, CALL=CALL,
+                latreg_stand=latreg_stand )
   class(res) <- "tam.mml"
   return(res)
 }

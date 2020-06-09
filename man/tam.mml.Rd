@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.9861
+%% File Version: 2.987
 
 \name{tam.mml}
 
@@ -235,7 +235,7 @@ be printed during iterations. This argument replaces \code{control$progress}.
     \code{        convD=.001,conv=.0001, convM=.0001, Msteps=4,   }\cr
     \code{        maxiter=1000, max.increment=1, }\cr
     \code{        min.variance=.001, progress=TRUE, ridge=0,    }\cr
-    \code{        seed=NULL, xsi.start0=0,, increment.factor=1,  }\cr
+    \code{        seed=NULL, xsi.start0=0, increment.factor=1,  }\cr
     \code{        fac.oldxsi=0, acceleration="none", dev_crit="absolute" )  }\cr
     \code{        trim_increment="half" )  }\cr
 
@@ -310,7 +310,7 @@ the EM algorithm should be employed. Options are \code{"none"} (no acceleration,
 the default), the monotone overrelaxation method of \code{"Yu"} (Yu, 2012) and
 \code{"Ramsay"} for the Ramsay (1975) acceleration method.
 
-\code{dev_crit}: Criterion for convergence in deviance. \code{dev_crit="abolute"}
+\code{dev_crit}: Criterion for convergence in deviance. \code{dev_crit="absolute"}
 refers to absolute differences in successive deviance values, while
 \code{dev_crit="relative"} refers to relative differences.
 
@@ -512,28 +512,35 @@ Adams, R. J., Wilson, M., & Wu, M. (1997).
 Multilevel item response models: An approach to errors in
 variables regression. \emph{Journal of Educational and Behavioral
 Statistics, 22}, 47-76.
+\doi{10.3102/10769986022001047}
 
 Adams, R. J., & Wu, M. L. (2007). The mixed-coefficients multinomial logit model.
-A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.):
+A generalized form of the Rasch model. In M. von Davier & C. H. Carstensen (Eds.),
 \emph{Multivariate and mixture distribution Rasch models: Extensions and applications}
 (pp. 55-76). New York: Springer.
+\doi{10.1007/978-0-387-49839-3_4}
 
 Embretson, S. E. (1999). Generating items during testing:
 Psychometric issues and models. \emph{Psychometrika, 64}, 407-433.
+\doi{10.1007/BF02294564}
 
 Gonzalez, J., Tuerlinckx, F., De Boeck, P., & Cools, R. (2006).
 Numerical integration in logistic-normal models.
 \emph{Computational Statistics & Data Analysis, 51}, 1535-1548.
+\doi{10.1016/j.csda.2006.05.003}
 
 Pan, J., & Thompson, R. (2007). Quasi-Monte Carlo estimation in
 generalized linear mixed models. \emph{Computational Statistics &
 Data Analysis, 51}, 5765-5775.
+\doi{10.1016/j.csda.2006.10.003}
 
 Ramsay, J. O. (1975). Solving implicit equations in psychometric data analysis.
 \emph{Psychometrika, 40}(3), 337-360.
+\doi{10.1007/BF02291762}
 
 Yu, Y. (2012). Monotonically overrelaxed EM algorithms.
 \emph{Journal of Computational and Graphical Statistics, 21}(2), 518-537.
+\doi{10.1080/10618600.2012.672115}
 
 Wu, M. L., Adams, R. J., Wilson, M. R. & Haldane, S. (2007).
 \emph{ACER ConQuest Version 2.0}. Mulgrave.
@@ -561,7 +568,7 @@ Second, the absolute value of increments can be forced with increasing
 iterations (set a value higher than 1 to \code{max.increment}, maybe 1.05).
 Third, change in estimated parameters can be stabilized by \code{fac.oldxsi} for
 which a value of 0 (the default) and a value of 1 can be chosen. We recommend
-value between .5 and .8 if your model does not converge.
+values between .5 and .8 if your model does not converge.
 }
 
 %\section{Warning}{
@@ -1037,7 +1044,8 @@ mod6_1$B    # for every category a separate slope parameter is estimated
 
 # reestimate the model with fixed item parameters
 mod6_1a <- TAM::tam.mml.2pl( resp=data.gpcm, irtmodel="2PL",
-       xsi.fixed=mod6_1$xsi.fixed.estimated,  B.fixed=mod6_1$B.fixed.estimated )
+       xsi.fixed=mod6_1$xsi.fixed.estimated,  B.fixed=mod6_1$B.fixed.estimated,
+       est.variance=TRUE )
 
 # estimate the model with initial item parameters from mod6_1
 mod6_1b <- TAM::tam.mml.2pl( resp=data.gpcm, irtmodel="2PL",

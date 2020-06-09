@@ -1,5 +1,5 @@
 ## File Name: tam_mml_ic.R
-## File Version: 9.194
+## File Version: 9.201
 
 
 #--- information criteria
@@ -7,7 +7,7 @@ tam_mml_ic <- function( nstud, deviance, xsi, xsi.fixed,
     beta, beta.fixed, ndim, variance.fixed, G, irtmodel,
     B_orig=NULL, B.fixed, E, est.variance, resp,
     est.slopegroups=NULL, variance.Npars=NULL, group, penalty_xsi=0,
-    AXsi=NULL)
+    AXsi=NULL, pweights=NULL, resp.ind=NULL)
 {
 
     #--- log likelihood and log prior
@@ -57,7 +57,7 @@ tam_mml_ic <- function( nstud, deviance, xsi, xsi.fixed,
         if ( irtmodel=="GPCM" ){
             nB <- length(B.fixed[ B.fixed[,2]==2,1])
         }
-        ic$NparsB <- ic$NparsB - nB
+        ic$NparsB <- max(ic$NparsB - nB, 0)
     }
 
     # beta regression parameters
@@ -70,7 +70,7 @@ tam_mml_ic <- function( nstud, deviance, xsi, xsi.fixed,
     if ( ! est.variance ){
         ic$Nparscov <- ic$Nparscov - ndim
     }
-    if ( ! is.null( variance.fixed) ){
+    if ( ! is.null(variance.fixed) ){
         ic$Nparscov <- max(0, ic$Nparscov - nrow(variance.fixed ) )
     }
 
@@ -82,6 +82,9 @@ tam_mml_ic <- function( nstud, deviance, xsi, xsi.fixed,
     }
     # total number of parameters
     ic$Npars <- ic$np <- ic$Nparsxsi + ic$NparsB + ic$Nparsbeta + ic$Nparscov
+
+    #- compute total number of observations
+    ic$ghp_obs <- tam_ghp_number_informations(pweights=pweights, resp.ind=resp.ind)
 
     #--- calculate all criteria
     ic <- tam_mml_ic_criteria(ic=ic)

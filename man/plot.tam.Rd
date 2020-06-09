@@ -1,5 +1,5 @@
 %% File Name: plot.tam.Rd
-%% File Version: 3.39
+%% File Version: 3.416
 
 \name{plot.tam}
 \alias{plot.tam}
@@ -20,17 +20,17 @@ or \code{tam.mml}.
 \method{plot}{tam}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6,
                    groups_by_item=FALSE, wle=NULL, export=TRUE, export.type="png",
                    export.args=list(), observed=TRUE, overlay=FALSE,
-                   ask=FALSE, package="lattice", fix.devices=TRUE, ...)
+                   ask=FALSE, package="lattice", fix.devices=TRUE, nnodes=100, ...)
 
 \method{plot}{tam.mml}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6,
                        groups_by_item=FALSE, wle=NULL, export=TRUE, export.type="png",
                        export.args=list(), observed=TRUE, overlay=FALSE,
-                       ask=FALSE,  package="lattice",  fix.devices=TRUE, ...)
+                       ask=FALSE,  package="lattice",  fix.devices=TRUE, nnodes=100, ...)
 
 \method{plot}{tam.jml}(x, items=1:x$nitems, type="expected", low=-3, high=3, ngroups=6,
                        groups_by_item=FALSE, wle=NULL, export=TRUE, export.type="png",
                        export.args=list(), observed=TRUE, overlay=FALSE,
-                       ask=FALSE,  package="lattice", fix.devices=TRUE, ...)
+                       ask=FALSE,  package="lattice", fix.devices=TRUE, nnodes=100, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 
@@ -91,6 +91,8 @@ of the working directory.
 \code{"graphics"}.}
 \item{fix.devices}{Optional logical indicating whether old graphics devices should
      be saved.}
+\item{nnodes}{Number of \eqn{\theta} points at which item response functions
+are evaluated}
 \item{\dots}{
   Further arguments to be passed
 }
@@ -101,13 +103,10 @@ This plot method does not work for multidimensional item response
 models.
 }
 
-%\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-%}
+\value{
+A plot and list of computed values for \code{plot} (if saved as an object)
+}
+
 %\references{
 %% ~put references to the literature/web site here ~
 %}
@@ -136,6 +135,8 @@ data(data.sim.rasch)
 mod <- TAM::tam.mml(data.sim.rasch)
 # expected response curves
 plot(mod, items=1:5, export=FALSE)
+# export computed values
+out <- plot(mod, items=1:5, export=FALSE)
 # item response curves
 plot(mod, items=1:5, type="items", export=FALSE)
 # plot with graphics package

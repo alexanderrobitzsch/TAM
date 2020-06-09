@@ -1,17 +1,17 @@
 ## File Name: tam_jml_wle.R
-## File Version: 9.281
+## File Version: 9.287
 
 
 #-- WLE in JML estimation
 tam_jml_wle <- function ( tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
-             PersonScores, theta, xsi, Msteps, WLE=FALSE,
-             theta.fixed=NULL, progress=FALSE, output.prob=TRUE )
+            PersonScores, theta, xsi, Msteps, WLE=FALSE,
+            theta.fixed=NULL, progress=FALSE, output.prob=TRUE, damp=0 )
 {
 
     AXsi <- matrix(0, nrow=nitems, ncol=maxK)
     B1 <- B[,,1]
-    BB <- array (0, dim=c(nitems,maxK))
-    BBB <- array (0, dim=c(nitems,maxK))
+    BB <- array(0, dim=c(nitems,maxK))
+    BBB <- array(0, dim=c(nitems,maxK))
     B_bari <- array(0,dim=c(nstud, nitems))
     BB_bari <- array(0, dim=c(nstud, nitems))
     BBB_bari <- array(0,dim=c(nstud, nitems))
@@ -36,7 +36,9 @@ tam_jml_wle <- function ( tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, con
     # BB    [ nitems, maxK ]
     # BBB    [ nitems, maxK ]
     maxChangeWLE <- 0
-    theta <- matrix( as.matrix(theta), ncol=1 )
+    if (! is.matrix(theta)){
+        theta <- matrix( as.matrix(theta), ncol=1 )
+    }
     thetaOld <- theta
 
 
@@ -108,6 +110,10 @@ a0 <- Sys.time()
 # cat("one iteration WLE rest") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
     }  # end of Newton-Raphson
     #------------
+
+    if (damp>0){
+        theta <- (1-damp)*theta+damp*thetaOld
+    }
 
     cat("\n")
     meanChangeWLE <- mean(theta - thetaOld)

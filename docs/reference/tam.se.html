@@ -8,21 +8,25 @@
 
 <title>Standard Error Estimation — tam.se • TAM</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,11 +34,12 @@
 
 
 
-<meta property="og:title" content="Standard Error Estimation — tam.se" />
 
+<meta property="og:title" content="Standard Error Estimation — tam.se" />
 <meta property="og:description" content="Standard error computation for objects of the classes tam
 and tam.mml." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -46,6 +51,7 @@ and tam.mml." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -64,7 +70,7 @@ and tam.mml." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.4-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.6-vv</span>
       </span>
     </div>
 
@@ -72,7 +78,7 @@ and tam.mml." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -80,11 +86,10 @@ and tam.mml." />
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/alexanderrobitzsch/TAM">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -95,6 +100,7 @@ and tam.mml." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -106,10 +112,8 @@ and tam.mml." />
     </div>
 
     <div class="ref-description">
-    
     <p>Standard error computation for objects of the classes <code>tam</code>
 and <code>tam.mml</code>.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>tam.se</span>(<span class='no'>tamobj</span>, <span class='kw'>item_pars</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='no'>...</span>)
@@ -117,7 +121,7 @@ and <code>tam.mml</code>.</p>
 <span class='fu'>tam_mml_se_quick</span>(<span class='no'>tamobj</span>, <span class='kw'>numdiff.parm</span><span class='kw'>=</span><span class='fl'>0.001</span>, <span class='kw'>item_pars</span><span class='kw'>=</span><span class='fl'>TRUE</span> )
 
 <span class='fu'>tam_latreg_se_quick</span>(<span class='no'>tamobj</span>, <span class='kw'>numdiff.parm</span><span class='kw'>=</span><span class='fl'>0.001</span> )</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -136,17 +140,16 @@ be computed for item parameters</p></td>
   differentiation</p></td>
     </tr>
     <tr>
-      <th>&#8230;</th>
+      <th>...</th>
       <td><p>Further arguments to be passed</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Covariances between parameters estimates are ignored in this standard
 error calculation. The standard error is obtained by numerical
 differentiation.</p>
-    
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A list with following entries:</p>
@@ -157,26 +160,23 @@ differentiation.</p>
 <dt>B</dt><dd><p>Data frame with loading  parameters and their
     corresponding standard errors</p></dd>
 
-    
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Standard error estimation for variances and covariances is not yet
 implemented.
 Standard error estimation for loading parameters in case of
 <code>irtmodel='GPCM.design'</code> is highly experimental.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'>#############################################################################</span>
+    <pre class="examples"><span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 1: 1PL model, data.sim.rasch</span>
 <span class='co'>#############################################################################</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>data.sim.rasch</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.sim.rasch</span>)
 <span class='co'># estimate Rasch model</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tam.mml'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>[<span class='fl'>1</span>:<span class='fl'>500</span>,<span class='fl'>1</span>:<span class='fl'>10</span>])
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>[<span class='fl'>1</span>:<span class='fl'>500</span>,<span class='fl'>1</span>:<span class='fl'>10</span>])
 <span class='co'># standard error estimation</span>
-<span class='no'>se1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tam.se'>tam.se</a></span>( <span class='no'>mod1</span> )
+<span class='no'>se1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.se.html'>tam.se</a></span>( <span class='no'>mod1</span> )
 <span class='co'># proportion of standard errors estimated by 'tam.se' and 'tam.mml'</span>
 <span class='no'>prop1</span> <span class='kw'>&lt;-</span> <span class='no'>se1</span>$<span class='no'>xsi</span>$<span class='no'>se</span> / <span class='no'>mod1</span>$<span class='no'>xsi</span>$<span class='no'>se</span>
 <span class='co'>##   &gt; summary( prop1 )</span>
@@ -184,28 +184,28 @@ Standard error estimation for loading parameters in case of
 <span class='co'>##     1.030   1.034   1.035   1.036   1.039   1.042</span>
 <span class='co'>##=&gt; standard errors estimated by tam.se are a bit larger</span>
 
-<span class='co'># }</span><span class='co'># NOT RUN {</span>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 2: Standard errors differential item functioning</span>
 <span class='co'>#############################################################################</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>data.ex08</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.ex08</span>)
 
 <span class='no'>formulaA</span> <span class='kw'>&lt;-</span> ~ <span class='no'>item</span>*<span class='no'>female</span>
 <span class='no'>resp</span> <span class='kw'>&lt;-</span> <span class='no'>data.ex08</span><span class='kw'>[[</span><span class='st'>"resp"</span>]]
-<span class='no'>facets</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.data.frame'>as.data.frame</a></span>( <span class='no'>data.ex08</span><span class='kw'>[[</span><span class='st'>"facets"</span>]] )
+<span class='no'>facets</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>( <span class='no'>data.ex08</span><span class='kw'>[[</span><span class='st'>"facets"</span>]] )
 <span class='co'># investigate DIF</span>
-<span class='no'>mod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tam.mml'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod</span>)
+<span class='no'>mod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod</span>)
 <span class='co'># estimate standard errors</span>
-<span class='no'>semod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/TAM/topics/tam.se'>tam.se</a></span>(<span class='no'>mod</span>)
+<span class='no'>semod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.se.html'>tam.se</a></span>(<span class='no'>mod</span>)
 <span class='no'>prop1</span> <span class='kw'>&lt;-</span> <span class='no'>semod</span>$<span class='no'>xsi</span>$<span class='no'>se</span> / <span class='no'>mod</span>$<span class='no'>xsi</span>$<span class='no'>se</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>prop1</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>prop1</span>)
 <span class='co'># plot differences in standard errors</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>( <span class='no'>mod</span>$<span class='no'>xsi</span>$<span class='no'>se</span>, <span class='no'>semod</span>$<span class='no'>xsi</span>$<span class='no'>se</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>, <span class='kw'>xlim</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>.15</span>), <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>.15</span>),
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>( <span class='no'>mod</span>$<span class='no'>xsi</span>$<span class='no'>se</span>, <span class='no'>semod</span>$<span class='no'>xsi</span>$<span class='no'>se</span>, <span class='kw'>pch</span><span class='kw'>=</span><span class='fl'>16</span>, <span class='kw'>xlim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>.15</span>), <span class='kw'>ylim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>.15</span>),
     <span class='kw'>xlab</span><span class='kw'>=</span><span class='st'>"Standard error 'tam.mml'"</span>, <span class='kw'>ylab</span><span class='kw'>=</span><span class='st'>"Standard error 'tam.se'"</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/lines'>lines</a></span>( <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(-<span class='fl'>6</span>,<span class='fl'>6</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(-<span class='fl'>6</span>,<span class='fl'>6</span>), <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"gray"</span>)
+<span class='fu'><a href='https://rdrr.io/r/graphics/lines.html'>lines</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>6</span>,<span class='fl'>6</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>6</span>,<span class='fl'>6</span>), <span class='kw'>col</span><span class='kw'>=</span><span class='st'>"gray"</span>)
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Round'>round</a></span>( <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>cbind</a></span>( <span class='no'>mod</span>$<span class='no'>xsi</span>, <span class='no'>semod</span>$<span class='no'>xsi</span>[,-<span class='fl'>1</span>] ), <span class='fl'>3</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='no'>mod</span>$<span class='no'>xsi</span>, <span class='no'>semod</span>$<span class='no'>xsi</span>[,-<span class='fl'>1</span>] ), <span class='fl'>3</span> )
   <span class='co'>##                    xsi se.xsi   N    est    se</span>
   <span class='co'>##   I0001         -1.956  0.092 500 -1.956 0.095</span>
   <span class='co'>##   I0002         -1.669  0.085 500 -1.669 0.088</span>
@@ -219,24 +219,21 @@ Standard error estimation for loading parameters in case of
   <span class='co'>##</span>
 <span class='co'>#=&gt; The largest discrepancy in standard errors is observed for the</span>
 <span class='co'>#    main female effect (.041 in 'tam.se' instead of .025 in 'tam.mml')</span>
-<span class='co'># }</span></pre>
+}</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#details">Details</a></li>
-
       <li><a href="#value">Value</a></li>
-
       <li><a href="#note">Note</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -244,13 +241,16 @@ Standard error estimation for loading parameters in case of
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

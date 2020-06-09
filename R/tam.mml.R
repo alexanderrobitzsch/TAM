@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.795
+## File Version: 9.802
 
 tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
@@ -76,7 +76,9 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
       A <- .A.PCM2( resp, constraint=constraint, Q=Q  )
     }
 
-    if ( !is.null(con$seed)){ set.seed( con$seed )     }
+    if ( !is.null(con$seed)){
+        set.seed( con$seed )
+    }
 
     nitems <- ncol(resp)       # number of items
     if (is.null(colnames(resp))){
@@ -396,6 +398,7 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     se.xsi.min -> se.xsi
     se.B.min -> se.B
 
+
     #*** include NAs in AXsi
     AXsi <- tam_mml_include_NA_AXsi(AXsi=AXsi, maxcat=maxcat)
 
@@ -411,10 +414,10 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
                 beta=beta, beta.fixed=beta.fixed, ndim=ndim, variance.fixed=variance.fixed,
                 G=G, irtmodel=irtmodel, B_orig=NULL, B.fixed=B.fixed, E=E,
                 est.variance=TRUE, resp=resp, est.slopegroups=NULL,
-                variance.Npars=variance.Npars, group=group, penalty_xsi=penalty_xsi )
+                variance.Npars=variance.Npars, group=group, penalty_xsi=penalty_xsi,
+                pweights=pweights, resp.ind=resp.ind)
 
-    #***
-    # calculate counts
+    #*** calculate counts
     res <- tam_calc_counts( resp=resp, theta=theta, resp.ind=resp.ind, group=group,
                 maxK=maxK, pweights=pweights, hwt=hwt )
     n.ik <- res$n.ik
@@ -508,7 +511,7 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
                  "groups"=if ( is.null(group)){1} else { groups },
                  "formulaY"=formulaY, "dataY"=dataY,
                  "pweights"=pweights0,
-                 "time"=c(s1,s2,s2-s1), "A"=A, "B"=B,
+                 "time"=c(s1,s2), "A"=A, "B"=B,
                  "se.B"=se.B,
                  "nitems"=nitems, "maxK"=maxK, "AXsi"=AXsi,
                  "AXsi_"=- AXsi,

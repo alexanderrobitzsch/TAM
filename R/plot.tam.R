@@ -1,5 +1,5 @@
 ## File Name: plot.tam.R
-## File Version: 9.283
+## File Version: 9.289
 
 #--- plotting tam expected scores curves
 plot.tam <- function(x, items=1:x$nitems, type="expected",
@@ -7,7 +7,7 @@ plot.tam <- function(x, items=1:x$nitems, type="expected",
                     wle=NULL, export=TRUE, export.type="png",
                     export.args=list(), observed=TRUE, overlay=FALSE,
                     ask=FALSE, package="lattice",
-                    fix.devices=TRUE, ...)
+                    fix.devices=TRUE, nnodes=100, ...)
 {
     require_namespace_msg("grDevices")
     if ( package=="lattice"){
@@ -46,13 +46,10 @@ plot.tam <- function(x, items=1:x$nitems, type="expected",
     }
 
     nitems <- tamobj$nitems
-    nnodes <- 100
 
     if (ndim==1 ){
         theta <- matrix(seq(low, high, length=nnodes), nrow=nnodes, ncol=ndim)
     } else {
-        #    theta <- tamobj$theta
-        nnodes <- 40
         nodes <- seq(low, high, length=nnodes)
         theta <- as.matrix( expand.grid( as.data.frame( matrix( rep(nodes, ndim), ncol=ndim ) ) ) )
         nnodes <- nrow(theta)
@@ -78,6 +75,10 @@ plot.tam <- function(x, items=1:x$nitems, type="expected",
     AXsi <- res[["AXsi"]]
     cat <- 1:maxK - 1
 
+    #@@@ define initial empty objects
+    expScore <- obScore <- wle_intervals <- NULL
+    theta2 <- NULL
+
     #**** type='expected'
     if ( type=="expected" ){
         expScore <- sapply(1:nitems, function(i) colSums(cat*rprobs[i,,], na.rm=TRUE))
@@ -91,6 +92,7 @@ plot.tam <- function(x, items=1:x$nitems, type="expected",
         d2 <- res$d2
         groupnumber <- res$groupnumber
         ngroups <- res$ngroups
+        wle_intervals <- res$wle_intervals
         #-- compute observed scores
         obScore <- apply(d2,2, function(x){
                             stats::aggregate(x, list(groupnumber), mean, na.rm=TRUE)
@@ -130,6 +132,8 @@ plot.tam <- function(x, items=1:x$nitems, type="expected",
 
     #*************************************************
     # begin plot function
+    probs_plot <- as.list(1:nitems)
+    names(probs_plot) <- items
 
     for (i in (1:nitems)[items]) {
         #***********************************************************
@@ -161,12 +165,13 @@ plot.tam <- function(x, items=1:x$nitems, type="expected",
             }
         }
     #***********************************************************
-    if ( type=="items"){
 
+    if ( ndim==1 ){ theta0 <- theta }
+
+    if ( type=="items"){
       rprobs.ii <- rprobs[i,,]
       rprobs.ii <- rprobs.ii[ rowMeans( is.na(rprobs.ii) ) < 1, ]
       K <- nrow(rprobs.ii)
-      if ( ndim==1 ){ theta0 <- theta }
       dat2 <- NULL
       #************
       if ( ndim > 1 ){
@@ -177,6 +182,7 @@ plot.tam <- function(x, items=1:x$nitems, type="expected",
         theta0 <- rprobs0.ii[,1,drop=FALSE]
         rprobs.ii <- t( rprobs0.ii[,-1] )
       }
+        probs_plot[[i]] <- rprobs.ii
       #**************
       for (kk in 1:K){
         dat2a <- data.frame( "Theta"=theta0[,1], "cat"=kk, "P"=rprobs.ii[kk,] )
@@ -410,7 +416,14 @@ plot.tam <- function(x, items=1:x$nitems, type="expected",
                               file.path(getwd(), "Plots")) ;
                               utils::flush.console() }
   }
-
+    # option output
+    res_exp <- list(obScore=obScore, expScore=expScore, ngroups=ngroups,
+                    wle_intervals=wle_intervals, theta=theta,
+                    wle_obs_plotted=theta2)
+    res_items <- list(items=items, nitems=nitems, obScore=obScore, theta=theta0,
+                        probs_plot=probs_plot)
+    res <- list(type_expected=res_exp, res_items=res_items)
+    invisible(res)
 }
 
 plot.tam.mml <- plot.tam

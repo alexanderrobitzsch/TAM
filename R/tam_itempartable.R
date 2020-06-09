@@ -1,29 +1,28 @@
 ## File Name: tam_itempartable.R
-## File Version: 9.12
+## File Version: 9.131
 
 
 
-##################################################
-# create table of item parameters
+#--- create table of item parameters
 tam_itempartable <- function( resp, maxK, AXsi, B, ndim,
-            resp.ind, rprobs, n.ik, pi.k, order=FALSE ){
+            resp.ind, rprobs=NULL, n.ik=NULL, pi.k=NULL, order=FALSE )
+{
 
     if ( is.null(dimnames(B)[[1]] ) ){
         dimnames(B)[[1]] <- colnames(resp)
     }
 
     item1 <- data.frame( "item"=dimnames(B)[[1]] )
-    item1$N <- colSums(resp.ind )
-    item1$M <- colSums( resp.ind * resp, na.rm=TRUE) / colSums( resp.ind )
-    maxKi <- rowSums( 1 - is.na( AXsi ) ) - 1
+    item1$N <- colSums(resp.ind)
+    item1$M <- colSums(resp.ind * resp, na.rm=TRUE) / colSums( resp.ind )
+    maxKi <- rowSums( 1 - is.na(AXsi) ) - 1
     I <- nrow(item1)
     item1$xsi.item <- - AXsi[ cbind(1:I, maxKi+1) ] / maxKi
 
-    #****
-    # Item fit
+    #--- Item fit
     # probs ... [ classes, items, categories ]
-    probs <- aperm( rprobs, perm=c(3,1,2))
-    pi.k <- matrix( pi.k, ncol=1 )
+    # probs <- aperm( rprobs, perm=c(3,1,2))
+    # pi.k <- matrix( pi.k, ncol=1 )
     b0 <- sum( B[, 1, ], na.rm=TRUE )
     a0 <- 0
     if ( b0 + a0 > 0 ){

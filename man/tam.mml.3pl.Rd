@@ -1,5 +1,5 @@
 %% File Name: tam.mml.3pl.Rd
-%% File Version: 2.683
+%% File Version: 2.686
 
 \name{tam.mml.3pl}
 \alias{tam.mml.3pl}
@@ -180,7 +180,7 @@ Fixed or initial guessing parameters
 }
   \item{guess.prior}{
      Item-specific prior distribution for guessing parameters \eqn{c_i}. It is
-     assumed that \eqn{c_i \sim N( a_i, b_i)}. The first column
+     assumed that \eqn{c_i \sim Beta(a_i, b_i)}. The first column
      in \code{gammaslope.prior} is \eqn{a_i}, the second is \eqn{b_i}.
 }
 \item{max.guess}{Upper bound for guessing parameters}
@@ -279,14 +279,17 @@ The same output as in \code{\link{tam.mml}} and additional entries
 \references{
 Formann, A. K. (1992). Linear logistic latent class analysis for polytomous data.
 \emph{Journal of the American Statistical Association, 87}, 476-486.
+\doi{10.2307/2290280}
 
 Formann, A. K. (2007). (Almost) Equivalence between conditional and mixture maximum
 likelihood estimates for some models of the Rasch type. In M. von Davier & C. H. Carstensen
 (Eds.), \emph{Multivariate and mixture distribution Rasch models} (pp. 177-189).
 New York: Springer.
+\doi{10.1007/978-0-387-49839-3_11}
 
 Xu, X., & von Davier, M. (2008). \emph{Fitting the structured general diagnostic
 model to NAEP data}. ETS Research Report ETS RR-08-27. Princeton, ETS.
+\doi{10.1002/j.2333-8504.2008.tb02113.x}
 }
 
 

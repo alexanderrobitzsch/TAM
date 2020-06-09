@@ -1,5 +1,5 @@
 ## File Name: summary.tam.linking.R
-## File Version: 0.156
+## File Version: 0.159
 
 summary.tam.linking <- function( object, file=NULL, ...)
 {
@@ -23,7 +23,8 @@ summary.tam.linking <- function( object, file=NULL, ...)
     if (type=="Hae"){ cat("Haebara Linking Method\n")}
     if (type=="RobHae"){
         cat("Robust Haebara Linking Method:")
-        cat(" pow_rob_hae","=", object$pow_rob_hae, "\n")
+        cat(" pow","=", object$pow_rob_hae, "|")
+        cat(" eps","=", object$eps_rob_hae, "")
     }
     if (type=="SL"){ cat("Stocking Lord Linking Method\n")}
 
