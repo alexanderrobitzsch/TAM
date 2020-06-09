@@ -4,7 +4,8 @@
 
 #---- Exploratory Factor Analysis and Bifactor Models
 tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
-            pid=NULL,pweights=NULL, verbose=TRUE, control=list(), constraint="cases" )
+            pid=NULL,pweights=NULL, verbose=TRUE, control=list(), constraint="cases",
+            xsi.inits=NULL,beta.inits=NULL,variance.inits=NULL)
 {
     require_namespace_msg("GPArotation")
     require_namespace_msg("psych")
@@ -90,11 +91,13 @@ tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
     #--- estimate model
     if ( irtmodel %in% c("bifactor2","efa") ){
         res <- tam.mml.2pl( resp=resp, Q=Q, irtmodel=irtmodel2,
-                    variance.fixed=variance.fixed, pid=pid,
+                    variance.fixed=variance.fixed,pid=pid,
+                    xsi.inits=xsi.inits,beta.inits=beta.inits,#variance.inits=variance.inits,
                     pweights=pweights, control=con )
     }
     if ( irtmodel=="bifactor1"){
         res <- tam.mml( resp=resp, Q=Q, variance.fixed=variance.fixed, pid=pid,
+                    xsi.inits=xsi.inits,beta.inits=beta.inits,#variance.inits=variance.inits,
                     pweights=pweights, control=con , constraint=constraint)
     }
     #****
