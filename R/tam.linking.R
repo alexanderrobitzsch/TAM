@@ -1,5 +1,5 @@
 ## File Name: tam.linking.R
-## File Version: 0.345
+## File Version: 0.347
 
 tam.linking <- function( tamobj_list, type="Hae", method="joint",
     pow_rob_hae=1, eps_rob_hae=1e-4, theta=NULL, wgt=NULL, wgt_sd=2, fix.slope=FALSE,

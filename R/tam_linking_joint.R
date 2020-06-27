@@ -1,5 +1,5 @@
 ## File Name: tam_linking_joint.R
-## File Version: 0.078
+## File Version: 0.082
 
 tam_linking_joint <- function(NM, parameters_list, linking_args, verbose=TRUE)
 {
@@ -44,7 +44,6 @@ tam_linking_joint <- function(NM, parameters_list, linking_args, verbose=TRUE)
     if (!is.null(par_init)){
         par <- par_init
     }
-
     linking_criterion_multiple_studies <- function(x){
         bvec <- c(0, x[1:(NM-1)])
         avec <- c(1, x[NM-1 + 1:(NM-1)])

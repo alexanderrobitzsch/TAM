@@ -1,10 +1,10 @@
 ## File Name: tam.fa.R
-## File Version: 9.256
+## File Version: 9.258
 
 
 #---- Exploratory Factor Analysis and Bifactor Models
 tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
-            pid=NULL,pweights=NULL, verbose=TRUE, control=list() )
+            pid=NULL,pweights=NULL, verbose=TRUE, control=list(), ... )
 {
     require_namespace_msg("GPArotation")
     require_namespace_msg("psych")
@@ -91,11 +91,11 @@ tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
     if ( irtmodel %in% c("bifactor2","efa") ){
         res <- tam.mml.2pl( resp=resp, Q=Q, irtmodel=irtmodel2,
                     variance.fixed=variance.fixed, pid=pid,
-                    pweights=pweights, control=con )
+                    pweights=pweights, control=con, ... )
     }
     if ( irtmodel=="bifactor1"){
         res <- tam.mml( resp=resp, Q=Q, variance.fixed=variance.fixed, pid=pid,
-                    pweights=pweights, control=con )
+                    pweights=pweights, control=con, ... )
     }
     #****
     # calculate standardized loadings

@@ -1,5 +1,5 @@
 %% File Name: tam.fa.Rd
-%% File Version: 2.236
+%% File Version: 2.238
 
 \name{tam.fa}
 \alias{tam.fa}
@@ -22,7 +22,7 @@ This function is simply a wrapper to \code{\link{tam.mml}} or
 
 \usage{
 tam.fa(resp, irtmodel, dims=NULL, nfactors=NULL, pid=NULL,
-    pweights=NULL, verbose=TRUE, control=list())
+    pweights=NULL, verbose=TRUE, control=list(), ...)
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -66,6 +66,10 @@ be printed during iterations. This argument replaces \code{control$progress}.
 See \code{\link{tam.mml}} for more details. Note that the default is
 Quasi Monte Carlo integration with 1500 nodes (\code{snodes=1500},
 \code{QMC=TRUE}).
+}
+\item{\dots}{Further arguments to be passed. These arguments are used in
+\code{\link{tam.mml}} and \code{\link{tam.mml.2pl}}. For example,
+\code{beta.inits} or \code{xsi.inits} can be supplied.
 }
 }
 

@@ -1,15 +1,16 @@
 ## File Name: tam_mml_3pl_mstep_item_slopes.R
-## File Version: 9.63
+## File Version: 9.645
 
-########################################
-# tam.mml.3pl estimate item slopes
+
+#--- tam.mml.3pl estimate item slopes
 tam_mml_3pl_mstep_item_slopes <- function( max.increment, np,
             Msteps, nitems, A, AXsi, B, xsi, guess, theta, nnodes, maxK,
             progress,ItemScore, fac.oldxsi, rprobs, xsi.fixed, convM, rprobs0,
             n.ik, N.ik, gammaslope, E, FdesM, dimFdes,
             gammaslope.fixed, gammaslope.prior, maxgamma=9.99, Edes,
             gammaslope.constr.V, V1, e2, gammaslope.center.index,
-            gammaslope.center.value, userfct.gammaslope, gammaslope_acceleration, V )
+            gammaslope.center.value, userfct.gammaslope, gammaslope_acceleration, V,
+            skip_B=FALSE)
 {
     if (progress){
         cat("\nM Step Slopes       |")
@@ -26,7 +27,8 @@ tam_mml_3pl_mstep_item_slopes <- function( max.increment, np,
 
     while( ( iter <=msteps ) & ( parchange > convM)  ){
         Xlambda0 <- gammaslope <- Xlambda
-        B <- tam_mml_3pl_computeB( Edes, gammaslope, E )
+        B <- tam_mml_3pl_computeB( Edes=Edes, gammaslope=gammaslope, E=E,
+                        B=B, skip_B=skip_B)
 
         # calculate probabilities
         res <- tam_mml_3pl_calc_prob( iIndex=1:nitems, A=A, AXsi=AXsi, B=B, xsi=xsi,
@@ -128,8 +130,9 @@ tam_mml_3pl_mstep_item_slopes <- function( max.increment, np,
     gammaslope <- fac.oldxsi * gammaslope0 + ( 1 - fac.oldxsi)*gammaslope
 
     #--- gammaslope acceleration
-    if ( gammaslope_acceleration$acceleration !="none" ){
-        gammaslope_acceleration <- tam_accelerate_parameters( xsi_acceleration=gammaslope_acceleration,
+    if ( gammaslope_acceleration$acceleration!="none" ){
+        gammaslope_acceleration <- tam_accelerate_parameters(
+                        xsi_acceleration=gammaslope_acceleration,
                         xsi=gammaslope, iter=iter, itermin=3)
         gammaslope <- gammaslope_acceleration$parm
     }
@@ -138,15 +141,16 @@ tam_mml_3pl_mstep_item_slopes <- function( max.increment, np,
     gammaslope_change <- tam_parameter_change( gammaslope, gammaslope0)
 
     #--- recompute B
-    B <- tam_mml_3pl_computeB( Edes=Edes, gammaslope=gammaslope, E=E )
+    B <- tam_mml_3pl_computeB( Edes=Edes, gammaslope=gammaslope, E=E,
+                    skip_B=skip_B, B=B )
 
     #---- OUTPUT
-    res <- list("gammaslope"=Xlambda, "se.gammaslope"=se.Xlambda,
-                 "max.increment.b"=max.increment,
-                 "gammachange"=max( abs( Xlambda00 - Xlambda) ),
-                 gammaslope_change=gammaslope_change,
-                 gammaslope_acceleration=gammaslope_acceleration, B=B
-                 )
+    res <- list(gammaslope=Xlambda, se.gammaslope=se.Xlambda,
+                max.increment.b=max.increment,
+                gammachange=max( abs( Xlambda00 - Xlambda) ),
+                gammaslope_change=gammaslope_change,
+                gammaslope_acceleration=gammaslope_acceleration, B=B
+                )
     return(res)
 }
 #----------------------------------------------------------

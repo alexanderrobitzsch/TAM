@@ -1,11 +1,9 @@
 ## File Name: tam_mml_3pl_create_E.R
-## File Version: 0.06
+## File Version: 0.07
 
 
-####################################################
-# create E matrix
-tam_mml_3pl_create_E <- function( resp, E, Q, gammaslope.des,
-        Q.fixed=NULL )
+#--- create E matrix
+tam_mml_3pl_create_E <- function( resp, E, Q, gammaslope.des, Q.fixed=NULL )
 {
     Qdes <- NULL
     gammaslope.fixed <- NULL

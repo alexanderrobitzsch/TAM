@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -40,7 +44,6 @@
 marginal maximum likelihood estimation.
 This function is simply a wrapper to tam.mml or
 tam.mml.2pl." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -58,7 +61,7 @@ tam.mml.2pl." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -90,7 +93,7 @@ tam.mml.2pl." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/alexanderrobitzsch/TAM">
+  <a href="https://github.com/alexanderrobitzsch/TAM/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -121,7 +124,7 @@ marginal maximum likelihood estimation.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tam.fa</span>(<span class='no'>resp</span>, <span class='no'>irtmodel</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>nfactors</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='kw'>NULL</span>,
-    <span class='kw'>pweights</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>())</pre>
+    <span class='kw'>pweights</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -171,6 +174,12 @@ be printed during iterations. This argument replaces <code>control$progress</cod
       <td><p>See <code><a href='tam.mml.html'>tam.mml</a></code> for more details. Note that the default is
 Quasi Monte Carlo integration with 1500 nodes (<code>snodes=1500</code>,
 <code>QMC=TRUE</code>).</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Further arguments to be passed. These arguments are used in
+<code><a href='tam.mml.html'>tam.mml</a></code> and <code><a href='tam.mml.html'>tam.mml.2pl</a></code>. For example,
+<code>beta.inits</code> or <code>xsi.inits</code> can be supplied.</p></td>
     </tr>
     </table>
 
@@ -249,7 +258,7 @@ a wrapper for <code><a href='tam.mml.html'>tam.mml.2pl</a></code> and <code><a h
 
 <span class='co'>#***</span>
 <span class='co'># Model 1a: Exploratory factor analysis with 2 factors</span>
-<span class='no'>mod1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.fa.html'>tam.fa</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"efa"</span>, <span class='kw'>nfactors</span><span class='kw'>=</span><span class='fl'>2</span>  )
+<span class='no'>mod1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.fa</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"efa"</span>, <span class='kw'>nfactors</span><span class='kw'>=</span><span class='fl'>2</span>  )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1a</span>)
 <span class='co'># varimax rotation</span>
 <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/varimax.html'>varimax</a></span>(<span class='no'>mod1a</span>$<span class='no'>B.stand</span>)
@@ -265,12 +274,12 @@ a wrapper for <code><a href='tam.mml.html'>tam.mml.2pl</a></code> and <code><a h
 <span class='co'>#***</span>
 <span class='co'># Model 1b: Rasch testlet model with 3 testlets</span>
 <span class='no'>dims</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substring</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>resp</span>),<span class='fl'>1</span>,<span class='fl'>1</span> )     <span class='co'># define dimensions</span>
-<span class='no'>mod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.fa.html'>tam.fa</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor1"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims</span> )
+<span class='no'>mod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.fa</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor1"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1b</span>)
 
 <span class='co'>#***</span>
 <span class='co'># Model 1c: Bifactor model</span>
-<span class='no'>mod1c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.fa.html'>tam.fa</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor2"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims</span> )
+<span class='no'>mod1c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.fa</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor2"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1c</span>)
 
 <span class='co'>#***</span>
@@ -278,7 +287,7 @@ a wrapper for <code><a href='tam.mml.html'>tam.mml.2pl</a></code> and <code><a h
 <span class='co'>#           specific factors</span>
 <span class='no'>dims1</span> <span class='kw'>&lt;-</span> <span class='no'>dims</span>
 <span class='no'>dims1</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>5</span>)] <span class='kw'>&lt;-</span> <span class='fl'>NA</span>
-<span class='no'>mod1d</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.fa.html'>tam.fa</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor2"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims1</span> )
+<span class='no'>mod1d</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.fa</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor2"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims1</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1d</span>)
 
 <span class='co'>#############################################################################</span>
@@ -292,26 +301,19 @@ a wrapper for <code><a href='tam.mml.html'>tam.mml.2pl</a></code> and <code><a h
 <span class='co'>#***</span>
 <span class='co'># Model 1a: Rasch testlet model with 2 testlets</span>
 <span class='no'>dims</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>,<span class='fl'>5</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>2</span>,<span class='fl'>6</span>))
-<span class='no'>mod1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.fa.html'>tam.fa</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor1"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims</span> )
+<span class='no'>mod1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.fa</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor1"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1a</span>)
 
 <span class='co'>#***</span>
 <span class='co'># Model 1b: Bifactor model</span>
-<span class='no'>mod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.fa.html'>tam.fa</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor2"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims</span> )
+<span class='no'>mod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.fa</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"bifactor2"</span>, <span class='kw'>dims</span><span class='kw'>=</span><span class='no'>dims</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1b</span>)
 }</pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#references">References</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -322,7 +324,7 @@ a wrapper for <code><a href='tam.mml.html'>tam.mml.2pl</a></code> and <code><a h
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

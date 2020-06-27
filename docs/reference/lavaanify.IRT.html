@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -54,7 +58,6 @@ The operators MEASERR1 and MEASERR0 can be used for
 model specification for variables which contains known measurement
 error (see Example 6). While MEASERR1 can be used for endogenous
 variables, MEASERR0 provides the specification for exogeneous variables." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -72,7 +75,7 @@ variables, MEASERR0 provides the specification for exogeneous variables." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -104,7 +107,7 @@ variables, MEASERR0 provides the specification for exogeneous variables." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/alexanderrobitzsch/TAM">
+  <a href="https://github.com/alexanderrobitzsch/TAM/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -225,7 +228,7 @@ for estimating models in the <span class="pkg">mirt</span> package using <code>l
       "</span>
 
 <span class='co'># process lavaan syntax</span>
-<span class='no'>lavpartable</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/lavaanify.IRT.html'>lavaanify.IRT</a></span>(<span class='no'>lavmodel</span>)$<span class='no'>lavpartable</span>
+<span class='no'>lavpartable</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>lavaanify.IRT</span>(<span class='no'>lavmodel</span>)$<span class='no'>lavpartable</span>
   <span class='co'>##     id lhs op rhs user group free ustart exo label eq.id unco</span>
   <span class='co'>##  1   1   F=~  A1    1     1    1     NA   0           0    1</span>
   <span class='co'>##  2   2   F=~  A2    1     1    2     NA   0     c     0    2</span>
@@ -270,7 +273,7 @@ for estimating models in the <span class="pkg">mirt</span> package using <code>l
    B1__B3 ~~ errB*B1__B3
    A2__A4 ~~ erra1__erra3*A2__A4
     "</span>
-<span class='no'>lav2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/lavaanify.IRT.html'>lavaanify.IRT</a></span>( <span class='no'>lavmodel</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>lav2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>lavaanify.IRT</span>( <span class='no'>lavmodel</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='no'>lav2</span>$<span class='no'>lavpartable</span>
 <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>( <span class='no'>lav2</span>$<span class='no'>lavaan.syntax</span> )
 
@@ -282,7 +285,7 @@ for estimating models in the <span class="pkg">mirt</span> package using <code>l
    F1 ~~ 1*F1
    F2 ~~ 1*F2
     "</span>
-<span class='no'>lav3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/lavaanify.IRT.html'>lavaanify.IRT</a></span>( <span class='no'>lavmodel</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>lav3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>lavaanify.IRT</span>( <span class='no'>lavmodel</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='no'>lav3</span>$<span class='no'>lavpartable</span>
 <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>( <span class='no'>lav3</span>$<span class='no'>lavaan.syntax</span> )
 
@@ -312,7 +315,7 @@ for estimating models in the <span class="pkg">mirt</span> package using <code>l
     "</span>
 
 <span class='co'>#*** process lavaan syntax</span>
-<span class='no'>lav3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/lavaanify.IRT.html'>lavaanify.IRT</a></span>( <span class='no'>lavmodel</span>, <span class='kw'>items</span><span class='kw'>=</span><span class='no'>items</span>)
+<span class='no'>lav3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>lavaanify.IRT</span>( <span class='no'>lavmodel</span>, <span class='kw'>items</span><span class='kw'>=</span><span class='no'>items</span>)
 
 <span class='co'>#*** inspect results</span>
 <span class='no'>lav3</span>$<span class='no'>lavpartable</span>
@@ -338,7 +341,7 @@ for estimating models in the <span class="pkg">mirt</span> package using <code>l
    O ~~ 1*O
    "</span>
 <span class='co'># process lavaan syntax</span>
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/lavaanify.IRT.html'>lavaanify.IRT</a></span>( <span class='no'>lavmodel</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span> )
+<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>lavaanify.IRT</span>( <span class='no'>lavmodel</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span> )
 <span class='co'># estimate lavaan model</span>
 <span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>lavaan</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lavaan/man/lavaan.html'>lavaan</a></span>( <span class='kw'>model</span><span class='kw'>=</span><span class='no'>res</span>$<span class='no'>lavaan.syntax</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>, <span class='kw'>standardized</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>fit.measures</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>rsquare</span><span class='kw'>=</span><span class='fl'>TRUE</span> )
@@ -365,7 +368,7 @@ for estimating models in the <span class="pkg">mirt</span> package using <code>l
   F ~~ 0*B
   A ~~ 0*B
    "</span>
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/lavaanify.IRT.html'>lavaanify.IRT</a></span>( <span class='no'>lavmodel</span>, <span class='kw'>items</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"I"</span>,<span class='fl'>1</span>:<span class='fl'>6</span>) )
+<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>lavaanify.IRT</span>( <span class='no'>lavmodel</span>, <span class='kw'>items</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"I"</span>,<span class='fl'>1</span>:<span class='fl'>6</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='no'>res</span>$<span class='no'>lavaan.syntax</span>)
 
 <span class='co'>#############################################################################</span>
@@ -384,7 +387,7 @@ for estimating models in the <span class="pkg">mirt</span> package using <code>l
 <span class='co'># observed items</span>
 <span class='no'>items</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"y"</span>,<span class='st'>"x"</span>,<span class='st'>"z"</span>)
 <span class='co'># lavaanify</span>
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/lavaanify.IRT.html'>lavaanify.IRT</a></span>( <span class='no'>lavmodel</span>, <span class='no'>items</span> )
+<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>lavaanify.IRT</span>( <span class='no'>lavmodel</span>, <span class='no'>items</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='no'>res</span>$<span class='no'>lavaan.syntax</span>)
   <span class='co'>##   &gt; cat(res$lavaan.syntax)</span>
   <span class='co'>##   ytrue~xtrue</span>
@@ -397,15 +400,10 @@ for estimating models in the <span class="pkg">mirt</span> package using <code>l
   <span class='co'>##   ytrue~~ytrue</span>
   <span class='co'>##   z~~z</span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -416,7 +414,7 @@ for estimating models in the <span class="pkg">mirt</span> package using <code>l
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

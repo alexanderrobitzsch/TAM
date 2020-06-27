@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -44,7 +48,6 @@
   models, fit statistic computation, standard error estimation, as
   well as plausible value imputation and weighted likelihood
   estimation of ability." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -62,7 +65,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -94,7 +97,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/alexanderrobitzsch/TAM">
+  <a href="https://github.com/alexanderrobitzsch/TAM/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -652,19 +655,19 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 1: Rasch model (MML estimation)</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>)
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>)
 <span class='co'># extract item parameters</span>
 <span class='no'>mod1</span>$<span class='no'>item</span>    <span class='co'># item difficulties</span>
 
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># WLE estimation</span>
-<span class='no'>wle1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.wle.html'>tam.wle</a></span>( <span class='no'>mod1</span> )
+<span class='no'>wle1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.wle.html'>tam.wle</a></span>( <span class='no'>mod1</span> )
 <span class='co'># item fit</span>
-<span class='no'>fit1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.fit.html'>tam.fit</a></span>(<span class='no'>mod1</span>)
+<span class='no'>fit1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.fit.html'>tam.fit</a></span>(<span class='no'>mod1</span>)
 <span class='co'># plausible value imputation</span>
-<span class='no'>pv1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.pv.html'>tam.pv</a></span>(<span class='no'>mod1</span>, <span class='kw'>normal.approx</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>ntheta</span><span class='kw'>=</span><span class='fl'>300</span>)
+<span class='no'>pv1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.pv.html'>tam.pv</a></span>(<span class='no'>mod1</span>, <span class='kw'>normal.approx</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>ntheta</span><span class='kw'>=</span><span class='fl'>300</span>)
 <span class='co'># standard errors</span>
-<span class='no'>se1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.se.html'>tam.se</a></span>( <span class='no'>mod1</span> )
+<span class='no'>se1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.se.html'>tam.se</a></span>( <span class='no'>mod1</span> )
 <span class='co'># summary</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>)
 
@@ -676,7 +679,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
  ITEM TYPE:
    ALL(Rasch)
    "</span>
-<span class='no'>mod1t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>data.sim.rasch</span>)
+<span class='no'>mod1t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>data.sim.rasch</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1t</span>)
 
 <span class='co'>#************************************************************</span>
@@ -684,19 +687,19 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>xsi0</span> <span class='kw'>&lt;-</span> <span class='no'>mod1</span>$<span class='no'>xsi</span>$<span class='no'>xsi</span>
 <span class='no'>xsi.fixed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='fl'>1</span>:(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>xsi0</span>)), <span class='no'>xsi0</span> )
         <span class='co'># define vector with fixed item difficulties</span>
-<span class='no'>mod1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>, <span class='kw'>xsi.fixed</span><span class='kw'>=</span><span class='no'>xsi.fixed</span> )
+<span class='no'>mod1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>, <span class='kw'>xsi.fixed</span><span class='kw'>=</span><span class='no'>xsi.fixed</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1a</span>)
 
 <span class='co'># Usage of the output value mod1$xsi.fixed.estimated has the right format</span>
 <span class='co'># as the input of xsi.fixed</span>
-<span class='no'>mod1aa</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>, <span class='kw'>xsi.fixed</span><span class='kw'>=</span><span class='no'>mod1</span>$<span class='no'>xsi.fixed.estimated</span> )
+<span class='no'>mod1aa</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>, <span class='kw'>xsi.fixed</span><span class='kw'>=</span><span class='no'>mod1</span>$<span class='no'>xsi.fixed.estimated</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1b</span>)
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 1b: Rasch model with initial xsi parameters for items 2 (item difficulty b=-1.8),</span>
 <span class='co'># item 4 (b=-1.6) and item 40 (b=2)</span>
 <span class='no'>xsi.inits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>4</span>,<span class='fl'>40</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>1.8</span>,-<span class='fl'>1.6</span>,<span class='fl'>2</span>))
-<span class='no'>mod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>, <span class='kw'>xsi.inits</span><span class='kw'>=</span><span class='no'>xsi.inits</span> )
+<span class='no'>mod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>, <span class='kw'>xsi.inits</span><span class='kw'>=</span><span class='no'>xsi.inits</span> )
 
 <span class='co'>#-- tamaan specification</span>
 <span class='no'>tammodel</span> <span class='kw'>&lt;-</span> <span class='st'>"
@@ -710,33 +713,33 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
  ITEM TYPE:
    ALL(Rasch)
    "</span>
-<span class='no'>mod1bt</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>data.sim.rasch</span>)
+<span class='no'>mod1bt</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>data.sim.rasch</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1bt</span>)
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 1c: 1PL estimation with sum constraint on item difficulties</span>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.sim.rasch</span>
 <span class='co'># modify A design matrix to include the sum constraint</span>
-<span class='no'>des</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/designMatrices.html'>designMatrices</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>des</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='designMatrices.html'>designMatrices</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='no'>A1</span> <span class='kw'>&lt;-</span> <span class='no'>des</span>$<span class='no'>A</span>[,, - <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>dat</span>) ]
 <span class='no'>A1</span>[ <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>dat</span>),<span class='fl'>2</span>, ] <span class='kw'>&lt;-</span> <span class='fl'>1</span>
 <span class='no'>A1</span>[,<span class='fl'>2</span>,]
 <span class='co'># estimate model</span>
-<span class='no'>mod1c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span>,
+<span class='no'>mod1c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span>,
            <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>fac.oldxsi</span><span class='kw'>=</span><span class='fl'>.1</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1c</span>)
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 1d: estimate constraint='items' using tam.mml.mfr</span>
 <span class='no'>formulaA</span><span class='kw'>=</span>~ <span class='fl'>0</span> + <span class='no'>item</span>
-<span class='no'>mod1d</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>,
+<span class='no'>mod1d</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>,
                      <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>fac.oldxsi</span><span class='kw'>=</span><span class='fl'>.1</span>), <span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1d</span>)
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 1e: This sum constraint can also be obtained by using the argument</span>
 <span class='co'># constraint="items" in tam.mml</span>
-<span class='no'>mod1e</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>, <span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span> )
+<span class='no'>mod1e</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>, <span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1e</span>)
 
 <span class='co'>#************************************************************</span>
@@ -754,7 +757,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>facets</span>   <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>( <span class='st'>"item_"</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>itemnames</span>, <span class='kw'>each</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>dat</span>)) )
 <span class='no'>formulaA</span><span class='kw'>=</span>~ <span class='fl'>0</span> + <span class='no'>item_</span>
 
-<span class='no'>mod1d2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp.long</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>fac.oldxsi</span><span class='kw'>=</span><span class='fl'>.1</span>),
+<span class='no'>mod1d2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp.long</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>fac.oldxsi</span><span class='kw'>=</span><span class='fl'>.1</span>),
                        <span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>pid</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span>(<span class='no'>mod1d</span>$<span class='no'>xsi.facets</span>$<span class='no'>xsi</span><span class='kw'>==</span><span class='no'>mod1d2</span>$<span class='no'>xsi.facets</span>$<span class='no'>xsi</span>) )
 }
@@ -762,7 +765,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 2: 2PL model</span>
-<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>,<span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>)
+<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>,<span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>)
 
 <span class='co'># extract item parameters</span>
 <span class='no'>mod2</span>$<span class='no'>xsi</span>    <span class='co'># item difficulties</span>
@@ -776,7 +779,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
    # item type of 2PL is the default for dichotomous data
    "</span>
 <span class='co'># estimate model</span>
-<span class='no'>mod2t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>data.sim.rasch</span>)
+<span class='no'>mod2t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>data.sim.rasch</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2t</span>)
 
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -785,7 +788,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>xsi0</span> <span class='kw'>&lt;-</span> <span class='no'>mod2</span>$<span class='no'>xsi</span>$<span class='no'>xsi</span>
 <span class='no'>xsi.fixed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='fl'>1</span>:(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>xsi0</span>)), <span class='no'>xsi0</span> )
         <span class='co'># define vector with fixed item difficulties</span>
-<span class='no'>mod2a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>, <span class='kw'>xsi.fixed</span><span class='kw'>=</span><span class='no'>xsi.fixed</span>,
+<span class='no'>mod2a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>, <span class='kw'>xsi.fixed</span><span class='kw'>=</span><span class='no'>xsi.fixed</span>,
                  <span class='kw'>B</span><span class='kw'>=</span><span class='no'>mod2</span>$<span class='no'>B</span> <span class='co'># fix slopes</span>
             )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2a</span>)
@@ -799,7 +802,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>est.slope</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>,<span class='fl'>40</span>)
 <span class='no'>est.slope</span>[ <span class='fl'>11</span>:<span class='fl'>20</span> ] <span class='kw'>&lt;-</span> <span class='fl'>2</span>
 <span class='no'>est.slope</span>[ <span class='fl'>31</span>:<span class='fl'>40</span> ] <span class='kw'>&lt;-</span> <span class='fl'>3</span>
-<span class='no'>mod3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL.groups"</span>,
+<span class='no'>mod3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.rasch</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL.groups"</span>,
                <span class='kw'>est.slopegroups</span><span class='kw'>=</span><span class='no'>est.slope</span> )
 <span class='no'>mod3</span>$<span class='no'>B</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod3</span>)
@@ -811,7 +814,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
    F ~~ 1*F
    "</span>
 <span class='co'># estimate model</span>
-<span class='no'>mod3tA</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>data.sim.rasch</span>)
+<span class='no'>mod3tA</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>data.sim.rasch</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod3tA</span>)
 
 <span class='co'>#--- tamaan specification (alternative B)</span>
@@ -825,7 +828,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
    a21__a30==lam1
    a31__a40==lam3
    "</span>
-<span class='no'>mod3tB</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>data.sim.rasch</span>)
+<span class='no'>mod3tB</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>data.sim.rasch</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod3tB</span>)
 
 <span class='co'>#--- tamaan specification (alternative C using DO operator)</span>
@@ -846,7 +849,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
    F ~~ 1*F
    "</span>
 <span class='co'># estimate model</span>
-<span class='no'>mod3tC</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>data.sim.rasch</span>)
+<span class='no'>mod3tC</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>data.sim.rasch</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod3tC</span>)
 
 <span class='co'>#############################################################################</span>
@@ -868,30 +871,30 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>resp</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"I"</span>, <span class='fl'>1</span>:<span class='no'>I</span>, <span class='kw'>sep</span><span class='kw'>=</span><span class='st'>""</span>)
 
 <span class='co'># (2) estimate model</span>
-<span class='no'>mod2_1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Y</span><span class='kw'>=</span><span class='no'>Y</span>)
+<span class='no'>mod2_1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Y</span><span class='kw'>=</span><span class='no'>Y</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2_1</span>)
 
 <span class='co'># (3) setting initial values for beta coefficients</span>
 <span class='co'>#   beta_2=.20, beta_3=.35 for dimension 1</span>
 <span class='no'>beta.inits</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>3</span>), <span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.2</span>, <span class='fl'>.35</span> ) )
-<span class='no'>mod2_2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Y</span><span class='kw'>=</span><span class='no'>Y</span>, <span class='kw'>beta.inits</span><span class='kw'>=</span><span class='no'>beta.inits</span>)
+<span class='no'>mod2_2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Y</span><span class='kw'>=</span><span class='no'>Y</span>, <span class='kw'>beta.inits</span><span class='kw'>=</span><span class='no'>beta.inits</span>)
 
 <span class='co'># (4) fix intercept to zero and third coefficient to .3</span>
 <span class='no'>beta.fixed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>3</span>), <span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>.3</span> ) )
-<span class='no'>mod2_3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Y</span><span class='kw'>=</span><span class='no'>Y</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='no'>beta.fixed</span> )
+<span class='no'>mod2_3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Y</span><span class='kw'>=</span><span class='no'>Y</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='no'>beta.fixed</span> )
 
 <span class='co'># (5) same model but with R regression formula for Y</span>
 <span class='no'>dataY</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='no'>Y</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>dataY</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Y1"</span>,<span class='st'>"Y2"</span>)
-<span class='no'>mod2_4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>dataY</span>, <span class='kw'>formulaY</span><span class='kw'>=</span>~ <span class='no'>Y1</span>+<span class='no'>Y2</span> )
+<span class='no'>mod2_4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>dataY</span>, <span class='kw'>formulaY</span><span class='kw'>=</span>~ <span class='no'>Y1</span>+<span class='no'>Y2</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2_4</span>)
 
 <span class='co'># (6) model with interaction of regressors</span>
-<span class='no'>mod2_5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>dataY</span>, <span class='kw'>formulaY</span><span class='kw'>=</span>~ <span class='no'>Y1</span>*<span class='no'>Y2</span> )
+<span class='no'>mod2_5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>dataY</span>, <span class='kw'>formulaY</span><span class='kw'>=</span>~ <span class='no'>Y1</span>*<span class='no'>Y2</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2_5</span>)
 
 <span class='co'># (7) no constraint on regressors (removing constraint from intercept)</span>
-<span class='no'>mod2_6</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Y</span><span class='kw'>=</span><span class='no'>Y</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
+<span class='no'>mod2_6</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Y</span><span class='kw'>=</span><span class='no'>Y</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
 
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 3: Multiple group estimation</span>
@@ -908,7 +911,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>group</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>, <span class='kw'>each</span><span class='kw'>=</span><span class='no'>N</span>/<span class='fl'>2</span> )
 
 <span class='co'># (2) estimate model</span>
-<span class='no'>mod3_1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='no'>resp</span>,  <span class='kw'>group</span><span class='kw'>=</span><span class='no'>group</span> )
+<span class='no'>mod3_1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='no'>resp</span>,  <span class='kw'>group</span><span class='kw'>=</span><span class='no'>group</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod3_1</span>)
 
 <span class='co'>#############################################################################</span>
@@ -943,7 +946,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 4.1: Rasch model: without regressors</span>
-<span class='no'>mod4_1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span> )
+<span class='no'>mod4_1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span> )
 
 <span class='co'>#--- tamaan specification</span>
 <span class='no'>tammodel</span> <span class='kw'>&lt;-</span> <span class='st'>"
@@ -955,17 +958,17 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
     F2 ~~ F2
     F1 ~~ F2
     "</span>
-<span class='no'>mod4_1t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>resp</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>100</span>))
+<span class='no'>mod4_1t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>resp</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>100</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod4_1t</span>)
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 4.1b: estimate model with sum constraint of items for each dimension</span>
-<span class='no'>mod4_1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>,<span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span>)
+<span class='no'>mod4_1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>,<span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span>)
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 4.2: Rasch model: set covariance between dimensions to zero</span>
 <span class='no'>variance_fixed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>0</span> )
-<span class='no'>mod4_2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>variance.fixed</span><span class='kw'>=</span><span class='no'>variance_fixed</span> )
+<span class='no'>mod4_2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>variance.fixed</span><span class='kw'>=</span><span class='no'>variance_fixed</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod4_2</span>)
 
 <span class='co'>#--- tamaan specification</span>
@@ -979,12 +982,12 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
   ITEM TYPE:
     ALL(Rasch)
     "</span>
-<span class='no'>mod4_2t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>resp</span>)
+<span class='no'>mod4_2t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>resp</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod4_2t</span>)
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 4.3: 2PL model</span>
-<span class='no'>mod4_3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span> )
+<span class='no'>mod4_3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span> )
 
 <span class='co'>#--- tamaan specification</span>
 <span class='no'>tammodel</span> <span class='kw'>&lt;-</span> <span class='st'>"
@@ -995,21 +998,21 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
     F2 ~~ F2
     F1 ~~ F2
     "</span>
-<span class='no'>mod4_3t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>resp</span> )
+<span class='no'>mod4_3t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>resp</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod4_3t</span>)
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 4.4: Rasch model with 2000 quasi monte carlo nodes</span>
 <span class='co'># -&gt; nodes are useful for more than 3 or 4 dimensions</span>
-<span class='no'>mod4_4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>snodes</span><span class='kw'>=</span><span class='fl'>2000</span>) )
+<span class='no'>mod4_4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>snodes</span><span class='kw'>=</span><span class='fl'>2000</span>) )
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 4.5: Rasch model with 2000 stochastic nodes</span>
-<span class='no'>mod4_5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>,<span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>snodes</span><span class='kw'>=</span><span class='fl'>2000</span>,<span class='kw'>QMC</span><span class='kw'>=</span><span class='fl'>FALSE</span>))
+<span class='no'>mod4_5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>,<span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>snodes</span><span class='kw'>=</span><span class='fl'>2000</span>,<span class='kw'>QMC</span><span class='kw'>=</span><span class='fl'>FALSE</span>))
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Model 4.6: estimate two dimensional Rasch model with regressors</span>
-<span class='no'>mod4_6</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Y</span><span class='kw'>=</span><span class='no'>Y</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span> )
+<span class='no'>mod4_6</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Y</span><span class='kw'>=</span><span class='no'>Y</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span> )
 
 <span class='co'>#--- tamaan specification</span>
 <span class='no'>tammodel</span> <span class='kw'>&lt;-</span> <span class='st'>"
@@ -1022,7 +1025,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
   ITEM TYPE:
     ALL(Rasch)
     "</span>
-<span class='no'>mod4_6t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>resp</span>, <span class='kw'>Y</span><span class='kw'>=</span><span class='no'>Y</span> )
+<span class='no'>mod4_6t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>resp</span>, <span class='kw'>Y</span><span class='kw'>=</span><span class='no'>Y</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod4_6t</span>)
 
 <span class='co'>#############################################################################</span>
@@ -1052,7 +1055,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>Q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>,<span class='fl'>10</span>),<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>,<span class='fl'>10</span>),<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>,<span class='fl'>20</span>)), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>,<span class='fl'>10</span>),<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>,<span class='fl'>10</span>),<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>,<span class='fl'>20</span>)))
 
 <span class='co'># (3) model: within item dimensionality and 2PL estimation</span>
-<span class='no'>mod5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>(<span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span> )
+<span class='no'>mod5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>(<span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod5</span>)
 
 <span class='co'># item difficulties</span>
@@ -1069,7 +1072,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
     F1 ~~ F2
     F2 ~~ 1*F2
     "</span>
-<span class='no'>mod5t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>resp</span>,  <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>10</span>))
+<span class='no'>mod5t</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='no'>resp</span>,  <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>10</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod5t</span>)
 
 <span class='co'>#############################################################################</span>
@@ -1079,22 +1082,22 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Ex6.1: Nominal response model (irtmodel="2PL")</span>
-<span class='no'>mod6_1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>200</span>) )
+<span class='no'>mod6_1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>200</span>) )
 <span class='no'>mod6_1</span>$<span class='no'>item</span> <span class='co'># item intercepts</span>
 <span class='no'>mod6_1</span>$<span class='no'>B</span>    <span class='co'># for every category a separate slope parameter is estimated</span>
 
 <span class='co'># reestimate the model with fixed item parameters</span>
-<span class='no'>mod6_1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>,
+<span class='no'>mod6_1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>,
        <span class='kw'>xsi.fixed</span><span class='kw'>=</span><span class='no'>mod6_1</span>$<span class='no'>xsi.fixed.estimated</span>,  <span class='kw'>B.fixed</span><span class='kw'>=</span><span class='no'>mod6_1</span>$<span class='no'>B.fixed.estimated</span>,
        <span class='kw'>est.variance</span><span class='kw'>=</span><span class='fl'>TRUE</span> )
 
 <span class='co'># estimate the model with initial item parameters from mod6_1</span>
-<span class='no'>mod6_1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>,
+<span class='no'>mod6_1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>,
        <span class='kw'>xsi.inits</span><span class='kw'>=</span><span class='no'>mod6_1</span>$<span class='no'>xsi.fixed.estimated</span>,  <span class='kw'>B</span><span class='kw'>=</span><span class='no'>mod6_1</span>$<span class='no'>B</span> )
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Ex6.2: Generalized partial credit model</span>
-<span class='no'>mod6_2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM"</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>200</span>))
+<span class='no'>mod6_2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM"</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>200</span>))
 <span class='no'>mod6_2</span>$<span class='no'>B</span>[,<span class='fl'>2</span>,]    <span class='co'># joint slope parameter for all categories</span>
 
 <span class='co'>#************************************************************</span>
@@ -1109,47 +1112,47 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>B.fixed</span>[<span class='fl'>2</span>,] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>2</span>,<span class='fl'>1</span>,<span class='fl'>1.4</span>)
 
 <span class='co'># estimate item parameter with variance fixed (by default)</span>
-<span class='no'>mod6_3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>, <span class='kw'>B.fixed</span><span class='kw'>=</span><span class='no'>B.fixed</span>,
+<span class='no'>mod6_3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>, <span class='kw'>B.fixed</span><span class='kw'>=</span><span class='no'>B.fixed</span>,
                  <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>200</span>) )
 <span class='no'>mod6_3</span>$<span class='no'>B</span>
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Ex 6.4: estimate the same model, but estimate variance</span>
-<span class='no'>mod6_4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>, <span class='kw'>B.fixed</span><span class='kw'>=</span><span class='no'>B.fixed</span>,
+<span class='no'>mod6_4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>, <span class='kw'>B.fixed</span><span class='kw'>=</span><span class='no'>B.fixed</span>,
                <span class='kw'>est.variance</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>350</span>) )
 <span class='no'>mod6_4</span>$<span class='no'>B</span>
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Ex 6.5: partial credit model</span>
-<span class='no'>mod6_5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>,<span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>200</span>) )
+<span class='no'>mod6_5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>,<span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>200</span>) )
 <span class='no'>mod6_5</span>$<span class='no'>B</span>
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Ex 6.6: partial credit model: Conquest parametrization 'item+item*step'</span>
-<span class='no'>mod6_6</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"PCM2"</span> )
+<span class='no'>mod6_6</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"PCM2"</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod6_6</span>)
 
 <span class='co'># estimate mod6_6 applying the sum constraint of item difficulties</span>
 <span class='co'># modify design matrix of xsi paramters</span>
-<span class='no'>A1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/designMatrices.html'>.A.PCM2</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span> )
+<span class='no'>A1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='designMatrices.html'>.A.PCM2</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span> )
 <span class='no'>A1</span>[<span class='fl'>3</span>,<span class='fl'>2</span>:<span class='fl'>4</span>,<span class='st'>"Comfort"</span>] <span class='kw'>&lt;-</span> <span class='fl'>1</span>:<span class='fl'>3</span>
 <span class='no'>A1</span>[<span class='fl'>3</span>,<span class='fl'>2</span>:<span class='fl'>4</span>,<span class='st'>"Work"</span>] <span class='kw'>&lt;-</span> <span class='fl'>1</span>:<span class='fl'>3</span>
 <span class='no'>A1</span> <span class='kw'>&lt;-</span> <span class='no'>A1</span>[,, -<span class='fl'>3</span>] <span class='co'># remove Benefit xsi item parameter</span>
 <span class='co'># estimate model</span>
-<span class='no'>mod6_6b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
+<span class='no'>mod6_6b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod6_6b</span>)
 
 <span class='co'># estimate model with argument constraint="items"</span>
-<span class='no'>mod6_6c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"PCM2"</span>, <span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span>)
+<span class='no'>mod6_6c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"PCM2"</span>, <span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span>)
 
 <span class='co'># estimate mod6_6 using tam.mml.mfr</span>
-<span class='no'>mod6_6d</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>formulaA</span><span class='kw'>=</span>~ <span class='fl'>0</span> + <span class='no'>item</span> + <span class='no'>item</span>:<span class='no'>step</span>,
+<span class='no'>mod6_6d</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>formulaA</span><span class='kw'>=</span>~ <span class='fl'>0</span> + <span class='no'>item</span> + <span class='no'>item</span>:<span class='no'>step</span>,
     <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>fac.oldxsi</span><span class='kw'>=</span><span class='fl'>.1</span>), <span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod6_6d</span>)
 
 <span class='co'>#************************************************************</span>
 <span class='co'># Ex 6.7: Rating scale model: Conquest parametrization 'item+step'</span>
-<span class='no'>mod6_7</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"RSM"</span> )
+<span class='no'>mod6_7</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"RSM"</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod6_7</span>)
 
 <span class='co'>#************************************************************</span>
@@ -1166,7 +1169,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='co'>## [1] "M032761"</span>
 
 <span class='co'># modify design matrix of xsi paramters</span>
-<span class='no'>A1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/designMatrices.html'>.A.PCM2</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span> )
+<span class='no'>A1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='designMatrices.html'>.A.PCM2</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span> )
 <span class='co'># constrained item loads on every other main item parameter</span>
 <span class='co'># with opposing margin it had been loaded on its own main item parameter</span>
 <span class='no'>A1</span>[<span class='st'>"M032761"</span>,,<span class='fu'><a href='https://rdrr.io/r/base/sets.html'>setdiff</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>dat</span>), <span class='st'>"M032761"</span>)] <span class='kw'>&lt;-</span> -<span class='no'>A1</span>[<span class='st'>"M032761"</span>,,<span class='st'>"M032761"</span>]
@@ -1174,7 +1177,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>A1</span> <span class='kw'>&lt;-</span> <span class='no'>A1</span>[,, <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>setdiff</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>A1</span>)<span class='kw'>[[</span><span class='fl'>3</span>]],<span class='st'>"M032761"</span>)]
 
 <span class='co'># estimate model</span>
-<span class='no'>mod6_8a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
+<span class='no'>mod6_8a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod6_8a</span>)
 <span class='co'># extract fixed item parameter for item M032761</span>
 <span class='co'>## - sum(mod6_8a$xsi[setdiff(colnames(dat), "M032761"),"xsi"])</span>
@@ -1183,7 +1186,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='co'>## fixed a bug in 'tam.mml.mfr' for differing number of categories</span>
 <span class='co'>## per item -&gt; now a xsi vector with parameter fixings to values</span>
 <span class='co'>## of 99 is used</span>
-<span class='no'>mod6_8b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>formulaA</span><span class='kw'>=</span>~ <span class='fl'>0</span> + <span class='no'>item</span> + <span class='no'>item</span>:<span class='no'>step</span>,
+<span class='no'>mod6_8b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>formulaA</span><span class='kw'>=</span>~ <span class='fl'>0</span> + <span class='no'>item</span> + <span class='no'>item</span>:<span class='no'>step</span>,
                         <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>fac.oldxsi</span><span class='kw'>=</span><span class='fl'>.1</span>), <span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod6_8b</span>)
 
@@ -1197,7 +1200,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='co'># obtain the design matrix for the PCM parametrization and</span>
 <span class='co'># the number of categories for each item</span>
 <span class='no'>maxKi</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/apply.html'>apply</a></span>(<span class='no'>dat</span>, <span class='fl'>2</span>, <span class='no'>max</span>, <span class='kw'>na.rm</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
-<span class='no'>des</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/designMatrices.html'>designMatrices</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>des</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='designMatrices.html'>designMatrices</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='no'>A1</span> <span class='kw'>&lt;-</span> <span class='no'>des</span>$<span class='no'>A</span>
 
 <span class='co'># define the constrained item category and remove the respective parameter</span>
@@ -1214,7 +1217,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>A1</span>[<span class='no'>item.id</span>,,]
 
 <span class='co'># estimate model</span>
-<span class='no'>mod6_9</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
+<span class='no'>mod6_9</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod6_9</span>)
 
 <span class='co'>## extract fixed item category parameter</span>
@@ -1234,7 +1237,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 
 <span class='co'># Ex 6.10a: set all slopes of three items equal to each other</span>
 <span class='no'>E</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>( <span class='fl'>1</span>, <span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>ncol</span><span class='kw'>=</span><span class='fl'>1</span> )
-<span class='no'>mod6_10a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM.design"</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='no'>E</span>  )
+<span class='no'>mod6_10a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM.design"</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='no'>E</span>  )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod6_10a</span>)
 <span class='no'>mod6_10a</span>$<span class='no'>B</span>[,,]
 
@@ -1242,7 +1245,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>E</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>( <span class='fl'>0</span>, <span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>ncol</span><span class='kw'>=</span><span class='fl'>2</span> )
 <span class='no'>E</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>3</span>),<span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='fl'>1</span>
 <span class='no'>E</span>[ <span class='fl'>2</span>, <span class='fl'>2</span> ] <span class='kw'>&lt;-</span> <span class='fl'>1</span>
-<span class='no'>mod6_10b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM.design"</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='no'>E</span>  )
+<span class='no'>mod6_10b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM.design"</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='no'>E</span>  )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod6_10b</span>)
 <span class='no'>mod6_10b</span>$<span class='no'>B</span>[,,]
 
@@ -1278,7 +1281,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>dat</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"I"</span>, <span class='fl'>1</span>:<span class='no'>I</span>, <span class='kw'>sep</span><span class='kw'>=</span><span class='st'>""</span>)
 
 <span class='co'># estimate model</span>
-<span class='no'>mod7</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM.design"</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='no'>E</span> )
+<span class='no'>mod7</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM.design"</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='no'>E</span> )
 <span class='no'>mod7</span>$<span class='no'>B</span>
 
 <span class='co'># recalculate estimated basis parameters</span>
@@ -1303,7 +1306,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 
 <span class='co'>#***</span>
 <span class='co'># Model 8a: investigate gender DIF on all items</span>
-<span class='no'>mod8a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span> )
+<span class='no'>mod8a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod8a</span>)
 
 <span class='co'>#***</span>
@@ -1315,7 +1318,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>facets.long</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>( <span class='st'>"item"</span><span class='kw'>=</span><span class='no'>itemnames</span> ),
                  <span class='no'>data.ex08</span><span class='kw'>[[</span><span class='st'>"facets"</span>]][<span class='no'>pid</span>,,<span class='kw'>drop</span><span class='kw'>=</span><span class='no'>F</span>] )
 
-<span class='no'>mod8a_2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp.long</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets.long</span>,
+<span class='no'>mod8a_2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp.long</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets.long</span>,
                       <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>pid</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span>(<span class='no'>mod8a</span>$<span class='no'>xsi.facets</span>$<span class='no'>xsi</span><span class='kw'>==</span><span class='no'>mod8a_2</span>$<span class='no'>xsi.facets</span>$<span class='no'>xsi</span>) )
 
@@ -1325,7 +1328,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 
 <span class='co'># modify pre-specified design matrix to define 'appropriate' DBF effects</span>
 <span class='no'>formulaA</span> <span class='kw'>&lt;-</span> ~ <span class='no'>item</span>*<span class='no'>female</span>
-<span class='no'>des</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/designMatrices.html'>designMatrices.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>)
+<span class='no'>des</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='designMatrices.html'>designMatrices.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>)
 <span class='no'>A1</span> <span class='kw'>&lt;-</span> <span class='no'>des</span>$<span class='no'>A</span>$<span class='no'>A.3d</span>
 <span class='co'># item group A: items 1-5</span>
 <span class='co'># item group B: items 6-8</span>
@@ -1345,7 +1348,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>A1</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>19</span>,<span class='fl'>3</span>)+<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>12</span>,<span class='fl'>13</span>)] <span class='kw'>&lt;-</span> -<span class='fl'>1</span>
 <span class='co'>#   A1[,2,]   # look at modified design matrix</span>
 <span class='co'># estimate model</span>
-<span class='no'>mod8b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>des</span>$<span class='no'>gresp</span>$<span class='no'>gresp.noStep</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span> )
+<span class='no'>mod8b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>des</span>$<span class='no'>gresp</span>$<span class='no'>gresp.noStep</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod8b</span>)
 
 <span class='co'>#############################################################################</span>
@@ -1357,13 +1360,13 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 
 <span class='co'># two way interaction item and rater</span>
 <span class='no'>formulaA</span> <span class='kw'>&lt;-</span> ~<span class='no'>item</span>+<span class='no'>item</span>:<span class='no'>step</span> + <span class='no'>item</span>*<span class='no'>rater</span>
-<span class='no'>mod9a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.mfr</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>data.sim.facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>)
+<span class='no'>mod9a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.mfr</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>data.sim.facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>)
 <span class='no'>mod9a</span>$<span class='no'>xsi.facets</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod9a</span>)
 
 <span class='co'># three way interaction item, female and rater</span>
 <span class='no'>formulaA</span> <span class='kw'>&lt;-</span> ~<span class='no'>item</span>+<span class='no'>item</span>:<span class='no'>step</span> + <span class='no'>female</span>*<span class='no'>rater</span> + <span class='no'>female</span>*<span class='no'>item</span>*<span class='no'>step</span>
-<span class='no'>mod9b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.mfr</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>data.sim.facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>)
+<span class='no'>mod9b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.sim.mfr</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>data.sim.facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod9b</span>)
 
 <span class='co'>#############################################################################</span>
@@ -1386,29 +1389,29 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>resp</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>[, -<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>) ]        <span class='co'># item response data</span>
 <span class='no'>formulaA</span> <span class='kw'>&lt;-</span> ~ <span class='no'>item</span> * <span class='no'>rater</span>      <span class='co'># formula</span>
 
-<span class='no'>mod10</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>pid</span> )
+<span class='no'>mod10</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>pid</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod10</span>)
 
 <span class='co'># estimate person parameter with WLE</span>
-<span class='no'>wmod10</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.wle.html'>tam.wle</a></span>( <span class='no'>mod10</span> )
+<span class='no'>wmod10</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.wle.html'>tam.wle</a></span>( <span class='no'>mod10</span> )
 
 <span class='co'>#--- Example 10a</span>
 <span class='co'># compare model containing only item</span>
 <span class='no'>formulaA</span> <span class='kw'>&lt;-</span> ~ <span class='no'>item</span> + <span class='no'>rater</span>      <span class='co'># pseudo formula for item</span>
 <span class='no'>xsi.setnull</span> <span class='kw'>&lt;-</span> <span class='st'>"rater"</span>          <span class='co'># set all rater effects to zero</span>
-<span class='no'>mod10a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>,
+<span class='no'>mod10a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>,
             <span class='kw'>xsi.setnull</span><span class='kw'>=</span><span class='no'>xsi.setnull</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>pid</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fl'>1</span>,<span class='fl'>1</span>,<span class='fl'>0</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod10a</span>)
 
 <span class='co'># A shorter way for specifying this example is</span>
 <span class='no'>formulaA</span> <span class='kw'>&lt;-</span> ~ <span class='no'>item</span> + <span class='fl'>0</span>*<span class='no'>rater</span>        <span class='co'># set all rater effects to zero</span>
-<span class='no'>mod10a1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>pid</span> )
+<span class='no'>mod10a1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>pid</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod10a1</span>)
 
 <span class='co'># tam.mml.mfr also appropriately extends the facets data frame with pseudo facets</span>
 <span class='co'># if necessary</span>
 <span class='no'>formulaA</span> <span class='kw'>&lt;-</span> ~ <span class='no'>item</span>     <span class='co'># omitting the rater term</span>
-<span class='no'>mod10a2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>pid</span> )
+<span class='no'>mod10a2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>pid</span> )
   <span class='co'>##   Item Parameters Xsi</span>
   <span class='co'>##              xsi se.xsi</span>
   <span class='co'>##   I0001   -1.931  0.111</span>
@@ -1432,7 +1435,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
                  <span class='no'>dat</span>[ <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>:<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>dat</span>), <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>dat</span>[,-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)])), <span class='st'>"rater"</span>,<span class='kw'>drop</span><span class='kw'>=</span><span class='no'>F</span>]
 )
 
-<span class='no'>mod10_2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp.long</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>pid</span>)
+<span class='no'>mod10_2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp.long</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>pid</span>)
 
 <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span>(<span class='no'>mod10</span>$<span class='no'>xsi.facets</span>$<span class='no'>xsi</span><span class='kw'>==</span><span class='no'>mod10_2</span>$<span class='no'>xsi.facets</span>$<span class='no'>xsi</span>) )
 
@@ -1447,10 +1450,10 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>dat1</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>[,-<span class='fl'>1</span>]
 <span class='no'>dat1</span>[ <span class='no'>dat1</span><span class='kw'>==</span><span class='fl'>9</span> ] <span class='kw'>&lt;-</span> <span class='fl'>NA</span>
 <span class='co'># estimate Rasch model</span>
-<span class='no'>mod11a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat1</span> )
+<span class='no'>mod11a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat1</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod11a</span>)
 <span class='co'># compute person parameters</span>
-<span class='no'>wmod11a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.wle.html'>tam.wle</a></span>( <span class='no'>mod11a</span> )
+<span class='no'>wmod11a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.wle.html'>tam.wle</a></span>( <span class='no'>mod11a</span> )
 
 <span class='co'>#***</span>
 <span class='co'># Model 11b: Scaling persons (WLE estimation) setting omitted</span>
@@ -1464,10 +1467,10 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>dat2</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>[,-<span class='fl'>1</span>]
 <span class='no'>dat2</span>[ <span class='no'>dat2</span><span class='kw'>==</span><span class='fl'>9</span> ] <span class='kw'>&lt;-</span> <span class='fl'>0</span>
 <span class='co'># run Rasch model with fixed item difficulties</span>
-<span class='no'>mod11b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat2</span>, <span class='kw'>xsi.fixed</span><span class='kw'>=</span><span class='no'>xsi.fixed</span> )
+<span class='no'>mod11b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat2</span>, <span class='kw'>xsi.fixed</span><span class='kw'>=</span><span class='no'>xsi.fixed</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod11b</span>)
 <span class='co'># WLE estimation</span>
-<span class='no'>wmod11b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.wle.html'>tam.wle</a></span>( <span class='no'>mod11b</span> )
+<span class='no'>wmod11b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.wle.html'>tam.wle</a></span>( <span class='no'>mod11b</span> )
 
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 12: Avoiding nonconvergence using the argument increment.factor</span>
@@ -1476,10 +1479,10 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.ex12</span>
 
 <span class='co'># non-convergence without increment.factor</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.ex12</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>1000</span>) )
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.ex12</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>1000</span>) )
 
 <span class='co'># avoiding non-convergence with increment.factor=1.02</span>
-<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.ex12</span>,
+<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.ex12</span>,
             <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>1000</span>, <span class='kw'>increment.factor</span><span class='kw'>=</span><span class='fl'>1.02</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2</span>)
@@ -1508,7 +1511,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 
 <span class='co'># assume equal item difficulty of I3T1 and I3T2, I4T1 and I4T2, ...</span>
 <span class='co'># create draft design matrix and modify it</span>
-<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/designMatrices.html'>designMatrices</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.long</span>[,-<span class='fl'>1</span>])$<span class='no'>A</span>
+<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='designMatrices.html'>designMatrices</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.long</span>[,-<span class='fl'>1</span>])$<span class='no'>A</span>
 <span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>A</span>)<span class='kw'>[[</span><span class='fl'>1</span>]] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>data.long</span>)[-<span class='fl'>1</span>]
   <span class='co'>##   &gt; str(A)</span>
   <span class='co'>##    num [1:12, 1:2, 1:12] 0 0 0 0 0 0 0 0 0 0 ...</span>
@@ -1539,7 +1542,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='co'># estimate model</span>
 <span class='co'># set intercept of second dimension (T2) to zero</span>
 <span class='no'>beta.fixed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>0</span> )
-<span class='no'>mod13a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.long</span>[,-<span class='fl'>1</span>], <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='no'>beta.fixed</span>)
+<span class='no'>mod13a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.long</span>[,-<span class='fl'>1</span>], <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='no'>beta.fixed</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod13a</span>)
 
 <span class='co'>#--- tamaan specification</span>
@@ -1561,14 +1564,14 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
   <span class='co'>##         I%T1 + I%T2 | b%*t1</span>
   <span class='co'>##       DOEND</span>
 <span class='co'># estimate model</span>
-<span class='no'>mod13at</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.long</span>,  <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='no'>beta.fixed</span> )
+<span class='no'>mod13at</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tamaan.html'>tamaan</a></span>( <span class='no'>tammodel</span>, <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.long</span>,  <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='no'>beta.fixed</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod13at</span>)
 
 <span class='co'>#***</span>
 <span class='co'># Model 13b: invariant item difficulties with zero mean item difficulty</span>
 <span class='co'>#           of anchor items</span>
 
-<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/designMatrices.html'>designMatrices</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.long</span>[,-<span class='fl'>1</span>])$<span class='no'>A</span>
+<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='designMatrices.html'>designMatrices</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.long</span>[,-<span class='fl'>1</span>])$<span class='no'>A</span>
 <span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>A</span>)<span class='kw'>[[</span><span class='fl'>1</span>]] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>data.long</span>)[-<span class='fl'>1</span>]
 <span class='no'>A1</span> <span class='kw'>&lt;-</span> <span class='no'>A</span>[,, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>, <span class='fl'>11</span>:<span class='fl'>12</span> ) ]
 <span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>A1</span>)<span class='kw'>[[</span><span class='fl'>3</span>]] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substring</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>A1</span>)<span class='kw'>[[</span><span class='fl'>3</span>]],<span class='fl'>1</span>,<span class='fl'>2</span>)
@@ -1592,7 +1595,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
   <span class='co'>## I7T2  0  0  0  0  0 -1  0</span>
   <span class='co'>## I8T2  0  0  0  0  0  0 -1</span>
 
-<span class='no'>mod13b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.long</span>[,-<span class='fl'>1</span>], <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+<span class='no'>mod13b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.long</span>[,-<span class='fl'>1</span>], <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod13b</span>)
 
 <span class='co'>#***</span>
@@ -1620,7 +1623,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 
 <span class='co'># (2) assume equal item difficulty of anchor items</span>
 <span class='co'>#     create draft design matrix and modify it</span>
-<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/designMatrices.html'>designMatrices</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>[,-<span class='fl'>1</span>])$<span class='no'>A</span>
+<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='designMatrices.html'>designMatrices</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>[,-<span class='fl'>1</span>])$<span class='no'>A</span>
 <span class='fu'><a href='https://rdrr.io/r/base/dimnames.html'>dimnames</a></span>(<span class='no'>A</span>)<span class='kw'>[[</span><span class='fl'>1</span>]] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>dat</span>)[-<span class='fl'>1</span>]
   <span class='co'>## &gt; str(A)</span>
   <span class='co'>## num [1:12, 1:3, 1:15] 0 0 0 0 0 0 0 0 0 0 ...</span>
@@ -1651,10 +1654,10 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='co'># (3) estimate model</span>
 <span class='co'>#     set intercept of second dimension (T2) to zero</span>
 <span class='no'>beta.fixed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>0</span> )
-<span class='no'>mod13c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>[,-<span class='fl'>1</span>], <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='no'>beta.fixed</span>,
+<span class='no'>mod13c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>[,-<span class='fl'>1</span>], <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='no'>beta.fixed</span>,
                    <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"PCM"</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod13c</span>)
-<span class='no'>wle.mod13c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.wle.html'>tam.wle</a></span>(<span class='no'>mod13c</span>) <span class='co'># WLEs of dimension T1 and T2</span>
+<span class='no'>wle.mod13c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.wle.html'>tam.wle</a></span>(<span class='no'>mod13c</span>) <span class='co'># WLEs of dimension T1 and T2</span>
 
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 14: Facet model with latent regression</span>
@@ -1667,7 +1670,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>resp</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>[, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"crit"</span>,<span class='fl'>1</span>:<span class='fl'>7</span>,<span class='kw'>sep</span><span class='kw'>=</span><span class='st'>""</span>) ]    <span class='co'># item data</span>
 <span class='no'>facets</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>( <span class='st'>"rater"</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>rater</span> )     <span class='co'># define facets</span>
 <span class='no'>formulaA</span> <span class='kw'>&lt;-</span> ~<span class='no'>item</span>+<span class='no'>item</span>*<span class='no'>step</span> + <span class='no'>rater</span>
-<span class='no'>mod14a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>pid</span> )
+<span class='no'>mod14a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>pid</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod14a</span>)
 
 <span class='co'>#***</span>
@@ -1677,7 +1680,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='co'>#   in resp</span>
 <span class='no'>dataY</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"X1"</span>,<span class='st'>"X2"</span>) ]        <span class='co'># latent regressors</span>
 <span class='no'>formulaY</span> <span class='kw'>&lt;-</span> ~ <span class='no'>X1</span>+<span class='no'>X2</span>            <span class='co'># latent regression formula</span>
-<span class='no'>mod14b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>( <span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>,
+<span class='no'>mod14b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>( <span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>,
             <span class='kw'>dataY</span><span class='kw'>=</span><span class='no'>dataY</span>, <span class='kw'>formulaY</span><span class='kw'>=</span><span class='no'>formulaY</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>pid</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod14b</span>)
 
@@ -1696,7 +1699,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='no'>E</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>resp1</span>)
 <span class='no'>E</span>[ <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='fl'>1</span>:(<span class='fl'>7</span>*<span class='fl'>7</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>:<span class='fl'>7</span>,<span class='kw'>each</span><span class='kw'>=</span><span class='fl'>7</span>) ) ] <span class='kw'>&lt;-</span> <span class='fl'>1</span>
 
-<span class='no'>mod14c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp1</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM.design"</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='no'>E</span>,
+<span class='no'>mod14c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp1</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM.design"</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='no'>E</span>,
         <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>100</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod14c</span>)
 
@@ -1710,7 +1713,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 
 <span class='co'>#***</span>
 <span class='co'># Model 15a:</span>
-<span class='no'>mod15a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data</span>[,-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)],<span class='kw'>facets</span><span class='kw'>=</span><span class='no'>data</span>[,<span class='st'>"group"</span>,<span class='kw'>drop</span><span class='kw'>=</span><span class='fl'>FALSE</span>],
+<span class='no'>mod15a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data</span>[,-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)],<span class='kw'>facets</span><span class='kw'>=</span><span class='no'>data</span>[,<span class='st'>"group"</span>,<span class='kw'>drop</span><span class='kw'>=</span><span class='fl'>FALSE</span>],
     <span class='kw'>formulaA</span><span class='kw'>=</span>~ <span class='no'>item</span> + <span class='no'>group</span>*<span class='no'>item</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>data</span>$<span class='no'>pid</span> )
 <span class='co'># See output:</span>
   <span class='co'>##</span>
@@ -1727,13 +1730,13 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='co'>#***</span>
 <span class='co'># Model 15b: Follow the suggestions of changing the default of fac.oldxsi and</span>
 <span class='co'>#            increment.factor</span>
-<span class='no'>mod15b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data</span>[,-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)],<span class='kw'>facets</span><span class='kw'>=</span><span class='no'>data</span>[,<span class='st'>"group"</span>,<span class='kw'>drop</span><span class='kw'>=</span><span class='fl'>FALSE</span>],
+<span class='no'>mod15b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data</span>[,-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)],<span class='kw'>facets</span><span class='kw'>=</span><span class='no'>data</span>[,<span class='st'>"group"</span>,<span class='kw'>drop</span><span class='kw'>=</span><span class='fl'>FALSE</span>],
             <span class='kw'>formulaA</span><span class='kw'>=</span>~ <span class='no'>group</span>*<span class='no'>item</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>data</span>$<span class='no'>pid</span>,
             <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>increment.factor</span><span class='kw'>=</span><span class='fl'>1.03</span>, <span class='kw'>fac.oldxsi</span><span class='kw'>=</span><span class='fl'>.4</span> ) )
 
 <span class='co'>#***</span>
 <span class='co'># Model 15c: Alternatively, just choose more iterations in M-step by "Msteps=10"</span>
-<span class='no'>mod15c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data</span>[,-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)],<span class='kw'>facets</span><span class='kw'>=</span><span class='no'>data</span>[,<span class='st'>"group"</span>,<span class='kw'>drop</span><span class='kw'>=</span><span class='fl'>FALSE</span>],
+<span class='no'>mod15c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data</span>[,-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)],<span class='kw'>facets</span><span class='kw'>=</span><span class='no'>data</span>[,<span class='st'>"group"</span>,<span class='kw'>drop</span><span class='kw'>=</span><span class='fl'>FALSE</span>],
     <span class='kw'>formulaA</span><span class='kw'>=</span>~ <span class='no'>item</span> + <span class='no'>group</span>*<span class='no'>item</span>, <span class='kw'>pid</span><span class='kw'>=</span><span class='no'>data</span>$<span class='no'>pid</span>,
     <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>250</span>, <span class='kw'>Msteps</span><span class='kw'>=</span><span class='fl'>10</span>))
 
@@ -1751,7 +1754,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='co'># define facets: 'cnt' is group identifier</span>
 <span class='no'>facets</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>( <span class='st'>"cnt"</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>IDCNTRY</span>)
 <span class='co'># create design matrices</span>
-<span class='no'>des2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/designMatrices.html'>designMatrices.mfr2</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>,
+<span class='no'>des2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='designMatrices.html'>designMatrices.mfr2</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>,
                    <span class='kw'>formulaA</span><span class='kw'>=</span>~<span class='no'>item</span>*<span class='no'>step</span> + <span class='no'>item</span>*<span class='no'>cnt</span>)
 <span class='co'># restructured data set: pseudoitem=item x country</span>
 <span class='no'>resp2</span> <span class='kw'>&lt;-</span> <span class='no'>des2</span>$<span class='no'>gresp</span>$<span class='no'>gresp.noStep</span>
@@ -1763,7 +1766,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='co'># extract loading matrix B</span>
 <span class='no'>B</span> <span class='kw'>&lt;-</span> <span class='no'>des2</span>$<span class='no'>B</span>$<span class='no'>B.3d</span>
 <span class='co'># estimate model</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp2</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A</span>, <span class='kw'>B</span><span class='kw'>=</span><span class='no'>B</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>100</span>) )
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp2</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A</span>, <span class='kw'>B</span><span class='kw'>=</span><span class='no'>B</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>100</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>)
 <span class='co'># The sum of all DIF parameters is set to zero. The DIF parameter for the last</span>
 <span class='co'># item is therefore obtained</span>
@@ -1823,7 +1826,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
                     }
 <span class='no'>variance.Npars</span> <span class='kw'>&lt;-</span> <span class='fl'>5</span>    <span class='co'># number of estimated parameters in variance matrix</span>
 <span class='co'># estimation using tam.mml</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>userfct.variance</span><span class='kw'>=</span><span class='no'>variance.fct1</span>,
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>userfct.variance</span><span class='kw'>=</span><span class='no'>variance.fct1</span>,
              <span class='kw'>variance.Npars</span><span class='kw'>=</span><span class='no'>variance.Npars</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='no'>maxit</span>, <span class='kw'>QMC</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
                           <span class='kw'>snodes</span><span class='kw'>=</span><span class='no'>snodes</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>)
@@ -1855,7 +1858,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
                     }
 <span class='no'>variance.Npars</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span> + <span class='fl'>4</span> + (<span class='fl'>4</span>*<span class='fl'>3</span>)/<span class='fl'>2</span> - <span class='fl'>1</span>
 <span class='co'># estimate model in TAM</span>
-<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>userfct.variance</span><span class='kw'>=</span><span class='no'>variance.fct2</span>,
+<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>userfct.variance</span><span class='kw'>=</span><span class='no'>variance.fct2</span>,
                 <span class='kw'>variance.Npars</span><span class='kw'>=</span><span class='no'>variance.Npars</span>,
                 <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='no'>maxit</span>, <span class='kw'>QMC</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>snodes</span><span class='kw'>=</span><span class='no'>snodes</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2</span>)
@@ -1886,7 +1889,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
                     }
 <span class='no'>variance.Npars</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span> + <span class='fl'>4</span> + (<span class='fl'>4</span>*<span class='fl'>3</span>)/<span class='fl'>2</span> - <span class='fl'>1</span>
 <span class='co'># estimate model in TAM</span>
-<span class='no'>mod3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>userfct.variance</span><span class='kw'>=</span><span class='no'>variance.fct3</span>,
+<span class='no'>mod3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>userfct.variance</span><span class='kw'>=</span><span class='no'>variance.fct3</span>,
                 <span class='kw'>variance.Npars</span><span class='kw'>=</span><span class='no'>variance.Npars</span>,
                 <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='no'>maxit</span>, <span class='kw'>QMC</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>snodes</span><span class='kw'>=</span><span class='no'>snodes</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod3</span>)
@@ -1904,7 +1907,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='co'># set Cov(g,u1)=Cov(g,u2)=Cov(g,u3)=0</span>
 <span class='no'>variance.fixed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>3</span>,<span class='fl'>0</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>4</span>,<span class='fl'>0</span>) )
 <span class='co'># estimate model in TAM</span>
-<span class='no'>mod4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q2</span>,<span class='kw'>variance.fixed</span><span class='kw'>=</span><span class='no'>variance.fixed</span>,
+<span class='no'>mod4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q2</span>,<span class='kw'>variance.fixed</span><span class='kw'>=</span><span class='no'>variance.fixed</span>,
                 <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='no'>maxit</span>, <span class='kw'>QMC</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>snodes</span><span class='kw'>=</span><span class='no'>snodes</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod4</span>)
 
@@ -1935,7 +1938,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
                     }
 <span class='no'>variance.Npars</span> <span class='kw'>&lt;-</span> <span class='fl'>4</span>+<span class='fl'>4</span>
 <span class='co'># estimate model in TAM</span>
-<span class='no'>mod5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q3</span>, <span class='kw'>userfct.variance</span><span class='kw'>=</span><span class='no'>variance.fct5</span>,
+<span class='no'>mod5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q3</span>, <span class='kw'>userfct.variance</span><span class='kw'>=</span><span class='no'>variance.fct5</span>,
                 <span class='kw'>variance.Npars</span><span class='kw'>=</span><span class='no'>variance.Npars</span>,
                 <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='no'>maxit</span>, <span class='kw'>QMC</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>snodes</span><span class='kw'>=</span><span class='no'>snodes</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod5</span>)
@@ -1965,7 +1968,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
         <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='no'>gammaslope.new</span>)
                     }
 <span class='co'># estimate model</span>
-<span class='no'>mod6</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.3pl.html'>tam.mml.3pl</a></span>( <span class='no'>dat</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='no'>E</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q2</span>, <span class='kw'>variance.fixed</span><span class='kw'>=</span><span class='no'>variance.fixed2</span>,
+<span class='no'>mod6</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.mml.3pl.html'>tam.mml.3pl</a></span>( <span class='no'>dat</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='no'>E</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q2</span>, <span class='kw'>variance.fixed</span><span class='kw'>=</span><span class='no'>variance.fixed2</span>,
            <span class='kw'>skillspace</span><span class='kw'>=</span><span class='st'>"normal"</span>, <span class='kw'>userfct.gammaslope</span><span class='kw'>=</span><span class='no'>gammaconstr</span>, <span class='kw'>gammaslope.constr.Npars</span><span class='kw'>=</span><span class='fl'>1</span>,
            <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='no'>maxit</span>, <span class='kw'>QMC</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>snodes</span><span class='kw'>=</span><span class='no'>snodes</span> ) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod6</span>)
@@ -1981,7 +1984,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>Q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>( <span class='fl'>0</span>,  <span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>8</span>, <span class='kw'>ncol</span><span class='kw'>=</span><span class='fl'>2</span> )
 <span class='no'>Q</span>[<span class='fl'>1</span>:<span class='fl'>4</span>,<span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='no'>Q</span>[<span class='fl'>5</span>:<span class='fl'>8</span>,<span class='fl'>2</span>] <span class='kw'>&lt;-</span> <span class='fl'>1</span>
 <span class='co'># partial credit model with some constraint on item parameters</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"PCM2"</span>, <span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span>)
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"PCM2"</span>, <span class='kw'>constraint</span><span class='kw'>=</span><span class='st'>"items"</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>)
 
 <span class='co'>#############################################################################</span>
@@ -2002,7 +2005,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>Q</span>[ <span class='no'>ind</span>, <span class='fl'>1</span> ] <span class='kw'>&lt;-</span> <span class='fl'>.5</span>    <span class='co'># score of 0.5 for polyomous items</span>
 
 <span class='co'># estimate model</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"PCM2"</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>nodes</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(-<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='kw'>len</span><span class='kw'>=</span><span class='fl'>21</span>)))
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='no'>dat</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"PCM2"</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>nodes</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(-<span class='fl'>10</span>,<span class='fl'>10</span>,<span class='kw'>len</span><span class='kw'>=</span><span class='fl'>21</span>)))
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>)
 
 <span class='co'>#############################################################################</span>
@@ -2034,7 +2037,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
   <span class='co'>##   [3,]    2    0    0</span>
   <span class='co'>##   [4,]    3    0    1</span>
 <span class='co'>#-- test run</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='no'>resp</span>, <span class='kw'>B</span><span class='kw'>=</span><span class='no'>B</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>snodes</span><span class='kw'>=</span><span class='fl'>1000</span>, <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>5</span>)  )
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='no'>resp</span>, <span class='kw'>B</span><span class='kw'>=</span><span class='no'>B</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>snodes</span><span class='kw'>=</span><span class='fl'>1000</span>, <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>5</span>)  )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>)
 
 <span class='co'># Same model with TAM::tam.mml.3pl instead</span>
@@ -2053,7 +2056,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 }
 <span class='kw'>if</span> (<span class='no'>kkk</span> <span class='kw'>!=</span><span class='no'>dim4</span>) <span class='fu'><a href='https://rdrr.io/r/base/stop.html'>stop</a></span>(<span class='st'>"Something went wrong in the loop, because 'kkk !=dim4'."</span>)
 
-<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.3pl.html'>tam.mml.3pl</a></span>(<span class='no'>resp</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='no'>E1</span>, <span class='kw'>est.some.slopes</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>50</span>))
+<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.mml.3pl.html'>tam.mml.3pl</a></span>(<span class='no'>resp</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='no'>E1</span>, <span class='kw'>est.some.slopes</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>50</span>))
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2</span>)
 
 <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span>(<span class='no'>mod1</span>$<span class='no'>person</span>$<span class='no'>EAP.Dim3</span>, <span class='no'>mod2</span>$<span class='no'>person</span>$<span class='no'>EAP.Dim3</span>)
@@ -2071,9 +2074,9 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='co'># simulate data according to the Rasch model</span>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/sim.raschtype.html'>sim.raschtype</a></span>( <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>N</span>), <span class='kw'>b</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(-<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='kw'>len</span><span class='kw'>=</span><span class='no'>I</span>)  )
 <span class='co'># estimate models</span>
-<span class='no'>mod1n</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>acceleration</span><span class='kw'>=</span><span class='st'>"none"</span>) )  <span class='co'># no acceler.</span>
-<span class='no'>mod1y</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>acceleration</span><span class='kw'>=</span><span class='st'>"Yu"</span>) )  <span class='co'># Yu acceler.</span>
-<span class='no'>mod1r</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>acceleration</span><span class='kw'>=</span><span class='st'>"Ramsay"</span>) )  <span class='co'># Ramsay acceler.</span>
+<span class='no'>mod1n</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>acceleration</span><span class='kw'>=</span><span class='st'>"none"</span>) )  <span class='co'># no acceler.</span>
+<span class='no'>mod1y</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>acceleration</span><span class='kw'>=</span><span class='st'>"Yu"</span>) )  <span class='co'># Yu acceler.</span>
+<span class='no'>mod1r</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>acceleration</span><span class='kw'>=</span><span class='st'>"Ramsay"</span>) )  <span class='co'># Ramsay acceler.</span>
 <span class='co'># compare number of iterations</span>
 <span class='no'>mod1n</span>$<span class='no'>iter</span> ; <span class='no'>mod1y</span>$<span class='no'>iter</span> ; <span class='no'>mod1r</span>$<span class='no'>iter</span>
 <span class='co'># log-likelihood values</span>
@@ -2087,13 +2090,13 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.gpcm</span>
 
 <span class='co'># no acceleration</span>
-<span class='no'>mod1n</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM"</span>,
+<span class='no'>mod1n</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM"</span>,
                 <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>conv</span><span class='kw'>=</span><span class='fl'>1E-4</span>, <span class='kw'>acceleration</span><span class='kw'>=</span><span class='st'>"none"</span>) )
 <span class='co'># Yu acceleration</span>
-<span class='no'>mod1y</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM"</span>,
+<span class='no'>mod1y</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM"</span>,
                 <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>conv</span><span class='kw'>=</span><span class='fl'>1E-4</span>, <span class='kw'>acceleration</span><span class='kw'>=</span><span class='st'>"Yu"</span>) )
 <span class='co'># Ramsay acceleration</span>
-<span class='no'>mod1r</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM"</span>,
+<span class='no'>mod1r</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM"</span>,
                 <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>conv</span><span class='kw'>=</span><span class='fl'>1E-4</span>, <span class='kw'>acceleration</span><span class='kw'>=</span><span class='st'>"Ramsay"</span>) )
 <span class='co'># number of iterations</span>
 <span class='no'>mod1n</span>$<span class='no'>iter</span> ; <span class='no'>mod1y</span>$<span class='no'>iter</span> ; <span class='no'>mod1r</span>$<span class='no'>iter</span>
@@ -2113,7 +2116,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='co'># * Category 2 -&gt; loading of one on Dimension 2</span>
 
 <span class='co'># extract default design matrices</span>
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/designMatrices.html'>designMatrices</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span> )
+<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='designMatrices.html'>designMatrices</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span> )
 <span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='no'>res</span>$<span class='no'>A</span>
 <span class='no'>B0</span> <span class='kw'>&lt;-</span> <span class='fl'>0</span>*<span class='no'>res</span>$<span class='no'>B</span>
 <span class='co'># create design matrix B</span>
@@ -2125,7 +2128,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>B</span>[,<span class='fl'>3</span>,<span class='fl'>2</span>]  <span class='kw'>&lt;-</span> <span class='fl'>1</span>
 
 <span class='co'># estimate multdimensional Rasch model</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A</span>, <span class='kw'>B</span><span class='kw'>=</span><span class='no'>B</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>100</span>) )
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A</span>, <span class='kw'>B</span><span class='kw'>=</span><span class='no'>B</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>100</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>)
 
 <span class='co'># alternative definition of B</span>
@@ -2139,7 +2142,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>B</span>[,<span class='fl'>2</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>)]  <span class='kw'>&lt;-</span> -<span class='fl'>1</span>
 
 <span class='co'># estimate model</span>
-<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A</span>, <span class='kw'>B</span><span class='kw'>=</span><span class='no'>B</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>100</span>) )
+<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A</span>, <span class='kw'>B</span><span class='kw'>=</span><span class='no'>B</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>maxiter</span><span class='kw'>=</span><span class='fl'>100</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2</span>)
 
 <span class='co'>#############################################################################</span>
@@ -2150,10 +2153,10 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.gpcm</span>
 
 <span class='co'># check number of categories</span>
-<span class='no'>c1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.ctt.html'>tam.ctt3</a></span>(<span class='no'>dat</span>)
+<span class='no'>c1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.ctt.html'>tam.ctt3</a></span>(<span class='no'>dat</span>)
 
 <span class='co'>#--- fit with PCM</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='no'>dat</span> )
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='no'>dat</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>, <span class='kw'>file</span><span class='kw'>=</span><span class='st'>"mod1"</span>)
 
 <span class='co'>#--- fit with constraint on sum of categories</span>
@@ -2173,7 +2176,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>A1</span>[<span class='fl'>3</span>,,]
 
 <span class='co'>#** estimate model</span>
-<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml</a></span>( <span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>, <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2</span>, <span class='kw'>file</span><span class='kw'>=</span><span class='st'>"mod2"</span>)
 
 <span class='co'>#--- compare model fit</span>
@@ -2191,7 +2194,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.gpcm</span>
 
 <span class='co'>#*** TAM</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>(<span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM"</span>)
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>(<span class='no'>dat</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM"</span>)
 <span class='co'>#*** mirt</span>
 <span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mirt/man/mirt.html'>mirt</a></span>(<span class='no'>dat</span>, <span class='fl'>1</span>, <span class='kw'>itemtype</span><span class='kw'>=</span><span class='st'>"gpcm"</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 <span class='co'>#*** ltm</span>
@@ -2233,7 +2236,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>facets</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span>(<span class='no'>data.ex08</span><span class='kw'>[[</span><span class='st'>"facets"</span>]])
 
 <span class='co'>#***  Model 8a: investigate gender DIF in undimensional model</span>
-<span class='no'>mod8a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.mfr</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>)
+<span class='no'>mod8a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.mfr</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>facets</span><span class='kw'>=</span><span class='no'>facets</span>, <span class='kw'>formulaA</span><span class='kw'>=</span><span class='no'>formulaA</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod8a</span>)
 
 <span class='co'>#*** multidimensional 2PL Model</span>
@@ -2241,20 +2244,20 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>Q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/array.html'>array</a></span>(<span class='fl'>0</span>, <span class='kw'>dim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>I</span>, <span class='fl'>3</span>))
 <span class='no'>Q</span>[<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fl'>1</span>:<span class='no'>I</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fl'>3</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>2</span>, <span class='fl'>3</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>3</span>, <span class='fl'>4</span>)))] <span class='kw'>&lt;-</span> <span class='fl'>1</span>
 <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='no'>Q</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>resp</span>)
-<span class='no'>mod3dim2pl</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>,
+<span class='no'>mod3dim2pl</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>resp</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>,
                           <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>snodes</span><span class='kw'>=</span><span class='fl'>2000</span>))
 
 <span class='co'>#*** Combine both approaches</span>
 <span class='no'>thisRows</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span>(<span class='st'>"-.*"</span>, <span class='st'>""</span>, <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>mod8a</span>$<span class='no'>resp</span>)) <span class='co'>#select item names</span>
 
 <span class='co'>#*** uniform DIF (note irtmodel="2PL.groups" &amp; est.slopegroups)</span>
-<span class='no'>mod3dim2pl_udiff</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>mod8a</span>$<span class='no'>resp</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>mod8a</span>$<span class='no'>A</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>[<span class='no'>thisRows</span>, ],
+<span class='no'>mod3dim2pl_udiff</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>mod8a</span>$<span class='no'>resp</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>mod8a</span>$<span class='no'>A</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>[<span class='no'>thisRows</span>, ],
                                <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL.groups"</span>,
                                <span class='kw'>est.slopegroups</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='no'>thisRows</span>)),
                                <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>snodes</span><span class='kw'>=</span><span class='fl'>2000</span>))
 
 <span class='co'>#*** non-uniform DIF (?); different slope parameters for each item administered to each group</span>
-<span class='no'>mod3dim2pl_nudiff</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>mod8a</span>$<span class='no'>resp</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>mod8a</span>$<span class='no'>A</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>[<span class='no'>thisRows</span>, ],
+<span class='no'>mod3dim2pl_nudiff</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>mod8a</span>$<span class='no'>resp</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>mod8a</span>$<span class='no'>A</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q</span>[<span class='no'>thisRows</span>, ],
                                 <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL"</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>snodes</span><span class='kw'>=</span><span class='fl'>2000</span>))
 
 <span class='co'>#*** check results</span>
@@ -2267,7 +2270,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>Q2</span>[<span class='fl'>4</span>,<span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='fl'>1</span>
 
 <span class='co'># uniform DIF (note irtmodel="2PL.groups" &amp; est.slopegroups)</span>
-<span class='no'>mod3dim2pl_udiff2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>mod8a</span>$<span class='no'>resp</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>mod8a</span>$<span class='no'>A</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q2</span>[<span class='no'>thisRows</span>, ],
+<span class='no'>mod3dim2pl_udiff2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>mod8a</span>$<span class='no'>resp</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>mod8a</span>$<span class='no'>A</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='no'>Q2</span>[<span class='no'>thisRows</span>, ],
                                 <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"2PL.groups"</span>,
                                 <span class='kw'>est.slopegroups</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='no'>thisRows</span>)),
                                 <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>snodes</span><span class='kw'>=</span><span class='fl'>2000</span>))
@@ -2322,10 +2325,10 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>dat1</span>)
 
 <span class='co'>#* generate design matrix for IRT parameterization</span>
-<span class='no'>A1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/designMatrices.html'>.A.PCM2</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat1</span>)
+<span class='no'>A1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='designMatrices.html'>.A.PCM2</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat1</span>)
 
 <span class='co'>#- estimate GPCM model</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat1</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM"</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>)
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml.2pl</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat1</span>, <span class='kw'>irtmodel</span><span class='kw'>=</span><span class='st'>"GPCM"</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A1</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>)
 
 <span class='co'># compare true and estimated slope estimates (alpha)</span>
@@ -2338,18 +2341,10 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='no'>tau</span>[,-<span class='fl'>3</span>], <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>( <span class='no'>mod1</span>$<span class='no'>xsi</span>$<span class='no'>xsi</span>[-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>5</span>)], <span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>byrow</span><span class='kw'>=</span><span class='fl'>TRUE</span> ) / <span class='no'>mod1</span>$<span class='no'>B</span>[,<span class='fl'>2</span>,<span class='fl'>1</span>] )
 }</pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#references">References</a></li>
-      <li><a href="#note">Note</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -2360,7 +2355,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

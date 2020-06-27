@@ -42,11 +42,15 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.6  |  2020-05-06  |  Last: TAM 3.6-2
+VERSIONS TAM 3.6  |  2020-06-27  |  Last: TAM 3.6-8
 -------------------------------------------------------------
 
-xxx   * ...
-
+FIXED * fixed an issue in tam.linking() if number of maximum
+        categories in groups differs
+FIXED * fixed a bug in tam.np() 
+        (thanks to @andreanorcinipala, issue #13)
+NOTE  * added '...' argument in tam.fa() (thanks to a suggestion
+        of @jeppebundsgaard, issue #11)
 
 
 DATA  * included/modified datasets: ---

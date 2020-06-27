@@ -1,10 +1,10 @@
 ## File Name: tam_linking_irf_discrepancy.R
-## File Version: 0.054
+## File Version: 0.055
 
 tam_linking_irf_discrepancy <- function(probs1, probs2, wgt, type,
     pow_rob_hae=1, eps_rob_hae=1e-4)
 {
-    K <- dim(probs1)[3]
+    K <- min( dim(probs1)[3], dim(probs2)[3])
     crit <- 0
     #-- define Haebara criterion function
     if (type %in% c("Hae","RobHae") ){

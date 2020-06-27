@@ -1,5 +1,5 @@
 ## File Name: tam_linking_joint_calc_probs.R
-## File Version: 0.06
+## File Version: 0.09
 
 tam_linking_joint_calc_probs <- function(a, b, parameters_list_mm, theta)
 {

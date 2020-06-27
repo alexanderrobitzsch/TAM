@@ -1,5 +1,5 @@
 ## File Name: tam.np.R
-## File Version: 0.413
+## File Version: 0.421
 
 
 tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=list(),
@@ -103,9 +103,9 @@ tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=li
                     lambda=lambda, iter=iter, dev=dev, n_basis=n_basis,
                     penalty_type=penalty_type, target_fct=target_fct,
                     index_target=index_target, index_basis=index_basis, model=model)
+            probs <- res$probs
         }
         spline_optim <- res$spline_optim
-        probs <- res$probs
         pars <- res$pars
         n_reg <- res$n_reg
         par_reg_penalty <- res$par_reg_penalty
@@ -123,11 +123,12 @@ tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=li
         #-- print progress
         res <- tam_mml_progress_em(progress=progress, deviance=dev,
                     deviance_change=deviance_change, iter=iter,
-                    rel_deviance_change=rel_deviance_change, is_mml_3pl=FALSE, xsi_change=0,
-                    beta_change=0, variance_change=0, B_change=0, skillspace='np', delta_change=0,
-                    digits_pars=6, devch=devch,    penalty_xsi=0, is_np=TRUE, is_latreg=TRUE,
-                    np_change=np_change, par_reg_penalty=par_reg_penalty, n_reg=n_reg,
-                    AIC=AIC, n_est=n_est, n_reg_max=n_reg_max)
+                    rel_deviance_change=rel_deviance_change, is_mml_3pl=FALSE,
+                    xsi_change=0, beta_change=0, variance_change=0, B_change=0,
+                    skillspace='np', delta_change=0, digits_pars=6, devch=devch,
+                    penalty_xsi=0, is_np=TRUE, is_latreg=TRUE, np_change=np_change,
+                    par_reg_penalty=par_reg_penalty, n_reg=n_reg, AIC=AIC, 
+                    n_est=n_est, n_reg_max=n_reg_max)
         #-- convergence
         iter <- iter + 1
         if (iter > maxiter){
@@ -168,13 +169,14 @@ tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=li
     #--- output
     s2 <- Sys.time()
     time <- c(s1, s2)
-    res <- list( CALL=CALL, dat=dat, dat2=dat2, dat_resp=dat_resp, n.ik=n.ik, N.ik=N.ik,
-                item=item, rprobs=probs, pi.k=pi.k, nodes=nodes, pweights=pweights, like=f.yi.qk,
-                hwt=f.qk.yi, iter=iter, loglike=loglike, AIC=AIC, converged=converged,
-                iter=iter, time=time, dev=dev, theta=theta, G=1, pars=pars, n_est=n_est,
-                n_reg=n_reg, regularized=regularized, basis_type=basis_type,
-                n_basis=n_basis, desmat=desmat, ic=ic, pid=NULL,
-                orthonormalize=orthonormalize, penalty_type=penalty_type,
+    res <- list( CALL=CALL, dat=dat, dat2=dat2, dat_resp=dat_resp, n.ik=n.ik, 
+                N.ik=N.ik, item=item, rprobs=probs, pi.k=pi.k, nodes=nodes, 
+                pweights=pweights, like=f.yi.qk, hwt=f.qk.yi, iter=iter, 
+                loglike=loglike, AIC=AIC, converged=converged,
+                iter=iter, time=time, dev=dev, theta=theta, G=1, pars=pars, 
+                n_est=n_est, n_reg=n_reg, regularized=regularized, 
+                basis_type=basis_type, n_basis=n_basis, desmat=desmat, ic=ic, 
+                pid=NULL, orthonormalize=orthonormalize, penalty_type=penalty_type,
                 pen_val=pen_val, use_basis=use_basis, model=model, sigma=sigma,
                 ll_individual=ll_individual, control=control)
     class(res) <- "tam.np"
