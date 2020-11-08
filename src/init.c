@@ -1,5 +1,5 @@
 //// File Name: init.c
-//// File Version: 3.006008
+//// File Version: 3.006017
 #include <R.h>
 #include <Rinternals.h>
 #include <stdlib.h> // for NULL
@@ -15,7 +15,7 @@ extern SEXP _TAM_tam_rcpp_tam_mml_calc_prob_R_outer_Btheta(SEXP, SEXP, SEXP, SEX
 extern SEXP _TAM_tam_rcpp_tam_mml_calc_prob_R_normalize_rprobs(SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_calc_suff_stat(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_ctt2(SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _TAM_tam_rcpp_ctt3(SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP _TAM_tam_rcpp_ctt3(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_fit_simul(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP _TAM_tam_rcpp_theta_sq(SEXP);
 extern SEXP _TAM_tam_rcpp_interval_index(SEXP, SEXP);
@@ -57,7 +57,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_TAM_tam_rcpp_tam_mml_calc_prob_R_normalize_rprobs", (DL_FUNC) &_TAM_tam_rcpp_tam_mml_calc_prob_R_normalize_rprobs, 2},
     {"_TAM_tam_rcpp_calc_suff_stat", (DL_FUNC) &_TAM_tam_rcpp_calc_suff_stat, 6},
     {"_TAM_tam_rcpp_ctt2", (DL_FUNC) &_TAM_tam_rcpp_ctt2, 5},
-    {"_TAM_tam_rcpp_ctt3", (DL_FUNC) &_TAM_tam_rcpp_ctt3, 5},
+    {"_TAM_tam_rcpp_ctt3", (DL_FUNC) &_TAM_tam_rcpp_ctt3, 6},
     {"_TAM_tam_rcpp_fit_simul", (DL_FUNC) &_TAM_tam_rcpp_fit_simul, 9},
     {"_TAM_tam_rcpp_theta_sq", (DL_FUNC) &_TAM_tam_rcpp_theta_sq, 1},
     {"_TAM_tam_rcpp_interval_index", (DL_FUNC) &_TAM_tam_rcpp_interval_index, 2},

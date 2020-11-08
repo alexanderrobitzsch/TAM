@@ -1,21 +1,14 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.924
+## File Version: 9.932
 
 tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
-            formulaY=NULL, dataY=NULL,
-            ndim=1, pid=NULL,
-            xsi.fixed=NULL,  xsi.setnull=NULL,
-            xsi.inits=NULL,
-            beta.fixed=NULL, beta.inits=NULL,
-            variance.fixed=NULL, variance.inits=NULL,
-            est.variance=TRUE, formulaA=~item+item:step, constraint="cases",
-            A=NULL, B=NULL, B.fixed=NULL,
-            Q=NULL, facets=NULL, est.slopegroups=NULL, E=NULL,
-            pweights=NULL, verbose=TRUE, control=list(),
-            delete.red.items=TRUE
-            # control can be specified by the user
-  ){
-
+            formulaY=NULL, dataY=NULL, ndim=1, pid=NULL, xsi.fixed=NULL, 
+            xsi.setnull=NULL, xsi.inits=NULL, beta.fixed=NULL, beta.inits=NULL,
+            variance.fixed=NULL, variance.inits=NULL, est.variance=TRUE, 
+            formulaA=~item+item:step, constraint="cases", A=NULL, B=NULL, 
+            B.fixed=NULL, Q=NULL, facets=NULL, est.slopegroups=NULL, E=NULL,
+            pweights=NULL, verbose=TRUE, control=list(), delete.red.items=TRUE )
+{
     CALL <- match.call()
     a0 <- Sys.time()
     s1 <- Sys.time()
@@ -37,8 +30,8 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     if ( ! tam_in_names_list( list=control, variable="progress" )     ){
         control$progress <- verbose
     }
-    #*******
-      #--- attach control elements
+
+    #--- attach control elements
     e1 <- environment()
     tam_fct <- "tam.mml.mfr"
     res <- tam_mml_control_list_define(control=control, envir=e1, tam_fct=tam_fct,
@@ -52,15 +45,13 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     # userfct.variance is not allowed in tam.mml.mfr
     userfct.variance <- NULL
 
-    #***
     fac.oldxsi <- max( 0, min( c( fac.oldxsi, .95 ) ) )
-
     if ( constraint=="items" ){ beta.fixed <- FALSE }
 
     pid0 <- pid <- unname(c(unlist(pid)))
     if (progress){
-      cat(disp)
-      cat("Processing Data     ", paste(Sys.time()), "\n") ; utils::flush.console()
+        cat(disp)
+        cat("Processing Data     ", paste(Sys.time()), "\n") ; utils::flush.console()
     }
     if ( ! is.null(group) ){
       con1a$QMC <- QMC <- FALSE
@@ -92,7 +83,7 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     facets <- res$facets
     PSF <- res$PSF
     pid <- res$pid
-# cat(" mml mfr dataprep  " ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
+#cat(" mml mfr dataprep  " ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
 
     #--- create design matrices
     res <-  tam_mml_mfr_proc_create_design_matrices( pid=pid, maxKi=maxKi, resp=resp,

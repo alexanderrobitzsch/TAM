@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mfr_dataprep.R
-## File Version: 9.185
+## File Version: 9.188
 
 #- MFR data preparation
 tam_mml_mfr_dataprep <- function( formulaA, xsi.setnull, B, Q,
@@ -13,7 +13,7 @@ tam_mml_mfr_dataprep <- function( formulaA, xsi.setnull, B, Q,
     nullfacets <- names(stlab)[ind]
     if ( is.null(pid) ){
         pid <- seq( 1, nrow(resp) )
-        cat("--- Created person identifiers.\n")
+        cat("   --- Created person identifiers.\n")
     }
 
     #---- data restructuring for non-identifiable combinations
@@ -48,7 +48,8 @@ tam_mml_mfr_dataprep <- function( formulaA, xsi.setnull, B, Q,
         cat("   -- because of non-unique person-facet combinations.\n")
     }
     #**** end duplications of identifiers
-    # new formula
+    
+    #--- new formula
     formula_update <- paste( c( attr( tA, "term.labels"), nullfacets ), collapse=" + ")
     inc <- ""
     if ( attr(tA, "intercept") %in% c(0,-1)){ inc <- " 0 + "}
@@ -70,10 +71,8 @@ tam_mml_mfr_dataprep <- function( formulaA, xsi.setnull, B, Q,
         beta.fixed <- cbind( 1, 1:D, 0 )
     }
 
-    res <- list( "formula_update"=formula_update,
-                "xsi.setnull"=xsi.setnull,
-                "beta.fixed"=beta.fixed,
-                "facets"=facets, "PSF"=PSF, "pid"=pid  )
+    res <- list( formula_update=formula_update, xsi.setnull=xsi.setnull,
+                beta.fixed=beta.fixed, facets=facets, PSF=PSF, pid=pid  )
     return(res)
 }
 

@@ -1,5 +1,5 @@
 ## File Name: tam.np.R
-## File Version: 0.421
+## File Version: 0.422
 
 
 tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=list(),
@@ -127,7 +127,7 @@ tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=li
                     xsi_change=0, beta_change=0, variance_change=0, B_change=0,
                     skillspace='np', delta_change=0, digits_pars=6, devch=devch,
                     penalty_xsi=0, is_np=TRUE, is_latreg=TRUE, np_change=np_change,
-                    par_reg_penalty=par_reg_penalty, n_reg=n_reg, AIC=AIC, 
+                    par_reg_penalty=par_reg_penalty, n_reg=n_reg, AIC=AIC,
                     n_est=n_est, n_reg_max=n_reg_max)
         #-- convergence
         iter <- iter + 1
@@ -169,13 +169,13 @@ tam.np <- function( dat, probs_init=NULL, pweights=NULL, lambda=NULL, control=li
     #--- output
     s2 <- Sys.time()
     time <- c(s1, s2)
-    res <- list( CALL=CALL, dat=dat, dat2=dat2, dat_resp=dat_resp, n.ik=n.ik, 
-                N.ik=N.ik, item=item, rprobs=probs, pi.k=pi.k, nodes=nodes, 
-                pweights=pweights, like=f.yi.qk, hwt=f.qk.yi, iter=iter, 
+    res <- list( CALL=CALL, dat=dat, dat2=dat2, dat_resp=dat_resp, n.ik=n.ik,
+                N.ik=N.ik, item=item, rprobs=probs, pi.k=pi.k, nodes=nodes,
+                pweights=pweights, like=f.yi.qk, hwt=f.qk.yi, iter=iter,
                 loglike=loglike, AIC=AIC, converged=converged,
-                iter=iter, time=time, dev=dev, theta=theta, G=1, pars=pars, 
-                n_est=n_est, n_reg=n_reg, regularized=regularized, 
-                basis_type=basis_type, n_basis=n_basis, desmat=desmat, ic=ic, 
+                iter=iter, time=time, dev=dev, theta=theta, G=1, pars=pars,
+                n_est=n_est, n_reg=n_reg, regularized=regularized,
+                basis_type=basis_type, n_basis=n_basis, desmat=desmat, ic=ic,
                 pid=NULL, orthonormalize=orthonormalize, penalty_type=penalty_type,
                 pen_val=pen_val, use_basis=use_basis, model=model, sigma=sigma,
                 ll_individual=ll_individual, control=control)

@@ -1,5 +1,5 @@
 ## File Name: designMatrices.mfr.R
-## File Version: 9.418
+## File Version: 9.419
 
 
 
@@ -206,6 +206,7 @@ z0 <- tamcat( " ---  col sums (gresp noStep) in X (Rcpp)", z0, tamcat_active )
     for (ss in 0:(nStep-1)){
               str.ss <- paste0("step",ss )
               iss <- grep(  paste0(str.ss,"+(-|$)"), rownames(x) )#, fixed=TRUE )
+                iss <- setdiff(iss,  grep( paste0( "step", ss, ss,"+(-|$)"), rownames(x) ) )
               str.ss2 <- gsub( paste0("(^|-)+",str.ss), "", rownames(x)[iss] )
               x2[ss+1,str.ss2,] <- x[ iss, ]
             }

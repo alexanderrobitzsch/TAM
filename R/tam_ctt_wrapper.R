@@ -1,10 +1,13 @@
 ## File Name: tam_ctt_wrapper.R
-## File Version: 0.08
+## File Version: 0.14
 
 
 tam_ctt_wrapper <- function( resp, wlescore=NULL, group=NULL, allocate=30, progress=TRUE,
-    version=3)
+    version=3, wgt=NULL)
 {
+    if (is.null(wgt)){
+        wgt <- rep(1,nrow(resp))
+    }
     I <- ncol(resp)
     resp <- cbind( "_h"="h", resp )
     resp <- as.matrix(resp)
@@ -31,6 +34,7 @@ tam_ctt_wrapper <- function( resp, wlescore=NULL, group=NULL, allocate=30, progr
         ind.gg <- which( group==groups[gg] )
         resp <- resp0[ ind.gg, ]
         wlescore <- wlescore0[ ind.gg ]
+        wgt1 <- wgt[ind.gg]
         prg <- round( seq( 1, I, len=10 ) )
         prg[ prg==I ] <- I-1
         if (progress){
@@ -44,10 +48,12 @@ tam_ctt_wrapper <- function( resp, wlescore=NULL, group=NULL, allocate=30, progr
         if ( ! progress ){ prg <- 1 }
         resp <- as.matrix( t(resp) )
         if (version==2){
-            res <- tam_rcpp_ctt2( TDAT=resp, WLE=wlescore, MAXK=maxK, EST_WLE=est_wle, prg=prg )
+            res <- tam_rcpp_ctt2( TDAT=resp, WLE=wlescore, MAXK=maxK,
+                        EST_WLE=est_wle, prg=prg )
         }
         if (version==3){
-            res <- tam_rcpp_ctt3( TDAT=resp, WLE=wlescore, MAXK=maxK, EST_WLE=est_wle, prg=prg )
+            res <- tam_rcpp_ctt3( TDAT=resp, WLE=wlescore, MAXK=maxK,
+                        EST_WLE=est_wle, prg=prg, wgt=wgt1 )
         }
         ind <- which( paste(res$desV) !="" )
         res1 <- res$des[ ind, ]
@@ -74,4 +80,4 @@ tam_ctt_wrapper <- function( resp, wlescore=NULL, group=NULL, allocate=30, progr
     dfr <- data.frame( "index"=seq(1,nrow(dfr) ), dfr )
     return(dfr)
 }
-#########################################################
+

@@ -1,5 +1,5 @@
 ## File Name: tam_mml_3pl_mstep_item_slopes.R
-## File Version: 9.645
+## File Version: 9.647
 
 
 #--- tam.mml.3pl estimate item slopes

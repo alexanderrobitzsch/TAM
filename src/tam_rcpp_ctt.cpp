@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_ctt.cpp
-//// File Version: 3.21
+//// File Version: 3.29
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -133,9 +133,9 @@ Rcpp::List tam_rcpp_ctt2( Rcpp::CharacterMatrix TDAT,
 ///********************************************************************
 ///** tam_rcpp_ctt3
 // [[Rcpp::export]]
-Rcpp::List tam_rcpp_ctt3( Rcpp::CharacterMatrix TDAT,
-    Rcpp::NumericVector WLE, Rcpp::NumericVector MAXK,
-    int EST_WLE, Rcpp::NumericVector prg )
+Rcpp::List tam_rcpp_ctt3( Rcpp::CharacterMatrix TDAT, Rcpp::NumericVector WLE,
+    Rcpp::NumericVector MAXK, int EST_WLE, Rcpp::NumericVector prg,
+    Rcpp::NumericVector wgt)
 {
     int N = TDAT.ncol();
     int I = TDAT.nrow();
@@ -163,12 +163,11 @@ Rcpp::List tam_rcpp_ctt3( Rcpp::CharacterMatrix TDAT,
     double wles3tot=0;
     double wles4tot=0;
 
-    //////////////////////////////////////////////////////////////
-    ////////// begin items ///////////////////////////////////////
+    ///*** begin items ///////////////////////////////////////
     for ( int ii=0; ii<I; ii++){
         Rcpp::CharacterVector TDAT_ii = TDAT.row(ii);
         Rcpp::CharacterVector uii = Rcpp::unique( TDAT_ii );
-        Rcpp::IntegerVector  uii_match = match( TDAT_ii, uii );
+        Rcpp::IntegerVector uii_match = Rcpp::match( TDAT_ii, uii );
         NC_ii = uii.size();
         if ( NC_ii > K){
             Rcpp::Rcout << "allocate of at least " << NC_ii << "needed!" << std::flush;
@@ -192,13 +191,13 @@ Rcpp::List tam_rcpp_ctt3( Rcpp::CharacterMatrix TDAT,
             r1 = ( TDAT_ii[nn] == "NA" );
             if ( ! r1 ){
                 nn_ii = uii_match[nn] - 1;
-                freq[ nn_ii ] = freq[nn_ii] + 1;
-                freqall = freqall + 1;
+                freq[nn_ii] += wgt[nn];
+                freqall += wgt[nn];
                 if (EST_WLE==1){
-                    wles1[ nn_ii ] = wles1[ nn_ii ] + WLE[nn];
-                    wles2[ nn_ii ] = wles2[ nn_ii ] + WLE[nn]*WLE[nn];
-                    wles3tot = wles3tot + WLE[nn];
-                    wles4tot = wles4tot + WLE[nn]*WLE[nn];
+                    wles1[ nn_ii ] += wgt[nn]*WLE[nn];
+                    wles2[ nn_ii ] += wgt[nn]*WLE[nn]*WLE[nn];
+                    wles3tot += wgt[nn]*WLE[nn];
+                    wles4tot += wgt[nn]*WLE[nn]*WLE[nn];
                 }  // end EST_WLE
             } // end   if (TDAT_ii[nn] != "NA"){
         } // end nn
@@ -244,8 +243,7 @@ Rcpp::List tam_rcpp_ctt3( Rcpp::CharacterMatrix TDAT,
         }  // end if progress
     }    // end item ii
 
-    ///////////////////////////////////////////
-    // OUTPUT:
+    //**** OUTPUT:
     return Rcpp::List::create(
             Rcpp::Named("des") = des,
             Rcpp::Named("desV") = desV,

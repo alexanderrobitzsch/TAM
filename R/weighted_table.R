@@ -1,9 +1,10 @@
 ## File Name: weighted_table.R
-## File Version: 9.08
+## File Version: 9.09
 
 
 # weighted frequency table
-weighted_table <- function( x, w=NULL, props=FALSE ){
+weighted_table <- function( x, w=NULL, props=FALSE )
+{
 
     #**** vector x
     if ( is.vector(x) ){

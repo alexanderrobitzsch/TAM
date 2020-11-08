@@ -154,7 +154,7 @@ is defined.</p>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.read</span>
 
 <span class='co'># fit Rasch model</span>
-<span class='no'>mod</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/sirt/man/rasch.mml.html'>rasch.mml2</a></span>(<span class='no'>dat</span>)
+<span class='no'>mod</span> <span class='kw'>&lt;-</span> <span class='fu'>rasch.mml2</span>(<span class='no'>dat</span>)
 <span class='co'># draw 10 plausible values</span>
 <span class='no'>pv1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>IRT.drawPV</span>(<span class='no'>mod</span>, <span class='kw'>NPV</span><span class='kw'>=</span><span class='fl'>10</span>)
 }</pre>

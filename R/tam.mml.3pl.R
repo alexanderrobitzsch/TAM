@@ -1,5 +1,5 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.872
+## File Version: 9.877
 
 tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
             formulaY=NULL, dataY=NULL,
@@ -12,7 +12,7 @@ tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
             Q.fixed=NULL,
             E=NULL, gammaslope.des="2PL",
             gammaslope=NULL, gammaslope.fixed=NULL,
-            est.some.slopes=TRUE,
+            est.some.slopes=TRUE, gammaslope.max=9.99,
             gammaslope.constr.V=NULL, gammaslope.constr.c=NULL,
             gammaslope.center.index=NULL,  gammaslope.center.value=NULL,
             gammaslope.prior=NULL,  userfct.gammaslope=NULL,
@@ -33,17 +33,18 @@ tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
     # display
     disp <- "....................................................\n"
     increment.factor <- progress <- nodes <- snodes <- ridge <- xsi.start0 <- QMC <- NULL
-    maxgamma <- maxiter <- conv <- convD <- min.variance <- max.increment <- Msteps <- convM <- NULL
+    maxiter <- conv <- convD <- min.variance <- max.increment <- Msteps <- convM <- NULL
     delta <- R <- NULL
     B <- NULL ; B.fixed <- NULL ; theta <- NULL
     fac.oldxsi <- acceleration <- NULL
     irtmodel <- "2PL"
     est.slopegroups <- NULL
     init.gammaslope <- ( ! is.null( gammaslope ) )
+    maxgamma <- gammaslope.max
 
     #**** handle verbose argument
     args_CALL <- as.list( sys.call() )
-    if ( ! tam_in_names_list( list=control, variable="progress" )     ){
+    if ( ! tam_in_names_list( list=control, variable="progress" ) ){
         control$progress <- verbose
     }
     #*******

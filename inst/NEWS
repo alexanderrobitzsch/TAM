@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.6  |  2020-06-27  |  Last: TAM 3.6-8
+VERSIONS TAM 3.6  |  2020-11-08  |  Last: TAM 3.6-17
 -------------------------------------------------------------
 
 FIXED * fixed an issue in tam.linking() if number of maximum
@@ -51,6 +51,10 @@ FIXED * fixed a bug in tam.np()
         (thanks to @andreanorcinipala, issue #13)
 NOTE  * added '...' argument in tam.fa() (thanks to a suggestion
         of @jeppebundsgaard, issue #11)
+ADDED * added weights argument 'pweights' in tam.ctt3()
+NOTE  * included argument 'gammaslope.max' in tam.mml.3pl()
+FIXED * fixed a bug in tam.mml.mfr() for items with more than
+        10 categories (thanks to Andrew Kyngdon)
 
 
 DATA  * included/modified datasets: ---

@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mfr_proc_create_design_matrices.R
-## File Version: 0.144
+## File Version: 0.151
 
 tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
     facets, constraint, ndim, Q, A, B, progress, xsi.fixed, resp00, B00,
@@ -24,7 +24,7 @@ tam_mml_mfr_proc_create_design_matrices <- function(pid, maxKi, resp, formulaA,
         }
         # set first beta coefficient to zero
         if ( is.null( beta.fixed ) ){
-            dimB <- dim(design$B$B.3d.0    )
+            dimB <- dim(design$B$B.3d.0)
             beta.fixed <- cbind( 1, 1:dimB[3], 0)
         }
     } else {

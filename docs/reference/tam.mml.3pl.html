@@ -126,8 +126,8 @@ allowed which can be log-linearly smoothed.</p>
   <span class='kw'>beta.fixed</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>beta.inits</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>variance.fixed</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>variance.inits</span><span class='kw'>=</span><span class='kw'>NULL</span>,
   <span class='kw'>est.variance</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>notA</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>Q</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>Q.fixed</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>E</span><span class='kw'>=</span><span class='kw'>NULL</span>,
   <span class='kw'>gammaslope.des</span><span class='kw'>=</span><span class='st'>"2PL"</span>, <span class='kw'>gammaslope</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>gammaslope.fixed</span><span class='kw'>=</span><span class='kw'>NULL</span>,
-  <span class='kw'>est.some.slopes</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>gammaslope.constr.V</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>gammaslope.constr.c</span><span class='kw'>=</span><span class='kw'>NULL</span>,
-  <span class='kw'>gammaslope.center.index</span><span class='kw'>=</span><span class='kw'>NULL</span>,  <span class='kw'>gammaslope.center.value</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+  <span class='kw'>est.some.slopes</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>gammaslope.max</span><span class='kw'>=</span><span class='fl'>9.99</span>, <span class='kw'>gammaslope.constr.V</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+  <span class='kw'>gammaslope.constr.c</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>gammaslope.center.index</span><span class='kw'>=</span><span class='kw'>NULL</span>,  <span class='kw'>gammaslope.center.value</span><span class='kw'>=</span><span class='kw'>NULL</span>,
   <span class='kw'>gammaslope.prior</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>userfct.gammaslope</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>gammaslope.constr.Npars</span><span class='kw'>=</span><span class='fl'>0</span>,
   <span class='kw'>est.guess</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>guess</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>0</span>, <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span>(<span class='no'>resp</span>)),
   <span class='kw'>guess.prior</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>max.guess</span><span class='kw'>=</span><span class='fl'>0.5</span>, <span class='kw'>skillspace</span><span class='kw'>=</span><span class='st'>"normal"</span>, <span class='kw'>theta.k</span><span class='kw'>=</span><span class='kw'>NULL</span>,
@@ -276,6 +276,10 @@ First column: parameter index; second colunmn: fixed value.</p></td>
     <tr>
       <th>est.some.slopes</th>
       <td><p>An optional logical indicating whether some item slopes should be estimated.</p></td>
+    </tr>
+    <tr>
+      <th>gammaslope.max</th>
+      <td><p>Value for absolute entries in \(\gamma\) vector</p></td>
     </tr>
     <tr>
       <th>gammaslope.constr.V</th>

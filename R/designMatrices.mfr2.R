@@ -1,11 +1,11 @@
 ## File Name: designMatrices.mfr2.R
-## File Version: 9.40
+## File Version: 9.447
 
 
-#########################################################################
+##*** create design matrices
 designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
-            constraint=c("cases", "items"), ndim=1,
-            Q=NULL, A=NULL, B=NULL, progress=FALSE )
+        constraint=c("cases", "items"), ndim=1, Q=NULL, A=NULL, B=NULL, 
+        progress=FALSE )
 {
 
     z0 <- Sys.time()
@@ -17,85 +17,74 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
         if ( !is.null(A) ){ A <- A[ cns,, ] }
         if ( !is.null(B) ){ B <- B[ cns,, ] }
         if ( !is.null(Q) ){ Q <- Q[ cns, ] }
-
-        }
+    }
+    
     ### Basic Information and Initializations
     constraint <- match.arg(constraint)
     ## restructure formulaA
     t1 <- attr( stats::terms( formulaA ), "term.labels" )
     t2 <- intersect( c("item", "step", "item:step"), t1 )
 
-# cat(" ---  z20" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
+#cat(" ---  z20" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
     formulaA <- paste(  paste( c(t2, setdiff(t1, t2 ) ), collapse=" + " ) )
     formulaA <- stats::as.formula( paste( " ~ ", formulaA ) )
-
-    #********************************
-    # change formate in facets
+    
+    #*** change formate in facets
     FF <- ncol(facets)
     NFF <- nrow(facets)
     if (progress){
-      cat( "        o Check facets (", paste(Sys.time()), ")\n") ;
-      utils::flush.console();
+        cat( "        o Check facets (", paste(Sys.time()), ")\n") ;
+        utils::flush.console()
     }
     if ( is.null(FF) ){ FF <- 0 }
     if (FF>0){
-      for (ff in 1:FF){
-        # ff <- 1
-        #**** inclusion ARb 2013-09-07
-        #        cff <- nchar(facets[,ff] )
-        cff <- nchar(paste( facets[,ff] ) )
-        Mff <- max(cff)
-        sff <- paste( rep("_", Mff ), collapse="" )
-        if( min(cff) < Mff ){
-          facets.ff0 <- facets[,ff]
-          #            facets[,ff] <- paste0( facets[,ff], substring( sff, 1, Mff - cff ) )
-          facets[,ff] <- paste0( "_", facets[,ff], substring( sff, 1, Mff - cff ) )
-          if (progress){
-            u1 <- unique( setdiff( paste(facets[,ff]), paste( facets.ff0 ) ) )
-            p1 <- paste0( "          * Changed levels of facet ", colnames(facets)[ff], ":" )
-            p1 <- paste( p1, paste( paste0("'",u1,"'"), collapse=" " ) )
-            cat(p1, "\n")
-          }
+        for (ff in 1:FF){
+            # ff <- 1
+            cff <- nchar(paste( facets[,ff] ) )
+            Mff <- max(cff)
+            sff <- paste( rep("_", Mff ), collapse="" )
+            if( min(cff) < Mff ){
+                facets.ff0 <- facets[,ff]
+                facets[,ff] <- paste0( "_", facets[,ff], substring( sff, 1, Mff - cff ) )
+                if (progress){
+                    u1 <- unique( setdiff( paste(facets[,ff]), paste( facets.ff0 ) ) )
+                    p1 <- paste0( "          * Changed levels of facet ", colnames(facets)[ff], ":" )
+                    p1 <- paste( p1, paste( paste0("'",u1,"'"), collapse=" " ) )
+                    cat(p1, "\n")
+                }
+            }
         }
-      }
     }
 # cat(" ---  z50" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
 
-    #********************************
-    #    resp[ is.na(resp) ] <- 0
     maxKi <- tam_max_categories(resp=resp)
     maxK <- max( maxKi )
     I <- nI <- ncol( resp )
     item <- rep( 1:nI, maxKi+1 )
-
     if ( is.null( colnames(resp) ) ){
-      colnames(resp) <- paste0( "item", 1:nI )
+        colnames(resp) <- paste0( "item", 1:nI )
     }
 
 # cat(" ---  before .A.matrix" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
 
     # A Matrix
     if( is.null(A) ){
-      AX <- .A.matrix2( resp, formulaA=formulaA, facets=facets, constraint=constraint,
-                       progress=progress, Q=Q)
-      A <- AX$A; X <- AX$X; otherFacets <- AX$otherFacets
-      xsi.elim <- AX$xsi.elim
-      xsi.constr <- AX$xsi.constr
-      facet.design <- AX$facet.design
-      facet.list <- facet.design$facet.list
-      facets <- facet.design$facets
-      X.noStep <- unique(X[,- grep("step", colnames(X)), drop=FALSE ])
-    ## bug
-        # Fehler in `row.names<-.data.frame`(`*tmp*`, value=value) :
-        #   duplicate 'row.names' are not allowed
-#      rownames(X.noStep) <- gsub("-step([[:digit:]])*", "", rownames(X.noStep))
+        AX <- tam_A_matrix2( resp=resp, formulaA=formulaA, facets=facets, 
+                    constraint=constraint, progress=progress, Q=Q)
+        A <- AX$A
+        X <- AX$X
+        otherFacets <- AX$otherFacets
+        xsi.elim <- AX$xsi.elim
+        xsi.constr <- AX$xsi.constr
+        facet.design <- AX$facet.design
+        facet.list <- facet.design$facet.list
+        facets <- facet.design$facets
+        X.noStep <- unique(X[,- grep("step", colnames(X)), drop=FALSE ])
         Xnames.noStep <- gsub("-step([[:digit:]])*", "", rownames(X.noStep))
-
     }
 
-
-#Revalprstr("X.noStep")
 # cat(" ---  created A matrix (I) " ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
+
     # TK: 2014-03-12
     # Consider long vector response matrix
     if( "item" %in% colnames(facets) & "item" %in% t2 ) otherFacets <-  c("item", otherFacets)
@@ -205,25 +194,26 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
 , c(2,1,3)
       ) )
     }
+
     # generate B
-    .generateB.3d <- function(x, diffK=FALSE){
-      #@@ ARb 2014-10-21
+    .generateB.3d <- function(x, diffK=FALSE)
+    {
         dim2 <- nGenit/nStep
         dimnames2 <- unique(gsub("(^|-)+step([[:digit:]])*", "", rownames(x)))
         dim2 <- length(dimnames2)
+        x2 <- array( 0, c(nStep, dim2, ncol(x) ) )
+        dimnames(x2) <- list( paste("_step",0:maxK, sep=""),
+                                dimnames2, colnames(x) )
 
-      x2 <- array( 0, c(nStep, dim2, ncol(x) ) )
-      dimnames(x2) <- list( paste("_step",0:maxK, sep=""),
-                            dimnames2,
-                            colnames(x) )
-        #@@@@@
-    for (ss in 0:(nStep-1)){
-              str.ss <- paste0("step",ss )
-              iss <- grep(  paste0(str.ss,"+(-|$)"), rownames(x) )#, fixed=TRUE )
-              str.ss2 <- gsub( paste0("(^|-)+",str.ss), "", rownames(x)[iss] )
-              x2[ss+1,str.ss2,] <- x[ iss, ]
-            }
-
+        for (ss in 0:(nStep-1)){
+            str.ss <- paste0("step",ss )
+            iss <- grep( paste0(str.ss,"+(-|$)"), rownames(x) )#, fixed=TRUE )
+            iss <- setdiff(iss,  grep( paste0( "step", ss, ss,"+(-|$)"), rownames(x) ) )
+                        #@@ added ARb 2020-11-08
+            str.ss2 <- gsub( paste0("(^|-)+",str.ss), "", rownames(x)[iss] )
+            ind_str_ss2 <- intersect( str.ss2, dimnames(x2)[[2]] )
+            x2[ss+1,ind_str_ss2,] <- x[ iss, ]
+        }
       x2 <- aperm( x2, c(2,1,3) )
 
       #****
@@ -380,6 +370,6 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
     )
     class(out) <- "designMatrices.mfr"
     return(out)
-  }
+}
 
 

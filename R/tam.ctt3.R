@@ -1,8 +1,8 @@
 ## File Name: tam.ctt3.R
-## File Version: 9.17
+## File Version: 9.18
 
 tam.ctt3 <- function( resp, wlescore=NULL, group=NULL, allocate=30, progress=TRUE,
-    max_ncat=30)
+    max_ncat=30, pweights=NULL)
 {
     NV <- ncol(resp)
     elim <- c()
@@ -16,7 +16,7 @@ tam.ctt3 <- function( resp, wlescore=NULL, group=NULL, allocate=30, progress=TRU
         resp <- resp[, -elim]
     }
     res <- tam_ctt_wrapper(resp=resp, wlescore=wlescore, group=group, allocate=allocate,
-                progress=progress, version=3)
+                progress=progress, version=3, wgt=pweights)
     return(res)
 }
 

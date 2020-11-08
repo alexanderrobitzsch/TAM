@@ -121,7 +121,8 @@ theory.</p>
 
     <pre class="usage"><span class='fu'>tam.ctt</span>(<span class='no'>resp</span>, <span class='kw'>wlescore</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>pvscores</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>group</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 <span class='fu'>tam.ctt2</span>(<span class='no'>resp</span>, <span class='kw'>wlescore</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>group</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>allocate</span><span class='kw'>=</span><span class='fl'>30</span>, <span class='kw'>progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
-<span class='fu'>tam.ctt3</span>(<span class='no'>resp</span>, <span class='kw'>wlescore</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>group</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>allocate</span><span class='kw'>=</span><span class='fl'>30</span>, <span class='kw'>progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>max_ncat</span><span class='kw'>=</span><span class='fl'>30</span>)
+<span class='fu'>tam.ctt3</span>(<span class='no'>resp</span>, <span class='kw'>wlescore</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>group</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>allocate</span><span class='kw'>=</span><span class='fl'>30</span>, <span class='kw'>progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>max_ncat</span><span class='kw'>=</span><span class='fl'>30</span>,
+          <span class='kw'>pweights</span><span class='kw'>=</span><span class='kw'>NULL</span>)
 
 <span class='fu'>plotctt</span>( <span class='no'>resp</span>, <span class='no'>theta</span>, <span class='kw'>Ncuts</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>ask</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>col.list</span><span class='kw'>=</span><span class='kw'>NULL</span>,
        <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"lattice"</span>, <span class='no'>...</span> )</pre>
@@ -164,6 +165,10 @@ should be displayed.</p></td>
       <th>max_ncat</th>
       <td><p>Maximum number of categories of variables for which
    frequency tables should be computed</p></td>
+    </tr>
+    <tr>
+      <th>pweights</th>
+      <td><p>Optional vector of person weights</p></td>
     </tr>
     <tr>
       <th>theta</th>

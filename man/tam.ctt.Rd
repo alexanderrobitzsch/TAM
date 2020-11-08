@@ -1,5 +1,5 @@
 %% File Name: tam.ctt.Rd
-%% File Version: 3.14
+%% File Version: 3.16
 
 \name{tam.ctt}
 \alias{tam.ctt}
@@ -18,7 +18,8 @@ theory.
 \usage{
 tam.ctt(resp, wlescore=NULL, pvscores=NULL, group=NULL, progress=TRUE)
 tam.ctt2(resp, wlescore=NULL, group=NULL, allocate=30, progress=TRUE)
-tam.ctt3(resp, wlescore=NULL, group=NULL, allocate=30, progress=TRUE, max_ncat=30)
+tam.ctt3(resp, wlescore=NULL, group=NULL, allocate=30, progress=TRUE, max_ncat=30,
+          pweights=NULL)
 
 plotctt( resp, theta, Ncuts=NULL, ask=FALSE, col.list=NULL,
        package="lattice", ... )
@@ -49,6 +50,7 @@ should be displayed.
 }
 \item{max_ncat}{Maximum number of categories of variables for which
    frequency tables should be computed}
+\item{pweights}{Optional vector of person weights}
 \item{theta}{A score to be conditioned}
 \item{Ncuts}{Number of break points for \code{theta}}
 \item{ask}{
