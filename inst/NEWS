@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.6  |  2020-11-08  |  Last: TAM 3.6-17
+VERSIONS TAM 3.6  |  2020-11-09  |  Last: TAM 3.6-19
 -------------------------------------------------------------
 
 FIXED * fixed an issue in tam.linking() if number of maximum
