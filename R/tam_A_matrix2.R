@@ -1,5 +1,5 @@
 ## File Name: tam_A_matrix2.R
-## File Version: 9.167
+## File Version: 9.168
 
 
 ## function tam_A_matrix2
@@ -136,7 +136,7 @@ tam_A_matrix2 <- function( resp, formulaA=~ item + item*step, facets=NULL,
       }
 
       A <- NULL
-      stepgroups <- unique( gsub( "(^|-)+step([[:digit:]])*", "\\1step([[:digit:]])*", 
+      stepgroups <- unique( gsub( "(^|-)+step([[:digit:]])*", "\\1step([[:digit:]])*",
                             x=rownames(X), perl=TRUE ) )
       X.out <- data.frame(as.matrix(X), stringsAsFactors=FALSE)
       #cat(" +++  v150" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
@@ -154,7 +154,7 @@ tam_A_matrix2 <- function( resp, formulaA=~ item + item*step, facets=NULL,
         }
       }
       #******
-      
+
 
       # collect xsi parameters to be excluded
       xsi.elim.index <- xsi.elim <- NULL
@@ -254,7 +254,7 @@ tam_A_matrix2 <- function( resp, formulaA=~ item + item*step, facets=NULL,
     facet.design <- list( "facets"=facets, "facets.orig"=facets0,
                           "facet.list"=facet.list[otherFacets])
     A <- A[ ! duplicated( rownames(A) ), ]
-    
+
     if ( max(apply(resp,2,max,na.rm=TRUE)) > 9 ){
         A <- A[order(rownames(A)),,drop=FALSE]
     }
@@ -293,5 +293,5 @@ tam_A_matrix2 <- function( resp, formulaA=~ item + item*step, facets=NULL,
   }
 
 
-  
+
 # .A.matrix2 <- tam_A_matrix2

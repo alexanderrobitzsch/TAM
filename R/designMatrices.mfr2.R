@@ -1,10 +1,10 @@
 ## File Name: designMatrices.mfr2.R
-## File Version: 9.447
+## File Version: 9.448
 
 
 ##*** create design matrices
 designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
-        constraint=c("cases", "items"), ndim=1, Q=NULL, A=NULL, B=NULL, 
+        constraint=c("cases", "items"), ndim=1, Q=NULL, A=NULL, B=NULL,
         progress=FALSE )
 {
 
@@ -18,7 +18,7 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
         if ( !is.null(B) ){ B <- B[ cns,, ] }
         if ( !is.null(Q) ){ Q <- Q[ cns, ] }
     }
-    
+
     ### Basic Information and Initializations
     constraint <- match.arg(constraint)
     ## restructure formulaA
@@ -28,7 +28,7 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
 #cat(" ---  z20" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
     formulaA <- paste(  paste( c(t2, setdiff(t1, t2 ) ), collapse=" + " ) )
     formulaA <- stats::as.formula( paste( " ~ ", formulaA ) )
-    
+
     #*** change formate in facets
     FF <- ncol(facets)
     NFF <- nrow(facets)
@@ -69,7 +69,7 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
 
     # A Matrix
     if( is.null(A) ){
-        AX <- tam_A_matrix2( resp=resp, formulaA=formulaA, facets=facets, 
+        AX <- tam_A_matrix2( resp=resp, formulaA=formulaA, facets=facets,
                     constraint=constraint, progress=progress, Q=Q)
         A <- AX$A
         X <- AX$X

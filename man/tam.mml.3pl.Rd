@@ -1,5 +1,5 @@
 %% File Name: tam.mml.3pl.Rd
-%% File Version: 2.687
+%% File Version: 2.688
 
 \name{tam.mml.3pl}
 \alias{tam.mml.3pl}
@@ -25,7 +25,7 @@ tam.mml.3pl(resp, Y=NULL, group=NULL, formulaY=NULL, dataY=NULL, ndim=1,
   beta.fixed=NULL, beta.inits=NULL, variance.fixed=NULL, variance.inits=NULL,
   est.variance=TRUE, A=NULL, notA=FALSE, Q=NULL, Q.fixed=NULL, E=NULL,
   gammaslope.des="2PL", gammaslope=NULL, gammaslope.fixed=NULL,
-  est.some.slopes=TRUE, gammaslope.max=9.99, gammaslope.constr.V=NULL, 
+  est.some.slopes=TRUE, gammaslope.max=9.99, gammaslope.constr.V=NULL,
   gammaslope.constr.c=NULL, gammaslope.center.index=NULL,  gammaslope.center.value=NULL,
   gammaslope.prior=NULL, userfct.gammaslope=NULL, gammaslope.constr.Npars=0,
   est.guess=NULL, guess=rep(0, ncol(resp)),

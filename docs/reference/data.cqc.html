@@ -180,7 +180,7 @@ variables of following format</p>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>See the <code>sirt::R2conquest</code> function
+    <div class='dont-index'><p>See the <code><a href='https://rdrr.io/pkg/sirt/man/R2conquest.html'>sirt::R2conquest</a></code> function
 for running ConQuest software from within <span style="R">R</span>.</p>
 <p>See the <span class="pkg"><a href='https://rdrr.io/pkg/WrightMap/man/WrightMap-package.html'>WrightMap</a></span> package for functions
 connected to reading ConQuest files and creating Wright maps.
@@ -219,16 +219,16 @@ https://shop.acer.edu.au/acer-shop/group/CON3.</p>
 <span class='co'>#------- ConQuest</span>
 
 <span class='co'># estimate model</span>
-<span class='no'>cmod01</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>R2conquest</span>( <span class='no'>dat</span>, <span class='kw'>name</span><span class='kw'>=</span><span class='st'>"mod01"</span>, <span class='kw'>path.conquest</span><span class='kw'>=</span><span class='no'>path.conquest</span>)
+<span class='no'>cmod01</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/R2conquest.html'>R2conquest</a></span>( <span class='no'>dat</span>, <span class='kw'>name</span><span class='kw'>=</span><span class='st'>"mod01"</span>, <span class='kw'>path.conquest</span><span class='kw'>=</span><span class='no'>path.conquest</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>cmod01</span>)   <span class='co'># summary output</span>
 <span class='co'># read shw file with some terms</span>
-<span class='no'>shw01a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>read.show</span>( <span class='st'>"mod01.shw"</span> )
+<span class='no'>shw01a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/R2conquest.html'>read.show</a></span>( <span class='st'>"mod01.shw"</span> )
 <span class='no'>cmod01</span>$<span class='no'>shw.itemparameter</span>
 <span class='co'># read person item maps</span>
-<span class='no'>pi01a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>read.pimap</span>( <span class='st'>"mod01.shw"</span> )
+<span class='no'>pi01a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/R2conquest.html'>read.pimap</a></span>( <span class='st'>"mod01.shw"</span> )
 <span class='no'>cmod01</span>$<span class='no'>shw.pimap</span>
 <span class='co'># read plausible values (npv=10 plausible values)</span>
-<span class='no'>pv01a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>read.pv</span>(<span class='kw'>pvfile</span><span class='kw'>=</span><span class='st'>"mod01.pv"</span>, <span class='kw'>npv</span><span class='kw'>=</span><span class='fl'>10</span>)
+<span class='no'>pv01a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/R2conquest.html'>read.pv</a></span>(<span class='kw'>pvfile</span><span class='kw'>=</span><span class='st'>"mod01.pv"</span>, <span class='kw'>npv</span><span class='kw'>=</span><span class='fl'>10</span>)
 <span class='no'>cmod01</span>$<span class='no'>person</span>
 
 <span class='co'># read ConQuest model</span>
@@ -256,7 +256,7 @@ https://shop.acer.edu.au/acer-shop/group/CON3.</p>
 <span class='co'>#--- ConQuest</span>
 <span class='co'># estimate model</span>
 <span class='no'>maxK</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>( <span class='no'>dat</span>, <span class='kw'>na.rm</span><span class='kw'>=</span><span class='fl'>TRUE</span> )
-<span class='no'>cmod02a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>R2conquest</span>( <span class='no'>dat</span>, <span class='kw'>itemcodes</span><span class='kw'>=</span><span class='fl'>0</span>:<span class='no'>maxK</span>, <span class='kw'>model</span><span class='kw'>=</span><span class='st'>"item+item*step"</span>,
+<span class='no'>cmod02a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/R2conquest.html'>R2conquest</a></span>( <span class='no'>dat</span>, <span class='kw'>itemcodes</span><span class='kw'>=</span><span class='fl'>0</span>:<span class='no'>maxK</span>, <span class='kw'>model</span><span class='kw'>=</span><span class='st'>"item+item*step"</span>,
                <span class='kw'>name</span><span class='kw'>=</span><span class='st'>"mod02a"</span>, <span class='kw'>path.conquest</span><span class='kw'>=</span><span class='no'>path.conquest</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>cmod02a</span>)   <span class='co'># summary output</span>
 
@@ -290,7 +290,7 @@ https://shop.acer.edu.au/acer-shop/group/CON3.</p>
 <span class='no'>X</span> <span class='kw'>&lt;-</span> <span class='no'>data.cqc03</span>[,<span class='st'>"rater"</span>,<span class='kw'>drop</span><span class='kw'>=</span><span class='fl'>FALSE</span>]
 <span class='no'>X</span>$<span class='no'>rater</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/substr.html'>substring</a></span>( <span class='no'>X</span>$<span class='no'>rater</span>, <span class='fl'>2</span> )) <span class='co'># convert 'rater' in numeric format</span>
 <span class='no'>maxK</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>max</a></span>( <span class='no'>resp</span>, <span class='kw'>na.rm</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
-<span class='no'>cmod03a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>R2conquest</span>( <span class='no'>resp</span>,  <span class='kw'>X</span><span class='kw'>=</span><span class='no'>X</span>, <span class='kw'>regression</span><span class='kw'>=</span><span class='st'>""</span>,  <span class='kw'>model</span><span class='kw'>=</span><span class='st'>"item+step+rater"</span>,
+<span class='no'>cmod03a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/R2conquest.html'>R2conquest</a></span>( <span class='no'>resp</span>,  <span class='kw'>X</span><span class='kw'>=</span><span class='no'>X</span>, <span class='kw'>regression</span><span class='kw'>=</span><span class='st'>""</span>,  <span class='kw'>model</span><span class='kw'>=</span><span class='st'>"item+step+rater"</span>,
              <span class='kw'>name</span><span class='kw'>=</span><span class='st'>"mod03a"</span>, <span class='kw'>path.conquest</span><span class='kw'>=</span><span class='no'>path.conquest</span>, <span class='kw'>set.constraints</span><span class='kw'>=</span><span class='st'>"cases"</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>cmod03a</span>)   <span class='co'># summary output</span>
 

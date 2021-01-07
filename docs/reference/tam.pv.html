@@ -573,7 +573,7 @@ from models which provides an individual likelihood as an input.</p></div>
 <span class='no'>theta</span> <span class='kw'>&lt;-</span> <span class='fl'>.5</span>*<span class='no'>X</span>[,<span class='fl'>1</span>] + <span class='fl'>.4</span>*<span class='no'>X</span>[,<span class='fl'>2</span>] + <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>( <span class='no'>N</span>, <span class='kw'>sd</span><span class='kw'>=</span><span class='fl'>.5</span> )
 <span class='co'># simulate item responses</span>
 <span class='no'>itemdiff</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>( -<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='kw'>length</span><span class='kw'>=</span><span class='no'>I</span>)  <span class='co'># item difficulties</span>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>sim.raschtype</span>( <span class='no'>theta</span>, <span class='kw'>b</span><span class='kw'>=</span><span class='no'>itemdiff</span> )
+<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/sim.raschtype.html'>sim.raschtype</a></span>( <span class='no'>theta</span>, <span class='kw'>b</span><span class='kw'>=</span><span class='no'>itemdiff</span> )
 
 <span class='co'>#***********************</span>
 <span class='co'>#*** Model 0: Regression model with true variables</span>

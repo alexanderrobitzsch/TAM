@@ -1,9 +1,9 @@
 ## File Name: tam_mml_mfr_proc_multiple_person_ids.R
-## File Version: 0.23
+## File Version: 0.252
 
 
 tam_mml_mfr_proc_multiple_person_ids <- function(pid,tp, gresp, gresp.noStep,
-        progress=TRUE, group=NULL, Y=NULL )
+        progress=TRUE, group=NULL, Y=NULL, pweights=NULL )
 {
     persons <- sort( unique( pid ) )
     NP <- length( persons )
@@ -19,6 +19,10 @@ tam_mml_mfr_proc_multiple_person_ids <- function(pid,tp, gresp, gresp.noStep,
     if (! is.null(Y)){
         Y <- Y[ PP[,1],, drop=FALSE ]
     }
+    if (! is.null(pweights)){
+        pweights <- pweights[ PP[,1] ]
+    }
+
     gresp0 <- matrix( NA, nrow=NP, ncol=ncol(gresp) )
     colnames(gresp0) <- colnames(gresp)
     gresp0.noStep <- matrix( NA, nrow=NP, ncol=ncol(gresp.noStep) )
@@ -60,9 +64,13 @@ tam_mml_mfr_proc_multiple_person_ids <- function(pid,tp, gresp, gresp.noStep,
                 paste(Sys.time()), ")\n")
         utils::flush.console()
     }
+    # if (is.null(Y)){
+    #        Y <-
+    # }
+
     #--- OUTPUT
     res <- list(pid=pid, gresp=gresp, gresp.noStep=gresp.noStep,
-                    group=group, Y=Y)
+                    group=group, Y=Y, pweights=pweights)
     return(res)
 }
 

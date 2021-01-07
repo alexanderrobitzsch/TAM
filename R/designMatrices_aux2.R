@@ -1,5 +1,5 @@
 ## File Name: designMatrices_aux2.R
-## File Version: 9.166
+## File Version: 9.167
 
 
 ## function tam_A_matrix2
@@ -137,7 +137,7 @@
       }
 
       A <- NULL
-      stepgroups <- unique( gsub( "(^|-)+step([[:digit:]])*", "\\1step([[:digit:]])*", 
+      stepgroups <- unique( gsub( "(^|-)+step([[:digit:]])*", "\\1step([[:digit:]])*",
                             x=rownames(X), perl=TRUE ) )
       X.out <- data.frame(as.matrix(X), stringsAsFactors=FALSE)
       #cat(" +++  v150" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
@@ -155,7 +155,7 @@
         }
       }
       #******
-      
+
 
       # collect xsi parameters to be excluded
       xsi.elim.index <- xsi.elim <- NULL
@@ -255,7 +255,7 @@
     facet.design <- list( "facets"=facets, "facets.orig"=facets0,
                           "facet.list"=facet.list[otherFacets])
     A <- A[ ! duplicated( rownames(A) ), ]
-    
+
     if ( max(apply(resp,2,max,na.rm=TRUE)) > 9 ){
         A <- A[order(rownames(A)),,drop=FALSE]
     }
@@ -294,5 +294,5 @@
   }
 
 
-  
+
 .A.matrix2 -> tam_A_matrix2

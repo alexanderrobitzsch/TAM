@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mfr_inits_beta.R
-## File Version: 0.07
+## File Version: 0.11
 
 
 tam_mml_mfr_inits_beta <- function(Y, formulaY, dataY, G, group, groups, nstud,
@@ -29,6 +29,7 @@ tam_mml_mfr_inits_beta <- function(Y, formulaY, dataY, G, group, groups, nstud,
         Y <- matrix( 1, nrow=nstud, ncol=1 )
         nreg <- 0
     }
+
     if ( G > 1 & nullY ){
         Y <- matrix( 0, nstud, G )
         colnames(Y) <- paste("group", groups, sep="")

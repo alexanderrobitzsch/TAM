@@ -304,9 +304,9 @@ doi: <a href='https://doi.org/10.18637/jss.v035.i12'>10.18637/jss.v035.i12</a></
     <div class='dont-index'><p>Linking or equating of item response models can be also conducted with <span class="pkg">plink</span>
 (Weeks, 2010), <span class="pkg">equate</span>, <span class="pkg">equateIRT</span> (Battauz, 2015), <span class="pkg">equateMultiple</span>,
 <span class="pkg">kequate</span> and <span class="pkg">irteQ</span> packages.</p>
-<p>See also the <code>sirt::linking.haberman</code>,
-<code>sirt::invariance.alignment</code> and
-<code>sirt::linking.haebara</code> functions
+<p>See also the <code><a href='https://rdrr.io/pkg/sirt/man/linking.haberman.html'>sirt::linking.haberman</a></code>,
+<code><a href='https://rdrr.io/pkg/sirt/man/invariance.alignment.html'>sirt::invariance.alignment</a></code> and
+<code><a href='https://rdrr.io/pkg/sirt/man/linking.haebara.html'>sirt::linking.haebara</a></code> functions
 in the <span class="pkg">sirt</span> package.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -453,9 +453,9 @@ in the <span class="pkg">sirt</span> package.</p></div>
 <span class='no'>I</span> <span class='kw'>&lt;-</span> <span class='fl'>30</span>    <span class='co'># number of items</span>
 <span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(-<span class='fl'>2</span>,<span class='fl'>2</span>, <span class='kw'>length</span><span class='kw'>=</span><span class='no'>I</span>)
 <span class='co'># data for group 1</span>
-<span class='no'>dat1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>sim.raschtype</span>( <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>N</span>, <span class='kw'>mean</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>sd</span><span class='kw'>=</span><span class='fl'>1</span>), <span class='kw'>b</span><span class='kw'>=</span><span class='no'>b</span> )
+<span class='no'>dat1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/sim.raschtype.html'>sim.raschtype</a></span>( <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>N</span>, <span class='kw'>mean</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>sd</span><span class='kw'>=</span><span class='fl'>1</span>), <span class='kw'>b</span><span class='kw'>=</span><span class='no'>b</span> )
 <span class='co'># data for group 2</span>
-<span class='no'>dat2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>sim.raschtype</span>( <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>N</span>, <span class='kw'>mean</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>sd</span><span class='kw'>=</span><span class='fl'>.6</span>), <span class='kw'>b</span><span class='kw'>=</span><span class='no'>b</span> )
+<span class='no'>dat2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/sim.raschtype.html'>sim.raschtype</a></span>( <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>N</span>, <span class='kw'>mean</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>sd</span><span class='kw'>=</span><span class='fl'>.6</span>), <span class='kw'>b</span><span class='kw'>=</span><span class='no'>b</span> )
 
 <span class='co'># fit group 1</span>
 <span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.mml.html'>tam.mml.2pl</a></span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat1</span> )

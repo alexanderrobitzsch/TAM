@@ -1,11 +1,11 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.932
+## File Version: 9.942
 
 tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
-            formulaY=NULL, dataY=NULL, ndim=1, pid=NULL, xsi.fixed=NULL, 
+            formulaY=NULL, dataY=NULL, ndim=1, pid=NULL, xsi.fixed=NULL,
             xsi.setnull=NULL, xsi.inits=NULL, beta.fixed=NULL, beta.inits=NULL,
-            variance.fixed=NULL, variance.inits=NULL, est.variance=TRUE, 
-            formulaA=~item+item:step, constraint="cases", A=NULL, B=NULL, 
+            variance.fixed=NULL, variance.inits=NULL, est.variance=TRUE,
+            formulaA=~item+item:step, constraint="cases", A=NULL, B=NULL,
             B.fixed=NULL, Q=NULL, facets=NULL, est.slopegroups=NULL, E=NULL,
             pweights=NULL, verbose=TRUE, control=list(), delete.red.items=TRUE )
 {
@@ -112,12 +112,14 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     tp <- max(table(pid))
     if ( tp > 1){
         res <- tam_mml_mfr_proc_multiple_person_ids( pid=pid, tp=tp, gresp=gresp,
-                    gresp.noStep=gresp.noStep, progress=progress, group=group, Y=Y)
+                    gresp.noStep=gresp.noStep, progress=progress, group=group, Y=Y,
+                    pweights=pweights)
         pid <- res$pid
         gresp <- res$gresp
         gresp.noStep <- res$gresp.noStep
         group <- res$group
         Y <- res$Y
+        pweights <- res$pweights
     }
 # cat("process data in case of multiple persons" ) ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
 

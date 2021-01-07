@@ -1,5 +1,5 @@
 ## File Name: tam_mml_mfr_dataprep.R
-## File Version: 9.188
+## File Version: 9.189
 
 #- MFR data preparation
 tam_mml_mfr_dataprep <- function( formulaA, xsi.setnull, B, Q,
@@ -48,7 +48,7 @@ tam_mml_mfr_dataprep <- function( formulaA, xsi.setnull, B, Q,
         cat("   -- because of non-unique person-facet combinations.\n")
     }
     #**** end duplications of identifiers
-    
+
     #--- new formula
     formula_update <- paste( c( attr( tA, "term.labels"), nullfacets ), collapse=" + ")
     inc <- ""
