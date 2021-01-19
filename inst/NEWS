@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.6  |  2021-01-07  |  Last: TAM 3.6-24
+VERSIONS TAM 3.6  |  2021-01-19  |  Last: TAM 3.6-28
 -------------------------------------------------------------
 
 FIXED * fixed an issue in tam.linking() if number of maximum
@@ -57,10 +57,13 @@ FIXED * fixed a bug in tam.mml.mfr() for items with more than
         10 categories (thanks to Andrew Kyngdon)
 FIXED * handling of person weights in multi faceted models
         (related to an issue mentioned by Jason Schoeneberger)
+NOTE  * added constraints option in designMatrices() function
+        for rating scale models (modeltype='RSM')
+        (thanks to Stefanie Wind)
 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: tam.jml (2)
 
 
 

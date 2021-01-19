@@ -1,5 +1,5 @@
 ## File Name: tam_jml_version2.R
-## File Version: 9.515
+## File Version: 9.525
 
 tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
             bias=TRUE, xsi.fixed=NULL,  xsi.inits=NULL, A=NULL, B=NULL, Q=NULL,
@@ -14,7 +14,7 @@ tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
     e1 <- environment()
     con <- list( nodes=seq(-6,6,len=21), snodes=0,
                 convD=.001,conv=.0001, convM=.0001, Msteps=10,
-                maxiter=1000, progress=TRUE )
+                maxiter=1000, cc=TRUE )
     con[ names(control) ] <- control
     Lcon <- length(con)
     con1a <- con1 <- con
@@ -153,7 +153,7 @@ tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
 
     # center theta?
     center_theta <- is.null(xsi.fixed) & (constraint=="cases")
-
+    
     deviance <- 0
     deviance.history <- matrix( 0, nrow=maxiter, ncol=2)
     colnames(deviance.history) <- c("iter", "deviance")
@@ -188,7 +188,7 @@ tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
         if (center_theta){
             theta <- theta - mean(theta)
         } else {
-            damp <- 1 - (1-damp)*.99
+            damp <- 1 - (1-damp)*.995
         }
         meanChangeWLE <- jmlAbility$meanChangeWLE
         maxthetachange <- max( abs( theta - theta_old ) )
@@ -199,7 +199,7 @@ tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
                         A.0=A.0, B=B, nstud=nstud, nitems=nitems, maxK=maxK, convM=convM,
                         ItemScore=ItemScore, theta=theta, xsi=xsi, Msteps=Msteps, pweightsM=pweightsM,
                         est.xsi.index=est.xsi.index, rp3=rp3, rp3.sel=rp3.sel,
-                        rp3.pweightsM=rp3.pweightsM )
+                        rp3.pweightsM=rp3.pweightsM, damp=damp )
         xsi[est.xsi.index] <- jmlxsi$xsi[est.xsi.index]
         maxChangeP <- jmlxsi$maxChangeP
         errorP[est.xsi.index] <- jmlxsi$errorP[est.xsi.index]

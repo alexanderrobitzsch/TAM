@@ -152,7 +152,7 @@ item response models with joint maximum likelihood (JML,
     <tr>
       <th>adj</th>
       <td><p>Adjustment constant which is subtracted or added to extreme
-scores (score of zero or maximum score. The default is a value of 0.3</p></td>
+scores (score of zero or maximum score). The default is a value of 0.3</p></td>
     </tr>
     <tr>
       <th>bias</th>
@@ -350,16 +350,24 @@ maximum likelihood estimation see <code><a href='tam.mml.html'>tam.mml</a></code
 <span class='co'># EXAMPLE 2: Partial credit model</span>
 <span class='co'>#############################################################################</span>
 
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.gpcm</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.gpcm</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"TAM"</span>)
+<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.gpcm</span>
+
 <span class='co'># JML estimation</span>
-<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.jml</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>data.gpcm</span>)
+<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.jml</span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='no'>mod2</span>$<span class='no'>xsi</span>     <span class='co'># extract item parameters</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2</span>)
-<span class='fu'><a href='tam.fit.html'>tam.fit</a></span>(<span class='no'>mod2</span>)    <span class='co'># item and person infit/outfit statistic</span>
+<span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.fit.html'>tam.fit</a></span>(<span class='no'>mod2</span>)    <span class='co'># item and person infit/outfit statistic</span>
+
+<span class='co'>#* estimate rating scale model</span>
+<span class='no'>A</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='designMatrices.html'>designMatrices</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>modeltype</span><span class='kw'>=</span><span class='st'>"RSM"</span>)$<span class='no'>A</span>
+<span class='co'>#* estimate model with design matrix A</span>
+<span class='no'>mod3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.jml</span>(<span class='no'>dat</span>, <span class='kw'>A</span><span class='kw'>=</span><span class='no'>A</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod3</span>)
 
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 3: Facet model estimation using joint maximum likelihood</span>
-<span class='co'>#            data.ex10; see also Example 10 in tam.mml</span>
+<span class='co'>#            data.ex10; see also Example 10 in ?tam.mml</span>
 <span class='co'>#############################################################################</span>
 
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.ex10</span>)

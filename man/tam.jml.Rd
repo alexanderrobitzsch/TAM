@@ -1,5 +1,5 @@
 %% File Name: tam.jml.Rd
-%% File Version: 2.397
+%% File Version: 2.401
 
 \name{tam.jml}
 
@@ -47,7 +47,7 @@ tam.jml(resp, group=NULL, adj=.3, disattenuate=FALSE, bias=TRUE,
     The disattenuation is conducted by applying the Kelley formula.
 }
 \item{adj}{Adjustment constant which is subtracted or added to extreme
-scores (score of zero or maximum score. The default is a value of 0.3}
+scores (score of zero or maximum score). The default is a value of 0.3}
   \item{bias}{
      A logical which indicates if JML bias should be reduced
      by multiplying item parameters by the adjustment factor
@@ -259,16 +259,24 @@ cbind( mod1g$WLE, mod1g$errorWLE )[ind.person,]
 # EXAMPLE 2: Partial credit model
 #############################################################################
 
-data(data.gpcm)
+data(data.gpcm, package="TAM")
+dat <- data.gpcm
+
 # JML estimation
-mod2 <- TAM::tam.jml(resp=data.gpcm)
+mod2 <- TAM::tam.jml(resp=dat)
 mod2$xsi     # extract item parameters
 summary(mod2)
-tam.fit(mod2)    # item and person infit/outfit statistic
+TAM::tam.fit(mod2)    # item and person infit/outfit statistic
+
+#* estimate rating scale model
+A <- TAM::designMatrices(resp=dat, modeltype="RSM")$A
+#* estimate model with design matrix A
+mod3 <- TAM::tam.jml(dat, A=A)
+summary(mod3)
 
 #############################################################################
 # EXAMPLE 3: Facet model estimation using joint maximum likelihood
-#            data.ex10; see also Example 10 in tam.mml
+#            data.ex10; see also Example 10 in ?tam.mml
 #############################################################################
 
 data(data.ex10)
