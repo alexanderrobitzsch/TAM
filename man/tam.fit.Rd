@@ -1,5 +1,5 @@
 %% File Name: tam.fit.Rd
-%% File Version: 2.561
+%% File Version: 2.562
 
 \name{tam.fit}
 
@@ -24,7 +24,7 @@ tam.fit(tamobj, ...)
 tam.mml.fit(tamobj, FitMatrix=NULL, Nsimul=NULL,progress=TRUE,
    useRcpp=TRUE, seed=NA, fit.facets=TRUE)
 
-tam.jml.fit(tamobj)
+tam.jml.fit(tamobj, trim_val=10)
 
 \method{summary}{tam.fit}(object, file=NULL, \dots)
 }
@@ -54,6 +54,8 @@ The latter is consistent with \pkg{TAM} (<=1.1).}
 \item{seed}{Fixed simulation seed.}
 \item{fit.facets}{An optional logical indicating whether
 fit for all facet parameters should be computed.}
+\item{trim_val}{Optional trimming value. Squared standardized reaisuals
+larger than \code{trim_val} are set to \code{trim_val}.}
 \item{object}{Object of class \code{tam.fit}}
 \item{file}{Optional file name for summary output}
 \item{\dots}{Further arguments to be passed}

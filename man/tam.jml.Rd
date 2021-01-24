@@ -1,5 +1,5 @@
 %% File Name: tam.jml.Rd
-%% File Version: 2.401
+%% File Version: 2.402
 
 \name{tam.jml}
 
@@ -125,7 +125,7 @@ A file name in which the summary output will be written
 
 \value{
 A list with following entries
-\item{item}{Data frame with item parameters}
+\item{item1}{Data frame with item parameters}
 \item{xsi}{Vector of item parameters \eqn{\xi}}
 \item{errorP}{Standard error of item parameters \eqn{\xi}}
 \item{theta}{MLE in final step}
@@ -150,7 +150,7 @@ A list with following entries
 \item{resp.ind.list}{Like \code{resp.ind}, only in the format of a list}
 \item{xsi.fixed}{Fixed \eqn{\xi} item parameters}
 \item{control}{Control list}
-\item{item1}{Extended data frame of item parameters}
+\item{item}{Extended data frame of item parameters}
 \item{theta_summary}{Summary of person parameters}
 \item{\dots}{}
 }

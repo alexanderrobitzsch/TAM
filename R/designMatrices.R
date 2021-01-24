@@ -1,5 +1,5 @@
 ## File Name: designMatrices.R
-## File Version: 9.194
+## File Version: 9.195
 
 designMatrices <- function( modeltype=c( "PCM", "RSM" ),
             maxKi=NULL, resp=resp, ndim=1, A=NULL, B=NULL, Q=NULL, R=NULL,
@@ -122,8 +122,8 @@ designMatrices <- function( modeltype=c( "PCM", "RSM" ),
     #*****************************
     # constraint="items"
     unidim <- is.null(Q)
-    
-    if ( constraint=="items"){        
+
+    if ( constraint=="items"){
         if ( ! is.null(Q) ){
             unidim <- ncol(Q)==1
         }
@@ -174,13 +174,13 @@ designMatrices <- function( modeltype=c( "PCM", "RSM" ),
         vars <- colnames(resp)
         vars <- c(vars, paste0( "Cat", 1:(maxK-1) ) )
         dimnames(A)[[3]] <- vars
-        
+
         if ( (constraint=="items") & unidim ){
             v1 <- A[I,,I]
             A[I,,1:(I-1)] <- -v1
             A <- A[,,-c(I)]
         }
-        
+
         A.draft <- A
     }
     if ( ! is.null(A0)){

@@ -1,8 +1,8 @@
 ## File Name: tam.jml.fit.R
-## File Version: 9.201
+## File Version: 9.204
 
 
-tam.jml.fit <- function( tamobj )
+tam.jml.fit <- function( tamobj, trim_val=10 )
 {
     s1 <- Sys.time()
     resp <- tamobj$resp
@@ -28,7 +28,7 @@ tam.jml.fit <- function( tamobj )
     B.0[ is.na(B.0) ] <- 0
     B1 <- B.0[,,1]
     BB <- B1^2
-    theta.unique <- unique( theta )
+    theta.unique <- unique(theta)
     NU <- length(theta.unique)
     B_bari <- array(0,dim=c(NU, nitems))
     BB_bari <- array(0, dim=c(NU, nitems))
@@ -43,15 +43,15 @@ tam.jml.fit <- function( tamobj )
         BB_bari <- BB_bari + t( BB[,kk] * rprobs[, kk, ] )
     }
     ind.theta <- match( theta, theta.unique)
-    rprobs <- rprobs[,,  ind.theta ]
+    rprobs <- rprobs[,, ind.theta ]
     B_bari <- B_bari[ ind.theta, ]
     BB_bari <- BB_bari[ ind.theta, ]
     B_bari <- B_bari * resp.ind
     BB_bari <- BB_bari  * resp.ind
     B_var <- BB_bari - (B_bari^2)
     z_sq <- (resp - B_bari)^2/B_var
-    zsd <- sd(as.matrix(z_sq),na.rm=TRUE)
-    z_sq[z_sq > 10*zsd] <-  10*zsd   #Trim extreme values
+    zsd <- stats::sd(as.matrix(z_sq),na.rm=TRUE)
+    z_sq[z_sq > trim_val*zsd] <-  trim_val*zsd   #Trim extreme values
     B_bariM <- aperm(outer(B_bari,rep(1,maxK)),c(2,3,1))
     B1M <- outer(B1,rep(1,nstud))
     for (kk in 1:maxK){
@@ -82,11 +82,11 @@ tam.jml.fit <- function( tamobj )
     fit.item <- data.frame(item=colnames(tamobj$resp), outfitItem=outfitItem,
                     outfitItem_t=outfitItem_t, infitItem=infitItem,
                     infitItem_t=infitItem_t)
-
     fit.person <- data.frame(outfitPerson=outfitPerson,
                     outfitPerson_t=outfitPerson_t, infitPerson=infitPerson,
                     infitPerson_t=infitPerson_t)
 
+    #-- output
     s2 <- Sys.time()
     v1 <- c(s1, s2)
     res <- list(fit.item=fit.item, fit.person=fit.person, time=v1)

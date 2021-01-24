@@ -126,7 +126,7 @@ objects of classes <code>tam</code>, <code>tam.mml</code> and
 <span class='fu'>tam.mml.fit</span>(<span class='no'>tamobj</span>, <span class='kw'>FitMatrix</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>Nsimul</span><span class='kw'>=</span><span class='kw'>NULL</span>,<span class='kw'>progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
    <span class='kw'>useRcpp</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>seed</span><span class='kw'>=</span><span class='fl'>NA</span>, <span class='kw'>fit.facets</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 
-<span class='fu'>tam.jml.fit</span>(<span class='no'>tamobj</span>)
+<span class='fu'>tam.jml.fit</span>(<span class='no'>tamobj</span>, <span class='kw'>trim_val</span><span class='kw'>=</span><span class='fl'>10</span>)
 
 <span class='co'># S3 method for tam.fit</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>object</span>, <span class='kw'>file</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
@@ -168,6 +168,11 @@ The latter is consistent with <span class="pkg">TAM</span> (&lt;=1.1).</p></td>
       <th>fit.facets</th>
       <td><p>An optional logical indicating whether
 fit for all facet parameters should be computed.</p></td>
+    </tr>
+    <tr>
+      <th>trim_val</th>
+      <td><p>Optional trimming value. Squared standardized reaisuals
+larger than <code>trim_val</code> are set to <code>trim_val</code>.</p></td>
     </tr>
     <tr>
       <th>object</th>

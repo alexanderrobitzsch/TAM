@@ -1,16 +1,19 @@
-## File Name: tam_thurstonian_threshold.R
-## File Version: 9.11
+## File Name: tam.threshold.R
+## File Version: 9.15
 
-####################################################################
-# Thurstonian thresholds (gammas)
-#...................................................................
+
+#**** Thurstonian thresholds (gammas)
+
 tam.threshold <- function (tamobj, prob.lvl=0.5)
 {
     resp <- tamobj$resp
     nitems <- tamobj$nitems
     maxK <- tamobj$maxK
     AXsi <- tamobj$AXsi
-    xsi <- ( tamobj$xsi )[,1]
+    xsi <- tamobj$xsi
+    if (class(tamobj)!="tam.jml"){
+        xsi <- xsi[,1]
+    }
     A <- tamobj$A
     B <- tamobj$B
     maxKi <- apply( resp, 2, max, na.rm=TRUE )

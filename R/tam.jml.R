@@ -1,5 +1,5 @@
 ## File Name: tam.jml.R
-## File Version: 9.361
+## File Version: 9.363
 
 
 tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
@@ -42,7 +42,8 @@ tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
     #- process item parameters
     res$AXsi <- tam_jml_compute_Axsi(A=res$A, xsi=res$xsi, resp=resp)
     #- item parameter table
-    res$item1 <- tam_jml_itempartable( resp=resp, maxK=res$maxK, AXsi=res$AXsi,
+    res$item1 <- res$item
+    res$item <- tam_jml_itempartable( resp=resp, maxK=res$maxK, AXsi=res$AXsi,
                     B=res$B, resp.ind=res$resp.ind)
     #- theta summary
     res$theta_summary <- tam_jml_proc_abilities(theta=res$theta,

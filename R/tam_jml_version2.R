@@ -1,5 +1,5 @@
 ## File Name: tam_jml_version2.R
-## File Version: 9.525
+## File Version: 9.526
 
 tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
             bias=TRUE, xsi.fixed=NULL,  xsi.inits=NULL, A=NULL, B=NULL, Q=NULL,
@@ -153,7 +153,7 @@ tam_jml_version2 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
 
     # center theta?
     center_theta <- is.null(xsi.fixed) & (constraint=="cases")
-    
+
     deviance <- 0
     deviance.history <- matrix( 0, nrow=maxiter, ncol=2)
     colnames(deviance.history) <- c("iter", "deviance")
