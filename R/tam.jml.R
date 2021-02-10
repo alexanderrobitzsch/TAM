@@ -1,12 +1,12 @@
 ## File Name: tam.jml.R
-## File Version: 9.363
+## File Version: 9.365
 
 
 tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
             bias=TRUE, xsi.fixed=NULL,  xsi.inits=NULL,  theta.fixed=NULL,
             A=NULL, B=NULL, Q=NULL, ndim=1,
             pweights=NULL, constraint="cases",
-            verbose=TRUE, control=list(), version=2 )
+            verbose=TRUE, control=list(), version=3 )
 {
     CALL <- match.call()
     #**** handle verbose argument
@@ -32,11 +32,12 @@ tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
                     pweights=pweights, control=control )
     }
     #**** version=2
-    if (version==2){
+    if (version>=2){
         res <- tam_jml_version2( resp=resp, group=group, adj=adj,
                     disattenuate=disattenuate, bias=bias, xsi.fixed=xsi.fixed,
                     xsi.inits=xsi.inits, A=A, B=B, Q=Q, ndim=ndim,
-                    pweights=pweights, control=control, constraint=constraint )
+                    pweights=pweights, control=control, constraint=constraint,
+                    version=version)
     }
 
     #- process item parameters

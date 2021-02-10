@@ -1,5 +1,5 @@
 %% File Name: tam.jml.Rd
-%% File Version: 2.402
+%% File Version: 2.404
 
 \name{tam.jml}
 
@@ -20,7 +20,7 @@ item response models with joint maximum likelihood (JML,
 \usage{
 tam.jml(resp, group=NULL, adj=.3, disattenuate=FALSE, bias=TRUE,
     xsi.fixed=NULL, xsi.inits=NULL, theta.fixed=NULL, A=NULL, B=NULL, Q=NULL,
-    ndim=1, pweights=NULL, constraint="cases", verbose=TRUE, control=list(), version=2)
+    ndim=1, pweights=NULL, constraint="cases", verbose=TRUE, control=list(), version=3)
 
 \method{summary}{tam.jml}(object, file=NULL, \dots)
 
@@ -99,7 +99,10 @@ be printed during iterations. This argument replaces \code{control$progress}.
      for more details.
 }
 \item{version}{Version function which should be used. \code{version=2}
-is the former \code{tam.jml2} function in \pkg{TAM} (<2.0).}
+is the former \code{tam.jml2} function in \pkg{TAM} (<2.0).
+The default \code{version=3} allows efficient handling in case of missing
+data.
+}
   \item{object}{
 Object of class \code{tam.jml} (only for \code{summary.tam}
 function)

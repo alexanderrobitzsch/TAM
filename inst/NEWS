@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.6  |  2021-01-24  |  Last: TAM 3.6-29
+VERSIONS TAM 3.6  |  2021-02-10  |  Last: TAM 3.6-35
 -------------------------------------------------------------
 
 FIXED * fixed an issue in tam.linking() if number of maximum
@@ -65,6 +65,11 @@ NOTE  * switched labeling of output values 'item' and 'item1'
 NOTE  * included argument 'trim_val' in tam.jml.fit()
 FIXED * tam.threshold() now works for objects of class 'tam.jml'
         (requested by Angel Zegarra)
+NOTE  * implemented alternative computation version in tam.jml()
+        that is more efficient in case of a lot of missing data.
+        The default in tam.jml() is now 'version=3' 
+        (thanks to a discussion with Daniel Lopes de Castro).
+
 
 
 DATA  * included/modified datasets: ---
