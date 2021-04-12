@@ -42,15 +42,15 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.6  |  2021-02-10  |  Last: TAM 3.6-35
+VERSIONS TAM 3.6  |  2021-04-12  |  Last: TAM 3.6-39
 -------------------------------------------------------------
 
 FIXED * fixed an issue in tam.linking() if number of maximum
         categories in groups differs
 FIXED * fixed a bug in tam.np() 
-        (thanks to @andreanorcinipala, issue #13)
+        (thanks to @andreanorcinipala, Github issue #13)
 NOTE  * added '...' argument in tam.fa() (thanks to a suggestion
-        of @jeppebundsgaard, issue #11)
+        of @jeppebundsgaard, Github issue #11)
 ADDED * added weights argument 'pweights' in tam.ctt3()
 NOTE  * included argument 'gammaslope.max' in tam.mml.3pl()
 FIXED * fixed a bug in tam.mml.mfr() for items with more than
@@ -69,6 +69,9 @@ NOTE  * implemented alternative computation version in tam.jml()
         that is more efficient in case of a lot of missing data.
         The default in tam.jml() is now 'version=3' 
         (thanks to a discussion with Daniel Lopes de Castro).
+FIXED * fixed a bug in IRT.simulate() for models involving items 
+        with unequal numbers of categories 
+        (thanks to @jeppebundsgaard, Github issue #16)
 
 
 
@@ -83,7 +86,7 @@ VERSIONS TAM 3.5  |  2020-05-05  |  Last: TAM 3.5-19
 -------------------------------------------------------------
 
 FIXED * fixed a bug in plot.tam() function that was introduced
-        in TAM 3.4 (thanks to @sda030; issue #12)
+        in TAM 3.4 (thanks to @sda030; Github issue #12)
 NOTE  * included arguments 'eps_rob_hae' and 'par_init' 
         in tam.linking()
 FIXED * fixed a bug in tam.jml.fit()
@@ -131,11 +134,11 @@ VERSIONS TAM 3.3  |  2019-08-23  |  Last: TAM 3.3-10
 -------------------------------------------------------------
 
 FIXED * fixed bug in processing of design matrices 
-        (thank to Andrea Cantieni; issue #6)
+        (thank to Andrea Cantieni; Github issue #6)
 FIXED * fixed bug in OCLA application caused by 
-        TAM:::tam_dtnorm() (thank to Andrea Cantieni; issue #7)
+        TAM:::tam_dtnorm() (thank to Andrea Cantieni; Github issue #7)
 FIXED * fixed a bug in tam.se() for Quasi Monte Carlo Integration
-        (thanks to Hansjoerg Plieninger, issue #8; also
+        (thanks to Hansjoerg Plieninger, Github issue #8; also
         reported by Mirka Henninger and Markus Schreiner)
 NOTE  * included argument 'max_ncat' in tam.ctt3()
 

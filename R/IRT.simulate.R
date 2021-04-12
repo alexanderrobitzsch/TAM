@@ -1,5 +1,5 @@
 ## File Name: IRT.simulate.R
-## File Version: 9.13
+## File Version: 9.141
 
 #####################################################
 # S3 method
@@ -61,6 +61,7 @@ simulate_mml <- function(object, iIndex=NULL, theta=NULL, nobs=NULL, ...){
   res <- matrix( stats::runif(nnodes * nI), nrow=nnodes, ncol=nI)
   for(ii in 1:nI){
     cat.success.ii <- (res[, ii] > t(apply(p[ii,, ], 2, cumsum)))
+    cat.success.ii[is.na(cat.success.ii)] <- FALSE    
     res[, ii] <-  c(cat.success.ii %*% rep(1, maxK))
   }
 
