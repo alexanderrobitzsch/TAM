@@ -42,7 +42,22 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.6  |  2021-04-22  |  Last: TAM 3.6-41
+VERSIONS TAM 3.7  |  2021-04-22  |  Last: TAM 3.7-1
+-------------------------------------------------------------
+
+xxx   * ...
+
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
+
+
+-------------------------------------------------------------
+VERSIONS TAM 3.6  |  2021-04-22  |  Last: TAM 3.6-45
 -------------------------------------------------------------
 
 FIXED * fixed an issue in tam.linking() if number of maximum
@@ -82,9 +97,6 @@ FIXED * fixed incorrectly counted number of parameters for
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: tam.jml (2)
-
-
-
 
 -------------------------------------------------------------
 VERSIONS TAM 3.5  |  2020-05-05  |  Last: TAM 3.5-19

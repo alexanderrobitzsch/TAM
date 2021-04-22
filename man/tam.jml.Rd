@@ -1,5 +1,5 @@
 %% File Name: tam.jml.Rd
-%% File Version: 2.404
+%% File Version: 2.405
 
 \name{tam.jml}
 
@@ -184,7 +184,7 @@ Chicago: MESA Press.
 \note{
 This joint maximum likelihood estimation procedure should be
 compatible with Winsteps and Facets software, see also
-\url{http://www.rasch.org/software.htm}.
+\emph{http://www.rasch.org/software.htm}.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

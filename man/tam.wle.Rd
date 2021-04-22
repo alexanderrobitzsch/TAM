@@ -1,5 +1,5 @@
 %% File Name: tam.wle.Rd
-%% File Version: 2.504
+%% File Version: 2.506
 
 \name{tam.wle}
 
@@ -33,7 +33,7 @@ tam.mml.wle2(tamobj, score.resp=NULL, WLE=TRUE, adj=0.3, Msteps=20, convM=1e-04,
 
 tam_jml_wle(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
     PersonScores, theta, xsi, Msteps, WLE=FALSE, theta.fixed=NULL, progress=FALSE,
-    output.prob=TRUE, damp=0)
+    output.prob=TRUE, damp=0, version=2)
 
 \method{summary}{tam.wle}(object, file=NULL, digits=3, \dots)
 
@@ -99,6 +99,8 @@ be included in the list of outputs.}
 the fixed value.}
 \item{damp}{Numeric value between 0 and 1 indicating amount of dampening
 increments in \eqn{\theta} estimates during iterations}
+\item{version}{Integer with possible values 2 or 3. In case of missing item responses,
+\code{version=3} will typically be more efficient.}
 \item{\dots}{Further arguments to be passed}
 \item{object}{Object of class \code{tam.wle}}
 \item{x}{Object of class \code{tam.wle}}
