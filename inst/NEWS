@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.6  |  2021-04-12  |  Last: TAM 3.6-39
+VERSIONS TAM 3.6  |  2021-04-22  |  Last: TAM 3.6-41
 -------------------------------------------------------------
 
 FIXED * fixed an issue in tam.linking() if number of maximum
@@ -72,8 +72,13 @@ NOTE  * implemented alternative computation version in tam.jml()
 FIXED * fixed a bug in IRT.simulate() for models involving items 
         with unequal numbers of categories 
         (thanks to @jeppebundsgaard, Github issue #16)
-
-
+ADDED * added IRT model 'GPCM.groups' for estimating slope groups
+        in the generalized partial credit model (GPCM) in the
+        tam.mml.2pl() function
+FIXED * fixed incorrectly counted number of parameters for
+        information criteria in generalized partial credit model
+        (irtmodel='GPCM' in tam.mml.2pl())
+        (thanks to @uhkeller, Github issue #17)
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: tam.jml (2)

@@ -1,5 +1,5 @@
 ## File Name: tam.mml.2pl.R
-## File Version: 9.582
+## File Version: 9.585
 
 tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
                  formulaY=NULL, dataY=NULL,
@@ -239,7 +239,7 @@ tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
                }
 
 
-   if ( irtmodel %in% c("2PL","GPCM", "GPCM.design","2PL.groups") ){
+   if ( irtmodel %in% c("2PL","GPCM", "GPCM.design","2PL.groups", "GPCM.groups") ){
     if ( ! is.null(B.fixed) ){
             B[ B.fixed[,1:3,drop=FALSE] ] <- B.fixed[,4]
             B_orig[ B.fixed[,1:3,drop=FALSE] ] <- 0
@@ -373,7 +373,7 @@ tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
 # cat("M steps intercepts") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
 
     #---2PL---
-    if (irtmodel %in% c("2PL","GPCM","GPCM.design","2PL.groups") ) {
+    if (irtmodel %in% c("2PL","GPCM","GPCM.design","2PL.groups", "GPCM.groups") ) {
         res <- tam_mml_2pl_mstep_slope( B_orig=B_orig, B=B, B_obs=B_obs, B.fixed=B.fixed,
                     max.increment=max.increment, nitems=nitems, A=A, AXsi=AXsi, xsi=xsi,
                     theta=theta, nnodes=nnodes, maxK=maxK, itemwt=itemwt, Msteps=Msteps,
@@ -461,7 +461,7 @@ tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
                 G=G, irtmodel=irtmodel, B_orig=B_orig, B.fixed=B.fixed, E=E,
                 est.variance=est.variance, resp=resp, est.slopegroups=est.slopegroups,
                 variance.Npars=variance.Npars, group=group, AXsi=AXsi,
-                pweights=pweights, resp.ind=resp.ind)
+                pweights=pweights, resp.ind=resp.ind, B=B)
 
     #*** calculate counts
     res <- tam_calc_counts( resp=resp, theta=theta, resp.ind=resp.ind, group=group,

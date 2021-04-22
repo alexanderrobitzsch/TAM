@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.988
+%% File Version: 2.989
 
 \name{tam.mml}
 
@@ -109,7 +109,7 @@ tam.mml.mfr(resp, Y=NULL, group=NULL, irtmodel="1PL", formulaY=NULL,
      are estimated; Nominal Item Response Model),
      \code{GPCM} (generalized partial credit
      model in which every item gets one and only slope
-     parameter per dimension) and \code{2PL.groups}
+     parameter per dimension) and \code{2PL.groups} or \code{GPCM.groups}
      (subsets of items get same item slope estimates)
      and a design matrix \code{E} on item slopes in the
      generalized partial credit model (\code{GPCM.design},

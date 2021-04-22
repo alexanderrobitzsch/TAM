@@ -1,5 +1,5 @@
 ## File Name: tam_mml_2pl_mstep_slope.R
-## File Version: 9.570
+## File Version: 9.579
 
 
 tam_mml_2pl_mstep_slope <- function (B_orig, B, B_obs, B.fixed, max.increment, nitems, A,
@@ -27,7 +27,7 @@ tam_mml_2pl_mstep_slope <- function (B_orig, B, B_obs, B.fixed, max.increment, n
         utils::flush.console()
     }
 
-    if (irtmodel=="GPCM"){
+    if (irtmodel %in% c("GPCM","GPCM.groups") ){
         old_increment.temp <- matrix( .3, nrow=NI, ncol=ndim )
     }
     if (irtmodel=="GPCM.design" ){
@@ -45,13 +45,14 @@ tam_mml_2pl_mstep_slope <- function (B_orig, B, B_obs, B.fixed, max.increment, n
 
         #compute expectation
         res <- tam_mml_calc_prob( iIndex=items.temp, A=A, AXsi=AXsi, B=B, xsi=xsi,
-                    theta=theta, nnodes=nnodes, maxK=maxK, maxcat=maxcat, use_rcpp=use_rcpp_calc_prob )
+                    theta=theta, nnodes=nnodes, maxK=maxK, maxcat=maxcat,
+                    use_rcpp=use_rcpp_calc_prob )
         rprobs <- res$rprobs
         LIT <- length(items.temp)
 
         ######     D I M E N S I O N S     ######
         for (dd in 1:ndim){
-            if ( irtmodel %in% c("GPCM","GPCM.design") ){
+            if ( irtmodel %in% c("GPCM","GPCM.design","GPCM.groups") ){
                 xtemp <- matrix(0, nrow=LIT, ncol=TP )
             }
             if ( irtmodel=="2PL.groups"){
@@ -81,7 +82,7 @@ tam_mml_2pl_mstep_slope <- function (B_orig, B, B_obs, B.fixed, max.increment, n
             xtemp <- res$xtemp
 
             #----------------
-            if ( irtmodel %in% c("GPCM","GPCM.design")){  # begin GPCM / GPCM.design
+            if ( irtmodel %in% c("GPCM","GPCM.design", "GPCM.groups")){  # begin GPCM / GPCM.design
                 B_obs.temp <- B_obs
                 B_obs.temp[ items.temp,,dd] <- tam_matrix2( mK-1, LIT, maxK ) * B_obs[ items.temp,,dd]
                 xbar[ is.na(xbar) ] <- 0
@@ -95,13 +96,22 @@ tam_mml_2pl_mstep_slope <- function (B_orig, B, B_obs, B.fixed, max.increment, n
                 deriv.temp <- xbar2.temp - xxf.temp
             }    # loop GPCM and GPCM.design
             #----------------
-            if (irtmodel=="GPCM"){      # begin GPCM
+            if (irtmodel %in% c("GPCM","GPCM.groups")){      # begin GPCM
                 deriv.temp[ is.na(deriv.temp)] <- eps
+
+                if (irtmodel=="GPCM.groups"){
+                    diff.temp <- tam_aggregate_derivative_information(deriv=diff.temp,
+                                    groups=est.slopegroups)
+                    deriv.temp <- tam_aggregate_derivative_information(deriv=deriv.temp,
+                                    groups=est.slopegroups)
+                }
                 increment.temp <- diff.temp*abs(1/( deriv.temp + eps ) )
+
                 increment.temp <- tam_trim_increment(increment=increment.temp,
                                         max.increment=abs(old_increment.temp[,dd]),
                                         trim_increment=trim_increment)
                 old_increment.temp[,dd] <- increment.temp
+
                 increment <- tam_outer( increment.temp, mK - 1)
                 if (Biter==1){
                     se.B[,,dd]  <- tam_outer( sqrt( 1 / abs( deriv.temp )), mK-1 )

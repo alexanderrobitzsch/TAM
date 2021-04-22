@@ -1,5 +1,5 @@
 ## File Name: tam_mml_ic.R
-## File Version: 9.201
+## File Version: 9.208
 
 
 #--- information criteria
@@ -7,7 +7,7 @@ tam_mml_ic <- function( nstud, deviance, xsi, xsi.fixed,
     beta, beta.fixed, ndim, variance.fixed, G, irtmodel,
     B_orig=NULL, B.fixed, E, est.variance, resp,
     est.slopegroups=NULL, variance.Npars=NULL, group, penalty_xsi=0,
-    AXsi=NULL, pweights=NULL, resp.ind=NULL)
+    AXsi=NULL, pweights=NULL, resp.ind=NULL, B=NULL)
 {
 
     #--- log likelihood and log prior
@@ -42,13 +42,19 @@ tam_mml_ic <- function( nstud, deviance, xsi, xsi.fixed,
         ic$NparsB <- sum( B_orig !=0 )
     }
     if ( irtmodel=="GPCM" ){
+        B1 <- B[,2,]
+        NparsB <- sum(B1!=0)
         ic$NparsB <- NparsB
+    }
+    if ( irtmodel=="GPCM.groups" ){
+        ic$NparsB <- length( unique( setdiff(est.slopegroups,0)))
+        # not correctly implemented in general setting
     }
     if ( irtmodel=="GPCM.design" ){
         ic$NparsB <- ncol(E)
     }
     if ( irtmodel=="2PL.groups" ){
-        ic$NparsB <- length( unique( est.slopegroups ) )
+        ic$NparsB <- length( unique( setdiff(est.slopegroups,0 ) ))
         # This is not yet correct for multiple dimensions and multiple
         # categories
     }
