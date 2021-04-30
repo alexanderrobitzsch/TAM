@@ -1,5 +1,5 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.942
+## File Version: 9.943
 
 tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL, ndim=1, pid=NULL, xsi.fixed=NULL,
@@ -448,7 +448,7 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     resp.ind <- gresp.noStep.ind
 
     #*** include NAs in AXsi
-    AXsi <- tam_mml_include_NA_AXsi(AXsi=AXsi, maxcat=maxcat)
+    AXsi <- tam_mml_include_NA_AXsi(AXsi=AXsi, maxcat=maxcat, A=A, xsi=xsi)
 
     #****
     # look for non-estimable xsi parameters

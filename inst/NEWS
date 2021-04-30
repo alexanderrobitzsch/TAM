@@ -42,10 +42,12 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.7  |  2021-04-22  |  Last: TAM 3.7-1
+VERSIONS TAM 3.7  |  2021-04-30  |  Last: TAM 3.7-3
 -------------------------------------------------------------
 
-xxx   * ...
+NOTE  * changed computation of AXsi and xsi.item in outputs to
+        prevent numerical differences with xsi
+        (thanks to Rudolf Debelak)
 
 
 DATA  * included/modified datasets: ---

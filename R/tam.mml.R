@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.802
+## File Version: 9.803
 
 tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
@@ -400,7 +400,7 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
 
 
     #*** include NAs in AXsi
-    AXsi <- tam_mml_include_NA_AXsi(AXsi=AXsi, maxcat=maxcat)
+    AXsi <- tam_mml_include_NA_AXsi(AXsi=AXsi, maxcat=maxcat, A=A, xsi=xsi)
 
     #--- generate input for fixed parameters
     xsi.fixed.estimated <- tam_generate_xsi_fixed_estimated( xsi=xsi, A=A )

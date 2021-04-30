@@ -1,9 +1,12 @@
 ## File Name: tam_mml_include_NA_AXsi.R
-## File Version: 0.02
+## File Version: 0.04
 
 
-tam_mml_include_NA_AXsi <- function(AXsi, maxcat=NULL)
+tam_mml_include_NA_AXsi <- function(AXsi, maxcat=NULL, A=NULL, xsi=NULL)
 {
+    if (!is.null(xsi)){
+        AXsi <- tam_AXsi_compute(A=A, xsi=xsi)
+    }
     if (is.null(maxcat)){
         maxcat <- rep( ncol(AXsi), nrow(AXsi) )
     }
