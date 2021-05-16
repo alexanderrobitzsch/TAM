@@ -1,11 +1,12 @@
 ## File Name: tam_itempartable.R
-## File Version: 9.131
+## File Version: 9.133
 
 
 
 #--- create table of item parameters
 tam_itempartable <- function( resp, maxK, AXsi, B, ndim,
-            resp.ind, rprobs=NULL, n.ik=NULL, pi.k=NULL, order=FALSE )
+            resp.ind, rprobs=NULL, n.ik=NULL, pi.k=NULL, order=FALSE,
+            pweights=rep(1,nrow(resp) ) )
 {
 
     if ( is.null(dimnames(B)[[1]] ) ){
@@ -13,8 +14,8 @@ tam_itempartable <- function( resp, maxK, AXsi, B, ndim,
     }
 
     item1 <- data.frame( "item"=dimnames(B)[[1]] )
-    item1$N <- colSums(resp.ind)
-    item1$M <- colSums(resp.ind * resp, na.rm=TRUE) / colSums( resp.ind )
+    item1$N <- colSums(resp.ind*pweights)
+    item1$M <- colSums(resp.ind * resp * pweights, na.rm=TRUE) / colSums( resp.ind*pweights )
     maxKi <- rowSums( 1 - is.na(AXsi) ) - 1
     I <- nrow(item1)
     item1$xsi.item <- - AXsi[ cbind(1:I, maxKi+1) ] / maxKi

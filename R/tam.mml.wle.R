@@ -1,5 +1,5 @@
 ## File Name: tam.mml.wle.R
-## File Version: 0.26
+## File Version: 0.271
 
 
 tam.mml.wle <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
@@ -19,7 +19,8 @@ tam.mml.wle <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
     maxK <- res$maxK
     pweights <- res$pweights
     pid <- res$pid
-
+    pweights <- tam_mml_wle_pweights(score.resp=score.resp, pweights=pweights)
+    
     #--- initial values and some design matrices
     res <- tam_mml_wle_theta_inits( WLE=WLE, adj=adj, nitems=nitems, maxK=maxK,
                 resp=resp, resp.ind=resp.ind, B=B, ndim=ndim )

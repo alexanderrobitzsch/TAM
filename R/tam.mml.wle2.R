@@ -1,5 +1,5 @@
 ## File Name: tam.mml.wle2.R
-## File Version: 0.851
+## File Version: 0.853
 
 ################################################################
 tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
@@ -24,6 +24,7 @@ tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
             pid <- rep(NA, nrow(score.resp) )
         }
     }
+    pweights <- tam_mml_wle_pweights(score.resp=score.resp, pweights=pweights)
 
     A <- res$A
     xsi <- res$xsi

@@ -42,12 +42,16 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.7  |  2021-04-30  |  Last: TAM 3.7-3
+VERSIONS TAM 3.7  |  2021-05-16  |  Last: TAM 3.7-5
 -------------------------------------------------------------
 
 NOTE  * changed computation of AXsi and xsi.item in outputs to
         prevent numerical differences with xsi
         (thanks to Rudolf Debelak)
+NOTE  * included utility function tam_model_implied_means() for
+        computation of model-implied means
+FIXED * fixed a bug in tam.mml.wle() and tam.mml.wle2() if argument
+        'score.resp' is used (thanks to Fu Liu)
 
 
 DATA  * included/modified datasets: ---

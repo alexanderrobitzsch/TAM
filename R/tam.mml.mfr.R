@@ -1,5 +1,5 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.943
+## File Version: 9.944
 
 tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL, ndim=1, pid=NULL, xsi.fixed=NULL,
@@ -480,7 +480,7 @@ tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     #--- collect item parameters
     item1 <- tam_itempartable( resp=gresp.noStep, maxK=maxK, AXsi=AXsi, B=B,
                     ndim=ndim, resp.ind=gresp.noStep.ind,
-                    rprobs=rprobs, n.ik=n.ik, pi.k=pi.k, order=TRUE )
+                    rprobs=rprobs, n.ik=n.ik, pi.k=pi.k, order=TRUE, pweights=pweights )
 
     #--- collect all person statistics
     res <- tam_mml_person_posterior( pid=pid, nstud=nstud, pweights=pweights,

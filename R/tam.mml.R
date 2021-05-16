@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.803
+## File Version: 9.804
 
 tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
@@ -425,7 +425,8 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
 
     #*** collect item parameters
     item1 <- tam_itempartable( resp=resp, maxK=maxK, AXsi=AXsi, B=B, ndim=ndim,
-                    resp.ind=resp.ind, rprobs=rprobs, n.ik=n.ik, pi.k=pi.k )
+                    resp.ind=resp.ind, rprobs=rprobs, n.ik=n.ik, pi.k=pi.k,
+                    pweights=pweights)
 
     #*** IRT parameterization
     item_irt <- tam_irt_parameterization(resp=resp, maxK=maxK, B=B, AXsi=AXsi,

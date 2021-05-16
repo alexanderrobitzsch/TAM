@@ -1,5 +1,5 @@
 %% File Name: TAM-utilities.Rd
-%% File Version: 0.663
+%% File Version: 0.666
 
 \name{TAM-utilities}
 \alias{TAM-utilities}
@@ -35,7 +35,7 @@
 \alias{tam_max_abs}
 \alias{tam_max_abs_list}
 \alias{IRT.RISE}
-
+\alias{tam_model_implied_means}
 
 \title{Utility Functions in \pkg{TAM}}
 
@@ -46,6 +46,8 @@ Utility functions in \pkg{TAM}.
 \usage{
 ## RISE item fit statistic of two models
 IRT.RISE( mod_p, mod_np, use_probs=TRUE )
+## model-implied means
+tam_model_implied_means(mod)
 
 ## information about used package version
 tam_packageinfo(pack)
@@ -118,6 +120,7 @@ tam_assign_list_elements(x, envir)
 \arguments{
 \item{mod_p}{Fitted model}
 \item{mod_np}{Fitted model}
+\item{mod}{Fitted model}
 \item{use_probs}{Logical}
 \item{pack}{An \R package}
 \item{CALL}{An \R call}

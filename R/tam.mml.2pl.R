@@ -1,5 +1,5 @@
 ## File Name: tam.mml.2pl.R
-## File Version: 9.586
+## File Version: 9.588
 
 tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
                  formulaY=NULL, dataY=NULL,
@@ -338,7 +338,7 @@ tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
 # cat("m step regression") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
 
         beta <- resr$beta
-        variance <- resr$variance
+        variance <- resr$variance        
         itemwt <- resr$itemwt
         variance_acceleration <- resr$variance_acceleration
         variance_change <- resr$variance_change
@@ -471,7 +471,7 @@ tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
 
     #*** collect item parameters
     item1 <- tam_itempartable( resp=resp, maxK=maxK, AXsi=AXsi, B=B, ndim=ndim,
-                resp.ind=resp.ind, rprobs=rprobs, n.ik=n.ik, pi.k=pi.k )
+                resp.ind=resp.ind, rprobs=rprobs, n.ik=n.ik, pi.k=pi.k, pweights=pweights)
 
     #*** IRT parameterization
     item_irt <- tam_irt_parameterization(resp=resp, maxK=maxK, B=B, AXsi=AXsi,
