@@ -1,5 +1,5 @@
 ## File Name: designMatrices.mfr2.R
-## File Version: 9.448
+## File Version: 9.480
 
 
 ##*** create design matrices
@@ -69,9 +69,12 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
 
     # A Matrix
     if( is.null(A) ){
-        AX <- tam_A_matrix2( resp=resp, formulaA=formulaA, facets=facets,
+        #AX <- tam_A_matrix2( resp=resp, formulaA=formulaA, facets=facets,
+        #            constraint=constraint, progress=progress, Q=Q)
+        AX <- .A.matrix2( resp=resp, formulaA=formulaA, facets=facets,
                     constraint=constraint, progress=progress, Q=Q)
         A <- AX$A
+
         X <- AX$X
         otherFacets <- AX$otherFacets
         xsi.elim <- AX$xsi.elim
@@ -176,7 +179,6 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
     colnames(gresp) <- rownames(X)
 #    X$empty <- 1* (colSums( gresp, na.rm=TRUE )==0)
     X$empty <- tam_rcpp_mml_mfr_colsums_gresp( gresp )
-
     colnames(gresp.noStep) <- rownames(X.noStep)
 #    X.noStep$empty <- 1* (colSums( gresp.noStep, na.rm=TRUE )==0)
     X.noStep$empty <- tam_rcpp_mml_mfr_colsums_gresp( gresp.noStep)
@@ -213,6 +215,11 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
             str.ss2 <- gsub( paste0("(^|-)+",str.ss), "", rownames(x)[iss] )
             ind_str_ss2 <- intersect( str.ss2, dimnames(x2)[[2]] )
             x2[ss+1,ind_str_ss2,] <- x[ iss, ]
+
+            # version 3.4
+            #  iss <- grep(  paste0(str.ss,"+(-|$)"), rownames(x) )#, fixed=TRUE )
+            #  str.ss2 <- gsub( paste0("(^|-)+",str.ss), "", rownames(x)[iss] )
+            #  x2[ss+1,str.ss2,] <- x[ iss, ]
         }
       x2 <- aperm( x2, c(2,1,3) )
 
@@ -275,8 +282,8 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
     }
 # cat(".....\nbefore rename A" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
     # print("g100")
-    A <- .rename.items( matr=A, itemren )
 
+    A <- .rename.items( matr=A, itemren )
     dimnames(A)[[1]] <- .rename.items2aa( vec=dimnames(A)[[1]],
                                           facet.list=facet.list, I=I )
 
@@ -284,9 +291,12 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
     xsi.table <- xsi.constr$xsi.table
     #    A <- .rename.items3( matr=A, facet.list, I )
     #cat(".rename.items3 (A)" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
+
     A <- .rename.items3a( matr=A, facet.list, I, cols=TRUE, xsi.table )
+
     #cat(".rename.items3a (A)" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
     B <- .rename.items( matr=B, itemren )
+
     # cat(".rename.items (B)" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
     dimnames(B)[[1]] <- dimnames(A)[[1]]
     #    B <- .rename.items3( matr=B, facet.list )
@@ -307,6 +317,7 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
     #     Q <- .rename.items3( matr=Q, facet.list, cols=FALSE)
     X <- .rename.items( matr=X, itemren, cols=FALSE)
     dimnames(X)[[1]] <- dimnames(A)[[1]]
+
     #    X <- .rename.items3( matr=X, facet.list, cols=FALSE)
     # cat(".rename.items (Q,X)" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
     X.noStep <- .rename.items( matr=X.noStep, itemren, cols=FALSE)
@@ -319,6 +330,7 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
     #cat(".rename.items2a (G1$parameter)  " ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
     G1$parameter <- .rename.items2b( paste( G1$parameter), facet.list, I, xsi.table )
     xsi.constr$xsi.table <- G1
+
  # cat(".rename.items2b (G1$parameter)  " ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
     #***
     G1 <- xsi.constr$xsi.constraints
@@ -347,6 +359,7 @@ designMatrices.mfr2 <- function( resp, formulaA=~ item + item:step, facets=NULL,
     # B
     B.flat.0 <- B.flat <- B; B.flat.0[ind,] <- 0
     B.3d <- .generateB.3d( B.flat )
+
     B.flat <- B.flat[!ind,]
     B.3d.0 <- .generateB.3d( B.flat.0 )
     if(!is.null(B.store.in)) B.3d.0[] <- B.store.in

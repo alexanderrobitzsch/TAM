@@ -1,18 +1,19 @@
 %% File Name: tam.ctt.Rd
-%% File Version: 3.16
+%% File Version: 3.182
 
 \name{tam.ctt}
 \alias{tam.ctt}
 \alias{tam.ctt2}
 \alias{tam.ctt3}
 \alias{plotctt}
+\alias{tam.cb}
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Classical Test Theory Based Statistics and Plots
 }
 \description{
-This function computes some item statistics based on classical test
+The functions computes some item statistics based on classical test
 theory.
 }
 \usage{
@@ -20,6 +21,9 @@ tam.ctt(resp, wlescore=NULL, pvscores=NULL, group=NULL, progress=TRUE)
 tam.ctt2(resp, wlescore=NULL, group=NULL, allocate=30, progress=TRUE)
 tam.ctt3(resp, wlescore=NULL, group=NULL, allocate=30, progress=TRUE, max_ncat=30,
           pweights=NULL)
+
+tam.cb( dat, wlescore=NULL, group=NULL, max_ncat=30, progress=TRUE,
+             pweights=NULL, digits_freq=5)
 
 plotctt( resp, theta, Ncuts=NULL, ask=FALSE, col.list=NULL,
        package="lattice", ... )
@@ -51,6 +55,8 @@ should be displayed.
 \item{max_ncat}{Maximum number of categories of variables for which
    frequency tables should be computed}
 \item{pweights}{Optional vector of person weights}
+\item{dat}{Data frame}
+\item{digits_freq}{Number of digits for rounding in frequency table}
 \item{theta}{A score to be conditioned}
 \item{Ncuts}{Number of break points for \code{theta}}
 \item{ask}{

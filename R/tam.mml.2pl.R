@@ -1,5 +1,5 @@
 ## File Name: tam.mml.2pl.R
-## File Version: 9.588
+## File Version: 9.589
 
 tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
                  formulaY=NULL, dataY=NULL,
@@ -338,7 +338,7 @@ tam.mml.2pl <- function( resp, Y=NULL, group=NULL,  irtmodel="2PL",
 # cat("m step regression") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
 
         beta <- resr$beta
-        variance <- resr$variance        
+        variance <- resr$variance
         itemwt <- resr$itemwt
         variance_acceleration <- resr$variance_acceleration
         variance_change <- resr$variance_change

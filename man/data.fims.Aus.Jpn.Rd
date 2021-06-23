@@ -1,5 +1,5 @@
 %% File Name: data.fims.Aus.Jpn.Rd
-%% File Version: 2.13
+%% File Version: 2.14
 
 \name{data.fims.Aus.Jpn.scored}
 \alias{data.fims.Aus.Jpn.raw}
@@ -21,7 +21,7 @@ data(data.fims.Aus.Jpn.scored)
 \format{
   A data frame with 6371 observations on the following 16 variables.
   \describe{
-    \item{\code{SEX}}{Gender: 1 -- female, 2 -- male}
+    \item{\code{SEX}}{Gender: 1 -- male, 2 -- female}
     \item{\code{M1PTI1}}{A Mathematics item}
     \item{\code{M1PTI2}}{A Mathematics item}
     \item{\code{M1PTI3}}{A Mathematics item}

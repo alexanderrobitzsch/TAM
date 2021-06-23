@@ -42,7 +42,7 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 3.7  |  2021-05-16  |  Last: TAM 3.7-5
+VERSIONS TAM 3.7  |  2021-06-23  |  Last: TAM 3.7-13
 -------------------------------------------------------------
 
 NOTE  * changed computation of AXsi and xsi.item in outputs to
@@ -52,7 +52,13 @@ NOTE  * included utility function tam_model_implied_means() for
         computation of model-implied means
 FIXED * fixed a bug in tam.mml.wle() and tam.mml.wle2() if argument
         'score.resp' is used (thanks to Fu Liu)
-
+ADDED * added function tam.cb() that generates most important
+        descriptive statistics for a data frame
+FIXED * fixed a bug in tam.linking() with method='chain'
+FIXED * fixed a recently introduced bug (since TAM 3.5) in 
+        faceted models with polytomous items 
+        (thanks to Nguyen Thi Kim Cuc)
+       
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---

@@ -1,5 +1,5 @@
 ## File Name: tam_linking_chain.R
-## File Version: 0.04
+## File Version: 0.09
 
 tam_linking_chain <- function(NM, parameters_list, entries, verbose,
     linking_args, linking_list)
@@ -21,6 +21,8 @@ tam_linking_chain <- function(NM, parameters_list, entries, verbose,
         linking_args <- tam_linking_include_list( list1=linking_args, list2=out1 )
         linking_args <- tam_linking_include_list( list1=linking_args, list2=out2 )
         #-- call linking function
+        linking_args$eps_rob_hae <- NULL
+        linking_args$par_init <- NULL
         link_mm <- do.call( "tam_linking_2studies", args=linking_args)
         linking_list_mm <- list()
         linking_list_mm$common_items <- items_sel

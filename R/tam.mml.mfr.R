@@ -1,5 +1,5 @@
 ## File Name: tam.mml.mfr.R
-## File Version: 9.944
+## File Version: 9.955
 
 tam.mml.mfr <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL, ndim=1, pid=NULL, xsi.fixed=NULL,

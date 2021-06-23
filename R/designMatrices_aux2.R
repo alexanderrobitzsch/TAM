@@ -1,8 +1,9 @@
 ## File Name: designMatrices_aux2.R
-## File Version: 9.167
+## File Version: 9.201
 
 
-## function tam_A_matrix2
+###########################################################
+## function .A.matrix
 .A.matrix2 <- function( resp, formulaA=~ item + item*step, facets=NULL,
             constraint=c("cases", "items"), progress=FALSE,
             maxKi=NULL, Q=Q )
@@ -25,7 +26,6 @@
       }
     }
     #cat(" +++  v62" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
-
     ### Basic Information and Initializations
     constraint <- match.arg(constraint)
     if ( is.null(maxKi) ){
@@ -70,9 +70,10 @@
       expand.list[[vv]] <- paste( expand.list[[vv]] )
     }
 
+
     # cat(" +++  v110" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
     g2 <- g1 <- expand.grid(expand.list)
-    diffK <- ( stats::sd( maxKi) > 1e-10 )
+    diffK <- ( stats::sd( maxKi) > 0 )
     # diffK <- FALSE
     diffK <- TRUE
     # reduced combinations of items
@@ -137,8 +138,8 @@
       }
 
       A <- NULL
-      stepgroups <- unique( gsub( "(^|-)+step([[:digit:]])*", "\\1step([[:digit:]])*",
-                            x=rownames(X), perl=TRUE ) )
+
+      stepgroups <- unique( gsub( "(^|-)+step([[:digit:]])*", "\\1step([[:digit:]])*", rownames(X) ) )
       X.out <- data.frame(as.matrix(X), stringsAsFactors=FALSE)
       #cat(" +++  v150" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
       if (progress){
@@ -155,21 +156,23 @@
         }
       }
       #******
-
-
       # collect xsi parameters to be excluded
       xsi.elim.index <- xsi.elim <- NULL
       ii <- 0 ; vv <- 1
-    for( sg in stepgroups ){
-        mm1 <- grep(paste0("(", sg, ")+$"), rownames(mm))
-        ind2 <- grep( paste0("(", sg, ")+$"), rownames(mm))
-        mm.sg.temp <- rbind( 0, apply( mm[ ind2,,drop=FALSE], 2, cumsum ) )
-        if ( is.null(rownames(mm.sg.temp)) ){
-            rownames(mm.sg.temp) <- paste0("rn", seq(0,nrow(mm.sg.temp)-1) )
-        }
+      for( sg in stepgroups ){
+#         sg <- stepgroups[2]
+    #    mm1 <- mm[ grep(sg, rownames(mm)),]
+       mm1 <- grep(paste0("(", sg, ")+$"), rownames(mm))
+       # ind2 <- grep(sg, rownames(mm))
+       ind2 <- grep( paste0("(", sg, ")+$"), rownames(mm))
+#       if (length(ind2)>0){
+          mm.sg.temp <- rbind( 0, apply( mm[ ind2,,drop=FALSE], 2, cumsum ) )
+#                        }
+    if ( is.null(rownames(mm.sg.temp)) ){
+        rownames(mm.sg.temp) <- paste0("rn", seq(0,nrow(mm.sg.temp)-1) )
+                                }
         # substitute the following line later if ...
-        rownames(mm.sg.temp)[1] <- gsub("step([[:digit:]])*", "step0", sg, fixed=TRUE)
-        # rownames(mm.sg.temp)[1] <- gsub("step([[:digit:]])*", "step0", sg, fixed=FALSE, perl=TRUE)
+        rownames(mm.sg.temp)[1] <- gsub("step([[:digit:]])*", "step0", sg, fixed=T)
         rownames(mm.sg.temp)[-1] <- rownames(mm[ind2,,drop=FALSE])
         #****
         # set entries to zero if there are no categories in data
@@ -255,10 +258,7 @@
     facet.design <- list( "facets"=facets, "facets.orig"=facets0,
                           "facet.list"=facet.list[otherFacets])
     A <- A[ ! duplicated( rownames(A) ), ]
-
-    if ( max(apply(resp,2,max,na.rm=TRUE)) > 9 ){
-        A <- A[order(rownames(A)),,drop=FALSE]
-    }
+    A <- A[order(rownames(A)),,drop=FALSE]
     X.out <- X.out[order(rownames(X.out)),,drop=FALSE]
 
 
@@ -269,9 +269,12 @@
         xsi.elim <- data.frame( xsi.elim, xsi.elim.index )
         xsi.elim <- xsi.elim[ ! duplicated( xsi.elim[,2] ), ]
         xsi.elim <- xsi.elim[ order( xsi.elim[,2] ), ]
-    }
+#        A <- A[,-xsi.elim[,2] ]
+                }
 
-    #--- clean xsi.constr
+
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ ARb 2015-10-16
+    #@@@@ clean xsi.constr
     xsi1 <- xsi.constr$xsi.constraints
     xsi.constr$intercept_included <- FALSE
     ind <- grep("(Intercept", rownames(xsi1), fixed=TRUE)
@@ -279,20 +282,19 @@
         xsi1 <- xsi1[ - ind, ]
         xsi.constr$xsi.constraints <- xsi1
         xsi.constr$intercept_included <- TRUE
-    }
+                            }
     xsi1 <- xsi.constr$xsi.table
     ind <- grep("(Intercept", paste(xsi1$parameter), fixed=TRUE)
     if ( length(ind) > 0 ){
         xsi1 <- xsi1[ - ind, ]
         xsi.constr$xsi.table <- xsi1
-    }
+                            }
+    #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
     #cat(" +++  out .A.matrix" ) ; z1 <- Sys.time() ; print(z1-z0) ; z0 <- z1
-    res <- list( "A"=A, "X"=X.out, "otherFacets"=otherFacets, "xsi.constr"=xsi.constr,
-                "facet.design"=facet.design, "xsi.elim"=xsi.elim )
-    return(res)
+    return(list( "A"=A, "X"=X.out, "otherFacets"=otherFacets, "xsi.constr"=xsi.constr,
+                 "facet.design"=facet.design, "xsi.elim"=xsi.elim ) )
   }
+## end .A.matrix
+#####################################################
 
-
-
-.A.matrix2 -> tam_A_matrix2

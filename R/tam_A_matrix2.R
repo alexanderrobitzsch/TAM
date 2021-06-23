@@ -1,9 +1,9 @@
 ## File Name: tam_A_matrix2.R
-## File Version: 9.168
+## File Version: 9.171
 
 
 ## function tam_A_matrix2
-tam_A_matrix2 <- function( resp, formulaA=~ item + item*step, facets=NULL,
+tam_A_matrix2__INACTIVE <- function( resp, formulaA=~ item + item*step, facets=NULL,
         constraint=c("cases", "items"), progress=FALSE, maxKi=NULL, Q=Q )
 {
     z0 <- Sys.time()
