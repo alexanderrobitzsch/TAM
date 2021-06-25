@@ -41,8 +41,23 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 
+
 -------------------------------------------------------------
-VERSIONS TAM 3.7  |  2021-06-23  |  Last: TAM 3.7-13
+VERSIONS TAM 4.0  |  2021-06-25  |  Last: TAM 4.0-1
+-------------------------------------------------------------
+
+xxx   * ...
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
+
+
+-------------------------------------------------------------
+VERSIONS TAM 3.7  |  2021-06-24  |  Last: TAM 3.7-16
 -------------------------------------------------------------
 
 NOTE  * changed computation of AXsi and xsi.item in outputs to
@@ -57,16 +72,10 @@ ADDED * added function tam.cb() that generates most important
 FIXED * fixed a bug in tam.linking() with method='chain'
 FIXED * fixed a recently introduced bug (since TAM 3.5) in 
         faceted models with polytomous items 
-        (thanks to Nguyen Thi Kim Cuc)
-       
+        (thanks to Nguyen Thi Kim Cuc)      
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
-
-
-
-
-
 
 -------------------------------------------------------------
 VERSIONS TAM 3.6  |  2021-04-22  |  Last: TAM 3.6-45
