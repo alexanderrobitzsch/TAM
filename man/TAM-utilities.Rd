@@ -1,5 +1,5 @@
 %% File Name: TAM-utilities.Rd
-%% File Version: 0.666
+%% File Version: 0.667
 
 \name{TAM-utilities}
 \alias{TAM-utilities}
@@ -66,7 +66,7 @@ tam_round_data_frame(obji, from=1, to=ncol(obji), digits=3, rownames_null=FALSE)
 ## round some columns in a data frame and print this data frame
 tam_round_data_frame_print(obji, from=1, to=ncol(obji), digits=3, rownames_null=FALSE)
 ## copy of CDM::osink
-tam_osink(file, suffix="__SUMMARY.Rout")
+tam_osink(file, suffix=".Rout")
 ## copy of CDM::csink
 tam_csink(file)
 

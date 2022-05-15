@@ -1,5 +1,5 @@
 %% File Name: tamaan.Rd
-%% File Version: 0.56
+%% File Version: 0.571
 
 \name{tamaan}
 \alias{tamaan}
@@ -101,6 +101,8 @@ for more examples.
 
 
 \examples{
+\dontrun{
+
 #############################################################################
 # EXAMPLE 1: Examples dichotomous data data.read
 #############################################################################
@@ -123,7 +125,6 @@ ITEM TYPE:
 mod1 <- TAM::tamaan( tammodel, resp=dat)
 summary(mod1)
 
-\dontrun{
 #*********************************************************************
 #*** Model 2: 2PL model with some selected items
 

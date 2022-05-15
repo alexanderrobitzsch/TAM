@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_mml_2pl.cpp
-//// File Version: 0.515
+//// File Version: 0.516
 
 
 #include <Rcpp.h>
@@ -38,7 +38,7 @@ Rcpp::List tam_rcpp_mml_2pl_mstep_item_slopes_suffstat( Rcpp::NumericVector rpro
     double temp1=0;
     double temp2=0;
     double probs_temp=0;
-    if ( ( irtmodel[0] == "GPCM" ) | ( irtmodel[0] == "GPCM.design" ) ){
+    if ( ( irtmodel[0] == "GPCM" ) || ( irtmodel[0] == "GPCM.design" ) ){
         for (int tt=0; tt<NT; tt++){
             xtemp(_,tt) = xtemp_(_,tt);
         }
@@ -79,13 +79,13 @@ Rcpp::List tam_rcpp_mml_2pl_mstep_item_slopes_suffstat( Rcpp::NumericVector rpro
                         xbar2(item_ii,kk) += probs_temp * temp2;
                     }
                     //----- GPCM --------
-                    if ( ( irtmodel[0] == "GPCM" ) | ( irtmodel[0] == "GPCM.design" ) ){
+                    if ( ( irtmodel[0] == "GPCM" ) || ( irtmodel[0] == "GPCM.design" ) ){
                         // xtemp <- xtemp + tam_matrix2(theta[,dd],nrow=LIT,ncol=TP) * rprobs[,k,] * ( k-1 )
                         xtemp( item_ii, tt) += theta(tt,dd) * probs_temp * kk;
                     }
                 }
                 //----- GPCM --------
-                if ( ( irtmodel[0] == "GPCM" ) | ( irtmodel[0] == "GPCM.design" ) ){
+                if ( ( irtmodel[0] == "GPCM" ) || ( irtmodel[0] == "GPCM.design" ) ){
                     // xxf[items.temp,k] <- xxf[items.temp,k] * (k-1)^2
                     xxf( item_ii, kk) = xxf( item_ii, kk) * kk2;
                 }

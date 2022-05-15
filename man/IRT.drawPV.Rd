@@ -1,5 +1,5 @@
 %% File Name: IRT.drawPV.Rd
-%% File Version: 0.13
+%% File Version: 0.141
 
 \name{IRT.drawPV}
 \alias{IRT.drawPV}
@@ -62,7 +62,7 @@ Matrix with plausible values
 #############################################################################
 
 library(sirt)
-data(data.read,package="sirt")
+data(data.read, package="sirt")
 dat <- data.read
 
 # fit Rasch model

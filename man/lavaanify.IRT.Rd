@@ -1,5 +1,5 @@
 %% File Name: lavaanify.IRT.Rd
-%% File Version: 1.40
+%% File Version: 1.411
 
 \name{lavaanify.IRT}
 \alias{lavaanify.IRT}
@@ -85,11 +85,11 @@ syntax if nonlinear factors are used.}
 \code{\link[lavaan:lavaanify]{lavaan::lavaanify}}
 
 
-See \code{\link[sirt:tam2mirt]{sirt::tam2mirt}} for
+See \code{sirt::tam2mirt} for
 converting objects of class \code{tam} into \code{mirt}
 objects.
 
-See \code{\link[sirt:lavaan2mirt]{sirt::lavaan2mirt}}
+See \code{sirt::lavaan2mirt}
 for estimating models in the \pkg{mirt} package using \code{lavaan} syntax.
 
 See \code{\link{doparse}} for the \code{DO} and \code{DO2} statements.

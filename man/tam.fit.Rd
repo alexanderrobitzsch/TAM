@@ -1,5 +1,5 @@
 %% File Name: tam.fit.Rd
-%% File Version: 2.562
+%% File Version: 2.564
 
 \name{tam.fit}
 
@@ -110,8 +110,8 @@ for models fitted with JML.
 See \code{\link{tam.personfit}} for computing person fit statistics.
 
 Item fit and person fit based on estimated person parameters can also be
-calculated using the \code{\link[sirt:pcm.fit]{sirt::pcm.fit}} function
-in the \pkg{sirt} package (see Example 1 and Example 2).
+calculated using the \code{sirt::pcm.fit} function
+in the \bold{sirt} package (see Example 1 and Example 2).
 }
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 
@@ -133,6 +133,8 @@ summary(fit1)
   ##   3         I3  1.022    0.330    0.185 1.012   0.366   0.179
   ##   4         I4  1.047    0.720    0.118 1.054   1.650   0.025
 
+\dontrun{
+
 #--------
 # infit and oufit based on estimated WLEs
 library(sirt)
@@ -146,7 +148,6 @@ fit1a <- sirt::pcm.fit(b=b1, theta=wle$theta, data.sim.rasch )
 fit1a$item       # item fit statistic
 fit1a$person     # person fit statistic
 
-\dontrun{
 #############################################################################
 # EXAMPLE 2: Partial credit model data.gpcm
 #############################################################################

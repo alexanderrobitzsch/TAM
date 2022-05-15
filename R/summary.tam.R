@@ -1,5 +1,5 @@
 ## File Name: summary.tam.R
-## File Version: 9.586
+## File Version: 9.587
 
 #****** summary for tam object
 summary.tam <- function( object, file=NULL, ...)
@@ -7,7 +7,7 @@ summary.tam <- function( object, file=NULL, ...)
     tam_osink(file=file)
 
     latreg <- FALSE
-    if ( class(object)=="tam.latreg" ){
+    if ( inherits(object,"tam.latreg") ){
         latreg <- TRUE
         object$irtmodel <- "tam.latreg"
     }

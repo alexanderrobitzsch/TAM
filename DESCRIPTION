@@ -1,8 +1,8 @@
 Package: TAM
 Type: Package
 Title: Test Analysis Modules
-Version: 4.0-1
-Date: 2021-06-25 14:15:15
+Version: 4.1-1
+Date: 2022-05-15 09:03:38
 Author:
     Alexander Robitzsch [aut,cre] (<https://orcid.org/0000-0002-8226-3132>),
     Thomas Kiefer [aut], 
@@ -27,7 +27,7 @@ Imports:
     graphics, methods, Rcpp, stats, utils
 Suggests: 
     coda, GPArotation, grDevices, lattice, lavaan, MASS, 
-    miceadds, mvtnorm, plyr, psych, sfsmisc, sirt, splines, 
+    miceadds, mvtnorm, plyr, psych, sfsmisc, splines, 
     WrightMap
 LinkingTo: 
     Rcpp, RcppArmadillo

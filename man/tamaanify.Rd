@@ -1,5 +1,5 @@
 %% File Name: tamaanify.Rd
-%% File Version: 0.553
+%% File Version: 0.554
 
 \name{tamaanify}
 \alias{tamaanify}
@@ -195,6 +195,8 @@ are included in \code{\link{tam.mml}} and \code{\link{tam.mml.3pl}}.
 
 
 \examples{
+\dontrun{
+
 #############################################################################
 # EXAMPLE 1: Examples dichotomous data data.read
 #############################################################################
@@ -244,7 +246,6 @@ LAVAAN MODEL:
 out <- TAM::tamaanify( tammodel, resp=dat)
 str(out$E)     # E design matrix for estimation with tam.mml.3pl function
 
-\dontrun{
 #*********************************************************************
 #*** Model 3: Linear constraints for item intercepts and item loadings
 tammodel <- "

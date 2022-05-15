@@ -1,10 +1,10 @@
-## File Name: tamaanify.proc.itemtype.R
-## File Version: 9.08
+## File Name: tamaanify_proc_itemtype.R
+## File Version: 9.091
 
 
-############################################################
-# process item type
-tamaanify.proc.itemtype <- function( res )
+### process item type
+
+tamaanify_proc_itemtype <- function( res )
 {
     tam1 <- res$tammodel.dfr
     ind1 <- which( paste(tam1$syn)=="ITEMTYPE:" )
@@ -40,4 +40,3 @@ tamaanify.proc.itemtype <- function( res )
     }
     return(res)
 }
-############################################################

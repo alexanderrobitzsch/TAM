@@ -1,7 +1,7 @@
 ## File Name: tam_osink.R
-## File Version: 0.04
+## File Version: 0.05
 
-tam_osink <- function(file, suffix="__SUMMARY.Rout")
+tam_osink <- function(file, suffix=".Rout")
 {
     CDM::osink( file=file, suffix=suffix )
 }

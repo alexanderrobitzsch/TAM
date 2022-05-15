@@ -1,5 +1,5 @@
 %% File Name: IRT.truescore.Rd
-%% File Version: 0.21
+%% File Version: 0.221
 
 \name{IRT.truescore}
 \alias{IRT.truescore}
@@ -52,7 +52,7 @@ true scores \eqn{\tau( \theta ) }.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See also \code{\link[sirt:truescore.irt]{sirt::truescore.irt}}
+See also \code{sirt::truescore.irt}
 for a conversion function for generalized partial credit models.
 }
 

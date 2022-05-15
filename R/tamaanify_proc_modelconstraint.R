@@ -1,11 +1,9 @@
-## File Name: tamaanify.proc.modelconstraint.R
-## File Version: 9.09
+## File Name: tamaanify_proc_modelconstraint.R
+## File Version: 9.102
 
+### process model constraint
 
-
-#########################################################
-# process model constraint
-tamaanify.proc.modelconstraint <- function( res )
+tamaanify_proc_modelconstraint <- function( res )
 {
     tam1 <- res$tammodel.dfr
     ind1 <- which( paste(tam1$syn)=="MODELCONSTRAINT:" )
@@ -89,4 +87,4 @@ tamaanify.proc.modelconstraint <- function( res )
     res$MODELCONSTRAINT.dfr <- dfr.syncon
     return(res)
 }
-######################################################################
+

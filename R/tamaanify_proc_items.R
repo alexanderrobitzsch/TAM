@@ -1,11 +1,10 @@
-## File Name: tamaanify.proc.items.R
-## File Version: 9.09
+## File Name: tamaanify_proc_items.R
+## File Version: 9.104
 
 
+### process item characteristics
 
-############################################################
-# process item characteristics
-tamaanify.proc.items <- function( res, resp)
+tamaanify_proc_items <- function( res, resp)
 {
     lavpartable <- res$lavpartable
     ind <- which( lavpartable$op=="=~" )
@@ -75,8 +74,9 @@ tamaanify.proc.items <- function( res, resp)
     }
     #*** thresholds
     for (hh in 1:( max(maxK) ) ){
-        ind <- which( ( paste(lavpartable2$rhs)==paste0("t", hh) ) & ( paste( lavpartable2$label )=="" ) &
-                        ( paste(lavpartable2$op)=="|" )  )
+        ind <- which( ( paste(lavpartable2$rhs)==paste0("t", hh) ) &
+                            ( paste( lavpartable2$label )=="" ) &
+                            ( paste(lavpartable2$op)=="|" )  )
         if ( length(ind) > 0 ){
             lavpartable2[ ind, "label" ] <- paste0( lavpartable2$lhs[ind], "_", "Cat", hh )
         }

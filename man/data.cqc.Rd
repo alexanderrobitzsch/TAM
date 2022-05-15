@@ -99,7 +99,7 @@ variables of following format
 
 
 \seealso{
-See the \code{\link[sirt:R2conquest]{sirt::R2conquest}} function
+See the \code{sirt::R2conquest} function
 for running ConQuest software from within \R.
 
 See the \pkg{\link[WrightMap:WrightMap]{WrightMap}} package for functions

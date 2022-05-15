@@ -1,5 +1,5 @@
 %% File Name: tam.modelfit.Rd
-%% File Version: 2.384
+%% File Version: 2.385
 
 \name{tam.modelfit}
 \alias{tam.modelfit}
@@ -245,7 +245,7 @@ N <- 1000    # number of persons
 I <- 20      # number of items
 # simulate responses
 library(sirt)
-dat <- sirt::sim.raschtype( rnorm(N), b=seq(-1.5,1.5,len=I) )
+dat <- sirt::sim.raschtype( stats::rnorm(N), b=seq(-1.5,1.5,len=I) )
 #*** estimation
 mod1 <- TAM::tam.mml( dat )
 summary(dat)

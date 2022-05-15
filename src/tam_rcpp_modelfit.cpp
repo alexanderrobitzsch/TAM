@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_modelfit.cpp
-//// File Version: 3.237
+//// File Version: 3.238
 
 
 #include <Rcpp.h>
@@ -121,7 +121,7 @@ Rcpp::List tam_rcpp_modelfit_counts( Rcpp::NumericMatrix resp0,
                 hwtii[tt] = hwtiifull[tt];
                 //**** expected counts
                 for (int nn=0;nn<N;nn++){
-                    if ( ( ! resp_bool(nn,ii1) ) | ( ! resp_bool(nn,ii2) ) ){
+                    if ( ( ! resp_bool(nn,ii1) ) || ( ! resp_bool(nn,ii2) ) ){
                         hwtii[tt] = hwtii[tt] - hwt(nn,tt);
                     }
                 } // end nn

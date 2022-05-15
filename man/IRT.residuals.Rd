@@ -1,5 +1,5 @@
 %% File Name: IRT.residuals.Rd
-%% File Version: 0.17
+%% File Version: 0.182
 
 \name{IRT.residuals}
 \alias{IRT.residuals}
@@ -92,12 +92,13 @@ See also \code{\link[TAM:predict.tam.mml]{predict.tam.mml}}.
 
 
 \examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Residuals data.read
 #############################################################################
 
 library(sirt)
-data(data.read,package="sirt")
+data(data.read, package="sirt")
 dat <- data.read
 
 # for Rasch model
@@ -105,6 +106,7 @@ mod <- TAM::tam.mml( dat )
 # extract residuals
 res <- TAM::IRT.residuals( mod )
 str(res)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

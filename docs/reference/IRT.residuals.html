@@ -76,7 +76,7 @@ The methods IRT.residuals and residuals are equivalent." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">4.0-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">4.1-vv</span>
       </span>
     </div>
 
@@ -183,19 +183,21 @@ functions.</p>
 <p>See also <code><a href='predict.html'>predict.tam.mml</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'>#############################################################################</span>
+    <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 1: Residuals data.read</span>
 <span class='co'>#############################################################################</span>
 
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sirt</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.read</span>,<span class='kw'>package</span><span class='kw'>=</span><span class='st'>"sirt"</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.read</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"sirt"</span>)
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.read</span>
 
 <span class='co'># for Rasch model</span>
 <span class='no'>mod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.mml.html'>tam.mml</a></span>( <span class='no'>dat</span> )
 <span class='co'># extract residuals</span>
 <span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>IRT.residuals</span>( <span class='no'>mod</span> )
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>res</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>res</span>)
+}</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

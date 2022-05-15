@@ -1,9 +1,9 @@
-## File Name: tamaanify.modelprior.R
-## File Version: 9.09
+## File Name: tamaanify_modelprior.R
+## File Version: 9.114
 
-############################################
-# model prior parsing
-tamaanify.modelprior <- function(res)
+### model prior parsing
+
+tamaanify_modelprior <- function(res)
 {
     t1 <- res$tammodel.dfr
     gammaslope.prior <- NULL
@@ -42,8 +42,7 @@ tamaanify.modelprior <- function(res)
                     if ( length(uu) >=5 ){ gg <- uu[5] } else {gg <- NA}
                     return(gg) } ) ))
 
-        #********
-        # type of prior parameter
+        #*** type of prior parameter
         E <- res$E
         Epars <- dimnames(E)[[4]]
         dfr$gammaslope_index <- match( paste(dfr$parm), Epars )
@@ -73,6 +72,7 @@ tamaanify.modelprior <- function(res)
             xsi.prior[ dfr0$A_index, ] <-
                     as.matrix( dfr0[, c("par1","par2") ] )
         }
+
     }
 
     #**** index priors guessing parameters
@@ -100,9 +100,10 @@ tamaanify.modelprior <- function(res)
         }
     }
     if ( is.null( res$gammaslope.prior) ){
-            res$gammaslope.prior <- gammaslope.prior
+        res$gammaslope.prior <- gammaslope.prior
     }
     res$xsi.prior <- xsi.prior
     res$guess.prior <- guess.prior
+
     return(res)
 }

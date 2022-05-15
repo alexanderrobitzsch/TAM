@@ -1,10 +1,11 @@
 ## File Name: plotDevianceTAM.R
-## File Version: 9.10
-###############################################################################
-plotDevianceTAM   <- function ( tam.obj, omitUntil=1, reverse=TRUE,
+## File Version: 9.111
+
+
+plotDevianceTAM <- function ( tam.obj, omitUntil=1, reverse=TRUE,
             change=TRUE)
 {
-    stopifnot(class(tam.obj) %in% c("tam.mml","tam.mml.2pl","tam.mml.mfr","tam.mml.3pl","tamaan") )
+    stopifnot(inherits(tam.obj, c("tam.mml","tam.mml.2pl","tam.mml.mfr","tam.mml.3pl","tamaan")) )
 
     devhistory <- tam.obj$deviance.history
     if(omitUntil>0)  {
@@ -20,7 +21,7 @@ plotDevianceTAM   <- function ( tam.obj, omitUntil=1, reverse=TRUE,
     }
 
     if(reverse){
-        devChange <- -1 *  devChange
+        devChange <- -devChange
     }
     devChange <- data.frame ( nr=omitUntil + 1:length(devChange), devChange)
     xm <- ceiling( max(devChange[,1])/10 )*10
@@ -41,4 +42,3 @@ plotDevianceTAM   <- function ( tam.obj, omitUntil=1, reverse=TRUE,
     dcr <- devChange[devChange[,2]<0,]
     graphics::points( dcr[,1], dcr[,2], pch=20, cex=cex, col="red")
 }
-###############################################################################

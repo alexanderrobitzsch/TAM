@@ -1,5 +1,5 @@
 %% File Name: tam.linking.Rd
-%% File Version: 0.625
+%% File Version: 0.627
 
 \name{tam.linking}
 \alias{tam.linking}
@@ -153,10 +153,9 @@ Linking or equating of item response models can be also conducted with \pkg{plin
 (Weeks, 2010), \pkg{equate}, \pkg{equateIRT} (Battauz, 2015), \pkg{equateMultiple},
 \pkg{kequate} and \pkg{irteQ} packages.
 
-See also the \code{\link[sirt:linking.haberman]{sirt::linking.haberman}},
-\code{\link[sirt:invariance.alignment]{sirt::invariance.alignment}} and
-\code{\link[sirt:linking.haebara]{sirt::linking.haebara}} functions
-in the \pkg{sirt} package.
+See also the \code{sirt::linking.haberman},
+\code{sirt::invariance.alignment} and \code{sirt::linking.haebara} functions
+in the \bold{sirt} package.
 }
 
 \examples{

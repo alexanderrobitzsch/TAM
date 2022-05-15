@@ -1,5 +1,5 @@
 ## File Name: tam.modelfit.R
-## File Version: 9.38
+## File Version: 9.406
 
 
 # Q3 statistic and model fit statistics for objects of class tam
@@ -127,12 +127,11 @@ tam.modelfit <- function( tamobj, progress=TRUE )
         chisquare.itemfit$p[ii] <- min( stats::p.adjust( h1$p, method="holm") )
     }
     chisquare.itemfit$p.holm <- stats::p.adjust( chisquare.itemfit$p, method="holm")
+
     # maximum chi square
-    modelfit.test <- data.frame(
-                "maxX2"=max( chi2.stat$chi2),
-                "Npairs"=nrow(chi2.stat),
-                "p.holm"=min( chi2.stat$p.holm[pair_exists] )
-                )
+    modelfit.test <- data.frame( maxX2=max( chi2.stat$chi2),
+                            Npairs=nrow(chi2.stat),
+                            p.holm=min( chi2.stat$p.holm[pair_exists] )    )
 
     #** modelfit.stat
     modelfit.stat <- fitstat

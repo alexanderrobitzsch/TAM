@@ -1,5 +1,5 @@
 ## File Name: IRT.residuals.R
-## File Version: 9.15
+## File Version: 9.161
 
 
 #####################################################
@@ -15,7 +15,7 @@ IRT.residuals <- function (object, ...)
 tam.residuals <- function( object, ... )
 {
     tamobj <- object
-    if (class(tamobj)!="tam.jml"){
+    if (! inherits(tamobj,"tam.jml")){
         res <- tam.wle( tamobj, progress=FALSE, output.prob=TRUE, ... )
         probs <- res$probs
         probs[ is.na(probs) ] <- 0

@@ -1,5 +1,5 @@
 %% File Name: tam_NA_pattern.Rd
-%% File Version: 0.05
+%% File Version: 0.062
 
 \name{tam_NA_pattern}
 \alias{tam_NA_pattern}
@@ -22,9 +22,7 @@ tam_01_pattern(x)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-\item{x}{
-Matrix or data frame
-}
+\item{x}{Matrix or data frame}
 }
 
 
@@ -34,7 +32,7 @@ Matrix or data frame
 
 
 \value{
-List containing identifiers and indices
+List containing pattern identifiers and indices
 }
 
 %\references{
@@ -65,6 +63,7 @@ dat <- data.sim.rasch.missing
 res <- TAM::tam_NA_pattern(dat)
 str(res)
 
+\dontrun{
 #############################################################################
 # EXAMPLE 2: Item response patterns
 #############################################################################
@@ -74,6 +73,7 @@ dat <- data.read
 
 res <- TAM::tam_01_pattern(dat)
 str(res)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

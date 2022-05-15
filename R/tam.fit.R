@@ -1,12 +1,12 @@
 ## File Name: tam.fit.R
-## File Version: 9.16
+## File Version: 9.171
 tam.fit <- function( tamobj, ... )
 {
     CALL <- match.call()
-    if(class(tamobj)=="tam.mml"){
+    if(inherits(tamobj,"tam.mml")){
         res <- tam.mml.fit( tamobj, ...)
     }
-    if(class(tamobj)=="tam.jml"){
+    if(inherits(tamobj,"tam.jml")){
         res <- tam.jml.fit( tamobj, ...)
     }
     res$CALL <- CALL

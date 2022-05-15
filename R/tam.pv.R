@@ -1,5 +1,5 @@
 ## File Name: tam.pv.R
-## File Version: 9.466
+## File Version: 9.468
 tam.pv <- function( tamobj, nplausible=10,
             ntheta=2000, normal.approx=FALSE, samp.regr=FALSE,
             theta.model=FALSE, np.adj=8, na.grid=5, verbose=TRUE)
@@ -26,13 +26,13 @@ tam.pv <- function( tamobj, nplausible=10,
     #-- check for recommendation of tam.pv.mcmc
     res <- tam_pv_recommend_tam_pv_mcmc(tamobj=tamobj)
 
-    if ( class(tamobj)=="tam.latreg" ){
+    if ( inherits(tamobj,"tam.latreg") ){
         theta.model <- TRUE
         latreg <- TRUE
         like <- tamobj$like
     }
     if ( ! latreg ){
-        if (class(tamobj)!="tam.mml.3pl"){
+        if ( ! inherits(tamobj,"tam.mml.3pl") ){
             guess <- rep( 0, dim(tamobj$B)[1] )
         } else {
             guess <- tamobj$guess

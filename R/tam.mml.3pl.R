@@ -1,5 +1,5 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.881
+## File Version: 9.882
 
 tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
             formulaY=NULL, dataY=NULL,
@@ -718,7 +718,7 @@ tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
     se.xsi.min -> se.xsi
     se.B.min -> se.B
 
-    #*** include NAs in AXsi    
+    #*** include NAs in AXsi
     AXsi <- tam_mml_include_NA_AXsi(AXsi=AXsi, maxcat=maxK, A=A, xsi=xsi)
 
     #**** standard errors AXsi

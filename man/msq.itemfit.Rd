@@ -1,5 +1,5 @@
 %% File Name: msq.itemfit.Rd
-%% File Version: 0.39
+%% File Version: 0.402
 
 \name{msq.itemfit}
 
@@ -85,6 +85,8 @@ See also \code{eRm::itemfit} or \code{\link[mirt:itemfit]{mirt::itemfit}}.
 
 
 \examples{
+\dontrun{
+
 #############################################################################
 # EXAMPLE 1: Simulated data Rasch model
 #############################################################################
@@ -109,7 +111,6 @@ wmod1 <- TAM::tam.wle(mod1)$theta
 fit1 <- TAM::msq.itemfit(mod1)
 summary( fit1 )
 
-\dontrun{
 #--- item fit using simulation in "tam.fit"
 fit0 <- TAM::tam.fit( mod1 )
 summary(fit0)
@@ -147,7 +148,6 @@ summary(fit2)
 # using WLEs
 fit2b <- TAM::msq.itemfitWLE( mod1, fitindices )
 summary(fit2b)
-}
 
 #############################################################################
 # EXAMPLE 2: data.read | fit statistics assessed for testlets
@@ -178,7 +178,6 @@ summary(res1)
 res2 <- TAM::msq.itemfitWLE( mod, fitindices )
 summary(res2)
 
-\dontrun{
 #############################################################################
 # EXAMPLE 3: Fit statistics for rater models
 #############################################################################

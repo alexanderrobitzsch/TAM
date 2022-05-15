@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.989
+%% File Version: 2.991
 
 \name{tam.mml}
 
@@ -589,7 +589,7 @@ Use \code{\link{tam.se}} for improved standard errors.
 
 For model comparisons see \code{\link{anova.tam}}.
 
-See \code{\link[sirt:tam2mirt]{sirt::tam2mirt}} for converting
+See \code{sirt::tam2mirt} for converting
 \code{tam} objects into objects of class
 \code{\link[mirt:mirt]{mirt::mirt}} in the \pkg{mirt} package.
 }

@@ -1,19 +1,20 @@
 ## File Name: tam.se.R
-## File Version: 9.15
+## File Version: 9.161
+
 tam.se <- function( tamobj, item_pars=TRUE, ...)
 {
     SE.quick <- TRUE
     #-------------------------------
     ## "quick" standard errors
     if(SE.quick){
-        if(class(tamobj) %in% c("tam.mml") ){
+        if(inherits(tamobj,"tam.mml") ){
             res <- tam_mml_se_quick( tamobj=tamobj, item_pars=item_pars, ...)
         }
-        if(class(tamobj) %in% c("tam.latreg") ){
+        if(inherits(tamobj,"tam.latreg") ){
             res <- tam_latreg_se_quick( tamobj=tamobj, ...)
         }
 
-        if(class(tamobj)=="tam.jml"){
+        if(inherits(tamobj,"tam.jml")){
             # res <- tam.jml.se( tamobj, ...)
             ## include standard errors here!!
         }

@@ -1,14 +1,15 @@
-## File Name: tamaanify.create.A.R
-## File Version: 9.11
+## File Name: tamaanify_create_A.R
+## File Version: 9.211
 
 
-#-- create A matrix
-tamaanify.create.A <- function(res)
+### create A matrix
+
+tamaanify_create_A <- function(res)
 {
     resp <- res$resp
     lavpartable <- res$lavpartable
-    #***********************************
-    # create A matrix
+
+    #*** create A matrix
     A <- designMatrices( resp=resp )
     A <- A$A
     items0 <- dimnames(A)[[1]] <- res$items$item
@@ -18,8 +19,7 @@ tamaanify.create.A <- function(res)
         dimnames(A)[[3]] <- paste0( dimnames(A)[[3]], "_Cat1")
     }
 
-    #*********************************************
-    # loop over items for smoothed nominal response models
+    #*** loop over items for smoothed nominal response models
     smooth.nrm <- FALSE
     itemtable <- res$items
     items.ind <- grep( ",", paste(itemtable$itemtype), fixed=TRUE )
@@ -58,8 +58,7 @@ tamaanify.create.A <- function(res)
         }
     }
 
-    #*********************************************
-    #****** xsi parameter fixings
+    #*** xsi parameter fixings
     xsi.fixed <- NULL
     maxK <- max( res$items$ncat )-1
     lavpartable <- lavpartable[ lavpartable$user !=-99, ]
@@ -120,8 +119,7 @@ tamaanify.create.A <- function(res)
         dimnames(A)[[3]] <- paste(lavpartable0[ ind, "label" ])
     }
 
-    #***********************
-    # model constraint thresholds
+    #*** model constraint thresholds
     mdfr <- res$MODELCONSTRAINT.dfr
     if ( ! is.null(mdfr) ){
         mdfr <- mdfr[ grep( "|t", mdfr$fullsyn, fixed=TRUE), ]
@@ -167,10 +165,9 @@ tamaanify.create.A <- function(res)
             }
         }
     }
-    #**************************************
-    #*** OUTPUT
+
+    #--- OUTPUT
     res$A <- A
     res$xsi.fixed <- xsi.fixed
     return(res)
 }
-#########################################################

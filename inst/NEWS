@@ -41,20 +41,28 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 
-
 -------------------------------------------------------------
-VERSIONS TAM 4.0  |  2021-06-25  |  Last: TAM 4.0-1
+VERSIONS TAM 4.1  |  2022-05-15  |  Last: TAM 4.1-1
 -------------------------------------------------------------
 
 xxx   * ...
+
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
 
 
 
+-------------------------------------------------------------
+VERSIONS TAM 4.0  |  2022-05-13  |  Last: TAM 4.0-16
+-------------------------------------------------------------
 
+NOTE  * changed default output file name suffix in tam_osink()
+NOTE  * new CRAN release because of recent removal of the 
+        CDM package from CRAN
 
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
 
 -------------------------------------------------------------
 VERSIONS TAM 3.7  |  2021-06-24  |  Last: TAM 3.7-16

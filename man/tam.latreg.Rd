@@ -1,5 +1,5 @@
 %% File Name: tam.latreg.Rd
-%% File Version: 0.31
+%% File Version: 0.321
 
 \name{tam.latreg}
 \alias{tam.latreg}
@@ -146,7 +146,7 @@ See also \code{\link{tam.pv}} for plausible value imputation.
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Unidimensional latent regression model with fitted IRT model in
-#            sirt package
+#            the sirt package
 #############################################################################
 
 library(sirt)

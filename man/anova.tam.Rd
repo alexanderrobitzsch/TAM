@@ -1,5 +1,5 @@
 %% File Name: anova.tam.Rd
-%% File Version: 2.33
+%% File Version: 2.341
 
 \name{anova-logLik}
 \alias{anova.tam}
@@ -116,7 +116,7 @@ anova( mod1, mod2 )
 # EXAMPLE 2: Dataset reading (sirt package): 1- vs. 2-dimensional model
 #############################################################################
 
-data(data.read,package="sirt")
+data(data.read, package="sirt")
 
 # 1-dimensional model
 mod1 <- TAM::tam.mml.2pl(resp=data.read )

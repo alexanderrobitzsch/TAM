@@ -1,5 +1,5 @@
 ## File Name: tamaanify.R
-## File Version: 9.216
+## File Version: 9.233
 
 
 #--- tamaanify function
@@ -40,35 +40,31 @@ tamaanify <- function( tammodel, resp, tam.method=NULL, doparse=TRUE )
     res$gammaslope.fixed <- NULL
 
     #*** process analysis
-    res <- tamaanify.proc.analysis( res )
+    res <- tamaanify_proc_analysis(res=res)
 
     #*** extract lavaan model
     res <- tamaanify_proc_lavaanmodel(res=res, resp=resp)
 
     #*** item characteristics
-    res <- tamaanify.proc.items( res, resp)
+    res <- tamaanify_proc_items(res=res, resp=resp)
 
     #*** item type
-    res <- tamaanify.proc.itemtype( res )
+    res <- tamaanify_proc_itemtype(res=res)
 
     #*** include model constraints
-    res <- tamaanify.proc.modelconstraint( res )
+    res <- tamaanify_proc_modelconstraint(res=res)
 
-    #******
-    # add response dataset
-    cols <- paste(res$items$item)
-    resp <- resp[, cols]
-    res$resp <- resp
+    #*** add response dataset
+    res <- tamaanify_proc_resp(res=res, resp=resp)
 
-    #**********
-    # define design matrices and model for TAM
+    #*** define design matrices and model for TAM
     res$method <- "tam.mml.2pl"
     if ( ! is.null(tam.method) ){
         res$method <- tam.method
     }
 
     #*** A matrix
-    res <- tamaanify.create.A(res=res)
+    res <- tamaanify_create_A(res=res)
 
     #*** Q matrix
     res <- tamaanify_create_Q(res=res)
@@ -83,13 +79,13 @@ tamaanify <- function( tammodel, resp, tam.method=NULL, doparse=TRUE )
     res <- tamaanify_variance_fixed(res=res)
 
     #*** define design matrices for tam.mml.3pl method
-    res <- tamaanify.tam.mml.3pl.designMatrices(res=res)
+    res <- tamaanify_tam_mml_3pl_designMatrices(res=res)
 
     #*** delta design matrix
     res <- tamaanify.tam.mml.3pl.deltadesign(res=res)
 
     #**** model prior
-    res <- tamaanify.modelprior(res=res)
+    res <- tamaanify_modelprior(res=res)
 
     #*** define method
     res <- tamaanify.define.method(res=res, tam.method=tam.method)

@@ -1,5 +1,5 @@
 ## File Name: IRT.informationCurve.R
-## File Version: 9.19
+## File Version: 9.212
 
 
 
@@ -47,25 +47,19 @@ informationCurves_mml <- function( object, h=.0001,
                         B=B, xsi=xsi, theta=theta, nnodes=nnodes,
                         maxK=maxK, recalc=TRUE)
 
-    #****
-    # calculate probabilities
-    if ( class(object) %in% c("tam.mml","tam.mml.2pl",    "tam.mml.mfr") ){
+    #--- calculate probabilities
+    if ( inherits(object, c("tam.mml","tam.mml.2pl", "tam.mml.mfr") ) ){
         fct <- "tam_calc_prob"
-        p0 <- do.call( what=fct, args=calc_args )$rprobs
-        p1 <- do.call( what=fct, args=tam_args_replace_value( args=calc_args,
-                        variable="theta", value=theta+h ) )$rprobs
-        p2 <- do.call( what=fct, args=tam_args_replace_value( args=calc_args,
-                        variable="theta", value=theta-h ) )$rprobs
     }
-    if ( class(object) %in% c("tam.mml.3pl" ) ){
+    if ( inherits(object, c("tam.mml.3pl") ) ){
         calc_args$guess <- guess
         fct <- "tam_mml_3pl_calc_prob"
-        p0 <- do.call( what=fct, args=calc_args )$rprobs
-        p1 <- do.call( what=fct, args=tam_args_replace_value( args=calc_args,
-                        variable="theta", value=theta+h ) )$rprobs
-        p2 <- do.call( what=fct, args=tam_args_replace_value( args=calc_args,
-                        variable="theta", value=theta-h ) )$rprobs
     }
+    p0 <- do.call( what=fct, args=calc_args )$rprobs
+    args1 <- tam_args_replace_value( args=calc_args, variable="theta", value=theta+h )
+    p1 <- do.call( what=fct, args=args1 )$rprobs
+    args2 <- tam_args_replace_value( args=calc_args, variable="theta", value=theta-h )
+    p2 <- do.call( what=fct, args=args2 )$rprobs    
     p0a <- p0
     p0[ is.na(p0) ] <- 0
     p1[ is.na(p1) ] <- 0

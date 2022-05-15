@@ -1,5 +1,5 @@
 ## File Name: designMatrices_aux.R
-## File Version: 9.103
+## File Version: 9.104
 
 #############################################################
 print.designMatrices <-
@@ -215,8 +215,6 @@ if (FALSE){
         ind.mm <- grep(sg, rownames(mm))
         mm.sg.temp <- rbind( 0, apply( mm[ ind.mm,], 2, cumsum ) )
 #        mm.sg.temp <- rbind( 0, colCumsums.sirt( mm[ ind.mm,] ) )
-        # substitute the following line later if the sirt function
-        # colCumsums.sirt is available at CRAN
         #        mm.sg.temp <- rbind( 0, colCumsums.sirt( mm[ grep(sg, rownames(mm)),] ) )
         rownames(mm.sg.temp)[1] <- gsub("step([[:digit:]])*", "step0", sg, fixed=T)
         A <- rbind(A, mm.sg.temp)

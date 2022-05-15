@@ -1,5 +1,5 @@
 ## File Name: tam.threshold.R
-## File Version: 9.15
+## File Version: 9.161
 
 
 #**** Thurstonian thresholds (gammas)
@@ -11,7 +11,7 @@ tam.threshold <- function (tamobj, prob.lvl=0.5)
     maxK <- tamobj$maxK
     AXsi <- tamobj$AXsi
     xsi <- tamobj$xsi
-    if (class(tamobj)!="tam.jml"){
+    if (! inherits(tamobj,"tam.jml")){
         xsi <- xsi[,1]
     }
     A <- tamobj$A
