@@ -1,14 +1,16 @@
 # TAM
 #### Test Analysis Modules
 
-
-If you use `TAM` and have suggestions for improvement or have found bugs, please email me at robitzsch@ipn.uni-kiel.de.
+If you use `TAM` and have suggestions for improvement or have found bugs, please email me at robitzsch@leibniz-ipn.de.
+Please always provide a minimal dataset, necessary to demonstrate the problem, 
+a minimal runnable code necessary to reproduce the issue, which can be run on the given dataset, and
+all necessary information on the used librarys, the R version, and the OS it is run on, perhaps a sessionInfo().
 
 #### Manual
 
 The manual may be found here [https://alexanderrobitzsch.github.io/TAM/](https://alexanderrobitzsch.github.io/TAM/) 
 
-#### CRAN version `TAM` 4.0-16 (2022-05-13)
+#### CRAN version `TAM` 4.1-4 (2022-08-28)
 
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-last-release/TAM)](https://cran.r-project.org/package=TAM)
@@ -22,9 +24,9 @@ The CRAN version can be installed from within R using:
 utils::install.packages("TAM")
 ```
 
-#### GitHub version `TAM` 4.1-1 (2022-05-15)
+#### GitHub version `TAM` 4.2-1 (2022-08-29)
 
-[![](https://img.shields.io/badge/github%20version-4.1--1-orange.svg)](https://github.com/alexanderrobitzsch/TAM)&#160;&#160;
+[![](https://img.shields.io/badge/github%20version-4.2--1-orange.svg)](https://github.com/alexanderrobitzsch/TAM)&#160;&#160;
 
 The version hosted [here](https://github.com/alexanderrobitzsch/TAM) is the development version of `TAM`. 
 The GitHub version can be installed using `devtools` as:

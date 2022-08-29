@@ -1,5 +1,5 @@
 ## File Name: tam.jml.R
-## File Version: 9.365
+## File Version: 9.367
 
 
 tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
@@ -28,8 +28,8 @@ tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
         constraint <- "cases"
         res <- tam_jml_version1( resp=resp, group=group, adj=adj,
                     disattenuate=disattenuate, bias=bias, xsi.fixed=xsi.fixed,
-                    xsi.inits=xsi.inits, A=A, B=B, Q=Q, ndim=ndim, theta.fixed=theta.fixed,
-                    pweights=pweights, control=control )
+                    xsi.inits=xsi.inits, A=A, B=B, Q=Q, ndim=ndim,
+                    theta.fixed=theta.fixed, pweights=pweights, control=control )
     }
     #**** version=2
     if (version>=2){

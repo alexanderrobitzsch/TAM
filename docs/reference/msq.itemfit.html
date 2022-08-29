@@ -78,7 +78,7 @@ tam.wle." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">4.1-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">4.2-vv</span>
       </span>
     </div>
 
@@ -196,7 +196,7 @@ and infit</p></dd>
 <span class='co'># create some misfitting items</span>
 <span class='no'>a</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>3</span>)] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.5</span>, <span class='fl'>1.5</span> )
 <span class='co'># simulate data</span>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>sim.raschtype</span>( <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>N</span>), <span class='kw'>b</span><span class='kw'>=</span><span class='no'>b</span>, <span class='kw'>fixed.a</span><span class='kw'>=</span><span class='no'>a</span> )
+<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/sim.raschtype.html'>sim.raschtype</a></span>( <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>N</span>), <span class='kw'>b</span><span class='kw'>=</span><span class='no'>b</span>, <span class='kw'>fixed.a</span><span class='kw'>=</span><span class='no'>a</span> )
 <span class='co'>#*** estimate Rasch model</span>
 <span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.mml.html'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='co'># compute WLEs</span>
@@ -218,7 +218,7 @@ and infit</p></dd>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mirt</span>)
 <span class='no'>mod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mirt/man/mirt.html'>mirt</a></span>( <span class='no'>dat</span>, <span class='kw'>model</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>itemtype</span><span class='kw'>=</span><span class='st'>"Rasch"</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>TRUE</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>mod1b</span>)
-<span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>mirt.wrapper.coef</span>(<span class='no'>mod1b</span>)
+<span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/mirt.wrapper.html'>mirt.wrapper.coef</a></span>(<span class='no'>mod1b</span>)
 <span class='no'>fmod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mirt/man/itemfit.html'>itemfit</a></span>(<span class='no'>mod1b</span>, <span class='kw'>Theta</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>wmod1</span>,<span class='kw'>ncol</span><span class='kw'>=</span><span class='fl'>1</span>),
                  <span class='kw'>Zh</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>X2</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>S_X2</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='no'>fit2a</span>$<span class='no'>fit_data</span>, <span class='no'>fmod1b</span> )

@@ -1,5 +1,5 @@
 %% File Name: msq.itemfit.Rd
-%% File Version: 0.402
+%% File Version: 0.404
 
 \name{msq.itemfit}
 
@@ -80,7 +80,7 @@ and infit}
 \seealso{
 See also \code{\link{tam.fit}} for simulation based assessment of item fit.
 
-See also \code{eRm::itemfit} or \code{\link[mirt:itemfit]{mirt::itemfit}}.
+See also \code{eRm::itemfit} or \code{mirt::itemfit}.
 }
 
 

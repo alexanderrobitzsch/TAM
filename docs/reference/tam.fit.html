@@ -74,7 +74,7 @@ tam.jml,  respectively." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">4.1-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">4.2-vv</span>
       </span>
     </div>
 
@@ -219,7 +219,7 @@ posterior distributions.</p>
 for models fitted with JML.</p>
 <p>See <code><a href='tam.personfit.html'>tam.personfit</a></code> for computing person fit statistics.</p>
 <p>Item fit and person fit based on estimated person parameters can also be
-calculated using the <code>sirt::pcm.fit</code> function
+calculated using the <code><a href='https://rdrr.io/pkg/sirt/man/pcm.fit.html'>sirt::pcm.fit</a></code> function
 in the <b>sirt</b> package (see Example 1 and Example 2).</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -251,7 +251,7 @@ in the <b>sirt</b> package (see Example 1 and Example 2).</p></div>
 <span class='co'># extract item parameters</span>
 <span class='no'>b1</span> <span class='kw'>&lt;-</span> - <span class='no'>mod1</span>$<span class='no'>AXsi</span>[, -<span class='fl'>1</span> ]
 <span class='co'># assess item fit and person fit</span>
-<span class='no'>fit1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>pcm.fit</span>(<span class='kw'>b</span><span class='kw'>=</span><span class='no'>b1</span>, <span class='kw'>theta</span><span class='kw'>=</span><span class='no'>wle</span>$<span class='no'>theta</span>, <span class='no'>data.sim.rasch</span> )
+<span class='no'>fit1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/pcm.fit.html'>pcm.fit</a></span>(<span class='kw'>b</span><span class='kw'>=</span><span class='no'>b1</span>, <span class='kw'>theta</span><span class='kw'>=</span><span class='no'>wle</span>$<span class='no'>theta</span>, <span class='no'>data.sim.rasch</span> )
 <span class='no'>fit1a</span>$<span class='no'>item</span>       <span class='co'># item fit statistic</span>
 <span class='no'>fit1a</span>$<span class='no'>person</span>     <span class='co'># person fit statistic</span>
 
@@ -279,7 +279,7 @@ in the <b>sirt</b> package (see Example 1 and Example 2).</p></div>
 <span class='co'># extract item parameters</span>
 <span class='no'>b1</span> <span class='kw'>&lt;-</span> - <span class='no'>mod2</span>$<span class='no'>AXsi</span>[, -<span class='fl'>1</span> ]
 <span class='co'># assess fit</span>
-<span class='no'>fit1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>pcm.fit</span>(<span class='kw'>b</span><span class='kw'>=</span><span class='no'>b1</span>, <span class='kw'>theta</span><span class='kw'>=</span><span class='no'>wle</span>$<span class='no'>theta</span>, <span class='no'>dat</span>)
+<span class='no'>fit1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/pcm.fit.html'>pcm.fit</a></span>(<span class='kw'>b</span><span class='kw'>=</span><span class='no'>b1</span>, <span class='kw'>theta</span><span class='kw'>=</span><span class='no'>wle</span>$<span class='no'>theta</span>, <span class='no'>dat</span>)
 <span class='no'>fit1a</span>$<span class='no'>item</span>
 
 <span class='co'>#############################################################################</span>
@@ -335,7 +335,7 @@ in the <b>sirt</b> package (see Example 1 and Example 2).</p></div>
 <span class='co'># create some misfitting items</span>
 <span class='no'>a</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>3</span>)] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.5</span>, <span class='fl'>1.5</span> )
 <span class='co'># simulate data</span>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>sim.raschtype</span>( <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>N</span>), <span class='kw'>b</span><span class='kw'>=</span><span class='no'>b</span>, <span class='kw'>fixed.a</span><span class='kw'>=</span><span class='no'>a</span> )
+<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/sim.raschtype.html'>sim.raschtype</a></span>( <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>N</span>), <span class='kw'>b</span><span class='kw'>=</span><span class='no'>b</span>, <span class='kw'>fixed.a</span><span class='kw'>=</span><span class='no'>a</span> )
 <span class='co'>#*** estimate Rasch model</span>
 <span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.mml.html'>tam.mml</a></span>(<span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='co'>#*** assess item fit by infit and outfit statistic</span>
@@ -347,7 +347,7 @@ in the <b>sirt</b> package (see Example 1 and Example 2).</p></div>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sirt</span>)
 <span class='no'>mod1c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mirt/man/mirt.html'>mirt</a></span>( <span class='no'>dat</span>, <span class='kw'>model</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>itemtype</span><span class='kw'>=</span><span class='st'>"Rasch"</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>mod1c</span>)                      <span class='co'># model summary</span>
-<span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>mirt.wrapper.coef</span>(<span class='no'>mod1c</span>)    <span class='co'># estimated parameters</span>
+<span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/mirt.wrapper.html'>mirt.wrapper.coef</a></span>(<span class='no'>mod1c</span>)    <span class='co'># estimated parameters</span>
 <span class='no'>fit1c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mirt/man/itemfit.html'>itemfit</a></span>(<span class='no'>mod1c</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"EAP"</span>)    <span class='co'># model fit in mirt package</span>
 <span class='co'># compare results of TAM and mirt</span>
 <span class='no'>dfr</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>( <span class='st'>"TAM"</span><span class='kw'>=</span><span class='no'>fit1</span>, <span class='st'>"mirt"</span><span class='kw'>=</span><span class='no'>fit1c</span>[,-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)] )

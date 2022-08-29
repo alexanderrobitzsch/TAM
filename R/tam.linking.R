@@ -1,5 +1,5 @@
 ## File Name: tam.linking.R
-## File Version: 0.347
+## File Version: 0.349
 
 tam.linking <- function( tamobj_list, type="Hae", method="joint",
     pow_rob_hae=1, eps_rob_hae=1e-4, theta=NULL, wgt=NULL, wgt_sd=2, fix.slope=FALSE,
@@ -19,7 +19,8 @@ tam.linking <- function( tamobj_list, type="Hae", method="joint",
     #--- extract parameters
     parameters_list <- list()
     for (mm in 1:NM){
-        parameters_list[[mm]] <- tam_linking_extract_parameters( tamobj=tamobj_list[[mm]],
+        parameters_list[[mm]] <- tam_linking_extract_parameters(
+                                        tamobj=tamobj_list[[mm]],
                                         elim_items=elim_items[[mm]] )
     }
 
@@ -55,10 +56,10 @@ tam.linking <- function( tamobj_list, type="Hae", method="joint",
     s2 <- Sys.time()
     time <- c(s1, s2)
     res <- list(parameters_list=parameters_list, linking_list=linking_list, M_SD=M_SD,
-                    trafo_persons=trafo_persons, trafo_items=trafo_items, N_common=N_common,
-                    theta=theta, wgt=wgt, NS=NM, type=type, method=method,
-                    pow_rob_hae=pow_rob_hae, eps_rob_hae=eps_rob_hae, par=par,
-                    CALL=CALL,time=time)
+                    trafo_persons=trafo_persons, trafo_items=trafo_items,
+                    N_common=N_common, theta=theta, wgt=wgt, NS=NM, type=type,
+                    method=method, pow_rob_hae=pow_rob_hae, eps_rob_hae=eps_rob_hae,
+                    par=par, CALL=CALL,time=time)
     class(res) <- "tam.linking"
     return(res)
 }

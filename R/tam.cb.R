@@ -1,5 +1,5 @@
 ## File Name: tam.cb.R
-## File Version: 0.16
+## File Version: 0.172
 
 
 
@@ -98,8 +98,9 @@ tam.cb <- function( dat, wlescore=NULL, group=NULL, max_ncat=30, progress=TRUE,
             if (l1 < max_ncat){
                 wt <- weighted_table(v2, w=wgt1)
                 wt <- wt / sum(wt)
-                dfr.gg$freq[ii] <- paste0( " ", paste0( paste0( names(wt), " : ", round(wt,digits_freq)),
-                                        collapse=" # " ) )
+                dfr.gg$freq[ii] <- paste0( " ", paste0(
+                                        paste0( names(wt), " : ", round(wt,digits_freq)),
+                                                    collapse=" # " ) )
             }
             if ( ii %in% prg){
                 cat("-")

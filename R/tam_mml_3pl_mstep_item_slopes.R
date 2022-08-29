@@ -1,5 +1,5 @@
 ## File Name: tam_mml_3pl_mstep_item_slopes.R
-## File Version: 9.647
+## File Version: 9.658
 
 
 #--- tam.mml.3pl estimate item slopes
@@ -90,7 +90,7 @@ tam_mml_3pl_mstep_item_slopes <- function( max.increment, np,
             if ( ncol(gammaslope.prior)==4 ){
                 Xlambda <- ifelse( Xlambda < gammaslope.prior[,3],
                                         gammaslope.prior[,3] + 1.3* h, Xlambda )
-                 Xlambda <- ifelse( Xlambda > gammaslope.prior[,4],
+                Xlambda <- ifelse( Xlambda > gammaslope.prior[,4],
                                         gammaslope.prior[,4] - 1.3* h, Xlambda )
             }
         }
@@ -145,12 +145,11 @@ tam_mml_3pl_mstep_item_slopes <- function( max.increment, np,
                     skip_B=skip_B, B=B )
 
     #---- OUTPUT
-    res <- list(gammaslope=Xlambda, se.gammaslope=se.Xlambda,
+    res <- list(gammaslope=gammaslope, se.gammaslope=se.Xlambda,
                 max.increment.b=max.increment,
                 gammachange=max( abs( Xlambda00 - Xlambda) ),
                 gammaslope_change=gammaslope_change,
-                gammaslope_acceleration=gammaslope_acceleration, B=B
-                )
+                gammaslope_acceleration=gammaslope_acceleration, B=B )
     return(res)
 }
 #----------------------------------------------------------

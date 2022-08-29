@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">4.1-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">4.2-vv</span>
       </span>
     </div>
 
@@ -642,9 +642,9 @@ in the ConQuest manual (Wu, Adams, Wilson &amp; Haldane, 2007).</p>
 <p>Standard errors are estimated by a rather crude (but quick) approximation.
 Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.</p>
 <p>For model comparisons see <code><a href='anova.tam.html'>anova.tam</a></code>.</p>
-<p>See <code>sirt::tam2mirt</code> for converting
+<p>See <code><a href='https://rdrr.io/pkg/sirt/man/tam2mirt.html'>sirt::tam2mirt</a></code> for converting
 <code>tam</code> objects into objects of class
-<code><a href='https://rdrr.io/pkg/mirt/man/mirt.html'>mirt::mirt</a></code> in the <span class="pkg">mirt</span> package.</p></div>
+<code><a href='https://rdrr.io/pkg/mirt/man/mirt.html'>mirt::mirt</a></code> in the <b>mirt</b> package.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'>#############################################################################</span>
@@ -2072,7 +2072,7 @@ Use <code><a href='tam.se.html'>tam.se</a></code> for improved standard errors.<
 <span class='no'>I</span> <span class='kw'>&lt;-</span> <span class='fl'>100</span>       <span class='co'># number of items</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>987</span>)
 <span class='co'># simulate data according to the Rasch model</span>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>sim.raschtype</span>( <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>N</span>), <span class='kw'>b</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(-<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='kw'>len</span><span class='kw'>=</span><span class='no'>I</span>)  )
+<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/sim.raschtype.html'>sim.raschtype</a></span>( <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>N</span>), <span class='kw'>b</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(-<span class='fl'>2</span>,<span class='fl'>2</span>,<span class='kw'>len</span><span class='kw'>=</span><span class='no'>I</span>)  )
 <span class='co'># estimate models</span>
 <span class='no'>mod1n</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>acceleration</span><span class='kw'>=</span><span class='st'>"none"</span>) )  <span class='co'># no acceler.</span>
 <span class='no'>mod1y</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'>tam.mml</span>( <span class='kw'>resp</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>control</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>acceleration</span><span class='kw'>=</span><span class='st'>"Yu"</span>) )  <span class='co'># Yu acceler.</span>

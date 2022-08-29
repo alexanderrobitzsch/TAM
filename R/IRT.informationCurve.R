@@ -1,5 +1,5 @@
 ## File Name: IRT.informationCurve.R
-## File Version: 9.212
+## File Version: 9.213
 
 
 
@@ -59,7 +59,7 @@ informationCurves_mml <- function( object, h=.0001,
     args1 <- tam_args_replace_value( args=calc_args, variable="theta", value=theta+h )
     p1 <- do.call( what=fct, args=args1 )$rprobs
     args2 <- tam_args_replace_value( args=calc_args, variable="theta", value=theta-h )
-    p2 <- do.call( what=fct, args=args2 )$rprobs    
+    p2 <- do.call( what=fct, args=args2 )$rprobs
     p0a <- p0
     p0[ is.na(p0) ] <- 0
     p1[ is.na(p1) ] <- 0

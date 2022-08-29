@@ -1,5 +1,5 @@
 %% File Name: IRT.residuals.Rd
-%% File Version: 0.182
+%% File Version: 0.183
 
 \name{IRT.residuals}
 \alias{IRT.residuals}
@@ -83,8 +83,8 @@ factor analysis (see Example 1).
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See also the \code{eRm::residuals} (\pkg{eRm}) or
-\code{\link[mirt:residuals-method]{residuals}} (\pkg{mirt})
+See also the \code{eRm::residuals} (\bold{eRm}) or
+\code{\link[mirt:residuals-method]{residuals}} (\bold{mirt})
 functions.
 
 See also \code{\link[TAM:predict.tam.mml]{predict.tam.mml}}.

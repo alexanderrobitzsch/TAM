@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.991
+%% File Version: 2.992
 
 \name{tam.mml}
 
@@ -591,7 +591,7 @@ For model comparisons see \code{\link{anova.tam}}.
 
 See \code{sirt::tam2mirt} for converting
 \code{tam} objects into objects of class
-\code{\link[mirt:mirt]{mirt::mirt}} in the \pkg{mirt} package.
+\code{mirt::mirt} in the \bold{mirt} package.
 }
 
 %% \code{\link{logLik.tam}}, \code{\link{anova.tam}}

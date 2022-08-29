@@ -1,5 +1,5 @@
 ## File Name: tamaanify.tam.mml.3pl.designMatrices.TRAIT.R
-## File Version: 9.07
+## File Version: 9.082
 
 ######################################
 # TRAIT
@@ -25,7 +25,7 @@ tamaanify.tam.mml.3pl.designMatrices.TRAIT <- function( res ){
     if ( ! is.null(B_fix) ){
         Q.fixed <- NA*Q
         colnames(B_fix) <- c("item_index", "cat", "dim", "value")
-        B_fix <- B_fix[ B_fix[,"cat"]==2, ]
+        B_fix <- B_fix[ B_fix[,"cat"]==2,, drop=FALSE ]
         h1 <-  B_fix[, c("item_index", "dim") ]
         Q.fixed[ h1 ] <- B_fix[, "value"]
                         }

@@ -1,5 +1,5 @@
 %% File Name: tam.np.Rd
-%% File Version: 0.323
+%% File Version: 0.324
 
 
 \name{tam.np}
@@ -123,8 +123,8 @@ learning problems. \emph{Statistics and Computing, 25}(6), 1129-1141.
 
 \seealso{
 Nonparametric item response models can also be estimated with the
-\code{mirt::itemGAM} function in the \pkg{mirt} package and the
-\code{KernSmoothIRT::ksIRT} in the \pkg{KernSmoothIRT} package.
+\code{mirt::itemGAM} function in the \bold{mirt} package and the
+\code{KernSmoothIRT::ksIRT} in the \bold{KernSmoothIRT} package.
 
 See \code{\link{tam.mml}} and \code{\link{tam.mml.2pl}} for parametric item response
 models.

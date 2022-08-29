@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_pv_mcmc.cpp
-//// File Version: 0.35
+//// File Version: 0.37
 
 
 
@@ -23,7 +23,7 @@ Rcpp::NumericVector tam_rcpp_pv_mcmc_likelihood(
     for (int nn=0; nn<nstud; nn++){
         for (int ii=0; ii<nitems; ii++){
             if ( resp_ind_bool(nn,ii) ){
-                like[nn] = like[nn]*probs(nn, ii + resp(nn,ii)*nitems);
+                like[nn] *= probs(nn, ii + resp(nn,ii)*nitems);
             }
         }
     }
@@ -59,7 +59,7 @@ Rcpp::List tam_rcpp_pv_mcmc_calc_probs_irf_3pl(
                     for (int dd=0; dd<D; dd++){   // dimension dd
                         B_temp = B[  ii + kk*I + dd*I*maxK ];
                         if ( B_temp != 0){
-                            Btheta[ ind_temp ] = Btheta[ ind_temp ]  + B_temp * theta(nn,dd);
+                            Btheta[ ind_temp ] += B_temp * theta(nn,dd);
                         }  // end if B_temp
                     }    // end dd
                     Btheta[ ind_temp ] = std::exp( Btheta[ ind_temp ] );
@@ -76,7 +76,7 @@ Rcpp::List tam_rcpp_pv_mcmc_calc_probs_irf_3pl(
                 sum_temp=0;
                 for (int kk=0; kk<maxK; kk++){  // category kk
                     ind_temp =  ii + kk*I + nn*I*maxK;
-                    sum_temp = sum_temp + Btheta[ ind_temp ];
+                    sum_temp += Btheta[ ind_temp ];
                 }   // end kk
                 for (int kk=0; kk<maxK; kk++){  // category kk
                     ind_temp =  ii + kk*I + nn*I*maxK;

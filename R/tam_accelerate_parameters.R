@@ -1,5 +1,5 @@
 ## File Name: tam_accelerate_parameters.R
-## File Version: 9.18
+## File Version: 9.192
 
 ##############################################################################
 # acceleration
@@ -22,7 +22,8 @@ tam_accelerate_parameters <- function( xsi_acceleration, xsi, iter, itermin=2, i
         xsi <- xsi + w_accel *(xsi - parm_history[,3] )
         parm_history[,1:2] <- parm_history[,2:3]
         parm_history[,3] <- xsi
-        xsi_change <- cbind( parm_history[,2] - parm_history[,1], parm_history[,3] - parm_history[,2] )
+        xsi_change <- cbind( parm_history[,2] - parm_history[,1],
+                                parm_history[,3] - parm_history[,2] )
         lam <- eucl_norm( xsi_change[ind,2] )/ ( eucl_norm( xsi_change[ind,1] ) + eps )
         if ( iter > itermin ){
             w_accel <- lam / ( 2 - lam )

@@ -79,7 +79,7 @@ See Details for model specification." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">4.1-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">4.2-vv</span>
       </span>
     </div>
 
@@ -256,8 +256,8 @@ doi: <a href='https://doi.org/10.1007/s11222-014-9498-5'>10.1007/s11222-014-9498
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Nonparametric item response models can also be estimated with the
-<code><a href='https://rdrr.io/pkg/mirt/man/itemGAM.html'>mirt::itemGAM</a></code> function in the <span class="pkg">mirt</span> package and the
-<code>KernSmoothIRT::ksIRT</code> in the <span class="pkg">KernSmoothIRT</span> package.</p>
+<code><a href='https://rdrr.io/pkg/mirt/man/itemGAM.html'>mirt::itemGAM</a></code> function in the <b>mirt</b> package and the
+<code>KernSmoothIRT::ksIRT</code> in the <b>KernSmoothIRT</b> package.</p>
 <p>See <code><a href='tam.mml.html'>tam.mml</a></code> and <code><a href='tam.mml.html'>tam.mml.2pl</a></code> for parametric item response
 models.</p></div>
 
@@ -361,7 +361,7 @@ models.</p></div>
 <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>,<span class='no'>I</span>)
 <span class='no'>a</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>3</span>,<span class='fl'>8</span>)] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>.5</span>, <span class='fl'>2</span>)
 <span class='no'>theta</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>N</span>, <span class='kw'>sd</span><span class='kw'>=</span><span class='fl'>1</span>)
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'>sim.raschtype</span>(<span class='no'>theta</span>, <span class='kw'>b</span><span class='kw'>=</span><span class='no'>b</span>, <span class='kw'>fixed.a</span><span class='kw'>=</span><span class='no'>a</span>)
+<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sirt</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sirt/man/sim.raschtype.html'>sim.raschtype</a></span>(<span class='no'>theta</span>, <span class='kw'>b</span><span class='kw'>=</span><span class='no'>b</span>, <span class='kw'>fixed.a</span><span class='kw'>=</span><span class='no'>a</span>)
 
 <span class='co'>#- 1PL model</span>
 <span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='tam.mml.html'>tam.mml</a></span>(<span class='no'>dat</span>)

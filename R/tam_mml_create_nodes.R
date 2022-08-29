@@ -1,5 +1,5 @@
 ## File Name: tam_mml_create_nodes.R
-## File Version: 0.331
+## File Version: 0.332
 
 tam_mml_create_nodes <- function(snodes, nodes, ndim, QMC,
         skillspace="normal", theta.k=NULL)
@@ -48,7 +48,7 @@ tam_mml_create_nodes <- function(snodes, nodes, ndim, QMC,
         # sampled theta values
         if (QMC){
             fac <- 1
-            r1 <- tam_import_sfsmisc_QUnif(n=snodes, min=0, max=1, n.min=1, 
+            r1 <- tam_import_sfsmisc_QUnif(n=snodes, min=0, max=1, n.min=1,
                             p=ndim, leap=409)
             theta0.samp <- fac * stats::qnorm(r1)
             if (ndim==1){

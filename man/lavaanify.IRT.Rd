@@ -1,5 +1,5 @@
 %% File Name: lavaanify.IRT.Rd
-%% File Version: 1.411
+%% File Version: 1.412
 
 \name{lavaanify.IRT}
 \alias{lavaanify.IRT}
@@ -90,7 +90,7 @@ converting objects of class \code{tam} into \code{mirt}
 objects.
 
 See \code{sirt::lavaan2mirt}
-for estimating models in the \pkg{mirt} package using \code{lavaan} syntax.
+for estimating models in the \bold{mirt} package using \code{lavaan} syntax.
 
 See \code{\link{doparse}} for the \code{DO} and \code{DO2} statements.
 }

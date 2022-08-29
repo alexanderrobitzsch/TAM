@@ -1,5 +1,5 @@
 ## File Name: summary.tam.jml.R
-## File Version: 9.258
+## File Version: 9.260
 
 
 #***** summary for tam object
@@ -53,7 +53,8 @@ summary.tam.jml <- function( object, file=NULL, ...)
     cat(sdisplay)
     cat("Item Parameters -A*Xsi\n")
     obji <- object$item1
-    tam_round_data_frame_print(obji=obji, from=2, to=ncol(obji), digits=3, rownames_null=TRUE)
+    tam_round_data_frame_print(obji=obji, from=2, to=ncol(obji), digits=3,
+                                    rownames_null=TRUE)
 
     #** close sink
     tam_csink(file=file)

@@ -1,5 +1,5 @@
 ## File Name: tam.mml.3pl.R
-## File Version: 9.882
+## File Version: 9.888
 
 tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
             formulaY=NULL, dataY=NULL,
@@ -636,6 +636,7 @@ tam.mml.3pl <- function( resp, Y=NULL, group=NULL,
             gammaslope_acceleration <- res$gammaslope_acceleration
             B <- res$B
         }
+
 
 
 # cat("\nM steps slopes") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1

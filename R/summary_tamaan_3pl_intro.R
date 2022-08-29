@@ -1,5 +1,5 @@
 ## File Name: summary_tamaan_3pl_intro.R
-## File Version: 9.27
+## File Version: 9.282
 
 
 ################################################
@@ -25,14 +25,17 @@ summary_tamaan_3pl_intro <- function(object){
                 "Normal Distribution", "Discrete Distribution" ), "\n")
     if (object$skillspace=="normal"){
         if (ctr$snodes==0){
-            cat("Numeric integration with", dim(object$theta)[1], "integration points\n")
+            cat("Numeric integration with", dim(object$theta)[1],
+                                "integration points\n")
         }
         if (ctr$snodes>0){
             if (ctr$QMC){
-                cat("Quasi Monte Carlo integration with", dim(object$theta)[1], "integration points\n")
+                cat("Quasi Monte Carlo integration with", dim(object$theta)[1],
+                                        "integration points\n")
             }
             if (! ctr$QMC){
-                cat("Monte Carlo integration with", dim(object$theta)[1], "integration points\n")
+                cat("Monte Carlo integration with", dim(object$theta)[1],
+                                        "integration points\n")
             }
         }
     }
