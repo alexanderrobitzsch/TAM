@@ -1,5 +1,5 @@
 ## File Name: tam.fa.R
-## File Version: 9.258
+## File Version: 9.261
 
 
 #---- Exploratory Factor Analysis and Bifactor Models
@@ -116,7 +116,7 @@ tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
 
     # oblimin rotation in exploratory factor analysis
     if (irtmodel=="efa"){
-        res$efa.oblimin <- GPArotation::oblimin(L=B.stand)
+        res$efa.oblimin <- GPArotation::oblimin(A=B.stand)
         # Schmid Leiman transformation
         corrmatr <- tcrossprod( B.stand )
         diag(corrmatr) <- 1
@@ -132,4 +132,4 @@ tam.fa <- function( resp, irtmodel, dims=NULL, nfactors=NULL,
     #--- output
     return(res)
 }
-#####################################################################
+

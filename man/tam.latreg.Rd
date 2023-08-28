@@ -1,5 +1,5 @@
 %% File Name: tam.latreg.Rd
-%% File Version: 0.321
+%% File Version: 0.322
 
 \name{tam.latreg}
 \alias{tam.latreg}
@@ -121,7 +121,8 @@ A file name in which the summary output will be written
 %}
 
 \value{
-Subset of values of \code{\link{tam.mml}}
+Subset of values of \code{\link{tam.mml}}. In addition,
+means (\code{M_post}) and standard deviations (\code{SD_post}) are computed.
 }
 
 

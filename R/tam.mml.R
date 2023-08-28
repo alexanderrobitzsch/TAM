@@ -1,5 +1,5 @@
 ## File Name: tam.mml.R
-## File Version: 9.804
+## File Version: 9.863
 
 tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
             formulaY=NULL, dataY=NULL,
@@ -81,9 +81,6 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
     }
 
     nitems <- ncol(resp)       # number of items
-    if (is.null(colnames(resp))){
-      colnames(resp) <- paste0( "I", 100+1:nitems )
-    }
     nstud <- nrow(resp)        # number of students
     #*****
     nstud1 <- sum(1*( rowSums( 1 - is.na(resp) ) > 0 ))
@@ -532,7 +529,7 @@ tam.mml <- function( resp, Y=NULL, group=NULL,  irtmodel="1PL",
                  "iter"=iter,
                  "printxsi"=printxsi,
                  "YSD"=YSD, CALL=CALL, latreg_stand=latreg_stand,
-                 prior_list_xsi=prior_list_xsi, penalty_xsi=penalty_xsi         )
+                 prior_list_xsi=prior_list_xsi, penalty_xsi=penalty_xsi)
     class(res) <- "tam.mml"
     return(res)
 }

@@ -1,5 +1,5 @@
 ## File Name: tam_mml_person_posterior.R
-## File Version: 0.12
+## File Version: 0.15
 
 tam_mml_person_posterior <- function(pid, nstud, pweights,
     resp, resp.ind, snodes, hwtE, hwt, ndim, theta )
@@ -32,7 +32,20 @@ tam_mml_person_posterior <- function(pid, nstud, pweights,
             colnames(person)[ which( cnp=="SD.EAP" ) ] <- paste("SD.EAP.Dim", dd, sep="")
         }
     }
+
+    #*** means and standard deviations of posterior distributions
+    SD <- M <- rep(NA, ndim)
+    post <- hwtE
+    n <- nrow(post)
+    for (dd in 1L:ndim){
+        theta_dim <- theta[,dd]
+        mt <- matrix( theta_dim, nrow=n, ncol=length(theta_dim), byrow=TRUE)
+        M[dd] <- sum( mt*post*pweights ) / sum(pweights)
+        M2 <- sum( mt^2*post*pweights ) / sum(pweights)
+        SD[dd] <- sqrt( M2 - M[dd]^2 )
+    }
+
     #----- OUTPUT
-    res <- list( person=person, EAP.rel=EAP.rel )
+    res <- list( person=person, EAP.rel=EAP.rel, M_post=M, SD_post=SD )
     return(res)
 }

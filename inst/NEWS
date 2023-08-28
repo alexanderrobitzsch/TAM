@@ -42,10 +42,15 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 4.2  |  2022-08-29  |  Last: TAM 4.2-1
+VERSIONS TAM 4.2  |  2023-08-28  |  Last: TAM 4.2-11
 -------------------------------------------------------------
 
-xxx   * ...
+NOTE  * included output values 'M_post' and 'SD_post' in 
+        tam.latreg()
+FIXED * fixed a bug in tam.fa() due to changes in the GPArotation 
+        package (thanks to @StegmannK, @thkiefer, @bernaard; 
+        https://github.com/alexanderrobitzsch/TAM/issues/22)
+
 
 
 DATA  * included/modified datasets: ---

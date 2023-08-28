@@ -1,14 +1,13 @@
 ## File Name: tam_calc_posterior.R
-## File Version: 9.20
+## File Version: 9.218
 
 
-
-###########################################################
 tam_calc_posterior <- function(rprobs, gwt, resp, nitems,
             resp.ind.list, normalization=TRUE,
             thetasamp.density=NULL, snodes=0, resp.ind=NULL,
             avoid.zerosum=FALSE, logprobs=FALSE )
 {
+a0 <- Sys.time()
     fx <- gwt
     tsd <- NULL
     # calculate individual 'sampling weight'
@@ -23,9 +22,8 @@ tam_calc_posterior <- function(rprobs, gwt, resp, nitems,
     nstud <- nrow(fx)
     storage.mode(resp) <- "integer"
     fx0 <- fx
+#cat("start calcfx") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
     fx <- .Call('_TAM_calcfx', PACKAGE='TAM', fx, rprobs, resp.ind.list, resp)
-# cat("nach calcfx") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
-
     if (avoid.zerosum ){
         fxs <- rowSums( fx )
         m1 <- max( min( fxs[ fxs > 0 ], na.rm=TRUE), 1E-200 ) / 1E3 / ncol(fx)
@@ -42,17 +40,18 @@ tam_calc_posterior <- function(rprobs, gwt, resp, nitems,
     } else {
         hwt <- fx
     }
-    res <-  list("hwt"=hwt, "rfx"=rfx  )
+# cat("nach normalization") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
+    res <-  list(hwt=hwt, rfx=rfx )
     res$fx1 <- fx / gwt
     if ( snodes > 0 ){
         res[["swt" ]] <- fx
         res$gwt <- gwt
     }
     res$tsd <- tsd
+# cat("before output") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
     #--- output
     return(res)
 }
-#####################################################################
 
 calc_posterior.v2 <- tam_calc_posterior
 

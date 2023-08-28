@@ -1,5 +1,5 @@
 ## File Name: tam.latreg.R
-## File Version: 9.341
+## File Version: 9.343
 
 ###################################################################
 # latent regression
@@ -244,6 +244,8 @@ tam.latreg <- function( like, theta=NULL, Y=NULL, group=NULL,
                 hwtE=hwt, hwt=hwt, ndim=ndim, theta=theta )
     person <- res$person
     EAP.rel <- res$EAP.rel
+    M_post <- res$M_post
+    SD_post <- res$SD_post
 
     #cat("person parameters") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1
     ############################################################
@@ -288,7 +290,7 @@ tam.latreg <- function( like, theta=NULL, Y=NULL, group=NULL,
     deviance.history <- deviance.history[ 1:iter, ]
     res <- list( "beta"=beta, "variance"=variance,
                  "person"=person, pid=pid, "EAP.rel"=EAP.rel,
-                 "post"=hwt, "theta"=theta,
+                 "post"=hwt, M_post=M_post, SD_post=SD_post, "theta"=theta,
                  "Y"=Y,  "group"=group,
                  "G"=if ( is.null(group)){1} else { length(unique( group ) )},
                  "groups"=if ( is.null(group)){1} else { groups },
@@ -303,7 +305,7 @@ tam.latreg <- function( like, theta=NULL, Y=NULL, group=NULL,
                  "nnodes"=nnodes, "deviance"=deviance,
                  "ic"=ic, thetasamp.density=thetasamp.density,
                  "deviance.history"=deviance.history,
-                 "control"=con1a,    "iter"=iter,
+                 "control"=con1a, "iter"=iter,
                  "YSD"=YSD, CALL=CALL, latreg_stand=latreg_stand     )
     class(res) <- "tam.latreg"
     return(res)
