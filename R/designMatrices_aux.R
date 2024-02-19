@@ -1,10 +1,8 @@
 ## File Name: designMatrices_aux.R
-## File Version: 9.104
+## File Version: 9.105
 
 #############################################################
-print.designMatrices <-
-  function( X, ... ){
-    x <- X
+print.designMatrices <- function( x, ... ){
     BB <- x$flatB
     colnames(BB) <- paste("B_", colnames(BB), sep="")
     out <- cbind( x$flatA, BB )

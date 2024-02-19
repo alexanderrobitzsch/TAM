@@ -1,20 +1,22 @@
 ## File Name: tampv2datalist.R
-## File Version: 9.13
+## File Version: 9.146
 
 
-##################################################################
+##***  converts a pv object into a list of datasets
 tampv2datalist <- function( tam.pv.object, pvnames=NULL, Y=NULL,
             Y.pid="pid", as_mids=FALSE, stringsAsFactors=FALSE )
 {
     pv <- tam.pv.object$pv
     ndim <- tam.pv.object$ndim
     nplausible <- tam.pv.object$nplausible
-    Y00 <- data.frame( "pid"=tam.pv.object$pid, "pweights"=tam.pv.object$pweights,
+    Y00 <- data.frame( pid=tam.pv.object$pid, pweights=tam.pv.object$pweights,
                 stringsAsFactors=stringsAsFactors )
+
     if ( ! is.null(Y) ){
         Y <- as.data.frame(Y)
         if(  sum( colnames(Y) %in% Y.pid )==0 ){
-            Y[, Y.pid] <- seq( 1, nrow(Y) )
+            Y[, Y.pid] <- pv$pid
+
         }
     }
     if ( is.null(pvnames) ){
@@ -39,4 +41,4 @@ tampv2datalist <- function( tam.pv.object, pvnames=NULL, Y=NULL,
 
     return(datalist)
 }
-##################################################################
+

@@ -1,11 +1,13 @@
 ## File Name: tam.mml.wle2.R
-## File Version: 0.853
+## File Version: 0.869
 
 ################################################################
 tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
-            convM=.0001, progress=TRUE, output.prob=FALSE, pid=NULL )
+            convM=.0001, progress=TRUE, output.prob=FALSE, pid=NULL,
+            theta_init=NULL)
 {
     CALL <- match.call()
+    iweights <- NULL
     #--- process input data
     res <- tam_mml_wle_proc_input_data( tamobj=tamobj, score.resp=score.resp )
     AXsi <- res$AXsi
@@ -37,23 +39,33 @@ tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
     col.index <- rep( 1:nitems, each=maxK )
     cResp <- resp[, col.index  ]*resp.ind[, col.index ]
     cResp <- 1 * t( t(cResp)==rep(0:(maxK-1), nitems) )
-    cB <- t( matrix( aperm( B, c(2,1,3) ), nrow=dim(B)[3], byrow=TRUE ) )
+    if (!is.null(iweights)){
+        B1 <- B*iweights
+    } else {
+        B1 <- B
+        iweights <- rep(1, nitems)
+    }
+
+    cB <- t( matrix( aperm( B1, c(2,1,3) ), nrow=dim(B)[3], byrow=TRUE ) )
     cB[is.na(cB)] <- 0
     #Compute person sufficient statistics (total score on each dimension)
     PersonScores <- cResp %*% cB
 
     #Compute possible maximum score for each item on each dimension
-    maxBi <- apply(B, 3, tam_rowMaxs, na.rm=TRUE)
+    maxBi <- apply(B1, 3, tam_rowMaxs, na.rm=TRUE)
+
 
     #Compute possible maximum score for each person on each dimension
     PersonMax <- resp.ind %*% maxBi
     PersonMax[ PersonMax==0 ] <- 2 * adj
 
     #Adjust perfect scores for each person on each dimension
-    PersonScores[PersonScores==PersonMax] <- PersonScores[PersonScores==PersonMax] - adj
+    ind_max <- which(PersonScores==PersonMax)
+    PersonScores[ind_max] <- PersonScores[ind_max] - adj
 
     #Adjust zero scores for each person on each dimension
-    PersonScores[PersonScores==0] <- PersonScores[PersonScores==0] + adj
+    ind0 <- which(PersonScores==0)
+    PersonScores[ind0] <- PersonScores[ind0] + adj
 
     #Calculate Axsi. Only need to do this once.
     # for (i in 1:nitems) {
@@ -63,7 +75,12 @@ tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
     # }
 
     #Initialise theta (WLE) values for all students
-    theta <- log((PersonScores+.5)/(PersonMax-PersonScores+1)) #log of odds ratio of raw score
+    if (is.null(theta_init)){
+        theta <- log((PersonScores+.5)/(PersonMax-PersonScores+1))
+            #log of odds ratio of raw score
+    } else {
+        theta <- as.matrix( theta_init )
+    }
 
     ######################################
     #Compute WLE
@@ -92,12 +109,13 @@ tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
                     xsi=xsi, theta=theta, nnodes=nstud, maxK=maxK, recalc=FALSE,
                     use_rcpp=TRUE, maxcat=max(maxK), avoid_outer=TRUE )
         rprobsWLE <- resWLE$rprobs
+
         rprobsWLEL <- matrix(rprobsWLE, nrow=nitems*maxK, ncol=nstud )
         rprobsWLEL[is.na(rprobsWLEL)] <- 0
 
         resB <- tam_rcpp_wle_suffstat( RPROBS=rprobsWLEL, CBL=BL, CBB=BBL,
-                    CBBB=BBBL, cndim=ndim, cnitems=nitems, cmaxK=maxK, cnstud=nstud,
-                    resp_ind=resp.ind )
+                    CBBB=BBBL, cndim=ndim, cnitems=nitems, cmaxK=maxK,
+                    cnstud=nstud, resp_ind=resp.ind )
         B_bari <- array(resB$B_bari, dim=c(nstud, nitems,ndim))
         BB_bari <- array(resB$BB_bari, dim=c(nstud, nitems, ndim, ndim))
         BBB_bari <- array(resB$BBB_bari, dim=c(nstud, nitems, ndim))
@@ -145,7 +163,7 @@ tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
       # dampening the increment
       for ( d1 in 1:ndim){
         #       increment[,d1] <- ifelse( abs(increment[,d1]) > 3, sign( increment[,d1] )*3, increment[,d1] )
-        ci <- ceiling( abs(increment[,d1]) / ( abs( old_increment[,d1]) + 10^(-10) ) )
+        ci <- ceiling( abs(increment[,d1]) / ( abs( old_increment[,d1]) + 1e-10 ) )
         increment[,d1] <- ifelse( abs( increment[,d1]) > abs(old_increment[,d1]),
                                   increment[,d1]/(2*ci),
                                   increment[,d1] )
@@ -165,15 +183,16 @@ tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
       Miter <- Miter + 1
 
       if (progress){
-          cat( paste( "Iteration in WLE/MLE estimation ", Miter,
-                      "  | Maximal change ", round( max(abs(increment)), 4), "\n" )  )
-          utils::flush.console()
-                    }
+        cat( paste( "Iteration in WLE/MLE estimation ", Miter,
+                      "  | Maximal change ", round( max(abs(increment)), 4), "\n" ))
+        utils::flush.console()
+        }
     }  # end of Newton-Raphson
 
     res <- tam_mml_wle_postproc( ndim=ndim, err_inv=err_inv, theta=theta, pid=pid,
                 resp.ind=resp.ind, PersonScores=PersonScores, PersonMax=PersonMax,
-                adj=adj, WLE=WLE, rprobsWLE=rprobsWLE, output.prob=output.prob, progress=progress,
-                pweights=pweights, CALL=CALL, B=B, score.resp=score.resp )
+                adj=adj, WLE=WLE, rprobsWLE=rprobsWLE, output.prob=output.prob,
+                progress=progress, pweights=pweights, CALL=CALL, B=B,
+                score.resp=score.resp )
     return(res)
 }

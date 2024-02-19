@@ -42,21 +42,36 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 4.2  |  2023-08-28  |  Last: TAM 4.2-11
+VERSIONS TAM 4.3  |  2024-02-20  |  Last: TAM 4.3-2
 -------------------------------------------------------------
 
-NOTE  * included output values 'M_post' and 'SD_post' in 
-        tam.latreg()
-FIXED * fixed a bug in tam.fa() due to changes in the GPArotation 
-        package (thanks to @StegmannK, @thkiefer, @bernaard; 
-        https://github.com/alexanderrobitzsch/TAM/issues/22)
-
+xxx   * ...
 
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
 
 
+
+
+-------------------------------------------------------------
+VERSIONS TAM 4.2  |  2024-02-19  |  Last: TAM 4.2-21
+-------------------------------------------------------------
+
+NOTE  * included output values 'M_post' and 'SD_post' in 
+        tam.latreg()
+FIXED * fixed a bug in tam.fa() due to changes in the GPArotation 
+        package (thanks to @StegmannK, @thkiefer, @bernaard; 
+        https://github.com/alexanderrobitzsch/TAM/issues/22;
+        https://github.com/alexanderrobitzsch/TAM/issues/23)
+NOTE  * included argument 'theta_init' in tam.mml.wle2() to
+        provide initial theta estimates (which is also available 
+        in tam.wle())
+NOTE  * fixed a typo in ?tam.mml (thanks to Nan Wang)
+NOTE  * minor changes in code due to CRAN requests	
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
 
 -------------------------------------------------------------
 VERSIONS TAM 4.1  |  2022-08-28  |  Last: TAM 4.1-4

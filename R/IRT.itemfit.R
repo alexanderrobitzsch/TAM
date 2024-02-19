@@ -1,14 +1,14 @@
 ## File Name: IRT.itemfit.R
-## File Version: 9.08
+## File Version: 9.091
 
 ###########################################################################
-IRT.itemfit.rmsea.default <- function( object )
+IRT_itemfit_rmsea_default <- function(object)
 {
     mod1 <- object
-    probs <- IRT.irfprob( mod1 )
-    n.ik <- IRT.expectedCounts( mod1 )
-    pi.k <- attr( probs, "prob.theta")
-    if ( is.vector( pi.k) ){
+    probs <- IRT.irfprob(mod1)
+    n.ik <- IRT.expectedCounts(mod1)
+    pi.k <- attr(probs, "prob.theta")
+    if ( is.vector(pi.k) ){
         pi.k <- matrix( pi.k, ncol=1 )
     }
     n.ik <- aperm( n.ik, c(3,1,2,4))
@@ -17,7 +17,7 @@ IRT.itemfit.rmsea.default <- function( object )
     return(res)
 }
 ###########################################################################
-IRT.itemfit.tam.default <- function( object, method="RMSD", ... )
+IRT.itemfit.tam.default <- function(object, method="RMSD", ... )
 {
     res <- NULL
     if ( method %in% c("RMSD","rmsea") ){

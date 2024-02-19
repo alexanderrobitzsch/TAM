@@ -26,7 +26,7 @@ citHeader( paste0( "To cite the '", pkg , "' package in publications use:") )
 bibentry(key = paste0(pkg, "_", meta$Version), 
          bibtype = "Manual",
          title = paste0( pkg , ": " , pkg_title ) ,
-         author = personList( person_list1 ),
+         author = c( person_list1 ),
          year = year,
          note = vers,
          url =  paste0( "https://CRAN.R-project.org/package=", pkg) ,

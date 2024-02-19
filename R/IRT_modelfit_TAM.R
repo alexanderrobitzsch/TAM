@@ -1,9 +1,9 @@
-## File Name: IRT.modelfit.tam.R
-## File Version: 9.06
+## File Name: IRT_modelfit_TAM.R
+## File Version: 9.122
 
 ###########################################################
 # general model fit function for TAM objects
-IRT.modelfit.TAM <- function( object, mod )
+IRT_modelfit_TAM <- function( object, mod )
 {
     res <- tam.modelfit( object )
     res$IRT.IC <- IRT.IC(object)
@@ -18,7 +18,7 @@ IRT.modelfit.TAM <- function( object, mod )
 IRT.modelfit.tam.mml <- function( object, ... )
 {
     cl <- paste(match.call())[2]
-    res <- IRT.modelfit.TAM( object, mod=cl )
+    res <- IRT_modelfit_TAM( object, mod=cl )
     return(res)
 }
 IRT.modelfit.tam.mml.3pl <- IRT.modelfit.tam.mml
@@ -34,9 +34,11 @@ summary.IRT.modelfit.TAM.helper <- function( object, ... )
     print(obji)
     cat("\nFit Statistics\n")
     obji <- object$statlist
-    for (vv in seq(1,ncol(obji))){    obji[,vv] <- round( obji[,vv], 3 ) }
+    for (vv in seq(1,ncol(obji))){
+        obji[,vv] <- round( obji[,vv], 3 )
+    }
     print(obji)
-        }
+}
 #################################################################
 
 summary.IRT.modelfit.tam.mml <- summary.IRT.modelfit.TAM.helper

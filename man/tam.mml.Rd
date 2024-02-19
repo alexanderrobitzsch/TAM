@@ -1,5 +1,5 @@
 %% File Name: tam.mml.Rd
-%% File Version: 2.992
+%% File Version: 2.993
 
 \name{tam.mml}
 
@@ -236,7 +236,7 @@ be printed during iterations. This argument replaces \code{control$progress}.
     \code{        maxiter=1000, max.increment=1, }\cr
     \code{        min.variance=.001, progress=TRUE, ridge=0,    }\cr
     \code{        seed=NULL, xsi.start0=0, increment.factor=1,  }\cr
-    \code{        fac.oldxsi=0, acceleration="none", dev_crit="absolute" )  }\cr
+    \code{        fac.oldxsi=0, acceleration="none", dev_crit="absolute",  }\cr
     \code{        trim_increment="half" )  }\cr
 
 \code{nodes}: the discretized \eqn{\theta} nodes for numerical integration

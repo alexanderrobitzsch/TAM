@@ -1,5 +1,5 @@
 ## File Name: tam_rbind_twomatrices.R
-## File Version: 9.06
+## File Version: 9.071
 
 #########################################
 # bind two matrices
@@ -13,4 +13,5 @@ tam_rbind_twomatrices <- function(X1, X2){
 }
 #########################################
 
-rbind.twomatrices <- tam_rbind_twomatrices
+# rbind.twomatrices <- tam_rbind_twomatrices
+rbind_twomatrices <- tam_rbind_twomatrices
