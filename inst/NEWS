@@ -42,16 +42,15 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 4.3  |  2024-02-20  |  Last: TAM 4.3-2
+VERSIONS TAM 4.3  |  2024-09-09  |  Last: TAM 4.3-4
 -------------------------------------------------------------
 
-xxx   * ...
+ADDED * included processing function for theta within iterations
+        in tam.jml() (thanks to a discussion with Stefanie Wind)
 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
-
-
+EXAMP * included/modified examples: tam.jml (5)
 
 
 -------------------------------------------------------------

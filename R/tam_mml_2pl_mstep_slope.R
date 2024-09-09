@@ -1,5 +1,5 @@
 ## File Name: tam_mml_2pl_mstep_slope.R
-## File Version: 9.579
+## File Version: 9.584
 
 
 tam_mml_2pl_mstep_slope <- function (B_orig, B, B_obs, B.fixed, max.increment, nitems, A,
@@ -13,8 +13,8 @@ tam_mml_2pl_mstep_slope <- function (B_orig, B, B_obs, B.fixed, max.increment, n
     xtemp <- matrix(0, nrow=1, ncol=1)
     converge <- FALSE
     Biter <- 1
-    mK <- 1:maxK
-    items.temp <- 1:nitems
+    mK <- 1L:maxK
+    items.temp <- 1L:nitems
     items.conv <- NULL
     items.conv1 <- c(-1)
     increments_msteps <- rep(NA,Msteps)
@@ -51,7 +51,7 @@ tam_mml_2pl_mstep_slope <- function (B_orig, B, B_obs, B.fixed, max.increment, n
         LIT <- length(items.temp)
 
         ######     D I M E N S I O N S     ######
-        for (dd in 1:ndim){
+        for (dd in 1L:ndim){
             if ( irtmodel %in% c("GPCM","GPCM.design","GPCM.groups") ){
                 xtemp <- matrix(0, nrow=LIT, ncol=TP )
             }
@@ -131,7 +131,7 @@ tam_mml_2pl_mstep_slope <- function (B_orig, B, B_obs, B.fixed, max.increment, n
                 increment <- tam_outer( increment.temp, mK-1)
                 d1 <- tam_outer(  1 / abs( deriv.temp ), mK-1 )
                 LL <- ncol(d1)
-                for (ll in 1:LL){
+                for (ll in 1L:LL){
                     m1 <- sqrt( diag( E %*% d1[,ll] %*% t( d1[,ll] ) %*% t(E) ) )
                     if (Biter==1){
                         se.B[,ll,dd]  <- m1
@@ -139,9 +139,9 @@ tam_mml_2pl_mstep_slope <- function (B_orig, B, B_obs, B.fixed, max.increment, n
                 }
                 nB <- dim(B)
                 B_ind <- 1 * ( B_orig !=0 )
-                for (dd in 1:nB[3]){
+                for (dd in 1L:nB[3]){
                     EB <- E %*% basispar[,dd]
-                    for (cc in 1:(nB[2]-1)){
+                    for (cc in 1L:(nB[2]-1)){
                         B[,cc+1,dd] <- cc * EB * B_ind[,cc+1,dd]
                     }
                 }
@@ -189,7 +189,7 @@ tam_mml_2pl_mstep_slope <- function (B_orig, B, B_obs, B.fixed, max.increment, n
         if ( irtmodel=="2PL" ){
             items.temp <- which( apply( old_increment, 1,
                             FUN=function(ll){ ! ( max(abs(ll)) < convM ) } ) )
-            items.conv <- setdiff( 1:nitems, items.temp )
+            items.conv <- setdiff( 1L:nitems, items.temp )
             if ( length(items.conv) > 0 ){
                 items.conv1 <- items.conv
             }

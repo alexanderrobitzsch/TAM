@@ -1,11 +1,11 @@
 ## File Name: tam_jml_version1.R
-## File Version: 9.358
+## File Version: 9.369
 
 tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
                      bias=TRUE, xsi.fixed=NULL,  xsi.inits=NULL,
                      theta.fixed=NULL,
                      A=NULL, B=NULL, Q=NULL, ndim=1,
-                     pweights=NULL, control=list() )
+                     pweights=NULL, theta_proc=NULL, control=list() )
 {
 
 
@@ -23,9 +23,10 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
   Lcon <- length(con)
   con1a <- con1 <- con ;
   names(con1) <- NULL
-  for (cc in 1:Lcon ){
+  for (cc in 1L:Lcon ){
     assign( names(con)[cc], con1[[cc]], envir=e1 )
   }
+
 
   resp <- add.colnames.resp(resp)
 
@@ -70,8 +71,8 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
   } else { xsi <- rep(0,np)   }
   if ( ! is.null( xsi.fixed ) ){
     xsi[ xsi.fixed[,1] ] <- xsi.fixed[,2]
-    est.xsi.index <- setdiff( 1:np, xsi.fixed[,1] )
-  } else { est.xsi.index <- 1:np }
+    est.xsi.index <- setdiff( 1L:np, xsi.fixed[,1] )
+  } else { est.xsi.index <- 1L:np }
 
 
   # group indicators for variance matrix
@@ -79,27 +80,27 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
     groups <- sort(unique(group))
     G <- length(groups)
     # user must label groups from 1, ..., G
-    if ( length( setdiff( 1:G, groups)  ) > 0 ){
+    if ( length( setdiff( 1L:G, groups)  ) > 0 ){
       stop("Label groups from 1, ...,G\n")
     }
   } else { G <- 1 }
 
   # define response indicator matrix for missings
   resp.ind <- 1 - is.na(resp)
-  resp.ind.list <- list( 1:nitems )
-  for (i in 1:nitems){ resp.ind.list[[i]] <- which( resp.ind[,i]==1)  }
+  resp.ind.list <- list( 1L:nitems )
+  for (i in 1L:nitems){ resp.ind.list[[i]] <- which( resp.ind[,i]==1)  }
   resp[ is.na(resp) ] <- 0     # set all missings to zero
 
   # Create an index linking items and parameters
   indexIP <- colSums(aperm(A, c(2,1,3)) !=0, na.rm=TRUE)
   # define list of elements for item parameters
-  indexIP.list <- list( 1:np )
-  for ( kk in 1:np ){
+  indexIP.list <- list( 1L:np )
+  for ( kk in 1L:np ){
     indexIP.list[[kk]] <- which( indexIP[,kk] > 0 )
   }
 
 
-  col.index <- rep( 1:nitems, each=maxK )
+  col.index <- rep( 1L:nitems, each=maxK )
   cResp <- resp[, col.index  ]*resp.ind[, col.index ]
   # This line does not take missings into account
   cResp <- 1 * t( t(cResp)==rep(0:(maxK-1), nitems) )
@@ -154,7 +155,7 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
   deviance <- 0
   deviance.history <- matrix( 0, nrow=maxiter, ncol=2)
   colnames(deviance.history) <- c("iter", "deviance")
-  deviance.history[,1] <- 1:maxiter
+  deviance.history[,1] <- 1L:maxiter
 
   iter <- 0
   meanChangeWLE <- maxChangeWLE <- maxChangeP <- 999    # item parameter change
@@ -178,7 +179,7 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
     #-- update theta (ability estimates)
     jmlAbility <- tam_jml_wle( tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
                     PersonScores, theta, xsi, Msteps, WLE=FALSE,
-                    theta.fixed=theta.fixed)
+                    theta.fixed=theta.fixed, theta_proc=theta_proc)
 
     theta <- jmlAbility$theta
     if (is.null(xsi.fixed)){
@@ -186,6 +187,7 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
     }
     meanChangeWLE <- jmlAbility$meanChangeWLE
     errorMLE <- jmlAbility$errorWLE
+
 
     #update xsi, item parameters
     jmlxsi <- tam_jml_version1_calc_xsi( resp, resp.ind, A, B, nstud, nitems, maxK, convM,
@@ -197,12 +199,12 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
 
     #Deviance
     #Calculate Axsi. Only need to do this once for ability estimates.
-    for (i in 1:nitems) {
-      for (k in 1:maxK){
+    for (i in 1L:nitems) {
+      for (k in 1L:maxK){
         AXsi[i,k] <- ( A[i,k,] %*% xsi )
       }
     }
-    res <- tam_mml_calc_prob(iIndex=1:nitems, A, AXsi,
+    res <- tam_mml_calc_prob(iIndex=1L:nitems, A, AXsi,
                         B, xsi, theta, nstud, maxK, recalc=FALSE )
     rprobs <- res[["rprobs"]]
     crprobs <- t( matrix( aperm( rprobs, c(2,1,3) ), nrow=dim(rprobs)[3], byrow=TRUE ) )
@@ -223,13 +225,14 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
     #@ARb 2012-08-27
     # stop loop (break) if there is no change in deviation
     if ( abs( deviance-olddeviance) < 1E-10 ){ break }
+
   }# end of all convergence
 
   #After convergence, compute final WLE (WLE set to TRUE)
 
   jmlWLE <- tam_jml_wle( tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
                           PersonScores, theta, xsi, Msteps, WLE=TRUE,
-                          theta.fixed=theta.fixed )
+                          theta.fixed=theta.fixed, theta_proc=theta_proc )
 
   thetaWLE <- jmlWLE$theta[,1]
 
@@ -254,7 +257,7 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
 
   # collect item statistics
   item <- data.frame( "xsi.label"=dimnames(A)[[3]],
-        "xsi.index"=1:( length(xsi) ), "xsi"=xsi,
+        "xsi.index"=1L:( length(xsi) ), "xsi"=xsi,
         "se.xsi"=errorP
     )
 
@@ -271,7 +274,7 @@ tam_jml_version1 <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
   }
 
   # Output list
-  deviance.history <- deviance.history[ 1:iter, ]
+  deviance.history <- deviance.history[ 1L:iter, ]
   res <- list( "item"=item, "xsi"=xsi,  "errorP"=errorP,
                "theta"=theta[,1], "errorWLE"=errorWLE,  "WLE"=thetaWLE,
                "WLEreliability"=WLEreliability,

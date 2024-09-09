@@ -1,11 +1,11 @@
 ## File Name: tam.jml.R
-## File Version: 9.367
+## File Version: 9.373
 
 
 tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
-            bias=TRUE, xsi.fixed=NULL,  xsi.inits=NULL,  theta.fixed=NULL,
+            bias=TRUE, xsi.fixed=NULL, xsi.inits=NULL, theta.fixed=NULL,
             A=NULL, B=NULL, Q=NULL, ndim=1,
-            pweights=NULL, constraint="cases",
+            pweights=NULL, constraint="cases", theta_proc=NULL,
             verbose=TRUE, control=list(), version=3 )
 {
     CALL <- match.call()
@@ -23,13 +23,19 @@ tam.jml <- function( resp, group=NULL, adj=.3, disattenuate=FALSE,
         }
     }
 
+    #*** theta_proc
+    if (!is.null(theta_proc)){
+        version <- 1
+    }
+
     #**** version=1
     if (version==1){
         constraint <- "cases"
         res <- tam_jml_version1( resp=resp, group=group, adj=adj,
                     disattenuate=disattenuate, bias=bias, xsi.fixed=xsi.fixed,
                     xsi.inits=xsi.inits, A=A, B=B, Q=Q, ndim=ndim,
-                    theta.fixed=theta.fixed, pweights=pweights, control=control )
+                    theta.fixed=theta.fixed, pweights=pweights, control=control,
+                    theta_proc=theta_proc)
     }
     #**** version=2
     if (version>=2){

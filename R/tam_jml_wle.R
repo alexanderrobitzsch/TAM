@@ -1,12 +1,12 @@
 ## File Name: tam_jml_wle.R
-## File Version: 9.324
+## File Version: 9.330
 
 
 #-- WLE in JML estimation
 tam_jml_wle <- function ( tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
             PersonScores, theta, xsi, Msteps, WLE=FALSE,
             theta.fixed=NULL, progress=FALSE, output.prob=TRUE, damp=0,
-            version=2)
+            version=2, theta_proc=NULL)
 {
 
     AXsi <- matrix(0, nrow=nitems, ncol=maxK)
@@ -21,8 +21,8 @@ tam_jml_wle <- function ( tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, con
     B_Cube <- array(0,dim=nstud)
 
     #Calculate Axsi. Only need to do this once for ability estimates.
-    for (i in 1:nitems) {
-        for (k in 1:maxK){
+    for (i in 1L:nitems) {
+        for (k in 1L:maxK){
             AXsi[i,k] <- ( A[i,k,] %*% xsi )
         }
     }
@@ -52,7 +52,7 @@ a0 <- Sys.time()
 
     while (!convergeWLE & ( iterWLE <=Msteps ) ){
         if (version==2){
-            resWLE <- tam_mml_calc_prob(iIndex=1:nitems, A=A, AXsi=AXsi,
+            resWLE <- tam_mml_calc_prob(iIndex=1L:nitems, A=A, AXsi=AXsi,
                             B=B, xsi=xsi, theta=theta, nnodes=nstud, maxK=maxK, recalc=FALSE )
             rprobsWLE <- resWLE$rprobs
             rprobsWLE[ is.na(rprobsWLE) ] <- 0
@@ -66,7 +66,7 @@ a0 <- Sys.time()
         if (version==2){
             B_bari <- B1[,1] * rprobsWLE[, 1, ]
             BB_bari <- BB[,1] * rprobsWLE[, 1, ]
-            for (kk in 2:maxK){
+            for (kk in 2L:maxK){
                 B_bari <- B_bari + B1[,kk]*rprobsWLE[,kk,]
                 BB_bari <- BB_bari + BB[,kk] * rprobsWLE[, kk, ]
             }
@@ -80,7 +80,7 @@ a0 <- Sys.time()
             BB_bari <- res$BB_bari
         }
 
-        # B_bari.OLD <- sapply(1:nitems, function(i) colSums(B1[i,] * rprobsWLE[i,,], na.rm=TRUE)) * resp.ind
+        # B_bari.OLD <- sapply(1L:nitems, function(i) colSums(B1[i,] * rprobsWLE[i,,], na.rm=TRUE)) * resp.ind
         # B1        [ nitems, maxK ]
         # rprobsWLE [ nitems, maxK, nstud ]
         # resp.ind  [ nstud, nitems ]
@@ -96,7 +96,7 @@ a0 <- Sys.time()
 
         if (WLE) {
             BBB_bari <- BBB[,1] * rprobsWLE[, 1, ]
-            for (kk in 2:maxK){
+            for (kk in 2L:maxK){
                 BBB_bari <- BBB_bari + BBB[,kk] * rprobsWLE[, kk, ]
             }
             BBB_bari <- t(BBB_bari) * resp.ind
@@ -134,12 +134,18 @@ a0 <- Sys.time()
     }
 
     cat("\n")
+
+    if (!is.null(theta_proc)){
+        theta <- theta_proc(theta=theta)
+    }
+
     meanChangeWLE <- mean(theta - thetaOld)
     #standard errors of theta estimates
     errorWLE <- sqrt(err_inv)
     if ( ! is.null(theta.fixed ) ){
         errorWLE[ theta.fixed[,1] ] <- 0
     }
+
 
     res <- list( "theta"=theta, "errorWLE"=errorWLE, "meanChangeWLE"=meanChangeWLE)
     return (res)

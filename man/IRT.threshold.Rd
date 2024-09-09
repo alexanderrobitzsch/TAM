@@ -1,5 +1,5 @@
 %% File Name: IRT.threshold.Rd
-%% File Version: 1.441
+%% File Version: 1.444
 
 \name{IRT.threshold}
 \alias{IRT.threshold}
@@ -12,10 +12,12 @@
 Thurstonian Thresholds and Wright Map for Item Response Models
 }
 
+%% \code{\link[lavaan:cfa]{lavaan::cfa}}
+
 \description{
 The function \code{IRT.threshold} computes Thurstonian thresholds
 for item response models. It is only based on fitted models
-for which the \code{\link{IRT.irfprob}} does exist.
+for which the \code{\link{[CDM:IRT.irfprob]CDM::IRT.irfprob}} class does exist.
 
 The function \code{IRT.WrightMap} creates a Wright map and works as a wrapper to the
 \code{\link[WrightMap:wrightMap]{WrightMap::wrightMap}} function in
@@ -42,7 +44,8 @@ IRT.WrightMap(object, \dots)
 
 \arguments{
 \item{object}{
-Object of fitted models for which \code{\link{IRT.irfprob}} exists.
+Object of fitted models for which \code{\link{[CDM:IRT.irfprob]CDM::IRT.irfprob}}
+ exists.
 }
 \item{prob.lvl}{Requested probability level of thresholds.}
 \item{type}{Type of thresholds to be calculated. The default is

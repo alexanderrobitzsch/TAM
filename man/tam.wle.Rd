@@ -1,5 +1,5 @@
 %% File Name: tam.wle.Rd
-%% File Version: 2.507
+%% File Version: 2.509
 
 \name{tam.wle}
 
@@ -33,7 +33,7 @@ tam.mml.wle2(tamobj, score.resp=NULL, WLE=TRUE, adj=0.3, Msteps=20, convM=1e-04,
 
 tam_jml_wle(tamobj, resp, resp.ind, A, B, nstud, nitems, maxK, convM,
     PersonScores, theta, xsi, Msteps, WLE=FALSE, theta.fixed=NULL, progress=FALSE,
-    output.prob=TRUE, damp=0, version=2)
+    output.prob=TRUE, damp=0, version=2, theta_proc=NULL)
 
 \method{summary}{tam.wle}(object, file=NULL, digits=3, \dots)
 
@@ -102,6 +102,7 @@ the fixed value.}
 increments in \eqn{\theta} estimates during iterations}
 \item{version}{Integer with possible values 2 or 3. In case of missing item responses,
 \code{version=3} will typically be more efficient.}
+\item{theta_proc}{Function for processing \code{theta} within iterations.}
 \item{\dots}{Further arguments to be passed}
 \item{object}{Object of class \code{tam.wle}}
 \item{x}{Object of class \code{tam.wle}}
