@@ -1,5 +1,5 @@
 ## File Name: tam_irf_3pl.R
-## File Version: 0.07
+## File Version: 0.087
 
 tam_irf_3pl <- function(theta, AXsi, B, guess=NULL, subtract_max=TRUE)
 {

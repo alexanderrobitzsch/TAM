@@ -73,7 +73,7 @@ comprising all pairwise linkings.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">tam_linking_2studies</span><span class="op">(</span> <span class="va">B1</span>, <span class="va">AXsi1</span>, <span class="va">guess1</span>, <span class="va">B2</span>, <span class="va">AXsi2</span>, <span class="va">guess2</span>, <span class="va">theta</span>, <span class="va">wgt</span>, <span class="va">type</span>,</span>
-<span>    M1<span class="op">=</span><span class="fl">0</span>, SD1<span class="op">=</span><span class="fl">1</span>, M2<span class="op">=</span><span class="fl">0</span>, SD2<span class="op">=</span><span class="fl">1</span>, fix.slope<span class="op">=</span><span class="cn">FALSE</span>, pow_rob_hae<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
+<span>    M1<span class="op">=</span><span class="fl">0</span>, SD1<span class="op">=</span><span class="fl">1</span>, M2<span class="op">=</span><span class="fl">0</span>, SD2<span class="op">=</span><span class="fl">1</span>, fix.slope<span class="op">=</span><span class="cn">FALSE</span>, pow_rob_hae<span class="op">=</span><span class="fl">1</span>, eps_rob_hae<span class="op">=</span><span class="fl">1e-4</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for tam_linking_2studies</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">object</span>, file<span class="op">=</span><span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -96,7 +96,8 @@ The default is the Haebara linking method.</p></dd>
 <dd><p>Chain linking (<code>"chain"</code>) or joint linking (<code>"joint"</code>)</p></dd>
 
 <dt>pow_rob_hae</dt>
-<dd><p>Power for robust Heabara linking</p></dd>
+<dd><p>Power for robust Heabara linking. The value must be larger
+than 0 or equal to 0.</p></dd>
 
 <dt>eps_rob_hae</dt>
 <dd><p>Value \(\varepsilon\) for numerical approximation of

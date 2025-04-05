@@ -1,5 +1,5 @@
 ## File Name: tam.mml.wle2.R
-## File Version: 0.869
+## File Version: 0.871
 
 ################################################################
 tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
@@ -12,6 +12,7 @@ tam.mml.wle2 <- function( tamobj, score.resp=NULL, WLE=TRUE, adj=.3, Msteps=20,
     res <- tam_mml_wle_proc_input_data( tamobj=tamobj, score.resp=score.resp )
     AXsi <- res$AXsi
     B <- res$B
+
     resp <- res$resp
     resp.ind <- res$resp.ind
     resp_ind_bool <- resp.ind==1

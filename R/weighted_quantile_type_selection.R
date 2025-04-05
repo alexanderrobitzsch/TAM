@@ -1,5 +1,5 @@
 ## File Name: weighted_quantile_type_selection.R
-## File Version: 0.09
+## File Version: 0.102
 
 
 
@@ -27,7 +27,8 @@ weighted_quantile_type_selection <- function( type, pp, N, dfr, weights_NULL)
             jj1 <- 1
         }
         if ( jj !=jj1){
-            GAMMA0 <- ( pp - dfr[jj,"w_cum"] )/ ( eps + dfr[jj1,"w_cum"] - dfr[jj,"w_cum"] )
+            GAMMA0 <- ( pp - dfr[jj,'w_cum'] )/
+                            ( eps + dfr[jj1,'w_cum'] - dfr[jj,'w_cum'] )
         } else {
             GAMMA0 <- 0
         }

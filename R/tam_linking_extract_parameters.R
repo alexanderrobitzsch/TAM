@@ -1,5 +1,5 @@
 ## File Name: tam_linking_extract_parameters.R
-## File Version: 0.14
+## File Version: 0.152
 
 tam_linking_extract_parameters <- function( tamobj, elim_items=NULL )
 {
@@ -16,6 +16,9 @@ tam_linking_extract_parameters <- function( tamobj, elim_items=NULL )
     names(guess) <- dimnames(A)[[1]] <- rownames(AXsi) <- dimnames(B)[[1]]
     ndim <- dim(B)[3]
     items <- colnames(tamobj$resp)
+    if (is.null(items)){
+        items <- dimnames(B)[[1]]
+    }
     #--- distribution parameters
     res <- tam_linking_extract_parameters_trait_distribution(tamobj=tamobj)
     M <- res$M

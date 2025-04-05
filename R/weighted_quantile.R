@@ -1,5 +1,5 @@
 ## File Name: weighted_quantile.R
-## File Version: 9.11
+## File Version: 9.122
 
 # weighted_quantile
 weighted_quantile <- function( x, w=rep(1,length(x)), probs=seq(0,1,.25),
@@ -19,16 +19,16 @@ weighted_quantile <- function( x, w=rep(1,length(x)), probs=seq(0,1,.25),
         dfr$w <- dfr$w * N / sum(dfr$w)
     }
     if ( ! weights_NULL){
-        if ( is.null(type) ){ type <- "i/n" }
+        if ( is.null(type) ){ type <- 'i/n' }
     }
 
     #*** init vector of quantiles
     PP <- length(probs)
     res <- rep(NA,PP)
-    names(res) <- paste0( 100*probs, "%")
+    names(res) <- paste0( 100*probs, '%')
     dfr$w_cum <- cumsum( dfr$w )
     dfr$w_cum <- dfr$w_cum / max( dfr$w_cum)
-    for (kk in 1:PP){
+    for (kk in 1L:PP){
         pp <- probs[kk]
         #*** specifications according to type
         res1 <- weighted_quantile_type_selection( type=type, pp=pp, N=N,

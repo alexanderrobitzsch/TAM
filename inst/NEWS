@@ -42,11 +42,14 @@ http://www.edmeasurementsurveys.com/TAM/Tutorials/
 
 
 -------------------------------------------------------------
-VERSIONS TAM 4.3  |  2024-09-09  |  Last: TAM 4.3-4
+VERSIONS TAM 4.3  |  2025-04-05  |  Last: TAM 4.3-13
 -------------------------------------------------------------
 
 ADDED * included processing function for theta within iterations
         in tam.jml() (thanks to a discussion with Stefanie Wind)
+NOTE  * included argument 'eps_rob_hae' in tam_linking_2studies()
+ADDED * included power of 0 in robust Haebara linking in
+        tam.linking()
 
 
 DATA  * included/modified datasets: ---

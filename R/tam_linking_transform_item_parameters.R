@@ -1,14 +1,14 @@
 ## File Name: tam_linking_transform_item_parameters.R
-## File Version: 0.06
+## File Version: 0.074
 
 tam_linking_transform_item_parameters <- function( B, AXsi, A, trafo_items )
 {
     B_trans <- B
     AXsi_trans <- AXsi
     K <- ncol(AXsi)
-    for (kk in 2:K){
-        B_trans[,kk,] <- B[,kk,] * trafo_items["a"]
-        AXsi_trans[,kk] <- B[,kk,] * trafo_items["b"] + AXsi[,kk]
+    for (kk in 2L:K){
+        B_trans[,kk,] <- B[,kk,] * trafo_items['a']
+        AXsi_trans[,kk] <- B[,kk,] * trafo_items['b'] + AXsi[,kk]
     }
     #--- determine transformed xsi parameter
     xsi_trans <- tam_AXsi_fit( AXsi=AXsi_trans, A=A )

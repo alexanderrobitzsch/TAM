@@ -1,5 +1,5 @@
 ## File Name: tam_linking_extract_list.R
-## File Version: 0.05
+## File Version: 0.061
 
 tam_linking_extract_list <- function( input, entries, names=NULL )
 {
@@ -8,7 +8,7 @@ tam_linking_extract_list <- function( input, entries, names=NULL )
     }
     NE <- length(entries)
     output <- list()
-    for (ee in 1:NE){
+    for (ee in 1L:NE){
         output[[ names[ee] ]] <- input[[ entries[ee] ]]
     }
     return(output)

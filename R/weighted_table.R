@@ -1,5 +1,5 @@
 ## File Name: weighted_table.R
-## File Version: 9.09
+## File Version: 9.103
 
 
 # weighted frequency table
@@ -13,7 +13,7 @@ weighted_table <- function( x, w=NULL, props=FALSE )
         N1 <- length(x1_u)
         res0 <- rep(NA,N1)
         names(res0) <- x1_u
-        for (nn in 1:N1){
+        for (nn in 1L:N1){
             res0[nn] <- sum( ( x==x1_u[nn] ) * w, na.rm=TRUE)
         }
     }
@@ -27,9 +27,10 @@ weighted_table <- function( x, w=NULL, props=FALSE )
         res0 <- matrix(NA,nrow=N1,ncol=N2)
         rownames(res0) <- x1_u
         colnames(res0) <- x2_u
-        for (nn in 1:N1){
-            for (mm in 1:N2){
-                res0[nn,mm] <- sum( ( x[,1]==x1_u[nn] ) * ( x[,2]==x2_u[mm] ) * w, na.rm=TRUE)
+        for (nn in 1L:N1){
+            for (mm in 1L:N2){
+                res0[nn,mm] <- sum( ( x[,1]==x1_u[nn] ) * ( x[,2]==x2_u[mm] ) * w,
+                                        na.rm=TRUE)
             }
         }
     }

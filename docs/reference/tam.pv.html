@@ -376,7 +376,7 @@ from models which provides an individual likelihood as an input.</p></div>
 <span><span class="st">   PVREAD ~ migra + hisei</span></span>
 <span><span class="st">   PVREAD ~~ PVREAD</span></span>
 <span><span class="st">        "</span></span>
-<span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/runMI.html" class="external-link">lavaan.mi</a></span><span class="op">(</span> <span class="va">lavmodel</span>, data<span class="op">=</span><span class="va">datlist1</span>, m<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/semTools-deprecated.html" class="external-link">lavaan.mi</a></span><span class="op">(</span> <span class="va">lavmodel</span>, data<span class="op">=</span><span class="va">datlist1</span>, m<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod1</span>, standardized<span class="op">=</span><span class="cn">TRUE</span>, rsquare<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># apply lavaan for third imputed dataset</span></span>
@@ -401,7 +401,7 @@ from models which provides an individual likelihood as an input.</p></div>
 <span><span class="st">   PVREAD ~~ PVREAD</span></span>
 <span><span class="st">   hisei ~~ hisei</span></span>
 <span><span class="st">        "</span></span>
-<span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/runMI.html" class="external-link">lavaan.mi</a></span><span class="op">(</span> <span class="va">lavmodel</span>, data<span class="op">=</span><span class="va">datlist1</span> <span class="op">)</span></span>
+<span><span class="va">mod2</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/semTools-deprecated.html" class="external-link">lavaan.mi</a></span><span class="op">(</span> <span class="va">lavmodel</span>, data<span class="op">=</span><span class="va">datlist1</span> <span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod2</span>, standardized<span class="op">=</span><span class="cn">TRUE</span>, rsquare<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co"># fit statistics</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/lavaan/man/lavInspect.html" class="external-link">inspect</a></span><span class="op">(</span> <span class="va">mod2</span>, what<span class="op">=</span><span class="st">"fit"</span><span class="op">)</span></span>
@@ -468,7 +468,7 @@ from models which provides an individual likelihood as an input.</p></div>
 <span><span class="st">   PVFA ~ Y1 + Y2</span></span>
 <span><span class="st">   PVFA ~~ PVFA</span></span>
 <span><span class="st">        "</span></span>
-<span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/runMI.html" class="external-link">lavaan.mi</a></span><span class="op">(</span> <span class="va">lavmodel</span>, data<span class="op">=</span><span class="va">datlist1</span> <span class="op">)</span></span>
+<span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/semTools-deprecated.html" class="external-link">lavaan.mi</a></span><span class="op">(</span> <span class="va">lavmodel</span>, data<span class="op">=</span><span class="va">datlist1</span> <span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod1</span>, standardized<span class="op">=</span><span class="cn">TRUE</span>, rsquare<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># (7) draw plausible values with tam.pv.mcmc function</span></span>
@@ -538,7 +538,7 @@ from models which provides an individual likelihood as an input.</p></div>
 <span><span class="st">   PV.Dim1 ~~ PV.Dim1</span></span>
 <span><span class="st">   X2true ~~ X2true</span></span>
 <span><span class="st">        "</span></span>
-<span><span class="va">mod1a</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/runMI.html" class="external-link">lavaan.mi</a></span><span class="op">(</span> <span class="va">lavmodel</span>, <span class="va">datlist1a</span><span class="op">)</span></span>
+<span><span class="va">mod1a</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/semTools-deprecated.html" class="external-link">lavaan.mi</a></span><span class="op">(</span> <span class="va">lavmodel</span>, <span class="va">datlist1a</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod1a</span>, standardized<span class="op">=</span><span class="cn">TRUE</span>, rsquare<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#***********************</span></span>
@@ -587,14 +587,14 @@ from models which provides an individual likelihood as an input.</p></div>
 <span><span class="st">   PV.Dim1 ~~ PV.Dim1</span></span>
 <span><span class="st">   X2true ~~ X2true</span></span>
 <span><span class="st">        "</span></span>
-<span><span class="va">mod3a</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/runMI.html" class="external-link">lavaan.mi</a></span><span class="op">(</span> <span class="va">lavmodel</span>, <span class="va">datlist3a</span><span class="op">)</span></span>
+<span><span class="va">mod3a</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/semTools-deprecated.html" class="external-link">lavaan.mi</a></span><span class="op">(</span> <span class="va">lavmodel</span>, <span class="va">datlist3a</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod3a</span>, standardized<span class="op">=</span><span class="cn">TRUE</span>, rsquare<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">lavmodel</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
 <span><span class="st">   PV.Dim1 ~ X1 + X2</span></span>
 <span><span class="st">   PV.Dim1 ~~ PV.Dim1</span></span>
 <span><span class="st">        "</span></span>
-<span><span class="va">mod3b</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/runMI.html" class="external-link">lavaan.mi</a></span><span class="op">(</span> <span class="va">lavmodel</span>, <span class="va">datlist3b</span><span class="op">)</span></span>
+<span><span class="va">mod3b</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/semTools-deprecated.html" class="external-link">lavaan.mi</a></span><span class="op">(</span> <span class="va">lavmodel</span>, <span class="va">datlist3b</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mod3b</span>, standardized<span class="op">=</span><span class="cn">TRUE</span>, rsquare<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#=&gt; mod3b leads to the correct estimate.</span></span>
 <span></span>

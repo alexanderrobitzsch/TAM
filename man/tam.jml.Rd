@@ -1,5 +1,5 @@
 %% File Name: tam.jml.Rd
-%% File Version: 2.408
+%% File Version: 2.409
 
 \name{tam.jml}
 
@@ -381,7 +381,8 @@ theta_proc <- function(theta){
 # JML estimation
 res <- TAM::tam.jml( dat, theta_proc=theta_proc )
 # check means
-stats::aggregate( res$theta, list(1:3000 %in% ind2), mean )
+group <- c( rep(1,length(ind1)), rep(1,length(ind2)) )
+stats::aggregate( res$theta, list(group), mean )
 }
 }
 

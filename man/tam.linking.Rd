@@ -1,5 +1,5 @@
 %% File Name: tam.linking.Rd
-%% File Version: 0.627
+%% File Version: 0.628
 
 \name{tam.linking}
 \alias{tam.linking}
@@ -36,7 +36,7 @@ tam.linking(tamobj_list, type="Hae", method="joint", pow_rob_hae=1, eps_rob_hae=
 \method{print}{tam.linking}(x, \dots)
 
 tam_linking_2studies( B1, AXsi1, guess1, B2, AXsi2, guess2, theta, wgt, type,
-    M1=0, SD1=1, M2=0, SD2=1, fix.slope=FALSE, pow_rob_hae=1)
+    M1=0, SD1=1, M2=0, SD2=1, fix.slope=FALSE, pow_rob_hae=1, eps_rob_hae=1e-4)
 
 \method{summary}{tam_linking_2studies}(object, file=NULL, \dots)
 
@@ -53,7 +53,8 @@ Type of linking method: \code{"SL"} (Stocking-Lord), \code{"Hae"} (Haebara) or
 The default is the Haebara linking method.
 }
 \item{method}{Chain linking (\code{"chain"}) or joint linking (\code{"joint"})}
-\item{pow_rob_hae}{Power for robust Heabara linking}
+\item{pow_rob_hae}{Power for robust Heabara linking. The value must be larger
+than 0 or equal to 0.}
 \item{eps_rob_hae}{Value \eqn{\varepsilon} for numerical approximation of
 loss function \eqn{|x|^p} in robust Haebara linking}
   \item{theta}{

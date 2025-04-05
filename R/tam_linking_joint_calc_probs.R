@@ -1,5 +1,5 @@
 ## File Name: tam_linking_joint_calc_probs.R
-## File Version: 0.09
+## File Version: 0.101
 
 tam_linking_joint_calc_probs <- function(a, b, parameters_list_mm, theta)
 {
@@ -10,6 +10,6 @@ tam_linking_joint_calc_probs <- function(a, b, parameters_list_mm, theta)
     theta2[,1] <- a*theta[,1] + b
     probs <- tam_irf_3pl(theta=theta2, AXsi=AXsi, B=B, guess=guess)
     probs[ is.na(probs) ] <- 0
-    attr(probs, "items") <- dimnames(B)[[1]]
+    attr(probs, 'items') <- dimnames(B)[[1]]
     return(probs)
 }

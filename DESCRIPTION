@@ -1,8 +1,8 @@
 Package: TAM
 Type: Package
 Title: Test Analysis Modules
-Version: 4.3-4
-Date: 2024-09-09 14:17:19
+Version: 4.3-13
+Date: 2025-04-05 23:23:20
 Author:
     Alexander Robitzsch [aut,cre] (<https://orcid.org/0000-0002-8226-3132>),
     Thomas Kiefer [aut], 
