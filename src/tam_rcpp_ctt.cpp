@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_ctt.cpp
-//// File Version: 3.29
+//// File Version: 3.302
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -96,14 +96,14 @@ Rcpp::List tam_rcpp_ctt2( Rcpp::CharacterMatrix TDAT,
          // calculate WLE mean total
          mw = ( wles1 + wles3 ) / des( cc1,1);
          // calculate SD total
-         des(cc1,8) = sqrt( ( wles2 + wles4 - des(cc1,1)*pow( mw, 2.0 )  )/ ( des(cc1,1) - 1 )  );
+         des(cc1,8) = std::sqrt( ( wles2 + wles4 - des(cc1,1)*std::pow( mw, 2.0 )  )/ ( des(cc1,1) - 1 )  );
          // calculate WLE means
          des(cc1,4) = des(cc1,4) / des(cc1,3);  // M at category cc1
          des(cc1,5) = des(cc1,5) / des(cc1,2);  // M not at category cc1
          // calculate SD of WLE
-         des(cc1,6) = sqrt( ( des(cc1,6) - des(cc1,3)*pow( des(cc1,4), 2.0 )  ) / ( des(cc1,3) - 1 ) );
+         des(cc1,6) = std::sqrt( ( des(cc1,6) - des(cc1,3)*std::pow( des(cc1,4), 2.0 )  ) / ( des(cc1,3) - 1 ) );
          // calculate point-biserial correlation
-         des(cc1,7) =  ( des(cc1,4) - des(cc1,5) )/des(cc1,8) * sqrt( des(cc1,2)*des(cc1,3) /
+         des(cc1,7) =  ( des(cc1,4) - des(cc1,5) )/des(cc1,8) * std::sqrt( des(cc1,2)*des(cc1,3) /
                          ( des(cc1,1) * ( des(cc1,1)-1 ) ) );
          }
                      }   // end category cc

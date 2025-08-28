@@ -1,5 +1,5 @@
 ## File Name: IRT.informationCurve.R
-## File Version: 9.213
+## File Version: 9.214
 
 
 
@@ -19,7 +19,7 @@ informationCurves_mml <- function( object, h=.0001,
     eps <- 1E-20
     I <- ncol(object$resp)
     if ( is.null(iIndex) ){
-        iIndex <- 1:I
+        iIndex <- 1L:I
     }
     resp <- object$resp
     maxcat <- apply( resp, 2, max, na.rm=TRUE )
@@ -78,7 +78,7 @@ informationCurves_mml <- function( object, h=.0001,
     info_curves_item <- matrix( 0, nrow=IP, ncol=TP)
     rownames(info_curves_item) <- colnames(object$resp)[ iIndex    ]
 
-    for (kk in 1:maxK){
+    for (kk in 1L:maxK){
         info_curves_item <- info_curves_item +
                     p0[, kk, ] * ( ( d1[,kk,] / p0[,kk,] )^2 -
                                         d2[,kk,] / p0[,kk,] )
@@ -95,7 +95,7 @@ informationCurves_mml <- function( object, h=.0001,
         r1 <- list( r1 )
     }
     dimnames(info_curves_categories)[[1]] <- r1
-    for (kk in 1:maxK){
+    for (kk in 1L:maxK){
         info_curves_categories[,kk,] <- info_curves_item * p0a[,kk,]
     }
 

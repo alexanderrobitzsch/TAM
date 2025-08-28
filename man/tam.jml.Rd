@@ -1,5 +1,5 @@
 %% File Name: tam.jml.Rd
-%% File Version: 2.409
+%% File Version: 2.414
 
 \name{tam.jml}
 
@@ -20,8 +20,8 @@ item response models with joint maximum likelihood (JML,
 \usage{
 tam.jml(resp, group=NULL, adj=.3, disattenuate=FALSE, bias=TRUE,
     xsi.fixed=NULL, xsi.inits=NULL, theta.fixed=NULL, A=NULL, B=NULL, Q=NULL,
-    ndim=1, pweights=NULL, constraint="cases", verbose=TRUE, control=list(), version=3,
-    theta_proc=NULL)
+    ndim=1, pweights=NULL, constraint="cases", theta_proc=NULL,
+    verbose=TRUE, control=list(), version=3)
 
 \method{summary}{tam.jml}(object, file=NULL, \dots)
 
@@ -92,6 +92,9 @@ the fixed value. This argument can only be applied for \code{version=1}.}
 (set mean of person parameters to zero)
 or \code{"items"} (set mean of item parameters to zero).
 }
+\item{theta_proc}{Function for processing \code{theta} within iterations. Can only
+be applied for \code{version=1}.
+}
 \item{verbose}{Logical indicating whether output should
 be printed during iterations. This argument replaces \code{control$progress}.
 }
@@ -104,8 +107,6 @@ is the former \code{tam.jml2} function in \pkg{TAM} (<2.0).
 The default \code{version=3} allows efficient handling in case of missing
 data.
 }
-\item{theta_proc}{Function for processing \code{theta} within iterations. Can only
-be applied for \code{version=1}.}
   \item{object}{
 Object of class \code{tam.jml} (only for \code{summary.tam}
 function)

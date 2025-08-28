@@ -1,5 +1,5 @@
 ## File Name: tam_linking_chain.R
-## File Version: 0.121
+## File Version: 0.122
 
 tam_linking_chain <- function(NM, parameters_list, entries, verbose,
     linking_args, linking_list)
@@ -36,13 +36,13 @@ tam_linking_chain <- function(NM, parameters_list, entries, verbose,
         parameters_list[[mm+1]][['M']] <- M_SD[,'M']
         parameters_list[[mm+1]][['SD']] <- M_SD[,'SD']
         parm_mm <- parameters_list[[mm+1]]
-        res <- tam_linking_transform_item_parameters( B=parm_mm$B, AXsi=parm_mm$AXsi, 
+        res <- tam_linking_transform_item_parameters( B=parm_mm$B, AXsi=parm_mm$AXsi,
                             A=parm_mm$A, trafo_items=link_mm$trafo_items )
         parm_mm <- tam_linking_include_list( list1=parm_mm, list2=res )
         parameters_list[[mm+1]] <- parm_mm
     }
     #--- organize output
-    res <- tam_linking_output_summary( parameters_list=parameters_list, 
+    res <- tam_linking_output_summary( parameters_list=parameters_list,
                     linking_list=linking_list )
     M_SD <- res$M_SD
     trafo_persons <- res$trafo_persons

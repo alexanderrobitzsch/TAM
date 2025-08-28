@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_calc_exp.cpp
-//// File Version: 3.50
+//// File Version: 3.514
 
 
 #include <Rcpp.h>
@@ -88,7 +88,8 @@ Rcpp::List tam_rcpp_calc_exp( int NP, Rcpp::NumericVector rprobs,
 ///********************************************************************
 ///** tam_rcpp_calc_exp_redefine_vector_na
 // [[Rcpp::export]]
-Rcpp::NumericVector tam_rcpp_calc_exp_redefine_vector_na( Rcpp::NumericVector A, double val )
+Rcpp::NumericVector tam_rcpp_calc_exp_redefine_vector_na( Rcpp::NumericVector A,
+         double val )
 {
     int N = A.size();
     Rcpp::NumericVector A1(N);

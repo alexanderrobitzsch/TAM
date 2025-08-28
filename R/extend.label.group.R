@@ -1,26 +1,26 @@
 ## File Name: extend.label.group.R
-## File Version: 9.11
+## File Version: 9.122
 
 
 #--- extend labels arranged in a group
 extend.label.group <- function( label.group )
 {
-    str1 <- unlist( strsplit( label.group, split="__" ) )
+    str1 <- unlist( strsplit( label.group, split='__' ) )
     M1 <- min( nchar(str1) )
     M2 <- max( nchar(str1) )
     # extract types of labels
-    str1a <- strsplit( str1[1], split="" )
-    str2a <- strsplit( str1[2], split="" )
+    str1a <- strsplit( str1[1], split='' )
+    str2a <- strsplit( str1[2], split='' )
     dfr2 <- matrix( NA, nrow=M2, ncol=5)
-    dfr2[1:M1,1] <- unlist(str1a)
-    dfr2[1:M2,2] <- unlist(str2a)
+    dfr2[1L:M1,1] <- unlist(str1a)
+    dfr2[1L:M2,2] <- unlist(str2a)
     dfr2 <- as.data.frame(dfr2)
     letters_all <- c( LETTERS, letters )
     dfr2[,3] <- paste(dfr2[,1]) %in% letters_all
     dfr2[,4] <- paste(dfr2[,2]) %in% letters_all
     dfr2[,5] <- paste(dfr2[,1])==paste(dfr2[,2])
     ii0 <- 0
-    for (ii in 1:M1){
+    for (ii in 1L:M1){
         if ( dfr2[ii,5] ){
             ii0 <- ii0+1
         }

@@ -23,7 +23,7 @@ tam.wle."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/ma
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.3</span
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.4</span
       </span>
     </div>
 
@@ -110,7 +110,7 @@ and infit</p></dd>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>See also <code><a href="tam.fit.html">tam.fit</a></code> for simulation based assessment of item fit.</p>
-<p>See also <code>eRm::itemfit</code> or <code><a href="https://rdrr.io/pkg/mirt/man/itemfit.html" class="external-link">mirt::itemfit</a></code>.</p></div>
+<p>See also <code>eRm::itemfit</code> or <code><a href="https://philchalmers.github.io/mirt/reference/itemfit.html" class="external-link">mirt::itemfit</a></code>.</p></div>
     </div>
 
     <div id="ref-examples">
@@ -150,11 +150,11 @@ and infit</p></dd>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit2a</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#++ fit assessment in mirt package</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/philchalmers/mirt" class="external-link">mirt</a></span><span class="op">)</span></span>
-<span><span class="va">mod1b</span> <span class="op">&lt;-</span> <span class="fu">mirt</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mirt/man/mirt.html" class="external-link">mirt</a></span><span class="op">(</span> <span class="va">dat</span>, model<span class="op">=</span><span class="fl">1</span>, itemtype<span class="op">=</span><span class="st">"Rasch"</span>, verbose<span class="op">=</span><span class="cn">TRUE</span> <span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://philchalmers.github.io/mirt/" class="external-link">mirt</a></span><span class="op">)</span></span>
+<span><span class="va">mod1b</span> <span class="op">&lt;-</span> <span class="fu">mirt</span><span class="fu">::</span><span class="fu"><a href="https://philchalmers.github.io/mirt/reference/mirt.html" class="external-link">mirt</a></span><span class="op">(</span> <span class="va">dat</span>, model<span class="op">=</span><span class="fl">1</span>, itemtype<span class="op">=</span><span class="st">"Rasch"</span>, verbose<span class="op">=</span><span class="cn">TRUE</span> <span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mod1b</span><span class="op">)</span></span>
 <span><span class="fu">sirt</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sirt/man/mirt.wrapper.html" class="external-link">mirt.wrapper.coef</a></span><span class="op">(</span><span class="va">mod1b</span><span class="op">)</span></span>
-<span><span class="va">fmod1b</span> <span class="op">&lt;-</span> <span class="fu">mirt</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mirt/man/itemfit.html" class="external-link">itemfit</a></span><span class="op">(</span><span class="va">mod1b</span>, Theta<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">wmod1</span>,ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span>,</span>
+<span><span class="va">fmod1b</span> <span class="op">&lt;-</span> <span class="fu">mirt</span><span class="fu">::</span><span class="fu"><a href="https://philchalmers.github.io/mirt/reference/itemfit.html" class="external-link">itemfit</a></span><span class="op">(</span><span class="va">mod1b</span>, Theta<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">wmod1</span>,ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span>,</span>
 <span>                 Zh<span class="op">=</span><span class="cn">TRUE</span>, X2<span class="op">=</span><span class="cn">FALSE</span>, S_X2<span class="op">=</span><span class="cn">FALSE</span> <span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span> <span class="va">fit2a</span><span class="op">$</span><span class="va">fit_data</span>, <span class="va">fmod1b</span> <span class="op">)</span></span>
 <span></span>
@@ -254,7 +254,7 @@ and infit</p></dd>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Alexander Robitzsch.</p>
+  <p></p><p>Developed by Alexander Robitzsch, Thomas Kiefer, Margaret Wu.</p>
 </div>
 
 <div class="pkgdown">

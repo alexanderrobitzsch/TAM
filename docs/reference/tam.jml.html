@@ -19,7 +19,7 @@ item response models with joint maximum likelihood (JML,
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.3</span
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.4</span
       </span>
     </div>
 
@@ -56,8 +56,8 @@ item response models with joint maximum likelihood (JML,
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tam.jml</span><span class="op">(</span><span class="va">resp</span>, group<span class="op">=</span><span class="cn">NULL</span>, adj<span class="op">=</span><span class="fl">.3</span>, disattenuate<span class="op">=</span><span class="cn">FALSE</span>, bias<span class="op">=</span><span class="cn">TRUE</span>,</span>
 <span>    xsi.fixed<span class="op">=</span><span class="cn">NULL</span>, xsi.inits<span class="op">=</span><span class="cn">NULL</span>, theta.fixed<span class="op">=</span><span class="cn">NULL</span>, A<span class="op">=</span><span class="cn">NULL</span>, B<span class="op">=</span><span class="cn">NULL</span>, Q<span class="op">=</span><span class="cn">NULL</span>,</span>
-<span>    ndim<span class="op">=</span><span class="fl">1</span>, pweights<span class="op">=</span><span class="cn">NULL</span>, constraint<span class="op">=</span><span class="st">"cases"</span>, verbose<span class="op">=</span><span class="cn">TRUE</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, version<span class="op">=</span><span class="fl">3</span>,</span>
-<span>    theta_proc<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span></span>
+<span>    ndim<span class="op">=</span><span class="fl">1</span>, pweights<span class="op">=</span><span class="cn">NULL</span>, constraint<span class="op">=</span><span class="st">"cases"</span>, theta_proc<span class="op">=</span><span class="cn">NULL</span>,</span>
+<span>    verbose<span class="op">=</span><span class="cn">TRUE</span>, control<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>, version<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for tam.jml</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">object</span>, file<span class="op">=</span><span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -130,6 +130,10 @@ the fixed value. This argument can only be applied for <code>version=1</code>.</
 (set mean of person parameters to zero)
 or <code>"items"</code> (set mean of item parameters to zero).</p></dd>
 
+<dt>theta_proc</dt>
+<dd><p>Function for processing <code>theta</code> within iterations. Can only
+be applied for <code>version=1</code>.</p></dd>
+
 <dt>verbose</dt>
 <dd><p>Logical indicating whether output should
 be printed during iterations. This argument replaces <code>control$progress</code>.</p></dd>
@@ -143,10 +147,6 @@ be printed during iterations. This argument replaces <code>control$progress</cod
 is the former <code>tam.jml2</code> function in <span class="pkg">TAM</span> (&lt;2.0).
 The default <code>version=3</code> allows efficient handling in case of missing
 data.</p></dd>
-
-<dt>theta_proc</dt>
-<dd><p>Function for processing <code>theta</code> within iterations. Can only
-be applied for <code>version=1</code>.</p></dd>
 
   <dt>object</dt>
 <dd><p>Object of class <code>tam.jml</code> (only for <code>summary.tam</code>
@@ -461,7 +461,7 @@ maximum likelihood estimation see <code><a href="tam.mml.html">tam.mml</a></code
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Alexander Robitzsch.</p>
+  <p></p><p>Developed by Alexander Robitzsch, Thomas Kiefer, Margaret Wu.</p>
 </div>
 
 <div class="pkgdown">

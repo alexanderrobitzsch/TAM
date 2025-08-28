@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_calc_prob.cpp
-//// File Version: 1.627
+//// File Version: 1.633
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
@@ -97,8 +97,9 @@ Rcpp::NumericVector tam_rcpp_calc_prob_subtract_max_exp( Rcpp::NumericVector rr0
 ///** tam_rcpp_calc_prob
 // [[Rcpp::export]]
 Rcpp::List tam_rcpp_calc_prob( Rcpp::NumericVector A, Rcpp::IntegerVector dimA,
-            Rcpp::NumericVector xsi, Rcpp::IntegerVector maxcat, Rcpp::NumericMatrix AXsi0,
-            Rcpp::IntegerVector iIndex, Rcpp::NumericMatrix theta, Rcpp::NumericVector B )
+            Rcpp::NumericVector xsi, Rcpp::IntegerVector maxcat,
+            Rcpp::NumericMatrix AXsi0, Rcpp::IntegerVector iIndex,
+            Rcpp::NumericMatrix theta, Rcpp::NumericVector B )
 {
     int I = dimA[0];
     int maxK = dimA[1];

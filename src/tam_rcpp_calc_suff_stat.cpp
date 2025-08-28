@@ -1,5 +1,5 @@
 //// File Name: tam_rcpp_calc_suff_stat.cpp
-//// File Version: 0.14
+//// File Version: 0.153
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
@@ -12,18 +12,15 @@ using namespace Rcpp;
 ///********************************************************************
 ///** tam_rcpp_calc_suff_stat
 // [[Rcpp::export]]
-Rcpp::List tam_rcpp_calc_suff_stat( Rcpp::IntegerMatrix resp, Rcpp::IntegerMatrix resp_ind,
-        int maxK, int nitems, Rcpp::NumericVector pweights, Rcpp::NumericMatrix cA )
+Rcpp::List tam_rcpp_calc_suff_stat( Rcpp::IntegerMatrix resp,
+        Rcpp::IntegerMatrix resp_ind, int maxK, int nitems,
+        Rcpp::NumericVector pweights, Rcpp::NumericMatrix cA )
 {
     int N = resp.nrow();
     int I = nitems;
     int ngr = I*maxK;
     Rcpp::IntegerMatrix cResp(N,ngr);
     Rcpp::NumericVector colsums_cResp(ngr);
-    // col.index <- rep( 1:nitems, each = maxK )
-    // cResp <- (resp +1) *resp.ind
-    // cResp <- cResp[, col.index  ]
-    // cResp <- 1 * ( cResp == matrix( rep(1:(maxK), nitems), nrow(cResp), ncol(cResp), byrow=TRUE ) )
     int temp_index = 0;
     for (int ii=0; ii<I; ii++){
         for (int nn=0; nn<N; nn++){

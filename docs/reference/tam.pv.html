@@ -29,7 +29,7 @@ can be used for the Bootstrap step by obtaining posterior draws of regression pa
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">TAM</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.3</span
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">4.4</span
       </span>
     </div>
 
@@ -499,7 +499,7 @@ from models which provides an individual likelihood as an input.</p></div>
 <span><span class="va">I</span> <span class="op">&lt;-</span> <span class="fl">10</span>     <span class="co"># number of items</span></span>
 <span></span>
 <span><span class="co"># simulate covariates</span></span>
-<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">mvrnorm</span><span class="op">(</span> <span class="va">N</span>, mu<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, Sigma<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">.5</span>,<span class="fl">.5</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">2</span>,<span class="fl">2</span> <span class="op">)</span> <span class="op">)</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html" class="external-link">mvrnorm</a></span><span class="op">(</span> <span class="va">N</span>, mu<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, Sigma<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">.5</span>,<span class="fl">.5</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">2</span>,<span class="fl">2</span> <span class="op">)</span> <span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"X"</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co"># second covariate with measurement error with variance var.err</span></span>
 <span><span class="va">var.err</span> <span class="op">&lt;-</span> <span class="fl">.3</span></span>
@@ -656,7 +656,7 @@ from models which provides an individual likelihood as an input.</p></div>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Alexander Robitzsch.</p>
+  <p></p><p>Developed by Alexander Robitzsch, Thomas Kiefer, Margaret Wu.</p>
 </div>
 
 <div class="pkgdown">

@@ -1,12 +1,19 @@
 Package: TAM
 Type: Package
 Title: Test Analysis Modules
-Version: 4.3-13
-Date: 2025-04-05 23:23:20
-Author:
-    Alexander Robitzsch [aut,cre] (<https://orcid.org/0000-0002-8226-3132>),
-    Thomas Kiefer [aut], 
-    Margaret Wu [aut]
+Version: 4.4-2
+Date: 2025-08-28 23:13:54
+Authors@R: c(person(given = "Alexander",
+                        family = "Robitzsch",
+                        role = c("aut", "cre"),
+                        email = "robitzsch@ipn.uni-kiel.de",
+                        comment = c(ORCID = "0000-0002-8226-3132")),
+                 person(given = "Thomas",
+                        family = "Kiefer",
+                        role = "aut"),
+                 person(given = "Margaret",
+                        family = "Wu",
+                        role = "aut"))
 Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
 Description: 
     Includes marginal maximum likelihood estimation and joint maximum
